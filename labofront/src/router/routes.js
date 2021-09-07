@@ -1,6 +1,12 @@
 import Index from "../pages";
 import Login from "../pages/Login";
-import Local from "../pages/Local";
+// import Local from "../pages/Local";
+import User from "pages/User";
+import Doctor from "pages/Doctor";
+import Historial from "pages/Historial";
+import Pacientes from "pages/Pacientes";
+import Porcaducar from "pages/Porcaducar";
+import Reactivo from "pages/Reactivo";
 
 const routes = [
   {
@@ -9,7 +15,12 @@ const routes = [
     children: [
       { path: '', component: Index },
       { path: 'login', component: Login},
-      { path: 'locales', component: Local,meta:{requiresAuth: true}},
+      { path: 'user', component: User,meta:{requiresAuth: true}},
+      { path: 'doctor', component: Doctor,meta:{requiresAuth: true}},
+      { path: 'historial', component: Historial,meta:{requiresAuth: true}},
+      { path: 'pacientes', component: Pacientes,meta:{requiresAuth: true}},
+      { path: 'porcaducar', component: Porcaducar,meta:{requiresAuth: true}},
+      { path: 'reactivo', component: Reactivo,meta:{requiresAuth: true}},
     ]
   },
 

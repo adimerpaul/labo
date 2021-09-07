@@ -22,7 +22,8 @@ class User extends Authenticatable
         'celular',
         'email',
         'password',
-        'tipo'
+//        'tipo',
+        'fechalimite'
     ];
 
     /**
@@ -43,4 +44,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function permisos(){
+        return $this->belongsToMany(Permiso::class);
+    }
 }

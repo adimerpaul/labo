@@ -14,10 +14,10 @@
         <q-toolbar-title>
           {{$store.state.login.user.name}}
         </q-toolbar-title>
-        <div>Quasar v{{ $q.version }}</div>
+        <div>v{{ $q.version }}</div>
       </q-toolbar>
       <div class="q-px-lg q-pt-xl q-mb-md">
-        <div class="text-h3">G.A.M.O.</div>
+        <div class="text-h3">Laboratorio</div>
         <div class="text-subtitle1">{{now}} </div>
       </div>
       <q-img
@@ -52,13 +52,59 @@
               <q-item-label caption>Ingresar al sistema</q-item-label>
             </q-item-section>
           </q-item>
-          <q-item to="locales"  exact clickable v-ripple v-if="$store.getters['login/isLoggedIn']">
+          <q-item to="user"  exact clickable v-ripple v-if="$store.state.login.booluser">
+            <q-item-section avatar>
+              <q-icon name="people" />
+            </q-item-section>
+            <q-item-section>
+              <q-item-label> Usuarios</q-item-label>
+<!--              <q-item-label caption>Controlar usuarios</q-item-label>-->
+            </q-item-section>
+          </q-item>
+
+          <q-item to="doctor"  exact clickable v-ripple v-if="$store.state.login.booldoctor">
+            <q-item-section avatar>
+              <q-icon name="home" />
+            </q-item-section>
+            <q-item-section>
+              <q-item-label> Doctor</q-item-label>
+<!--              <q-item-label caption>Controlar doctores</q-item-label>-->
+            </q-item-section>
+          </q-item>
+          <q-item to="pacientes"  exact clickable v-ripple v-if="$store.state.login.boolpacientes">
+            <q-item-section avatar>
+              <q-icon name="people" />
+            </q-item-section>
+            <q-item-section>
+              <q-item-label> Pacientes</q-item-label>
+<!--              <q-item-label caption>Controlar pacientes</q-item-label>-->
+            </q-item-section>
+          </q-item>
+          <q-item to="historial"  exact clickable v-ripple v-if="$store.state.login.boolhistorial">
             <q-item-section avatar>
               <q-icon name="code" />
             </q-item-section>
             <q-item-section>
-              <q-item-label> Locales</q-item-label>
-              <q-item-label caption>Controlar locales</q-item-label>
+              <q-item-label> Historial</q-item-label>
+<!--              <q-item-label caption>Controlar usuarios</q-item-label>-->
+            </q-item-section>
+          </q-item>
+          <q-item to="reactivo"  exact clickable v-ripple v-if="$store.state.login.boolreactivo">
+            <q-item-section avatar>
+              <q-icon name="shop" />
+            </q-item-section>
+            <q-item-section>
+              <q-item-label> Reactivos</q-item-label>
+              <!--              <q-item-label caption>Controlar usuarios</q-item-label>-->
+            </q-item-section>
+          </q-item>
+          <q-item to="porcaducar"  exact clickable v-ripple v-if="$store.state.login.boolporcaducar">
+            <q-item-section avatar>
+              <q-icon name="list" />
+            </q-item-section>
+            <q-item-section>
+              <q-item-label> Por caducar</q-item-label>
+              <!--              <q-item-label caption>Controlar usuarios</q-item-label>-->
             </q-item-section>
           </q-item>
           <q-item @click="logout"  exact clickable v-ripple v-if="$store.getters['login/isLoggedIn']">
@@ -78,8 +124,8 @@
           <q-avatar size="56px" class="q-mb-sm">
             <img src="~assets/logo.png">
           </q-avatar>
-          <div class="text-weight-bold">G.A.M.O.</div>
-          <div>Gobierno autonomo</div>
+          <div class="text-weight-bold">Laboratorio</div>
+          <div>Clinica natividad</div>
         </div>
       </q-img>
     </q-drawer>
