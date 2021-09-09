@@ -16,6 +16,7 @@ class PacienteController extends Controller
     public function index()
     {
         //
+        return Paciente::with(Paciente->age)->get();
     }
 
     /**
@@ -36,8 +37,7 @@ class PacienteController extends Controller
      */
     public function store(Request $request)
     {
-        Paciente::create($request->all());
-        return redirect('pacientes');
+        return Paciente::create($request->all());
     }
 
     /**
