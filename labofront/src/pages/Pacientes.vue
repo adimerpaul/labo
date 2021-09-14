@@ -143,11 +143,10 @@
         <q-separator />
               <q-tab-panels v-model="tab.value" animated class="shadow-2 rounded-borders">
         <q-tab-panel name="hemograma">
-          <div class="text-h6">Mails</div>
-            <form method="post" action="/hemograma" target="__blank">
+            <q-form @submit="onSubmit" >
         <table style="width: 100%;color: black">
             <tr >
-                <td rowspan="4" style="height: 2cm"><img src="images/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
+                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 3cm; width:8cm;"></td>
                 <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
@@ -167,24 +166,24 @@
             </tr>
             <tr>
                 <td style="color: darkblue">PACIENTE</td>
-                <td><label class="txtnombre"></label></td>
+                <td>{{dato2.nombre}}</td>
                 <td style="color: darkblue">EDAD</td>
-                <td><label class="txtedad"></label></td>
+                <td>{{dato2.age}}</td>
             </tr>
             <tr>
                 <td style="color: darkblue">REQUERIDO POR</td>
                 <td>
-                    <select name="requerido" id="requerido" required style="width:100%"></select>
+                    <q-select :options="doctors" v-model="requerido" style="width:100%"/>
                 </td>
                 
                 <td style="color: darkblue">SEXO </td>
-                <td><label class="txtsexo"></label></td>
+                <td>{{dato2.sexo}}</td>
             </tr>
             <tr>
                 <td style="color: darkblue">TIPO MUESTRA</td>
-                <td><input type="text" style="width: 100%" name="tipomuestra" placeholder="Tipo muestra" ></td>
+                <td><q-input type="text" style="width: 100%" placeholder="Tipo muestra" borderless v-model="hemograma.muestra"/></td>
                 <td style="color: darkblue">N PACIENTE</td>
-                <td><label class="txtn"></label> <input type="hidden" class="paciente_id" name="paciente_id"></td>
+                <td>{{dato2.id}}</td>
             </tr>
             <tr>
                 <td style="color: darkblue">METODO</td>
@@ -203,7 +202,7 @@
             </tr>
             <tr>
                 <td class="bg-negative text-white">Globulos Rojos</td>
-                <td><input type="text" placeholder="00" name="d1"   style="width: 100%"></td>
+                <td><q-input type="text" placeholder="00" v-model="hemograma.d1"   style="width: 100%"/></td>
                 <td>x10 <sup>12 </sup>/L</td>
                 <td>Varon 5.1-5.7x10 <sup>12</sup>/L <br> Mujer 4.8-5.4x10 <sup>12</sup>/L</td>
                 <td class="bg-negative text-white">Tiempo de cuagulacion</td>
@@ -383,7 +382,7 @@
                 </td>
             </tr>
         </table>
-    </form>
+    </q-form>
         </q-tab-panel>
 
         <q-tab-panel name="sanguinea">
@@ -463,6 +462,7 @@ export default {
       pacientes:[],
       rows:[],
       dato:{},
+      doctors:[],
       alert:false,
       dialog_mod:false,
       dialog_lab:false,
@@ -491,6 +491,7 @@ export default {
       serologia:{},
       labserologia:{},
       reserologoia:{},
+      requerido:{},
       ensayo:{},
       tab:{},
       columns:[
@@ -505,9 +506,23 @@ export default {
   },
   created(){
     this.listado();
+    this.listdoctor();
     this.tab={value:"hemograma",label:"Hemograma completo" };
   },
   methods: {
+    listdoctor(){
+        this.doctors=[];
+          this.$axios.get(process.env.API+'/doctor').then(res=>{
+
+       console.log(res.data)
+        
+         res.data.forEach(element => {
+            this.doctors.push({label:element.nombre,value:element.id});
+           
+         });
+         this.requerido=this.doctors[0];
+          })
+    },
     listado(){
           this.$axios.get(process.env.API+'/paciente').then(res=>{
        console.log(res.data)
@@ -564,3 +579,8 @@ export default {
   },
 }
 </script>
+<style>
+table, td, th {
+  border-collapse: collapse;
+}
+</style>
