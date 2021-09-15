@@ -24,10 +24,22 @@
             <q-input
               filled
               v-model="dato.nombre"
-              label="Nombre Completo"
-              hint="Ingresar Nombre Completo"
+              label="Nombre "
+              hint="Ingresar Nombre "
               lazy-rules
               :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']"
+            />
+            <q-input
+              filled
+              v-model="dato.paterno"
+              label="Ap Paterno "
+              hint="Ingresar Paterno "
+            />
+            <q-input
+              filled
+              v-model="dato.materno"
+              label="Ap Materno "
+              hint="Ingresar Materno "
             />
             <q-input
               filled
@@ -35,7 +47,7 @@
               v-model="dato.fechanac"
               label="Fecha Nac"
               lazy-rules
-              :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']"
+              :rules="[ val => val && val.length > 0 && val<=actual || 'Por favor ingresa datos']"
             />
             <q-radio v-model="dato.sexo" val="Masculino" label="Masculino" />
             <q-radio v-model="dato.sexo" val="Femenino" label="Femenino" />
@@ -79,6 +91,7 @@
         </q-tr>
       </template>
       </q-table>
+      
       <q-dialog v-model="dialog_mod">
       <q-card>
         <q-card-section class="bg-green-14 text-white">
@@ -100,10 +113,22 @@
             <q-input
               filled
               v-model="dato2.nombre"
-              label="Nombre Completo"
+              label="Nombre "
               hint="Ingresar Nombre Completo"
               lazy-rules
               :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']"
+            />
+            <q-input
+              filled
+              v-model="dato2.paterno"
+              label="Ap paterno"
+              hint="Ingresar Paterno"
+            />
+            <q-input
+              filled
+              v-model="dato2.materno"
+              label="Ap Materno"
+              hint="Ingresar Materno"
             />
             <q-input
               filled
@@ -454,6 +479,7 @@
 
 <script>
 import { useQuasar } from 'quasar'
+import {date} from "quasar";
 export default {
   data(){
     return{
@@ -492,11 +518,14 @@ export default {
       labserologia:{},
       reserologoia:{},
       requerido:{},
+       actual:date.formatDate(Date.now(),'YYYY-MM-DD'),
       ensayo:{},
       tab:{},
       columns:[
         { name: 'ci', label: 'ci', field: 'ci',align: 'center',},
         { name: 'nombre', label: 'nombre', field: 'nombre',align: 'center',},
+        { name: 'paterno', label: 'paterno', field: 'paterno',align: 'center',},
+        { name: 'materno', label: 'materno', field: 'materno',align: 'center',},
         { name: 'fechanac', label: 'fechanac', field: 'fechanac', align: 'center',},
         { name: 'sexo', label: 'sexo', field: 'sexo',align: 'center',},
         { name: 'celular', label: 'celular', field: 'celular',align: 'center',},

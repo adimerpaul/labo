@@ -70,7 +70,7 @@ class UserController extends Controller
     {
         //
         $user=new User();
-        $user->name=$request->name;
+        $user->name=strtoupper($request->name);
 //        $user->carnet=$request->carnet;
         $user->celular=$request->celular;
         $user->email=$request->email;
@@ -118,7 +118,12 @@ class UserController extends Controller
      */
     public function update(Request $request,User $user)
     {
-        $user->update($request->all());
+        $user= User::find($request->id);
+        $user->name=strtoupper($request->name);
+        $user->celular=$request->celular;
+        $user->email=$request->email;
+        $user->fechalimite=$request->fechalimite;
+        $user->save();
         return $user;
     }
     public function updatepermisos(Request $request,User $user){

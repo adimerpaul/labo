@@ -17,6 +17,8 @@ class CreatePacientesTable extends Migration
             $table->id();
             $table->string('ci')->unique();
             $table->string('nombre');
+            $table->string('paterno')->nullable();
+            $table->string('materno')->nullable();
             $table->date('fechanac');
 //            $table->string('requerido');
             $table->string('sexo');

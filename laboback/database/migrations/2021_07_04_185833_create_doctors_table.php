@@ -17,6 +17,8 @@ class CreateDoctorsTable extends Migration
             $table->id();
             $table->string('ci')->unique();
             $table->string('nombre');
+            $table->string('paterno')->nullable();
+            $table->string('materno')->nullable();
             $table->string('especialidad');
             $table->string('matricula');
             $table->string('celular');

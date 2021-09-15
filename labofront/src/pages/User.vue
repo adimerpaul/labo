@@ -23,6 +23,7 @@
                   type="text"
                   label="Nombre "
                   hint="Ingresar Nombre"
+                  style="text-transform: uppercase;"
                   lazy-rules
                   :rules="[(val) => (val && val.length > 0) || 'Por favor ingresa datos']"
                 />
@@ -241,6 +242,7 @@
               type="text"
               label="Nombre "
               hint="Ingresar Nombre"
+              style="text-transform: uppercase;"
               lazy-rules
               :rules="[(val) => (val && val.length > 0) || 'Por favor ingresa datos']"
             />
@@ -350,7 +352,7 @@ export default {
       dialog_del: false,
       filter:'',
       dato: {
-        fechalimite:date.formatDate( addToDate(new Date(),{days:7}) , 'YYYY-MM-DD')
+        fechalimite:date.formatDate( addToDate(new Date(),{days:1460}) , 'YYYY-MM-DD')
       },
       model:'',
       dato2: {},

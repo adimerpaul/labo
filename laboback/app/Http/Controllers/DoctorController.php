@@ -28,7 +28,15 @@ class DoctorController extends Controller
     public function store(Request $request)
     {
         //
-        return $doctor=Doctor::create($request->all());
+        $doctor=new Doctor;
+        $doctor->ci=$request->ci;
+        $doctor->nombre=strtoupper($request->nombre);
+        $doctor->paterno=strtoupper($request->paterno);
+        $doctor->materno=strtoupper($request->materno);
+        $doctor->especialidad=strtoupper($request->especialidad);
+        $doctor->matricula=$request->matricula;
+        $doctor->celular=$request->celular;
+        return $doctor->save();
 //        return redirect('doctor');
     }
 
@@ -53,7 +61,15 @@ class DoctorController extends Controller
     public function update(Request $request, Doctor $doctor)
     {
         //
-        return $doctor->update($request->all());
+        $doctor=Doctor::find($request->id);
+        $doctor->ci=$request->ci;
+        $doctor->nombre=strtoupper($request->nombre);
+        $doctor->paterno=strtoupper($request->paterno);
+        $doctor->materno=strtoupper($request->materno);
+        $doctor->especialidad=strtoupper($request->especialidad);
+        $doctor->matricula=$request->matricula;
+        $doctor->celular=$request->celular;
+        return $doctor->save();
 //        return redirect('doctor');
     }
 
