@@ -44,18 +44,16 @@ class HemogramaController extends Controller
 //        $datos->user_id=Auth::user()->id;
 ////        array_push($datos,array('user_id'=>1));
 //        return $request->requerido;
-        if (Doctor::where('nombre',$request->requerido)->get()->count()==0 && $request->requerido!=''){
-            Doctor::create(['nombre'=>$request->requerido]);
-        }
-        $dato=Hemograma::create($request->all()+ ['user_id' => Auth::user()->id]);
-        $input='';
+        //return $request;
+        $dato=Hemograma::create($request->hemograma+ ['user_id' => Auth::user()->id,'paciente_id'=>$request->paciente['id'],'doctor_id'=>$request->doctor]);
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($this->generar($dato->id));
         return $pdf->download('Hemograma.pdf');
         //return redirect('/pacientes');
     }
+
     public function generar($id){
-        $row= Hemograma::with('paciente')->with('user')
+        $row= Hemograma::with('paciente')->with('user')->whith('doctor')
         ->where('id',$id)
         ->get();
         $row=$row[0];
@@ -68,7 +66,7 @@ table, th, td {
 </style>
         <table style="width: 100%;color: black">
             <tr >
-                <td rowspan="4" style="height: 2cm"><img src="images/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
+                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
                 <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
@@ -88,13 +86,13 @@ table, th, td {
             </tr>
             <tr>
                 <td style="color: darkblue">PACIENTE</td>
-                <td>'.$row->paciente->nombre.'</td>
+                <td>'.$row->paciente->nombre.' '.$row->paciente->paterno.' '.$row->paciente->materno.'</td>
                 <td style="color: darkblue">EDAD</td>
                 <td>'.$row->paciente->age().'</td>
             </tr>
             <tr>
                 <td style="color: darkblue">REQUERIDO POR</td>
-                <td>'.$row->requerido.'</td>
+                <td>'.$row->doctor->nombre.'</td>
                 <td style="color: darkblue">SEXO</td>
                 <td>'.$row->paciente->sexo.'</td>
             </tr>

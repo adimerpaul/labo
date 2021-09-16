@@ -9,7 +9,6 @@ class Hemograma extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'requerido',
         'tipomuestra',
         'fechatoma',
         'd1',
@@ -46,6 +45,7 @@ class Hemograma extends Model
         'd32',
         'd33',
         'paciente_id',
+        'doctor_id',
         'user_id',
     ];
     
@@ -55,5 +55,8 @@ class Hemograma extends Model
     }
     public function user(){
         return $this->belongsTo(User::class);
+    }
+    public function doctor(){
+        return $this->belongsTo(Doctor::class);
     }
 }

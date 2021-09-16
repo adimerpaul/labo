@@ -25,6 +25,10 @@ class DoctorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function listdoctor(){
+        return Doctor::where('activo',1)->get();
+    }
+    
     public function store(Request $request)
     {
         //
@@ -85,8 +89,9 @@ class DoctorController extends Controller
         $doctor->delete();
 //        return redirect('doctor');
     }
-    public function estadodoc( Doctor $doctor)
+    public function doctoractivo(Request $request)
     {
+        $doctor=Doctor::find($request->id);
         if ($doctor->activo==1)
             $doctor->activo=0;
         else

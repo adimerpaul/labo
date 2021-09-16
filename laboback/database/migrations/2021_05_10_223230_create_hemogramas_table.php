@@ -15,7 +15,6 @@ class CreateHemogramasTable extends Migration
     {
         Schema::create('hemogramas', function (Blueprint $table) {
             $table->id();
-            $table->string('requerido')->nullable()->default('');
             $table->string('tipomuestra')->nullable()->default('');
 //            $table->date('fechaentrega')->nullable()->default('');
             $table->date('fechatoma')->nullable();
@@ -93,6 +92,8 @@ class CreateHemogramasTable extends Migration
             $table->foreign('paciente_id')->references('id')->on('pacientes');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('doctor_id');
+            $table->foreign('doctor_id')->references('id')->on('doctors');
             $table->timestamps();
         });
     }

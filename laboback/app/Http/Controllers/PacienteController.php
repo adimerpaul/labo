@@ -37,7 +37,16 @@ class PacienteController extends Controller
      */
     public function store(Request $request)
     {
-        return Paciente::create($request->all());
+        $paciente=new Paciente;
+        $paciente->ci=$request->ci;
+        $paciente->nombre=strtoupper($request->nombre);
+        $paciente->paterno=strtoupper($request->paterno);
+        $paciente->materno=strtoupper($request->materno);
+        $paciente->fechanac=$request->fechanac;
+        $paciente->sexo=$request->sexo;
+        $paciente->celular=$request->celular;
+        $paciente->save();
+        return $paciente;
     }
 
     /**

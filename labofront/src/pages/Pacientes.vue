@@ -26,6 +26,7 @@
               v-model="dato.nombre"
               label="Nombre "
               hint="Ingresar Nombre "
+                  style="text-transform: uppercase;"
               lazy-rules
               :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']"
             />
@@ -34,12 +35,14 @@
               v-model="dato.paterno"
               label="Ap Paterno "
               hint="Ingresar Paterno "
+                  style="text-transform: uppercase;"
             />
             <q-input
               filled
               v-model="dato.materno"
               label="Ap Materno "
               hint="Ingresar Materno "
+                  style="text-transform: uppercase;"
             />
             <q-input
               filled
@@ -168,7 +171,7 @@
         <q-separator />
               <q-tab-panels v-model="tab.value" animated class="shadow-2 rounded-borders">
         <q-tab-panel name="hemograma">
-            <q-form @submit="onSubmit" >
+            <q-form @submit="onHemograma" >
         <table style="width: 100%;color: black">
             <tr >
                 <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 3cm; width:8cm;"></td>
@@ -198,7 +201,7 @@
             <tr>
                 <td style="color: darkblue">REQUERIDO POR</td>
                 <td>
-                    <q-select :options="doctors" v-model="requerido" style="width:100%"/>
+                    <q-select borderless  :options="doctors" v-model="requerido" style="width:100%"/>
                 </td>
                 
                 <td style="color: darkblue">SEXO </td>
@@ -206,7 +209,7 @@
             </tr>
             <tr>
                 <td style="color: darkblue">TIPO MUESTRA</td>
-                <td><q-input type="text" style="width: 100%" placeholder="Tipo muestra" borderless v-model="hemograma.muestra"/></td>
+                <td><q-input borderless  type="text" style="width: 100%" placeholder="Tipo muestra" v-model="hemograma.tipomuestra"/></td>
                 <td style="color: darkblue">N PACIENTE</td>
                 <td>{{dato2.id}}</td>
             </tr>
@@ -227,79 +230,79 @@
             </tr>
             <tr>
                 <td class="bg-negative text-white">Globulos Rojos</td>
-                <td><q-input type="text" placeholder="00" v-model="hemograma.d1"   style="width: 100%"/></td>
+                <td><input borderless type="text" placeholder="00" v-model="hemograma.d1"   style="width: 100%"/></td>
                 <td>x10 <sup>12 </sup>/L</td>
                 <td>Varon 5.1-5.7x10 <sup>12</sup>/L <br> Mujer 4.8-5.4x10 <sup>12</sup>/L</td>
                 <td class="bg-negative text-white">Tiempo de cuagulacion</td>
-                <td><input type="text" placeholder="00" name="d2"   style="width: 100%"></td>
+                <td><input borderless type="text" placeholder="00"  style="width: 100%" v-model="hemograma.d2"/></td>
                 <td>5-10 min</td>
             </tr>
             <tr>
                 <td class="bg-negative text-white">Hemoglobina</td>
-                <td><input type="text" placeholder="00" name="d3"   style="width: 100%"></td>
+                <td><input borderless type="text" placeholder="00" name="d3"   style="width: 100%" v-model="hemograma.d3"/></td>
                 <td>g/L</td>
                 <td>Varon 151-175 g/L <br> Mujer Mujer 141-165 g/L</td>
                 <td class="bg-negative text-white">Tiempo de sangria</td>
-                <td><input type="text" placeholder="00" name="d4"   style="width: 100%"></td>
+                <td><input type="text" placeholder="00" name="d4"   style="width: 100%" v-model="hemograma.d4"/></td>
                 <td>1-3 min</td>
             </tr>
             <tr>
                 <td class="bg-negative text-white">Hematocrito</td>
-                <td><input type="text" placeholder="00" name="d5"   style="width: 100%"></td>
+                <td><input type="text" placeholder="00" name="d5"   style="width: 100%" v-model="hemograma.d5"/></td>
                 <td>L/L</td>
                 <td>Varon 0.51-0.57 L/L <br> Mujer 0.46-0.53 L/L</td>
                 <td class="bg-negative text-white">Tiempo de Protrombina</td>
-                <td><input type="text" placeholder="00" name="d6"   style="width: 100%"></td>
+                <td><input type="text" placeholder="00" name="d6"   style="width: 100%" v-model="hemograma.d6"/></td>
                 <td>12-13 seg</td>
             </tr>
             <tr>
                 <td class="bg-negative text-white">V.E.S.</td>
-                <td><input type="text" placeholder="00" name="d7"   style="width: 100%"></td>
+                <td><input type="text" placeholder="00" name="d7"   style="width: 100%" v-model="hemograma.d7"/></td>
                 <td>mm.</td>
                 <td>Varon 15 mm/hora <br> Mujer 20 mm/hora</td>
                 <td class="bg-negative text-white">% Actividad</td>
-                <td><input type="text" placeholder="00" name="d8"   style="width: 100%"></td>
+                <td><input type="text" placeholder="00" name="d8"   style="width: 100%" v-model="hemograma.d8"/></td>
                 <td>95-100%</td>
             </tr>
 
             <tr>
                 <td class="bg-negative text-white">V.C.M.</td>
-                <td><input type="text" placeholder="00" name="d9"   style="width: 100%"></td>
+                <td><input type="text" placeholder="00" name="d9"   style="width: 100%" v-model="hemograma.d9"/></td>
                 <td>ft.</td>
                 <td>Varon 83.0-97.0 ft</td>
                 <td class="bg-negative text-white">INR</td>
-                <td><input type="text" placeholder="00" name="d10"   style="width: 100%"></td>
+                <td><input type="text" placeholder="00" name="d10"   style="width: 100%" v-model="hemograma.d10"/></td>
                 <td>0.97-1.04</td>
             </tr>
             <tr>
                 <td class="bg-negative text-white">Hb.C.M.</td>
-                <td><input type="text" placeholder="00" name="d11"   style="width: 100%"></td>
+                <td><input type="text" placeholder="00" name="d11"   style="width: 100%" v-model="hemograma.d11"/></td>
                 <td>pg.</td>
                 <td>27.0-31.0 pg.</td>
                 <td class="bg-negative text-white">Grupofactor</td>
-                <td colspan="2"><input type="text" placeholder="00" name="d12"   style="width: 100%"></td>
+                <td colspan="2"><input type="text" placeholder="00" name="d12"   style="width: 100%" v-model="hemograma.d12"/></td>
             </tr>
             <tr>
                 <td class="bg-negative text-white">C. Hb.C.M.</td>
-                <td><input type="text" placeholder="00" name="d13"   style="width: 100%"></td>
+                <td><input type="text" placeholder="00" name="d13"   style="width: 100%" v-model="hemograma.d13"/></td>
                 <td>%</td>
                 <td>32-36%</td>
                 <td class="bg-negative text-white">Reticulocitos</td>
-                <td><input type="text" placeholder="00" name="d14"   style="width: 100%"></td>
+                <td><input type="text" placeholder="00" name="d14"   style="width: 100%" v-model="hemograma.d14"/></td>
                 <td>0.5-2%</td>
             </tr>
             <tr>
                 <td class="bg-negative text-white">Globulos Blancos</td>
-                <td><input type="text" placeholder="00" name="d15"   style="width: 100%"></td>
+                <td><input type="text" placeholder="00" name="d15"   style="width: 100%" v-model="hemograma.d15"/></td>
                 <td>10 <sup>9</sup>/L</td>
                 <td> 4.5-10.5x10 <sup>9</sup>/L</td>
                 <td class="bg-negative text-white">IPR</td>
-                <td><input type="text" placeholder="00" name="d16"   style="width: 100%"></td>
+                <td><input type="text" placeholder="00" name="d16"   style="width: 100%" v-model="hemograma.d16"/></td>
                 <td></td>
             </tr>
             <tr>
                 <td class="bg-negative text-white">Plaquetas</td>
-                <td><input type="text" placeholder="00" name="d17"   style="width: 100%"></td>
+                <td><input hide-bottom-space type="text" placeholder="00" style="width: 100%" v-model="hemograma.d17"/></td>
                 <td>x10 <sup>9 </sup>/L</td>
                 <td>105-400x10 <sup>9</sup> /L</td>
                 <td colspan="3"></td>
@@ -319,61 +322,61 @@
             </tr>
             <tr>
                 <td class="bg-negative text-white">Cayados</td>
-                <td><input type="text" placeholder="00" name="d18"   style="width: 100%"></td>
+                <td><input type="text" placeholder="00" name="d18"   style="width: 100%" v-model="hemograma.d18"></td>
                 <td>%</td>
-                <td><input type="text" placeholder="00" name="d19"   style="width: 100%"></td>
+                <td><input type="text" placeholder="00" name="d19"   style="width: 100%" v-model="hemograma.d19"></td>
                 <td>x10 <sup>9</sup>/L</td>
                 <td>0-3%</td>
                 <td>0.00-0.35x10 <sup>9</sup>/L</td>
             </tr>
             <tr>
                 <td class="bg-negative text-white">Neutrofilos</td>
-                <td><input type="text" placeholder="00" name="d20"   style="width: 100%"></td>
+                <td><input type="text" placeholder="00" name="d20"   style="width: 100%" v-model="hemograma.d20"></td>
                 <td>%</td>
-                <td><input type="text" placeholder="00" name="d21"   style="width: 100%"></td>
+                <td><input type="text" placeholder="00" name="d21"   style="width: 100%" v-model="hemograma.d21"></td>
                 <td>x10 <sup>9</sup>/L</td>
                 <td>50-70%</td>
                 <td>2.50-7.35x10 <sup>9</sup>/L</td>
             </tr>
             <tr>
                 <td class="bg-negative text-white">Eosinofilos</td>
-                <td><input type="text" placeholder="00" name="d22"   style="width: 100%"></td>
+                <td><input type="text" placeholder="00" name="d22"   style="width: 100%" v-model="hemograma.d22"></td>
                 <td>%</td>
-                <td><input type="text" placeholder="00" name="d23"   style="width: 100%"></td>
+                <td><input type="text" placeholder="00" name="d23"   style="width: 100%" v-model="hemograma.d23"></td>
                 <td>x10 <sup>9</sup>/L</td>
                 <td>0-3%</td>
                 <td>0.00-0.35x10 <sup>9</sup>/L</td>
             </tr>
             <tr>
                 <td class="bg-negative text-white">Basofilos</td>
-                <td><input type="text" placeholder="00" name="d24"   style="width: 100%"></td>
+                <td><input type="text" placeholder="00" name="d24"   style="width: 100%" v-model="hemograma.d24"></td>
                 <td>%</td>
-                <td><input type="text" placeholder="00" name="d25"   style="width: 100%"></td>
+                <td><input type="text" placeholder="00" name="d25"   style="width: 100%" v-model="hemograma.d25"></td>
                 <td>x10 <sup>9</sup>/L</td>
                 <td>0-1%</td>
                 <td>0.00-0.15x10 <sup>9</sup>/L</td>
             </tr>
             <tr>
                 <td class="bg-negative text-white">Linfocitos</td>
-                <td><input type="text" placeholder="00" name="d26"   style="width: 100%"></td>
+                <td><input type="text" placeholder="00" name="d26"   style="width: 100%" v-model="hemograma.d26"></td>
                 <td>%</td>
-                <td><input type="text" placeholder="00" name="d27"   style="width: 100%"></td>
+                <td><input type="text" placeholder="00" name="d27"   style="width: 100%" v-model="hemograma.d27"></td>
                 <td>x10 <sup>9</sup>/L</td>
                 <td>25-40%</td>
                 <td>1.25-4.200x10 <sup>9</sup>/L</td>
             </tr>
             <tr>
                 <td class="bg-negative text-white">Monocitos</td>
-                <td><input type="text" placeholder="00" name="d28"   style="width: 100%"></td>
+                <td><input type="text" placeholder="00" name="d28"   style="width: 100%" v-model="hemograma.d28"></td>
                 <td>%</td>
-                <td><input type="text" placeholder="00" name="d29"   style="width: 100%"></td>
+                <td><input type="text" placeholder="00" name="d29"   style="width: 100%" v-model="hemograma.d29"></td>
                 <td>x10 <sup>9</sup>/L</td>
                 <td>4-8%</td>
                 <td>2.00-8.40x10 <sup>9</sup>/L</td>
             </tr>
             <tr>
                 <td class="bg-negative text-white">BLASTOS</td>
-                <td><input type="text" placeholder="00" name="d30"   style="width: 100%"></td>
+                <td><input type="text" placeholder="00" name="d30"   style="width: 100%" v-model="hemograma.d30"></td>
                 <td>%</td>
                 <td></td>
                 <td></td>
@@ -387,19 +390,19 @@
             </tr>
             <tr>
                 <td class="bg-negative text-white">Serie Rojas:</td>
-                <td><input type="text" placeholder="00" name="d31"   style="width: 100%"></td>
+                <td><input type="text" placeholder="00" name="d31"   style="width: 100%" v-model="hemograma.d31"></td>
             </tr>
             <tr>
                 <td class="bg-negative text-white">Serie Blancas:</td>
-                <td><input type="text" placeholder="00" name="d32"   style="width: 100%"></td>
+                <td><input type="text" placeholder="00" name="d32"   style="width: 100%" v-model="hemograma.d32"></td>
             </tr>
             <tr>
                 <td class="bg-negative text-white">Serie Plaquetarias:</td>
-                <td><input type="text" placeholder="00" name="d33"   style="width: 100%"></td>
+                <td><input type="text" placeholder="00" name="d33"   style="width: 100%" v-model="hemograma.d33"></td>
             </tr>
             <tr>
                 <td class="bg-negative text-white">FECHA DE TOMA DE MUESTRA:</td>
-                <td><input type="date" name="fechatoma"   style="width: 100%" value="{{date('Y-m-d')}}"></td>
+                <td><input type="date" name="fechatoma"   style="width: 100%" v-model="hemograma.fechatoma"></td>
             </tr>
             <tr>
                 <td colspan="2">
@@ -589,6 +592,11 @@ export default {
         this.alert=false;
         this.listado();
       })
+    },
+    onHemograma(){
+        this.$axios.post(process.env.API+'/hemograma',{paciente:this.dato2,doctor:this.requerido.value,hemograma:this.hemograma}).then(res=>{
+          console.log(res.data)
+        })
     },
     labRow(props){
       this.dato2=props.row;

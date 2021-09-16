@@ -26,6 +26,7 @@
               v-model="dato.nombre"
               label="Nombre "
               hint="Ingresar Nombre "
+                  style="text-transform: uppercase;"
               lazy-rules
               :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']"
             />
@@ -34,18 +35,21 @@
               v-model="dato.paterno"
               label="Ap Paterno "
               hint="Ingresar Paterno "
+                  style="text-transform: uppercase;"
             />
             <q-input
               filled
               v-model="dato.materno"
               label="Ap Materno "
               hint="Ingresar Materno "
+                  style="text-transform: uppercase;"
             />
             <q-input
               filled
               v-model="dato.especialidad"
               label="Especialidad "
               hint="Ingresar Especialidad "
+                  style="text-transform: uppercase;"
               lazy-rules
               :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']"
             />
@@ -85,16 +89,31 @@
             </template>
           </q-input>
         </template>
-                      <template v-slot:body-cell-opcion="props">
+      <template v-slot:body-cell-activo="props">
         <q-tr :props="props">
+
+          <q-td key="activo" :props="props">
+              <q-badge color="green" v-if="props.row.activo" @click="cambiar(props)">
+              ACTIVO
+              </q-badge>
+              <q-badge color="red" v-else @click="cambiar(props)">
+              INACTIVO
+              </q-badge>
+          </q-td>
+        </q-tr>
+      </template>
+
+                      <template v-slot:body-cell-opcion="props">
+
           <q-td key="opcion" :props="props">
               <q-btn  dense round flat color="yellow" @click="editRow(props)" icon="edit"></q-btn>
               <q-btn  dense round flat color="red" @click="deleteRow(props)" icon="delete"></q-btn>
           </q-td>
-        </q-tr>
       </template>
             
-      <q-dialog v-model="dialog_mod">
+
+      </q-table>
+            <q-dialog v-model="dialog_mod">
       <q-card>
         <q-card-section class="bg-green-14 text-white">
           <div class="text-h6">Modificar Datos</div>
@@ -165,7 +184,6 @@
       </q-card>
     </q-dialog>
 
-      </q-table>
     </q-card>
   </q-page>
 </template>
@@ -205,6 +223,12 @@ export default {
 
   },
   methods: {
+    cambiar(props){
+
+     this.$axios.post(process.env.API+'/doctoractivo',props.row).then(res=>{
+       this.listado();
+     })
+    },
     listado(){
      this.$q.loading.show()
      this.$axios.get(process.env.API+'/doctor').then(res=>{
@@ -250,7 +274,7 @@ export default {
     },
         onMod(){
       console.log(this.dato2)
-      this.$axios.put(process.env.API+'/paciente/'+this.dato2.id,this.dato2).then(res=>{
+      this.$axios.put(process.env.API+'/doctor/'+this.dato2.id,this.dato2).then(res=>{
          this.$q.notify({
           message: 'Se modifico correctamente',
           color: 'green'
