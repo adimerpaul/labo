@@ -10,7 +10,6 @@
         <q-card-section class="q-pt-xs">
           <q-form
             @submit="onSubmit"
-            @reset="onReset"
             class="q-gutter-md"
           >
             <q-input
@@ -94,7 +93,7 @@
         </q-tr>
       </template>
       </q-table>
-      
+
       <q-dialog v-model="dialog_mod">
       <q-card>
         <q-card-section class="bg-green-14 text-white">
@@ -178,13 +177,13 @@
                 <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>
             </tr>
         </table>
         <table border="1" style="width: 100%;color: black">
@@ -203,7 +202,7 @@
                 <td>
                     <q-select borderless  :options="doctors" v-model="requerido" style="width:100%"/>
                 </td>
-                
+
                 <td style="color: darkblue">SEXO </td>
                 <td>{{dato2.sexo}}</td>
             </tr>
@@ -547,10 +546,10 @@ export default {
           this.$axios.get(process.env.API+'/doctor').then(res=>{
 
        console.log(res.data)
-        
+
          res.data.forEach(element => {
             this.doctors.push({label:element.nombre,value:element.id});
-           
+
          });
          this.requerido=this.doctors[0];
           })
@@ -584,13 +583,23 @@ export default {
       })
     },
     onSubmit(){
+      this.$q.loading.show()
       this.$axios.post(process.env.API+'/paciente',this.dato).then(res=>{
+        this.dato={}
          this.$q.notify({
           message: 'Se registro correctamente',
           color: 'green'
         })
+        this.$q.loading.hide()
         this.alert=false;
         this.listado();
+      }).catch(err=>{
+        this.$q.loading.hide()
+        this.$q.notify({
+          message:err.response.data.message,
+          color:'red',
+          icon:'error'
+        })
       })
     },
     onHemograma(){
