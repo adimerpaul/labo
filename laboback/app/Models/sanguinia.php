@@ -9,9 +9,9 @@ class sanguinia extends Model
 {
     use HasFactory;
     protected $fillable=[
-         'requerido',
         'tipomuestra',
         'fechatoma',
+        'fechares',
         'd1',
         'd2',
         'd3',
@@ -43,9 +43,9 @@ class sanguinia extends Model
         'd29',
         'd30',
         'd31',
-        'd32',
         'paciente_id',
         'user_id',
+        'doctor_id',
     ];
     
     protected $hidden = ["created_at", "updated_at"];

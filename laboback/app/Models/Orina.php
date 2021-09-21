@@ -9,7 +9,6 @@ class Orina extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'requerido',
         'tipomuestra',
         'fechatoma',
         'd1',
@@ -49,6 +48,7 @@ class Orina extends Model
         'd35',
         'd36',
         'd37',
+        'doctor_id',
         'paciente_id',
         'user_id',
     ];

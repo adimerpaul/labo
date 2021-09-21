@@ -15,7 +15,6 @@ class CreateHecesTable extends Migration
     {
         Schema::create('heces', function (Blueprint $table) {
             $table->id();
-            $table->string('requerido')->default('')->nullable();
             $table->string('tipomuestra')->default('')->nullable();
             $table->date('fechatoma')->nullable();
             $table->date('fechaentrega')->nullable();
@@ -41,6 +40,8 @@ class CreateHecesTable extends Migration
             $table->string('d20')->default('')->nullable();
             $table->unsignedBigInteger('paciente_id');
             $table->foreign('paciente_id')->references('id')->on('pacientes');
+            $table->unsignedBigInteger('doctor_id');
+            $table->foreign('doctor_id')->references('id')->on('doctors');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

@@ -39,14 +39,11 @@ class OrinaController extends Controller
     public function store(Request $request)
     {
 
-        if (Doctor::where('nombre',$request->requerido)->get()->count()==0 && $request->requerido!=''){
-            Doctor::create(['nombre'=>$request->requerido]);
-        }
-        $dato=Orina::create($request->all()+ ['user_id' => Auth::user()->id]);
-        $input='';
-        $pdf = App::make('dompdf.wrapper');
-        $pdf->loadHTML($this->generar($dato->id));
-        return $pdf->download('orina.pdf');
+        $dato=Orina::create($request->orina+ ['user_id' => Auth::user()->id,'paciente_id'=>$request->paciente['id'],'doctor_id'=>$request->doctor]);
+        return $dato;
+        //$pdf = App::make('dompdf.wrapper');
+        //$pdf->loadHTML($this->generar($dato->id));
+        //return $pdf->download('orina.pdf');
         //return redirect('/pacientes');
     }
 

@@ -15,7 +15,6 @@ class CreateOrinasTable extends Migration
     {
         Schema::create('orinas', function (Blueprint $table) {
             $table->id();
-            $table->string('requerido')->nullable()->default('');
             $table->string('tipomuestra')->nullable()->default('');
             $table->date('fechatoma')->nullable();
             $table->string('d1')->nullable()->default('');
@@ -57,6 +56,8 @@ class CreateOrinasTable extends Migration
             $table->string('d37')->nullable()->default('');
             $table->unsignedBigInteger('paciente_id');
             $table->foreign('paciente_id')->references('id')->on('pacientes');
+            $table->unsignedBigInteger('doctor_id');
+            $table->foreign('doctor_id')->references('id')->on('doctors');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

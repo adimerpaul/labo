@@ -15,9 +15,9 @@ class CreateSanguiniasTable extends Migration
     {
         Schema::create('sanguinias', function (Blueprint $table) {
             $table->id();
-            $table->string('requerido')->default('')->nullable();
             $table->string('tipomuestra')->default('')->nullable();
             $table->date('fechatoma')->nullable();
+            $table->date('fechares')->nullable();
             $table->string('d1')->default('')->nullable();
             $table->string('d2')->default('')->nullable();
             $table->string('d3')->default('')->nullable();
@@ -49,9 +49,10 @@ class CreateSanguiniasTable extends Migration
             $table->string('d29')->default('')->nullable();
             $table->string('d30')->default('')->nullable();
             $table->string('d31')->default('')->nullable();
-            $table->string('d32')->default('')->nullable();
             $table->unsignedBigInteger('paciente_id');
             $table->foreign('paciente_id')->references('id')->on('pacientes');
+            $table->unsignedBigInteger('doctor_id');
+            $table->foreign('doctor_id')->references('id')->on('doctors');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

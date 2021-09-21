@@ -15,7 +15,6 @@ class CreateSerologiasTable extends Migration
     {
         Schema::create('serologias', function (Blueprint $table) {
             $table->id();
-            $table->string('requerido')->default('')->nullable();
             $table->string('tipomuestra')->default('')->nullable();
             $table->date('fechatoma')->nullable();
             $table->double('lgm')->default(0)->nullable();
@@ -25,6 +24,8 @@ class CreateSerologiasTable extends Migration
             $table->string('d3')->default('')->nullable();
             $table->unsignedBigInteger('paciente_id');
             $table->foreign('paciente_id')->references('id')->on('pacientes');
+            $table->unsignedBigInteger('doctor_id');
+            $table->foreign('doctor_id')->references('id')->on('doctors');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

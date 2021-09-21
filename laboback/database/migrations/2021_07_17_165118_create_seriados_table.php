@@ -15,7 +15,6 @@ class CreateSeriadosTable extends Migration
     {
         Schema::create('seriados', function (Blueprint $table) {
             $table->id();
-            $table->string('requerido')->default('')->nullable();
             $table->string('tipomuestra')->default('')->nullable();
             $table->string('muestra1')->default('')->nullable();
             $table->date('fecha1')->nullable();
@@ -32,6 +31,8 @@ class CreateSeriadosTable extends Migration
             $table->string('observaciones')->default('')->nullable();
             $table->unsignedBigInteger('paciente_id');
             $table->foreign('paciente_id')->references('id')->on('pacientes');
+            $table->unsignedBigInteger('doctor_id');
+            $table->foreign('doctor_id')->references('id')->on('doctors');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
