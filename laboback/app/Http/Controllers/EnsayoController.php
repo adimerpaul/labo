@@ -40,18 +40,11 @@ class EnsayoController extends Controller
     public function store(Request $request)
     {
         //
-        if (Doctor::where('nombre',$request->requerido)->get()->count()==0 && $request->requerido!=''){
-            Doctor::create(['nombre'=>$request->requerido]);
-        }
-        $input=$request->all();
-        $input['user_id']=Auth::user()->id;
-        $input['fechatoma']=date('Y-m-d');
-        $dato=ensayo::create($input);
-
-        $input='';
-        $pdf = App::make('dompdf.wrapper');
-        $pdf->loadHTML($this->generar($dato->id));
-        return $pdf->download('ejemplo.pdf');
+        $dato=Ensayo::create($request->ensayo+ ['user_id' => Auth::user()->id,'paciente_id'=>$request->paciente['id'],'doctor_id'=>$request->doctor]);
+        return $dato;
+        //$pdf = App::make('dompdf.wrapper');
+       // $pdf->loadHTML($this->generar($dato->id));
+        //return $pdf->download('ejemplo.pdf');
         //return redirect('/pacientes');
     }
 

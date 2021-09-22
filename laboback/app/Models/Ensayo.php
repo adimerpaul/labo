@@ -10,7 +10,6 @@ class Ensayo extends Model
     use HasFactory;
     protected 
     $fillable=[
-    'requerido',
     'tipomuestra',
     'fechatoma',
     'd1',
@@ -21,6 +20,7 @@ class Ensayo extends Model
     'd6',
     'd7',
     'd8',
+    'doctor_id',
     'paciente_id',
     'user_id',];
 

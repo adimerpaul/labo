@@ -9,11 +9,11 @@ class Reserologia extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'requerido',
         'tipomuestra',
         'fechatoma',
         'd1',
         'd2',
+        'doctor_id',
         'paciente_id',
         'user_id'
 

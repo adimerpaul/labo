@@ -9,7 +9,6 @@ class Labserologia extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'requerido',
         'tipomuestra',
         'fechatoma',
         'd1',
@@ -26,6 +25,7 @@ class Labserologia extends Model
         'd12',
         'd13',
         'd14',
+        'docotor_id',
         'paciente_id',
         'user_id',        
     ];

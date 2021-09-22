@@ -1734,17 +1734,439 @@
 
           
           <q-tab-panel name="labserologia">
-          <div class="text-h6">Movies</div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          <div class="text-h6">LAB SEROLOGIA</div>
+              <q-form @submit="onLabserologia">
+        <table style="width: 100%;color: black">
+            <tr >
+                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
+                <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
+            </tr>
+            <tr>
+                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>                
+            </tr>
+            <tr>
+                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>                
+            </tr>
+            <tr>
+                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>                
+            </tr>
+        </table>
+        <table border="1" style="width: 100%;color: black">
+            <tr>
+                <td colspan="3" style="text-align: center"><h3>SEROLOGIA</h3></td>
+                <td>Form. 001</td>
+            </tr>
+            <tr>
+                <td style="color: darkblue">PACIENTE</td>
+                <td>{{dato2.nombre}}</td>
+                <td style="color: darkblue">EDAD</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="color: darkblue">REQUERIDO POR</td>
+                <td> <q-select borderless  :options="doctors" v-model="requerido" style="width:100%"/></td>
+                <td style="color: darkblue">SEXO</td>
+                <td>{{dato2.sexo}}</td>
+            </tr>
+            <tr>
+                <td style="color: darkblue">TIPO MUESTRA</td>
+                <td><input type="text" style="width: 100%" v-model="labserologia.tipomuestra" placeholder="Tipo muestra" ></td>
+                <td style="color: darkblue">N PACIENTE</td>
+                <td>{{dato2.id}}</td>
+            </tr>
+
+        </table>
+        <br>
+        <table border="1" style="width: 100%;color: black">
+
+            <tr>
+                <td colspan="2" class="text-center text-red" ></td>
+                <td class="text-center text-red" > Valor referencial</td>
+                <td class="text-center text-red" >Metodo de Prueba</td>
+            </tr>
+            <tr>
+                <td class="text-left text-red" style="width: 20%">Factor Reumatoide(Latex)</td>
+                <td ><input  type="text"  v-model="labserologia.d1" ></td>
+                <td class="text-center text-blue">Hasta 8 UI/ml</td>
+                <td class="text-center text-blue">Aglutinacion directa</td>
+            </tr>
+            <tr>
+                <td class="text-left text-red" style="width: 20%">Antiestreptolisina</td>
+                <td ><input  type="text"  v-model="labserologia.d2" ></td>
+                <td class="text-center text-blue">Hasta 200 UI/l</td>
+                <td class="text-center text-blue">Aglutinacion directa</td>
+            </tr>
+            <tr>
+                <td class="text-left text-red" style="width: 20%">Proteina C Reactiva</td>
+                <td ><input  type="text"  v-model="labserologia.d3" ></td>
+                <td class="text-center text-blue">Hasta 0.8 mg/dl</td>
+                <td class="text-center text-blue">Aglutinacion directa</td>
+            </tr>
+            <tr>
+                <td class="text-left text-red" style="width: 20%">RPR</td>
+                <td ><input  type="text"  v-model="labserologia.d4" ></td>
+                <td class="text-center text-blue">No Reactivo</td>
+                <td class="text-center text-blue">Floculacion directa </td>
+            </tr>
+            <tr>
+                <td class="text-left text-red" style="width: 20%">Prueba Rapida Sifilis</td>
+                <td ><input  type="text"  v-model="labserologia.d5" ></td>
+                <td class="text-center text-blue">No Reactivo</td>
+                <td class="text-center text-blue">Prueba Rapida Inmunocromatografica</td>
+            </tr>
+            <tr>
+                <td class="text-left text-red" style="width: 20%">Prueba Rapida VIH</td>
+                <td ><input  type="text"  v-model="labserologia.d6" ></td>
+                <td class="text-center text-blue">No Reactivo</td>
+                <td class="text-center text-blue">Prueba Rapida Inmunocromatografica</td>
+            </tr>
+            <tr>
+                <td class="text-left text-red" style="width: 20%">Hepatitis A</td>
+                <td ><input  type="text"  v-model="labserologia.d7" ></td>
+                <td class="text-center text-blue">NEGATIVO / POSITIVO</td>
+                <td class="text-center text-blue">Prueba Rapida Inmunocromatografica</td>
+            </tr>
+            <tr>
+                <td class="text-left text-red" style="width: 20%">Hepatitis B</td>
+                <td ><input  type="text"  v-model="labserologia.d8" ></td>
+                <td class="text-center text-blue">NEGATIVO / POSITIVO</td>
+                <td class="text-center text-blue">Prueba Rapida Inmunocromatografica</td>
+            </tr>
+            <tr>
+                <td class="text-left text-red" style="width: 20%">Hepatitis C</td>
+                <td ><input  type="text"  v-model="labserologia.d9" ></td>
+                <td class="text-center text-blue">NEGATIVO / POSITIVO</td>
+                <td class="text-center text-blue">Prueba Rapida Inmunocromatografica</td>
+            </tr>
+            <tr>
+                <td class="text-left text-red" style="width: 20%">Helicobacter Pylori en Sangre</td>
+                <td ><input  type="text"  v-model="labserologia.d10" ></td>
+                <td class="text-center text-blue">NEGATIVO / POSITIVO</td>
+                <td class="text-center text-blue">Prueba Rapida Inmunocromatografica</td>
+            </tr>
+            <tr>
+                <td class="text-left text-red" style="width: 20%">Helicobacter Pylori en Heces</td>
+                <td ><input  type="text"  v-model="labserologia.d11" ></td>
+                <td class="text-center text-blue">NEGATIVO / POSITIVO</td>
+                <td class="text-center text-blue">Prueba Rapida Inmunocromatografica</td>
+            </tr>
+            <tr>
+                <td class="text-left text-red" style="width: 20%">Troponina I</td>
+                <td ><input  type="text"  v-model="labserologia.d12" ></td>
+                <td class="text-center text-blue">NEGATIVO / POSITIVO</td>
+                <td class="text-center text-blue">Prueba Rapida Inmunocromatografica</td>
+            </tr>
+            <tr>
+                <td class="text-left text-red" style="width: 20%">PSA</td>
+                <td ><input  type="text"  v-model="labserologia.d13" ></td>
+                <td class="text-center text-blue">Hasta 4 ng/ml</td>
+                <td class="text-center text-blue">Prueba Rapida Semicuantitativo</td>
+            </tr>
+
+
+
+            <tr>
+                <td class="text-left text-red">OBSERVACIONES</td>
+                <td colspan="3" ><input type="text"  style="width: 100%" v-model="labserologia.d14"></td>
+            </tr>
+
+            <tr >
+                <td colspan="2" rowspan="2" >RESPONSABLE: </td>
+                <td colspan="2">
+                    FECHA DE TOMA DE MUESTRAS
+                    <input placeholder="00" type="date"  style="width: 100%" v-model="labserologia.fechatoma">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    FECHA DE ENTREGA DE MUESTRAS
+                    <input placeholder="00" type="date"  style="width: 100%" name="fechaentrega">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    <button class="btn btn-success btn-block"><i class="fa fa-save"></i> REGISTRAR</button>
+                </td>
+            </tr>
+        </table>
+
+    </q-form>
+
           </q-tab-panel>
 
+
           <q-tab-panel name="reserologia">
-          <div class="text-h6">Movies</div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          <div class="text-h6">Res Serologia</div>
+              <q-form @submit="onReserologia">
+        <table style="width: 100%;color: black">
+            <tr >
+                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
+                <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
+            </tr>
+            <tr>
+                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>                
+            </tr>
+            <tr>
+                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>                
+            </tr>
+            <tr>
+                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>                
+            </tr>
+        </table>
+        <table border="1" style="width: 100%;color: black">
+            <tr>
+                <td colspan="3" style="border:0; text-align: center; color:darkblue;"><h3><b> SEROLOGIA</b></h3></td>
+                <td>Form. 005</td>
+            </tr>
+            <tr>
+                <td style="color: darkblue">PACIENTE</td>
+                <td>{{dato2.nombre}}}</td>
+                <td style="color: darkblue">EDAD</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="color: darkblue">REQUERIDO POR</td>
+                <td> <q-select borderless  :options="doctors" v-model="requerido" style="width:100%"/></td>
+                <td style="color: darkblue">SEXO</td>
+                <td>{{dato2.sexo}}</td>
+            </tr>
+            <tr>
+                <td style="color: darkblue">TIPO MUESTRA</td>
+                <td><input type="text" style="width: 100%" v-model="reserologia.tipomuestra" placeholder="Tipo muestra" ></td>
+                <td style="color: darkblue">N PACIENTE</td>
+                <td>{{dato2.id}}</td>
+            </tr>
+
+        </table>
+        <br>
+        <table border="1" style="width: 100%;color: black">
+            <tr>
+                <td colspan="4" style="text-align: center; color:red;">PRUEBA RAPIDA ANTIGENOS SARS COV 2</td>
+            </tr>
+            <tr>
+                <td colspan="4" style="text-align: center "></td>
+            </tr>
+            <tr>
+                <td colspan="4" style="text-align: center ">METODO: INMUNOGRAMATOGRAFIA CUALITATIVA</td>
+            </tr>
+            <tr>
+                <td colspan="4" style="text-align: center "></td>
+            </tr>
+            <tr>
+                <td class="text-center text-red" style="width: 20%"></td>
+                <td class="text-center text-red" style="width: 20%">ANTIGENO SARS COV2</td>
+                <td ><input  type="text"  style="width: 50%" v-model="reserologia.d1"></td>
+                <td class="text-center text-red" style="width: 20%"></td>
+            </tr>
+            <tr>
+                <td colspan="4" style="text-align:center; color:red"><h5>FUNDAMENTO E INTERPRETACION DE LOS RESULTADOS</h5></td>
+            </tr>
+            <tr>
+                <td colspan="4">La prueba rapida de Antigeno Nasal puede revelar una Infeccion activa de SARS-COV-2.<br>
+                El test proporciona un resultado de "<span style="color:red">POSITIVO</span>" o "<span style="color:red">NEGATIVO</span>"<br>
+                Los antigenos son parte de la estructura del virus, como las proteinas de espiga.<br><br>
+                La muestra de Hisopado nasofaringeo pasa por una linea que detecta antigenos y cambia de color, durante la prueba el anticuerpo monocianal de raton anti-SARS-CoV-2 en la muestra
+                interactua con el Anticuerpo monocianal lgG anti-COVID-19 conjugando con particulas de color que forman un complejo de particulas de antigeno-anticuerpo. Este complejo migra en la 
+                menbrana por accion capilar hasta la linea de prueba, donde aera capturado por el anticuerpo por el anticuerpo monocianal anti-SARS-CoV-2 de raton. Una linea de prueba coloreada 
+                seria visible en la ventana de resultados si los antigenos del SARS-CoV-2 estan presentes en la muestra. <br><br>
+                Funciona mejor en la etapa inicial con una <span style="color:red">CARGA VIRAL ALTA</span> y sintomalogia hasta los 10 dias.<br>
+                Los resultados <span style="color:red">Negativos</span> indica ausencia de Antigenos detectables de SARS-CoV-2 y cuando la carga viral o la cantidad de antigeno presente se encuentra debajo del limite de deteccion.<br><br>
+                Los resultados <span style="color:red">Psitivos</span> no diferencian entre SARS-COV y SARS-COV-2
+            
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                <span style="color:red">NOTA:</span> Las pruebas rapidas para COVID-19 NO SON CONFIRMATORIAS<br>
+                Los Resultados deben ser interpretados en funcion de la Clinica del paciente y dias de evolucion de la enfermedad
+                </td>
+
+            </tr>
+            <tr>
+                <td class="text-left text-red">OBSERVACIONES</td>
+                <td colspan="3" ><input type="text"  style="width: 100%" v-model="reserologia.d2"></td>
+            </tr>
+
+            <tr >
+                <td colspan="2" rowspan="2" >RESPONSABLE: </td>
+                <td colspan="2">
+                    FECHA DE TOMA DE MUESTRAS
+                    <input placeholder="00" type="date"  style="width: 100%" v-model="reserologia.fechatoma">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    FECHA DE ENTREGA DE MUESTRAS
+                    <input placeholder="00" type="date"  style="width: 100%" name="fechaentrega">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    <button class="btn btn-success btn-block"><i class="fa fa-save"></i> REGISTRAR</button>
+                </td>
+            </tr>
+        </table>
+
+    </q-form>
           </q-tab-panel>
+
+
           <q-tab-panel name="ensayo">
-          <div class="text-h6">Movies</div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          <div class="text-h6">Inmunoensayo de Fluorescencia</div>
+             <q-form @submit="onEnsayo">
+               <table style="width: 100%;color: black">
+            <tr >
+                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
+                <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
+            </tr>
+            <tr>
+                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>                
+            </tr>
+            <tr>
+                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>                
+            </tr>
+            <tr>
+                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>                
+            </tr>
+        </table>
+
+
+        <table border="1" style="width: 100%;color: black">
+            <tr>
+                <td colspan="3" style="text-align: center; border:0"><h3>Inmunoensayo de Fluorescencia</h3></td>
+                <td>Form. 010</td>
+            </tr>
+            <tr>
+                <td style="color: darkblue">PACIENTE</td>
+                <td>{{dato2.nombre}}</td>
+                <td style="color: darkblue">EDAD</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="color: darkblue">REQUERIDO POR</td>
+                <td> <q-select borderless  :options="doctors" v-model="requerido" style="width:100%"/></td>
+                <td style="color: darkblue">SEXO</td>
+                <td>{{dato2.sexo}}</td>
+            </tr>
+            <tr>
+                <td style="color: darkblue">METODO</td>
+                <td><input type="text" style="width: 100%" v-model="ensayo.tipomuestra" placeholder="metodo" ></td>
+                <td style="color: darkblue">N PACIENTE</td>
+                <td>{{dato2.id}}</td>
+            </tr>
+
+        </table>
+        <br>
+        <table border="1" style="width: 100%;color: black">
+            <tr><td colspan="5" class="text-center text-red">
+                METODO: INMUNOENSAYO DE FLUORESCENCIA (FIA)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="text-center text-red" ></td>
+                <td class="text-center text-blue" > UNIDAD</td>
+                <td class="text-center text-blue" >Tipo de Muestra</td>
+                <td class="text-center text-blue" >Valor Referencial</td>
+            </tr>
+            <tr>
+                <td class="text-left text-red" style="width: 20%">DIMEROS D</td>
+                <td ><input  type="text"  v-model="ensayo.d1" ></td>
+                <td class="text-center text-blue">ng/ml</td>
+                <td class="text-center text-blue">Plasma Citratado</td>
+                <td class="text-center text-blue">Hasta 500 ng/ml</td>
+            </tr>
+
+            <tr>
+                <td rowspan="2" class="text-left text-red" style="width: 20%">FERRITINA</td>
+                <td rowspan="2"><input  type="text"  v-model="ensayo.d2" ></td>
+                <td rowspan="2" class="text-center text-blue">ng/ml</td>
+                <td rowspan="2" class="text-center text-blue">Suero</td>
+                <td class="text-center text-blue">30-350 ng/ml Varon </td>
+            </tr>  
+            <tr>
+                <td class="text-center text-blue">20-250 ng/ml Mujer</td>
+
+            </tr>
+            <tr>
+                <td class="text-left text-red" style="width: 20%">IL-6</td>
+                <td ><input  type="text"  v-model="ensayo.d3" ></td>
+                <td class="text-center text-blue">pg/ml</td>
+                <td class="text-center text-blue">Suero/plasma</td>
+                <td class="text-center text-blue">7 pg/ml</td>
+            </tr>            
+            <tr>
+                <td class="text-left text-red" style="width: 20%">PSA CUANTITATIVO</td>
+                <td ><input  type="text"  v-model="ensayo.d4" ></td>
+                <td class="text-center text-blue">ng/ml</td>
+                <td class="text-center text-blue">Suero</td>
+                <td class="text-center text-blue">Menor a 4 ng/ml</td>
+            </tr>            
+            <tr>
+                <td class="text-left text-red" style="width: 20%">PCR CUANTITATIVO</td>
+                <td ><input  type="text"  v-model="ensayo.d5" ></td>
+                <td class="text-center text-blue">mg/L</td>
+                <td class="text-center text-blue">Sangre Entera</td>
+                <td class="text-center text-blue"> menor 10 mg/L</td>
+            </tr>            
+            <tr>
+                <td class="text-left text-red" style="width: 20%">TROPONINA I</td>
+                <td ><input  type="text"  v-model="ensayo.d6" ></td>
+                <td class="text-center text-blue">ng/ml</td>
+                <td class="text-center text-blue">Suero</td>
+                <td class="text-center text-blue">0.0 - 0.11 ng/ml</td>
+            </tr>            
+            <tr>
+                <td rowspan="2" class="text-left text-red" style="width: 20%">B - HCG</td>
+                <td rowspan="2"><input  type="text"  v-model="ensayo.d7" ></td>
+                <td rowspan="2" class="text-center text-blue">mlU/ml</td>
+                <td rowspan="2" class="text-center text-blue">Suero</td>
+                <td class="text-center text-blue">Mujer No Embarazada menor  10 mlU/ml </td>
+            </tr>            
+            <tr>
+                <td class="text-center text-blue">Mujer en postmenopausia menor 10 mlU/ml</td>
+                
+            </tr>
+            <tr>
+                <td rowspan="4" class="text-left text-red" style="width: 20%">PROCALCITONINA</td>
+                <td rowspan="4" ><input  type="text"  v-model="ensayo.d8" ></td>
+                <td rowspan="4" class="text-center text-blue">ng/ml</td>
+                <td rowspan="4"  class="text-center text-blue">Suero</td>
+                <td class="text-center text-blue">PCT menor 0.5 Es posible infeccion Bacteriana Local</td>
+            </tr>
+            <tr>
+                <td class="text-center text-blue">PCT 0.5 - 2 Posible Infeccion </td>
+            </tr>
+            <tr>
+                <td class="text-center text-blue">PCT 2 - 10 Es muy Probable Infeccion (sepsis) a menos que se conozcan otras causas </td>
+            </tr>
+            <tr>
+                <td class="text-center text-blue">PCT > 10 Sepsis Bacteriana severa o shock septico </td>
+            </tr>
+            <tr>
+                <td colspan="6"></td>
+            </tr>
+
+            <tr >
+                <td colspan="2" rowspan="2" >RESPONSABLE: </td>
+                <td colspan="3">
+                    FECHA DE TOMA DE MUESTRAS
+                    <input placeholder="00" type="date"  style="width: 100%" v-model="ensayo.fechatoma">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    FECHA DE ENTREGA DE MUESTRAS
+                    <input placeholder="00" type="date"  style="width: 100%" name="fechaentrega">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    <button class="btn btn-success btn-block"><i class="fa fa-save"></i> REGISTRAR</button>
+                </td>
+            </tr>
+        </table>
+
+    </q-form>
           </q-tab-panel>
 
       </q-tab-panels>
@@ -1799,9 +2221,9 @@ export default {
       seriado:{},
       serologia:{},
       labserologia:{},
-      reserologoia:{},
+      reserologia:{},
       requerido:{},
-       actual:date.formatDate(Date.now(),'YYYY-MM-DD'),
+      actual:date.formatDate(Date.now(),'YYYY-MM-DD'),
       ensayo:{},
       tab:{},
       columns:[
@@ -1966,6 +2388,36 @@ export default {
     },
     onSerologia(){
         this.$axios.post(process.env.API+'/serologia',{paciente:this.dato2,doctor:this.requerido.value,serologia:this.serologia}).then(res=>{
+          console.log(res.data)
+          this.dialog_lab=false;
+          this.$q.notify({
+          message: 'Registro Realizado',
+          icon: 'beaker'
+        })
+        })                
+    },
+    onLabserologia(){
+        this.$axios.post(process.env.API+'/labserologia',{paciente:this.dato2,doctor:this.requerido.value,labserologia:this.labserologia}).then(res=>{
+          console.log(res.data)
+          this.dialog_lab=false;
+          this.$q.notify({
+          message: 'Registro Realizado',
+          icon: 'beaker'
+        })
+        })                
+    },
+        onReserologia(){
+        this.$axios.post(process.env.API+'/reserologia',{paciente:this.dato2,doctor:this.requerido.value,reserologia:this.reserologia}).then(res=>{
+          console.log(res.data)
+          this.dialog_lab=false;
+          this.$q.notify({
+          message: 'Registro Realizado',
+          icon: 'beaker'
+        })
+        })                
+    },
+            onEnsayo(){
+        this.$axios.post(process.env.API+'/ensayo',{paciente:this.dato2,doctor:this.requerido.value,ensayo:this.ensayo}).then(res=>{
           console.log(res.data)
           this.dialog_lab=false;
           this.$q.notify({
