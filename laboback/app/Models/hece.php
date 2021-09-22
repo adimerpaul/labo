@@ -9,10 +9,8 @@ class hece extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'requerido',
         'tipomuestra',
         'fechatoma',
-        'fechaentrega',
         'd1',
         'd2',
         'd3',
@@ -33,6 +31,7 @@ class hece extends Model
         'd18',
         'd19',
         'd20',
+        'doctor_id',
         'paciente_id',
         'user_id',
     ];

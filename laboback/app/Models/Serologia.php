@@ -9,7 +9,6 @@ class Serologia extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'requerido',
         'tipomuestra',
         'fechatoma',
         'lgm',
@@ -17,6 +16,7 @@ class Serologia extends Model
         'lgg',
         'd2',
         'd3',
+        'doctor_id',
         'paciente_id',
         'user_id',
         

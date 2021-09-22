@@ -38,16 +38,11 @@ class SeriadoController extends Controller
     public function store(Request $request)
     {
         //
-        if (Doctor::where('nombre',$request->requerido)->get()->count()==0 && $request->requerido!=''){
-            Doctor::create(['nombre'=>$request->requerido]);
-        }
-        $input=$request->all();
-        $input['user_id']=Auth::user()->id;
-        $dato=seriado::create($input);
-        $input='';
-        $pdf = App::make('dompdf.wrapper');
-        $pdf->loadHTML($this->generar($dato->id));
-        return $pdf->download('seriado.pdf');
+        $dato=Seriado::create($request->seriado+ ['user_id' => Auth::user()->id,'paciente_id'=>$request->paciente['id'],'doctor_id'=>$request->doctor]);
+        return $dato;
+        //$pdf = App::make('dompdf.wrapper');
+        //$pdf->loadHTML($this->generar($dato->id));
+        //return $pdf->download('seriado.pdf');
         //return redirect('/pacientes');
     }
 

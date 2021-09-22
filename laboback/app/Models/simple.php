@@ -9,7 +9,6 @@ class simple extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'requerido',
         'tipomuestra',
         'fechatoma',
         'd1',
@@ -30,6 +29,7 @@ class simple extends Model
         'd16',
         'd17',
         'd18',
+        'doctor_id',
         'paciente_id',
         'user_id'
 

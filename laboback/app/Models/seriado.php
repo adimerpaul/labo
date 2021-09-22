@@ -9,7 +9,6 @@ class seriado extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'requerido',
         'tipomuestra',
         
         'muestra1',
@@ -25,6 +24,7 @@ class seriado extends Model
         'hora3',
         'd3',
         'observaciones',
+        'doctor_id',
         'paciente_id',
         'user_id',
         

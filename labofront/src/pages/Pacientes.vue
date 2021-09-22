@@ -888,35 +888,851 @@
         </q-tab-panel>
 
                 <q-tab-panel name="uretral">
-          <div class="text-h6">Movies</div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          <div class="text-h6">ANALISIS DE SECRECION URETRAL</div>
+            <q-form @submit="onUretral">
+            <table style="width: 100%;color: black">
+            <tr >
+                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
+                <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
+            </tr>
+            <tr>
+                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>                
+            </tr>
+            <tr>
+                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>                
+            </tr>
+            <tr>
+                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>                
+            </tr>
+        </table>
+        <table border="1" style="width: 100%;color: black">
+            <tr>
+                <td colspan="3" style="text-align: center"><h3>ANALISIS DE SECRECION URETRAL</h3></td>
+                <td>Form. 004</td>
+            </tr>
+            <tr>
+                <td style="color: darkblue">PACIENTE</td>
+                <td>{{dato2.nombre}}</td>
+                <td style="color: darkblue">EDAD</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="color: darkblue">REQUERIDO POR</td>
+                <td> <q-select borderless  :options="doctors" v-model="requerido" style="width:100%"/></td>
+                <td style="color: darkblue">SEXO</td>
+                <td>{{dato2.sexo}}</td>
+            </tr>
+            <tr>
+                <td style="color: darkblue">TIPO MUESTRA</td>
+                <td><input type="text" style="width: 100%" v-model="uretral.tipomuestra" placeholder="Tipo muestra" ></td>
+                <td style="color: darkblue">N PACIENTE</td>
+                <td>{{dato2.id}}</td>
+            </tr>
+ 
+        </table>
+        <table border="1" style="width: 100%;color: black">
+            <tr>
+                <td colspan="2" style="text-align: center ">EXAMEN EN FRESCO</td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">CELULAS EPITELIALES</td>
+                <td ><input type="text"  style="width: 100%" v-model="uretral.d1"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">LEUCOCITOS</td>
+                <td ><input type="text"  style="width: 100%" v-model="uretral.d2"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">HEMATIES</td>
+                <td ><input type="text"  style="width: 100%" v-model="uretral.d3"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">CELULAS CLAVE</td>
+                <td ><input type="text"  style="width: 100%" v-model="uretral.d4"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">LEVADURAS</td>
+                <td ><input type="text"  style="width: 100%" v-model="uretral.d5"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">PARASITOS</td>
+                <td ><input type="text"  style="width: 100%" v-model="uretral.d6"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">BACTERIAS</td>
+                <td ><input type="text"  style="width: 100%" v-model="uretral.d7"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">KOH</td>
+                <td ><input type="text"  style="width: 100%" v-model="uretral.d8"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">PH</td>
+                <td ><input type="text"  style="width: 100%" v-model="uretral.d9"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">OBSERVACIONES</td>
+                <td ><input type="text"  style="width: 100%" v-model="uretral.d10"></td>
+            </tr>
+
+            <tr colspan="2">
+                <td colspan="2" class="text-center">TINCION DE GRAM</td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">BACILOS GRAM POSITIVO</td>
+                <td ><input type="text"  style="width: 100%" v-model="uretral.d11"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">BACILOS GRAM NEGATIVO</td>
+                <td ><input type="text"  style="width: 100%" v-model="uretral.d12"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">COCOS GRAM POSITIVO</td>
+                <td ><input type="text"  style="width: 100%" v-model="uretral.d13"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">COCOBACILOS GRAM POSITIVO</td>
+                <td ><input type="text"  style="width: 100%" v-model="uretral.d14"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">COCOBACILOS GRAM NEGATIVO</td>
+                <td ><input type="text"  style="width: 100%" v-model="uretral.d15"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">ESPORAS E HIFAS MICOTICAS</td>
+                <td ><input type="text"  style="width: 100%" v-model="uretral.d16"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">OBSERVACIONES</td>
+                <td ><input type="text"  style="width: 100%" v-model="uretral.d17"></td>
+            </tr>
+
+
+            <tr>
+                <td rowspan="2" >RESPONSABLE: </td>
+                <td>
+                    FECHA DE TOMA DE MUESTRAS
+                    <input placeholder="00" type="date"  style="width: 100%" v-model="uretral.fechatoma">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    FECHA DE ENTREGA DE MUESTRAS
+                    <input placeholder="00" type="date"  style="width: 100%" name="fechaentrega">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    <button class="btn btn-success btn-block"><i class="fa fa-save"></i> REGISTRAR</button>
+                </td>
+            </tr>
+        </table>
+
+    </q-form>          
         </q-tab-panel>
+
 
                 <q-tab-panel name="vaginal">
-          <div class="text-h6">Movies</div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          <div class="text-h6">ANALISIS DE SECRECION VAGINAL</div>
+              <q-form @submit="onVaginal">
+            <table style="width: 100%;color: black">
+            <tr >
+                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
+                <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
+            </tr>
+            <tr>
+                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>                
+            </tr>
+            <tr>
+                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>                
+            </tr>
+            <tr>
+                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>                
+            </tr>
+        </table>
+        <table border="1" style="width: 100%;color: black">
+            <tr>
+                <td colspan="3" style="text-align: center"><h3>ANALISIS DE SECRECION VAGINAL</h3></td>
+                <td>Form. 004</td>
+            </tr>
+            <tr>
+                <td style="color: darkblue">PACIENTE</td>
+                <td>{{dato2.nombre}}</td>
+                <td style="color: darkblue">EDAD</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="color: darkblue">REQUERIDO POR</td>
+                <td> <q-select borderless  :options="doctors" v-model="requerido" style="width:100%"/></td>
+                <td style="color: darkblue">SEXO</td>
+                <td>{{dato2.sexo}}</td>
+            </tr>
+            <tr>
+                <td style="color: darkblue">TIPO MUESTRA</td>
+                <td><input type="text" style="width: 100%" v-model="vaginal.tipomuestra" placeholder="Tipo muestra" ></td>
+                <td style="color: darkblue">N PACIENTE</td>
+                <td>{{dato2.id}}</td>
+            </tr>
+
+        </table>
+        <table border="1" style="width: 100%;color: black">
+            <tr>
+                <td colspan="2" style="text-align: center ">EXAMEN EN FRESCO</td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">CELULAS EPITELIALES</td>
+                <td ><input type="text"  style="width: 100%" v-model="vaginal.d1"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">LEUCOCITOS</td>
+                <td ><input type="text"  style="width: 100%" v-model="vaginal.d2"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">HEMATIES</td>
+                <td ><input type="text"  style="width: 100%" v-model="vaginal.d3"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">CELULAS CLAVE</td>
+                <td ><input type="text"  style="width: 100%" v-model="vaginal.d4"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">LEVADURAS</td>
+                <td ><input type="text"  style="width: 100%" v-model="vaginal.d5"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">PARASITOS</td>
+                <td ><input type="text"  style="width: 100%" v-model="vaginal.d6"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">BACTERIAS</td>
+                <td ><input type="text"  style="width: 100%" v-model="vaginal.d7"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">KOH</td>
+                <td ><input type="text"  style="width: 100%" v-model="vaginal.d8"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">PH</td>
+                <td ><input type="text"  style="width: 100%" v-model="vaginal.d9"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">OBSERVACIONES</td>
+                <td ><input type="text"  style="width: 100%" v-model="vaginal.d10"></td>
+            </tr>
+
+            <tr colspan="2">
+                <td colspan="2" class="text-center">TINCION DE GRAM</td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">BACILOS GRAM POSITIVO</td>
+                <td ><input type="text"  style="width: 100%" v-model="vaginal.d11"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">BACILOS GRAM NEGATIVO</td>
+                <td ><input type="text"  style="width: 100%" v-model="vaginal.d12"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">COCOS GRAM POSITIVO</td>
+                <td ><input type="text"  style="width: 100%" v-model="vaginal.d13"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">COCOBACILOS GRAM POSITIVO</td>
+                <td ><input type="text"  style="width: 100%" v-model="vaginal.d14"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">COCOBACILOS GRAM NEGATIVO</td>
+                <td ><input type="text"  style="width: 100%" v-model="vaginal.d15"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">ESPORAS E HIFAS MICOTICAS</td>
+                <td ><input type="text"  style="width: 100%" v-model="vaginal.d16"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">OBSERVACIONES</td>
+                <td ><input type="text"  style="width: 100%" v-model="vaginal.d17"></td>
+            </tr>
+
+            <tr>
+                <td rowspan="2" >RESPONSABLE: </td>
+                <td>
+                    FECHA DE TOMA DE MUESTRAS
+                    <input placeholder="00" type="date"  style="width: 100%" v-model="vaginal.fechatoma">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    FECHA DE ENTREGA DE MUESTRAS
+                    <input placeholder="00" type="date"  style="width: 100%" name="fechaentrega">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    <button class="btn btn-success btn-block"><i class="fa fa-save"></i> REGISTRAR</button>
+                </td>
+            </tr>
+        </table>
+
+    </q-form>          
         </q-tab-panel>
 
-                <q-tab-panel name="hece">
-          <div class="text-h6">Movies</div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+
+        <q-tab-panel name="hece">
+          <div class="text-h6">ANALISIS DE HECES</div>
+        <q-form @submit="onHece">
+        <table style="width: 100%;color: black">
+            <tr >
+                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
+                <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
+            </tr>
+            <tr>
+                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>                
+            </tr>
+            <tr>
+                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>                
+            </tr>
+            <tr>
+                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>                
+            </tr>
+        </table>
+        <table border="1" style="width: 100%;color: black">
+            <tr>
+                <td colspan="3" style="text-align: center"><h3>ANALISIS DE HECES</h3></td>
+                <td>Form. 010</td>
+            </tr>
+            <tr>
+                <td style="color: darkblue">PACIENTE</td>
+                <td>{{dato2.nombre}}</td>
+                <td style="color: darkblue">EDAD</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="color: darkblue">REQUERIDO POR</td>
+                <td> <q-select borderless  :options="doctors" v-model="requerido" style="width:100%"/></td>
+                <td style="color: darkblue">SEXO</td>
+                <td>{{dato2.sexo}}</td>
+            </tr>
+            <tr>
+                <td style="color: darkblue">TIPO MUESTRA</td>
+                <td><input type="text" style="width: 100%" v-model="hece.tipomuestra" placeholder="Tipo muestra" ></td>
+                <td style="color: darkblue">N PACIENTE</td>
+                <td>{{dato2.id}}</td>
+            </tr>
+
+        </table>
+        <table border="1" style="width: 100%;color: black">
+            <tr >
+                <td colspan="2" style="text-align: center ">EXAMEN EN FRESCO</td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">ASPECTO DE LA MUESTRA</td>
+                <td ><input type="text"  style="width: 100%" v-model="hece.d1"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">COLOR</td>
+                <td ><input type="text"  style="width: 100%" v-model="hece.d2"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">CELULAS EPITELIALES</td>
+                <td ><input type="text"  style="width: 100%" v-model="hece.d3"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">LEUCOCITOS</td>
+                <td ><input type="text"  style="width: 100%" v-model="hece.d4"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">HEMATIES</td>
+                <td ><input type="text"  style="width: 100%" v-model="hece.d5"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">ALMIDON</td>
+                <td ><input type="text"  style="width: 100%" v-model="hece.d6"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">LEVADURAS</td>
+                <td ><input type="text"  style="width: 100%" v-model="hece.d7"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">GRASAS</td>
+                <td ><input type="text"  style="width: 100%" v-model="hece.d8"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">PARASITOS</td>
+                <td ><input type="text"  style="width: 100%" v-model="hece.d9"></td>
+            </tr>
+
+            <tr>
+                <td rowspan="2" class="text-left text-red">MOCO FECAL
+                 <input type="text"  style="width: 100%"  v-model="hece.d10">               </td>
+                <td> Polimorfonucleares<input type="text" style="width: 100%"   v-model="hece.d11"></td>
+
+            </tr>
+            <tr>
+                <td>Mononucleares<input type="text" style="width: 100%"  v-model="hece.d12"></td>
+                
+            </tr>
+            <tr>
+                <td class="text-left text-red">OTROS</td>
+                <td ><input type="text"  style="width: 100%" v-model="hece.d13"></td>
+            </tr>
+
+            <tr colspan="2">
+                <td colspan="2" class="text-center">TINCION DE GRAM</td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">BACILOS GRAM POSITIVOS</td>
+                <td ><input type="text"  style="width: 100%" v-model="hece.d14"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">BACILOS GRAM NEGATIVOS</td>
+                <td ><input type="text"  style="width: 100%" v-model="hece.d15"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">COCOS GRAM POSITIVOS</td>
+                <td ><input type="text"  style="width: 100%" v-model="hece.d16"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">COCOS GRAM NEGATIVOS</td>
+                <td ><input type="text"  style="width: 100%" v-model="hece.d17"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">COCOBACILOS GRAM</td>
+                <td ><input type="text"  style="width: 100%" v-model="hece.d18"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">ESPORAS MICOTICAS</td>
+                <td ><input type="text"  style="width: 100%" v-model="hece.d19"></td>
+            </tr>
+  
+            <tr>
+                <td class="text-left text-red">OTROS</td>
+                <td ><input type="text"  style="width: 100%" v-model="hece.d20"></td>
+            </tr>
+
+            <tr>
+                <td rowspan="2" >RESPONSABLE: </td>
+                <td>
+                    FECHA DE TOMA DE MUESTRAS
+                    <input placeholder="00" type="date"  style="width: 100%" v-model="hece.fechatoma">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    FECHA DE ENTREGA DE MUESTRAS
+                    <input placeholder="00" type="date" style="width: 100%" name="fechaentrega">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    <button class="btn btn-success btn-block"><i class="fa fa-save"></i> REGISTRAR</button>
+                </td>
+            </tr>
+        </table>
+
+    </q-form>          
         </q-tab-panel>
+
 
           <q-tab-panel name="simple">
-          <div class="text-h6">Movies</div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          <div class="text-h6">COPRAPARASITOLOGICO SIMPLE</div>
+        <q-form @submit="onSimple">
+        <table style="width: 100%;color: black">
+            <tr >
+                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
+                <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
+            </tr>
+            <tr>
+                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>                
+            </tr>
+            <tr>
+                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>                
+            </tr>
+            <tr>
+                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>                
+            </tr>
+        </table>
+        <table border="1" style="width: 100%;color: black">
+            <tr>
+                <td colspan="3" style="text-align: center"><h3>COPRAPARASITOLOGICO SIMPLE</h3></td>
+                <td>Form. 009</td>
+            </tr>
+            <tr>
+                <td style="color: darkblue">PACIENTE</td>
+                <td>{{dato2.nombre}}</td>
+                <td style="color: darkblue">EDAD</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="color: darkblue">REQUERIDO POR</td>
+                <td> <q-select borderless  :options="doctors" v-model="requerido" style="width:100%"/></td>
+                <td style="color: darkblue">SEXO</td>
+                <td>{{dato2.sexo}}</td>
+            </tr>
+            <tr>
+                <td style="color: darkblue">TIPO MUESTRA</td>
+                <td><input type="text" style="width: 100%" v-model="simple.tipomuestra" placeholder="Tipo muestra" ></td>
+                <td style="color: darkblue">N PACIENTE</td>
+                <td>{{dato2.sexo}}</td>
+            </tr>
+
+        </table>
+            <br>
+        <table border="1" style="width: 100%;color: black">
+            <tr >
+                <td colspan="2" style="text-align: center ">COPRAPARASITOLOGICO SIMPLE</td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">ASPECTO DE LA MUESTRA</td>
+                <td ><input type="text"  style="width: 100%" v-model="simple.d1"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">COLOR</td>
+                <td ><input type="text"  style="width: 100%" v-model="simple.d2"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">CELULAS EPITELIALES</td>
+                <td ><input type="text"  style="width: 100%" v-model="simple.d3"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">LEUCOCITOS</td>
+                <td ><input type="text"  style="width: 100%" v-model="simple.d4"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">HEMATIES</td>
+                <td ><input type="text"  style="width: 100%" v-model="simple.d5"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">GRASAS</td>
+                <td ><input type="text"  style="width: 100%" v-model="simple.d6"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">LEVADURAS</td>
+                <td ><input type="text"  style="width: 100%" v-model="simple.d7"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">ESPORAS MICOTICAS</td>
+                <td ><input type="text"  style="width: 100%" v-model="simple.d8"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">ALMIDON</td>
+                <td ><input type="text"  style="width: 100%" v-model="simple.d9"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">PARASITOS</td>
+                <td ><input type="text"  style="width: 100%" v-model="simple.d10"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">PIOCITOS</td>
+                <td ><input type="text"  style="width: 100%" v-model="simple.d11"></td>
+            </tr>
+
+            <tr>
+                <td rowspan="2" class="text-left text-red">MOCO FECAL
+                 <input type="text"  style="width: 100%"  v-model="simple.d12">               </td>
+                <td> Polimorfonucleares<input type="text" style="width: 100%"   v-model="simple.d13"></td>
+
+            </tr>
+            <tr>
+                <td>Mononucleares<input type="text" style="width: 100%"  v-model="simple.d14"></td>
+                
+            </tr>
+            <tr>
+                <td class="text-left text-red">OBSERVACIONES</td>
+                <td ><input type="text"  style="width: 100%" v-model="simple.d15"></td>
+            </tr>
+
+            <tr colspan="2">
+                <td colspan="2" class="text-center">OTROS</td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">SANGRE OCULTA EN HECES</td>
+                <td ><input type="text"  style="width: 100%" v-model="simple.d16"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">TEST DE BENEDICT</td>
+                <td ><input type="text"  style="width: 100%" v-model="simple.d17"></td>
+            </tr>  
+  
+            <tr>
+                <td class="text-left text-red">OBSERVACIONES</td>
+                <td ><input type="text"  style="width: 100%" v-model="simple.d18"></td>
+            </tr>
+
+            <tr>
+                <td rowspan="2" >RESPONSABLE: </td>
+                <td>
+                    FECHA DE TOMA DE MUESTRAS
+                    <input placeholder="00" type="date"  style="width: 100%" v-model="simple.fechatoma">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    FECHA DE ENTREGA DE MUESTRAS
+                    <input placeholder="00" type="date"  style="width: 100%" name="fechaentrega">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    <button class="btn btn-success btn-block"><i class="fa fa-save"></i> REGISTRAR</button>
+                </td>
+            </tr>
+        </table>
+
+    </q-form>          
           </q-tab-panel>
+
 
           <q-tab-panel name="seriado">
-          <div class="text-h6">Movies</div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          <div class="text-h6">COPROPARASITOLOGICO SERIADO</div>
+             <q-form @submit="onSeriado">
+        <table style="width: 100%;color: black">
+            <tr >
+                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
+                <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
+            </tr>
+            <tr>
+                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>                
+            </tr>
+            <tr>
+                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>                
+            </tr>
+            <tr>
+                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>                
+            </tr>
+        </table>
+        <table border="1" style="width: 100%;color: black">
+            <tr>
+                <td colspan="3" style="text-align: center"><h3>COPROPARASITOLOGICO SERIADO</h3></td>
+                <td>Form. 008</td>
+            </tr>
+            <tr>
+                <td style="color: darkblue">PACIENTE</td>
+                <td>{{dato2.nombre}}</td>
+                <td style="color: darkblue">EDAD</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="color: darkblue">REQUERIDO POR</td>
+                <td> <q-select borderless  :options="doctors" v-model="requerido" style="width:100%"/></td>
+                <td style="color: darkblue">SEXO</td>
+                <td>{{dato2.sexo}}</td>
+            </tr>
+            <tr>
+                <td style="color: darkblue">TIPO MUESTRA</td>
+                <td><input type="text" style="width: 100%" v-model="seriado.tipomuestra" placeholder="Tipo muestra" ></td>
+                <td style="color: darkblue">N PACIENTE</td>
+                <td>{{dato2.id}}</td>
+            </tr>
+
+        </table>
+        <br>
+        <table border="1" style="width: 100%;color: black">
+            <tr>
+                <td colspan="3" style="text-align: center ">COPROPARASITOLOGICO SERIADO</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="text-center text-red" style="width: 20%">1 MUESTRA</td>
+                <td ><input  type="text"  style="width: 100%" v-model="seriado.muestra1"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">Fecha</td>
+                <td ><input type="date"  style="width: 100%" v-model="seriado.fecha1"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">Hora</td>
+                <td ><input type="time"  style="width: 100%" v-model="seriado.hora1"></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="text-center text-red" style="width: 20%">2 MUESTRA</td>
+                <td ><input type="text"  style="width: 100%" v-model="seriado.muestra2"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">Fecha</td>
+                <td ><input type="date"  style="width: 100%" v-model="seriado.fecha2"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">Hora</td>
+                <td ><input type="time"  style="width: 100%" v-model="seriado.hora2"></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="text-center text-red" style="width: 20%">3 MUESTRA</td>
+                <td ><input type="text"  style="width: 100%" v-model="seriado.muestra3"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">Fecha</td>
+                <td ><input type="date"  style="width: 100%" v-model="seriado.fecha3"></td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">Hora</td>
+                <td ><input type="time"  style="width: 100%" v-model="seriado.hora3"></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="text-left text-red">OBSERVACIONES</td>
+                <td ><input type="text"  style="width: 100%" v-model="seriado.observaciones"></td>
+            </tr>
+
+            <tr >
+                <td colspan="2" >RESPONSABLE: </td>
+                <td>
+                    FECHA DE ENTREGA RESULTADOS
+                    <input type="date"  style="width: 100%">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    <button class="btn btn-success btn-block"><i class="fa fa-save"></i> REGISTRAR</button>
+                </td>
+            </tr>
+        </table>
+
+    </q-form>
           </q-tab-panel>
+
 
           <q-tab-panel name="serologia">
-          <div class="text-h6">Movies</div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          <div class="text-h6">SEROLOGIA</div>
+              <q-form @submit="onSerologia">
+        <table style="width: 100%;color: black">
+            <tr >
+                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
+                <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
+            </tr>
+            <tr>
+                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>                
+            </tr>
+            <tr>
+                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>                
+            </tr>
+            <tr>
+                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>                
+            </tr>
+        </table>
+        <table border="1" style="width: 100%;color: black">
+            <tr>
+                <td colspan="3" style="text-align: center"><h3>SEROLOGIA</h3></td>
+                <td>Form. 005</td>
+            </tr>
+            <tr>
+                <td style="color: darkblue">PACIENTE</td>
+                <td>{{dato2.nombre}}</td>
+                <td style="color: darkblue">EDAD</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="color: darkblue">REQUERIDO POR</td>
+                <td> <q-select borderless  :options="doctors" v-model="requerido" style="width:100%"/></td>
+                <td style="color: darkblue">SEXO</td>
+                <td>{{dato2.sexo}}</td>
+            </tr>
+            <tr>
+                <td style="color: darkblue">TIPO MUESTRA</td>
+                <td><input type="text" style="width: 100%" v-model="serologia.tipomuestra" placeholder="Tipo muestra" ></td>
+                <td style="color: darkblue">N PACIENTE</td>
+                <td>{{dato2.id}}</td>
+            </tr>
+
+        </table>
+        <br>
+        <table border="1" style="width: 100%;color: black">
+            <tr>
+                <td colspan="4" style="text-align: center ">PRUEBA ANTICUERPOS CUANTITATIVOS ANTI SARS COV-2 lg M / lg G</td>
+            </tr>
+            <tr>
+                <td class="text-center text-red" style="width: 20%">lgM</td>
+                <td ><input  type="number" step="0.1" style="width: 100%" v-model="serologia.lgm" id="lgm" min="0.0"></td>
+                <td ><input  type="text"  style="width: 100%" v-model="serologia.d1" id="d1"></td>
+                <td> menor a 0.9 NEGATIVO PARA lgG/lgM</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>0.9 menor igual  & menor 1.1 INDETERMINADO </td>
+            </tr>
+            <tr>
+                <td class="text-center text-red" style="width: 20%">lgG</td>
+                <td ><input  type="number" step="0.1"  style="width: 100%" v-model="serologia.lgg" id="lgg" min="0.0"></td>
+                <td ><input  type="text"  style="width: 100%" v-model="serologia.d2" id="d2"></td>
+                <td style="width: 20%"> >= 1.1 POSITIVO lgG/lgM</td>
+            </tr>
+            <tr>
+                <td colspan="4" style="color:red">INTERPRETACION DE RESULTADOS</td>
+            </tr>
+            <tr style="text-align:center; color:red">
+                <td>lg M</td>
+                <td>lg G</td>
+                <td>INTERPRETACION</td>
+                <td>COMENTARION</td>
+            </tr>
+            <tr style="text-align:center">
+                <td><img src="../assets/resta.png" alt="negativo" srcset="" style="height: 1.5cm; width:1.5cm;"></td>
+                <td><img src="../assets/resta.png" alt="negativo" srcset="" style="height: 1.5cm; width:1.5cm;"></td>
+                <td>Ausencia de la Enfermedad o Falso Negativo</td>
+                <td>Paciente en fase de evolucion de la enfermedad mayor de 21 dias</td>
+            </tr>
+            <tr style="text-align:center">
+                <td><img src="../assets/suma.png" alt="positivo" srcset="" style="height: 1.5cm; width:1.5cm;"></td>
+                <td><img src="../assets/resta.png" alt="negativo" srcset="" style="height: 1.5cm; width:1.5cm;"></td>
+                <td>Inicio Temprano de ka Enfermedad Infeccion Aguda de la Enfermedad</td>
+                <td>Se debe repetir dentro de 5 a 7 dias la prueba</td>
+            </tr>
+            <tr style="text-align:center">
+                <td><img src="../assets/suma.png" alt="positivo" srcset="" style="height: 1.5cm; width:1.5cm;"></td>
+                <td><img src="../assets/suma.png" alt="positivo" srcset="" style="height: 1.5cm; width:1.5cm;"></td>
+                <td>Fase activa de la Enfermedad</td>
+                <td>Correlacionar con clinica del paciente y realizar examenes complementarios (Rayos X, Tomografia)</td>
+            </tr>
+            <tr style="text-align:center">
+                <td><img src="../assets/resta.png" alt="negativo" srcset="" style="height: 1.5cm; width:1.5cm;"></td>
+                <td><img src="../assets/suma.png" alt="positivo" srcset="" style="height: 1.5cm; width:1.5cm;"></td>
+                <td>Inmunidad Fase final de la Infeccion Infeccion pasada y curada</td>
+                <td>Paciente en fase de evolucion de la enfermedad mayor a 21 dias</td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <span style="color:red">NOTA: </span>
+                    Las pruebas rapidas para COVID-19 NO SON CONFIRMATORIAS, en caso de salir positivo alguno de los anticuerpo
+                    , se recimienda una segunda toma de muestra con la Tecnica de HISOPADO NASOFARINGEO para RT - PCR y asi confirmar su DIAGNOSTICO
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    Todas las personas producimos anticuerpos a diferente velocidad dependiendo del agente patogeno y nuestra genetica que es lo que
+                    determina la funcionalidad de nuestro Sistema Inmunologico
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    Los Resultados deben ser interpretados en funcion de la Clinica del paciente y dias de evolucion de la enfermedad
+                </td>
+            </tr>
+            <tr>
+                <td class="text-left text-red">OBSERVACION</td>
+                <td colspan="3" ><input type="text"  style="width: 100%" v-model="serologia.d3"></td>
+            </tr>
+
+            <tr >
+                <td colspan="2" rowspan="2" >RESPONSABLE: </td>
+                <td colspan="2">
+                    FECHA DE TOMA DE MUESTRAS
+                    <input placeholder="00" type="date"  style="width: 100%" v-model="serologia.fechatoma">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    FECHA DE ENTREGA DE MUESTRAS
+                    <input placeholder="00" type="date" style="width: 100%" >
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    <button class="btn btn-success btn-block"><i class="fa fa-save"></i> REGISTRAR</button>
+                </td>
+            </tr>
+        </table>
+    </q-form>
           </q-tab-panel>
 
+          
           <q-tab-panel name="labserologia">
           <div class="text-h6">Movies</div>
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -1070,17 +1886,93 @@ export default {
     onHemograma(){
         this.$axios.post(process.env.API+'/hemograma',{paciente:this.dato2,doctor:this.requerido.value,hemograma:this.hemograma}).then(res=>{
           console.log(res.data)
+         this.dialog_lab=false;
+                 $q.notify({
+          message: 'Registro Realizado',
+          icon: 'beaker'
+        })
+
         })
     },
     onSanguinia(){
         this.$axios.post(process.env.API+'/sanguinia',{paciente:this.dato2,doctor:this.requerido.value,sanguinia:this.sanguinia}).then(res=>{
           console.log(res.data)
+        this.dialog_lab=false;
+         this.$q.notify({
+          message: 'Registro Realizado',
+          icon: 'beaker'
         })
+        })               
     },
       onOrina(){
         this.$axios.post(process.env.API+'/orina',{paciente:this.dato2,doctor:this.requerido.value,orina:this.orina}).then(res=>{
           console.log(res.data)
+        this.dialog_lab=false;
+        this.$q.notify({
+          message: 'Registro Realizado',
+          icon: 'beaker'
         })
+        })                
+    },
+          onUretral(){
+        this.$axios.post(process.env.API+'/uretral',{paciente:this.dato2,doctor:this.requerido.value,uretral:this.uretral}).then(res=>{
+          console.log(res.data)
+          this.dialog_lab=false;
+          this.$q.notify({
+          message: 'Registro Realizado',
+          icon: 'beaker'
+        })
+        })                
+    },
+    onVaginal(){
+        this.$axios.post(process.env.API+'/vaginal',{paciente:this.dato2,doctor:this.requerido.value,vaginal:this.vaginal}).then(res=>{
+          console.log(res.data)
+          this.dialog_lab=false;
+          this.$q.notify({
+          message: 'Registro Realizado',
+          icon: 'beaker'
+        })
+        })                
+    },
+    onHece(){
+        this.$axios.post(process.env.API+'/hece',{paciente:this.dato2,doctor:this.requerido.value,hece:this.hece}).then(res=>{
+          console.log(res.data)
+          this.dialog_lab=false;
+          this.$q.notify({
+          message: 'Registro Realizado',
+          icon: 'beaker'
+        })
+        })                
+    },
+    onSimple(){
+        this.$axios.post(process.env.API+'/simple',{paciente:this.dato2,doctor:this.requerido.value,simple:this.simple}).then(res=>{
+          console.log(res.data)
+          this.dialog_lab=false;
+          this.$q.notify({
+          message: 'Registro Realizado',
+          icon: 'beaker'
+        })
+        })                
+    },
+        onSeriado(){
+        this.$axios.post(process.env.API+'/seriado',{paciente:this.dato2,doctor:this.requerido.value,seriado:this.seriado}).then(res=>{
+          console.log(res.data)
+          this.dialog_lab=false;
+          this.$q.notify({
+          message: 'Registro Realizado',
+          icon: 'beaker'
+        })
+        })                
+    },
+    onSerologia(){
+        this.$axios.post(process.env.API+'/serologia',{paciente:this.dato2,doctor:this.requerido.value,serologia:this.serologia}).then(res=>{
+          console.log(res.data)
+          this.dialog_lab=false;
+          this.$q.notify({
+          message: 'Registro Realizado',
+          icon: 'beaker'
+        })
+        })                
     },
     labRow(props){
       this.dato2=props.row;
@@ -1089,7 +1981,7 @@ export default {
     onMod(){
       console.log(this.dato2)
       this.$axios.put(process.env.API+'/paciente/'+this.dato2.id,this.dato2).then(res=>{
-         this.$q.notify({
+         thisthis.$q.notify({
           message: 'Se modifico correctamente',
           color: 'green'
         })

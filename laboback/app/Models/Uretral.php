@@ -9,10 +9,8 @@ class Uretral extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'requerido',
         'tipomuestra',
         'fechatoma',
-        'fechaentrega',
         'd1',
         'd2',
         'd3',
@@ -30,6 +28,7 @@ class Uretral extends Model
         'd15',
         'd16',
         'd17',
+        'doctor_id',
         'paciente_id',
         'user_id',
     ];
