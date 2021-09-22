@@ -4,12 +4,12 @@
         <q-btn  label="Registrar Paciente" color="positive" @click="alert = true" icon="add_circle" class="q-mb-xs" />
     <q-dialog v-model="alert">
       <q-card>
-        <q-card-section class="bg-green-14 text-white">
+        <q-card-section class="bg-success-14 text-white">
           <div class="text-h6">Registro</div>
         </q-card-section>
         <q-card-section class="q-pt-xs">
           <q-form
-            @submit="onSubmit"
+            @submit.prevent="onSubmit"
             class="q-gutter-md"
           >
             <q-input
@@ -87,6 +87,7 @@
         <q-tr :props="props">
           <q-td key="opcion" :props="props">
               <q-btn  dense round flat color="accent" @click="labRow(props)" icon="biotech"></q-btn>
+            <q-btn  dense round flat color="teal" @click="ListRow(props)" icon="list"></q-btn>
               <q-btn  dense round flat color="yellow" @click="editRow(props)" icon="edit"></q-btn>
               <q-btn  dense round flat color="red" @click="deleteRow(props)" icon="delete"></q-btn>
           </q-td>
@@ -96,12 +97,12 @@
 
       <q-dialog v-model="dialog_mod">
       <q-card>
-        <q-card-section class="bg-green-14 text-white">
+        <q-card-section class="bg-success-14 text-white">
           <div class="text-h6">Modificar Datos</div>
         </q-card-section>
         <q-card-section class="q-pt-xs">
           <q-form
-            @submit="onMod"
+            @submit.prevent="onMod"
             class="q-gutter-md"
           >
             <q-input
@@ -161,7 +162,7 @@
 
      <q-dialog v-model="dialog_lab" maximized>
       <q-card >
-        <q-card-section class="bg-green-14 text-white">
+        <q-card-section class="bg-success-14 text-white">
           <div class="text-h6">Formularios</div>
         </q-card-section>
         <q-card-section >
@@ -170,7 +171,7 @@
         <q-separator />
               <q-tab-panels v-model="tab.value" animated class="shadow-2 rounded-borders">
         <q-tab-panel name="hemograma">
-            <q-form @submit="onHemograma" >
+            <q-form @submit.prevent="onHemograma" >
         <table style="width: 100%;color: black">
             <tr >
                 <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 3cm; width:8cm;"></td>
@@ -415,7 +416,7 @@
 
         <q-tab-panel name="sanguinia">
           <div class="text-h6">QUIMICA sanguinia</div>
-            <q-form @submit="onsanguinia" >
+            <q-form @submit.prevent="onSanguinia" >
 
         <table style="width: 100%;color: black">
             <tr >
@@ -423,13 +424,13 @@
                 <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>
             </tr>
         </table>
         <table border="1" style="width: 100%;color: black">
@@ -650,20 +651,20 @@
 
         <q-tab-panel name="orina">
           <div class="text-h6">EXAMEN GENERAL DE ORINA</div>
-            <q-form @submit="onOrina" >
+            <q-form @submit.prevent="onOrina" >
         <table style="width: 100%;color: black">
             <tr >
                 <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
                 <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>
             </tr>
         </table>
         <table border="1" style="width: 100%;color: black">
@@ -889,20 +890,20 @@
 
                 <q-tab-panel name="uretral">
           <div class="text-h6">ANALISIS DE SECRECION URETRAL</div>
-            <q-form @submit="onUretral">
+            <q-form @submit.prevent="onUretral">
             <table style="width: 100%;color: black">
             <tr >
                 <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
                 <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>
             </tr>
         </table>
         <table border="1" style="width: 100%;color: black">
@@ -928,7 +929,7 @@
                 <td style="color: darkblue">N PACIENTE</td>
                 <td>{{dato2.id}}</td>
             </tr>
- 
+
         </table>
         <table border="1" style="width: 100%;color: black">
             <tr>
@@ -1028,26 +1029,26 @@
             </tr>
         </table>
 
-    </q-form>          
+    </q-form>
         </q-tab-panel>
 
 
                 <q-tab-panel name="vaginal">
           <div class="text-h6">ANALISIS DE SECRECION VAGINAL</div>
-              <q-form @submit="onVaginal">
+              <q-form @submit.prevent="onVaginal">
             <table style="width: 100%;color: black">
             <tr >
                 <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
                 <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>
             </tr>
         </table>
         <table border="1" style="width: 100%;color: black">
@@ -1172,26 +1173,26 @@
             </tr>
         </table>
 
-    </q-form>          
+    </q-form>
         </q-tab-panel>
 
 
         <q-tab-panel name="hece">
           <div class="text-h6">ANALISIS DE HECES</div>
-        <q-form @submit="onHece">
+        <q-form @submit.prevent="onHece">
         <table style="width: 100%;color: black">
             <tr >
                 <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
                 <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>
             </tr>
         </table>
         <table border="1" style="width: 100%;color: black">
@@ -1268,7 +1269,7 @@
             </tr>
             <tr>
                 <td>Mononucleares<input type="text" style="width: 100%"  v-model="hece.d12"></td>
-                
+
             </tr>
             <tr>
                 <td class="text-left text-red">OTROS</td>
@@ -1302,7 +1303,7 @@
                 <td class="text-left text-red">ESPORAS MICOTICAS</td>
                 <td ><input type="text"  style="width: 100%" v-model="hece.d19"></td>
             </tr>
-  
+
             <tr>
                 <td class="text-left text-red">OTROS</td>
                 <td ><input type="text"  style="width: 100%" v-model="hece.d20"></td>
@@ -1328,26 +1329,26 @@
             </tr>
         </table>
 
-    </q-form>          
+    </q-form>
         </q-tab-panel>
 
 
           <q-tab-panel name="simple">
           <div class="text-h6">COPRAPARASITOLOGICO SIMPLE</div>
-        <q-form @submit="onSimple">
+        <q-form @submit.prevent="onSimple">
         <table style="width: 100%;color: black">
             <tr >
                 <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
                 <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>
             </tr>
         </table>
         <table border="1" style="width: 100%;color: black">
@@ -1433,7 +1434,7 @@
             </tr>
             <tr>
                 <td>Mononucleares<input type="text" style="width: 100%"  v-model="simple.d14"></td>
-                
+
             </tr>
             <tr>
                 <td class="text-left text-red">OBSERVACIONES</td>
@@ -1450,8 +1451,8 @@
             <tr>
                 <td class="text-left text-red">TEST DE BENEDICT</td>
                 <td ><input type="text"  style="width: 100%" v-model="simple.d17"></td>
-            </tr>  
-  
+            </tr>
+
             <tr>
                 <td class="text-left text-red">OBSERVACIONES</td>
                 <td ><input type="text"  style="width: 100%" v-model="simple.d18"></td>
@@ -1477,26 +1478,26 @@
             </tr>
         </table>
 
-    </q-form>          
+    </q-form>
           </q-tab-panel>
 
 
           <q-tab-panel name="seriado">
           <div class="text-h6">COPROPARASITOLOGICO SERIADO</div>
-             <q-form @submit="onSeriado">
+             <q-form @submit.prevent="onSeriado">
         <table style="width: 100%;color: black">
             <tr >
                 <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
                 <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>
             </tr>
         </table>
         <table border="1" style="width: 100%;color: black">
@@ -1590,20 +1591,20 @@
 
           <q-tab-panel name="serologia">
           <div class="text-h6">SEROLOGIA</div>
-              <q-form @submit="onSerologia">
+              <q-form @submit.prevent="onSerologia">
         <table style="width: 100%;color: black">
             <tr >
                 <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
                 <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>
             </tr>
         </table>
         <table border="1" style="width: 100%;color: black">
@@ -1732,23 +1733,23 @@
     </q-form>
           </q-tab-panel>
 
-          
+
           <q-tab-panel name="labserologia">
           <div class="text-h6">LAB SEROLOGIA</div>
-              <q-form @submit="onLabserologia">
+              <q-form @submit.prevent="onLabserologia">
         <table style="width: 100%;color: black">
             <tr >
                 <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
                 <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>
             </tr>
         </table>
         <table border="1" style="width: 100%;color: black">
@@ -1897,20 +1898,20 @@
 
           <q-tab-panel name="reserologia">
           <div class="text-h6">Res Serologia</div>
-              <q-form @submit="onReserologia">
+              <q-form @submit.prevent="onReserologia">
         <table style="width: 100%;color: black">
             <tr >
                 <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
                 <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>
             </tr>
         </table>
         <table border="1" style="width: 100%;color: black">
@@ -1966,13 +1967,13 @@
                 El test proporciona un resultado de "<span style="color:red">POSITIVO</span>" o "<span style="color:red">NEGATIVO</span>"<br>
                 Los antigenos son parte de la estructura del virus, como las proteinas de espiga.<br><br>
                 La muestra de Hisopado nasofaringeo pasa por una linea que detecta antigenos y cambia de color, durante la prueba el anticuerpo monocianal de raton anti-SARS-CoV-2 en la muestra
-                interactua con el Anticuerpo monocianal lgG anti-COVID-19 conjugando con particulas de color que forman un complejo de particulas de antigeno-anticuerpo. Este complejo migra en la 
-                menbrana por accion capilar hasta la linea de prueba, donde aera capturado por el anticuerpo por el anticuerpo monocianal anti-SARS-CoV-2 de raton. Una linea de prueba coloreada 
+                interactua con el Anticuerpo monocianal lgG anti-COVID-19 conjugando con particulas de color que forman un complejo de particulas de antigeno-anticuerpo. Este complejo migra en la
+                menbrana por accion capilar hasta la linea de prueba, donde aera capturado por el anticuerpo por el anticuerpo monocianal anti-SARS-CoV-2 de raton. Una linea de prueba coloreada
                 seria visible en la ventana de resultados si los antigenos del SARS-CoV-2 estan presentes en la muestra. <br><br>
                 Funciona mejor en la etapa inicial con una <span style="color:red">CARGA VIRAL ALTA</span> y sintomalogia hasta los 10 dias.<br>
                 Los resultados <span style="color:red">Negativos</span> indica ausencia de Antigenos detectables de SARS-CoV-2 y cuando la carga viral o la cantidad de antigeno presente se encuentra debajo del limite de deteccion.<br><br>
                 Los resultados <span style="color:red">Psitivos</span> no diferencian entre SARS-COV y SARS-COV-2
-            
+
                 </td>
             </tr>
             <tr>
@@ -2013,20 +2014,20 @@
 
           <q-tab-panel name="ensayo">
           <div class="text-h6">Inmunoensayo de Fluorescencia</div>
-             <q-form @submit="onEnsayo">
+             <q-form @submit.prevent="onEnsayo">
                <table style="width: 100%;color: black">
             <tr >
                 <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
                 <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>
             </tr>
         </table>
 
@@ -2082,7 +2083,7 @@
                 <td rowspan="2" class="text-center text-blue">ng/ml</td>
                 <td rowspan="2" class="text-center text-blue">Suero</td>
                 <td class="text-center text-blue">30-350 ng/ml Varon </td>
-            </tr>  
+            </tr>
             <tr>
                 <td class="text-center text-blue">20-250 ng/ml Mujer</td>
 
@@ -2093,38 +2094,38 @@
                 <td class="text-center text-blue">pg/ml</td>
                 <td class="text-center text-blue">Suero/plasma</td>
                 <td class="text-center text-blue">7 pg/ml</td>
-            </tr>            
+            </tr>
             <tr>
                 <td class="text-left text-red" style="width: 20%">PSA CUANTITATIVO</td>
                 <td ><input  type="text"  v-model="ensayo.d4" ></td>
                 <td class="text-center text-blue">ng/ml</td>
                 <td class="text-center text-blue">Suero</td>
                 <td class="text-center text-blue">Menor a 4 ng/ml</td>
-            </tr>            
+            </tr>
             <tr>
                 <td class="text-left text-red" style="width: 20%">PCR CUANTITATIVO</td>
                 <td ><input  type="text"  v-model="ensayo.d5" ></td>
                 <td class="text-center text-blue">mg/L</td>
                 <td class="text-center text-blue">Sangre Entera</td>
                 <td class="text-center text-blue"> menor 10 mg/L</td>
-            </tr>            
+            </tr>
             <tr>
                 <td class="text-left text-red" style="width: 20%">TROPONINA I</td>
                 <td ><input  type="text"  v-model="ensayo.d6" ></td>
                 <td class="text-center text-blue">ng/ml</td>
                 <td class="text-center text-blue">Suero</td>
                 <td class="text-center text-blue">0.0 - 0.11 ng/ml</td>
-            </tr>            
+            </tr>
             <tr>
                 <td rowspan="2" class="text-left text-red" style="width: 20%">B - HCG</td>
                 <td rowspan="2"><input  type="text"  v-model="ensayo.d7" ></td>
                 <td rowspan="2" class="text-center text-blue">mlU/ml</td>
                 <td rowspan="2" class="text-center text-blue">Suero</td>
                 <td class="text-center text-blue">Mujer No Embarazada menor  10 mlU/ml </td>
-            </tr>            
+            </tr>
             <tr>
                 <td class="text-center text-blue">Mujer en postmenopausia menor 10 mlU/ml</td>
-                
+
             </tr>
             <tr>
                 <td rowspan="4" class="text-left text-red" style="width: 20%">PROCALCITONINA</td>
@@ -2279,7 +2280,7 @@ export default {
           this.$axios.delete(process.env.API+'/paciente/'+this.dato2.id).then(res=>{
          this.$q.notify({
           message: 'Se elimino correctamente',
-          color: 'green'
+          color: 'success'
         })
         this.listado();
           })
@@ -2291,7 +2292,7 @@ export default {
         this.dato={}
          this.$q.notify({
           message: 'Se registro correctamente',
-          color: 'green'
+          color: 'success'
         })
         this.$q.loading.hide()
         this.alert=false;
@@ -2307,12 +2308,13 @@ export default {
     },
     onHemograma(){
         this.$axios.post(process.env.API+'/hemograma',{paciente:this.dato2,doctor:this.requerido.value,hemograma:this.hemograma}).then(res=>{
-          console.log(res.data)
+          // console.log(res.data)
          this.dialog_lab=false;
-                 $q.notify({
-          message: 'Registro Realizado',
-          icon: 'beaker'
-        })
+           this.$q.notify({
+              message: 'Registro Realizado',
+              icon: 'done',
+             color:'green'
+            })
 
         })
     },
@@ -2320,11 +2322,12 @@ export default {
         this.$axios.post(process.env.API+'/sanguinia',{paciente:this.dato2,doctor:this.requerido.value,sanguinia:this.sanguinia}).then(res=>{
           console.log(res.data)
         this.dialog_lab=false;
-         this.$q.notify({
-          message: 'Registro Realizado',
-          icon: 'beaker'
+           this.$q.notify({
+              message: 'Registro Realizado',
+              icon: 'done',
+             color:'green'
+            })
         })
-        })               
     },
       onOrina(){
         this.$axios.post(process.env.API+'/orina',{paciente:this.dato2,doctor:this.requerido.value,orina:this.orina}).then(res=>{
@@ -2334,97 +2337,106 @@ export default {
           message: 'Registro Realizado',
           icon: 'beaker'
         })
-        })                
+        })
     },
           onUretral(){
         this.$axios.post(process.env.API+'/uretral',{paciente:this.dato2,doctor:this.requerido.value,uretral:this.uretral}).then(res=>{
           console.log(res.data)
           this.dialog_lab=false;
-          this.$q.notify({
-          message: 'Registro Realizado',
-          icon: 'beaker'
+            this.$q.notify({
+              message: 'Registro Realizado',
+              icon: 'done',
+             color:'green'
+            })
         })
-        })                
     },
     onVaginal(){
         this.$axios.post(process.env.API+'/vaginal',{paciente:this.dato2,doctor:this.requerido.value,vaginal:this.vaginal}).then(res=>{
           console.log(res.data)
           this.dialog_lab=false;
-          this.$q.notify({
-          message: 'Registro Realizado',
-          icon: 'beaker'
+            this.$q.notify({
+              message: 'Registro Realizado',
+              icon: 'done',
+             color:'green'
+            })
         })
-        })                
     },
     onHece(){
         this.$axios.post(process.env.API+'/hece',{paciente:this.dato2,doctor:this.requerido.value,hece:this.hece}).then(res=>{
           console.log(res.data)
           this.dialog_lab=false;
-          this.$q.notify({
-          message: 'Registro Realizado',
-          icon: 'beaker'
+            this.$q.notify({
+              message: 'Registro Realizado',
+              icon: 'done',
+             color:'green'
+            })
         })
-        })                
     },
     onSimple(){
         this.$axios.post(process.env.API+'/simple',{paciente:this.dato2,doctor:this.requerido.value,simple:this.simple}).then(res=>{
           console.log(res.data)
           this.dialog_lab=false;
-          this.$q.notify({
-          message: 'Registro Realizado',
-          icon: 'beaker'
+            this.$q.notify({
+              message: 'Registro Realizado',
+              icon: 'done',
+             color:'green'
+            })
         })
-        })                
     },
         onSeriado(){
         this.$axios.post(process.env.API+'/seriado',{paciente:this.dato2,doctor:this.requerido.value,seriado:this.seriado}).then(res=>{
           console.log(res.data)
           this.dialog_lab=false;
-          this.$q.notify({
-          message: 'Registro Realizado',
-          icon: 'beaker'
+            this.$q.notify({
+              message: 'Registro Realizado',
+              icon: 'done',
+             color:'green'
+            })
         })
-        })                
     },
     onSerologia(){
         this.$axios.post(process.env.API+'/serologia',{paciente:this.dato2,doctor:this.requerido.value,serologia:this.serologia}).then(res=>{
           console.log(res.data)
           this.dialog_lab=false;
-          this.$q.notify({
-          message: 'Registro Realizado',
-          icon: 'beaker'
+            this.$q.notify({
+              message: 'Registro Realizado',
+              icon: 'done',
+             color:'green'
+            })
         })
-        })                
     },
     onLabserologia(){
         this.$axios.post(process.env.API+'/labserologia',{paciente:this.dato2,doctor:this.requerido.value,labserologia:this.labserologia}).then(res=>{
           console.log(res.data)
           this.dialog_lab=false;
-          this.$q.notify({
-          message: 'Registro Realizado',
-          icon: 'beaker'
+            this.$q.notify({
+              message: 'Registro Realizado',
+              icon: 'done',
+             color:'green'
+            })
         })
-        })                
     },
         onReserologia(){
         this.$axios.post(process.env.API+'/reserologia',{paciente:this.dato2,doctor:this.requerido.value,reserologia:this.reserologia}).then(res=>{
           console.log(res.data)
           this.dialog_lab=false;
-          this.$q.notify({
-          message: 'Registro Realizado',
-          icon: 'beaker'
+            this.$q.notify({
+              message: 'Registro Realizado',
+              icon: 'done',
+             color:'green'
+            })
         })
-        })                
     },
             onEnsayo(){
         this.$axios.post(process.env.API+'/ensayo',{paciente:this.dato2,doctor:this.requerido.value,ensayo:this.ensayo}).then(res=>{
           console.log(res.data)
           this.dialog_lab=false;
-          this.$q.notify({
-          message: 'Registro Realizado',
-          icon: 'beaker'
+            this.$q.notify({
+              message: 'Registro Realizado',
+              icon: 'done',
+             color:'green'
+            })
         })
-        })                
     },
     labRow(props){
       this.dato2=props.row;
@@ -2435,7 +2447,7 @@ export default {
       this.$axios.put(process.env.API+'/paciente/'+this.dato2.id,this.dato2).then(res=>{
          thisthis.$q.notify({
           message: 'Se modifico correctamente',
-          color: 'green'
+          color: 'success'
         })
       })
       this.dialog_mod=false;

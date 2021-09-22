@@ -46,9 +46,9 @@ class HemogramaController extends Controller
 //        return $request->requerido;
         //return $request;
         $dato=Hemograma::create($request->hemograma+ ['user_id' => Auth::user()->id,'paciente_id'=>$request->paciente['id'],'doctor_id'=>$request->doctor]);
-        $pdf = App::make('dompdf.wrapper');
-        $pdf->loadHTML($this->generar($dato->id));
-        return $pdf->download('Hemograma.pdf');
+//        $pdf = App::make('dompdf.wrapper');
+//        $pdf->loadHTML($this->generar($dato->id));
+//        return $pdf->download('Hemograma.pdf');
         //return redirect('/pacientes');
     }
 
@@ -70,13 +70,13 @@ table, th, td {
                 <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>                
+                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>
             </tr>
         </table>
         <table border="1" style="width: 100%;color: black">
