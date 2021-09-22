@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Doctor;
 use App\Models\Hemograma;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\App;
@@ -53,149 +54,162 @@ class HemogramaController extends Controller
     }
 
     public function generar($id){
-        $row= Hemograma::with('paciente')->with('user')->whith('doctor')
+
+
+//        return $id;
+        $row= Hemograma::with('paciente')->with('user')->with('doctor')
         ->where('id',$id)
         ->get();
         $row=$row[0];
         $cadena='
         <style>
-table, th, td {
+.tablex , th , .tdx  {
   border: 1px solid black;
   border-collapse: collapse;
 }
+table{
+margin-left: 5px;
+margin-right: 5px
+}
+*{
+padding: 0px;
+margin: 0px;
+border: 0px;
+font-size: 10px;
+}
 </style>
-        <table style="width: 100%;color: black">
+        <table style="width: 50%;color: black;margin-top: 5px">
             <tr >
-                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
-                <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
+                <td rowspan="4" ><img src="./img/natividad" style="height: 10px; width:200px;"></td>
+                <td style="text-align:center;">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>
+                <td style="text-align:center;">Telf: 5254721 Fax: 52-83667 </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>
+                <td style="text-align:center;">Emergencia las 24 horas del dia. </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>
+                <td style="text-align:center;">Bolivar Nº 753 entre Arica e Iquique </td>
             </tr>
         </table>
-        <table border="1" style="width: 100%;color: black">
-            <tr>
-                <td colspan="3" style="text-align: center"><h3>HEMOGRAMA COMPLETO</h3></td>
-                <td>Form. '.$row->id.'</td>
+        <table style="width: 50%;color: black;" class="tablex">
+            <tr >
+                <td class="tdx" colspan="3" style="text-align: center"><h3>HEMOGRAMA COMPLETO</h3></td>
+                <td class="tdx" >Form. '.$row->id.'</td>
             </tr>
             <tr>
-                <td style="color: darkblue">PACIENTE</td>
-                <td>'.$row->paciente->nombre.' '.$row->paciente->paterno.' '.$row->paciente->materno.'</td>
-                <td style="color: darkblue">EDAD</td>
-                <td>'.$row->paciente->age().'</td>
+                <td class="tdx"  style="color: darkblue">PACIENTE</td>
+                <td class="tdx" >'.$row->paciente->nombre.' '.$row->paciente->paterno.' '.$row->paciente->materno.'</td>
+                <td class="tdx"  style="color: darkblue">EDAD</td>
+                <td class="tdx" >'.$row->paciente->age().'</td>
             </tr>
             <tr>
-                <td style="color: darkblue">REQUERIDO POR</td>
-                <td>'.$row->doctor->nombre.'</td>
-                <td style="color: darkblue">SEXO</td>
-                <td>'.$row->paciente->sexo.'</td>
+                <td class="tdx"  style="color: darkblue">REQUERIDO POR</td>
+                <td class="tdx" >'.$row->doctor->nombre.'</td>
+                <td class="tdx"  style="color: darkblue">SEXO</td>
+                <td class="tdx" >'.$row->paciente->sexo.'</td>
             </tr>
             <tr>
-                <td style="color: darkblue">TIPO MUESTRA</td>
-                <td>'.$row->tipomuestra.'</td>
-                <td style="color: darkblue">N PACIENTE</td>
-                <td>'.$row->paciente->id.'</td>
+                <td class="tdx"  style="color: darkblue">TIPO MUESTRA</td>
+                <td class="tdx" >'.$row->tipomuestra.'</td>
+                <td class="tdx"  style="color: darkblue">N PACIENTE</td>
+                <td class="tdx" >'.$row->paciente->id.'</td>
             </tr>
             <tr>
-                <td style="color: darkblue">METODO</td>
-                <td colspan="3">
+                <td class="tdx"  style="color: darkblue">METODO</td>
+                <td class="tdx"  colspan="3" align="center" style="color: darkblue">
                     Contador Hematologico MINDRAY BC 5130
                     Hematocrito (Metodo Manual) Hemoglobina (Clanmetahemoglobina reactivo drabking)
                 </td>
             </tr>
         </table>
 
-        <table border="1" style="width: 100%;color: black">
+        <table class="tablex"  style="width: 50%;color: black;">
             <tr>
-                <td colspan="3"></td>
-                <td>REFERENCIA</td>
-                <td colspan="2"></td>
-                <td>REFERENCIA</td>
+                <td class="tdx" colspan="3"></td>
+                <td class="tdx" style="color: darkred" align="center">REFERENCIA</td>
+                <td class="tdx" colspan="2"></td>
+                <td class="tdx" style="color: darkred" align="center">REFERENCIA</td>
             </tr>
             <tr>
-                <td style="color:white; background-color:red;">Globulos Rojos</td>
-                <td>'.$row->d1.'</td>
-                <td>x10 <sup>12 </sup>/L</td>
-                <td>Varon 5.1-5.7x10 <sup>12</sup>/L <br> Mujer 4.8-5.4x10 <sup>12</sup>/L</td>
-                <td style="color:white; background-color:red;">Tiempo de cuagulacion</td>
-                <td>'.$row->d2.'</td>
-                <td>5-10 min</td>
+                <td class="tdx" style="color: darkred" align="center">Globulos Rojos</td>
+                <td class="tdx">'.$row->d1.'</td>
+                <td class="tdx">x10 <sup>12 </sup>/L</td>
+                <td class="tdx">Varon 5.1-5.7x10 <sup>12</sup>/L <br> Mujer 4.8-5.4x10 <sup>12</sup>/L</td>
+                <td class="tdx" style="color: darkred" align="center">Tiempo de cuagulacion</td>
+                <td class="tdx">'.$row->d2.'</td>
+                <td class="tdx">5-10 min</td>
             </tr>
             <tr>
-                <td style="color:white; background-color:red;">Hemoglobina</td>
-                <td>'.$row->d3.'</td>
-                <td>g/L</td>
-                <td>Varon 151-175 g/L <br> Mujer Mujer 141-165 g/L</td>
-                <td style="color:white; background-color:red;">Tiempo de sangria</td>
-                <td>'.$row->d4.'</td>
-                <td>1-3 min</td>
+                <td class="tdx" style="color: darkred" align="center">Hemoglobina</td>
+                <td class="tdx">'.$row->d3.'</td>
+                <td class="tdx">g/L</td>
+                <td class="tdx">Varon 151-175 g/L <br> Mujer Mujer 141-165 g/L</td>
+                <td class="tdx" style="color: darkred" align="center">Tiempo de sangria</td>
+                <td class="tdx">'.$row->d4.'</td>
+                <td class="tdx">1-3 min</td>
             </tr>
             <tr>
-                <td style="color:white; background-color:red;">Hematocrito</td>
-                <td>'.$row->d5.'</td>
-                <td>L/L</td>
-                <td>Varon 0.51-0.57 L/L <br> Mujer 0.46-0.53 L/L</td>
-                <td style="color:white; background-color:red;">Tiempo de Protrombina</td>
-                <td>'.$row->d6.'</td>
-                <td>12-13 seg</td>
+                <td class="tdx" style="color: darkred" align="center">Hematocrito</td>
+                <td class="tdx">'.$row->d5.'</td>
+                <td class="tdx">L/L</td>
+                <td class="tdx">Varon 0.51-0.57 L/L <br> Mujer 0.46-0.53 L/L</td>
+                <td class="tdx" style="color: darkred" align="center">Tiempo de Protrombina</td>
+                <td class="tdx">'.$row->d6.'</td>
+                <td class="tdx">12-13 seg</td>
             </tr>
             <tr>
-                <td style="color:white; background-color:red;">V.E.S.</td>
-                <td>'.$row->d7.'</td>
-                <td>mm.</td>
-                <td>Varon 15 mm/hora <br> Mujer 20 mm/hora</td>
-                <td style="color:white; background-color:red;">% Actividad</td>
-                <td>'.$row->d8.'</td>
-                <td>95-100%</td>
+                <td class="tdx" style="color: darkred" align="center">V.E.S.</td>
+                <td class="tdx">'.$row->d7.'</td>
+                <td class="tdx">mm.</td>
+                <td class="tdx">Varon 15 mm/hora <br> Mujer 20 mm/hora</td>
+                <td class="tdx" style="color: darkred" align="center">% Actividad</td>
+                <td class="tdx">'.$row->d8.'</td>
+                <td class="tdx">95-100%</td>
             </tr>
 
             <tr>
-                <td style="color:white; background-color:red;">V.C.M.</td>
-                <td>'.$row->d9.'</td>
-                <td>ft.</td>
-                <td>Varon 83.0-97.0 ft</td>
-                <td style="color:white; background-color:red;">INR</td>
-                <td>'.$row->d10.'</td>
-                <td>0.97-1.04</td>
+                <td class="tdx" style="color: darkred" align="center">V.C.M.</td>
+                <td class="tdx">'.$row->d9.'</td>
+                <td class="tdx">ft.</td>
+                <td class="tdx">Varon 83.0-97.0 ft</td>
+                <td class="tdx" style="color: darkred" align="center">INR</td>
+                <td class="tdx">'.$row->d10.'</td>
+                <td class="tdx">0.97-1.04</td>
             </tr>
             <tr>
-                <td style="color:white; background-color:red;">Hb.C.M.</td>
-                <td>'.$row->d11.'</td>
-                <td>pg.</td>
-                <td>27.0-31.0 pg.</td>
-                <td style="color:white; background-color:red;">Grupofactor</td>
-                <td colspan="2">'.$row->d12.'</td>
+                <td class="tdx" style="color: darkred" align="center">Hb.C.M.</td>
+                <td class="tdx">'.$row->d11.'</td>
+                <td class="tdx">pg.</td>
+                <td class="tdx">27.0-31.0 pg.</td>
+                <td class="tdx" style="color: darkred" align="center">Grupofactor</td>
+                <td class="tdx" colspan="2">'.$row->d12.'</td>
             </tr>
             <tr>
-                <td style="color:white; background-color:red;">C. Hb.C.M.</td>
-                <td>'.$row->d13.'</td>
-                <td>%</td>
-                <td>32-36%</td>
-                <td style="color:white; background-color:red;">Reticulocitos</td>
-                <td>'.$row->d14.'</td>
-                <td>0.5-2%</td>
+                <td class="tdx" style="color: darkred" align="center">C. Hb.C.M.</td>
+                <td class="tdx">'.$row->d13.'</td>
+                <td class="tdx">%</td>
+                <td class="tdx">32-36%</td>
+                <td class="tdx" style="color: darkred" align="center">Reticulocitos</td>
+                <td class="tdx">'.$row->d14.'</td>
+                <td class="tdx">0.5-2%</td>
             </tr>
             <tr>
-                <td style="color:white; background-color:red;">Globulos Blancos</td>
-                <td>'.$row->d15.'</td>
-                <td>10 <sup>9</sup>/L</td>
-                <td> 4.5-10.5x10 <sup>9</sup>/L</td>
-                <td style="color:white; background-color:red;">IPR</td>
-                <td>'.$row->d16.'</td>
-                <td></td>
+                <td class="tdx" style="color: darkred" align="center">Globulos Blancos</td>
+                <td class="tdx">'.$row->d15.'</td>
+                <td class="tdx">10 <sup>9</sup>/L</td>
+                <td class="tdx"> 4.5-10.5x10 <sup>9</sup>/L</td>
+                <td class="tdx" style="color: darkred" align="center">IPR</td>
+                <td class="tdx">'.$row->d16.'</td>
+                <td class="tdx"></td>
             </tr>
             <tr>
-                <td style="color:white; background-color:red;">Plaquetas</td>
-                <td>'.$row->d17.'</td>
-                <td>x10 <sup>9 </sup>/L</td>
-                <td>105-400x10 <sup>9</sup> /L</td>
-                <td colspan="3"></td>
+                <td class="tdx" style="color: darkred" align="center">Plaquetas</td>
+                <td class="tdx">'.$row->d17.'</td>
+                <td class="tdx">x10 <sup>9 </sup>/L</td>
+                <td class="tdx">105-400x10 <sup>9</sup> /L</td>
+                <td class="tdx" colspan="3"></td>
             </tr>
         </table>
         <table border="1" style="width: 100%;color: black">
@@ -299,7 +313,18 @@ table, th, td {
                 <td>'.$row->user->name.'</td>
             </tr>
         </table>';
-        return $cadena;
+
+        $pdf = App::make('dompdf.wrapper');
+        $customPaper = array(0,0,360,360);
+        $pdf->setPaper('letter','landscape');
+        $pdf->loadHTML($cadena);
+        return $pdf->stream();
+
+//        PDF::loadHTML($cadena)->setPaper('a4', 'landscape')->setWarnings(false)->save('myfile.pdf');
+//        $pdf = PDF::loadView('pdf.invoice', $cadena);
+//        return $pdf->download('invoice.pdf');
+//        return $pdf->download('invoice.pdf');
+
     }
 
     /**

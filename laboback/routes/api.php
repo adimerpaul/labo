@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 Route::post('/login',[\App\Http\Controllers\UserController::class,'login']);
+Route::get('/hemograma/{id}',[\App\Http\Controllers\HemogramaController::class,'generar']);
+
 Route::group(['middleware'=>'auth:sanctum'],function (){
     Route::post('/logout',[\App\Http\Controllers\UserController::class,'logout']);
     Route::post('/me',[\App\Http\Controllers\UserController::class,'me']);
