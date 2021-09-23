@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\vaginal;
+use App\Models\Vaginal;
 use Illuminate\Http\Request;
 use App\Models\Doctor;
 use Illuminate\Support\Facades\Auth;
