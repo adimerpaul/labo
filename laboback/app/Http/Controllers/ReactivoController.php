@@ -16,8 +16,7 @@ class ReactivoController extends Controller
      */
     public function index()
     {
-        $reactivos=Reactivo::with('inventarios')->get();
-        return view('reactivo',['reactivos'=>$reactivos]);
+        return $reactivos=Reactivo::with('inventarios')->get();
     }
 
     /**
@@ -28,8 +27,11 @@ class ReactivoController extends Controller
      */
     public function store(Request $request)
     {
-        $reactivo=Reactivo::create($request->all()+ ['user_id' => Auth::user()->id]);
-        return  redirect('reactivo');
+        $reactivo=new Reactivo;
+        $reactivo->codigo=$request->codigo;
+        $reactivo->nombre=strtoupper($request->nombre);
+        $reactivo->user_id=Auth::user()->id;
+        return $reactivo->save();
     }
 
     /**
@@ -45,8 +47,7 @@ class ReactivoController extends Controller
         }else{
             $reactivo->estado='ACTIVO';
         }
-        $reactivo->save();
-        return  redirect('reactivo');
+        return $reactivo->save();
     }
 
     /**
@@ -58,8 +59,11 @@ class ReactivoController extends Controller
      */
     public function update(Request $request, Reactivo $reactivo)
     {
-        $reactivo->update($request->all());
-        return  redirect('reactivo');
+        $reactivo=reactivo::find($request->id);
+        $reactivo->codigo=$request->codigo;
+        $reactivo->nombre=strtoupper($request->nombre);
+        return $reactivo->save();
+        
 
     }
 
@@ -69,13 +73,24 @@ class ReactivoController extends Controller
      * @param  \App\Models\Reactivo  $reactivo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Reactivo $reactivo)
+    public function destroy($id)
     {
+        //
+        $reactivo=Reactivo::find($id);
         $reactivo->delete();
-        return  redirect('reactivo');
+//        return redirect('reactivos');
+    }
+    public function reactivoestado(Request $request)
+    {
+        $reactivo=Reactivo::find($request->id);
+        if ($reactivo->activo==1)
+            $reactivo->activo=0;
+        else
+            $reactivo->activo=1;
+        $reactivo->save();
+//        return redirect('/reactivos');
     }
     public function caduca(){
-        $reactivos=Inventario::where('estado','ACTIVO')->whereDate('fechavencimiento','>=',now())->get();
-        return view('caduca',['reactivos'=>$reactivos]);
+        return $reactivos=Inventario::where('estado','ACTIVO')->whereDate('fechavencimiento','>=',now())->get();
     }
 }

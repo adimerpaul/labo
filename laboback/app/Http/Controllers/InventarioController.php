@@ -45,10 +45,10 @@ class InventarioController extends Controller
         $inventario->ingreso=$request->ingreso;
         $inventario->saldo=$request->ingreso;
         $inventario->observacion=$request->observacion;
-        $inventario->reactivo_id=$request->idinv;
+        $inventario->reactivo_id=$request->reactivo_id;
         $inventario->user_id=Auth::user()->id;
-        $inventario->save();
-        return redirect('reactivo');
+        return $inventario->save();
+        
 
     }
 
@@ -58,9 +58,10 @@ class InventarioController extends Controller
      * @param  \App\Models\Inventario  $inventario
      * @return \Illuminate\Http\Response
      */
-    public function show(Inventario $inventario)
+    public function show($id)
     {
         //
+        return Inventario::where('reactivo_id',$id)->get();
     }
 
     /**
