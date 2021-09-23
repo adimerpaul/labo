@@ -62,7 +62,7 @@ class HemogramaController extends Controller
         $cadena='
         <style>
 .tablex , th , .tdx  {
-  border: 1px solid black;
+  border: 0.5px solid black;
   border-collapse: collapse;
 }
 table{
