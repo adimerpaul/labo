@@ -54,8 +54,6 @@ class HemogramaController extends Controller
     }
 
     public function generar($id){
-
-
 //        return $id;
         $row= Hemograma::with('paciente')->with('user')->with('doctor')
         ->where('id',$id)
@@ -68,19 +66,23 @@ class HemogramaController extends Controller
   border-collapse: collapse;
 }
 table{
-margin-left: 5px;
-margin-right: 5px
 }
 *{
 padding: 0px;
 margin: 0px;
 border: 0px;
-font-size: 10px;
+font-size: 13px;
 }
 </style>
-        <table style="width: 50%;color: black;margin-top: 5px">
+
+<table style="width: 100%">
+<tr>
+<td style="width: 50%"></td>
+<td>
+
+        <table style="padding-right:10px;padding-left:0px;width: 100%;color: black;margin-top: 5px;" align="right">
             <tr >
-                <td rowspan="4" ><img src="./img/natividad" style="height: 10px; width:200px;"></td>
+                <td rowspan="4" ><img src="./img/natividad2.png" style="height: 10px; width:200px;"></td>
                 <td style="text-align:center;">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
@@ -93,7 +95,7 @@ font-size: 10px;
                 <td style="text-align:center;">Bolivar Nº 753 entre Arica e Iquique </td>
             </tr>
         </table>
-        <table style="width: 50%;color: black;" class="tablex">
+        <table style="padding-right:10px;padding-left:0px;width: 100%;color: black;" class="tablex">
             <tr >
                 <td class="tdx" colspan="3" style="text-align: center"><h3>HEMOGRAMA COMPLETO</h3></td>
                 <td class="tdx" >Form. '.$row->id.'</td>
@@ -106,7 +108,7 @@ font-size: 10px;
             </tr>
             <tr>
                 <td class="tdx"  style="color: darkblue">REQUERIDO POR</td>
-                <td class="tdx" >'.$row->doctor->nombre.'</td>
+                <td class="tdx" >'.$row->doctor->nombre.' '.$row->doctor->paterno.' '.$row->doctor->materno.'</td>
                 <td class="tdx"  style="color: darkblue">SEXO</td>
                 <td class="tdx" >'.$row->paciente->sexo.'</td>
             </tr>
@@ -124,82 +126,81 @@ font-size: 10px;
                 </td>
             </tr>
         </table>
-
-        <table class="tablex"  style="width: 50%;color: black;">
+        <table class="tablex"  style="padding-right:10px;padding-left:0px;width: 100%;color: black;">
             <tr>
                 <td class="tdx" colspan="3"></td>
-                <td class="tdx" style="color: darkred" align="center">REFERENCIA</td>
+                <td class="tdx" style="color: red;font: bold" align="center">REFERENCIA</td>
                 <td class="tdx" colspan="2"></td>
-                <td class="tdx" style="color: darkred" align="center">REFERENCIA</td>
+                <td class="tdx" style="color: red;font: bold" align="center">REFERENCIA</td>
             </tr>
             <tr>
                 <td class="tdx" style="color: darkred" align="center">Globulos Rojos</td>
                 <td class="tdx">'.$row->d1.'</td>
-                <td class="tdx">x10 <sup>12 </sup>/L</td>
-                <td class="tdx">Varon 5.1-5.7x10 <sup>12</sup>/L <br> Mujer 4.8-5.4x10 <sup>12</sup>/L</td>
+                <td class="tdx" style="color: darkred" align="center">x10 <sup>12 </sup>/L</td>
+                <td class="tdx" style="color: darkred" align="center">Varon 5.1-5.7x10 <sup>12</sup>/L <br> Mujer 4.8-5.4x10 <sup>12</sup>/L</td>
                 <td class="tdx" style="color: darkred" align="center">Tiempo de cuagulacion</td>
                 <td class="tdx">'.$row->d2.'</td>
-                <td class="tdx">5-10 min</td>
+                <td class="tdx" style="color: darkred" align="center">5-10 min</td>
             </tr>
             <tr>
                 <td class="tdx" style="color: darkred" align="center">Hemoglobina</td>
                 <td class="tdx">'.$row->d3.'</td>
-                <td class="tdx">g/L</td>
-                <td class="tdx">Varon 151-175 g/L <br> Mujer Mujer 141-165 g/L</td>
+                <td class="tdx" style="color: darkred" align="center">g/L</td>
+                <td class="tdx" style="color: darkred" align="center">Varon 151-175 g/L <br> Mujer Mujer 141-165 g/L</td>
                 <td class="tdx" style="color: darkred" align="center">Tiempo de sangria</td>
                 <td class="tdx">'.$row->d4.'</td>
-                <td class="tdx">1-3 min</td>
+                <td class="tdx" style="color: darkred" align="center">1-3 min</td>
             </tr>
             <tr>
                 <td class="tdx" style="color: darkred" align="center">Hematocrito</td>
                 <td class="tdx">'.$row->d5.'</td>
-                <td class="tdx">L/L</td>
-                <td class="tdx">Varon 0.51-0.57 L/L <br> Mujer 0.46-0.53 L/L</td>
+                <td class="tdx" style="color: darkred" align="center">L/L</td>
+                <td class="tdx" style="color: darkred" align="center">Varon 0.51-0.57 L/L <br> Mujer 0.46-0.53 L/L</td>
                 <td class="tdx" style="color: darkred" align="center">Tiempo de Protrombina</td>
                 <td class="tdx">'.$row->d6.'</td>
-                <td class="tdx">12-13 seg</td>
+                <td class="tdx" style="color: darkred" align="center">12-13 seg</td>
             </tr>
             <tr>
                 <td class="tdx" style="color: darkred" align="center">V.E.S.</td>
                 <td class="tdx">'.$row->d7.'</td>
-                <td class="tdx">mm.</td>
-                <td class="tdx">Varon 15 mm/hora <br> Mujer 20 mm/hora</td>
+                <td class="tdx" style="color: darkred" align="center">mm.</td>
+                <td class="tdx" style="color: darkred" align="center">Varon 15 mm/hora <br> Mujer 20 mm/hora</td>
                 <td class="tdx" style="color: darkred" align="center">% Actividad</td>
                 <td class="tdx">'.$row->d8.'</td>
-                <td class="tdx">95-100%</td>
+                <td class="tdx" style="color: darkred" align="center">95-100%</td>
             </tr>
 
             <tr>
                 <td class="tdx" style="color: darkred" align="center">V.C.M.</td>
                 <td class="tdx">'.$row->d9.'</td>
-                <td class="tdx">ft.</td>
-                <td class="tdx">Varon 83.0-97.0 ft</td>
+                <td class="tdx" style="color: darkred" align="center">ft.</td>
+                <td class="tdx" style="color: darkred" align="center">Varon 83.0-97.0 ft</td>
                 <td class="tdx" style="color: darkred" align="center">INR</td>
                 <td class="tdx">'.$row->d10.'</td>
-                <td class="tdx">0.97-1.04</td>
+                <td class="tdx" style="color: darkred" align="center">0.97-1.04</td>
             </tr>
             <tr>
                 <td class="tdx" style="color: darkred" align="center">Hb.C.M.</td>
                 <td class="tdx">'.$row->d11.'</td>
-                <td class="tdx">pg.</td>
-                <td class="tdx">27.0-31.0 pg.</td>
+                <td class="tdx" style="color: darkred" align="center" >pg.</td>
+                <td class="tdx" style="color: darkred" align="center" >27.0-31.0 pg.</td>
                 <td class="tdx" style="color: darkred" align="center">Grupofactor</td>
-                <td class="tdx" colspan="2">'.$row->d12.'</td>
+                <td class="tdx" style="color: darkred" align="center" colspan="2">'.$row->d12.'</td>
             </tr>
             <tr>
                 <td class="tdx" style="color: darkred" align="center">C. Hb.C.M.</td>
                 <td class="tdx">'.$row->d13.'</td>
-                <td class="tdx">%</td>
-                <td class="tdx">32-36%</td>
+                <td class="tdx" style="color: darkred" align="center">%</td>
+                <td class="tdx" style="color: darkred" align="center">32-36%</td>
                 <td class="tdx" style="color: darkred" align="center">Reticulocitos</td>
                 <td class="tdx">'.$row->d14.'</td>
-                <td class="tdx">0.5-2%</td>
+                <td class="tdx" style="color: darkred" align="center">0.5-2%</td>
             </tr>
             <tr>
                 <td class="tdx" style="color: darkred" align="center">Globulos Blancos</td>
                 <td class="tdx">'.$row->d15.'</td>
-                <td class="tdx">10 <sup>9</sup>/L</td>
-                <td class="tdx"> 4.5-10.5x10 <sup>9</sup>/L</td>
+                <td class="tdx" style="color: darkred" align="center">10 <sup>9</sup>/L</td>
+                <td class="tdx" style="color: darkred" align="center"> 4.5-10.5x10 <sup>9</sup>/L</td>
                 <td class="tdx" style="color: darkred" align="center">IPR</td>
                 <td class="tdx">'.$row->d16.'</td>
                 <td class="tdx"></td>
@@ -207,115 +208,122 @@ font-size: 10px;
             <tr>
                 <td class="tdx" style="color: darkred" align="center">Plaquetas</td>
                 <td class="tdx">'.$row->d17.'</td>
-                <td class="tdx">x10 <sup>9 </sup>/L</td>
-                <td class="tdx">105-400x10 <sup>9</sup> /L</td>
+                <td class="tdx" style="color: darkred" align="center">x10 <sup>9 </sup>/L</td>
+                <td class="tdx" style="color: darkred" align="center">105-400x10 <sup>9</sup> /L</td>
                 <td class="tdx" colspan="3"></td>
             </tr>
         </table>
-        <table border="1" style="width: 100%;color: black">
+        <table class="tablex" border="1" style="padding-right:10px;padding-left:0px;width: 100%;color: black">
             <tr>
-                <td colspan="5"></td>
-                <td colspan="2">VALOR REFERENCIAL</td>
+                <td class="tdx" colspan="5"></td>
+                <td class="tdx" colspan="2" style="color: red;font: bold" align="center" >VALOR REFERENCIAL</td>
             </tr>
             <tr>
-                <td style="color:white; background-color:red;"></td>
-                <td colspan="2">RELATIVA</td>
-                <td colspan="2">ABSOLUTA</td>
-                <td>RELATIVA</td>
-                <td>ABSOLUTA</td>
+                <td class="tdx" ></td>
+                <td class="tdx" colspan="2" style="color: red;font: bold" align="center">RELATIVA</td>
+                <td class="tdx" colspan="2" style="color: red;font: bold" align="center">ABSOLUTA</td>
+                <td class="tdx" style="color: red;font: bold" align="center">RELATIVA</td>
+                <td class="tdx" style="color: red;font: bold" align="center">ABSOLUTA</td>
             </tr>
             <tr>
-                <td style="color:white; background-color:red;">Cayados</td>
-                <td>'.$row->d18.'</td>
-                <td>%</td>
-                <td>'.$row->d19.'</td>
-                <td>x10 <sup>9</sup>/L</td>
-                <td>0-3%</td>
-                <td>0.00-0.35x10 <sup>9</sup>/L</td>
+                <td class="tdx" style="color: darkred" align="center">Cayados</td>
+                <td class="tdx">'.$row->d18.'</td>
+                <td class="tdx" style="color: darkred" align="center">%</td>
+                <td class="tdx">'.$row->d19.'</td>
+                <td class="tdx" style="color: darkred" align="center">x10 <sup>9</sup>/L</td>
+                <td class="tdx" style="color: darkred" align="center">0-3%</td>
+                <td class="tdx" style="color: darkred" align="center">0.00-0.35x10 <sup>9</sup>/L</td>
             </tr>
             <tr>
-                <td style="color:white; background-color:red;">Neutrofilos</td>
-                <td>'.$row->d20.'</td>
-                <td>%</td>
-                <td>'.$row->d21.'</td>
-                <td>x10 <sup>9</sup>/L</td>
-                <td>50-70%</td>
-                <td>2.50-7.35x10 <sup>9</sup>/L</td>
+                <td class="tdx" style="color: darkred" align="center">Neutrofilos</td>
+                <td class="tdx">'.$row->d20.'</td>
+                <td class="tdx" style="color: darkred" align="center">%</td>
+                <td class="tdx">'.$row->d21.'</td>
+                <td class="tdx" style="color: darkred" align="center">x10 <sup>9</sup>/L</td>
+                <td class="tdx" style="color: darkred" align="center">50-70%</td>
+                <td class="tdx" style="color: darkred" align="center">2.50-7.35x10 <sup>9</sup>/L</td>
             </tr>
             <tr>
-                <td style="color:white; background-color:red;">Eosinofilos</td>
-                <td>'.$row->d22.'</td>
-                <td>%</td>
-                <td>'.$row->d23.'</td>
-                <td>x10 <sup>9</sup>/L</td>
-                <td>0-3%</td>
-                <td>0.00-0.35x10 <sup>9</sup>/L</td>
+                <td class="tdx" style="color: darkred" align="center">Eosinofilos</td>
+                <td class="tdx">'.$row->d22.'</td>
+                <td class="tdx" style="color: darkred" align="center">%</td>
+                <td class="tdx">'.$row->d23.'</td>
+                <td class="tdx" style="color: darkred" align="center">x10 <sup>9</sup>/L</td>
+                <td class="tdx" style="color: darkred" align="center">0-3%</td>
+                <td class="tdx" style="color: darkred" align="center">0.00-0.35x10 <sup>9</sup>/L</td>
             </tr>
             <tr>
-                <td style="color:white; background-color:red;">Basofilos</td>
-                <td>'.$row->d24.'</td>
-                <td>%</td>
-                <td>'.$row->d25.'</td>
-                <td>x10 <sup>9</sup>/L</td>
-                <td>0-1%</td>
-                <td>0.00-0.15x10 <sup>9</sup>/L</td>
+                <td class="tdx" style="color: darkred" align="center">Basofilos</td>
+                <td class="tdx">'.$row->d24.'</td>
+                <td class="tdx" style="color: darkred" align="center">%</td>
+                <td class="tdx">'.$row->d25.'</td>
+                <td class="tdx" style="color: darkred" align="center">x10 <sup>9</sup>/L</td>
+                <td class="tdx" style="color: darkred" align="center">0-1%</td>
+                <td class="tdx" style="color: darkred" align="center">0.00-0.15x10 <sup>9</sup>/L</td>
             </tr>
             <tr>
-                <td style="color:white; background-color:red;">Linfocitos</td>
-                <td>'.$row->d26.'</td>
-                <td>%</td>
-                <td>'.$row->d27.'</td>
-                <td>x10 <sup>9</sup>/L</td>
-                <td>25-40%</td>
-                <td>1.25-4.200x10 <sup>9</sup>/L</td>
+                <td class="tdx" style="color: darkred" align="center">Linfocitos</td>
+                <td class="tdx">'.$row->d26.'</td>
+                <td class="tdx" style="color: darkred" align="center">%</td>
+                <td class="tdx">'.$row->d27.'</td>
+                <td class="tdx" style="color: darkred" align="center">x10 <sup>9</sup>/L</td>
+                <td class="tdx" style="color: darkred" align="center">25-40%</td>
+                <td class="tdx" style="color: darkred" align="center">1.25-4.200x10 <sup>9</sup>/L</td>
             </tr>
             <tr>
-                <td style="color:white; background-color:red;">Monocitos</td>
-                <td>'.$row->d28.'</td>
-                <td>%</td>
-                <td>'.$row->d29.'</td>
-                <td>x10 <sup>9</sup>/L</td>
-                <td>4-8%</td>
-                <td>2.00-8.40x10 <sup>9</sup>/L</td>
+                <td class="tdx" style="color: darkred" align="center">Monocitos</td>
+                <td class="tdx">'.$row->d28.'</td>
+                <td class="tdx" style="color: darkred" align="center">%</td>
+                <td class="tdx">'.$row->d29.'</td>
+                <td class="tdx" style="color: darkred" align="center">x10 <sup>9</sup>/L</td>
+                <td class="tdx" style="color: darkred" align="center">4-8%</td>
+                <td class="tdx" style="color: darkred" align="center">2.00-8.40x10 <sup>9</sup>/L</td>
             </tr>
             <tr>
-                <td style="color:white; background-color:red;">BLASTOS</td>
-                <td>'.$row->d30.'</td>
-                <td>%</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td class="tdx" style="color: darkred" align="center">BLASTOS</td>
+                <td class="tdx">'.$row->d30.'</td>
+                <td class="tdx" style="color: darkred" align="center">%</td>
+                <td class="tdx"></td>
+                <td class="tdx"></td>
+                <td class="tdx"></td>
+                <td class="tdx"></td>
             </tr>
         </table>
-        <table border="1" style="width: 100%;color: black">
+        <table class="tablex" style="padding-right:10px;padding-left:0px;width: 100%;color: black">
             <tr>
-                <td colspan="2">MORFOLOGIA DE FRONTIS DE SANGRE PERIFERICA</td>
+                <td class="tdx" style="color: red;font: bold"align="center" colspan="2">MORFOLOGIA DE FRONTIS DE SANGRE PERIFERICA</td>
             </tr>
             <tr>
-                <td style="color:white; background-color:red;">Serie Rojas:</td>
-                <td>'.$row->d31.'</td>
+                <td class="tdx" style="color: darkred" align="center">Serie Rojas:</td>
+                <td class="tdx">'.$row->d31.'</td>
             </tr>
             <tr>
-                <td style="color:white; background-color:red;">Serie Blancas:</td>
-                <td>'.$row->d32.'</td>
+                <td class="tdx" style="color: darkred" align="center">Serie Blancas:</td>
+                <td class="tdx">'.$row->d32.'</td>
             </tr>
             <tr>
-                <td style="color:white; background-color:red;">Serie Plaquetarias:</td>
-                <td>'.$row->d33.'</td>
+                <td class="tdx" style="color: darkred" align="center">Serie Plaquetarias:</td>
+                <td class="tdx">'.$row->d33.'</td>
             </tr>
             <tr>
-                <td style="color:white; background-color:red;">FECHA DE TOMA DE MUESTRA:</td>
-                <td>'.$row->fechatoma.'</td>
+                <td class="tdx" style="color: blue" align="center">FECHA DE TOMA DE MUESTRA:</td>
+                <td class="tdx">'.$row->fechatoma.'</td>
             </tr>
             <tr>
-                <td style="color:white; background-color:red;">Responsable:</td>
-                <td>'.$row->user->name.'</td>
+                <td class="tdx" style="color: blue" align="center">Responsable:</td>
+                <td class="tdx">'.$row->user->name.'</td>
             </tr>
-        </table>';
+        </table>
+
+</td>
+</tr>
+</table>
+
+
+';
 
         $pdf = App::make('dompdf.wrapper');
-        $customPaper = array(0,0,360,360);
+//        $customPaper = array(0,0,360,360);
         $pdf->setPaper('letter','landscape');
         $pdf->loadHTML($cadena);
         return $pdf->stream();

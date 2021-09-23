@@ -46,158 +46,169 @@ class SimpleController extends Controller
         //return redirect('/pacientes');
     }
     public function generar($id){
-        $row= simple::with('paciente')->with('user')
+        $row= simple::with('paciente')
+            ->with('user')
+            ->with('doctor')
         ->where('id',$id)
         ->get();
         $row=$row[0];
         $cadena='
-        <style>
-            table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
-            }
-            </style>
-            <table style="width: 100%;color: black">
+<style>
+.tablex, .tdx , .thx {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+*{
+margin: 0px;
+padding: 0px;
+border: 0px;
+font-size: 12px;
+}
+</style>
+            <table style="padding-left:10px;padding-right:15px;width: 100%;color: black;padding-top: 5px">
             <tr >
-                <td rowspan="4" style="height: 2cm"><img src="images/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
-                <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
+                <td rowspan="4" style="height: 2cm"><img src="./images/natividad2.png" alt="Logo Clinica" srcset="" style="height: 10px; width:20px;"></td>
+                <td style=" text-align:center;">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>                
+                <td style=" text-align:center;">Telf: 5254721 Fax: 52-83667 </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>                
+                <td style=" text-align:center;">Emergencia las 24 horas del dia. </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>                
+                <td style=" text-align:center;">Bolivar Nº 753 entre Arica e Iquique </td>
             </tr>
         </table>
-        <table border="1" style="width: 100%;color: black">
+        <table class="tablex" style="padding-left:10px;padding-right:15px;width: 100%;color: black">
             <tr>
-                <td colspan="3" style="text-align: center"><h3>COPRAPARASITOLOGICO SIMPLE</h3></td>
-                <td>Form. '.$row->id.'</td>
+                <td class="tdx" colspan="3" style="text-align: center"><h3>COPRAPARASITOLOGICO SIMPLE</h3></td>
+                <td class="tdx">Form. '.$row->id.'</td>
             </tr>
             <tr>
-                <td style="color: darkblue">PACIENTE</td>
-                <td>'.$row->paciente->nombre.'</td>
-                <td style="color: darkblue">EDAD</td>
-                <td>'.$row->paciente->age().'</td>
+                <td class="tdx" style="color: darkblue">PACIENTE</td>
+                <td class="tdx">'.$row->paciente->nombre.' '.$row->paciente->paterno.' '.$row->paciente->materno.'</td>
+                <td class="tdx" style="color: darkblue">EDAD</td>
+                <td class="tdx">'.$row->paciente->age().'</td>
             </tr>
             <tr>
-                <td style="color: darkblue">REQUERIDO POR</td>
-                <td>'.$row->requerido.'</td>
-                <td style="color: darkblue">SEXO</td>
-                <td>'.$row->paciente->sexo.'</td>
+                <td class="tdx" style="color: darkblue">REQUERIDO POR</td>
+                <td class="tdx">'.$row->doctor->nombre.' '.$row->doctor->paterno.' '.$row->doctor->materno.'</td>
+                <td class="tdx" style="color: darkblue">SEXO</td>
+                <td class="tdx">'.$row->paciente->sexo.'</td>
             </tr>
             <tr>
-                <td style="color: darkblue">TIPO MUESTRA</td>
-                <td>'.$row->tipomuestra.'</td>
-                <td style="color: darkblue">N PACIENTE</td>
-                <td>'.$row->paciente->id.'</td>
+                <td class="tdx" style="color: darkblue">TIPO MUESTRA</td>
+                <td class="tdx">'.$row->tipomuestra.'</td>
+                <td class="tdx" style="color: darkblue">N PACIENTE</td>
+                <td class="tdx">'.$row->paciente->id.'</td>
             </tr>
 
         </table>
-            <br>
-        <table border="1" style="width: 100%;color: black">
+        <table class="tablex" border="1" style="padding-left:10px;padding-right:15px;width: 100%;color: black">
             <tr >
-                <td colspan="2" style="text-align: center ">COPRAPARASITOLOGICO SIMPLE</td>
+                <td class="tdx" colspan="2" style="text-align: center ;color: darkred;font-weight: bold">COPRAPARASITOLOGICO SIMPLE</td>
             </tr>
             <tr>
-                <td style="color:red" >ASPECTO DE LA MUESTRA</td>
-                <td >'.$row->d1.'</td>
+                <td class="tdx" style="color:red" >ASPECTO DE LA MUESTRA</td>
+                <td class="tdx" >'.$row->d1.'</td>
             </tr>
             <tr>
-                <td style="color:red" >COLOR</td>
-                <td >'.$row->d2.'</td>
+                <td class="tdx" style="color:red" >COLOR</td>
+                <td class="tdx" >'.$row->d2.'</td>
             </tr>
             <tr>
-                <td style="color:red" >CELULAS EPITELIALES</td>
-                <td >'.$row->d3.'</td>
+                <td class="tdx" style="color:red" >CELULAS EPITELIALES</td>
+                <td class="tdx" >'.$row->d3.'</td>
             </tr>
             <tr>
-                <td style="color:red" >LEUCOCITOS</td>
-                <td >'.$row->d4.'</td>
+                <td class="tdx" style="color:red" >LEUCOCITOS</td>
+                <td class="tdx" >'.$row->d4.'</td>
             </tr>
             <tr>
-                <td style="color:red" >HEMATIES</td>
-                <td >'.$row->d5.'</td>
+                <td class="tdx" style="color:red" >HEMATIES</td>
+                <td class="tdx" >'.$row->d5.'</td>
             </tr>
             <tr>
-                <td style="color:red" >GRASAS</td>
-                <td >'.$row->d6.'</td>
+                <td class="tdx" style="color:red" >GRASAS</td>
+                <td class="tdx" >'.$row->d6.'</td>
             </tr>
             <tr>
-                <td style="color:red" >LEVADURAS</td>
-                <td >'.$row->d7.'</td>
+                <td class="tdx" style="color:red" >LEVADURAS</td>
+                <td class="tdx" >'.$row->d7.'</td>
             </tr>
             <tr>
-                <td style="color:red" >ESPORAS MICOTICAS</td>
-                <td >'.$row->d8.'</td>
+                <td class="tdx" style="color:red" >ESPORAS MICOTICAS</td>
+                <td class="tdx" >'.$row->d8.'</td>
             </tr>
             <tr>
-                <td style="color:red" >ALMIDON</td>
-                <td >'.$row->d9.'</td>
+                <td class="tdx" style="color:red" >ALMIDON</td>
+                <td class="tdx" >'.$row->d9.'</td>
             </tr>
             <tr>
-                <td style="color:red" >PARASITOS</td>
-                <td >'.$row->d10.'</td>
+                <td class="tdx" style="color:red" >PARASITOS</td>
+                <td class="tdx" >'.$row->d10.'</td>
             </tr>
             <tr>
-                <td style="color:red" >PIOCITOS</td>
-                <td >'.$row->d11.'</td>
+                <td class="tdx" style="color:red" >PIOCITOS</td>
+                <td class="tdx" >'.$row->d11.'</td>
             </tr>
 
             <tr>
-                <td rowspan="2" style="color:red" >MOCO FECAL:
+                <td class="tdx" rowspan="2" style="color:red" >MOCO FECAL:
                 <span style="color:black">'.$row->d12.'</span>               </td>
-                <td> Polimorfonucleares: <span style="color:black">'.$row->d13.'</span></td>
+                <td class="tdx"> Polimorfonucleares: <span style="color:black">'.$row->d13.'</span></td>
 
             </tr>
             <tr>
-                <td>Mononucleares: <span style="color:black">'.$row->d14.'</span> </td>
-                
+                <td class="tdx">Mononucleares: <span style="color:black">'.$row->d14.'</span> </td>
+
             </tr>
             <tr>
-                <td style="color:red" >OBSERVACIONES</td>
-                <td >'.$row->d15.'</td>
+                <td class="tdx" style="color:red" >OBSERVACIONES</td>
+                <td class="tdx" >'.$row->d15.'</td>
             </tr>
 
             <tr colspan="2">
-                <td colspan="2" style="text-align:center">OTROS</td>
+                <td class="tdx" colspan="2" style="text-align:center;color: darkred;font-weight: bold">OTROS</td>
             </tr>
             <tr>
-                <td style="color:red" >SANGRE OCULTA EN HECES</td>
-                <td >'.$row->d16.'</td>
+                <td class="tdx" style="color:red" >SANGRE OCULTA EN HECES</td>
+                <td class="tdx" >'.$row->d16.'</td>
             </tr>
             <tr>
-                <td style="color:red" >TEST DE BENEDICT</td>
-                <td >'.$row->d17.'</td>
-            </tr>  
-  
-            <tr>
-                <td style="color:red" >OBSERVACIONES</td>
-                <td >'.$row->d18.'</td>
+                <td class="tdx" style="color:red" >TEST DE BENEDICT</td>
+                <td class="tdx" >'.$row->d17.'</td>
             </tr>
 
             <tr>
-                <td rowspan="2" >RESPONSABLE: '.$row->user->name.'</td>
+                <td class="tdx" style="color:red" >OBSERVACIONES</td>
+                <td class="tdx" >'.$row->d18.'</td>
+            </tr>
 
-                <td>
+            <tr>
+                <td class="tdx" rowspan="2" style=";color: blue;font-weight: bold" >RESPONSABLE: '.$row->user->name.'</td>
+
+                <td class="tdx" style=";color: blue;font-weight: bold">
                     FECHA DE TOMA DE MUESTRAS : '.$row->fechatoma.'
-                    
+
                 </td>
             </tr>
             <tr>
 
-                <td>
+                <td class="tdx" style=";color: blue;font-weight: bold">
                     FECHA DE ENTREGA DE MUESTRAS : '.$row->fechatoma.'
-                    
+
                 </td>
             </tr>
 
         </table>
             ';
-            return $cadena;
+        $pdf = App::make('dompdf.wrapper');
+//        $customPaper = array(0,0,360,360);
+        $pdf->setPaper('letter');
+        $pdf->loadHTML($cadena);
+        return $pdf->stream();
         }
     /**
      * Display the specified resource.
