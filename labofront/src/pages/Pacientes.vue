@@ -1750,7 +1750,7 @@
             </tr>
             <tr>
                 <td colspan="6">
-                    <q-btn class="btn btn-success btn-block full-width" color="teal"><i class="fa fa-save"></i> REGISTRAR</q-btn>
+                    <q-btn type="submit" class="btn btn-success btn-block full-width" color="teal"><i class="fa fa-save"></i> REGISTRAR</q-btn>
                 </td>
             </tr>
         </table>
@@ -1910,7 +1910,7 @@
             </tr>
             <tr>
                 <td colspan="6">
-                    <q-btn class="btn btn-success btn-block full-width" color="teal"><i class="fa fa-save"></i> REGISTRAR</q-btn>
+                    <q-btn type="submit" class="btn btn-success btn-block full-width" color="teal"><i class="fa fa-save"></i> REGISTRAR</q-btn>
                 </td>
             </tr>
         </table>
@@ -2027,7 +2027,7 @@
             </tr>
             <tr>
                 <td colspan="6">
-                    <q-btn class="btn btn-success btn-block full-width" color="teal"><i class="fa fa-save"></i> REGISTRAR</q-btn>
+                    <q-btn type="submit" class="btn btn-success btn-block full-width" color="teal"><i class="fa fa-save"></i> REGISTRAR</q-btn>
                 </td>
             </tr>
         </table>
@@ -2186,7 +2186,7 @@
             </tr>
             <tr>
                 <td colspan="6">
-                    <q-btn class="btn btn-success btn-block full-width" color="teal"><i class="fa fa-save"></i> REGISTRAR</q-btn>
+                    <q-btn type="submit" class="btn btn-success btn-block full-width" color="teal"><i class="fa fa-save"></i> REGISTRAR</q-btn>
                 </td>
             </tr>
         </table>
