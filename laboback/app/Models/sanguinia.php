@@ -11,7 +11,6 @@ class sanguinia extends Model
     protected $fillable=[
         'tipomuestra',
         'fechatoma',
-        'fechares',
         'd1',
         'd2',
         'd3',

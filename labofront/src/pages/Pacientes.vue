@@ -637,7 +637,7 @@
             </tr>
             <tr>
                 <td colspan="3" class="bg-blue text-center text-white">FECHA DE ENTREGA DE RESULTADO</td>
-                <td><input placeholder="00" type="date" v-model="sanguinia.fechares"   style="width: 100%" ></td>
+                <td><input placeholder="00" type="date"  style="width: 100%" ></td>
             </tr>
             <tr>
                 <td colspan="8">

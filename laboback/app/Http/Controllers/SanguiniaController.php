@@ -8,6 +8,8 @@ use App\Models\Sanguinia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\App;
+use Barryvdh\DomPDF\Facade as PDF;
+
 class SanguiniaController extends Controller
 {
     /**
@@ -38,9 +40,7 @@ class SanguiniaController extends Controller
         //return redirect('/pacientes');
     }
     public function generar($id){
-        $row= sanguinia::with('paciente')
-            ->with('user')
-            ->with('doctor')
+        $row=Sanguinia::with('paciente')->with('user')->with('doctor')
         ->where('id',$id)
         ->get();
         $row=$row[0];
@@ -283,6 +283,7 @@ font-size: 12px;
         $pdf = App::make('dompdf.wrapper');
 //        $customPaper = array(0,0,360,360);
         $pdf->setPaper('letter');
+
         $pdf->loadHTML($cadena);
         return $pdf->stream();
     }
