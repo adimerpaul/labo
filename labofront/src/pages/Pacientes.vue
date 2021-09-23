@@ -87,7 +87,7 @@
         <q-tr :props="props">
           <q-td key="opcion" :props="props">
               <q-btn  dense round flat color="accent" @click="labRow(props)" icon="biotech"></q-btn>
-            <q-btn  dense round flat color="teal" @click="ListRow(props)" icon="list"></q-btn>
+            <q-btn  dense round flat color="teal" @click="listRow(props)" icon="list"></q-btn>
               <q-btn  dense round flat color="yellow" @click="editRow(props)" icon="edit"></q-btn>
               <q-btn  dense round flat color="red" @click="deleteRow(props)" icon="delete"></q-btn>
           </q-td>
@@ -157,6 +157,30 @@
             </div>
           </q-form>
         </q-card-section>
+      </q-card>
+    </q-dialog>
+
+          <q-dialog v-model="dialog_hist">
+      <q-card>
+        <q-card-section class="bg-success-14 text-white">
+          <div class="text-h6">Historial Formularios</div>
+        </q-card-section>
+        <q-card-section class="q-pt-xs">
+              <q-table
+                title="Historial Formularios"
+                :columns="columns2"
+                 :rows="historial"
+                >
+
+              <template v-slot:body-cell-opcion="props">
+        <q-tr :props="props">
+          <q-td key="opcion" :props="props">
+              <q-btn  dense round flat color="teal" @click="impRow(props)" icon="print"></q-btn>
+          </q-td>
+        </q-tr>
+      </template>
+      </q-table>
+          </q-card-section>
       </q-card>
     </q-dialog>
 
@@ -2190,6 +2214,7 @@ export default {
   data(){
     return{
       filter:'',
+      filter2:'',
       $q : useQuasar(),
       pacientes:[],
       rows:[],
@@ -2198,6 +2223,7 @@ export default {
       alert:false,
       dialog_mod:false,
       dialog_lab:false,
+      dialog_hist:false,
       formulario:[
          {value:"hemograma" ,label:"Hemograma completo" },
          {value:"sanguinia"        ,label:"Quimica sanguinia" },
@@ -2227,6 +2253,7 @@ export default {
       actual:date.formatDate(Date.now(),'YYYY-MM-DD'),
       ensayo:{},
       tab:{},
+      historial:[],
       columns:[
         { name: 'ci', label: 'ci', field: 'ci',align: 'center',},
         { name: 'nombre', label: 'nombre', field: 'nombre',align: 'center',},
@@ -2236,7 +2263,13 @@ export default {
         { name: 'sexo', label: 'sexo', field: 'sexo',align: 'center',},
         { name: 'celular', label: 'celular', field: 'celular',align: 'center',},
         { name: 'opcion', label: 'opcion', field: 'opcion',align: 'center',},
-      ]
+      ],
+    columns2:[
+        { name: 'formulario', label: 'formulario', field: 'formulario',align: 'center'},
+        { name: 'fechatoma', label: 'fechatoma', field: 'fechatoma',align: 'center'},
+        { name: 'tipomuestra', label: 'tipomuestra', field: 'tipomuestra',align: 'center'},
+        { name: 'opcion', label: 'opcion', field: 'opcion',align: 'center',}
+      ],
     }
   },
   created(){
@@ -2248,10 +2281,8 @@ export default {
     listdoctor(){
         this.doctors=[];
           this.$axios.get(process.env.API+'/doctor').then(res=>{
-
-       console.log(res.data)
-
-         res.data.forEach(element => {
+            console.log(res.data);
+            res.data.forEach(element => {
             this.doctors.push({label:element.nombre,value:element.id});
 
          });
@@ -2261,7 +2292,7 @@ export default {
     listado(){
           this.$axios.get(process.env.API+'/paciente').then(res=>{
        console.log(res.data)
-       this.pacientes=res.data
+       this.pacientes=res.data;
      })
     },
     editRow(props){
@@ -2441,6 +2472,22 @@ export default {
     labRow(props){
       this.dato2=props.row;
       this.dialog_lab=true;
+    },
+    listRow(props){
+        this.dato2=props.row;
+        this.historial=[];
+        this.$axios.get(process.env.API+'/historialform/'+this.dato2.id).then(res=>{
+            console.log(res.data);
+            this.historial=res.data;
+            this.dialog_hist=true;
+        })
+
+    },
+    impRow(props){
+        let url=(process.env.API+'/'+props.row.formulario+'/'+props.row.id);
+      // let route = this.$router.resolve('/link/to/page'); // This also works.
+             window.open(url, '_blank');
+        
     },
     onMod(){
       console.log(this.dato2)

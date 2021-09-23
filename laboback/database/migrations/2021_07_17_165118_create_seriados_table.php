@@ -16,6 +16,7 @@ class CreateSeriadosTable extends Migration
         Schema::create('seriados', function (Blueprint $table) {
             $table->id();
             $table->string('tipomuestra')->default('')->nullable();
+            $table->date('fechatoma')->nullable();
             $table->string('muestra1')->default('')->nullable();
             $table->date('fecha1')->nullable();
             $table->time('hora1')->nullable();

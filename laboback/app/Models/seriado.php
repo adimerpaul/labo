@@ -10,7 +10,7 @@ class seriado extends Model
     use HasFactory;
     protected $fillable=[
         'tipomuestra',
-
+        'fechatoma',
         'muestra1',
         'fecha1',
         'hora1',

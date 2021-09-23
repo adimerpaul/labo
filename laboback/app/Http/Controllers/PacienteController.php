@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Paciente;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PacienteController extends Controller
 {
@@ -93,6 +94,24 @@ class PacienteController extends Controller
     public function destroy($id)
     {
         return Paciente::find($id)->delete();
+    }
+
+    public function historialform($id){
+        $r1=DB::select(
+            "SELECT id,tipomuestra,fechatoma,'hemograma' as formulario FROM hemogramas WHERE paciente_id='$id' union
+            SELECT id,tipomuestra,fechatoma,'orina' as formulario FROM orinas WHERE paciente_id='$id' union
+            SELECT id,tipomuestra,fechatoma,'sanguinia' as formulario FROM sanguinias WHERE paciente_id='$id' union
+            SELECT id,tipomuestra,fechatoma,'uretral' as formulario FROM uretrals WHERE paciente_id='$id' union
+            SELECT id,tipomuestra,fechatoma,'vaginal' as formulario FROM vaginals WHERE paciente_id='$id' union
+            SELECT id,tipomuestra,fechatoma,'hece' as formulario FROM heces WHERE paciente_id='$id' union
+            SELECT id,tipomuestra,fechatoma,'simple' as formulario FROM simples WHERE paciente_id='$id' union
+            SELECT id,tipomuestra,fechatoma,'seriados' as formulario FROM seriados WHERE paciente_id='$id' union
+            SELECT id,tipomuestra,fechatoma,'serologia' as formulario FROM serologias WHERE paciente_id='$id' union
+            SELECT id,tipomuestra,fechatoma,'labserologia' as formulario FROM labserologias WHERE paciente_id='$id' union
+            SELECT id,tipomuestra,fechatoma,'reserologia' as formulario FROM reserologias WHERE paciente_id='$id' union
+            SELECT id,tipomuestra,fechatoma,'ensayo' as formulario FROM ensayos WHERE paciente_id='$id' "
+        );
+        return $r1;
     }
 
 }

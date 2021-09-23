@@ -56,6 +56,6 @@ Route::group(['middleware'=>'auth:sanctum'],function (){
     Route::resource('/inventario',\App\Http\Controllers\InventarioController ::class);
     Route::post('/datos',[\App\Http\Controllers\EnsayoController ::class,'datos']);
     Route::get('/caduca',[\App\Http\Controllers\ReactivoController::class,'caduca']);
-
+    Route::get('/historialform/{id}',[\App\Http\Controllers\PacienteController::class,'historialform']);
 
 });

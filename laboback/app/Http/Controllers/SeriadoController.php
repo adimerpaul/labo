@@ -38,7 +38,7 @@ class SeriadoController extends Controller
     public function store(Request $request)
     {
         //
-        $dato=Seriado::create($request->seriado+ ['user_id' => Auth::user()->id,'paciente_id'=>$request->paciente['id'],'doctor_id'=>$request->doctor]);
+        $dato=Seriado::create($request->seriado+ ['fechatoma'=>date('Y-m-d'),'user_id' => Auth::user()->id,'paciente_id'=>$request->paciente['id'],'doctor_id'=>$request->doctor]);
         return $dato;
         //$pdf = App::make('dompdf.wrapper');
         //$pdf->loadHTML($this->generar($dato->id));
