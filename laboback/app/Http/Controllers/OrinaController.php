@@ -54,9 +54,17 @@ class OrinaController extends Controller
         $row=$row[0];
         $cadena='
         <style>
-table, th, td {
+.tablex , th , .tdx  {
   border: 1px solid black;
   border-collapse: collapse;
+}
+table{
+}
+*{
+padding: 0px;
+margin: 0px;
+border: 0px;
+font-size: 13px;
 }
 </style>
         <table style="width: 100%;color: black">
@@ -65,13 +73,13 @@ table, th, td {
             <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
         </tr>
         <tr>
-            <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>                
+            <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>
         </tr>
         <tr>
-            <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>                
+            <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>
         </tr>
         <tr>
-            <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>                
+            <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>
         </tr>
     </table>
     <table  style="border:1; width: 100%;color: black">

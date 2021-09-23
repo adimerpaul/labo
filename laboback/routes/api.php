@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 //});
 Route::post('/login',[\App\Http\Controllers\UserController::class,'login']);
 Route::get('/hemograma/{id}',[\App\Http\Controllers\HemogramaController::class,'generar']);
+Route::get('/orina/{id}',[\App\Http\Controllers\OrinaController::class,'generar']);
 Route::get('/sanguinia/{id}',[\App\Http\Controllers\SanguiniaController::class,'generar']);
 Route::get('/uretral/{id}',[\App\Http\Controllers\UretralController::class,'generar']);
 Route::get('/vaginal/{id}',[\App\Http\Controllers\VaginalController::class,'generar']);

@@ -430,7 +430,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <button class="btn btn-success btn-block" type="submit"><i class="fa fa-save"></i> REGISTRAR</button>
+                    <q-btn class="btn btn-success btn-block full-width" color="teal" type="submit"><i class="fa fa-save"></i> REGISTRAR</q-btn>
                 </td>
             </tr>
         </table>
@@ -665,7 +665,7 @@
             </tr>
             <tr>
                 <td colspan="8">
-                    <button type="submit" class="btn btn-success btn-block"><i class="fa fa-plus-circle"></i> GUARDAR</button>
+                    <q-btn type="submit" class="btn btn-success btn-block full-width" color="teal"><i class="fa fa-plus-circle"></i> GUARDAR</q-btn>
                 </td>
             </tr>
         </table>
@@ -903,7 +903,7 @@
             </tr>
             <tr>
                 <td colspan="6">
-                    <button class="btn btn-success btn-block"><i class="fa fa-save"></i> REGISTRAR</button>
+                    <q-btn class="btn btn-success btn-block full-width" color="teal"><i class="fa fa-save"></i> REGISTRAR</q-btn>
                 </td>
             </tr>
         </table>
@@ -1048,7 +1048,7 @@
             </tr>
             <tr>
                 <td colspan="6">
-                    <button class="btn btn-success btn-block"><i class="fa fa-save"></i> REGISTRAR</button>
+                    <q-btn class="btn btn-success btn-block full-width" color="teal"><i class="fa fa-save"></i> REGISTRAR</q-btn>
                 </td>
             </tr>
         </table>
@@ -1192,7 +1192,7 @@
             </tr>
             <tr>
                 <td colspan="6">
-                    <button class="btn btn-success btn-block"><i class="fa fa-save"></i> REGISTRAR</button>
+                    <q-btn class="btn btn-success btn-block full-width" color="teal"><i class="fa fa-save"></i> REGISTRAR</q-btn>
                 </td>
             </tr>
         </table>
@@ -1348,7 +1348,7 @@
             </tr>
             <tr>
                 <td colspan="6">
-                    <button class="btn btn-success btn-block"><i class="fa fa-save"></i> REGISTRAR</button>
+                    <q-btn class="btn btn-success btn-block full-width" color="teal"><i class="fa fa-save"></i> REGISTRAR</q-btn>
                 </td>
             </tr>
         </table>
@@ -1497,7 +1497,7 @@
             </tr>
             <tr>
                 <td colspan="6">
-                    <button class="btn btn-success btn-block"><i class="fa fa-save"></i> REGISTRAR</button>
+                    <q-btn class="btn btn-success btn-block full-width" color="teal"><i class="fa fa-save"></i> REGISTRAR</q-btn>
                 </td>
             </tr>
         </table>
@@ -1604,7 +1604,7 @@
             </tr>
             <tr>
                 <td colspan="6">
-                    <button class="btn btn-success btn-block"><i class="fa fa-save"></i> REGISTRAR</button>
+                    <q-btn class="btn btn-success btn-block full-width" color="teal"><i class="fa fa-save"></i> REGISTRAR</q-btn>
                 </td>
             </tr>
         </table>
@@ -1750,7 +1750,7 @@
             </tr>
             <tr>
                 <td colspan="6">
-                    <button class="btn btn-success btn-block"><i class="fa fa-save"></i> REGISTRAR</button>
+                    <q-btn class="btn btn-success btn-block full-width" color="teal"><i class="fa fa-save"></i> REGISTRAR</q-btn>
                 </td>
             </tr>
         </table>
@@ -1910,7 +1910,7 @@
             </tr>
             <tr>
                 <td colspan="6">
-                    <button class="btn btn-success btn-block"><i class="fa fa-save"></i> REGISTRAR</button>
+                    <q-btn class="btn btn-success btn-block full-width" color="teal"><i class="fa fa-save"></i> REGISTRAR</q-btn>
                 </td>
             </tr>
         </table>
@@ -2027,7 +2027,7 @@
             </tr>
             <tr>
                 <td colspan="6">
-                    <button class="btn btn-success btn-block"><i class="fa fa-save"></i> REGISTRAR</button>
+                    <q-btn class="btn btn-success btn-block full-width" color="teal"><i class="fa fa-save"></i> REGISTRAR</q-btn>
                 </td>
             </tr>
         </table>
@@ -2186,7 +2186,7 @@
             </tr>
             <tr>
                 <td colspan="6">
-                    <button class="btn btn-success btn-block"><i class="fa fa-save"></i> REGISTRAR</button>
+                    <q-btn class="btn btn-success btn-block full-width" color="teal"><i class="fa fa-save"></i> REGISTRAR</q-btn>
                 </td>
             </tr>
         </table>
@@ -2281,11 +2281,10 @@ export default {
     listdoctor(){
         this.doctors=[];
           this.$axios.get(process.env.API+'/doctor').then(res=>{
-            console.log(res.data);
-            res.data.forEach(element => {
-            this.doctors.push({label:element.nombre,value:element.id});
-
-         });
+            // console.log(res.data);
+            res.data.forEach(e => {
+                this.doctors.push({label:e.nombre+' '+e.paterno+' '+e.materno,value:e.id})
+             });
          this.requerido=this.doctors[0];
           })
     },
@@ -2487,7 +2486,7 @@ export default {
         let url=(process.env.API+'/'+props.row.formulario+'/'+props.row.id);
       // let route = this.$router.resolve('/link/to/page'); // This also works.
              window.open(url, '_blank');
-        
+
     },
     onMod(){
       console.log(this.dato2)
