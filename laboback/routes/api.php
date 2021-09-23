@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 //});
 Route::post('/login',[\App\Http\Controllers\UserController::class,'login']);
 Route::get('/hemograma/{id}',[\App\Http\Controllers\HemogramaController::class,'generar']);
+Route::get('/sanguinia/{id}',[\App\Http\Controllers\SanguiniaController::class,'generar']);
 
 Route::group(['middleware'=>'auth:sanctum'],function (){
     Route::post('/logout',[\App\Http\Controllers\UserController::class,'logout']);

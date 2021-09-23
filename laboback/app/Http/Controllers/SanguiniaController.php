@@ -8,6 +8,8 @@ use App\Models\Sanguinia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\App;
+use Barryvdh\DomPDF\Facade as PDF;
+
 class SanguiniaController extends Controller
 {
     /**
@@ -38,7 +40,8 @@ class SanguiniaController extends Controller
         //return redirect('/pacientes');
     }
     public function generar($id){
-        $row= sanguinia::with('paciente')->with('user')
+        
+        $row=Sanguinia::with('paciente')->with('user')->with('doctor')
         ->where('id',$id)
         ->get();
         $row=$row[0];
@@ -47,37 +50,49 @@ class SanguiniaController extends Controller
 table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
-}
+    }
+    *{
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    font-size: 10px;
+    }
+    table{
+        margin-left: 5px;
+        margin-right: 5px;
+        width: 50%;
+        }
+
 </style>
-        <table style="width: 100%;color: black">
-        <tr >
-            <td rowspan="4" style="height: 2cm"><img src="images/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
-            <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
+        <table style="border=0; margin-top:5px" >
+        <tr style="border=0;" >
+            <td rowspan="4" style="height: 2cm;border:0"><img src="./img/natividad" style="height: 10px; width:200px;"></td>
+            <td style="color: blue; text-align:center;border:0 ">SERVICIO DE LABORATORIO </td>
         </tr>
-        <tr>
-            <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>                
+        <tr style="border=0;" >
+            <td style="color: blue; text-align:center;;border:0 ">Telf: 5254721 Fax: 52-83667 </td>                
         </tr>
-        <tr>
-            <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>                
+        <tr style="border=0;" >
+            <td style="color: blue; text-align:center; ;border:0">Emergencia las 24 horas del dia. </td>                
         </tr>
-        <tr>
-            <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>                
+        <tr style="border=0;" >
+            <td style="color: blue; text-align:center; ;border:0">Bolivar Nº 753 entre Arica e Iquique </td>                
         </tr>
     </table>
-        <table  style="border=1; width: 100%;color: black">
+        <table  style="border=1; color: black">
             <tr>
                 <td colspan="3" style="text-align: center"><h3>QUIMICA SANGUINEA</h3></td>
                 <td>Form. '.$row->id.'</td>
             </tr>
             <tr>
                 <td style="color: darkblue">PACIENTE</td>
-                <td>'.$row->paciente->nombre.'</td>
+                <td class="tdx" >'.$row->paciente->nombre.' '.$row->paciente->paterno.' '.$row->paciente->materno.'</td>
                 <td style="color: darkblue">EDAD</td>
                 <td>'.$row->paciente->age().'</td>
             </tr>
             <tr>
                 <td style="color: darkblue">REQUERIDO POR</td>
-                <td>'.$row->requerido.'</td>
+                <td>'.$row->doctor->nombre.'</td>
                 <td style="color: darkblue">SEXO</td>
                 <td>'.$row->paciente->sexo.'</td>
             </tr>
@@ -88,7 +103,7 @@ table, th, td {
                 <td>'.$row->paciente->id.'</td>
             </tr>
         </table>
-        <table style="border:"1"; width: 100%;color: black">
+        <table style="border:"1"; color: black">
             <tr style="color:white; background-color:purple">
                 <th>PRUEBA</th>
                 <th>VALOR</th>
@@ -214,7 +229,7 @@ table, th, td {
                 <td>'.$row->d21.'</td>
                 <td>hasta 0.3 mg/dl</td>
                 <td style="color:white; background-color:red; text-align:center;">Cloro</td>
-                <td'.$row->d22.'></td>
+                <td>'.$row->d22.'</td>
                 <td>98-106 mEq/L</td>
             </tr>
             <tr>
@@ -260,19 +275,21 @@ table, th, td {
             </tr>
             <tr>
                 <td colspan="2" rowspan="2" style="background-color:blue; text-align:center; color:white;">RESPONSABLE</td>
-                <td colspan="2" rowspan="2">
-                    '.$row->user->name.'
-                </td>
+                <td colspan="2" rowspan="2">'.$row->user->name.'</td>
                 <td colspan="3" style="background-color:blue; text-align:center; color:white;">FECHA TOMA DE MUESTRA</td>
                 <td>'.$row->fechatoma.'</td>
             </tr>
             <tr>
                 <td colspan="3" style="background-color:blue; text-align:center; color:white;">FECHA DE ENTREGA DE RESULTADO</td>
-                <td>'.$row->fechatoma.'</td>
+                <td>'.date('Y-m-d').'</td>
             </tr>
         </table>
         ';
-        return $cadena;
+        $pdf = App::make('dompdf.wrapper');
+        $customPaper = array(0,0,360,360);
+        $pdf->setPaper('letter','landscape');
+        $pdf->loadHTML($cadena);
+        return $pdf->stream();
     }
     /**
      * Display the specified resource.
