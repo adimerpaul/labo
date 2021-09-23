@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\hece;
+use App\Models\Hece;
 use Illuminate\Http\Request;
 use App\Models\Doctor;
 use Illuminate\Support\Facades\Auth;
