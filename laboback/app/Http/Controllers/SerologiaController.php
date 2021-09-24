@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Doctor;
 use Illuminate\Support\Facades\App;
+use Barryvdh\DomPDF\Facade as PDF;
+
 class SerologiaController extends Controller
 {
     /**

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Hemograma;
 use App\Models\Orina;
-use App\Models\sanguinia;
+use App\Models\Sanguinia;
 use Illuminate\Http\Request;
 
 class HistorialController extends Controller

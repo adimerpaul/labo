@@ -4,7 +4,7 @@
         <q-btn  label="Registrar Paciente" color="positive" @click="alert = true" icon="add_circle" class="q-mb-xs" />
     <q-dialog v-model="alert">
       <q-card>
-        <q-card-section class="bg-success-14 text-white">
+        <q-card-section class="bg-green-14 text-white">
           <div class="text-h6">Registro</div>
         </q-card-section>
         <q-card-section class="q-pt-xs">
@@ -2238,20 +2238,20 @@ export default {
          {value:"reserologia"        ,label:"Resultado Serologia" },
          {value:"ensayo"        ,label:"Inmunoensayo de Fluorescencia" }
       ],
-      hemograma:{},
-      orina:{},
-      sanguinia:{},
-      uretral:{},
-      vaginal:{},
-      hece:{},
-      simple:{},
-      seriado:{},
-      serologia:{},
-      labserologia:{},
-      reserologia:{},
+      hemograma:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD')},
+      orina:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD')},
+      sanguinia:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD')},
+      uretral:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD')},
+      vaginal:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD')},
+      hece:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD')},
+      simple:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD')},
+      seriado:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD')},
+      serologia:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD')},
+      labserologia:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD')},
+      reserologia:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD')},
       requerido:{},
       actual:date.formatDate(Date.now(),'YYYY-MM-DD'),
-      ensayo:{},
+      ensayo:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD')},
       tab:{},
       historial:[],
       columns:[

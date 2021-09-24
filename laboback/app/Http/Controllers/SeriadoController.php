@@ -7,6 +7,8 @@ use App\Models\Seriado;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Barryvdh\DomPDF\Facade as PDF;
+
 class SeriadoController extends Controller
 {
     /**

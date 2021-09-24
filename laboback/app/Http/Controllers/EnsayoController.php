@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Doctor;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\App;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class EnsayoController extends Controller
 {

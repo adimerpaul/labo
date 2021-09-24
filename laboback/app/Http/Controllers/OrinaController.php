@@ -7,6 +7,8 @@ use App\Models\Orina;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\App;
+use Barryvdh\DomPDF\Facade as PDF;
+
 
 class OrinaController extends Controller
 {
