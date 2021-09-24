@@ -27,6 +27,9 @@ Route::get('/hece/{id}',[\App\Http\Controllers\HeceController::class,'generar'])
 Route::get('/simple/{id}',[\App\Http\Controllers\SimpleController::class,'generar']);
 Route::get('/seriado/{id}',[\App\Http\Controllers\SeriadoController::class,'generar']);
 Route::get('/serologia/{id}',[\App\Http\Controllers\SerologiaController::class,'generar']);
+Route::get('/labserologia/{id}',[\App\Http\Controllers\LabserologiaController::class,'generar']);
+Route::get('/reserologia/{id}',[\App\Http\Controllers\ReserologiaController::class,'generar']);
+Route::get('/ensayo/{id}',[\App\Http\Controllers\EnsayoController::class,'generar']);
 
 Route::group(['middleware'=>'auth:sanctum'],function (){
     Route::post('/logout',[\App\Http\Controllers\UserController::class,'logout']);
