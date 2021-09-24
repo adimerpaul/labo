@@ -202,7 +202,7 @@ class LabserologiaController extends Controller
 
                 <td colspan="2">
                     FECHA DE ENTREGA DE MUESTRAS: 
-                    '.$row->fechatoma.'
+                    '.date('Y-m-d').'
                 </td>
             </tr>
 

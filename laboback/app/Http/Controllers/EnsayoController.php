@@ -224,7 +224,7 @@ table, th, td {
                 </tr>
                 <tr>
                     <td colspan="3">
-                        FECHA DE ENTREGA DE MUESTRAS: '.$row->fechatoma.'
+                        FECHA DE ENTREGA DE MUESTRAS: '.date('Y-m-d').'
                     </td>
                 </tr>          
             </table>';

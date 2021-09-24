@@ -275,7 +275,7 @@ font-size: 12px;
             </tr>
             <tr>
                 <td class="tdx" colspan="3" style="font-weight:bold;color:blue; text-align:center;">FECHA DE ENTREGA DE RESULTADO</td>
-                <td class="tdx">'.$row->fechatoma.'</td>
+                <td class="tdx">'.date('Y-m-d').'</td>
             </tr>
         </table>
         ';

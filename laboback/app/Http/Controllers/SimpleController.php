@@ -199,7 +199,7 @@ font-size: 12px;
             <tr>
 
                 <td class="tdx" style=";color: blue;font-weight: bold">
-                    FECHA DE ENTREGA DE MUESTRAS : '.$row->fechatoma.'
+                    FECHA DE ENTREGA DE MUESTRAS : '.date('Y-m-d').'
 
                 </td>
             </tr>

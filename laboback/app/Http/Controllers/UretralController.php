@@ -187,7 +187,7 @@ class UretralController extends Controller
             <tr>
                 <td class="tdx" style="color: blue;font-weight: bold">
                     FECHA DE ENTREGA DE MUESTRAS :
-                    '.$row->fechaentrega.'
+                    '.date('Y-m-d').'
                 </td>
             </tr>
         </table>

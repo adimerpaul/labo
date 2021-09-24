@@ -196,7 +196,7 @@ font-size: 12px;
             <tr>
                 <td>
                     FECHA DE ENTREGA DE MUESTRAS:
-                    '.$row->fechaentrega.'
+                    '.date('Y-m-d').'
                 </td>
             </tr>
 
