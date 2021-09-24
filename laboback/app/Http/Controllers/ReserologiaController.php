@@ -55,7 +55,7 @@ class ReserologiaController extends Controller
      */
 
     public function generar($id){
-        $row= Reserologia::with('paciente')->with('user')
+        $row= Reserologia::with('paciente')->with('user')-with('doctor')
         ->where('id',$id)
         ->get();
         $row=$row[0];
@@ -88,13 +88,13 @@ table, th, td {
             </tr>
             <tr>
                 <td style="color: darkblue">PACIENTE</td>
-                <td>'.$row->paciente->nombre.'</td>
+                <td>'.$row->paciente->nombre.' '.$row->paciente->paterno.' '.$row->paciente->materno.'</td>
                 <td style="color: darkblue">EDAD</td>
                 <td>'.$row->paciente->age().'</td>
             </tr>
             <tr>
                 <td style="color: darkblue">REQUERIDO POR</td>
-                <td style="text-align:center"> '.$row->requerido.'</td>
+                <td style="text-align:center">'.$row->doctor->nombre.' '.$row->doctor->paterno.' '.$row->doctor->materno.'</td>
                 <td style="color: darkblue">SEXO</td>
                 <td style="text-align:center">'.$row->paciente->sexo.'</td>
             </tr>

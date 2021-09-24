@@ -50,7 +50,7 @@ class OrinaController extends Controller
     }
 
     public function generar($id){
-        $row= Orina::with('paciente')->with('user')
+        $row= Orina::with('paciente')->with('user')->with('doctor')
         ->where('id',$id)
         ->get();
         $row=$row[0];
@@ -91,13 +91,13 @@ font-size: 13px;
         </tr>
         <tr>
             <td style="color: darkblue">PACIENTE</td>
-            <td>'.$row->paciente->nombre.'</td>
+            <td>'.$row->paciente->nombre.' '.$row->paciente->paterno.' '.$row->paciente->materno.'</td>
             <td style="color: darkblue">EDAD</td>
             <td>'.$row->paciente->age().'</td>
         </tr>
         <tr>
             <td style="color: darkblue">REQUERIDO POR</td>
-            <td>'.$row->requerido.'</td>
+            <td>'.$row->doctor->nombre.' '.$row->doctor->paterno.' '.$row->doctor->materno.'</td>
             <td style="color: darkblue">SEXO</td>
             <td>'.$row->paciente->sexo.'</td>
         </tr>

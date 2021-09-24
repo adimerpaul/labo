@@ -72,7 +72,7 @@ class EnsayoController extends Controller
     }
 
     public function generar($id){
-        $row= Ensayo::with('paciente')->with('user')
+        $row= Ensayo::with('paciente')->with('user')->with('doctor')
         ->where('id',$id)
         ->get();
         $row=$row[0];
@@ -107,13 +107,13 @@ table, th, td {
                 </tr>
                 <tr>
                     <td style="color: darkblue">PACIENTE</td>
-                    <td><label style="text-align: center">'.$row->paciente->nombre.'</label></td>
+                    <td><label style="text-align: center">'.$row->paciente->nombre.' '.$row->paciente->paterno.' '.$row->paciente->materno.'</label></td>
                     <td style="color: darkblue">EDAD</td>
                     <td><label tyle="text-align: center">'.$row->paciente->age().'</label></td>
                 </tr>
                 <tr>
                     <td style="color: darkblue">REQUERIDO POR</td>
-                    <td tyle="text-align: center">'.$row->requerido.'</td>
+                    <td tyle="text-align: center">'.$row->doctor->nombre.' '.$row->doctor->paterno.' '.$row->doctor->materno.'</td>
                     <td style="color: darkblue">SEXO</td>
                     <td tyle="text-align: center"> '.$row->paciente->sexo.'</td>
                 </tr>
