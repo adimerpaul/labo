@@ -43,6 +43,7 @@ Route::group(['middleware'=>'auth:sanctum'],function (){
     Route::put('/updatepermisos/{user}',[\App\Http\Controllers\UserController::class,'updatepermisos']);
     Route::post('/doctoractivo', [App\Http\Controllers\DoctorController::class, 'doctoractivo']);
     Route::post('/reactivoestado', [App\Http\Controllers\ReactivoController::class, 'reactivoestado']);
+    Route::post('/listinventario', [App\Http\Controllers\InventarioController::class, 'listinventario']);
     Route::resource('/paciente',\App\Http\Controllers\PacienteController::class);
     Route::resource('/doctor',\App\Http\Controllers\DoctorController::class);
     Route::resource('/hemograma',\App\Http\Controllers\HemogramaController::class);
@@ -59,6 +60,7 @@ Route::group(['middleware'=>'auth:sanctum'],function (){
     Route::resource('/reserologia',\App\Http\Controllers\ReserologiaController ::class);
     Route::resource('/ensayo',\App\Http\Controllers\EnsayoController ::class);
     Route::resource('/inventario',\App\Http\Controllers\InventarioController ::class);
+    Route::resource('/retiro',\App\Http\Controllers\RetiroController ::class);
     Route::post('/datos',[\App\Http\Controllers\EnsayoController ::class,'datos']);
     Route::get('/caduca',[\App\Http\Controllers\ReactivoController::class,'caduca']);
     Route::get('/historialform/{id}',[\App\Http\Controllers\PacienteController::class,'historialform']);

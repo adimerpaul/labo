@@ -64,6 +64,11 @@ class InventarioController extends Controller
         return Inventario::where('reactivo_id',$id)->get();
     }
 
+    public function listinventario(Request $request)
+    {
+        //
+        return Inventario::where('reactivo_id',$request->id)->get();
+    }
     /**
      * Show the form for editing the specified resource.
      *

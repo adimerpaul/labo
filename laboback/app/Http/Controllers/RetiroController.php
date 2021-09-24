@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Retiro;
+use App\Models\Inventario;
 use Illuminate\Http\Request;
 
 class RetiroController extends Controller
@@ -36,6 +37,21 @@ class RetiroController extends Controller
     public function store(Request $request)
     {
         //
+        $retiro= new Retiro;
+        $retiro->fecharetiro=date('Y-m-d');
+        $retiro->egreso=$request->egreso;
+        $retiro->observacion=$request->observacion;
+        $retiro->inventario_id=$request->inventario_id;
+        $retiro->reactivo_id=$request->reactivo_id;
+        $retiro->user_id=Auth::user()->id;
+        $retiro->save();
+        $inventario=Inventario::find($request->inventario_id);
+        if($inventario->saldo < $request->egreso)
+            $inventario->saldo=0;   
+        else
+            $inventario->saldo-=$request->egreso;
+        $inventario->save();
+        return $retiro;
     }
 
     /**

@@ -70,6 +70,7 @@
 
           <q-td key="opcion" :props="props">
               <q-btn  dense round flat color="yellow" @click="invRow(props)" icon="inventory_2"></q-btn>
+              <q-btn  dense round flat color="yellow" @click="retRow(props)" icon="receipt"></q-btn>
               <q-btn  dense round flat color="yellow" @click="editRow(props)" icon="edit"></q-btn>
               <q-btn  dense round flat color="red" @click="deleteRow(props)" icon="delete"></q-btn>
           </q-td>
@@ -180,6 +181,66 @@
       </q-card>
     </q-dialog>
 
+
+    <q-dialog v-model="dialog_inv">
+      <q-card>
+        <q-card-section class="bg-green-14 text-white">
+          <div class="text-h6">Inventario</div>
+        </q-card-section>
+        <q-card-section class="q-pt-xs">
+        <q-table
+        :columns="columns2"
+        :rows="inventarios">
+
+                      <template v-slot:body-cell-opcion="props">
+
+          <q-td key="opcion" :props="props">
+              <q-btn  dense round flat color="red" @click="retirarRow(props)" icon="logout" v-if="props.row.saldo>0"></q-btn>
+          </q-td>
+      </template>
+        </q-table>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
+
+    <q-dialog v-model="dialog_retiro">
+      <q-card>
+        <q-card-section class="bg-green-14 text-white">
+          <div class="text-h6">Registrar Retiro</div>
+        </q-card-section>
+        <q-card-section class="q-pt-xs">
+          <q-form
+            @submit="onRetiro"
+            class="q-gutter-md"
+          >
+            <q-input
+              filled
+              v-model="retiro.egreso"
+              label="Cantidad"
+              hint="Cantidad"
+              type="number"
+              lazy-rules
+              :rules="[ val => val>0 && val <= inventario.saldo || 'Por favor cantidad ']"
+            />
+
+            <q-input
+              filled
+              v-model="retiro.observacion"
+              label="Observacion "
+              hint="Ingresar dato "
+              lazy-rules
+              :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']"
+            />
+
+            <div>
+              <q-btn label="Registrar" type="submit" color="positive" icon="add_circle"/>
+                <q-btn  label="Cancelar" icon="delete" color="negative" v-close-popup />
+            </div>
+          </q-form>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
+
     </q-card>
   </q-page>
 </template>
@@ -196,10 +257,25 @@ export default {
       alert:false,
       dialog_mod:false,
       dialog_reg:false,
+      dialog_inv:false,
+      dialog_retiro:false,
+      inventarios:[],
+      inventario:{},
+      retiro:{},
       columns:[
         { name: 'codigo', label: 'codigo', field: 'codigo'},
         { name: 'nombre', label: 'nombre', field: 'nombre'},
         { name: 'activo', label: 'activo', field: 'activo'},
+        { name: 'opcion', label: 'opcion', field: 'opcion'},
+      ],
+      
+      columns2:[
+        { name: 'marca', label: 'marca', field: 'marca'},
+        { name: 'lote', label: 'lote', field: 'lote'},
+        { name: 'saldo', label: 'saldo', field: 'saldo'},
+        { name: 'fechavencimiento', label: 'fechavencimiento', field: 'fechavencimiento'},
+        { name: 'observacion', label: 'observacion', field: 'observacion'},
+        { name: 'estado', label: 'estado', field: 'estado'},
         { name: 'opcion', label: 'opcion', field: 'opcion'},
       ]
     }
@@ -220,6 +296,18 @@ export default {
     this.listado();
   },
   methods: {
+    retirarRow(props){
+      this.inventario=props.row;
+      console.log(this.inventario)
+      this.dialog_retiro=true;
+    },
+    retRow(props){
+      this.dato2=props.row;
+      this.$axios.post(process.env.API+'/listinventario',this.dato2).then(res=>{
+        this.inventarios=res.data;
+        this.dialog_inv=true;
+      })
+    },
     cambiar(props){
 
      this.$axios.post(process.env.API+'/reactivoestado',props.row).then(res=>{

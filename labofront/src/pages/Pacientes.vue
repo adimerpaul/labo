@@ -2210,6 +2210,7 @@
 <script>
 import { useQuasar } from 'quasar'
 import {date} from "quasar";
+import { saveAs } from 'file-saver';
 export default {
   data(){
     return{
@@ -2483,9 +2484,34 @@ export default {
 
     },
     impRow(props){
+                let nomb=this.dato2.ci+'.pdf';
         let url=(process.env.API+'/'+props.row.formulario+'/'+props.row.id);
       // let route = this.$router.resolve('/link/to/page'); // This also works.
-             window.open(url, '_blank');
+             //window.open(url, 'prueba5');
+        var oReq = new XMLHttpRequest();
+            // El punto final de su servidor
+            var URLToPDF = url;
+
+            // Configurar XMLHttpRequest
+            oReq.open("GET", URLToPDF, true);
+
+            // Importante para usar el tipo de respuesta de blob
+            oReq.responseType = "blob";
+
+            // Cuando finaliza la solicitud del archivo
+            // Depende de usted, la configuración de eventos de error, etc.
+            oReq.onload = function() {
+                // Una vez descargado el archivo, abre una nueva ventana con el PDF
+                // Recuerde permitir los POP-UPS en su navegador
+                var file = new Blob([oReq.response], { 
+                    type: 'application/pdf' 
+                });
+                
+                // ¡Genere la descarga de archivos directamente en el navegador!
+                saveAs(file, nomb);
+            };
+
+            oReq.send();
 
     },
     onMod(){
