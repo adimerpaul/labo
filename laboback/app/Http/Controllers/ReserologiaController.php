@@ -167,7 +167,11 @@ table, th, td {
 
 
         ';
-        return $cadena;
+        $pdf = App::make('dompdf.wrapper');
+        //        $customPaper = array(0,0,360,360);
+                $pdf->setPaper('letter');
+                $pdf->loadHTML($cadena);
+                return $pdf->stream();
     }
 
     public function show(Reserologia $reserologia)

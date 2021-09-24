@@ -296,7 +296,11 @@ font-size: 13px;
         </tr>
         </table>
         ';
-        return $cadena;
+        $pdf = App::make('dompdf.wrapper');
+        //        $customPaper = array(0,0,360,360);
+                $pdf->setPaper('letter');
+                $pdf->loadHTML($cadena);
+                return $pdf->stream();
     }
 
     /**
