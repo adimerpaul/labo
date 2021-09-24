@@ -56,18 +56,21 @@ class OrinaController extends Controller
         $row=$row[0];
         $cadena='
         <style>
-.tablex , th , .tdx  {
+table , th , td  {
   border: 1px solid black;
   border-collapse: collapse;
 }
-table{
-}
 *{
-padding: 0px;
-margin: 0px;
-border: 0px;
-font-size: 13px;
-}
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    font-size: 10px;
+    }
+    table{
+        margin-left: 5px;
+        margin-right: 5px;
+        width: 50%;
+        }
 </style>
         <table style="width: 100%;color: black">
         <tr >
@@ -187,7 +190,7 @@ font-size: 13px;
         </tr>
         <tr>
             <td style="background-color:red; text-align:center; color:white;">Celulas epiteliales</td>
-            <td'.$row->d15.'</td>
+            <td>'.$row->d15.'</td>
             <td>Hasta 2/c.</td>
             <td style="background-color:red; text-align:center; color:white;">Hialino</td>
             <td>'.$row->d16.'</td>

@@ -65,7 +65,7 @@ class SeriadoController extends Controller
 margin: 0px;
 padding: 0px;
 border: 0px;
-font-size: 13px;
+font-size: 12px;
 }
 </style>
             <table style="padding-right:15px;padding-left:10px;width: 100%;color: black;padding-top: 10px">
