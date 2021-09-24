@@ -25,7 +25,7 @@ class Labserologia extends Model
         'd12',
         'd13',
         'd14',
-        'docotor_id',
+        'doctor_id',
         'paciente_id',
         'user_id',        
     ];
