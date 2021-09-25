@@ -176,6 +176,8 @@
         <q-tr :props="props">
           <q-td key="opcion" :props="props">
               <q-btn  dense round flat color="teal" @click="impRow(props)" icon="print"></q-btn>
+              <q-btn  dense round flat color="green" @click="whppRow(props)" icon="whatsapp"></q-btn>
+              <q-btn  dense round flat color="blue" @click="whpdRow(props)" icon="whatsapp"></q-btn>
           </q-td>
         </q-tr>
       </template>
@@ -2513,6 +2515,12 @@ export default {
 
             oReq.send();
 
+    },
+    whppRow(props){
+        let url=(process.env.API+'/'+props.row.formulario+'/'+props.row.id);
+
+            //oReq.send();
+            window.open("https://api.whatsapp.com/send?phone=591"+this.dato2.celular+"&text="+url, '_blank');
     },
     onMod(){
       console.log(this.dato2)
