@@ -296,6 +296,19 @@ export default {
     this.listado();
   },
   methods: {
+    onRetiro(){
+      this.retiro.inventario_id=this.inventario.id;
+      this.retiro.reactivo_id=this.dato2.id;
+      this.$axios.post(process.env.API+'/retiro',this.retiro).then(res=>{
+                 this.$q.notify({
+          message: 'Se elimino correctamente',
+          color: 'green'
+        })
+        this.dialog_retiro=false;
+        this.dialog_inv=false;
+      })
+
+    },
     retirarRow(props){
       this.inventario=props.row;
       console.log(this.inventario)

@@ -57,24 +57,38 @@ class LabserologiaController extends Controller
             table, th, td {
             border: 1px solid black;
             border-collapse: collapse;
+           }
+            *{
+                padding: 0px;
+                margin: 0px;
+                font-size: 13px;
+                }
+            table{
+                width:50%;
+                margin-left:5px;
+                margin-right:5px;
+
             }
             </style>
-            <table style="width: 100%;color: black">
-            <tr >
-                <td rowspan="4" style="height: 2cm"><img src="images/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
-                <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
+            <table style="color: black; margin-top:5px;border:0" >
+            <tr style="border:0;">
+                <td rowspan="4" style="border:0;"><img src="./img/natividad2.png" alt="Logo Clinica" srcset="" ></td>
+                <td style="color: blue; text-align:center; border:0;">SERVICIO DE LABORATORIO </td>
+            </tr> 
+                       <tr style="border:0;">
+
+                <td style="color: blue; text-align:center; border:0;">Telf: 5254721 Fax: 52-83667 </td>                
             </tr>
-            <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>                
+            <tr style="border:0;">
+
+                <td style="color: blue; text-align:center;border:0; ">Emergencia las 24 horas del dia. </td>                
             </tr>
-            <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>                
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>                
+            <tr style="border:0;">
+
+                <td style="color: blue; text-align:center; border:0;">Bolivar Nº 753 entre Arica e Iquique </td>                
             </tr>
         </table>
-        <table border="1" style="width: 100%;color: black">
+        <table border="1" style="color: black">
             <tr>
                 <td colspan="3" style="text-align: center"><h3>SEROLOGIA</h3></td>
                 <td>Form. '.$row->id.'</td>
@@ -100,7 +114,7 @@ class LabserologiaController extends Controller
 
         </table>
         <br>
-        <table border="1" style="width: 100%;color: black">
+        <table border="1" style="color: black">
 
             <tr>
                 <td colspan="2" style="text-align:center; color:red;"  ></td>
@@ -211,7 +225,7 @@ class LabserologiaController extends Controller
             ';
             $pdf = App::make('dompdf.wrapper');
             //        $customPaper = array(0,0,360,360);
-                    $pdf->setPaper('letter');
+                    $pdf->setPaper('letter','landscape');
                     $pdf->loadHTML($cadena);
                     return $pdf->stream();
     }

@@ -656,7 +656,7 @@
             <tr>
                 <td colspan="2" rowspan="2" class="bg-blue text-center text-white">RESPONSABLE</td>
                 <td colspan="2" rowspan="2">
-                    sanguinia.
+                    
                 </td>
                 <td colspan="3" class="bg-blue text-center text-white">FECHA TOMA DE MUESTRA</td>
                 <td><input placeholder="00" type="date" v-model="sanguinia.fechatoma"   style="width: 100%" ></td>
@@ -1398,7 +1398,7 @@
                 <td style="color: darkblue">TIPO MUESTRA</td>
                 <td><input type="text" style="width: 100%" v-model="simple.tipomuestra" placeholder="Tipo muestra" ></td>
                 <td style="color: darkblue">N PACIENTE</td>
-                <td>{{dato2.sexo}}</td>
+                <td>{{dato2.id}}</td>
             </tr>
 
         </table>
@@ -2520,7 +2520,8 @@ export default {
         let url=(process.env.API+'/'+props.row.formulario+'/'+props.row.id);
 
             //oReq.send();
-            window.open("https://api.whatsapp.com/send?phone=591"+this.dato2.celular+"&text="+url, '_blank');
+            window.open(url, '_blank');
+            //window.open("https://api.whatsapp.com/send?phone=591"+this.dato2.celular+"&text="+url, '_blank');
     },
     onMod(){
       console.log(this.dato2)

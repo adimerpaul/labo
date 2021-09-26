@@ -105,7 +105,7 @@ class PacienteController extends Controller
             SELECT id,tipomuestra,fechatoma,'vaginal' as formulario FROM vaginals WHERE paciente_id='$id' union
             SELECT id,tipomuestra,fechatoma,'hece' as formulario FROM heces WHERE paciente_id='$id' union
             SELECT id,tipomuestra,fechatoma,'simple' as formulario FROM simples WHERE paciente_id='$id' union
-            SELECT id,tipomuestra,fechatoma,'seriados' as formulario FROM seriados WHERE paciente_id='$id' union
+            SELECT id,tipomuestra,fechatoma,'seriado' as formulario FROM seriados WHERE paciente_id='$id' union
             SELECT id,tipomuestra,fechatoma,'serologia' as formulario FROM serologias WHERE paciente_id='$id' union
             SELECT id,tipomuestra,fechatoma,'labserologia' as formulario FROM labserologias WHERE paciente_id='$id' union
             SELECT id,tipomuestra,fechatoma,'reserologia' as formulario FROM reserologias WHERE paciente_id='$id' union

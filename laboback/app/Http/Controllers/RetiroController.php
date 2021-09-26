@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Retiro;
 use App\Models\Inventario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RetiroController extends Controller
 {

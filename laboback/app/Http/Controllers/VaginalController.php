@@ -67,6 +67,11 @@ padding: 0px;
 border: 0px;
 font-size: 12px;
 }
+table{
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 50%;
+    } 
             </style>
             <table style="width: 100%;color: black;padding-top: 5px">
             <tr >
