@@ -44,6 +44,7 @@ Route::group(['middleware'=>'auth:sanctum'],function (){
     Route::post('/doctoractivo', [App\Http\Controllers\DoctorController::class, 'doctoractivo']);
     Route::post('/reactivoestado', [App\Http\Controllers\ReactivoController::class, 'reactivoestado']);
     Route::post('/listinventario', [App\Http\Controllers\InventarioController::class, 'listinventario']);
+    Route::post('/listretiro', [App\Http\Controllers\RetiroController::class, 'listretiro']);
     Route::resource('/paciente',\App\Http\Controllers\PacienteController::class);
     Route::resource('/doctor',\App\Http\Controllers\DoctorController::class);
     Route::resource('/hemograma',\App\Http\Controllers\HemogramaController::class);

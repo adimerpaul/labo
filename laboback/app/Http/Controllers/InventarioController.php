@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Inventario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 
 class InventarioController extends Controller
 {
@@ -67,7 +69,9 @@ class InventarioController extends Controller
     public function listinventario(Request $request)
     {
         //
-        return Inventario::where('reactivo_id',$request->id)->get();
+        return DB::select("SELECT id,fecha, fechavencimiento, marca, lote, ingreso, saldo,0 as egreso, observacion 
+        from inventarios where reactivo_id=$request->id and fecha>='$request->fecha'");
+        //return Inventario::where('reactivo_id',$request->id)->whereDate('fecha','>=',$request->fecha)->get();
     }
     /**
      * Show the form for editing the specified resource.
