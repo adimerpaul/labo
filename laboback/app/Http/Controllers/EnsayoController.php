@@ -82,27 +82,39 @@ table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
 }
+
+*{
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    font-size: 12px;
+    }
+    table{
+        margin-left: 5px;
+        margin-right: 5px;
+        width: 50%;
+        } 
 </style>
-            <table style="width: 100%;color: black">
-                <tr >
-                    <td rowspan="4" style="height: 2cm"><img src="images/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
-                    <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
+            <table style="color: black;border:0">
+                <tr style="border:0">
+                    <td rowspan="4" style="border:0"><img src="images/natividad.png" alt="Logo Clinica" srcset="" ></td>
+                    <td style="color: blue; text-align:center; border:0">SERVICIO DE LABORATORIO </td>
                 </tr>
-                <tr>
-                    <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>                
+                <tr style="border:0">
+                    <td style="color: blue; text-align:center;border:0 ">Telf: 5254721 Fax: 52-83667 </td>                
                 </tr>
-                <tr>
-                    <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>                
+                <tr style="border:0">
+                    <td style="color: blue; text-align:center; border:0">Emergencia las 24 horas del dia. </td>                
                 </tr>
-                <tr>
-                    <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>                
+                <tr style="border:0">
+                    <td style="color: blue; text-align:center; border:0">Bolivar Nº 753 entre Arica e Iquique </td>                
                 </tr>
             </table>
     
     
-            <table border="1" style="width: 100%;color: black">
+            <table style="color: black">
                 <tr>
-                    <td colspan="3" style="text-align: center; border:0"><h3></h3></td>
+                    <td colspan="3" style="text-align: center;"><h3></h3></td>
                     <td>Form. '.$row->id.'</td>
                 </tr>
                 <tr>
@@ -126,7 +138,7 @@ table, th, td {
     
             </table>
             <br>
-            <table border="1" style="width: 100%;color: black">
+            <table style="color: black">
                 <tr><td colspan="5" style="text-align:center; color:red;">
                     METODO: INMUNOENSAYO DE FLUORESCENCIA (FIA)
                     </td>
@@ -140,9 +152,9 @@ table, th, td {
                 <tr>
                     <td style="color:red;">DIMEROS D</td>
                     <td >'.$row->d1.'</td>
-                    <td style="text-align:center; color:blue;"">ng/ml</td>
-                    <td style="text-align:center; color:blue;"">Plasma Citratado</td>
-                    <td style="text-align:center; color:blue;"">Hasta 500 ng/ml</td>
+                    <td style="text-align:center; color:blue;">ng/ml</td>
+                    <td style="text-align:center; color:blue;">Plasma Citratado</td>
+                    <td style="text-align:center; color:blue;">Hasta 500 ng/ml</td>
                 </tr>
     
                 <tr>
@@ -192,7 +204,7 @@ table, th, td {
                     <td style="text-align:center; color:blue;">Mujer No Embarazada menor a 10 mlU/ml </td>
                 </tr>            
                 <tr>
-                    <td style="text-align:center; color:blue;"">Mujer en postmenopausia menor a 10 mlU/ml</td>
+                    <td style="text-align:center; color:blue;">Mujer en postmenopausia menor a 10 mlU/ml</td>
                     
                 </tr>
                 <tr>
@@ -228,7 +240,11 @@ table, th, td {
                     </td>
                 </tr>          
             </table>';
-            return $cadena;
+            $pdf = App::make('dompdf.wrapper');
+            //        $customPaper = array(0,0,360,360);
+                    $pdf->setPaper('letter','landscape');
+                    $pdf->loadHTML($cadena);
+                    return $pdf->stream();
     
 
     }

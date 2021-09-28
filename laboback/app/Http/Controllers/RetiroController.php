@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Retiro;
 use App\Models\Inventario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 
 class RetiroController extends Controller
 {
@@ -71,6 +74,13 @@ class RetiroController extends Controller
      * @param  \App\Models\Retiro  $retiro
      * @return \Illuminate\Http\Response
      */
+    
+    public function listretiro(Request $request)
+    {
+        //
+        //return Retiro::where('inventario_id',$request->id)->get();
+        return DB::select("select id,fecharetiro as fecha, null as fechavencimiento,'' as marca,'' as lote, '' as ingreso,'' as saldo,egreso, observacion from retiros where inventario_id=$request->id");
+    }
     public function edit(Retiro $retiro)
     {
         //
