@@ -69,7 +69,7 @@ class InventarioController extends Controller
     public function listinventario(Request $request)
     {
         //
-        return DB::select("SELECT id,fecha, fechavencimiento, marca, lote, ingreso, saldo,0 as egreso, observacion 
+        return DB::select("SELECT id,fecha, fechavencimiento, marca, lote, ingreso, saldo,0 as egreso, observacion, 0 as inventario_id 
         from inventarios where reactivo_id=$request->id and fecha>='$request->fecha'");
         //return Inventario::where('reactivo_id',$request->id)->whereDate('fecha','>=',$request->fecha)->get();
     }

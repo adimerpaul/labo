@@ -200,7 +200,7 @@
             <q-form @submit.prevent="onHemograma" >
         <table style="width: 100%;color: black">
             <tr >
-                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 3cm; width:8cm;"></td>
+                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 3cm; width:8cm;"></td>
                 <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
@@ -441,12 +441,11 @@
 
 
         <q-tab-panel name="sanguinia">
-          <div class="text-h6">QUIMICA sanguinia</div>
             <q-form @submit.prevent="onSanguinia" >
 
         <table style="width: 100%;color: black">
             <tr >
-                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
+                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
                 <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
@@ -676,11 +675,10 @@
 
 
         <q-tab-panel name="orina">
-          <div class="text-h6">EXAMEN GENERAL DE ORINA</div>
             <q-form @submit.prevent="onOrina" >
         <table style="width: 100%;color: black">
             <tr >
-                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
+                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
                 <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
@@ -915,11 +913,10 @@
         </q-tab-panel>
 
                 <q-tab-panel name="uretral">
-          <div class="text-h6">ANALISIS DE SECRECION URETRAL</div>
             <q-form @submit.prevent="onUretral">
             <table style="width: 100%;color: black">
             <tr >
-                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
+                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
                 <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
@@ -1060,11 +1057,10 @@
 
 
                 <q-tab-panel name="vaginal">
-          <div class="text-h6">ANALISIS DE SECRECION VAGINAL</div>
               <q-form @submit.prevent="onVaginal">
             <table style="width: 100%;color: black">
             <tr >
-                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
+                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
                 <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
@@ -1204,11 +1200,10 @@
 
 
         <q-tab-panel name="hece">
-          <div class="text-h6">ANALISIS DE HECES</div>
         <q-form @submit.prevent="onHece">
         <table style="width: 100%;color: black">
             <tr >
-                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
+                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
                 <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
@@ -1360,11 +1355,10 @@
 
 
           <q-tab-panel name="simple">
-          <div class="text-h6">COPRAPARASITOLOGICO SIMPLE</div>
         <q-form @submit.prevent="onSimple">
         <table style="width: 100%;color: black">
             <tr >
-                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
+                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
                 <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
@@ -1509,11 +1503,10 @@
 
 
           <q-tab-panel name="seriado">
-          <div class="text-h6">COPROPARASITOLOGICO SERIADO</div>
              <q-form @submit.prevent="onSeriado">
         <table style="width: 100%;color: black">
             <tr >
-                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
+                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
                 <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
@@ -1616,11 +1609,10 @@
 
 
           <q-tab-panel name="serologia">
-          <div class="text-h6">SEROLOGIA</div>
               <q-form @submit.prevent="onSerologia">
         <table style="width: 100%;color: black">
             <tr >
-                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
+                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
                 <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
@@ -1761,11 +1753,10 @@
 
 
           <q-tab-panel name="labserologia">
-          <div class="text-h6">LAB SEROLOGIA</div>
               <q-form @submit.prevent="onLabserologia">
         <table style="width: 100%;color: black">
             <tr >
-                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
+                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
                 <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
@@ -1923,11 +1914,10 @@
 
 
           <q-tab-panel name="reserologia">
-          <div class="text-h6">Res Serologia</div>
               <q-form @submit.prevent="onReserologia">
         <table style="width: 100%;color: black">
             <tr >
-                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
+                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
                 <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
@@ -2039,11 +2029,10 @@
 
 
           <q-tab-panel name="ensayo">
-          <div class="text-h6">Inmunoensayo de Fluorescencia</div>
              <q-form @submit.prevent="onEnsayo">
                <table style="width: 100%;color: black">
             <tr >
-                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.png" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
+                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
                 <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>

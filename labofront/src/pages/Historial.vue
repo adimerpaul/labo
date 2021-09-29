@@ -84,24 +84,29 @@ export default {
 
     },
     onBuscar(){
+      let ind=0;
       this.dato.id=this.dato.reactivo.value;
       console.log(this.dato)
       this.historial=[];
      this.$axios.post(process.env.API+'/listinventario',this.dato).then(res=>{
        console.log(res.data)
          res.data.forEach(element => {
-           this.historial.push(element);
+           //this.historial.push(element);
+           this.historial[ind]=element;
+           ind++;
            console.log(element)
            this.$axios.post(process.env.API+'/listretiro',{id:element.id}).then(res2=>{
              res2.data.forEach(element2 => {
-                this.historial.push(element2);
+                //this.historial.push(element2);
+                this.historial[ind]=element2;
+                ind++;
              });
            })
          
        });
 
     })
-    console.log(this.historial)
+    console.log(this.historial);
   },
   }
 }

@@ -79,7 +79,7 @@ class RetiroController extends Controller
     {
         //
         //return Retiro::where('inventario_id',$request->id)->get();
-        return DB::select("select id,fecharetiro as fecha, null as fechavencimiento,'' as marca,'' as lote, '' as ingreso,'' as saldo,egreso, observacion from retiros where inventario_id=$request->id");
+        return DB::select("select id,inventario_id ,fecharetiro as fecha, null as fechavencimiento,'' as marca,'' as lote, '' as ingreso,'' as saldo,egreso, observacion from retiros where inventario_id=$request->id");
     }
     public function edit(Retiro $retiro)
     {
