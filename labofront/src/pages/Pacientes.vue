@@ -904,8 +904,8 @@
                 <td></td>
             </tr>
             <tr>
-                <td colspan="2">HORA TOMA DE MUESTRA</td>
-                <td></td>
+                <td colspan="2"  >HORA TOMA DE MUESTRA</td>
+                <td  style="width: 100%"><input type="time" name="" id="" v-model="orina.horatoma"></td>
             </tr>
             <tr>
                 <td colspan="6">
@@ -1485,10 +1485,16 @@
             </tr>
 
             <tr>
-                <td rowspan="2" >RESPONSABLE: </td>
+                <td rowspan="3" >RESPONSABLE: </td>
                 <td>
                     FECHA DE TOMA DE MUESTRAS
                     <input placeholder="00" type="date"  style="width: 100%" v-model="simple.fechatoma">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    HORA DE TOMA DE MUESTRAS
+                    <input placeholder="00" type="time"  style="width: 100%" v-model="simple.horatoma">
                 </td>
             </tr>
             <tr>
@@ -2236,13 +2242,13 @@ export default {
          {value:"reserologia"        ,label:"Resultado Serologia" },
          {value:"ensayo"        ,label:"Inmunoensayo de Fluorescencia" }
       ],
-      hemograma:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'H:m')},
-      orina:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'H:m')},
-      sanguinia:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'H:m')},
+      hemograma:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')},
+      orina:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')},
+      sanguinia:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')},
       uretral:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD')},
       vaginal:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD')},
       hece:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD')},
-      simple:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD')},
+      simple:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')},
       seriado:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD')},
       serologia:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD')},
       labserologia:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD')},
@@ -2343,7 +2349,7 @@ export default {
               icon: 'done',
              color:'green'
             })
-            this.hemograma={};
+            this.hemograma={fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')};
 
         })
     },
@@ -2367,7 +2373,7 @@ export default {
           message: 'Registro Realizado',
           icon: 'beaker'
         })
-        this.orina={};
+        this.orina={fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')};
         })
     },
           onUretral(){
@@ -2379,7 +2385,7 @@ export default {
               icon: 'done',
              color:'green'
             })
-            this.uretral={};
+            this.uretral={fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')};
         })
     },
     onVaginal(){
@@ -2391,7 +2397,7 @@ export default {
               icon: 'done',
              color:'green'
             })
-            this.vaginal={};
+            this.vaginal={fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')};
         })
     },
     onHece(){
@@ -2403,7 +2409,7 @@ export default {
               icon: 'done',
              color:'green'
             })
-            this.hece={};
+            this.hece={fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')};
         })
     },
     onSimple(){
@@ -2415,7 +2421,7 @@ export default {
               icon: 'done',
              color:'green'
             })
-            this.simple={};
+            this.simple={fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')};
         })
     },
         onSeriado(){
@@ -2427,7 +2433,7 @@ export default {
               icon: 'done',
              color:'green'
             })
-            this.seriado={};
+            this.seriado={fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')};
         })
     },
     onSerologia(){
@@ -2439,7 +2445,7 @@ export default {
               icon: 'done',
              color:'green'
             })
-            this.serologia={};
+            this.serologia={fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')};
         })
     },
     onLabserologia(){
@@ -2451,7 +2457,7 @@ export default {
               icon: 'done',
              color:'green'
             })
-            this.labserologia={};
+            this.labserologia={fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')};
         })
     },
         onReserologia(){
@@ -2463,7 +2469,7 @@ export default {
               icon: 'done',
              color:'green'
             })
-            this.reserologia={};
+            this.reserologia={fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')};
         })
     },
             onEnsayo(){
@@ -2475,7 +2481,7 @@ export default {
               icon: 'done',
              color:'green'
             })
-            this.ensayo={};
+            this.ensayo={fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')};
         })
     },
     labRow(props){

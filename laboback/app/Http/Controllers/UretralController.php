@@ -79,103 +79,103 @@ class UretralController extends Controller
         </table>
         <table class="tablex" style="width: 100%;color: black;padding-right: 15px;padding-left: 10px">
             <tr>
-                <td class="tdx" colspan="3" style="text-align: center"><h3>ANALISIS DE SECRECION URETRAL</h3></td>
-                <td class="tdx">Form. '.$row->id.'</td>
+                <td class="tdx" colspan="3" style="text-align: center; color:darkblue; font:bold;"><h3>ANALISIS DE SECRECION URETRAL</h3></td>
+                <td class="tdx" style="color:red;text-align:cener;">Form. 004</td>
             </tr>
             <tr>
                 <td class="tdx" style="color: darkblue">PACIENTE</td>
-                <td class="tdx">'.$row->paciente->nombre.' '.$row->paciente->paterno.' '.$row->paciente->materno.'</td>
+                <td class="tdx" style="text-align:center;">'.$row->paciente->nombre.' '.$row->paciente->paterno.' '.$row->paciente->materno.'</td>
                 <td class="tdx" style="color: darkblue">EDAD</td>
-                <td class="tdx">'.$row->paciente->age().'</td>
+                <td class="tdx" style="text-align:center;">'.$row->paciente->age().'</td>
             </tr>
             <tr>
                 <td class="tdx" style="color: darkblue">REQUERIDO POR</td>
-                <td class="tdx">'.$row->doctor->nombre.' '.$row->doctor->paterno.' '.$row->doctor->materno.'</td>
+                <td class="tdx" style="text-align:center;">'.$row->doctor->nombre.' '.$row->doctor->paterno.' '.$row->doctor->materno.'</td>
                 <td class="tdx" style="color: darkblue">SEXO</td>
-                <td class="tdx">'.$row->paciente->sexo.'</td>
+                <td class="tdx" style="text-align:center;">'.$row->paciente->sexo.'</td>
             </tr>
             <tr>
                 <td class="tdx" style="color: darkblue">TIPO MUESTRA</td>
-                <td class="tdx">'.$row->tipomuestra.'</td>
-                <td class="tdx" style="color: darkblue">N PACIENTE</td>
-                <td class="tdx">'.$row->paciente->id.'</td>
+                <td class="tdx" style="text-align:center; color:blue">'.$row->tipomuestra.'</td>
+                <td class="tdx" style="color: red">N PACIENTE</td>
+                <td class="tdx" style="text-align:center; color:red;">'.$row->paciente->id.'</td>
             </tr>
 
         </table>
         <table class="tablex" style="width: 100%;color: black;padding-right: 15px;padding-left: 10px">
             <tr>
-                <td class="tdx" colspan="2" style="text-align: center;color: darkred;font-weight: bold ">EXAMEN EN FRESCO</td>
+                <td class="tdx" colspan="2" style="text-align: center;color: purple;font: bold ">EXAMEN EN FRESCO</td>
             </tr>
             <tr>
-                <td class="tdx" style="color:red" >CELULAS EPITELIALES</td>
+                <td class="tdx" style="color:blue" >CELULAS EPITELIALES</td>
                 <td class="tdx">'.$row->d1.'</td>
             </tr>
             <tr>
-                <td class="tdx" style="color:red">LEUCOCITOS</td>
+                <td class="tdx" style="color:blue">LEUCOCITOS</td>
                 <td class="tdx" >'.$row->d2.'</td>
             </tr>
             <tr>
-                <td class="tdx" style="color:red">HEMATIES</td>
+                <td class="tdx" style="color:blue">HEMATIES</td>
                 <td class="tdx" >'.$row->d3.'</td>
             </tr>
             <tr>
-                <td class="tdx" style="color:red">CELULAS CLAVE</td>
+                <td class="tdx" style="color:blue">CELULAS CLAVE</td>
                 <td class="tdx" >'.$row->d4.'</td>
             </tr>
             <tr>
-                <td class="tdx" style="color:red">LEVADURAS</td>
+                <td class="tdx" style="color:blue">LEVADURAS</td>
                 <td class="tdx" >'.$row->d5.'</td>
             </tr>
             <tr>
-                <td class="tdx" style="color:red">PARASITOS</td>
+                <td class="tdx" style="color:blue">PARASITOS</td>
                 <td class="tdx" >'.$row->d6.'</td>
             </tr>
             <tr>
-                <td class="tdx" style="color:red">BACTERIAS</td>
+                <td class="tdx" style="color:blue">BACTERIAS</td>
                 <td class="tdx" >'.$row->d7.'</td>
             </tr>
             <tr>
-                <td class="tdx" style="color:red">KOH</td>
+                <td class="tdx" style="color:blue">KOH</td>
                 <td class="tdx" >'.$row->d8.'</td>
             </tr>
             <tr>
-                <td class="tdx" style="color:red">PH</td>
+                <td class="tdx" style="color:blue">PH</td>
                 <td class="tdx" >'.$row->d9.'</td>
             </tr>
             <tr>
-                <td class="tdx" style="color:red">OBSERVACIONES</td>
+                <td class="tdx" style="color:blue">OBSERVACIONES</td>
                 <td class="tdx" >'.$row->d10.'</td>
             </tr>
 
             <tr colspan="2">
-                <td class="tdx" colspan="2" style="text-align:center ;color: darkred;font-weight: bold">TINCION DE GRAM</td>
+                <td class="tdx" colspan="2" style="text-align:center ;color: purple;font: bold">TINCION DE GRAM</td>
             </tr>
             <tr>
-                <td class="tdx" style="color:red">BACILOS GRAM POSITIVO</td>
+                <td class="tdx" style="color:blue">BACILOS GRAM POSITIVO</td>
                 <td class="tdx" >'.$row->d11.'</td>
             </tr>
             <tr>
-                <td class="tdx" style="color:red">BACILOS GRAM NEGATIVO</td>
+                <td class="tdx" style="color:blue">BACILOS GRAM NEGATIVO</td>
                 <td class="tdx" >'.$row->d12.'</td>
             </tr>
             <tr>
-                <td class="tdx" style="color:red">COCOS GRAM POSITIVO</td>
+                <td class="tdx" style="color:blue">COCOS GRAM POSITIVO</td>
                 <td class="tdx" >'.$row->d13.'</td>
             </tr>
             <tr>
-                <td class="tdx" style="color:red">COCOBACILOS GRAM POSITIVO</td>
+                <td class="tdx" style="color:blue">COCOBACILOS GRAM POSITIVO</td>
                 <td class="tdx" >'.$row->d14.'</td>
             </tr>
             <tr>
-                <td class="tdx" style="color:red">COCOBACILOS GRAM NEGATIVO</td>
+                <td class="tdx" style="color:blue">COCOBACILOS GRAM NEGATIVO</td>
                 <td class="tdx" >'.$row->d15.'</td>
             </tr>
             <tr>
-                <td class="tdx" style="color:red">ESPORAS E HIFAS MICOTICAS</td>
+                <td class="tdx" style="color:blue">ESPORAS E HIFAS MICOTICAS</td>
                 <td class="tdx" >'.$row->d16.'</td>
             </tr>
             <tr>
-                <td class="tdx" style="color:red">OBSERVACIONES</td>
+                <td class="tdx" style="color:blue">OBSERVACIONES</td>
                 <td class="tdx" >'.$row->d17.'</td>
             </tr>
 

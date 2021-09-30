@@ -70,47 +70,53 @@ font-size: 12px;
 </style>
         <table style="width: 100%;color: black;padding-top: 5px">
         <tr >
-            <td rowspan="4" style="height: 2cm"><img src="./images/natividad2.png" alt="Logo Clinica" srcset="" style="height:10px; width:200px;"></td>
-            <td style="text-align:center;">SERVICIO DE LABORATORIO </td>
+            <td rowspan="5" ><img src="./img/natividad.jpeg" alt="Logo Clinica" srcset="" style="height:1.5cm; "></td>
+            <td style="text-align:center;color:darkblue;">SERVICIO DE LABORATORIO </td>
         </tr>
         <tr>
-            <td style="text-align:center;">Telf: 5254721 Fax: 52-83667 </td>
+            <td style="text-align:center;color:darkblue;">Emergencia las 24 horas del dia. </td>
+        </tr>
+
+
+        <tr>
+            <td style="text-align:center;color:darkblue;">Bolivar Nº 753 entre Arica e Iquique </td>
         </tr>
         <tr>
-            <td style="text-align:center;">Emergencia las 24 horas del dia. </td>
+            <td style="text-align:center;color:darkblue;">Telf: 5254721 Fax: 52-83667 </td>
         </tr>
         <tr>
-            <td style="text-align:center;">Bolivar Nº 753 entre Arica e Iquique </td>
+            <td style="text-align:center;color:red">Nº Registro CODELAB 000045 </td>
         </tr>
+
     </table>
-    <table class="tablex" border="1" style="width: 100%;color: black;padding-left: 10px;padding-right: 15px">
+    <table class="tablex" style="width: 100%;color: black;padding-left: 10px;padding-right: 15px">
         <tr>
-            <td class="tdx" colspan="3" style="text-align: center"><h3>ANALISIS DE HECES</h3></td>
-            <td class="tdx">Form. '.$row->id.'</td>
+            <td class="tdx" colspan="3" style="text-align: center;color:darkblue;font:bold;border:0;"><h3>ANALISIS DE HECES</h3></td>
+            <td class="tdx" style="color:red;text-align:center">Form. 010</td>
         </tr>
         <tr>
             <td class="tdx" style="color: darkblue">PACIENTE</td>
-            <td class="tdx">'.$row->paciente->nombre.' '.$row->paciente->paterno.' '.$row->paciente->materno.'</td>
+            <td class="tdx" style="text-align:center">'.$row->paciente->nombre.' '.$row->paciente->paterno.' '.$row->paciente->materno.'</td>
             <td class="tdx" style="color: darkblue">EDAD</td>
-            <td class="tdx">'.$row->paciente->age().'</td>
+            <td class="tdx" style="text-align:center">'.$row->paciente->age().'</td>
         </tr>
         <tr>
             <td class="tdx" style="color: darkblue">REQUERIDO POR</td>
-            <td class="tdx">'.$row->doctor->nombre.' '.$row->doctor->paterno.' '.$row->doctor->materno.'</td>
+            <td class="tdx" style="text-align:center">'.$row->doctor->nombre.' '.$row->doctor->paterno.' '.$row->doctor->materno.'</td>
             <td class="tdx" style="color: darkblue">SEXO</td>
-            <td class="tdx">'.$row->paciente->sexo.'</td>
+            <td class="tdx" style="text-align:center">'.$row->paciente->sexo.'</td>
         </tr>
         <tr>
             <td class="tdx" style="color: darkblue">TIPO MUESTRA</td>
-            <td class="tdx">'.$row->tipomuestra.'</td>
-            <td class="tdx" style="color: darkblue">N PACIENTE</td>
-            <td class="tdx">'.$row->paciente->id.'</td>
+            <td class="tdx" style="text-align:center">'.$row->tipomuestra.'</td>
+            <td class="tdx" style="color: red">N PACIENTE</td>
+            <td class="tdx" style="text-align:center;color:red;">'.$row->paciente->id.'</td>
         </tr>
 
     </table>
     <table class="tablex" border="1" style="width: 100%;color: black;padding-left: 10px;padding-right: 15px">
         <tr >
-            <td class="tdx" colspan="2" style="text-align: center ">EXAMEN EN FRESCO</td>
+            <td class="tdx" colspan="2" style="text-align: center;font:bold;color:darkblue ">EXAMEN EN FRESCO</td>
         </tr>
         <tr>
             <td class="tdx" style="color:red">ASPECTO DE LA MUESTRA</td>
@@ -165,7 +171,7 @@ font-size: 12px;
         </tr>
 
         <tr colspan="2">
-            <td class="tdx" colspan="2" style="text-align:center">TINCION DE GRAM</td>
+            <td class="tdx" colspan="2"  style="text-align: center;font:bold;color:darkblue ">TINCION DE GRAM</td>
         </tr>
         <tr>
             <td class="tdx" style="color:red">BACILOS GRAM POSITIVOS</td>
@@ -198,15 +204,15 @@ font-size: 12px;
         </tr>
 
         <tr>
-            <td class="tdx" rowspan="2" >RESPONSABLE: '.$row->user->name.'</td>
+            <td class="tdx" rowspan="2" style="color:darkblue">RESPONSABLE: '.$row->user->name.'</td>
 
-            <td class="tdx">
+            <td class="tdx" style="color:darkblue">
                 FECHA DE TOMA DE MUESTRAS: '.$row->fechatoma.'
 
             </td>
         </tr>
         <tr>
-            <td class="tdx">
+            <td class="tdx" style="color:darkblue">
                 FECHA DE ENTREGA DE MUESTRAS: '.date('Y-m-d').'
 
             </td>

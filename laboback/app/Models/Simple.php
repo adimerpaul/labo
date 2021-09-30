@@ -11,6 +11,7 @@ class simple extends Model
     protected $fillable=[
         'tipomuestra',
         'fechatoma',
+        'horatoma',
         'd1',
         'd2',
         'd3',
