@@ -66,12 +66,22 @@ class HemogramaController extends Controller
   border-collapse: collapse;
 }
 table{
+    width: 50%
 }
 *{
 padding: 0px;
 margin: 0px;
 border: 0px;
 font-size: 13px;
+}
+.tnavy{
+    color:navy;
+    font: bold;
+    text-align:center;
+}
+.tazul{
+    color:darkblue;
+
 }
 </style>
 
@@ -80,49 +90,49 @@ font-size: 13px;
 <td style="width: 50%"></td>
 <td>
 
-        <table style="padding-right:10px;padding-left:0px;width: 100%;color: black;margin-top: 5px;" align="right">
-            <tr >
+        <table style="padding-right:10px;padding-left:0px;width: 100%;margin-top: 5px;" align="right">
+            <tr>
                 <td rowspan="3" ><img src="./img/natividad.jpeg" style="height: 1.5cm; "></td>
-                <td style="text-align:center; color:darkdodgerblue;">SERVICIO DE LABORATORIO </td>
+                <td style="text-align:center; color:darkblue;">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
-                <td style="text-align:center; color:darkdodgerblue;">Bolivar Nº 753 entre Arica e Iquique </td>
+                <td style="text-align:center; color:darkblue;">Bolivar Nº 753 entre Arica e Iquique </td>
             </tr>
             <tr>
-                <td style="text-align:center; color:darkdodgerblue;">Telf: 5254721 Fax: 52-83667 </td>
+                <td style="text-align:center; color:darkblue;">Telf: 5254721 Fax: 52-83667 </td>
             </tr>
             <tr>
             <td style="text-align:left; color:red;">N Regsitro CODEDLAB 000045 </td>
-            <td style="text-align:center; color:darkdodgerblue;">Emergencia las 24 horas del dia. </td>
+            <td style="text-align:center; color:darkblue;">Emergencia las 24 horas del dia. </td>
                 
             </tr>
         </table>
-        <table style="padding-right:10px;padding-left:0px;width: 100%;color: black;" class="tablex">
+        <table style="padding-right:10px;padding-left:0px;width: 100%;" class="tablex">
             <tr >
-                <td class="tdx" colspan="3" style="text-align: center;color:darkdodgerblue;"><h3>HEMOGRAMA COMPLETO</h3></td>
-                <td class="tdx" style="color:red">Form. '.$row->id.'</td>
+                <td class="tdx tnavy" colspan="3" ><h3>HEMOGRAMA COMPLETO</h3></td>
+                <td class="tdx" style="color:red">Form. 001</td>
             </tr>
             <tr>
-                <td class="tdx"  style="color: darkdodgerblue">PACIENTE</td>
-                <td class="tdx" >'.$row->paciente->nombre.' '.$row->paciente->paterno.' '.$row->paciente->materno.'</td>
-                <td class="tdx"  style="color: darkdodgerblue">EDAD</td>
-                <td class="tdx" >'.$row->paciente->age().'</td>
+                <td class="tdx"  style="color:darkblue;">PACIENTE</td>
+                <td class="tdx" style="text-align:center" >'.$row->paciente->nombre.' '.$row->paciente->paterno.' '.$row->paciente->materno.'</td>
+                <td class="tdx"  style="color:darkblue;">EDAD</td>
+                <td class="tdx" style="text-align:center">'.$row->paciente->age().'</td>
             </tr>
             <tr>
-                <td class="tdx"  style="color: darkdodgerblue">REQUERIDO POR</td>
-                <td class="tdx" >'.$row->doctor->nombre.' '.$row->doctor->paterno.' '.$row->doctor->materno.'</td>
-                <td class="tdx"  style="color: darkdodgerblue">SEXO</td>
-                <td class="tdx" >'.$row->paciente->sexo.'</td>
+                <td class="tdx"  style="color: darkblue">REQUERIDO POR</td>
+                <td class="tdx" style="text-align:center" >'.$row->doctor->nombre.' '.$row->doctor->paterno.' '.$row->doctor->materno.'</td>
+                <td class="tdx"  style="color: darkblue">SEXO</td>
+                <td class="tdx" style="text-align:center">'.$row->paciente->sexo.'</td>
             </tr>
             <tr>
-                <td class="tdx"  style="color: darkdodgerblue">TIPO MUESTRA</td>
-                <td class="tdx" >'.$row->tipomuestra.'</td>
-                <td class="tdx"  style="color: darkdodgerblue">N PACIENTE</td>
-                <td class="tdx" >'.$row->paciente->id.'</td>
+                <td class="tdx"  style="color: darkblue">TIPO MUESTRA</td>
+                <td class="tdx" style="text-align:center">'.$row->tipomuestra.'</td>
+                <td class="tdx"  style="color: red">N PACIENTE</td>
+                <td class="tdx" style="text-align:center; color:red">'.$row->paciente->id.'</td>
             </tr>
             <tr>
-                <td class="tdx"  style="color: darkdodgerblue">METODO</td>
-                <td class="tdx"  colspan="3" align="center" style="color: darkdodgerblue">
+                <td class="tdx"  style="color: darkblue">METODO</td>
+                <td class="tdx"  colspan="3" align="center" style="color: darkblue">
                     Contador Hematologico MINDRAY BC 5130
                     Hematocrito (Metodo Manual) Hemoglobina (Clanmetahemoglobina reactivo drabking)
                 </td>
@@ -293,28 +303,35 @@ font-size: 13px;
         </table>
         <table class="tablex" style="padding-right:10px;padding-left:0px;width: 100%;color: black">
             <tr>
-                <td class="tdx" style="color: navy;font: bold"align="center" colspan="2">MORFOLOGIA DE FROTIS DE SANGRE PERIFERICA</td>
+                <td class="tdx" style="color: navy;font: bold"align="center" colspan="4">MORFOLOGIA DE FROTIS DE SANGRE PERIFERICA</td>
             </tr>
             <tr>
-                <td class="tdx" style="color: dodgerblue" align="center">Serie Rojas:</td>
-                <td class="tdx">'.$row->d31.'</td>
+                <td class="tdx" style="color: dodgerblue; width:20%" align="center; " >Serie Rojas:</td>
+                <td class="tdx" colspan=3 >'.$row->d31.'</td>
             </tr>
             <tr>
-                <td class="tdx" style="color: dodgerblue" align="center">Serie Blancas:</td>
-                <td class="tdx">'.$row->d32.'</td>
+                <td class="tdx" style="color: dodgerblue; width:20%" align="center">Serie Blancas:</td>
+                <td class="tdx" colspan=3>'.$row->d32.'</td>
             </tr>
             <tr>
-                <td class="tdx" style="color: dodgerblue" align="center">Serie Plaquetarias:</td>
-                <td class="tdx">'.$row->d33.'</td>
+                <td class="tdx" style="color: dodgerblue; width:20%" align="center">Serie Plaquetarias:</td>
+                <td class="tdx" colspan=3>'.$row->d33.'</td>
             </tr>
+
             <tr>
-                <td class="tdx" style="color: dodgerblue" align="center">FECHA DE TOMA DE MUESTRA:</td>
+                <td class="tdx" style="color: dodgerblue;" align="center" rowspan="3" colspan=2>Responsable: '.$row->user->name.'</td>
+                <td class="tdx" style="color: dodgerblue; align="center">FECHA DE TOMA DE MUESTRA:</td>
                 <td class="tdx">'.$row->fechatoma.'</td>
             </tr>
             <tr>
-                <td class="tdx" style="color: dodgerblue" align="center">Responsable:</td>
-                <td class="tdx">'.$row->user->name.'</td>
+                <td class="tdx" style="color: dodgerblue; align="center">HORA DE TOMA MUESTRA:</td>
+                <td class="tdx">'.$row->horatoma.'</td>
             </tr>
+            <tr>
+                <td class="tdx" style="color: dodgerblue; align="center">FECHA DE ENTREGA RESULTADO:</td>
+                <td class="tdx">'.date('Y-m-d').'</td>
+            </tr>
+
         </table>
 
 </td>

@@ -18,6 +18,7 @@ class CreateHemogramasTable extends Migration
             $table->string('tipomuestra')->nullable()->default('');
 //            $table->date('fechaentrega')->nullable()->default('');
             $table->date('fechatoma')->nullable();
+            $table->time('horatoma')->nullable();
 
 //            $table->text('token');
             $table->string('d1')->nullable()->default('');

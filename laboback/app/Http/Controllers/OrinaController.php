@@ -72,54 +72,55 @@ table , th , td  {
         width: 50%;
         }
 </style>
-        <table style="width: 100%;border:0; margin_top: 5px;">
+        <table style="width: 100%;border:0; margin-top: 5px;">
         <tr >
-            <td rowspan="4" style="height: 2cm;border:0; "><img src="./img/natividad" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
-            <td style="color: blue; text-align:center; height:0.5cm;border:0; ">SERVICIO DE LABORATORIO </td>
+            <td rowspan="3" style="border:0; "><img src="./img/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 1.5cm; "></td>
+            <td style="color: blue; text-align:center;border:0; ">SERVICIO DE LABORATORIO </td>
         </tr>
         <tr>
-            <td style="color: blue; text-align:center; height:0.5cm;border:0; ">Telf: 5254721 Fax: 52-83667 </td>
+            <td style="color: blue; text-align:center;border:0; ">Telf: 5254721 Fax: 52-83667 </td>
         </tr>
         <tr>
-            <td style="color: blue; text-align:center; height:0.5cm;border:0; ">Emergencia las 24 horas del dia. </td>
+            <td style="color: blue; text-align:center;border:0; ">Emergencia las 24 horas del dia. </td>
         </tr>
         <tr>
-            <td style="color: blue; text-align:center; height:0.5cm;border:0; ">Bolivar Nº 753 entre Arica e Iquique </td>
+            <td style="border:0; color:red;">Nº Registro CODELAB 000045</td>
+            <td style="color: blue; text-align:center;border:0;  ">Bolivar Nº 753 entre Arica e Iquique </td>
         </tr>
     </table>
-    <table  style="border:1; width: 100%;color: black">
+    <table  style=" width: 100%;">
         <tr>
-            <td colspan="3" style="text-align: center;border:0"><h3>EXAMEN GENERAL DE ORINA</h3></td>
-            <td>Form. '.$row->id.'</td>
+            <td colspan="3" style="text-align: center; border:0; font:bold; color: darkblue;">EXAMEN GENERAL DE ORINA</td>
+            <td style="color:darkblue; text-align:right">Form. 003</td>
         </tr>
         <tr>
             <td style="color: darkblue">PACIENTE</td>
-            <td>'.$row->paciente->nombre.' '.$row->paciente->paterno.' '.$row->paciente->materno.'</td>
+            <td style="text-align:center">'.$row->paciente->nombre.' '.$row->paciente->paterno.' '.$row->paciente->materno.'</td>
             <td style="color: darkblue">EDAD</td>
-            <td>'.$row->paciente->age().'</td>
+            <td style="text-align:center">'.$row->paciente->age().'</td>
         </tr>
         <tr>
             <td style="color: darkblue">REQUERIDO POR</td>
-            <td>'.$row->doctor->nombre.' '.$row->doctor->paterno.' '.$row->doctor->materno.'</td>
+            <td style="text-align:center">'.$row->doctor->nombre.' '.$row->doctor->paterno.' '.$row->doctor->materno.'</td>
             <td style="color: darkblue">SEXO</td>
-            <td>'.$row->paciente->sexo.'</td>
+            <td style="text-align:center">'.$row->paciente->sexo.'</td>
         </tr>
         <tr>
             <td style="color: darkblue">TIPO MUESTRA</td>
-            <td>'.$row->tipomuestra.'</td>
+            <td style="text-align:center">'.$row->tipomuestra.'</td>
 
-            <td style="color: darkblue">N PACIENTE</td>
-            <td>'.$row->paciente->id.'</td>
+            <td style="color: red">N PACIENTE</td>
+            <td style="text-align:center;color:red">'.$row->paciente->id.'</td>
         </tr>
     </table>
-    <table style="border:1,solid; width: 100%;color: black">
+    <table style="border:1,solid; width: 100%;">
         <tr><b>
-            <td style="color:darkblue; text-align:center; ">EX. FISICO</td>
-            <td style="color:darkblue; text-align:center; ">VALOR</td>
-            <td style="color:darkblue; text-align:center; ">REFERENCIA</td>
-            <td style="color:darkblue; text-align:center; ">EX. QUIMICO</td>
-            <td style="color:darkblue; text-align:center; ">VALOR</td>
-            <td style="color:darkblue; text-align:center; ">REFERENCIA</td></b>
+            <td style="color:darkblue; text-align:center; font:bold; ">EX. FISICO</td>
+            <td style="color:darkblue; text-align:center; font:bold; ">VALOR</td>
+            <td style="color:darkblue; text-align:center; font:bold; ">REFERENCIA</td>
+            <td style="color:darkblue; text-align:center; font:bold; ">EX. QUIMICO</td>
+            <td style="color:darkblue; text-align:center; font:bold; ">VALOR</td>
+            <td style="color:darkblue; text-align:center; font:bold; ">REFERENCIA</td></b>
         </tr>
         <tr>
             <td style="color:blue; text-align:left; ">Color</td>
@@ -178,15 +179,15 @@ table , th , td  {
             <td style="text-align:center; color:blue;">Negativo</td>
         </tr>
         <tr>
-            <td colspan="6" style="text-align: center;color:darkblue">SEDIMENTO: EXAMEN MICROSCOPICO</td>
+            <td colspan="6" style="text-align: center;color:darkblue; font:bold;">SEDIMENTO: EXAMEN MICROSCOPICO</td>
         </tr>
         <tr>
-            <td style="color:darkblue; text-align:center; ">CELULAS</td>
-            <td style="color:darkblue; text-align:center; ">VALOR</td>
-            <td style="color:darkblue; text-align:center;">REFERENCIA</td>
-            <td style="color:darkblue; text-align:center;">CILINDROS</td>
-            <td style="color:darkblue; text-align:center; ">VALOR</td>
-            <td style="color:darkblue; text-align:center;">REFERENCIA</td>
+            <td style="color:darkblue; font:bold; text-align:center; ">CELULAS</td>
+            <td style="color:darkblue; font:bold; text-align:center; ">VALOR</td>
+            <td style="color:darkblue; font:bold; text-align:center;">REFERENCIA</td>
+            <td style="color:darkblue; font:bold; text-align:center;">CILINDROS</td>
+            <td style="color:darkblue; font:bold; text-align:center; ">VALOR</td>
+            <td style="color:darkblue; font:bold; text-align:center;">REFERENCIA</td>
         </tr>
         <tr>
             <td style="color:blue; text-align:left; ">Celulas epiteliales</td>
@@ -208,7 +209,7 @@ table , th , td  {
             <td style="color:blue; text-align:left; ">Celulas clave</td>
             <td>'.$row->d19.'</td>
             <td style="color:blue; text-align:center; ">Negativo</td>
-            <td style="color:darkblue; text-align:left; ">Epiteliales</td>
+            <td style="color:blue; text-align:left; ">Epiteliales</td>
             <td>'.$row->d20.'</td>
             <td style="color:blue; text-align:center; ">Negativo</td>
         </tr>
@@ -224,7 +225,7 @@ table , th , td  {
             <td style="color:blue; text-align:left; ">Eritrocitos</td>
             <td>'.$row->d23.'</td>
             <td style="color:blue; text-align:center; ">Hasta 3/c</td>
-            <td style="color:darkblue; text-align:left; ">Leucositario</td>
+            <td style="color:blue; text-align:left; ">Leucositario</td>
             <td>'.$row->d24.'</td>
             <td style="color:blue; text-align:center; ">Negativo</td>
         </tr>
@@ -232,12 +233,12 @@ table , th , td  {
             <td style="color:blue; text-align:left; ">Bacterias</td>
             <td>'.$row->d25.'</td>
             <td style="color:blue; text-align:center; ">Escaso</td>
-            <td style="color:darkblue; text-align:left; ">Cereos</td>
+            <td style="color:blue; text-align:left; ">Cereos</td>
             <td>'.$row->d26.'</td>
             <td style="color:blue; text-align:center; ">Negativo</td>
         </tr>
         <tr>
-            <td style="color:blue; text-align:left; ">CRISTALES</td>
+            <td style="color:darkblue; text-align:left; font:bold;">CRISTALES</td>
             <td colspan="2"></td>
             <td style="color:blue; text-align:left; ">Mixtos</td>
             <td>'.$row->d27.'</td>
@@ -247,13 +248,13 @@ table , th , td  {
             <td style="color:blue; text-align:left; ">Uratos amorfos</td>
             <td>'.$row->d28.'</td>
             <td style="color:blue; text-align:center; ">Escasos</td>
-            <td colspan="3" style="color:darkblue; text-align:center; ">OTROS</td>
+            <td colspan="3" style="color:darkblue; text-align:center; font:bold;">OTROS</td>
         </tr>
         <tr>
             <td style="color:blue; text-align:left; ">Fosfato amorfo</td>
             <td>'.$row->d29.'</td>
             <td style="color:blue; text-align:center; ">Escasos</td>
-            <td style="color:darkblue; text-align:left; ">Filamento mucoso</td>
+            <td style="color:blue; text-align:left; ">Filamento mucoso</td>
             <td colspan="2">'.$row->d30.'</td>
         </tr>
         <tr>
@@ -267,35 +268,35 @@ table , th , td  {
             <td style="color:blue; text-align:left; ">Fosfato de calcio</td>
             <td>'.$row->d33.'</td>
             <td style="color:blue; text-align:center; ">Escasos</td>
-            <td style="color:darkblue; text-align:left; ">Levaduras</td>
+            <td style="color:blue; text-align:left; ">Levaduras</td>
             <td colspan="2">'.$row->d34.'</td>
         </tr>
         <tr>
             <td style="color:blue; text-align:left; ">Acido Urico</td>
             <td>'.$row->d35.'</td>
             <td style="color:blue; text-align:center; ">Escasos</td>
-            <td style="color:darkblue; text-align:left; ">Esporas micoticas</td>
+            <td style="color:blue; text-align:left; ">Esporas micoticas</td>
             <td colspan="2">'.$row->d36.'</td>
         </tr>
         <tr>
-            <td style="color:darkblue; text-align:left; ">OBSERVACIONES</td>
+            <td style="color:darkblue; text-align:left; font:bold;">OBSERVACIONES</td>
             <td colspan="5">'.$row->d37.'</td>
         </tr>
         <tr>
-            <td rowspan="4" style="color:darkblue; text-align:left; ">RESPONSABLE</td>
+            <td rowspan="4" style="color:darkblue; text-align:left; font:bold;">RESPONSABLE</td>
             <td colspan="2" rowspan="4">'.$row->user->name.'</td>
         </tr>
         <tr>
             <td colspan="2" style="color:blue; text-align:left; ">FECHA DE TOMA DE MUESTRAS</td>
-            <td>'.$row->fechatoma.'</td>
+            <td style="text-align:center;">'.$row->fechatoma.'</td>
         </tr>
         <tr>
             <td colspan="2" style="color:blue; text-align:left; ">FECHA DE ENTREGA DE MUESTRAS</td>
-            <td>'.date("Y-m-d").'</td>
+            <td style="text-align:center;">'.date("Y-m-d").'</td>
         </tr>
         <tr>
             <td colspan="2" style="color:blue; text-align:left; ">HORA TOMA DE MUESTRA</td>
-            <td>'.date('H:i:s').'</td>
+            <td style="text-align:center;">'.date('H:i:s').'</td>
         </tr>
         </table>
         ';

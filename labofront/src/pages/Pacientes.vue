@@ -220,7 +220,7 @@
             </tr>
             <tr>
                 <td style="color: darkblue">PACIENTE</td>
-                <td>{{dato2.nombre}}</td>
+                <td>{{dato2.nombre}} {{dato2.paterno}} {{dato2.materno}}</td>
                 <td style="color: darkblue">EDAD</td>
                 <td>{{dato2.age}}</td>
             </tr>
@@ -431,6 +431,10 @@
                 <td><input type="date" name="fechatoma"   style="width: 100%" v-model="hemograma.fechatoma"></td>
             </tr>
             <tr>
+                <td class="bg-negative text-white">HORA DE TOMA DE MUESTRA:</td>
+                <td><input type="time" name="horatoma"   style="width: 100%" v-model="hemograma.horatoma"></td>
+            </tr>
+            <tr>
                 <td colspan="2">
                     <q-btn class="btn btn-success btn-block full-width" color="teal" type="submit"><i class="fa fa-save"></i> REGISTRAR</q-btn>
                 </td>
@@ -465,7 +469,7 @@
             </tr>
             <tr>
                 <td style="color: darkblue">PACIENTE</td>
-                <td>{{dato2.nombre}}</td>
+                <td>{{dato2.nombre}} {{dato2.paterno}} {{dato2.materno}}</td>
                 <td style="color: darkblue">EDAD</td>
                 <td></td>
             </tr>
@@ -653,12 +657,14 @@
                 <td colspan="6"><input placeholder="00" type="text" v-model="sanguinia.d31"   style="width: 100%" ></td>
             </tr>
             <tr>
-                <td colspan="2" rowspan="2" class="bg-blue text-center text-white">RESPONSABLE</td>
-                <td colspan="2" rowspan="2">
-                    
-                </td>
+                <td colspan="2" rowspan="3" class="bg-blue text-center text-white">RESPONSABLE</td>
+                <td colspan="2" rowspan="3"> </td>
                 <td colspan="3" class="bg-blue text-center text-white">FECHA TOMA DE MUESTRA</td>
                 <td><input placeholder="00" type="date" v-model="sanguinia.fechatoma"   style="width: 100%" ></td>
+            </tr>
+            <tr>
+                <td colspan="3" class="bg-blue text-center text-white">HORA DE TOMA DE MUESTRA</td>
+                <td><input placeholder="00" type="time"  style="width: 100%" v-model="sanguinia.horatoma"></td>
             </tr>
             <tr>
                 <td colspan="3" class="bg-blue text-center text-white">FECHA DE ENTREGA DE RESULTADO</td>
@@ -698,7 +704,7 @@
             </tr>
             <tr>
                 <td style="color: darkblue">PACIENTE</td>
-                <td>{{dato2.nombre}}</td>
+                <td>{{dato2.nombre}} {{dato2.paterno}} {{dato2.materno}}</td>
                 <td style="color: darkblue">EDAD</td>
                 <td></td>
             </tr>
@@ -936,7 +942,7 @@
             </tr>
             <tr>
                 <td style="color: darkblue">PACIENTE</td>
-                <td>{{dato2.nombre}}</td>
+                <td>{{dato2.nombre}} {{dato2.paterno}} {{dato2.materno}}</td>
                 <td style="color: darkblue">EDAD</td>
                 <td></td>
             </tr>
@@ -1080,7 +1086,7 @@
             </tr>
             <tr>
                 <td style="color: darkblue">PACIENTE</td>
-                <td>{{dato2.nombre}}</td>
+                <td>{{dato2.nombre}} {{dato2.paterno}} {{dato2.materno}}</td>
                 <td style="color: darkblue">EDAD</td>
                 <td></td>
             </tr>
@@ -1223,7 +1229,7 @@
             </tr>
             <tr>
                 <td style="color: darkblue">PACIENTE</td>
-                <td>{{dato2.nombre}}</td>
+                <td>{{dato2.nombre}} {{dato2.paterno}} {{dato2.materno}}</td>
                 <td style="color: darkblue">EDAD</td>
                 <td></td>
             </tr>
@@ -1378,7 +1384,7 @@
             </tr>
             <tr>
                 <td style="color: darkblue">PACIENTE</td>
-                <td>{{dato2.nombre}}</td>
+                <td>{{dato2.nombre}} {{dato2.paterno}} {{dato2.materno}}</td>
                 <td style="color: darkblue">EDAD</td>
                 <td></td>
             </tr>
@@ -1526,7 +1532,7 @@
             </tr>
             <tr>
                 <td style="color: darkblue">PACIENTE</td>
-                <td>{{dato2.nombre}}</td>
+                <td>{{dato2.nombre}} {{dato2.paterno}} {{dato2.materno}}</td>
                 <td style="color: darkblue">EDAD</td>
                 <td></td>
             </tr>
@@ -1632,7 +1638,7 @@
             </tr>
             <tr>
                 <td style="color: darkblue">PACIENTE</td>
-                <td>{{dato2.nombre}}</td>
+                <td>{{dato2.nombre}} {{dato2.paterno}} {{dato2.materno}}</td>
                 <td style="color: darkblue">EDAD</td>
                 <td></td>
             </tr>
@@ -1776,7 +1782,7 @@
             </tr>
             <tr>
                 <td style="color: darkblue">PACIENTE</td>
-                <td>{{dato2.nombre}}</td>
+                <td>{{dato2.nombre}} {{dato2.paterno}} {{dato2.materno}}</td>
                 <td style="color: darkblue">EDAD</td>
                 <td></td>
             </tr>
@@ -1937,7 +1943,7 @@
             </tr>
             <tr>
                 <td style="color: darkblue">PACIENTE</td>
-                <td>{{dato2.nombre}}}</td>
+                <td>{{dato2.nombre}} {{dato2.paterno}} {{dato2.materno}}}</td>
                 <td style="color: darkblue">EDAD</td>
                 <td></td>
             </tr>
@@ -2054,7 +2060,7 @@
             </tr>
             <tr>
                 <td style="color: darkblue">PACIENTE</td>
-                <td>{{dato2.nombre}}</td>
+                <td>{{dato2.nombre}} {{dato2.paterno}} {{dato2.materno}}</td>
                 <td style="color: darkblue">EDAD</td>
                 <td></td>
             </tr>
@@ -2230,9 +2236,9 @@ export default {
          {value:"reserologia"        ,label:"Resultado Serologia" },
          {value:"ensayo"        ,label:"Inmunoensayo de Fluorescencia" }
       ],
-      hemograma:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD')},
-      orina:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD')},
-      sanguinia:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD')},
+      hemograma:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'H:m')},
+      orina:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'H:m')},
+      sanguinia:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'H:m')},
       uretral:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD')},
       vaginal:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD')},
       hece:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD')},
@@ -2337,6 +2343,7 @@ export default {
               icon: 'done',
              color:'green'
             })
+            this.hemograma={};
 
         })
     },
@@ -2349,6 +2356,7 @@ export default {
               icon: 'done',
              color:'green'
             })
+            this.sanguinia={};
         })
     },
       onOrina(){
@@ -2359,6 +2367,7 @@ export default {
           message: 'Registro Realizado',
           icon: 'beaker'
         })
+        this.orina={};
         })
     },
           onUretral(){
@@ -2370,6 +2379,7 @@ export default {
               icon: 'done',
              color:'green'
             })
+            this.uretral={};
         })
     },
     onVaginal(){
@@ -2381,6 +2391,7 @@ export default {
               icon: 'done',
              color:'green'
             })
+            this.vaginal={};
         })
     },
     onHece(){
@@ -2392,6 +2403,7 @@ export default {
               icon: 'done',
              color:'green'
             })
+            this.hece={};
         })
     },
     onSimple(){
@@ -2403,6 +2415,7 @@ export default {
               icon: 'done',
              color:'green'
             })
+            this.simple={};
         })
     },
         onSeriado(){
@@ -2414,6 +2427,7 @@ export default {
               icon: 'done',
              color:'green'
             })
+            this.seriado={};
         })
     },
     onSerologia(){
@@ -2425,6 +2439,7 @@ export default {
               icon: 'done',
              color:'green'
             })
+            this.serologia={};
         })
     },
     onLabserologia(){
@@ -2436,6 +2451,7 @@ export default {
               icon: 'done',
              color:'green'
             })
+            this.labserologia={};
         })
     },
         onReserologia(){
@@ -2447,6 +2463,7 @@ export default {
               icon: 'done',
              color:'green'
             })
+            this.reserologia={};
         })
     },
             onEnsayo(){
@@ -2458,6 +2475,7 @@ export default {
               icon: 'done',
              color:'green'
             })
+            this.ensayo={};
         })
     },
     labRow(props){

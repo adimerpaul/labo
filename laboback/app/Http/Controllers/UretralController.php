@@ -58,19 +58,23 @@ class UretralController extends Controller
             font-size: 12px;
             }
             </style>
-            <table style="width: 100%;color: black;padding-top: 5px;padding-right: 15px;padding-left: 10px">
+            <table style="width: 100%;padding-top: 5px;padding-right: 15px;padding-left: 10px">
             <tr >
-                <td rowspan="4" style="height: 2cm"><img src="./img/natividad2.png"  alt="Logo Clinica" srcset="" style="height: 10px; width:200px;"></td>
-                <td style="text-align:center;">SERVICIO DE LABORATORIO</td>
+                <td rowspan="5" ><img src="./img/natividad.jpeg"  alt="Logo Clinica" srcset="" style="height: 1.5cm; "></td>
+                <td style="text-align:center; color:darkblue;">SERVICIO DE LABORATORIO</td>
+            </tr>
+
+            <tr>
+                <td style="text-align:center;color:darkblue;">Emergencia las 24 horas del dia. </td>
             </tr>
             <tr>
-                <td style="text-align:center;">Telf: 5254721 Fax: 52-83667 </td>
+                <td style="text-align:center;color:darkblue;">Bolivar Nº 753 entre Arica e Iquique </td>
             </tr>
             <tr>
-                <td style="text-align:center;">Emergencia las 24 horas del dia. </td>
+                <td style="text-align:center;color:darkblue;">Telf: 5254721 Fax: 52-83667 </td>
             </tr>
             <tr>
-                <td style="text-align:center;">Bolivar Nº 753 entre Arica e Iquique </td>
+                <td style="text-align:center;color:red;">Nº Registro CODELAB 000045 </td>
             </tr>
         </table>
         <table class="tablex" style="width: 100%;color: black;padding-right: 15px;padding-left: 10px">
