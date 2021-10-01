@@ -1563,7 +1563,7 @@
             </tr>
             <tr>
                 <td colspan="2" class="text-center text-red" style="width: 20%">1 MUESTRA</td>
-                <td ><input  type="text"  style="width: 100%" v-model="seriado.muestra1"></td>
+                <td rowspan=3><input  type="text"  style="width: 100%" v-model="seriado.muestra1"></td>
             </tr>
             <tr>
                 <td class="text-left text-red">Fecha</td>
@@ -1901,10 +1901,16 @@
             </tr>
 
             <tr >
-                <td colspan="2" rowspan="2" >RESPONSABLE: </td>
+                <td colspan="2" rowspan="3" >RESPONSABLE: </td>
                 <td colspan="2">
                     FECHA DE TOMA DE MUESTRAS
                     <input placeholder="00" type="date"  style="width: 100%" v-model="labserologia.fechatoma">
+                </td>
+            </tr>
+                        <tr>
+                <td colspan="2">
+                    HORA DE TOMA DE MUESTRAS
+                    <input placeholder="00" type="time"  style="width: 100%" name="fechaentrega" v-model="labserologia.horatoma">
                 </td>
             </tr>
             <tr>
@@ -2017,10 +2023,16 @@
             </tr>
 
             <tr >
-                <td colspan="2" rowspan="2" >RESPONSABLE: </td>
+                <td colspan="2" rowspan="3" >RESPONSABLE: </td>
                 <td colspan="2">
                     FECHA DE TOMA DE MUESTRAS
                     <input placeholder="00" type="date"  style="width: 100%" v-model="reserologia.fechatoma">
+                </td>
+            </tr>
+                        <tr>
+                <td colspan="2">
+                    Hora DE TOMA DE MUESTRAS
+                    <input placeholder="00" type="time"  style="width: 100%" name="fechaentrega" v-model="reserologia.horatoma">
                 </td>
             </tr>
             <tr>
@@ -2175,13 +2187,18 @@
             </tr>
 
             <tr >
-                <td colspan="2" rowspan="2" >RESPONSABLE: </td>
+                <td colspan="2" rowspan="3" >RESPONSABLE: </td>
                 <td colspan="3">
                     FECHA DE TOMA DE MUESTRAS
                     <input placeholder="00" type="date"  style="width: 100%" v-model="ensayo.fechatoma">
                 </td>
             </tr>
             <tr>
+                <td colspan="3">
+                    HORA DE TOMA DE MUESTRAS
+                    <input placeholder="00" type="time"  style="width: 100%" name="fechaentrega" v-model="ensayo.horatoma">
+                </td>
+            </tr>            <tr>
                 <td colspan="3">
                     FECHA DE ENTREGA DE MUESTRAS
                     <input placeholder="00" type="date"  style="width: 100%" name="fechaentrega">
@@ -2245,14 +2262,14 @@ export default {
       hemograma:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')},
       orina:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')},
       sanguinia:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')},
-      uretral:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD')},
-      vaginal:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD')},
-      hece:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD')},
+      uretral:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')},
+      vaginal:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')},
+      hece:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')},
       simple:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')},
-      seriado:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD')},
-      serologia:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD')},
-      labserologia:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD')},
-      reserologia:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD')},
+      seriado:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')},
+      serologia:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')},
+      labserologia:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')},
+      reserologia:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')},
       requerido:{},
       actual:date.formatDate(Date.now(),'YYYY-MM-DD'),
       ensayo:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD')},

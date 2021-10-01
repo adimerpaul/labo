@@ -70,134 +70,131 @@ class LabserologiaController extends Controller
 
             }
             </style>
-            <table style="color: black; margin-top:5px;border:0" >
-            <tr style="border:0;">
-                <td rowspan="4" style="border:0;"><img src="./img/natividad2.png" alt="Logo Clinica" srcset="" ></td>
-                <td style="color: blue; text-align:center; border:0;">SERVICIO DE LABORATORIO </td>
+            <table style="border:0; margin-top:5px;" >
+            <tr >
+                <td rowspan="3" style="border:0;"><img src="./img/natividad.jpeg" alt="Logo Clinica" srcset="" style="height:1.5cm"></td>
+                <td style="color: darkblue; text-align:center; border:0;">SERVICIO DE LABORATORIO </td>
             </tr> 
-                       <tr style="border:0;">
-
-                <td style="color: blue; text-align:center; border:0;">Telf: 5254721 Fax: 52-83667 </td>                
+            <tr >
+                <td style="color: darkblue; text-align:center; border:0;">Telf: 5254721 Fax: 52-83667 </td>                
             </tr>
-            <tr style="border:0;">
-
-                <td style="color: blue; text-align:center;border:0; ">Emergencia las 24 horas del dia. </td>                
+            <tr >
+                <td style="color: darkblue; text-align:center;border:0; ">Emergencia las 24 horas del dia. </td>                
             </tr>
-            <tr style="border:0;">
-
-                <td style="color: blue; text-align:center; border:0;">Bolivar Nº 753 entre Arica e Iquique </td>                
+            <tr >
+                <td style="color: red; text-align:center; border:0;">Nº Registro CODELAB 000045 </td>                
+                <td style="color: darkblue; text-align:center; border:0;">Bolivar Nº 753 entre Arica e Iquique </td>                
             </tr>
         </table>
-        <table border="1" style="color: black">
+        <table>
             <tr>
-                <td colspan="3" style="text-align: center"><h3>SEROLOGIA</h3></td>
-                <td>Form. '.$row->id.'</td>
+                <td colspan="3" style="text-align: center;color:darkblue;font:bold;border:0"><h3>SEROLOGIA</h3></td>
+                <td style="color:red">Form. 005</td>
             </tr>
             <tr>
                 <td style="color: darkblue">PACIENTE</td>
-                <td>'.$row->paciente->nombre.' '.$row->paciente->paterno.' '.$row->paciente->materno.'</td>
+                <td style="text-align:center">'.$row->paciente->nombre.' '.$row->paciente->paterno.' '.$row->paciente->materno.'</td>
                 <td style="color: darkblue">EDAD</td>
-                <td>'.$row->paciente->age().'</td>
+                <td style="text-align:center">'.$row->paciente->age().'</td>
             </tr>
             <tr>
                 <td style="color: darkblue">REQUERIDO POR</td>
-                <td>'.$row->doctor->nombre.' '.$row->doctor->paterno.' '.$row->doctor->materno.'</td>
+                <td style="text-align:center">'.$row->doctor->nombre.' '.$row->doctor->paterno.' '.$row->doctor->materno.'</td>
                 <td style="color: darkblue">SEXO</td>
-                <td>'.$row->paciente->sexo.'</td>
+                <td style="text-align:center">'.$row->paciente->sexo.'</td>
             </tr>
             <tr>
                 <td style="color: darkblue">TIPO MUESTRA</td>
-                <td>'.$row->tipomuestra.'</td>
-                <td style="color: darkblue">N PACIENTE</td>
-                <td>'.$row->paciente->id.'</td>
+                <td style="text-align:center">'.$row->tipomuestra.'</td>
+                <td style="color:red">N PACIENTE</td>
+                <td style="text-align:center;color:red">'.$row->paciente->id.'</td>
             </tr>
 
         </table>
-        <br>
-        <table border="1" style="color: black">
+        <table >
 
             <tr>
                 <td colspan="2" style="text-align:center; color:red;"  ></td>
-                <td style="text-align:center; color:red;" > Valor referencial</td>
+                <td style="text-align:center; color:red;" > Valor Referencial</td>
                 <td style="text-align:center; color:red;" >Metodo de Prueba</td>
             </tr>
             <tr>
-                <td style="color:red; width: 20%">Factor Reumatoide(Latex)</td>
-                <td >'.$row->d1.'</td>
-                <td style="text-align:center; color:blue;" >Hasta 8 UI/ml</td>
-                <td style="text-align:center; color:blue;">Aglutinacion directa</td>
+                <td style="color:darkred; width: 20%">Factor Reumatoide(Latex)</td>
+                <td style="text-align:center;">'.$row->d1.'</td>
+                <td style="text-align:center; color:Khaki;" >Hasta 8 UI/ml</td>
+                <td style="text-align:center; color:darkblue;">Aglutinacion directa</td>
             </tr>
             <tr>
-                <td style="color:red; width: 20%">Antiestreptolisina</td>
-                <td >'.$row->d2.'</td>
-                <td style="text-align:center; color:blue;">Hasta 200 UI/l</td>
-                <td style="text-align:center; color:blue;">Aglutinacion directa</td>
+                <td style="color:darkred; width: 20%">Antiestreptolisina</td>
+                <td style="text-align:center;">'.$row->d2.'</td>
+                <td style="text-align:center; color:Khaki;">Hasta 200 UI/l</td>
+                <td style="text-align:center; color:darkblue;">Aglutinacion directa</td>
             </tr>
             <tr>
-                <td style="color:red; width: 20%">Proteina C Reactiva</td>
-                <td >'.$row->d3.'</td>
-                <td style="text-align:center; color:blue;">Hasta 0.8 mg/dl</td>
-                <td style="text-align:center; color:blue;">Aglutinacion directa</td>
+                <td style="color:darkred; width: 20%">Proteina C Reactiva</td>
+                <td style="text-align:center;">'.$row->d3.'</td>
+                <td style="text-align:center; color:Khaki;">Hasta 0.8 mg/dl</td>
+                <td style="text-align:center; color:darkblue;">Aglutinacion directa</td>
             </tr>
             <tr>
-                <td style="color:red; width: 20%">RPR</td>
-                <td >'.$row->d4.'</td>
-                <td style="text-align:center; color:blue;">No Reactivo</td>
-                <td style="text-align:center; color:blue;">Floculacion directa </td>
+                <td style="color:darkred; width: 20%">RPR</td>
+                <td style="text-align:center;">'.$row->d4.'</td>
+                <td style="text-align:center; color:Khaki;">No Reactivo</td>
+                <td style="text-align:center; color:darkblue;">Floculacion directa </td>
             </tr>
             <tr>
-                <td style="color:red; width: 20%">Prueba Rapida Sifilis</td>
-                <td >'.$row->d5.'</td>
-                <td style="text-align:center; color:blue;">No Reactivo</td>
-                <td style="text-align:center; color:blue;">Prueba Rapida Inmunocromatografica</td>
+                <td style="color:darkred; width: 20%">Prueba Rapida Sifilis</td>
+                <td style="text-align:center;">'.$row->d5.'</td>
+                <td style="text-align:center; color:Khaki;">No Reactivo</td>
+                <td style="text-align:center; color:darkblue;">Prueba Rapida Inmunocromatografica</td>
             </tr>
             <tr>
-                <td style="color:red; width: 20%">Prueba Rapida VIH</td>
-                <td >'.$row->d6.'</td>
-                <td style="text-align:center; color:blue;">No Reactivo</td>
-                <td style="text-align:center; color:blue;">Prueba Rapida Inmunocromatografica</td>
+                <td style="color:darkred; width: 20%">Prueba Rapida VIH</td>
+                <td style="text-align:center;">'.$row->d6.'</td>
+                <td style="text-align:center; color:Khaki;">No Reactivo</td>
+                <td style="text-align:center; color:darkblue;">Prueba Rapida Inmunocromatografica</td>
             </tr>
             <tr>
-                <td style="color:red; width: 20%">Hepatitis A</td>
-                <td >'.$row->d7.'</td>
-                <td style="text-align:center; color:blue;">NEGATIVO / POSITIVO</td>
-                <td style="text-align:center; color:blue;">Prueba Rapida Inmunocromatografica</td>
+                <td style="color:darkred; width: 20%">Hepatitis A</td>
+                <td style="text-align:center;">'.$row->d7.'</td>
+                <td style="text-align:center; color:Khaki;">NEGATIVO / POSITIVO</td>
+                <td style="text-align:center; color:darkblue;">Prueba Rapida Inmunocromatografica</td>
             </tr>
             <tr>
-                <td style="color:red; width: 20%">Hepatitis B</td>
-                <td >'.$row->d8.'</td>
-                <td style="text-align:center; color:blue;">NEGATIVO / POSITIVO</td>
-                <td style="text-align:center; color:blue;">Prueba Rapida Inmunocromatografica</td>
+                <td style="color:darkred; width: 20%">Hepatitis B</td>
+                <td style="text-align:center;">'.$row->d8.'</td>
+                <td style="text-align:center; color:Khaki;">NEGATIVO / POSITIVO</td>
+                <td style="text-align:center; color:darkblue;">Prueba Rapida Inmunocromatografica</td>
             </tr>
             <tr>
-                <td style="color:red; width: 20%">Hepatitis C</td>
-                <td >'.$row->d9.'</td>
-                <td style="text-align:center; color:blue;">NEGATIVO / POSITIVO</td>
-                <td style="text-align:center; color:blue;">Prueba Rapida Inmunocromatografica</td>
+                <td style="color:darkred; width: 20%">Hepatitis C</td>
+                <td style="text-align:center;">'.$row->d9.'</td>
+                <td style="text-align:center; color:Khaki;">NEGATIVO / POSITIVO</td>
+                <td style="text-align:center; color:darkblue;">Prueba Rapida Inmunocromatografica</td>
             </tr>
             <tr>
-                <td style="color:red; width: 20%">Helicobacter Pylori en Sangre</td>
-                <td >'.$row->d10.'</td>
-                <td style="text-align:center; color:blue;">NEGATIVO / POSITIVO</td>
-                <td style="text-align:center; color:blue;">Prueba Rapida Inmunocromatografica</td>
+                <td style="color:darkred; width: 20%">Helicobacter Pylori en Sangre</td>
+                <td style="text-align:center;">'.$row->d10.'</td>
+                <td style="text-align:center; color:Khaki;">NEGATIVO / POSITIVO</td>
+                <td style="text-align:center; color:darkblue;">Prueba Rapida Inmunocromatografica</td>
             </tr>
             <tr>
-                <td style="color:red; width: 20%">Helicobacter Pylori en Heces</td>
-                <td >'.$row->d11.'</td>
-                <td style="text-align:center; color:blue;">NEGATIVO / POSITIVO</td>
-                <td style="text-align:center; color:blue;">Prueba Rapida Inmunocromatografica</td>
+                <td style="color:darkred; width: 20%">Helicobacter Pylori en Heces</td>
+                <td style="text-align:center;">'.$row->d11.'</td>
+                <td style="text-align:center; color:Khaki;">NEGATIVO / POSITIVO</td>
+                <td style="text-align:center; color:darkblue;">Prueba Rapida Inmunocromatografica</td>
             </tr>
             <tr>
-                <td style="color:red; width: 20%">Troponina I</td>
-                <td >'.$row->d12.'</td>
-                <td style="text-align:center; color:blue;">NEGATIVO / POSITIVO</td>
-                <td style="text-align:center; color:blue;">Prueba Rapida Inmunocromatografica</td>
+                <td style="color:darkred; width: 20%">Troponina I</td>
+                <td style="text-align:center;">'.$row->d12.'</td>
+                <td style="text-align:center; color:Khaki;">NEGATIVO / POSITIVO</td>
+                <td style="text-align:center; color:darkblue;">Prueba Rapida Inmunocromatografica</td>
             </tr>
             <tr>
-                <td style="color:red; width: 20%">PSA</td>
-                <td >'.$row->d13.'</td>
-                <td style="text-align:center; color:blue;">Hasta 4 ng/ml</td>
-                <td style="text-align:center; color:blue;">Prueba Rapida Semicuantitativo</td>
+                <td style="color:darkred; width: 20%">PSA</td>
+                <td style="text-align:center;">'.$row->d13.'</td>
+                <td style="text-align:center; color:Khaki;">Hasta 4 ng/ml</td>
+                <td style="text-align:center; color:darkblue;">Prueba Rapida Semicuantitativo</td>
             </tr>
             <tr>
                 <td style="color:red;">OBSERVACIONES</td>
@@ -205,19 +202,20 @@ class LabserologiaController extends Controller
             </tr>
 
             <tr >
-                <td colspan="2" rowspan="2" >RESPONSABLE: '.$row->user->name.'</td>
+                <td colspan="2" rowspan="3" style="color:darkblue;">RESPONSABLE: <span style="color:black">'.$row->user->name.'</span></td>
 
-                <td colspan="2">
-                    FECHA DE TOMA DE MUESTRAS: '.$row->fechatoma.'
-                    
-                </td>
+                <td style="color:darkblue;">FECHA DE TOMA DE MUESTRAS: </td>
+                <td >'.$row->fechatoma.'</td>
             </tr>
             <tr>
 
-                <td colspan="2">
-                    FECHA DE ENTREGA DE MUESTRAS: 
-                    '.date('Y-m-d').'
-                </td>
+                <td style="color:darkblue;">HORA DE TOMA DE MUESTRAS: </td>
+                <td>'.$row->horatoma.'</td>
+            </tr>
+            <tr>
+
+                <td style="color:darkblue;">FECHA DE ENTREGA DE MUESTRAS: </td>
+                <td>'.date('Y-m-d').'</td>
             </tr>
 
         </table>

@@ -11,6 +11,7 @@ class Serologia extends Model
     protected $fillable=[
         'tipomuestra',
         'fechatoma',
+        'horatoma',
         'lgm',
         'd1',
         'lgg',

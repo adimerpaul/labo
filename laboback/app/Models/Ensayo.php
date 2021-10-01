@@ -12,6 +12,7 @@ class Ensayo extends Model
     $fillable=[
     'tipomuestra',
     'fechatoma',
+    'horatoma',
     'd1',
     'd2',
     'd3',

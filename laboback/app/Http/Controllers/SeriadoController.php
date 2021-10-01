@@ -70,84 +70,86 @@ font-size: 12px;
 </style>
             <table style="padding-right:15px;padding-left:10px;width: 100%;color: black;padding-top: 10px">
             <tr >
-                <td rowspan="4" style="height: 2cm"><img src="./images/natividad2.png" alt="Logo Clinica" srcset="" style="height: 10px; width:200px;"></td>
-                <td style="text-align:center;">SERVICIO DE LABORATORIO </td>
+                <td rowspan="3" ><img src="./img/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 1.5cm; "></td>
+                <td style="text-align:center; color:darkblue;">SERVICIO DE LABORATORIO </td>
+            </tr>
+
+            <tr>
+                <td style="text-align:center; color:darkblue;">Emergencia las 24 horas del dia. </td>
             </tr>
             <tr>
-                <td style="text-align:center;">Telf: 5254721 Fax: 52-83667 </td>
+                <td style="text-align:center; color:darkblue;">Bolivar Nº 753 entre Arica e Iquique </td>
             </tr>
             <tr>
-                <td style="text-align:center;">Emergencia las 24 horas del dia. </td>
-            </tr>
-            <tr>
-                <td style="text-align:center; ">Bolivar Nº 753 entre Arica e Iquique </td>
+                <td style="text-align:center;color:red;">Nº Registro CODELAB 000045</td>
+                <td style="text-align:center;color:darkblue;">Telf: 5254721 Fax: 52-83667 </td>
             </tr>
         </table>
         <table class="tablex" border="1" style="padding-right:15px;padding-left:10px;width: 100%;color: black">
             <tr>
-                <td class="tdx" colspan="3" style="text-align: center"><h3>COPROPARASITOLOGICO SERIADO</h3></td>
-                <td class="tdx">Form. 008</td>
+                <td class="tdx" colspan="3" style="text-align: center;color:darkblue;font:bold;border:0"><h3>COPROPARASITOLOGICO SERIADO</h3></td>
+                <td class="tdx" style="color:red">Form. 009</td>
             </tr>
             <tr>
                 <td class="tdx" style="color: darkblue">PACIENTE</td>
-                <td class="tdx">'.$row->paciente->nombre.' '.$row->paciente->paterno.' '.$row->paciente->materno.'</td>
+                <td class="tdx" style="text-align:center">'.$row->paciente->nombre.' '.$row->paciente->paterno.' '.$row->paciente->materno.'</td>
                 <td class="tdx" style="color: darkblue">EDAD</td>
-                <td class="tdx">'.$row->paciente->age().'</td>
+                <td class="tdx" style="text-align:center">'.$row->paciente->age().'</td>
             </tr>
             <tr>
                 <td class="tdx" style="color: darkblue">REQUERIDO POR</td>
-                <td class="tdx">'.$row->doctor->nombre.' '.$row->doctor->paterno.' '.$row->doctor->materno.'</td>
+                <td class="tdx" style="text-align:center">'.$row->doctor->nombre.' '.$row->doctor->paterno.' '.$row->doctor->materno.'</td>
                 <td class="tdx" style="color: darkblue">SEXO</td>
-                <td class="tdx">'.$row->paciente->sexo.'</td>
+                <td class="tdx" style="text-align:center">'.$row->paciente->sexo.'</td>
             </tr>
             <tr>
                 <td class="tdx" style="color: darkblue">TIPO MUESTRA</td>
-                <td class="tdx">'.$row->tipomuestra.'</td>
-                <td class="tdx" style="color: darkblue">N PACIENTE</td>
-                <td class="tdx">'.$row->paciente->id.'</td>
+                <td class="tdx" style="text-align:center">'.$row->tipomuestra.'</td>
+                <td class="tdx" style="color: red">N PACIENTE</td>
+                <td class="tdx" style="text-align:center;color:red;">'.$row->paciente->id.'</td>
             </tr>
 
         </table>
         <br>
         <table class="tablex" border="1" style="padding-right:15px;padding-left:10px;width: 100%;color: black">
             <tr>
-                <td class="tdx" colspan="3" style="text-align: center;font-weight: bold;color: darkred ">COPROPARASITOLOGICO SERIADO</td>
+                <td class="tdx" colspan="3" style="text-align: center;font-weight: bold;color: darkblue ">COPROPARASITOLOGICO SERIADO</td>
             </tr>
             <tr>
-                <td class="tdx" colspan="2" style="text-align:center; color:red; width: 20%">1 MUESTRA</td>
+                <td class="tdx" colspan="2" style="text-align:center; color:blue; width: 20%">1º MUESTRA</td>
                 <td class="tdx" rowspan="3">'.$row->muestra1.'</td>
             </tr>
             <tr>
                 <td class="tdx" style="text-align:center; color:red;">Fecha</td>
-                <td class="tdx" >'.$row->fecha1.'</td>
+                <td class="tdx" style="text-align:center">'.$row->fecha1.'</td>
             </tr>
             <tr>
                 <td class="tdx" style="text-align:center; color:red;">Hora</td>
-                <td class="tdx" >'.$row->hora1.'</td>
+                <td class="tdx" style="text-align:center">'.$row->hora1.'</td>
             </tr>
             <tr>
-                <td class="tdx" colspan="2" style="text-align:center; color:red; width: 20%">2 MUESTRA</td>
+                <td class="tdx" colspan="2" style="text-align:center; color:blue; width: 20%">2º MUESTRA</td>
                 <td class="tdx" rowspan="3">'.$row->muestra2.'</td>
             </tr>
             <tr>
                 <td class="tdx" style="text-align:center; color:red;">Fecha</td>
-                <td class="tdx" >'.$row->fecha2.'</td>
+                <td class="tdx" style="text-align:center">'.$row->fecha2.'</td>
             </tr>
             <tr>
                 <td class="tdx" style="text-align:center; color:red;">Hora</td>
-                <td class="tdx" >'.$row->hora2.'</td>
+                <td class="tdx" style="text-align:center">'.$row->hora2.'</td>
             </tr>
             <tr>
-                <td class="tdx" colspan="2" style="text-align:center; color:red; width: 20%">3 MUESTRA</td>
+                <td class="tdx" colspan="2" style="text-align:center; color:blue; width: 20%">3º MUESTRA</td>
                 <td class="tdx" rowspan="3">'.$row->muestra3.'</td>
             </tr>
             <tr>
                 <td class="tdx" style="text-align:center; color:red;">Fecha</td>
-                <td class="tdx" >'.$row->fecha3.'</td>
+                <td class="tdx" style="text-align:center">'.$row->fecha3.'</td>
             </tr>
             <tr>
                 <td class="tdx" style="text-align:center; color:red;">Hora</td>
-                <td class="tdx" >'.$row->hora3.'</td>
+                <td class="tdx" style="text-align:center">'.$row->hora3.'</td>
             </tr>
             <tr>
                 <td class="tdx" colspan="2" style="text-align:center; color:red;">OBSERVACIONES</td>
@@ -155,10 +157,10 @@ font-size: 12px;
             </tr>
 
             <tr >
-                <td class="tdx" colspan="2" style="color: blue;font-weight: bold" >RESPONSABLE: '.$row->user->name.'</td>
+                <td class="tdx" colspan="2" style="color: darkblue;font-weight: bold" >RESPONSABLE: '.$row->user->name.'</td>
 
-                <td class="tdx" style="color: blue;font-weight: bold">
-                    FECHA DE ENTREGA RESULTADOS: '.date('Y-m-d').'
+                <td class="tdx" style="color: darkblue;font-weight: bold">
+                    FECHA DE ENTREGA RESULTADOS: <span style="color:black">'.date('Y-m-d').'</span>
                 </td>
             </tr>
 

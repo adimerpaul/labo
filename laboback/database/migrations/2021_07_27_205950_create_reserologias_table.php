@@ -17,6 +17,7 @@ class CreateReserologiasTable extends Migration
             $table->id();
             $table->string('tipomuestra')->default('')->nullable();
             $table->date('fechatoma')->nullable();
+            $table->time('horatoma')->nullable();
             $table->string('d1')->default('')->nullable();
             $table->string('d2')->default('')->nullable();
             $table->unsignedBigInteger('paciente_id');

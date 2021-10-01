@@ -70,66 +70,71 @@ font-size: 11px;
 </style>
             <table style="padding-left:10px;padding-right:15px;width: 100%;color: black;padding-top: 5px">
             <tr >
-                <td rowspan="4" style="height: 2cm"><img src="images/natividad.png" alt="Logo Clinica" srcset="" style="height: 10px; width:20px;"></td>
-                <td style=" text-align:center;">SERVICIO DE LABORATORIO </td>
+                <td rowspan="3" ><img src="./img/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 1.5cm; "></td>
+                <td style=" text-align:center; color:darkblue">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
-                <td style=" text-align:center;">Telf: 5254721 Fax: 52-83667 </td>
+                <td style=" text-align:center; color:darkblue">Telf: 5254721 Fax: 52-83667 </td>
             </tr>
             <tr>
-                <td style=" text-align:center;">Emergencia las 24 horas del dia. </td>
+                <td style=" text-align:center; color:darkblue">Emergencia las 24 horas del dia. </td>
             </tr>
             <tr>
-                <td style=" text-align:center;">Bolivar Nº 753 entre Arica e Iquique </td>
+                <td style=" text-align:center;color:red">Nº Registro CODELAB 000045</td>
+                <td style=" text-align:center; color:darkblue">Bolivar Nº 753 entre Arica e Iquique </td>
             </tr>
         </table>
         <table class="tablex" border="1" style="padding-left:10px;padding-right:15px;width: 100%;color: black">
             <tr>
-                <td class="tdx" colspan="3" style="text-align: center"><h3>SEROLOGIA</h3></td>
-                <td class="tdx">Form. 5</td>
+                <td class="tdx" colspan="3" style="text-align: center;color:darkblue;font:bold"><h3>SEROLOGIA</h3></td>
+                <td class="tdx" style="color:red">Form. 005</td>
             </tr>
             <tr>
                 <td class="tdx" style="color: darkblue">PACIENTE</td>
-                <td class="tdx">'.$row->paciente->nombre.' '.$row->paciente->paterno.' '.$row->paciente->materno.'</td>
+                <td class="tdx" style="text-align:center">'.$row->paciente->nombre.' '.$row->paciente->paterno.' '.$row->paciente->materno.'</td>
                 <td class="tdx" style="color: darkblue">EDAD</td>
-                <td class="tdx">'.$row->paciente->age().'</td>
+                <td class="tdx" style="text-align:center">'.$row->paciente->age().'</td>
             </tr>
             <tr>
                 <td class="tdx" style="color: darkblue">REQUERIDO POR</td>
-                <td class="tdx">'.$row->doctor->nombre.' '.$row->doctor->paterno.' '.$row->doctor->materno.'</td>
+                <td class="tdx" style="text-align:center">'.$row->doctor->nombre.' '.$row->doctor->paterno.' '.$row->doctor->materno.'</td>
                 <td class="tdx" style="color: darkblue">SEXO</td>
-                <td class="tdx">'.$row->paciente->sexo.'</td>
+                <td class="tdx" style="text-align:center">'.$row->paciente->sexo.'</td>
             </tr>
             <tr>
                 <td class="tdx" style="color: darkblue">TIPO MUESTRA</td>
-                <td class="tdx">'.$row->tipomuestra.'</td>
-                <td class="tdx" style="color: darkblue">N PACIENTE</td>
-                <td class="tdx">'.$row->paciente->id.'</td>
+                <td class="tdx" style="text-align:center">'.$row->tipomuestra.'</td>
+                <td class="tdx" style="color: red">N PACIENTE</td>
+                <td class="tdx" style="text-align:center;color:red">'.$row->paciente->id.'</td>
             </tr>
 
         </table>
         <br>
-        <table class="tablex" border="1" style="padding-left:10px;padding-right:15px;width: 100%;color: black">
+        <table class="tablex" style="padding-left:10px;padding-right:15px;width: 100%;">
             <tr>
-                <td class="tdx" colspan="4" style="text-align: center ;color: darkred;font-weight: bold">PRUEBA ANTICUERPOS CUANTITATIVOS ANTI SARS COV-2 lg M / lg G</td>
+                <td class="tdx" colspan="4" style="text-align: center ;color: red;font-weight: bold">PRUEBA ANTICUERPOS CUANTITATIVOS ANTI SARS COV-2 lg M / lg G</td>
             </tr>
+            <tr>
+                <td class="tdx" colspan="3" style="text-align: center ;color: blue;font-weight: bold">METODO: INMUNOENSAYO DE FLUORECENCIA (FIA)</td>
+                <td class="tdx"  style="text-align: center ;color: red;font-weight: bold">Valor de Referencia</td>
+            </tr>   
             <tr>
                 <td class="tdx" style="text-align:center; color:red;" >lgM</td>
-                <td class="tdx">'.$row->lgm.'</td>
-                <td class="tdx">'.$row->d1.'</td>
-                <td class="tdx"> menor a 0.9 NEGATIVO PARA lgG/lgM</td>
+                <td class="tdx" style="text-align:center">'.$row->lgm.'</td>
+                <td class="tdx" style="text-align:center">'.$row->d1.'</td>
+                <td class="tdx"  style="text-align:center;color:blue"> menor a 0.9 NEGATIVO PARA lgG/lgM</td>
             </tr>
             <tr>
                 <td class="tdx"></td>
                 <td class="tdx"></td>
                 <td class="tdx"></td>
-                <td class="tdx"> 0.9 menor igual & mayor 1.1 INDETERMINADO </td>
+                <td class="tdx" style="text-align:center;color:blue"> 0.9 menor igual & mayor 1.1 INDETERMINADO </td>
             </tr>
             <tr>
                 <td class="tdx" style="text-align:center; color:red;" >lgG</td>
-                <td class="tdx">'.$row->lgg.'</td>
-                <td class="tdx">'.$row->d2.'</td>
-                <td class="tdx" style="width: 20%"> mayor igual 1.1 POSITIVO lgG/lgM</td>
+                <td class="tdx" style="text-align:center">'.$row->lgg.'</td>
+                <td class="tdx" style="text-align:center">'.$row->d2.'</td>
+                <td class="tdx" style="text-align:center;color:blue"> mayor igual 1.1 POSITIVO lgG/lgM</td>
             </tr>
 
             </tr>
@@ -140,7 +145,7 @@ font-size: 11px;
                 <td class="tdx">lg M</td>
                 <td class="tdx">lg G</td>
                 <td class="tdx">INTERPRETACION</td>
-                <td class="tdx">COMENTARION</td>
+                <td class="tdx">COMENTARIO</td>
             </tr>
             <tr style="text-align:center">
                 <td class="tdx"><img src="./img/resta.png" alt="negativo" srcset="" style="height: 0.5cm; width:0.5cm;"></td>
@@ -185,23 +190,29 @@ font-size: 11px;
                 </td>
             </tr>
             <tr>
-                <td class="tdx" class="text-left text-red" style="color: darkred;font-weight: bold">OBSERVACIONES</td>
+                <td class="tdx"  style="color: darkred;font-weight: bold;text-align:center;">OBSERVACIONES</td>
                 <td class="tdx" colspan="3" >'.$row->d3.'</td>
             </tr>
 
             <tr >
-                <td class="tdx" colspan="2" rowspan="2" style="color: blue;font-weight: bold" >RESPONSABLE: '.$row->user->name.'</td>
+                <td class="tdx" colspan="3" rowspan="3" style="color: blue;font-weight: bold" >RESPONSABLE: '.$row->user->name.'</td>
 
-                <td class="tdx" colspan="2" style="color: blue;font-weight: bold">
-                    FECHA DE TOMA DE MUESTRAS: '.$row->fechatoma.'
+                <td class="tdx" colspan="2" style="color: darkblue;font-weight: bold">
+                    FECHA DE TOMA DE MUESTRAS: <span style="color:black">'.$row->fechatoma.'</span>
                 </td>
             </tr>
             <tr>
-                <td class="tdx" colspan="2" style="color: blue;font-weight: bold">
-                    FECHA DE ENTREGA DE MUESTRAS
-                    '.date('Y-m-d').'
+                <td class="tdx" colspan="2" style="color: darkblue;font-weight: bold">
+                    HORA DE TOMA DE MUESTRAS: 
+                    <span style="color:black">'.$row->horatoma.'</span>
                 </td>
             </tr>
+            <tr>
+            <td class="tdx" colspan="2" style="color: darkblue;font-weight: bold">
+                FECHA DE ENTREGA DE MUESTRAS
+                <span style="color:black">'.date('Y-m-d').'</span>
+            </td>
+        </tr>
         </table>
 
             ';

@@ -80,29 +80,30 @@ table{
 </style>
         <table style="color: black; margin-top:5px; border:0;">
             <tr style=" border:0;">
-                <td rowspan="4" style="border:0;"><img src="images/natividad.png" alt="Logo Clinica" srcset="" ></td>
-                <td style="color: blue; text-align:center; border:0;">SERVICIO DE LABORATORIO </td>
+                <td rowspan="3" style="border:0;"><img src="./img/natividad.jpeg" alt="Logo Clinica" srcset="" style="height:1.5cm"></td>
+                <td style="color: darkblue; text-align:center; border:0;">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center;border:0; ">Telf: 5254721 Fax: 52-83667 </td>                
+                <td style="color: darkblue; text-align:center;border:0; ">Telf: 5254721 Fax: 52-83667 </td>                
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; border:0;">Emergencia las 24 horas del dia. </td>                
+                <td style="color: darkblue; text-align:center; border:0;">Emergencia las 24 horas del dia. </td>                
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; border:0;">Bolivar Nº 753 entre Arica e Iquique </td>                
+                <td style="color: red; text-align:center; border:0;">Nº Registro CODELAB 000045 </td>                
+                <td style="color: darkblue; text-align:center; border:0;">Bolivar Nº 753 entre Arica e Iquique </td>                
             </tr>
         </table>
         <table border="1" style="color: black">
             <tr>
-                <td colspan="3" style="border:0; text-align: center; color:darkblue;"><h3><b> SEROLOGIA</b></h3></td>
-                <td>Form. '.$row->id.'</td>
+                <td colspan="3" style="border:0; text-align: center; color:darkblue;font:bold"><h3><b> SEROLOGIA</b></h3></td>
+                <td style="color:red">Form. 005</td>
             </tr>
             <tr>
                 <td style="color: darkblue">PACIENTE</td>
-                <td>'.$row->paciente->nombre.' '.$row->paciente->paterno.' '.$row->paciente->materno.'</td>
+                <td style="text-align:center">'.$row->paciente->nombre.' '.$row->paciente->paterno.' '.$row->paciente->materno.'</td>
                 <td style="color: darkblue">EDAD</td>
-                <td>'.$row->paciente->age().'</td>
+                <td style="text-align:center">'.$row->paciente->age().'</td>
             </tr>
             <tr>
                 <td style="color: darkblue">REQUERIDO POR</td>
@@ -113,7 +114,7 @@ table{
             <tr>
                 <td style="color: darkblue">TIPO MUESTRA</td>
                 <td style="text-align:center">'.$row->tipomuestra.'</td>
-                <td style="color: darkblue">N PACIENTE</td>
+                <td style="color: red">N PACIENTE</td>
                 <td style="text-align:center; color:red">'.$row->paciente->id.'</td>
             </tr>
 
@@ -121,11 +122,11 @@ table{
         <br>
         <table border="1" style="color: black">
             <tr>
-                <td colspan="4" style="text-align: center; color:red;">PRUEBA RAPIDA ANTIGENOS SARS COV 2</td>
+                <td colspan="4" style="text-align: center; color:red;font:bold;">PRUEBA RAPIDA ANTIGENOS SARS COV 2</td>
             </tr>
 
             <tr>
-                <td colspan="4" style="text-align: center ">METODO: INMUNOGRAMATOGRAFIA CUALITATIVA</td>
+                <td colspan="4" style="text-align: center;color:blue;font:bold; ">METODO: INMUNOGRAMATOGRAFIA CUALITATIVA</td>
             </tr>
 
             <tr>
@@ -135,7 +136,7 @@ table{
                 <td  style="border:0; width: 20%"></td>
             </tr>
             <tr>
-                <td colspan="4" style="text-align:center; color:red"><h5>FUNDAMENTO E INTERPRETACION DE LOS RESULTADOS</h5></td>
+                <td colspan="4" style="text-align:center; color:darkred"><h5>FUNDAMENTO E INTERPRETACION DE LOS RESULTADOS</h5></td>
             </tr>
             <tr>
                 <td colspan="4">La prueba rapida de Antigeno Nasal puede revelar una Infeccion activa de SARS-COV-2.<br>
@@ -164,15 +165,17 @@ table{
             </tr>
 
             <tr >
-                <td colspan="2" rowspan="2" >RESPONSABLE: '.$row->user->name.'</td>
-                <td colspan="2">
-                    FECHA DE TOMA DE MUESTRAS: '.$row->fechatoma.'
-                </td>
+                <td colspan="2" rowspan="3" style="color:darkblue">RESPONSABLE: '.$row->user->name.'</td>
+                <td style="color:darkblue"> FECHA DE TOMA DE MUESTRAS: </td>
+                <td >'.$row->fechatoma.'</td>
+            </tr>
+            <tr >
+                <td style="color:darkblue"> HORA DE TOMA DE MUESTRAS: </td>
+                <td >'.$row->horatoma.'</td>
             </tr>
             <tr>
-                <td colspan="2">
-                    FECHA DE ENTREGA DE MUESTRAS: '.date('Y-m-d').'
-                </td>
+                <td style="color:darkblue">FECHA DE ENTREGA DE MUESTRAS: </td>
+                <td >'.date('Y-m-d').'</td>
             </tr>
 
         </table>

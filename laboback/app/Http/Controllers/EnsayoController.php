@@ -97,17 +97,18 @@ table, th, td {
 </style>
             <table style="color: black;border:0">
                 <tr style="border:0">
-                    <td rowspan="4" style="border:0"><img src="images/natividad.png" alt="Logo Clinica" srcset="" ></td>
-                    <td style="color: blue; text-align:center; border:0">SERVICIO DE LABORATORIO </td>
+                    <td rowspan="3" style="border:0"><img src="./img/natividad.jpeg" alt="Logo Clinica" srcset="" style="height:1.5cm"></td>
+                    <td style="color: darkblue; text-align:center; border:0">SERVICIO DE LABORATORIO </td>
                 </tr>
                 <tr style="border:0">
-                    <td style="color: blue; text-align:center;border:0 ">Telf: 5254721 Fax: 52-83667 </td>                
+                    <td style="color: darkblue; text-align:center;border:0 ">Telf: 5254721 Fax: 52-83667 </td>                
                 </tr>
                 <tr style="border:0">
-                    <td style="color: blue; text-align:center; border:0">Emergencia las 24 horas del dia. </td>                
+                    <td style="color: darkblue; text-align:center; border:0">Emergencia las 24 horas del dia. </td>                
                 </tr>
                 <tr style="border:0">
-                    <td style="color: blue; text-align:center; border:0">Bolivar Nº 753 entre Arica e Iquique </td>                
+                    <td style="color: red; text-align:center; border:0">Nº Registro CODELAB 000045 </td>                
+                    <td style="color: darkblue; text-align:center; border:0">Bolivar Nº 753 entre Arica e Iquique </td>                
                 </tr>
             </table>
     
@@ -115,31 +116,31 @@ table, th, td {
             <table style="color: black">
                 <tr>
                     <td colspan="3" style="text-align: center;"><h3></h3></td>
-                    <td>Form. '.$row->id.'</td>
+                    <td style="color:red">Form. 0010</td>
                 </tr>
                 <tr>
                     <td style="color: darkblue">PACIENTE</td>
-                    <td><label style="text-align: center">'.$row->paciente->nombre.' '.$row->paciente->paterno.' '.$row->paciente->materno.'</label></td>
+                    <td style="text-align: center">'.$row->paciente->nombre.' '.$row->paciente->paterno.' '.$row->paciente->materno.'</td>
                     <td style="color: darkblue">EDAD</td>
-                    <td><label tyle="text-align: center">'.$row->paciente->age().'</label></td>
+                    <td style="text-align: center">'.$row->paciente->age().'</td>
                 </tr>
                 <tr>
                     <td style="color: darkblue">REQUERIDO POR</td>
-                    <td tyle="text-align: center">'.$row->doctor->nombre.' '.$row->doctor->paterno.' '.$row->doctor->materno.'</td>
+                    <td style="text-align: center">'.$row->doctor->nombre.' '.$row->doctor->paterno.' '.$row->doctor->materno.'</td>
                     <td style="color: darkblue">SEXO</td>
-                    <td tyle="text-align: center"> '.$row->paciente->sexo.'</td>
+                    <td style="text-align: center"> '.$row->paciente->sexo.'</td>
                 </tr>
                 <tr>
                     <td style="color: darkblue">METODO</td>
-                    <td tyle="text-align: center">'.$row->tipomuestra.'</td>
-                    <td style="color: darkblue">N PACIENTE</td>
-                    <td tyle="text-align: center; color:red">'.$row->paciente->id.'</td>
+                    <td style="text-align: center">'.$row->tipomuestra.'</td>
+                    <td style="color: red">N PACIENTE</td>
+                    <td style="text-align: center; color:red">'.$row->paciente->id.'</td>
                 </tr>
     
             </table>
             <br>
-            <table style="color: black">
-                <tr><td colspan="5" style="text-align:center; color:red;">
+            <table >
+                <tr><td colspan="5" style="text-align:center; color:darkred;font:bold">
                     METODO: INMUNOENSAYO DE FLUORESCENCIA (FIA)
                     </td>
                 </tr>
@@ -150,94 +151,99 @@ table, th, td {
                     <td style="text-align:center; color:darkblue;" >Valor Referencial</td>
                 </tr>
                 <tr>
-                    <td style="color:red;">DIMEROS D</td>
-                    <td >'.$row->d1.'</td>
+                    <td style="color:blue;">DIMEROS D</td>
+                    <td style="text-align:center; ">'.$row->d1.'</td>
                     <td style="text-align:center; color:blue;">ng/ml</td>
                     <td style="text-align:center; color:blue;">Plasma Citratado</td>
-                    <td style="text-align:center; color:blue;">Hasta 500 ng/ml</td>
+                    <td style="text-align:center; color:darkblue;">Hasta 500 ng/ml</td>
                 </tr>
     
                 <tr>
-                    <td rowspan="2" style="color:red; ">FERRITINA</td>
-                    <td rowspan="2">'.$row->d2.'</td>
+                    <td rowspan="2" style="color:blue; ">FERRITINA</td>
+                    <td rowspan="2" style="text-align:center; ">'.$row->d2.'</td>
                     <td rowspan="2" style="text-align:center; color:blue;">ng/ml</td>
                     <td rowspan="2" style="text-align:center; color:blue;">Suero</td>
-                    <td style="text-align:center; color:blue;">30-350 ng/ml Varon </td>
+                    <td style="text-align:center; color:darkblue;">30-350 ng/ml Varon </td>
                 </tr>  
                 <tr>
-                    <td style="text-align:center; color:blue;">20-250 ng/ml Mujer</td>
+                    <td style="text-align:center; color:darkblue;">20-250 ng/ml Mujer</td>
     
                 </tr>
                 <tr>
-                    <td style=" color:red;">IL-6</td>
-                    <td >'.$row->d3.'</td>
+                    <td style=" color:blue;">IL-6</td>
+                    <td style="text-align:center; ">'.$row->d3.'</td>
                     <td style="text-align:center; color:blue;">pg/ml</td>
                     <td style="text-align:center; color:blue;">Suero/plasma</td>
-                    <td style="text-align:center; color:blue;">7 pg/ml</td>
+                    <td style="text-align:center; color:darkblue;">7 pg/ml</td>
                 </tr>            
                 <tr>
-                    <td  style="color:red;">PSA CUANTITATIVO</td>
-                    <td >'.$row->d4.'</td>
+                    <td  style="color:blue;">PSA CUANTITATIVO</td>
+                    <td style="text-align:center; ">'.$row->d4.'</td>
                     <td style="text-align:center; color:blue;">ng/ml</td>
                     <td style="text-align:center; color:blue;">Suero</td>
-                    <td style="text-align:center; color:blue;">Menor a 4 ng/ml</td>
+                    <td style="text-align:center; color:darkblue;">Menor a 4 ng/ml</td>
                 </tr>            
                 <tr>
-                    <td style="color:red;">PCR CUANTITATIVO</td>
-                    <td >'.$row->d5.'</td>
+                    <td style="color:blue;">PCR CUANTITATIVO</td>
+                    <td style="text-align:center; ">'.$row->d5.'</td>
                     <td style="text-align:center; color:blue;">mg/L</td>
                     <td style="text-align:center; color:blue;">Sangre Entera</td>
-                    <td style="text-align:center; color:blue;"> menor a 10 mg/L</td>
+                    <td style="text-align:center; color:darkblue;"> menor a 10 mg/L</td>
                 </tr>            
                 <tr>
-                    <td  style="color:red;">TROPONINA I</td>
-                    <td >'.$row->d6.'</td>
+                    <td  style="color:blue;">TROPONINA I</td>
+                    <td  style="text-align:center; ">'.$row->d6.'</td>
                     <td style="text-align:center; color:blue;">ng/ml</td>
                     <td style="text-align:center; color:blue;">Suero</td>
-                    <td style="text-align:center; color:blue;">0.0 - 0.11 ng/ml</td>
+                    <td style="text-align:center; color:darkblue;">0.0 - 0.11 ng/ml</td>
                 </tr>            
                 <tr>
-                    <td rowspan="2"  style="color:red;">B - HCG</td>
-                    <td rowspan="2">'.$row->d7.'</td>
+                    <td rowspan="2"  style="color:blue;">B - HCG</td>
+                    <td rowspan="2" style="text-align:center; ">'.$row->d7.'</td>
                     <td rowspan="2" style="text-align:center; color:blue;">mlU/ml</td>
                     <td rowspan="2" style="text-align:center; color:blue;">Suero</td>
-                    <td style="text-align:center; color:blue;">Mujer No Embarazada menor a 10 mlU/ml </td>
+                    <td style="text-align:center; color:darkblue;">Mujer No Embarazada menor a 10 mlU/ml </td>
                 </tr>            
                 <tr>
-                    <td style="text-align:center; color:blue;">Mujer en postmenopausia menor a 10 mlU/ml</td>
+                    <td style="text-align:center; color:darkblue;">Mujer en postmenopausia menor a 10 mlU/ml</td>
                     
                 </tr>
                 <tr>
-                    <td rowspan="4"  style="color:red;">PROCALCITONINA</td>
-                    <td rowspan="4" >'.$row->d8.'</td>
+                    <td rowspan="4"  style="color:blue;">PROCALCITONINA</td>
+                    <td rowspan="4" style="text-align:center; ">'.$row->d8.'</td>
                     <td rowspan="4" style="text-align:center; color:blue;">ng/ml</td>
                     <td rowspan="4"  style="text-align:center; color:blue;">Suero</td>
-                    <td style="text-align:center; color:blue;">PCT menor a 0.5 Es posible infeccion Bacteriana Local</td>
+                    <td style="text-align:center; color:darkblue;">PCT menor a 0.5 Es posible infeccion Bacteriana Local</td>
                 </tr>
                 <tr>
-                    <td style="text-align:center; color:blue;">PCT 0.5 - 2 Posible Infeccion </td>
+                    <td style="text-align:center; color:darkblue;">PCT 0.5 - 2 Posible Infeccion </td>
                 </tr>
                 <tr>
-                    <td style="text-align:center; color:blue;">PCT 2 - 10 Es muy Probable Infeccion (sepsis) a menos que se conozcan otras causas </td>
+                    <td style="text-align:center; color:darkblue;">PCT 2 - 10 Es muy Probable Infeccion (sepsis) a menos que se conozcan otras causas </td>
                 </tr>
                 <tr>
-                    <td style="text-align:center; color:blue;">PCT > 10 Sepsis Bacteriana severa o shock septico </td>
+                    <td style="text-align:center; color:darkblue;">PCT > 10 Sepsis Bacteriana severa o shock septico </td>
                 </tr>
                 <tr>
                     <td colspan="6"></td>
                 </tr>
     
                 <tr >
-                    <td colspan="2" rowspan="2" >RESPONSABLE: '.$row->user->name.'</td>
-                    <td colspan="3">
-                        FECHA DE TOMA DE MUESTRAS: '.$row->fechatoma.'
-                        
-                    </td>
+                    <td colspan="2" rowspan="3" style="color:darkblue">RESPONSABLE: '.$row->user->name.'</td>
+                    <td colspan="2">           FECHA DE TOMA DE MUESTRAS:              </td>
+                    <td >'.$row->fechatoma.'</td>
                 </tr>
                 <tr>
-                    <td colspan="3">
-                        FECHA DE ENTREGA DE MUESTRAS: '.date('Y-m-d').'
+                <td colspan="2">
+                    HORA DE TOMA DE MUESTRAS: 
+                </td>
+                <td > '.$row->horatoma.'</td>
+            </tr> 
+                <tr>
+                    <td colspan="2">
+                        FECHA DE ENTREGA DE MUESTRAS: 
                     </td>
+                    <td > '.date('Y-m-d').'</td>
                 </tr>          
             </table>';
             $pdf = App::make('dompdf.wrapper');

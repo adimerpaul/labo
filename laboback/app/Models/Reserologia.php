@@ -11,6 +11,7 @@ class Reserologia extends Model
     protected $fillable=[
         'tipomuestra',
         'fechatoma',
+        'horatoma',
         'd1',
         'd2',
         'doctor_id',

@@ -17,7 +17,7 @@ class CreateLabserologiasTable extends Migration
             $table->id();
             $table->string('tipomuestra')->default('')->nullable();
             $table->date('fechatoma')->nullable();
-            $table->date('fechaentrega')->nullable();
+            $table->time('horatoma')->nullable();
             $table->string('d1')->default('')->nullable();
             $table->string('d2')->default('')->nullable();
             $table->string('d3')->default('')->nullable();
