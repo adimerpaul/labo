@@ -114,4 +114,70 @@ class PacienteController extends Controller
         return $r1;
     }
 
+
+    public function muestra(){
+        $r1=DB::select(
+            "SELECT id,tipomuestra,fechatoma,'hemograma' as formulario FROM hemogramas union
+            SELECT id,tipomuestra,fechatoma,'orina' as formulario FROM orinas union
+            SELECT id,tipomuestra,fechatoma,'sanguinia' as formulario FROM sanguinias union
+            SELECT id,tipomuestra,fechatoma,'uretral' as formulario FROM uretrals union
+            SELECT id,tipomuestra,fechatoma,'vaginal' as formulario FROM vaginals union
+            SELECT id,tipomuestra,fechatoma,'hece' as formulario FROM heces union
+            SELECT id,tipomuestra,fechatoma,'simple' as formulario FROM simples union
+            SELECT id,tipomuestra,fechatoma,'seriado' as formulario FROM seriados union
+            SELECT id,tipomuestra,fechatoma,'serologia' as formulario FROM serologias union
+            SELECT id,tipomuestra,fechatoma,'labserologia' as formulario FROM labserologias union
+            SELECT id,tipomuestra,fechatoma,'reserologia' as formulario FROM reserologias union
+            SELECT id,tipomuestra,fechatoma,'ensayo' as formulario FROM ensayos "
+        );
+        return $r1;
+    }
+
+
+    public function eliminar(Request $request){
+        switch ($request->formulario) {
+            case 'hemograma':
+                $tabla='hemogramas';
+                break;
+            case 'orina':
+                $tabla='orinas';
+                break;
+            case 'sanguinia':
+                $tabla='sanguinias';
+                break;
+            case 'uretral':
+                $tabla='uretrals';
+                break;
+            case 'vaginal':
+                $tabla='vaginals';
+                break;
+            case 'hece':
+                $tabla='heces';
+                break;
+
+            case 'simple':
+                $tabla='simples';
+                break;
+            case 'seriado':
+                $tabla='seriados';
+                break;
+            case 'serologia':
+                $tabla='serologias';
+                break;
+            case 'labserologia':
+                $tabla='labserologias';
+                break;
+            case 'reserologia':
+                $tabla='reserologias';
+                break;
+            case 'ensayo':
+                $tabla='ensayos';
+                break;
+            default:
+                # code...
+                break;
+        }
+        return DB::table($tabla)->where('id',$request->id)->delete();
+    }
+
 }

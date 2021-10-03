@@ -176,6 +176,7 @@
         <q-tr :props="props">
           <q-td key="opcion" :props="props">
               <q-btn  dense round flat color="teal" @click="impRow(props)" icon="print"></q-btn>
+              <q-btn  dense round flat color="red" @click="eliminar(props)" icon="delete"></q-btn>
               <q-btn  dense round flat color="green" @click="whppRow(props)" icon="whatsapp"></q-btn>
               <q-btn  dense round flat color="blue" @click="whpdRow(props)" icon="whatsapp"></q-btn>
           </q-td>
@@ -222,7 +223,7 @@
                 <td style="color: darkblue">PACIENTE</td>
                 <td>{{dato2.nombre}} {{dato2.paterno}} {{dato2.materno}}</td>
                 <td style="color: darkblue">EDAD</td>
-                <td>{{dato2.age}}</td>
+                <td>{{dato2.edad}}</td>
             </tr>
             <tr>
                 <td style="color: darkblue">REQUERIDO POR</td>
@@ -235,7 +236,12 @@
             </tr>
             <tr>
                 <td style="color: darkblue">TIPO MUESTRA</td>
-                <td><q-input borderless  type="text" style="width: 100%" placeholder="Tipo muestra" v-model="hemograma.tipomuestra"/></td>
+                <td>
+                <q-input borderless type="text" style="width: 100%" placeholder="Tipo muestra" v-model="hemograma.tipomuestra" required list="ophemograma"/>
+                <datalist id="ophemograma">
+                    <option v-for="(film,index) in ophemograma" :key="index">{{film}}</option>
+                </datalist>
+                </td>
                 <td style="color: darkblue">N PACIENTE</td>
                 <td>{{dato2.id}}</td>
             </tr>
@@ -471,7 +477,7 @@
                 <td style="color: darkblue">PACIENTE</td>
                 <td>{{dato2.nombre}} {{dato2.paterno}} {{dato2.materno}}</td>
                 <td style="color: darkblue">EDAD</td>
-                <td></td>
+                <td>{{dato2.edad}}</td>
             </tr>
             <tr>
                 <td style="color: darkblue">REQUERIDO POR</td>
@@ -706,7 +712,7 @@
                 <td style="color: darkblue">PACIENTE</td>
                 <td>{{dato2.nombre}} {{dato2.paterno}} {{dato2.materno}}</td>
                 <td style="color: darkblue">EDAD</td>
-                <td></td>
+                <td>{{dato2.edad}}</td>
             </tr>
             <tr>
                 <td style="color: darkblue">REQUERIDO POR</td>
@@ -944,7 +950,7 @@
                 <td style="color: darkblue">PACIENTE</td>
                 <td>{{dato2.nombre}} {{dato2.paterno}} {{dato2.materno}}</td>
                 <td style="color: darkblue">EDAD</td>
-                <td></td>
+                <td>{{dato2.edad}}</td>
             </tr>
             <tr>
                 <td style="color: darkblue">REQUERIDO POR</td>
@@ -1088,7 +1094,7 @@
                 <td style="color: darkblue">PACIENTE</td>
                 <td>{{dato2.nombre}} {{dato2.paterno}} {{dato2.materno}}</td>
                 <td style="color: darkblue">EDAD</td>
-                <td></td>
+                <td>{{dato2.edad}}</td>
             </tr>
             <tr>
                 <td style="color: darkblue">REQUERIDO POR</td>
@@ -1231,7 +1237,7 @@
                 <td style="color: darkblue">PACIENTE</td>
                 <td>{{dato2.nombre}} {{dato2.paterno}} {{dato2.materno}}</td>
                 <td style="color: darkblue">EDAD</td>
-                <td></td>
+                <td>{{dato2.edad}}</td>
             </tr>
             <tr>
                 <td style="color: darkblue">REQUERIDO POR</td>
@@ -1386,7 +1392,7 @@
                 <td style="color: darkblue">PACIENTE</td>
                 <td>{{dato2.nombre}} {{dato2.paterno}} {{dato2.materno}}</td>
                 <td style="color: darkblue">EDAD</td>
-                <td></td>
+                <td>{{dato2.edad}}</td>
             </tr>
             <tr>
                 <td style="color: darkblue">REQUERIDO POR</td>
@@ -1540,7 +1546,7 @@
                 <td style="color: darkblue">PACIENTE</td>
                 <td>{{dato2.nombre}} {{dato2.paterno}} {{dato2.materno}}</td>
                 <td style="color: darkblue">EDAD</td>
-                <td></td>
+                <td>{{dato2.edad}}</td>
             </tr>
             <tr>
                 <td style="color: darkblue">REQUERIDO POR</td>
@@ -1646,7 +1652,7 @@
                 <td style="color: darkblue">PACIENTE</td>
                 <td>{{dato2.nombre}} {{dato2.paterno}} {{dato2.materno}}</td>
                 <td style="color: darkblue">EDAD</td>
-                <td></td>
+                <td>{{dato2.edad}}</td>
             </tr>
             <tr>
                 <td style="color: darkblue">REQUERIDO POR</td>
@@ -1790,7 +1796,7 @@
                 <td style="color: darkblue">PACIENTE</td>
                 <td>{{dato2.nombre}} {{dato2.paterno}} {{dato2.materno}}</td>
                 <td style="color: darkblue">EDAD</td>
-                <td></td>
+                <td>{{dato2.edad}}</td>
             </tr>
             <tr>
                 <td style="color: darkblue">REQUERIDO POR</td>
@@ -1957,7 +1963,7 @@
                 <td style="color: darkblue">PACIENTE</td>
                 <td>{{dato2.nombre}} {{dato2.paterno}} {{dato2.materno}}}</td>
                 <td style="color: darkblue">EDAD</td>
-                <td></td>
+                <td>{{dato2.edad}}</td>
             </tr>
             <tr>
                 <td style="color: darkblue">REQUERIDO POR</td>
@@ -2080,7 +2086,7 @@
                 <td style="color: darkblue">PACIENTE</td>
                 <td>{{dato2.nombre}} {{dato2.paterno}} {{dato2.materno}}</td>
                 <td style="color: darkblue">EDAD</td>
-                <td></td>
+                <td>{{dato2.edad}}</td>
             </tr>
             <tr>
                 <td style="color: darkblue">REQUERIDO POR</td>
@@ -2270,9 +2276,21 @@ export default {
       serologia:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')},
       labserologia:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')},
       reserologia:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')},
+      ensayo:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')},
+      ophemograma:[],
+      oporina:[],
+      opsanguinia:[],
+      opuretral:[],
+      opvaginal:[],
+      ophece:[],
+      opsimple:[],
+      opseriado:[],
+      opserologia:[],
+      oplabserologia:[],
+      opreserologia:[],
+      opensayo:[],
       requerido:{},
       actual:date.formatDate(Date.now(),'YYYY-MM-DD'),
-      ensayo:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD')},
       tab:{},
       historial:[],
       columns:[
@@ -2299,6 +2317,66 @@ export default {
     this.tab={value:"hemograma",label:"Hemograma completo" };
   },
   methods: {
+      listmuestra(){
+        this.ophemograma=[];
+        this.oporina=[];
+        this.opsanguinia=[];
+        this.opuretral=[];
+        this.opvaginal=[];
+        this.ophece=[];
+        this.opsimple=[];
+        this.opseriado=[];
+        this.opserologia=[];
+        this.oplabserologia=[];
+        this.opreserologia=[];
+        this.opensayo=[];
+          this.$axios.get(process.env.API+'/muestra').then(res=>{
+              res.data.forEach(element => {
+                  switch (element.formulario) {
+                      case 'hemograma':
+                            this.ophemograma.push(element.tipomuestra);
+                          break;
+                      case 'orina':
+                            this.oporina.push(element.tipomuestra);
+                          break;
+                      case 'sanguinia':
+                            this.opsanguinia.push(element.tipomuestra);
+                          break;
+                      case 'uretral':
+                            this.opuretral.push(element.tipomuestra);
+                          break;                            
+                      case 'vaginal':
+                            this.opvaginal.push(element.tipomuestra);
+                          break;
+                      case 'hece':
+                            this.ophece.push(element.tipomuestra);
+                          break;
+                      case 'simple':
+                            this.opsimple.push(element.tipomuestra);
+                          break;
+                      case 'seriado':
+                            this.opseriado.push(element.tipomuestra);
+                          break;
+                      case 'serologia':
+                            this.opserologia.push(element.tipomuestra);
+                          break;
+                      case 'labserologia':
+                            this.oplabserologia.push(element.tipomuestra);
+                          break;
+                    case 'reserologia':
+                            this.opreserologia.push(element.tipomuestra);
+                          break;
+                      case 'ensayo':
+                            this.opensayo.push(element.tipomuestra);
+                          break;
+                    
+                      default:
+                          break;
+                  }
+              });
+          })
+
+      },
     listdoctor(){
         this.doctors=[];
           this.$axios.get(process.env.API+'/doctor').then(res=>{
@@ -2503,6 +2581,8 @@ export default {
     },
     labRow(props){
       this.dato2=props.row;
+      this.dato2.edad=this.getAge(this.dato2.fechanac);
+      this.listmuestra();
       this.dialog_lab=true;
     },
     listRow(props){
@@ -2556,13 +2636,51 @@ export default {
     onMod(){
       console.log(this.dato2)
       this.$axios.put(process.env.API+'/paciente/'+this.dato2.id,this.dato2).then(res=>{
-         thisthis.$q.notify({
+         this.$q.notify({
           message: 'Se modifico correctamente',
           color: 'success'
         })
       })
       this.dialog_mod=false;
       this.listado();
+    },
+    getAge(dateString) 
+    {
+    var today = new Date();
+    var birthDate = new Date(dateString);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
+    {
+        age--;
+    }
+    return age;
+    },
+    
+    eliminar (props) {
+      this.$q.dialog({
+        title: 'Eliminar Formulario',
+        message: 'Esta seguro de eliminar?',
+        cancel: true,
+      }).onOk(() => {
+        // console.log('>>>> OK')
+            console.log(props.row)
+        this.$axios.post(process.env.API+'/eliminar',props.row).then(res=>{
+            this.dialog_lab=false;
+         this.$q.notify({
+          message: 'Elimino el registro',
+          icon:'delete',
+          color: 'success'
+            })
+        })
+
+      }).onOk(() => {
+        // console.log('>>>> second OK catcher')
+      }).onCancel(() => {
+        // console.log('>>>> Cancel')
+      }).onDismiss(() => {
+        // console.log('I am triggered on both OK and Cancel')
+      })
     }
   },
 }
