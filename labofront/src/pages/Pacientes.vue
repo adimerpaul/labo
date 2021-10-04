@@ -487,7 +487,12 @@
             </tr>
             <tr>
                 <td style="color: darkblue">TIPO MUESTRA</td>
-                <td><input type="text" style="width: 100%" v-model="sanguinia.tipomuestra" placeholder="Tipo muestra" ></td>
+                <td>
+                <q-input borderless type="text" style="width: 100%" placeholder="Tipo muestra" v-model="sanguinia.tipomuestra" required list="opsanguinia"/>
+                <datalist id="opsanguinia">
+                    <option v-for="(film,index) in opsanguinia" :key="index">{{film}}</option>
+                </datalist>
+                </td>
                 <td style="color: darkblue">N PACIENTE</td>
                 <td>{{dato2.id}}</td>
             </tr>
@@ -722,7 +727,12 @@
             </tr>
             <tr>
                 <td style="color: darkblue">TIPO MUESTRA</td>
-                <td><input type="text" style="width: 100%" v-model="orina.tipomuestra" placeholder="Tipo muestra"  ></td>
+                <td>
+                <q-input borderless type="text" style="width: 100%" placeholder="Tipo muestra" v-model="orina.tipomuestra" required list="oporina"/>
+                <datalist id="oporina">
+                    <option v-for="(film,index) in oporina" :key="index">{{film}}</option>
+                </datalist>
+                </td>
 
                 <td style="color: darkblue">N PACIENTE</td>
                 <td>{{dato2.id}}</td>
@@ -960,7 +970,12 @@
             </tr>
             <tr>
                 <td style="color: darkblue">TIPO MUESTRA</td>
-                <td><input type="text" style="width: 100%" v-model="uretral.tipomuestra" placeholder="Tipo muestra" ></td>
+                <td>
+                <q-input borderless type="text" style="width: 100%" placeholder="Tipo muestra" v-model="uretral.tipomuestra" required list="opuretral"/>
+                <datalist id="opuretral">
+                    <option v-for="(film,index) in opuretral" :key="index">{{film}}</option>
+                </datalist>
+                </td>
                 <td style="color: darkblue">N PACIENTE</td>
                 <td>{{dato2.id}}</td>
             </tr>
@@ -1104,7 +1119,12 @@
             </tr>
             <tr>
                 <td style="color: darkblue">TIPO MUESTRA</td>
-                <td><input type="text" style="width: 100%" v-model="vaginal.tipomuestra" placeholder="Tipo muestra" ></td>
+                <td>
+                <q-input borderless type="text" style="width: 100%" placeholder="Tipo muestra" v-model="vaginal.tipomuestra" required list="opvaginal"/>
+                <datalist id="opvaginal">
+                    <option v-for="(film,index) in opvaginal" :key="index">{{film}}</option>
+                </datalist>
+                </td>
                 <td style="color: darkblue">N PACIENTE</td>
                 <td>{{dato2.id}}</td>
             </tr>
@@ -1247,7 +1267,12 @@
             </tr>
             <tr>
                 <td style="color: darkblue">TIPO MUESTRA</td>
-                <td><input type="text" style="width: 100%" v-model="hece.tipomuestra" placeholder="Tipo muestra" ></td>
+                <td>
+                <q-input borderless type="text" style="width: 100%" placeholder="Tipo muestra" v-model="hece.tipomuestra" required list="ophece"/>
+                <datalist id="ophece">
+                    <option v-for="(film,index) in ophece" :key="index">{{film}}</option>
+                </datalist>
+                </td>
                 <td style="color: darkblue">N PACIENTE</td>
                 <td>{{dato2.id}}</td>
             </tr>
@@ -1402,7 +1427,12 @@
             </tr>
             <tr>
                 <td style="color: darkblue">TIPO MUESTRA</td>
-                <td><input type="text" style="width: 100%" v-model="simple.tipomuestra" placeholder="Tipo muestra" ></td>
+                <td>
+                <q-input borderless type="text" style="width: 100%" placeholder="Tipo muestra" v-model="simple.tipomuestra" required list="opsimple"/>
+                <datalist id="opsimple">
+                    <option v-for="(film,index) in opsimple" :key="index">{{film}}</option>
+                </datalist>
+                </td>
                 <td style="color: darkblue">N PACIENTE</td>
                 <td>{{dato2.id}}</td>
             </tr>
@@ -1556,7 +1586,12 @@
             </tr>
             <tr>
                 <td style="color: darkblue">TIPO MUESTRA</td>
-                <td><input type="text" style="width: 100%" v-model="seriado.tipomuestra" placeholder="Tipo muestra" ></td>
+                <td>
+                <q-input borderless type="text" style="width: 100%" placeholder="Tipo muestra" v-model="seriado.tipomuestra" required list="opseriado"/>
+                <datalist id="opseriado">
+                    <option v-for="(film,index) in opseriado" :key="index">{{film}}</option>
+                </datalist>
+                </td>
                 <td style="color: darkblue">N PACIENTE</td>
                 <td>{{dato2.id}}</td>
             </tr>
@@ -1662,7 +1697,12 @@
             </tr>
             <tr>
                 <td style="color: darkblue">TIPO MUESTRA</td>
-                <td><input type="text" style="width: 100%" v-model="serologia.tipomuestra" placeholder="Tipo muestra" ></td>
+                <td>
+                <q-input borderless type="text" style="width: 100%" placeholder="Tipo muestra" v-model="serologia.tipomuestra" required list="opserologia"/>
+                <datalist id="opserologia">
+                    <option v-for="(film,index) in opserologia" :key="index">{{film}}</option>
+                </datalist>
+                </td>
                 <td style="color: darkblue">N PACIENTE</td>
                 <td>{{dato2.id}}</td>
             </tr>
@@ -1806,7 +1846,12 @@
             </tr>
             <tr>
                 <td style="color: darkblue">TIPO MUESTRA</td>
-                <td><input type="text" style="width: 100%" v-model="labserologia.tipomuestra" placeholder="Tipo muestra" ></td>
+                <td>
+                <q-input borderless type="text" style="width: 100%" placeholder="Tipo muestra" v-model="labserologia.tipomuestra" required list="oplabserologia"/>
+                <datalist id="oplabserologia">
+                    <option v-for="(film,index) in oplabserologia" :key="index">{{film}}</option>
+                </datalist>
+                </td>
                 <td style="color: darkblue">N PACIENTE</td>
                 <td>{{dato2.id}}</td>
             </tr>
@@ -1973,7 +2018,12 @@
             </tr>
             <tr>
                 <td style="color: darkblue">TIPO MUESTRA</td>
-                <td><input type="text" style="width: 100%" v-model="reserologia.tipomuestra" placeholder="Tipo muestra" ></td>
+                <td>
+                <q-input borderless type="text" style="width: 100%" placeholder="Tipo muestra" v-model="reserologia.tipomuestra" required list="opreserologia"/>
+                <datalist id="opreserologia">
+                    <option v-for="(film,index) in opreserologia" :key="index">{{film}}</option>
+                </datalist>
+                </td>
                 <td style="color: darkblue">N PACIENTE</td>
                 <td>{{dato2.id}}</td>
             </tr>
