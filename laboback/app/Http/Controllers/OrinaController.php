@@ -54,6 +54,15 @@ class OrinaController extends Controller
         ->where('id',$id)
         ->get();
         $row=$row[0];
+        $cd11='';
+        $cd15='';
+        $cd21='';
+        $cd23='';
+        if($row->d11<1020 || $row->d11>1030)$cd11='background-color:#ff726f;';
+        if($row->d15<0 || $row->d15>2)$cd15='background-color:#ff726f;';
+        if($row->d21<0 || $row->d21>5)$cd21='background-color:#ff726f;';
+        if($row->d23<0 || $row->d23>3)$cd23='background-color:#ff726f;';
+
         $cadena='
         <style>
 table , th , td  {
@@ -164,7 +173,7 @@ table , th , td  {
         </tr>
         <tr>
             <td style="color:blue; text-align:left; ">Densidad</td>
-            <td style="text-align:center; ">'.$row->d11.'</td>
+            <td style="text-align:center;'.$cd11.' ">'.$row->d11.'</td>
             <td style="text-align:center; color:blue;">1.010-1.030</td>
             <td style="color:blue; text-align:left; ">Urobilina</td>
             <td style="text-align:center; ">'.$row->d12.'</td>
@@ -191,96 +200,96 @@ table , th , td  {
         </tr>
         <tr>
             <td style="color:blue; text-align:left; ">Celulas epiteliales</td>
-            <td>'.$row->d15.'</td>
+            <td style="text-align:center; '.$cd15.'">'.$row->d15.'</td>
             <td style="color:blue; text-align:center; ">Hasta 2/c.</td>
             <td style="color:blue; text-align:left; ">Hialino</td>
-            <td>'.$row->d16.'</td>
+            <td style="text-align:center; ">'.$row->d16.'</td>
             <td style="color:blue; text-align:center; ">Negativo</td>
         </tr>
         <tr>
             <td style="color:blue; text-align:left; ">Celulas de transicion</td>
-            <td>'.$row->d17.'</td>
+            <td style="text-align:center; ">'.$row->d17.'</td>
             <td style="color:blue; text-align:center; ">Negativo</td>
             <td style="color:blue; text-align:left; ">Granuloso</td>
-            <td>'.$row->d18.'</td>
+            <td style="text-align:center; ">'.$row->d18.'</td>
             <td style="color:blue; text-align:center; ">Negativo</td>
         </tr>
         <tr>
             <td style="color:blue; text-align:left; ">Celulas clave</td>
-            <td>'.$row->d19.'</td>
+            <td style="text-align:center; ">'.$row->d19.'</td>
             <td style="color:blue; text-align:center; ">Negativo</td>
             <td style="color:blue; text-align:left; ">Epiteliales</td>
-            <td>'.$row->d20.'</td>
+            <td style="text-align:center; ">'.$row->d20.'</td>
             <td style="color:blue; text-align:center; ">Negativo</td>
         </tr>
         <tr>
             <td style="color:blue; text-align:left; ">Leucocitos</td>
-            <td>'.$row->d21.'</td>
+            <td style="text-align:center; '.$cd21.'">'.$row->d21.'</td>
             <td style="color:blue; text-align:center; ">Hasta 5/c</td>
             <td style="color:blue; text-align:left; ">Eritrocitario</td>
-            <td>'.$row->d22.'</td>
+            <tdstyle="text-align:center; ">'.$row->d22.'</td>
             <td style="color:blue; text-align:center; ">Negativo</td>
         </tr>
         <tr>
             <td style="color:blue; text-align:left; ">Eritrocitos</td>
-            <td>'.$row->d23.'</td>
+            <td style="text-align:center; '.$cd23.'">'.$row->d23.'</td>
             <td style="color:blue; text-align:center; ">Hasta 3/c</td>
             <td style="color:blue; text-align:left; ">Leucositario</td>
-            <td>'.$row->d24.'</td>
+            <td style="text-align:center; ">'.$row->d24.'</td>
             <td style="color:blue; text-align:center; ">Negativo</td>
         </tr>
         <tr>
             <td style="color:blue; text-align:left; ">Bacterias</td>
-            <td>'.$row->d25.'</td>
+            <td style="text-align:center; ">'.$row->d25.'</td>
             <td style="color:blue; text-align:center; ">Escaso</td>
             <td style="color:blue; text-align:left; ">Cereos</td>
-            <td>'.$row->d26.'</td>
+            <td style="text-align:center; ">'.$row->d26.'</td>
             <td style="color:blue; text-align:center; ">Negativo</td>
         </tr>
         <tr>
             <td style="color:darkblue; text-align:left; font:bold;">CRISTALES</td>
             <td colspan="2"></td>
             <td style="color:blue; text-align:left; ">Mixtos</td>
-            <td>'.$row->d27.'</td>
+            <td style="text-align:center; ">'.$row->d27.'</td>
             <td style="color:blue; text-align:center; ">Negativo</td>
         </tr>
         <tr>
             <td style="color:blue; text-align:left; ">Uratos amorfos</td>
-            <td>'.$row->d28.'</td>
+            <td style="text-align:center; ">'.$row->d28.'</td>
             <td style="color:blue; text-align:center; ">Escasos</td>
             <td colspan="3" style="color:darkblue; text-align:center; font:bold;">OTROS</td>
         </tr>
         <tr>
             <td style="color:blue; text-align:left; ">Fosfato amorfo</td>
-            <td>'.$row->d29.'</td>
+            <td style="text-align:center; ">'.$row->d29.'</td>
             <td style="color:blue; text-align:center; ">Escasos</td>
             <td style="color:blue; text-align:left; ">Filamento mucoso</td>
-            <td colspan="2">'.$row->d30.'</td>
+            <td style="text-align:center; " colspan="2">'.$row->d30.'</td>
         </tr>
         <tr>
             <td style="color:blue; text-align:left; ">Oxalato de calcio</td>
-            <td>'.$row->d31.'</td>
+            <td style="text-align:center; ">'.$row->d31.'</td>
             <td style="color:blue; text-align:center; ">Escasos</td>
             <td style="color:blue; text-align:left; ">Piocitos</td>
-            <td colspan="2">'.$row->d32.'</td>
+            <td colspan="2" style="text-align:center; "> '.$row->d32.'</td>
         </tr>
         <tr>
             <td style="color:blue; text-align:left; ">Fosfato de calcio</td>
-            <td>'.$row->d33.'</td>
+            <td style="text-align:center; ">'.$row->d33.'</td>
             <td style="color:blue; text-align:center; ">Escasos</td>
             <td style="color:blue; text-align:left; ">Levaduras</td>
-            <td colspan="2">'.$row->d34.'</td>
+            <td colspan="2" style="text-align:center; ">'.$row->d34.'</td>
         </tr>
         <tr>
             <td style="color:blue; text-align:left; ">Acido Urico</td>
-            <td>'.$row->d35.'</td>
+            <td style="text-align:center; ">'.$row->d35.'</td>
             <td style="color:blue; text-align:center; ">Escasos</td>
             <td style="color:blue; text-align:left; ">Esporas micoticas</td>
-            <td colspan="2">'.$row->d36.'</td>
+            <td colspan="2" style="text-align:center; ">'.$row->d36.'</td>
         </tr>
         <tr>
             <td style="color:darkblue; text-align:left; font:bold;">OBSERVACIONES</td>
-            <td colspan="5">'.$row->d37.'</td>
+            <td colspan="5" >'.$row->d37.'</td>
         </tr>
         <tr>
             <td rowspan="4" style="color:darkblue; text-align:left; font:bold;">RESPONSABLE</td>

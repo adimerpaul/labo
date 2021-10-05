@@ -55,6 +55,7 @@ class SerologiaController extends Controller
         ->where('id',$id)
         ->get();
         $row=$row[0];
+
         $cadena='
         <style>
 .tablex, .tdx , .thx {

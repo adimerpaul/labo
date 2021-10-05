@@ -76,6 +76,19 @@ class EnsayoController extends Controller
         ->where('id',$id)
         ->get();
         $row=$row[0];
+        $cd1='';
+        $cd2='';
+        $cd4='';
+        $cd5='';
+        $cd6='';
+        $cd7='';
+        if($row->d1<0 || $row->d1>500)$cd1='background-color:#ff726f;';
+        if($row->paciente->sexo=='Masculino' && ($row->d2<30 || $row->d2>350))$cd2='background-color:#ff726f;';
+        if($row->paciente->sexo=='Femenino' && ($row->d2<20 || $row->d2>250))$cd2='background-color:#ff726f;';
+        if($row->d4<0 || $row->d4>4)$cd4='background-color:#ff726f;';
+        if($row->d5<0 || $row->d5>10)$cd5='background-color:#ff726f;';
+        if($row->d6<0 || $row->d6>0.11)$cd6='background-color:#ff726f;';
+        if($row->d7<0 || $row->d7>10)$cd7='background-color:#ff726f;';
         $cadena='
         <style>
 table, th, td {
@@ -152,7 +165,7 @@ table, th, td {
                 </tr>
                 <tr>
                     <td style="color:blue;">DIMEROS D</td>
-                    <td style="text-align:center; ">'.$row->d1.'</td>
+                    <td style="text-align:center; '.$cd1.'">'.$row->d1.'</td>
                     <td style="text-align:center; color:blue;">ng/ml</td>
                     <td style="text-align:center; color:blue;">Plasma Citratado</td>
                     <td style="text-align:center; color:darkblue;">Hasta 500 ng/ml</td>
@@ -160,7 +173,7 @@ table, th, td {
     
                 <tr>
                     <td rowspan="2" style="color:blue; ">FERRITINA</td>
-                    <td rowspan="2" style="text-align:center; ">'.$row->d2.'</td>
+                    <td rowspan="2" style="text-align:center; '.$cd2.'">'.$row->d2.'</td>
                     <td rowspan="2" style="text-align:center; color:blue;">ng/ml</td>
                     <td rowspan="2" style="text-align:center; color:blue;">Suero</td>
                     <td style="text-align:center; color:darkblue;">30-350 ng/ml Varon </td>
@@ -171,35 +184,35 @@ table, th, td {
                 </tr>
                 <tr>
                     <td style=" color:blue;">IL-6</td>
-                    <td style="text-align:center; ">'.$row->d3.'</td>
+                    <td style="text-align:center; '.$cd3.'">'.$row->d3.'</td>
                     <td style="text-align:center; color:blue;">pg/ml</td>
                     <td style="text-align:center; color:blue;">Suero/plasma</td>
                     <td style="text-align:center; color:darkblue;">7 pg/ml</td>
                 </tr>            
                 <tr>
                     <td  style="color:blue;">PSA CUANTITATIVO</td>
-                    <td style="text-align:center; ">'.$row->d4.'</td>
+                    <td style="text-align:center; '.$cd4.'">'.$row->d4.'</td>
                     <td style="text-align:center; color:blue;">ng/ml</td>
                     <td style="text-align:center; color:blue;">Suero</td>
                     <td style="text-align:center; color:darkblue;">Menor a 4 ng/ml</td>
                 </tr>            
                 <tr>
                     <td style="color:blue;">PCR CUANTITATIVO</td>
-                    <td style="text-align:center; ">'.$row->d5.'</td>
+                    <td style="text-align:center; '.$cd5.'">'.$row->d5.'</td>
                     <td style="text-align:center; color:blue;">mg/L</td>
                     <td style="text-align:center; color:blue;">Sangre Entera</td>
                     <td style="text-align:center; color:darkblue;"> menor a 10 mg/L</td>
                 </tr>            
                 <tr>
                     <td  style="color:blue;">TROPONINA I</td>
-                    <td  style="text-align:center; ">'.$row->d6.'</td>
+                    <td  style="text-align:center; '.$cd6.'">'.$row->d6.'</td>
                     <td style="text-align:center; color:blue;">ng/ml</td>
                     <td style="text-align:center; color:blue;">Suero</td>
                     <td style="text-align:center; color:darkblue;">0.0 - 0.11 ng/ml</td>
                 </tr>            
                 <tr>
                     <td rowspan="2"  style="color:blue;">B - HCG</td>
-                    <td rowspan="2" style="text-align:center; ">'.$row->d7.'</td>
+                    <td rowspan="2" style="text-align:center;'.$cd7.' ">'.$row->d7.'</td>
                     <td rowspan="2" style="text-align:center; color:blue;">mlU/ml</td>
                     <td rowspan="2" style="text-align:center; color:blue;">Suero</td>
                     <td style="text-align:center; color:darkblue;">Mujer No Embarazada menor a 10 mlU/ml </td>

@@ -749,58 +749,58 @@
             </tr>
             <tr>
                 <td class="bg-red text-center text-white">Color</td>
-                <td><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d1"></td>
+                <td><input placeholder="00" type="text"  v-model="orina.d1"></td>
                 <td>Amarillo</td>
                 <td class="bg-red text-center text-white">Proteinas</td>
-                <td><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d2"></td>
+                <td><input placeholder="00" type="text"  v-model="orina.d2"></td>
                 <td>Negativo</td>
             </tr>
             <tr>
                 <td class="bg-red text-center text-white">Olor</td>
-                <td><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d3"></td>
+                <td><input placeholder="00" type="text"  v-model="orina.d3"></td>
                 <td>Sui-generis</td>
                 <td class="bg-red text-center text-white">Glucosa</td>
-                <td><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d4"></td>
+                <td><input placeholder="00" type="text"  v-model="orina.d4"></td>
                 <td>Negativo</td>
             </tr>
             <tr>
                 <td class="bg-red text-center text-white">Aspecto</td>
-                <td><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d5"></td>
+                <td><input placeholder="00" type="text"  v-model="orina.d5"></td>
                 <td>Limpido o lig opal</td>
                 <td class="bg-red text-center text-white">C. cetonicos</td>
-                <td><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d6"></td>
+                <td><input placeholder="00" type="text"  v-model="orina.d6"></td>
                 <td>Negativo</td>
             </tr>
             <tr>
                 <td class="bg-red text-center text-white">Espuma</td>
-                <td><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d7"></td>
+                <td><input placeholder="00" type="text"  v-model="orina.d7"></td>
                 <td>Blanco fugaz</td>
                 <td class="bg-red text-center text-white">Bilirrubina</td>
-                <td><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d8"></td>
+                <td><input placeholder="00" type="text"  v-model="orina.d8"></td>
                 <td>Negativo</td>
             </tr>
             <tr>
                 <td class="bg-red text-center text-white">Deposito</td>
-                <td><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d9"></td>
+                <td><input placeholder="00" type="text"  v-model="orina.d9"></td>
                 <td>Nulo o escacaso</td>
                 <td class="bg-red text-center text-white">Hemoglobina</td>
-                <td><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d10"></td>
+                <td><input placeholder="00" type="text"  v-model="orina.d10"></td>
                 <td>Negativo</td>
             </tr>
             <tr>
                 <td class="bg-red text-center text-white">Densidad</td>
-                <td><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d11"></td>
+                <td><input placeholder="00" type="text"  v-model="orina.d11"></td>
                 <td>1.010-1.030</td>
                 <td class="bg-red text-center text-white">Urobilina</td>
-                <td><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d12"></td>
+                <td><input placeholder="00" type="text"  v-model="orina.d12"></td>
                 <td>Normal</td>
             </tr>
             <tr>
                 <td class="bg-red text-center text-white">Reaccion</td>
-                <td><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d13"></td>
+                <td><input placeholder="00" type="text"  v-model="orina.d13"></td>
                 <td>Lig. acida</td>
                 <td class="bg-red text-center text-white">Nitrinos</td>
-                <td><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d14"></td>
+                <td><input placeholder="00" type="text"  v-model="orina.d14"></td>
                 <td>Negativo</td>
             </tr>
             <tr>
@@ -816,96 +816,96 @@
             </tr>
             <tr>
                 <td class="bg-red text-center text-white">Celulas epiteliales</td>
-                <td><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d15"></td>
+                <td><input placeholder="00" type="text"  v-model="orina.d15"></td>
                 <td>Hasta 2/c.</td>
                 <td class="bg-red text-center text-white">Hialino</td>
-                <td><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d16"></td>
+                <td><input placeholder="00" type="text"  v-model="orina.d16"></td>
                 <td>Negativo</td>
             </tr>
             <tr>
                 <td class="bg-red text-center text-white">Celulas de transicion</td>
-                <td><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d17"></td>
+                <td><input placeholder="00" type="text"  v-model="orina.d17"></td>
                 <td>Negativo</td>
                 <td class="bg-red text-center text-white">Granuloso</td>
-                <td><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d18"></td>
+                <td><input placeholder="00" type="text"  v-model="orina.d18"></td>
                 <td>Negativo</td>
             </tr>
             <tr>
                 <td class="bg-red text-center text-white">Celulas clave</td>
-                <td><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d19"></td>
+                <td><input placeholder="00" type="text"  v-model="orina.d19"></td>
                 <td>Negativo</td>
                 <td class="bg-red text-center text-white">Epiteliales</td>
-                <td><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d20"></td>
+                <td><input placeholder="00" type="text"  v-model="orina.d20"></td>
                 <td>Negativo</td>
             </tr>
             <tr>
                 <td class="bg-red text-center text-white">Leucocitos</td>
-                <td><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d21"></td>
+                <td><input placeholder="00" type="text"  v-model="orina.d21"></td>
                 <td>Hasta 5/c</td>
                 <td class="bg-red text-center text-white">Eritrocitario</td>
-                <td><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d22"></td>
+                <td><input placeholder="00" type="text"  v-model="orina.d22"></td>
                 <td>Negativo</td>
             </tr>
             <tr>
                 <td class="bg-red text-center text-white">Eritrocitos</td>
-                <td><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d23"></td>
+                <td><input placeholder="00" type="text"  v-model="orina.d23"></td>
                 <td>Hasta 3/c</td>
                 <td class="bg-red text-center text-white">Leucositario</td>
-                <td><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d24"></td>
+                <td><input placeholder="00" type="text"  v-model="orina.d24"></td>
                 <td>Negativo</td>
             </tr>
             <tr>
                 <td class="bg-red text-center text-white">Bacterias</td>
-                <td><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d25"></td>
+                <td><input placeholder="00" type="text"  v-model="orina.d25"></td>
                 <td>Escaso</td>
                 <td class="bg-red text-center text-white">Cereos</td>
-                <td><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d26"></td>
+                <td><input placeholder="00" type="text"  v-model="orina.d26"></td>
                 <td>Negativo</td>
             </tr>
             <tr>
                 <td class="bg-red text-center text-white">CRISTALES</td>
                 <td colspan="2"></td>
                 <td class="bg-red text-center text-white">Mixtos</td>
-                <td><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d27"></td>
+                <td><input placeholder="00" type="text"  v-model="orina.d27"></td>
                 <td>Negativo</td>
             </tr>
             <tr>
                 <td class="bg-red text-center text-white">Uratos amorfos</td>
-                <td><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d28"></td>
+                <td><input placeholder="00" type="text"  v-model="orina.d28"></td>
                 <td>Escasos</td>
                 <td colspan="3">OTROS</td>
             </tr>
             <tr>
                 <td class="bg-red text-center text-white">Fosfato amorfo</td>
-                <td><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d29"></td>
+                <td><input placeholder="00" type="text"  v-model="orina.d29"></td>
                 <td>Escasos</td>
                 <td class="bg-red text-center text-white">Filamento mucoso</td>
-                <td colspan="2"><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d30"></td>
+                <td colspan="2"><input placeholder="00" type="text"  v-model="orina.d30"></td>
             </tr>
             <tr>
                 <td class="bg-red text-center text-white">Oxalato de calcio</td>
-                <td><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d31"></td>
+                <td><input placeholder="00" type="text"  v-model="orina.d31"></td>
                 <td>Escasos</td>
                 <td class="bg-red text-center text-white">Piocitos</td>
-                <td colspan="2"><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d32"></td>
+                <td colspan="2"><input placeholder="00" type="text"  v-model="orina.d32"></td>
             </tr>
             <tr>
                 <td class="bg-red text-center text-white">Fosfato de calcio</td>
-                <td><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d33"></td>
+                <td><input placeholder="00" type="text"  v-model="orina.d33"></td>
                 <td>Escasos</td>
                 <td class="bg-red text-center text-white">Levaduras</td>
-                <td colspan="2"><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d34"></td>
+                <td colspan="2"><input placeholder="00" type="text"  v-model="orina.d34"></td>
             </tr>
             <tr>
                 <td class="bg-red text-center text-white">Acido Urico</td>
-                <td><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d35"></td>
+                <td><input placeholder="00" type="text"  v-model="orina.d35"></td>
                 <td>Escasos</td>
                 <td class="bg-red text-center text-white">Esporas micoticas</td>
-                <td colspan="2"><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d36"></td>
+                <td colspan="2"><input placeholder="00" type="text"  v-model="orina.d36"></td>
             </tr>
             <tr>
                 <td class="bg-red text-center text-white">OBSERVACIONES</td>
-                <td colspan="5"><input placeholder="00" type="text"  style="width: 100%" v-model="orina.d37"></td>
+                <td colspan="5"><input placeholder="00" type="text"  v-model="orina.d37"></td>
             </tr>
             <tr>
                 <td rowspan="4">RESPONSABLE</td>
@@ -913,7 +913,7 @@
             </tr>
             <tr>
                 <td colspan="2">FECHA DE TOMA DE MUESTRAS</td>
-                <td><input type="date"  style="width: 100%" v-model="orina.fechatoma"></td>
+                <td><input type="date"  v-model="orina.fechatoma"></td>
             </tr>
             <tr>
                 <td colspan="2">FECHA DE ENTREGA DE MUESTRAS</td>
@@ -921,7 +921,7 @@
             </tr>
             <tr>
                 <td colspan="2"  >HORA TOMA DE MUESTRA</td>
-                <td  style="width: 100%"><input type="time" name="" id="" v-model="orina.horatoma"></td>
+                <td ><input type="time" name="" id="" v-model="orina.horatoma"></td>
             </tr>
             <tr>
                 <td colspan="6">
@@ -2006,7 +2006,7 @@
             </tr>
             <tr>
                 <td style="color: darkblue">PACIENTE</td>
-                <td>{{dato2.nombre}} {{dato2.paterno}} {{dato2.materno}}}</td>
+                <td>{{dato2.nombre}} {{dato2.paterno}} {{dato2.materno}}</td>
                 <td style="color: darkblue">EDAD</td>
                 <td>{{dato2.edad}}</td>
             </tr>

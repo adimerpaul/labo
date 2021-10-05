@@ -52,6 +52,14 @@ class LabserologiaController extends Controller
         ->where('id',$id)
         ->get();
         $row=$row[0];
+        $cd1='';
+        $cd2='';
+        $cd3='';
+        $cd13='';
+        if($row->d1<0 || $row->d1>8)$cd1='background-color:#ff726f;';
+        if($row->d2<0 || $row->d2>200)$cd2='background-color:#ff726f;';
+        if($row->d3<0 || $row->d3>0.8)$cd3='background-color:#ff726f;';
+        if($row->d13<0 || $row->d13>4)$cd13='background-color:#ff726f;';
         $cadena='
             <style>
             table, th, td {
@@ -120,19 +128,19 @@ class LabserologiaController extends Controller
             </tr>
             <tr>
                 <td style="color:darkred; width: 20%">Factor Reumatoide(Latex)</td>
-                <td style="text-align:center;">'.$row->d1.'</td>
+                <td style="text-align:center;'.$cd1.'">'.$row->d1.'</td>
                 <td style="text-align:center; color:Khaki;" >Hasta 8 UI/ml</td>
                 <td style="text-align:center; color:darkblue;">Aglutinacion directa</td>
             </tr>
             <tr>
                 <td style="color:darkred; width: 20%">Antiestreptolisina</td>
-                <td style="text-align:center;">'.$row->d2.'</td>
+                <td style="text-align:center;'.$cd2.'">'.$row->d2.'</td>
                 <td style="text-align:center; color:Khaki;">Hasta 200 UI/l</td>
                 <td style="text-align:center; color:darkblue;">Aglutinacion directa</td>
             </tr>
             <tr>
                 <td style="color:darkred; width: 20%">Proteina C Reactiva</td>
-                <td style="text-align:center;">'.$row->d3.'</td>
+                <td style="text-align:center;'.$cd3.'">'.$row->d3.'</td>
                 <td style="text-align:center; color:Khaki;">Hasta 0.8 mg/dl</td>
                 <td style="text-align:center; color:darkblue;">Aglutinacion directa</td>
             </tr>
@@ -192,7 +200,7 @@ class LabserologiaController extends Controller
             </tr>
             <tr>
                 <td style="color:darkred; width: 20%">PSA</td>
-                <td style="text-align:center;">'.$row->d13.'</td>
+                <td style="text-align:center;'.$cd13.'">'.$row->d13.'</td>
                 <td style="text-align:center; color:Khaki;">Hasta 4 ng/ml</td>
                 <td style="text-align:center; color:darkblue;">Prueba Rapida Semicuantitativo</td>
             </tr>
