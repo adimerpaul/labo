@@ -188,35 +188,32 @@
     </q-dialog>
 
      <q-dialog v-model="dialog_lab" maximized>
-      <q-card >
-        <q-card-section class="bg-success-14 text-white">
-          <div class="text-h6">Formularios</div>
-        </q-card-section>
+      <q-card>
+
         <q-card-section >
          <q-select v-model="tab" :options="formulario"  label="FORMULARIOS" />
 
-        <q-separator />
               <q-tab-panels v-model="tab.value" animated class="shadow-2 rounded-borders">
         <q-tab-panel name="hemograma">
             <q-form @submit.prevent="onHemograma" >
         <table style="width: 100%;color: black">
             <tr >
-                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 3cm; width:8cm;"></td>
-                <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
+                <td rowspan="4" ><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 3cm; width:8cm;"></td>
+                <td style="color: blue; text-align:center; ">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>
+                <td style="color: blue; text-align:center; ">Telf: 5254721 Fax: 52-83667 </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>
+                <td style="color: blue; text-align:center; ">Emergencia las 24 horas del dia. </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>
+                <td style="color: blue; text-align:center; ">Bolivar Nº 753 entre Arica e Iquique </td>
             </tr>
         </table>
         <table border="1" style="width: 100%;color: black">
             <tr>
-                <td colspan="3" style="text-align: center"><h3>HEMOGRAMA COMPLETO</h3></td>
+                <td colspan="3" style="text-align: center">HEMOGRAMA COMPLETO</td>
                 <td>Form. 001</td>
             </tr>
             <tr>
@@ -455,22 +452,22 @@
 
         <table style="width: 100%;color: black">
             <tr >
-                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
-                <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
+                <td rowspan="4" ><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 1.5cm; "></td>
+                <td style="color: blue; text-align:center; ">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>
+                <td style="color: blue; text-align:center; ">Telf: 5254721 Fax: 52-83667 </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>
+                <td style="color: blue; text-align:center; ">Emergencia las 24 horas del dia. </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>
+                <td style="color: blue; text-align:center; ">Bolivar Nº 753 entre Arica e Iquique </td>
             </tr>
         </table>
         <table border="1" style="width: 100%;color: black">
             <tr>
-                <td colspan="3" style="text-align: center"><h3>QUIMICA sanguinia</h3></td>
+                <td colspan="3" style="text-align: center">QUIMICA sanguinia</td>
                 <td>Form. 002</td>
             </tr>
             <tr>
@@ -695,22 +692,22 @@
             <q-form @submit.prevent="onOrina" >
         <table style="width: 100%;color: black">
             <tr >
-                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
-                <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
+                <td rowspan="4" ><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 1.5cm; "></td>
+                <td style="color: blue; text-align:center; ">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>
+                <td style="color: blue; text-align:center; ">Telf: 5254721 Fax: 52-83667 </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>
+                <td style="color: blue; text-align:center; ">Emergencia las 24 horas del dia. </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>
+                <td style="color: blue; text-align:center; ">Bolivar Nº 753 entre Arica e Iquique </td>
             </tr>
         </table>
         <table border="1" style="width: 100%;color: black">
             <tr>
-                <td colspan="3" style="text-align: center"><h3>EXAMEN GENERAL DE ORINA</h3></td>
+                <td colspan="3" style="text-align: center">EXAMEN GENERAL DE ORINA</td>
                 <td>Form. 003</td>
             </tr>
             <tr>
@@ -938,22 +935,22 @@
             <q-form @submit.prevent="onUretral">
             <table style="width: 100%;color: black">
             <tr >
-                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
-                <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
+                <td rowspan="4" ><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 1.5cm; "></td>
+                <td style="color: blue; text-align:center; ">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>
+                <td style="color: blue; text-align:center; ">Telf: 5254721 Fax: 52-83667 </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>
+                <td style="color: blue; text-align:center; ">Emergencia las 24 horas del dia. </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>
+                <td style="color: blue; text-align:center; ">Bolivar Nº 753 entre Arica e Iquique </td>
             </tr>
         </table>
         <table border="1" style="width: 100%;color: black">
             <tr>
-                <td colspan="3" style="text-align: center"><h3>ANALISIS DE SECRECION URETRAL</h3></td>
+                <td colspan="3" style="text-align: center">ANALISIS DE SECRECION URETRAL</td>
                 <td>Form. 004</td>
             </tr>
             <tr>
@@ -1087,22 +1084,22 @@
               <q-form @submit.prevent="onVaginal">
             <table style="width: 100%;color: black">
             <tr >
-                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
-                <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
+                <td rowspan="4" ><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 1.5cm; "></td>
+                <td style="color: blue; text-align:center; ">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>
+                <td style="color: blue; text-align:center; ">Telf: 5254721 Fax: 52-83667 </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>
+                <td style="color: blue; text-align:center; ">Emergencia las 24 horas del dia. </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>
+                <td style="color: blue; text-align:center; ">Bolivar Nº 753 entre Arica e Iquique </td>
             </tr>
         </table>
         <table border="1" style="width: 100%;color: black">
             <tr>
-                <td colspan="3" style="text-align: center"><h3>ANALISIS DE SECRECION VAGINAL</h3></td>
+                <td colspan="3" style="text-align: center">ANALISIS DE SECRECION VAGINAL</td>
                 <td>Form. 004</td>
             </tr>
             <tr>
@@ -1235,22 +1232,22 @@
         <q-form @submit.prevent="onHece">
         <table style="width: 100%;color: black">
             <tr >
-                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
-                <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
+                <td rowspan="4" ><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 1.5cm; "></td>
+                <td style="color: blue; text-align:center; ">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>
+                <td style="color: blue; text-align:center; ">Telf: 5254721 Fax: 52-83667 </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>
+                <td style="color: blue; text-align:center; ">Emergencia las 24 horas del dia. </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>
+                <td style="color: blue; text-align:center; ">Bolivar Nº 753 entre Arica e Iquique </td>
             </tr>
         </table>
         <table border="1" style="width: 100%;color: black">
             <tr>
-                <td colspan="3" style="text-align: center"><h3>ANALISIS DE HECES</h3></td>
+                <td colspan="3" style="text-align: center">ANALISIS DE HECES</td>
                 <td>Form. 010</td>
             </tr>
             <tr>
@@ -1395,22 +1392,22 @@
         <q-form @submit.prevent="onSimple">
         <table style="width: 100%;color: black">
             <tr >
-                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
-                <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
+                <td rowspan="4" ><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 1.5cm; "></td>
+                <td style="color: blue; text-align:center; ">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>
+                <td style="color: blue; text-align:center; ">Telf: 5254721 Fax: 52-83667 </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>
+                <td style="color: blue; text-align:center; ">Emergencia las 24 horas del dia. </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>
+                <td style="color: blue; text-align:center; ">Bolivar Nº 753 entre Arica e Iquique </td>
             </tr>
         </table>
         <table border="1" style="width: 100%;color: black">
             <tr>
-                <td colspan="3" style="text-align: center"><h3>COPRAPARASITOLOGICO SIMPLE</h3></td>
+                <td colspan="3" style="text-align: center">COPRAPARASITOLOGICO SIMPLE</td>
                 <td>Form. 009</td>
             </tr>
             <tr>
@@ -1554,22 +1551,22 @@
              <q-form @submit.prevent="onSeriado">
         <table style="width: 100%;color: black">
             <tr >
-                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
-                <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
+                <td rowspan="4" ><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 1.5cm; "></td>
+                <td style="color: blue; text-align:center; ">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>
+                <td style="color: blue; text-align:center; ">Telf: 5254721 Fax: 52-83667 </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>
+                <td style="color: blue; text-align:center; ">Emergencia las 24 horas del dia. </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>
+                <td style="color: blue; text-align:center; ">Bolivar Nº 753 entre Arica e Iquique </td>
             </tr>
         </table>
         <table border="1" style="width: 100%;color: black">
             <tr>
-                <td colspan="3" style="text-align: center"><h3>COPROPARASITOLOGICO SERIADO</h3></td>
+                <td colspan="3" style="text-align: center">COPROPARASITOLOGICO SERIADO</td>
                 <td>Form. 008</td>
             </tr>
             <tr>
@@ -1665,22 +1662,22 @@
               <q-form @submit.prevent="onSerologia">
         <table style="width: 100%;color: black">
             <tr >
-                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
-                <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
+                <td rowspan="4" ><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 1.5cm; "></td>
+                <td style="color: blue; text-align:center; ">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>
+                <td style="color: blue; text-align:center; ">Telf: 5254721 Fax: 52-83667 </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>
+                <td style="color: blue; text-align:center; ">Emergencia las 24 horas del dia. </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>
+                <td style="color: blue; text-align:center; ">Bolivar Nº 753 entre Arica e Iquique </td>
             </tr>
         </table>
         <table border="1" style="width: 100%;color: black">
             <tr>
-                <td colspan="3" style="text-align: center"><h3>SEROLOGIA</h3></td>
+                <td colspan="3" style="text-align: center">SEROLOGIA</td>
                 <td>Form. 005</td>
             </tr>
             <tr>
@@ -1814,22 +1811,22 @@
               <q-form @submit.prevent="onLabserologia">
         <table style="width: 100%;color: black">
             <tr >
-                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
-                <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
+                <td rowspan="4" ><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 1.5cm; "></td>
+                <td style="color: blue; text-align:center; ">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>
+                <td style="color: blue; text-align:center; ">Telf: 5254721 Fax: 52-83667 </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>
+                <td style="color: blue; text-align:center; ">Emergencia las 24 horas del dia. </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>
+                <td style="color: blue; text-align:center; ">Bolivar Nº 753 entre Arica e Iquique </td>
             </tr>
         </table>
         <table border="1" style="width: 100%;color: black">
             <tr>
-                <td colspan="3" style="text-align: center"><h3>SEROLOGIA</h3></td>
+                <td colspan="3" style="text-align: center">SEROLOGIA</td>
                 <td>Form. 001</td>
             </tr>
             <tr>
@@ -1986,22 +1983,22 @@
               <q-form @submit.prevent="onReserologia">
         <table style="width: 100%;color: black">
             <tr >
-                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
-                <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
+                <td rowspan="4" ><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 1.5cm; "></td>
+                <td style="color: blue; text-align:center; ">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>
+                <td style="color: blue; text-align:center; ">Telf: 5254721 Fax: 52-83667 </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>
+                <td style="color: blue; text-align:center; ">Emergencia las 24 horas del dia. </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>
+                <td style="color: blue; text-align:center; ">Bolivar Nº 753 entre Arica e Iquique </td>
             </tr>
         </table>
         <table border="1" style="width: 100%;color: black">
             <tr>
-                <td colspan="3" style="border:0; text-align: center; color:darkblue;"><h3><b> SEROLOGIA</b></h3></td>
+                <td colspan="3" style="border:0; text-align: center; color:darkblue;"><b> SEROLOGIA</b></td>
                 <td>Form. 005</td>
             </tr>
             <tr>
@@ -2050,7 +2047,7 @@
                 <td class="text-center text-red" style="width: 20%"></td>
             </tr>
             <tr>
-                <td colspan="4" style="text-align:center; color:red"><h5>FUNDAMENTO E INTERPRETACION DE LOS RESULTADOS</h5></td>
+                <td colspan="4" style="text-align:center; color:red">FUNDAMENTO E INTERPRETACION DE LOS RESULTADOS</td>
             </tr>
             <tr>
                 <td colspan="4">La prueba rapida de Antigeno Nasal puede revelar una Infeccion activa de SARS-COV-2.<br>
@@ -2112,24 +2109,24 @@
              <q-form @submit.prevent="onEnsayo">
                <table style="width: 100%;color: black">
             <tr >
-                <td rowspan="4" style="height: 2cm"><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 4cm; width:8cm;"></td>
-                <td style="color: blue; text-align:center; height:0.5cm;">SERVICIO DE LABORATORIO </td>
+                <td rowspan="4" ><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 1.5cm; "></td>
+                <td style="color: blue; text-align:center; ">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Telf: 5254721 Fax: 52-83667 </td>
+                <td style="color: blue; text-align:center; ">Telf: 5254721 Fax: 52-83667 </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Emergencia las 24 horas del dia. </td>
+                <td style="color: blue; text-align:center; ">Emergencia las 24 horas del dia. </td>
             </tr>
             <tr>
-                <td style="color: blue; text-align:center; height:0.5cm;">Bolivar Nº 753 entre Arica e Iquique </td>
+                <td style="color: blue; text-align:center; ">Bolivar Nº 753 entre Arica e Iquique </td>
             </tr>
         </table>
 
 
         <table border="1" style="width: 100%;color: black">
             <tr>
-                <td colspan="3" style="text-align: center; border:0"><h3>Inmunoensayo de Fluorescencia</h3></td>
+                <td colspan="3" style="text-align: center; border:0">Inmunoensayo de Fluorescencia</td>
                 <td>Form. 010</td>
             </tr>
             <tr>
