@@ -82,13 +82,13 @@ class EnsayoController extends Controller
         $cd5='';
         $cd6='';
         $cd7='';
-        if($row->d1<0 || $row->d1>500)$cd1='background-color:#ff726f;';
-        if($row->paciente->sexo=='Masculino' && ($row->d2<30 || $row->d2>350))$cd2='background-color:#ff726f;';
-        if($row->paciente->sexo=='Femenino' && ($row->d2<20 || $row->d2>250))$cd2='background-color:#ff726f;';
-        if($row->d4<0 || $row->d4>4)$cd4='background-color:#ff726f;';
-        if($row->d5<0 || $row->d5>10)$cd5='background-color:#ff726f;';
-        if($row->d6<0 || $row->d6>0.11)$cd6='background-color:#ff726f;';
-        if($row->d7<0 || $row->d7>10)$cd7='background-color:#ff726f;';
+        if(($row->d1<0 || $row->d1>500)&& $row->d1!='')$cd1='background-color:#ff726f;';
+        if($row->paciente->sexo=='Masculino' && ($row->d2<30 || $row->d2>350)&& $row->d2!='')$cd2='background-color:#ff726f;';
+        if($row->paciente->sexo=='Femenino' && ($row->d2<20 || $row->d2>250)&& $row->d2!='')$cd2='background-color:#ff726f;';
+        if(($row->d4<0 || $row->d4>4)&& $row->d4!='')$cd4='background-color:#ff726f;';
+        if(($row->d5<0 || $row->d5>10)&& $row->d5!='')$cd5='background-color:#ff726f;';
+        if(($row->d6<0 || $row->d6>0.11)&& $row->d6!='')$cd6='background-color:#ff726f;';
+        if(($row->d7<0 || $row->d7>10)&& $row->d7!='')$cd7='background-color:#ff726f;';
         $cadena='
         <style>
 table, th, td {

@@ -58,10 +58,10 @@ class OrinaController extends Controller
         $cd15='';
         $cd21='';
         $cd23='';
-        if($row->d11<1020 || $row->d11>1030)$cd11='background-color:#ff726f;';
-        if($row->d15<0 || $row->d15>2)$cd15='background-color:#ff726f;';
-        if($row->d21<0 || $row->d21>5)$cd21='background-color:#ff726f;';
-        if($row->d23<0 || $row->d23>3)$cd23='background-color:#ff726f;';
+        if(($row->d11<1020 || $row->d11>1030)&& $row->d11!='')$cd11='background-color:#ff726f;';
+        if(($row->d15<0 || $row->d15>2)&& $row->d15!='')$cd15='background-color:#ff726f;';
+        if(($row->d21<0 || $row->d21>5)&& $row->d21!='')$cd21='background-color:#ff726f;';
+        if(($row->d23<0 || $row->d23>3)&& $row->d23!='')$cd23='background-color:#ff726f;';
 
         $cadena='
         <style>

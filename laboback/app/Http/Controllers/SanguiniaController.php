@@ -74,52 +74,52 @@ class SanguiniaController extends Controller
         $cd29=''; 
         $cd30='';
         //1-2
-        if($row->d1<65 || $row->d1>99)$cd1='background-color:#ff726f;';
-        if($row->d2<0 || $row->d2>135)$cd2='background-color:#ff726f;'; 
+        if(($row->d1<65 || $row->d1>99)&& $row->d1!='')$cd1='background-color:#ff726f;';
+        if(($row->d2<0 || $row->d2>135)&& $row->d2!='')$cd2='background-color:#ff726f;'; 
         //1-2
-        if($row->d3<0.6 || $row->d3>1.4)$cd3='background-color:#ff726f;';
-        if($row->d4<100 || $row->d4>400)$cd4='background-color:#ff726f;';
+        if(($row->d3<0.6 || $row->d3>1.4)&& $row->d3!='')$cd3='background-color:#ff726f;';
+        if(($row->d4<100 || $row->d4>400)&& $row->d4!='')$cd4='background-color:#ff726f;';
         //1-2
-        if($row->d5<15 || $row->d5>45)$cd5='background-color:#ff726f;';
-        if($row->d6<0 || $row->d6>40)$cd6='background-color:#ff726f;'; 
+        if(($row->d5<15 || $row->d5>45)&& $row->d5!='')$cd5='background-color:#ff726f;';
+        if(($row->d6<0 || $row->d6>40)&& $row->d6!='')$cd6='background-color:#ff726f;'; 
                 //1-2
-        if($row->d7<7 || $row->d7>18)$cd7='background-color:#ff726f;';
-        if($row->d8<0 || $row->d8>41)$cd8='background-color:#ff726f;';          
+        if(($row->d7<7 || $row->d7>18)&& $row->d7!='')$cd7='background-color:#ff726f;';
+        if(($row->d8<0 || $row->d8>41)&& $row->d8!='')$cd8='background-color:#ff726f;';          
         //1-2
-        if($row->d9<2.6 || $row->d9>7.2)$cd9='background-color:#ff726f;'; 
+        if(($row->d9<2.6 || $row->d9>7.2)&& $row->d9!='')$cd9='background-color:#ff726f;'; 
         //1-2
-        if($row->d10<6.6 || $row->d10>8.6)$cd10='background-color:#ff726f;';
-        if($row->d11<40 || $row->d11>160)$cd11='background-color:#ff726f;'; 
+        if(($row->d10<6.6 || $row->d10>8.6)&& $row->d10!='')$cd10='background-color:#ff726f;';
+        if(($row->d11<40 || $row->d11>160) && $row->d11!='')$cd11='background-color:#ff726f;'; 
         //1-2
-        if($row->d12<3.5 || $row->d12>5)$cd12='background-color:#ff726f;';
-        if($row->d13<0 || $row->d13>=200)$cd13='background-color:#ff726f;'; 
+        if(($row->d12<3.5 || $row->d12>5)&& $row->d12!='')$cd12='background-color:#ff726f;';
+        if(($row->d13<0 || $row->d13>=200)&& $row->d13!='')$cd13='background-color:#ff726f;'; 
         //1-2
-        if($row->d14<2.8 || $row->d14>3.5)$cd14='background-color:#ff726f;';
-        if($row->d15<35 || $row->d15>65)$cd15='background-color:#ff726f;'; 
+        if(($row->d14<2.8 || $row->d14>3.5)&& $row->d14!='')$cd14='background-color:#ff726f;';
+        if(($row->d15<35 || $row->d15>65)&& $row->d15!='')$cd15='background-color:#ff726f;'; 
         //1-2
-        if($row->d16<0 || $row->d16>=120)$cd16='background-color:#ff726f;';
-        if($row->d17<0 || $row->d17>150)$cd17='background-color:#ff726f;'; 
+        if(($row->d16<0 || $row->d16>=120)&& $row->d16!='')$cd16='background-color:#ff726f;';
+        if(($row->d17<0 || $row->d17>150)&& $row->d17!='')$cd17='background-color:#ff726f;'; 
         //1-2
-        if($row->d18<10 || $row->d18>60)$cd18='background-color:#ff726f;';
+        if(($row->d18<10 || $row->d18>60)&& $row->d18!='')$cd18='background-color:#ff726f;';
         //1-2
-        if($row->d19<0 || $row->d19>1.2)$cd19='background-color:#ff726f;';
-        if($row->d20<135 || $row->d20>155)$cd20='background-color:#ff726f;'; 
+        if(($row->d19<0 || $row->d19>1.2)&& $row->d19!='')$cd19='background-color:#ff726f;';
+        if(($row->d20<135 || $row->d20>155)&& $row->d20!='')$cd20='background-color:#ff726f;'; 
         //1-2
-        if($row->d21<0 || $row->d21>0.3)$cd21='background-color:#ff726f;';
-        if($row->d22<98 || $row->d22>106)$cd22='background-color:#ff726f;'; 
+        if(($row->d21<0 || $row->d21>0.3)&& $row->d21!='')$cd21='background-color:#ff726f;';
+        if(($row->d22<98 || $row->d22>106)&& $row->d22!='')$cd22='background-color:#ff726f;'; 
                 //1-2
-        if($row->d23<0 || $row->d23>0.9)$cd23='background-color:#ff726f;';
-        if($row->d24<3.4 || $row->d24>5.3)$cd24='background-color:#ff726f;'; 
+        if(($row->d23<0 || $row->d23>0.9)&& $row->d23!='')$cd23='background-color:#ff726f;';
+        if(($row->d24<3.4 || $row->d24>5.3)&& $row->d24!='')$cd24='background-color:#ff726f;'; 
         //1-2
-        if($row->d25<230 || $row->d25>480)$cd25='background-color:#ff726f;';
-        if($row->d26<8.5 || $row->d26>10.5)$cd26='background-color:#ff726f;'; 
+        if(($row->d25<230 || $row->d25>480) && $row->d25!='')$cd25='background-color:#ff726f;';
+        if(($row->d26<8.5 || $row->d26>10.5) && $row->d26!='')$cd26='background-color:#ff726f;'; 
         //1-2
-        if($row->d27<50 || $row->d27>170)$cd27='background-color:#ff726f;';
-        if($row->d28<1.7 || $row->d28>2.4)$cd28='background-color:#ff726f;';     
+        if(($row->d27<50 || $row->d27>170)&& $row->d27!='')$cd27='background-color:#ff726f;';
+        if(($row->d28<1.7 || $row->d28>2.4)&& $row->d28!='')$cd28='background-color:#ff726f;';     
                 //1-2
-        if($row->d29<0 || $row->d29>147)$cd29='background-color:#ff726f;';
+        if(($row->d29<0 || $row->d29>147)&& $row->d23!='')$cd29='background-color:#ff726f;';
                 //1-2
-        if($row->d30<0 || $row->d30>24)$cd30='background-color:#ff726f;';                                   
+        if(($row->d30<0 || $row->d30>24)&& $row->d30!='')$cd30='background-color:#ff726f;';                                   
         $cadena='
         <style>
 .tablex, .tdx , .thx {

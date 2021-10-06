@@ -89,51 +89,51 @@ class HemogramaController extends Controller
         $cd28=''; 
         $cd29=''; 
         //1-2
-        if($row->paciente->sexo=='Masculino' && ($row->d1<5.1 || $row->d1>5.7))$cd1='background-color:#ff726f;';
-        if($row->paciente->sexo=='Femenino' && ($row->d1<4.8 || $row->d1>5.4))$cd1='background-color:#ff726f;';
-        if($row->d2<5 || $row->d2>10) $cd2='background-color:#ff726f;';
+        if($row->paciente->sexo=='Masculino' && $row->d1!='' && ($row->d1<5.1 || $row->d1>5.7))$cd1='background-color:#ff726f;';
+        if($row->paciente->sexo=='Femenino' && $row->d1!='' && ($row->d1<4.8 || $row->d1>5.4))$cd1='background-color:#ff726f;';
+        if(($row->d2<5 || $row->d2>10) && $row->d2!='') $cd2='background-color:#ff726f;';
 //3-4
-        if($row->paciente->sexo=='Masculino' && ($row->d3<151 || $row->d3>175))$cd3='background-color:#ff726f;';
-        if($row->paciente->sexo=='Femenino' && ($row->d3<141 || $row->d3>165))$cd3='background-color:#ff726f;';
-        if($row->d4<1 || $row->d4>3) $cd4='background-color:#ff726f;';
+        if($row->paciente->sexo=='Masculino' && $row->d3!='' && ($row->d3<151 || $row->d3>175))$cd3='background-color:#ff726f;';
+        if($row->paciente->sexo=='Femenino' && $row->d3!='' && ($row->d3<141 || $row->d3>165))$cd3='background-color:#ff726f;';
+        if(($row->d4<1 || $row->d4>3) && $row->d4!='') $cd4='background-color:#ff726f;';
 //5-6
-        if($row->paciente->sexo=='Masculino' && ($row->d5<0.51 || $row->d5>0.57))$cd5='background-color:#ff726f;';
-        if($row->paciente->sexo=='Femenino' && ($row->d5<0.46 || $row->d5>0.53))$cd5='background-color:#ff726f;';
-        if($row->d6<12 || $row->d6>13) $cd6='background-color:#ff726f;';
+        if($row->paciente->sexo=='Masculino' && $row->d5!='' && ($row->d5<0.51 || $row->d5>0.57))$cd5='background-color:#ff726f;';
+        if($row->paciente->sexo=='Femenino' && $row->d5!='' && ($row->d5<0.46 || $row->d5>0.53))$cd5='background-color:#ff726f;';
+        if(($row->d6<12 || $row->d6>13) && $row->d6!='') $cd6='background-color:#ff726f;';
 //7-8
-        if($row->paciente->sexo=='Masculino' && ($row->d7<0 || $row->d7>15))$cd7='background-color:#ff726f;';
-        if($row->paciente->sexo=='Femenino' && ($row->d7<0 || $row->d7>20))$cd7='background-color:#ff726f;';
-        if($row->d8 <95 || $row->d8>100) $cd8='background-color:#ff726f;';
+        if($row->paciente->sexo=='Masculino' && $row->d7!='' && ($row->d7<0 || $row->d7>15))$cd7='background-color:#ff726f;';
+        if($row->paciente->sexo=='Femenino' && $row->d7!='' && ($row->d7<0 || $row->d7>20))$cd7='background-color:#ff726f;';
+        if(($row->d8 <95 || $row->d8>100) && $row->d8!='') $cd8='background-color:#ff726f;';
 //9-10
-        if($row->d9<83 || $row->d9>97)$cd9='background-color:#ff726f;';
-        if($row->d10<0.97 || $row->d10>1.04) $cd10='background-color:#ff726f;';
+        if(($row->d9<83 || $row->d9>97) && $row->d9!='')$cd9='background-color:#ff726f;';
+        if(($row->d10<0.97 || $row->d10>1.04) && $row->d10!='') $cd10='background-color:#ff726f;';
         //11-12
-        if($row->d11<27 || $row->d11>31)$cd11='background-color:#ff726f;';
+        if(($row->d11<27 || $row->d11>31) && $row->d11!='')$cd11='background-color:#ff726f;';
         //13-14
-        if($row->d13<32 || $row->d13>36)$cd13='background-color:#ff726f;';
-        if($row->d14<0.5 || $row->d14>2) $cd14='background-color:#ff726f;';
+        if(($row->d13<32 || $row->d13>36) && $row->d13!='')$cd13='background-color:#ff726f;';
+        if(($row->d14<0.5 || $row->d14>2) && $row->d14!='') $cd14='background-color:#ff726f;';
         //15-16
-        if($row->d15<4.5 || $row->d15>10.5)$cd15='background-color:#ff726f;';
+        if(($row->d15<4.5 || $row->d15>10.5) && $row->d15!='')$cd15='background-color:#ff726f;';
         //17
-        if($row->d17<150 || $row->d17>400)$cd17='background-color:#ff726f;';
+        if(($row->d17<150 || $row->d17>400) && $row->d17!='')$cd17='background-color:#ff726f;';
         //18-19
-        if($row->d18<0 || $row->d18>3)$cd18='background-color:#ff726f;';
-        if($row->d19<0 || $row->d19>0.35)$cd19='background-color:#ff726f;';
+        if(($row->d18<0 || $row->d18>3) && $row->d18!='')$cd18='background-color:#ff726f;';
+        if(($row->d19<0 || $row->d19>0.35) && $row->d19!='')$cd19='background-color:#ff726f;';
                 //20-21
-        if($row->d20<50 || $row->d20>70)$cd20='background-color:#ff726f;';
-        if($row->d21<2.5 || $row->d21>7.35)$cd21='background-color:#ff726f;';
+        if(($row->d20<50 || $row->d20>70) && $row->d20!='')$cd20='background-color:#ff726f;';
+        if(($row->d21<2.5 || $row->d21>7.35) && $row->d21!='')$cd21='background-color:#ff726f;';
         //22-23
-        if($row->d22<0 || $row->d22>3)$cd22='background-color:#ff726f;';
-        if($row->d23<0 || $row->d23>0.35)$cd23='background-color:#ff726f;';
+        if(($row->d22<0 || $row->d22>3) && $row->d22!='')$cd22='background-color:#ff726f;';
+        if(($row->d23<0 || $row->d23>0.35) && $row->d23!='')$cd23='background-color:#ff726f;';
         //24-25
-        if($row->d24<0 || $row->d24>1)$cd24='background-color:#ff726f;';
-        if($row->d25<0 || $row->d25>0.15)$cd25='background-color:#ff726f;';
+        if(($row->d24<0 || $row->d24>1) && $row->d24!='')$cd24='background-color:#ff726f;';
+        if(($row->d25<0 || $row->d25>0.15) && $row->d25!='')$cd25='background-color:#ff726f;';
         //26-27
-        if($row->d26<25 || $row->d26>40)$cd26='background-color:#ff726f;';
-        if($row->d27<1.25 || $row->d27>4.2)$cd27='background-color:#ff726f;';
+        if(($row->d26<25 || $row->d26>40) && $row->d26!='')$cd26='background-color:#ff726f;';
+        if(($row->d27<1.25 || $row->d27>4.2) && $row->d27!='')$cd27='background-color:#ff726f;';
         //28-29
-        if($row->d28<4 || $row->d28>8)$cd28='background-color:#ff726f;';
-        if($row->d29<2 || $row->d29>8.4)$cd29='background-color:#ff726f;';
+        if(($row->d28<4 || $row->d28>8) && $row->d28!='')$cd28='background-color:#ff726f;';
+        if(($row->d29<2 || $row->d29>8.4) && $row->d29!='')$cd29='background-color:#ff726f;';
 
         $cadena='
         <style>
