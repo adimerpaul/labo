@@ -67,5 +67,6 @@ Route::group(['middleware'=>'auth:sanctum'],function (){
     Route::get('/historialform/{id}',[\App\Http\Controllers\PacienteController::class,'historialform']);
     Route::get('/muestra',[\App\Http\Controllers\PacienteController::class,'muestra']);
     Route::post('/eliminar',[\App\Http\Controllers\PacienteController::class,'eliminar']);
+    Route::post('/reporte',[\App\Http\Controllers\PacienteController::class,'reporte']);
 
 });
