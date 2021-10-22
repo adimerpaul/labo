@@ -179,5 +179,21 @@ class PacienteController extends Controller
         }
         return DB::table($tabla)->where('id',$request->id)->delete();
     }
-
+    public function reporte(Request $request){
+        $r1=DB::select(
+            "SELECT count(*) as total,'hemograma' as formulario FROM hemogramas WHERE date(fechatoma)>= '$request->ini' and date(fechatoma)<='$request->fin' union
+            SELECT count(*) as total,'orina' as formulario FROM orinas WHERE date(fechatoma)>= '$request->ini' and date(fechatoma)<='$request->fin'  union
+            SELECT count(*) as total,'sanguinia' as formulario FROM sanguinias WHERE date(fechatoma)>= '$request->ini' and date(fechatoma)<='$request->fin'  union
+            SELECT count(*) as total,'uretral' as formulario FROM uretrals WHERE date(fechatoma)>= '$request->ini' and date(fechatoma)<='$request->fin'  union
+            SELECT count(*) as total,'vaginal' as formulario FROM vaginals WHERE date(fechatoma)>= '$request->ini' and date(fechatoma)<='$request->fin'  union
+            SELECT count(*) as total,'hece' as formulario FROM heces WHERE date(fechatoma)>= '$request->ini' and date(fechatoma)<='$request->fin'  union
+            SELECT count(*) as total,'simple' as formulario FROM simples WHERE date(fechatoma)>= '$request->ini' and date(fechatoma)<='$request->fin'  union
+            SELECT count(*) as total,'seriado' as formulario FROM seriados WHERE date(fechatoma)>= '$request->ini' and date(fechatoma)<='$request->fin'  union
+            SELECT count(*) as total,'serologia' as formulario FROM serologias WHERE date(fechatoma)>= '$request->ini' and date(fechatoma)<='$request->fin'  union
+            SELECT count(*) as total,'labserologia' as formulario FROM labserologias WHERE date(fechatoma)>= '$request->ini' and date(fechatoma)<='$request->fin'  union
+            SELECT count(*) as total,'reserologia' as formulario FROM reserologias WHERE date(fechatoma)>= '$request->ini' and date(fechatoma)<='$request->fin'  union
+            SELECT count(*) as total,'ensayo' as formulario FROM ensayos WHERE date(fechatoma)>= '$request->ini' and date(fechatoma)<='$request->fin'  "
+        );
+        return $r1;
+    }
 }

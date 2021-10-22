@@ -2677,8 +2677,8 @@ export default {
         let url=(process.env.API+'/'+props.row.formulario+'/'+props.row.id);
 
             //oReq.send();
-            window.open(url, '_blank');
-            //window.open("https://api.whatsapp.com/send?phone=591"+this.dato2.celular+"&text="+url, '_blank');
+            //window.open(url, '_blank');
+            window.open("https://api.whatsapp.com/send?phone=591"+this.dato2.celular+"&text="+url, '_blank');
     },
     onMod(){
       console.log(this.dato2)
