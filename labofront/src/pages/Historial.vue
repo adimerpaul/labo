@@ -2,101 +2,112 @@
   <q-page class="q-pa-xs">
     <q-card>
 
-    <q-form @submit.prevent="buscar" class="q-gutter-md" >
+    <q-form @submit.prevent="onBuscar" class="q-gutter-md" >
     <div class="row">
 
 
     
       <div class="col-3">
-      <q-input type="date" label="Fecha ini" v-model="dato.ini" lazy-rules 
+      <q-input type="date" label="Fecha" v-model="dato.fecha" lazy-rules 
         :rules="[ val => val && val.length > 0 || 'Ingrese fecha']"/>
-      </div>
+    </div>
       <div class="col-3">
-      <q-input type="date" label="Fecha fin" v-model="dato.fin" lazy-rules 
-        :rules="[ val => val && val >= dato.ini || 'Ingrese fecha']"/>
+        <q-select label="Reactivo" :options="reactivos" v-model="dato.reactivo"
+        :rules="[ val => val && val!={} || 'seleccione'] "/>
       </div>
-
           <q-btn label="Buscar" type="submit" color="primary" />
     </div>
     </q-form>
-
-    <div>
-  <q-card class="bg-white q-pa-none full-width">
-    <q-card-section class="bg-blue-grey-8">
-      <div class="row items-center no-wrap">
-        <div class="col">
-          <div class="text-h6 text-white text-center">Formularios</div>
-        </div>
-      </div>
-    </q-card-section>
-    <q-card-section>
-      <canvas id="bar-chart"></canvas>
-    </q-card-section>
-  </q-card>
-    </div>
+      <q-table
+        title="Historial"
+        :columns="columns"
+        :rows="historial"
+      >
+        <template v-slot:top-right>
+          <q-input borderless dense debounce="300" v-model="filter" placeholder="Search">
+            <template v-slot:append>
+              <q-icon name="search" />
+            </template>
+          </q-input>
+        </template>
+      </q-table>
     </q-card>
   </q-page>
 </template>
 
 <script>
-import {date} from 'quasar'
-    import Chart from 'chart.js/auto';
-
+import {date} from "quasar";
 export default {
   data(){
     return{
       filter:'',
-      total:[],
-      formularios:[],
-      dato:{ini:date.formatDate(Date.now(),'YYYY-MM-DD'),fin:date.formatDate(Date.now(),'YYYY-MM-DD')},
-
+      rows:[],
+      reactivos:[],
+      historial:[],
+      dato:{fecha:date.formatDate(Date.now(),'YYYY-MM-DD')},
+      columns:[
+        { name: 'fecha', label: 'fecha', field: 'fecha'},
+        { name: 'fechavencimiento', label: 'fechavencimiento', field: 'fechavencimiento'},
+        { name: 'marca', label: 'marca', field: 'marca'},
+        { name: 'lote', label: 'lote', field: 'lote'},
+        { name: 'ingreso', label: 'ingreso', field: 'ingreso'},
+        { name: 'egreso', label: 'egreso', field: 'egreso'},
+        { name: 'saldo', label: 'saldo', field: 'saldo'},
+        { name: 'observacion', label: 'observacion', field: 'observacion'},
+      ]
     }
   },
   created(){
-
+    // console.log('aa')
+    // setTimeout(() => {
+    //   console.log("Refresh")
+    // }, 1000)
+    // console.log('ias')
+    // window.location.reload(true)
+    // this.$q.loading.show()
+    // this.$axios.get(process.env.API+'/contribuyente').then(res=>{
+    //   console.log(res.data)
+    //   this.contribuyentes=res.data
+    //   this.$q.loading.hide()
+    // })
+    this.listreactivo();
   },
   methods: {
-    buscar(){
-      this.formularios=[];
-      this.total=[];
-     this.$axios.post(process.env.API+'/reporte',this.dato).then(res=>{
+    listreactivo(){
+      this.reactivos=[];
+     this.$axios.get(process.env.API+'/reactivo').then(res=>{
+       console.log(res.data)
        res.data.forEach(element => {
-         this.formularios.push(element.formulario);
-         this.total.push(element.total);
+          this.reactivos.push({label:element.nombre,value:element.id});
        });
-       this.createChart('bar-chart');
      })
 
     },
-    createChart (chartId) {
-      const ctx = document.getElementById(chartId);
-      const myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: this.formularios,
-          datasets: [
-            {
-              label: 'Formularios (cantidad)',
-              backgroundColor: 'green',
-              //['red','yellow','green','blue','orange','Chocolate','LightCyan'],
-              data: this.total
-            }
-          ]
-        },
-        options: {
-          legend: {
-            display: false
-          },
-          title: {
-            display: true,
-            text: 'Total de Formularios registraados'
-          }
-        }
-      })
-      return myChart;
-    }
+    onBuscar(){
+      let ind=0;
+      this.dato.id=this.dato.reactivo.value;
+      console.log(this.dato)
+      this.historial=[];
+     this.$axios.post(process.env.API+'/listinventario',this.dato).then(res=>{
+       console.log(res.data)
+         res.data.forEach(element => {
+           //this.historial.push(element);
+           this.historial[ind]=element;
+           ind++;
+           console.log(element)
+           this.$axios.post(process.env.API+'/listretiro',{id:element.id}).then(res2=>{
+             res2.data.forEach(element2 => {
+                //this.historial.push(element2);
+                this.historial[ind]=element2;
+                ind++;
+             });
+           })
+         
+       });
 
-  
+    })
+    console.log(this.historial);
+  },
   }
 }
 </script>
