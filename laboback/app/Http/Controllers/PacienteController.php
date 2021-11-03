@@ -117,7 +117,7 @@ class PacienteController extends Controller
 
     public function muestra(){
         $r1=DB::select(
-            "SELECT id,tipomuestra,fechatoma,'hemograma' as formulario FROM hemogramas union
+           "SELECT id,tipomuestra,fechatoma,'hemograma' as formulario FROM hemogramas union
             SELECT id,tipomuestra,fechatoma,'orina' as formulario FROM orinas union
             SELECT id,tipomuestra,fechatoma,'sanguinia' as formulario FROM sanguinias union
             SELECT id,tipomuestra,fechatoma,'uretral' as formulario FROM uretrals union

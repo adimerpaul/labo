@@ -43,7 +43,7 @@
 
 <script>
 import {date} from 'quasar'
-    import Chart from 'chart.js/auto';
+    import Chart from 'chart.js';
 
 export default {
   data(){

@@ -2298,20 +2298,7 @@ export default {
       dialog_mod:false,
       dialog_lab:false,
       dialog_hist:false,
-      formulario:[
-         {value:"hemograma" ,label:"Hemograma completo" },
-         {value:"sanguinia"        ,label:"Quimica sanguinia" },
-         {value:"orina"        ,label:"Examen general de orina" },
-         {value:"uretral"        ,label:"Analisis de secrecion uretral" },
-         {value:"vaginal"        ,label:"Analisis de secrecion Vaginal" },
-         {value:"hece"        ,label:"Analisis de Heces" },
-         {value:"simple"        ,label:"Copraparasitologico Simple" },
-         {value:"seriado"        ,label:"Copraparasitologico Seriado" },
-         {value:"serologia"        ,label:"Serologia" },
-         {value:"labserologia"        ,label:"Laboratorio Serologia" },
-         {value:"reserologia"        ,label:"Resultado Serologia" },
-         {value:"ensayo"        ,label:"Inmunoensayo de Fluorescencia" }
-      ],
+      formulario:[],
       hemograma:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')},
       orina:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')},
       sanguinia:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')},
@@ -2359,6 +2346,31 @@ export default {
     }
   },
   created(){
+      if(this.$store.state.login.boolhemograma)
+        this.formulario.push({value:"hemograma" ,label:"Hemograma completo" });
+      if(this.$store.state.login.boolsanguinia)
+        this.formulario.push({value:"sanguinia" ,label:"Quimica sanguinia" });
+              if(this.$store.state.login.boolorina)
+        this.formulario.push({value:"orina" ,label:"Examen general de orina" });
+              if(this.$store.state.login.booluretral)
+        this.formulario.push({value:"uretral" ,label:"Analisis de secrecion uretral" });
+              if(this.$store.state.login.boolvaginal)
+        this.formulario.push({value:"vaginal" ,label:"Analisis de secrecion Vaginal" });
+              if(this.$store.state.login.boolhece)
+        this.formulario.push({value:"hece" ,label:"Analisis de Heces" });
+              if(this.$store.state.login.boolsimple)
+        this.formulario.push({value:"simple" ,label:"Copraparasitologico Simple" });
+
+              if(this.$store.state.login.boolseriado)
+        this.formulario.push({value:"seriado" ,label:"Copraparasitologico Seriado" });
+              if(this.$store.state.login.boolserologia)
+        this.formulario.push({value:"serologia" ,label:"Serologia" });
+              if(this.$store.state.login.boollabserologia)
+        this.formulario.push({value:"labserologia" ,label:"Laboratorio Serologia" }); 
+                     if(this.$store.state.login.boolreserologia)
+        this.formulario.push({value:"reserologia" ,label:"Resultado Serologia" }); 
+                     if(this.$store.state.login.boolensayo)
+        this.formulario.push({value:"ensayo" ,label:"Inmunoensayo de Fluorescencia" }); 
     this.listado();
     this.listdoctor();
     this.tab={value:"hemograma",label:"Hemograma completo" };
