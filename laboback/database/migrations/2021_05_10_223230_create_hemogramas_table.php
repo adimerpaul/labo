@@ -86,6 +86,7 @@ class CreateHemogramasTable extends Migration
             $table->string('d32')->nullable()->default('');
             //$table->text('d32r')->$this->nullable()->$this->default(');
             $table->string('d33')->nullable()->default('');
+            $table->string('responsable')->nullable()->default('');
             //$table->text('d33r');
 //            $table->string('d34');
             //$table->text('d34r');

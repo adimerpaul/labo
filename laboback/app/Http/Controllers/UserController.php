@@ -61,6 +61,10 @@ class UserController extends Controller
         //
     }
 
+    public function listuser(){
+        return User::where('id','!=',1)->get();
+    }
+
     /**
      * Store a newly created resource in storage.
      *

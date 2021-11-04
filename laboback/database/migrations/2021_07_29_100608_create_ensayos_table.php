@@ -26,6 +26,7 @@ class CreateEnsayosTable extends Migration
             $table->string('d6')->default('')->nullable();
             $table->string('d7')->default('')->nullable();
             $table->string('d8')->default('')->nullable();
+            $table->string('responsable')->nullable()->default('');
             $table->unsignedBigInteger('paciente_id');
             $table->foreign('paciente_id')->references('id')->on('pacientes');
             $table->unsignedBigInteger('doctor_id');

@@ -21,6 +21,7 @@ class Ensayo extends Model
     'd6',
     'd7',
     'd8',
+    'responsable',
     'doctor_id',
     'paciente_id',
     'user_id',];

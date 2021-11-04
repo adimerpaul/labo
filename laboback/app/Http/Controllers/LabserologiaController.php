@@ -69,12 +69,11 @@ class LabserologiaController extends Controller
             *{
                 padding: 0px;
                 margin: 0px;
-                font-size: 13px;
+                font-size: 12px;
                 }
             table{
                 width:50%;
-                margin-left:5px;
-                margin-right:5px;
+                margin-left:10px;
 
             }
             </style>
@@ -154,49 +153,49 @@ class LabserologiaController extends Controller
                 <td style="color:darkred; width: 20%">Prueba Rapida Sifilis</td>
                 <td style="text-align:center;">'.$row->d5.'</td>
                 <td style="text-align:center; color:Khaki;">No Reactivo</td>
-                <td style="text-align:center; color:darkblue;">Prueba Rapida Inmunocromatografica</td>
+                <td style="text-align:center; color:darkblue;">Prueba Rapida I-croma</td>
             </tr>
             <tr>
                 <td style="color:darkred; width: 20%">Prueba Rapida VIH</td>
                 <td style="text-align:center;">'.$row->d6.'</td>
                 <td style="text-align:center; color:Khaki;">No Reactivo</td>
-                <td style="text-align:center; color:darkblue;">Prueba Rapida Inmunocromatografica</td>
+                <td style="text-align:center; color:darkblue;">Prueba Rapida I-croma</td>
             </tr>
             <tr>
                 <td style="color:darkred; width: 20%">Hepatitis A</td>
                 <td style="text-align:center;">'.$row->d7.'</td>
                 <td style="text-align:center; color:Khaki;">NEGATIVO / POSITIVO</td>
-                <td style="text-align:center; color:darkblue;">Prueba Rapida Inmunocromatografica</td>
+                <td style="text-align:center; color:darkblue;">Prueba Rapida I-croma</td>
             </tr>
             <tr>
                 <td style="color:darkred; width: 20%">Hepatitis B</td>
                 <td style="text-align:center;">'.$row->d8.'</td>
                 <td style="text-align:center; color:Khaki;">NEGATIVO / POSITIVO</td>
-                <td style="text-align:center; color:darkblue;">Prueba Rapida Inmunocromatografica</td>
+                <td style="text-align:center; color:darkblue;">Prueba Rapida I-croma</td>
             </tr>
             <tr>
                 <td style="color:darkred; width: 20%">Hepatitis C</td>
                 <td style="text-align:center;">'.$row->d9.'</td>
                 <td style="text-align:center; color:Khaki;">NEGATIVO / POSITIVO</td>
-                <td style="text-align:center; color:darkblue;">Prueba Rapida Inmunocromatografica</td>
+                <td style="text-align:center; color:darkblue;">Prueba Rapida I-croma</td>
             </tr>
             <tr>
                 <td style="color:darkred; width: 20%">Helicobacter Pylori en Sangre</td>
                 <td style="text-align:center;">'.$row->d10.'</td>
                 <td style="text-align:center; color:Khaki;">NEGATIVO / POSITIVO</td>
-                <td style="text-align:center; color:darkblue;">Prueba Rapida Inmunocromatografica</td>
+                <td style="text-align:center; color:darkblue;">Prueba Rapida I-croma</td>
             </tr>
             <tr>
                 <td style="color:darkred; width: 20%">Helicobacter Pylori en Heces</td>
                 <td style="text-align:center;">'.$row->d11.'</td>
                 <td style="text-align:center; color:Khaki;">NEGATIVO / POSITIVO</td>
-                <td style="text-align:center; color:darkblue;">Prueba Rapida Inmunocromatografica</td>
+                <td style="text-align:center; color:darkblue;">Prueba Rapida I-croma</td>
             </tr>
             <tr>
                 <td style="color:darkred; width: 20%">Troponina I</td>
                 <td style="text-align:center;">'.$row->d12.'</td>
                 <td style="text-align:center; color:Khaki;">NEGATIVO / POSITIVO</td>
-                <td style="text-align:center; color:darkblue;">Prueba Rapida Inmunocromatografica</td>
+                <td style="text-align:center; color:darkblue;">Prueba Rapida I-croma</td>
             </tr>
             <tr>
                 <td style="color:darkred; width: 20%">PSA</td>
@@ -210,7 +209,7 @@ class LabserologiaController extends Controller
             </tr>
 
             <tr >
-                <td colspan="2" rowspan="3" style="color:darkblue;">RESPONSABLE: <span style="color:black">'.$row->user->name.'</span></td>
+                <td colspan="2" rowspan="3" style="color:darkblue;">RESPONSABLE: <span style="color:black">'.$row->responsable.'</span></td>
 
                 <td style="color:darkblue;">FECHA DE TOMA DE MUESTRAS: </td>
                 <td >'.$row->fechatoma.'</td>

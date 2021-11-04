@@ -10,18 +10,5 @@ export default function () {
     boolhistorial:false,
     boolreactivo:false,
     boolporcaducar:false,
-    boolhemograma:false,
-    boolorina:false,
-    boolsanguinia:false,
-    booluretral:false,
-    boolvaginal:false,
-    boolhece:false,
-    boolsimple:false,
-    boolseriado:false,
-    boolserologia:false,
-    boollabserologia:false,
-    boolreserologia:false,
-    boolensayo:false
-
   }
 }

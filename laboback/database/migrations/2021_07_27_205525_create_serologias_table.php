@@ -23,6 +23,7 @@ class CreateSerologiasTable extends Migration
             $table->double('lgg')->default(0)->nullable();
             $table->string('d2')->default('')->nullable();
             $table->string('d3')->default('')->nullable();
+            $table->string('responsable')->nullable()->default('');
             $table->unsignedBigInteger('paciente_id');
             $table->foreign('paciente_id')->references('id')->on('pacientes');
             $table->unsignedBigInteger('doctor_id');

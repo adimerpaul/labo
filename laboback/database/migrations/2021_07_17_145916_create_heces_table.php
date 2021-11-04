@@ -38,6 +38,7 @@ class CreateHecesTable extends Migration
             $table->string('d18')->default('')->nullable();
             $table->string('d19')->default('')->nullable();
             $table->string('d20')->default('')->nullable();
+            $table->string('responsable')->nullable()->default('');
             $table->unsignedBigInteger('paciente_id');
             $table->foreign('paciente_id')->references('id')->on('pacientes');
             $table->unsignedBigInteger('doctor_id');

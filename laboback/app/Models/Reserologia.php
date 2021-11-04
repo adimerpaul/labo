@@ -14,6 +14,7 @@ class Reserologia extends Model
         'horatoma',
         'd1',
         'd2',
+        'responsable',
         'doctor_id',
         'paciente_id',
         'user_id'

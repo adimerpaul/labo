@@ -32,6 +32,7 @@ class CreateLabserologiasTable extends Migration
             $table->string('d12')->default('')->nullable();
             $table->string('d13')->default('')->nullable();
             $table->string('d14')->default('')->nullable();
+            $table->string('responsable')->nullable()->default('');
             $table->unsignedBigInteger('paciente_id');
             $table->foreign('paciente_id')->references('id')->on('pacientes');
             $table->unsignedBigInteger('doctor_id');

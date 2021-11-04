@@ -210,15 +210,17 @@ font-size: 13px;
                 <td class="tdx"  style="color: darkblue">METODO</td>
                 <td class="tdx"  colspan="3" align="center" style="color: darkblue">
                     Contador Hematologico MINDRAY BC 5130
-                    Hematocrito (Metodo Manual) Hemoglobina (Clanmetahemoglobina reactivo drabking)
                 </td>
             </tr>
         </table>
         <table class="tablex"  style="padding-right:10px;padding-left:0px;width: 100%;color: black;">
             <tr>
-                <td class="tdx" colspan="3"></td>
+                <td class="tdx" style="width:10%"></td>
+                <td class="tdx" style="width:10%"></td>
+                <td class="tdx" style="width:10%"></td>
                 <td class="tdx" style="color: NAVY;font: bold" align="center">REFERENCIA</td>
-                <td class="tdx" colspan="2"></td>
+                <td class="tdx" style="width:10%"></td>
+                <td class="tdx" style="width:10%"></td>
                 <td class="tdx" style="color: NAVY;font: bold" align="center">REFERENCIA</td>
             </tr>
             <tr>

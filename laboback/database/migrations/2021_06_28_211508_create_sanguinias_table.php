@@ -49,6 +49,7 @@ class CreateSanguiniasTable extends Migration
             $table->string('d29')->default('')->nullable();
             $table->string('d30')->default('')->nullable();
             $table->string('d31')->default('')->nullable();
+            $table->string('responsable')->nullable()->default('');
             $table->unsignedBigInteger('paciente_id');
             $table->foreign('paciente_id')->references('id')->on('pacientes');
             $table->unsignedBigInteger('doctor_id');

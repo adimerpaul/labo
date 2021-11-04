@@ -61,6 +61,9 @@ class VaginalController extends Controller
   border: 1px solid black;
   border-collapse: collapse;
 }
+table{
+    margin-left:10px;
+}
 *{
 margin: 0px;
 padding: 0px;

@@ -24,6 +24,7 @@ class seriado extends Model
         'hora3',
         'd3',
         'observaciones',
+        'responsable',
         'doctor_id',
         'paciente_id',
         'user_id',

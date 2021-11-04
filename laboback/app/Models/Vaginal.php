@@ -28,6 +28,7 @@ class vaginal extends Model
         'd15',
         'd16',
         'd17',
+        'responsable',
         'doctor_id',
         'paciente_id',
         'user_id',

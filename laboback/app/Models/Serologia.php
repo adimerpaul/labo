@@ -17,6 +17,7 @@ class Serologia extends Model
         'lgg',
         'd2',
         'd3',
+        'responsable',
         'doctor_id',
         'paciente_id',
         'user_id',

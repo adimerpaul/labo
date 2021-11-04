@@ -51,6 +51,9 @@ class UretralController extends Controller
             border: 1px solid black;
             border-collapse: collapse;
             }
+            table{
+                margin-left:10px;
+            }
             *{
             padding:0px;
             border:0px;
@@ -108,43 +111,43 @@ class UretralController extends Controller
             </tr>
             <tr>
                 <td class="tdx" style="color:blue" >CELULAS EPITELIALES</td>
-                <td class="tdx">'.$row->d1.'</td>
+                <td class="tdx" style="text-align:center;">'.$row->d1.'</td>
             </tr>
             <tr>
                 <td class="tdx" style="color:blue">LEUCOCITOS</td>
-                <td class="tdx" >'.$row->d2.'</td>
+                <td class="tdx" style="text-align:center;">'.$row->d2.'</td>
             </tr>
             <tr>
                 <td class="tdx" style="color:blue">HEMATIES</td>
-                <td class="tdx" >'.$row->d3.'</td>
+                <td class="tdx" style="text-align:center;">'.$row->d3.'</td>
             </tr>
             <tr>
                 <td class="tdx" style="color:blue">CELULAS CLAVE</td>
-                <td class="tdx" >'.$row->d4.'</td>
+                <td class="tdx" style="text-align:center;">'.$row->d4.'</td>
             </tr>
             <tr>
                 <td class="tdx" style="color:blue">LEVADURAS</td>
-                <td class="tdx" >'.$row->d5.'</td>
+                <td class="tdx" style="text-align:center;" >'.$row->d5.'</td>
             </tr>
             <tr>
                 <td class="tdx" style="color:blue">PARASITOS</td>
-                <td class="tdx" >'.$row->d6.'</td>
+                <td class="tdx" style="text-align:center;">'.$row->d6.'</td>
             </tr>
             <tr>
                 <td class="tdx" style="color:blue">BACTERIAS</td>
-                <td class="tdx" >'.$row->d7.'</td>
+                <td class="tdx" style="text-align:center;">'.$row->d7.'</td>
             </tr>
             <tr>
                 <td class="tdx" style="color:blue">KOH</td>
-                <td class="tdx" >'.$row->d8.'</td>
+                <td class="tdx" style="text-align:center;">'.$row->d8.'</td>
             </tr>
             <tr>
                 <td class="tdx" style="color:blue">PH</td>
-                <td class="tdx" >'.$row->d9.'</td>
+                <td class="tdx" style="text-align:center;">'.$row->d9.'</td>
             </tr>
             <tr>
                 <td class="tdx" style="color:blue">OBSERVACIONES</td>
-                <td class="tdx" >'.$row->d10.'</td>
+                <td class="tdx" style="text-align:center;">'.$row->d10.'</td>
             </tr>
 
             <tr colspan="2">
@@ -152,31 +155,31 @@ class UretralController extends Controller
             </tr>
             <tr>
                 <td class="tdx" style="color:blue">BACILOS GRAM POSITIVO</td>
-                <td class="tdx" >'.$row->d11.'</td>
+                <td class="tdx" style="text-align:center;">'.$row->d11.'</td>
             </tr>
             <tr>
                 <td class="tdx" style="color:blue">BACILOS GRAM NEGATIVO</td>
-                <td class="tdx" >'.$row->d12.'</td>
+                <td class="tdx" style="text-align:center;">'.$row->d12.'</td>
             </tr>
             <tr>
                 <td class="tdx" style="color:blue">COCOS GRAM POSITIVO</td>
-                <td class="tdx" >'.$row->d13.'</td>
+                <td class="tdx" style="text-align:center;">'.$row->d13.'</td>
             </tr>
             <tr>
                 <td class="tdx" style="color:blue">COCOBACILOS GRAM POSITIVO</td>
-                <td class="tdx" >'.$row->d14.'</td>
+                <td class="tdx" style="text-align:center;">'.$row->d14.'</td>
             </tr>
             <tr>
                 <td class="tdx" style="color:blue">COCOBACILOS GRAM NEGATIVO</td>
-                <td class="tdx" >'.$row->d15.'</td>
+                <td class="tdx" style="text-align:center;">'.$row->d15.'</td>
             </tr>
             <tr>
                 <td class="tdx" style="color:blue">ESPORAS E HIFAS MICOTICAS</td>
-                <td class="tdx" >'.$row->d16.'</td>
+                <td class="tdx" style="text-align:center;">'.$row->d16.'</td>
             </tr>
             <tr>
                 <td class="tdx" style="color:blue">OBSERVACIONES</td>
-                <td class="tdx" >'.$row->d17.'</td>
+                <td class="tdx" style="text-align:center;">'.$row->d17.'</td>
             </tr>
 
 

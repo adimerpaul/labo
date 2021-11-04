@@ -20,19 +20,6 @@ class PermisoSeeder extends Seeder
             ['nombre'=>'Historial'],
             ['nombre'=>'Reactivos'],
             ['nombre'=>'Por caducar'],
-            ['nombre'=>'hemograma'],
-            ['nombre'=>'orina'],
-            ['nombre'=>'sanguinia'],
-            ['nombre'=>'uretral'],
-            ['nombre'=>'vaginal'],
-            ['nombre'=>'hece'],
-            ['nombre'=>'simple'],
-            ['nombre'=>'seriado'],
-            ['nombre'=>'serologia'],
-            ['nombre'=>'labserologia'],
-            ['nombre'=>'reserologia'],
-            ['nombre'=>'ensayo'],
-            
         ]);
     }
 }

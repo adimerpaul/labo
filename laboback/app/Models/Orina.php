@@ -48,6 +48,7 @@ class Orina extends Model
         'd35',
         'd36',
         'd37',
+        'responsable',
         'doctor_id',
         'paciente_id',
         'user_id',

@@ -78,6 +78,7 @@ class EnsayoController extends Controller
         $row=$row[0];
         $cd1='';
         $cd2='';
+        $cd3='';
         $cd4='';
         $cd5='';
         $cd6='';
@@ -85,6 +86,7 @@ class EnsayoController extends Controller
         if(($row->d1<0 || $row->d1>500)&& $row->d1!='')$cd1='background-color:#ff726f;';
         if($row->paciente->sexo=='Masculino' && ($row->d2<30 || $row->d2>350)&& $row->d2!='')$cd2='background-color:#ff726f;';
         if($row->paciente->sexo=='Femenino' && ($row->d2<20 || $row->d2>250)&& $row->d2!='')$cd2='background-color:#ff726f;';
+        if(($row->d3<0 || $row->d3>7)&& $row->d3!='')$cd3='background-color:#ff726f;';
         if(($row->d4<0 || $row->d4>4)&& $row->d4!='')$cd4='background-color:#ff726f;';
         if(($row->d5<0 || $row->d5>10)&& $row->d5!='')$cd5='background-color:#ff726f;';
         if(($row->d6<0 || $row->d6>0.11)&& $row->d6!='')$cd6='background-color:#ff726f;';
@@ -103,8 +105,7 @@ table, th, td {
     font-size: 12px;
     }
     table{
-        margin-left: 5px;
-        margin-right: 5px;
+        margin-left: 10px;
         width: 50%;
         } 
 </style>
@@ -128,7 +129,7 @@ table, th, td {
     
             <table style="color: black">
                 <tr>
-                    <td colspan="3" style="text-align: center;"><h3></h3></td>
+                    <td colspan="3" style="text-align: center;"></td>
                     <td style="color:red">Form. 0010</td>
                 </tr>
                 <tr>
@@ -152,7 +153,7 @@ table, th, td {
     
             </table>
             <br>
-            <table >
+            <table>
                 <tr><td colspan="5" style="text-align:center; color:darkred;font:bold">
                     METODO: INMUNOENSAYO DE FLUORESCENCIA (FIA)
                     </td>

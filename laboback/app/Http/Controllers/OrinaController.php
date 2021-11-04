@@ -52,8 +52,7 @@ class OrinaController extends Controller
     public function generar($id){
         $row= Orina::with('paciente')->with('user')->with('doctor')
         ->where('id',$id)
-        ->get();
-        $row=$row[0];
+        ->get()[0];
         $cd11='';
         $cd15='';
         $cd21='';
@@ -65,25 +64,24 @@ class OrinaController extends Controller
 
         $cadena='
         <style>
-table , th , td  {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-*{
-    padding: 0px;
-    margin: 0px;
-    border: 0px;
-    font-size: 10px;
-    }
-    table{
-        margin-left: 5px;
-        margin-right: 5px;
-        width: 50%;
-        }
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+           }
+            *{
+                padding: 0px;
+                margin: 0px;
+                font-size: 12px;
+                }
+            table{
+                width:50%;
+                margin-left:10px;
+
+            }
 </style>
-        <table style="width: 100%;border:0; margin-top: 5px;">
+    <table style="border:0; margin-top:5px;" >
         <tr >
-            <td rowspan="3" style="border:0; "><img src="./img/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 1.5cm; "></td>
+            <td rowspan="3" style="border:0; "><img src="./img/natividad.jpeg" alt="Logo Clinica" style="height: 1.5cm; "></td>
             <td style="color: blue; text-align:center;border:0; ">SERVICIO DE LABORATORIO </td>
         </tr>
         <tr>
@@ -97,10 +95,10 @@ table , th , td  {
             <td style="color: blue; text-align:center;border:0;  ">Bolivar Nº 753 entre Arica e Iquique </td>
         </tr>
     </table>
-    <table  style=" width: 100%;">
+    <table >
         <tr>
             <td colspan="3" style="text-align: center; border:0; font:bold; color: darkblue;">EXAMEN GENERAL DE ORINA</td>
-            <td style="color:darkblue; text-align:right">Form. 003</td>
+            <td style="color:darkblue; text-align:center;">Form. 003</td>
         </tr>
         <tr>
             <td style="color: darkblue">PACIENTE</td>
@@ -122,14 +120,14 @@ table , th , td  {
             <td style="text-align:center;color:red">'.$row->paciente->id.'</td>
         </tr>
     </table>
-    <table style="border:1,solid; width: 100%;">
-        <tr><b>
+    <table >
+        <tr>
             <td style="color:darkblue; text-align:center; font:bold; ">EX. FISICO</td>
             <td style="color:darkblue; text-align:center; font:bold; ">VALOR</td>
             <td style="color:darkblue; text-align:center; font:bold; ">REFERENCIA</td>
             <td style="color:darkblue; text-align:center; font:bold; ">EX. QUIMICO</td>
             <td style="color:darkblue; text-align:center; font:bold; ">VALOR</td>
-            <td style="color:darkblue; text-align:center; font:bold; ">REFERENCIA</td></b>
+            <td style="color:darkblue; text-align:center; font:bold; ">REFERENCIA</td>
         </tr>
         <tr>
             <td style="color:blue; text-align:left; ">Color</td>
@@ -311,7 +309,7 @@ table , th , td  {
         ';
         $pdf = App::make('dompdf.wrapper');
         //        $customPaper = array(0,0,360,360);
-                $pdf->setPaper('letter');
+                $pdf->setPaper('letter','landscape');
                 $pdf->loadHTML($cadena);
                 return $pdf->stream();
     }

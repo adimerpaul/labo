@@ -126,6 +126,8 @@ class SanguiniaController extends Controller
   border: 1px solid black;
   border-collapse: collapse;
 }
+table{
+margin-left:10px;}
 *{
 margin: 0px;
 padding: 0px;
@@ -135,7 +137,7 @@ font-size: 12px;
 </style>
         <table style="width: 100%;color: black;padding-top:5px;padding-left: 10px;padding-right: 15px">
         <tr >
-            <td rowspan="5" ><img src="./img/natividad.jpeg" style="height: 1.5cm;"></td>
+            <td rowspan="5" ><img src="./img/natividad.jpeg" style="height: 1.6cm;"></td>
             <td style="text-align:center;color:darkblue; ">SERVICIO DE LABORATORIO </td>
         </tr>
 
@@ -178,12 +180,12 @@ font-size: 12px;
         </table>
         <table class="tablex" style="width: 100%;color: black ;padding-left: 10px;padding-right: 15px" >
             <tr style="color:purple;font-weight: bold">
-                <th class="thx">PRUEBA</th>
-                <th class="thx">VALOR</th>
-                <th class="thx">REFERENCIA</th>
-                <th class="thx">PRUEBA</th>
-                <th class="thx">VALOR</th>
-                <th class="thx">VALOR</th>
+                <th class="thx" style="width:15%">PRUEBA</th>
+                <th class="thx" style="width:20%">VALOR</th>
+                <th class="thx" style="width:15%">REFERENCIA</th>
+                <th class="thx" style="width:15%">PRUEBA</th>
+                <th class="thx" style="width:20%">VALOR</th>
+                <th class="thx" style="width:15%">VALOR</th>
             </tr>
             <tr>
                 <td class="tdx" style=" color: blue;text-align::left;" >Glicemia</td>
@@ -320,7 +322,7 @@ font-size: 12px;
             <tr>
                 <td class="tdx" colspan="2" rowspan="3" style="font-weight:bold;color:blue; text-align:center;">RESPONSABLE</td>
                 <td class="tdx" colspan="2" rowspan="3">
-                    '.$row->user->name.'
+                    '.$row->responsable.'
                 </td>
                 <td class="tdx"  style="font-weight:bold;color:blue; text-align:center;">FECHA TOMA DE MUESTRA</td>
                 <td class="tdx">'.$row->fechatoma.'</td>

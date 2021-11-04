@@ -30,6 +30,7 @@ class simple extends Model
         'd16',
         'd17',
         'd18',
+        'responsable',
         'doctor_id',
         'paciente_id',
         'user_id'

@@ -45,6 +45,7 @@ class Hemograma extends Model
         'd31',
         'd32',
         'd33',
+        'responsable',
         'paciente_id',
         'doctor_id',
         'user_id',

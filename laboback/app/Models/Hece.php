@@ -31,6 +31,7 @@ class hece extends Model
         'd18',
         'd19',
         'd20',
+        'responsable',
         'doctor_id',
         'paciente_id',
         'user_id',

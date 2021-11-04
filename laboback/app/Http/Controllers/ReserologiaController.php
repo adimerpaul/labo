@@ -69,12 +69,11 @@ table, th, td {
 *{
     padding: 0px;
     margin: 0px;
-    font-size: 13px;
+    font-size: 12px;
     }
 table{
     width:50%;
-    margin-left:5px;
-    margin-right:5px;
+    margin-left:10px;
 
 }
 </style>
