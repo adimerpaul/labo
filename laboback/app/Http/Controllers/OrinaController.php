@@ -291,7 +291,7 @@ class OrinaController extends Controller
         </tr>
         <tr>
             <td rowspan="4" style="color:darkblue; text-align:left; font:bold;">RESPONSABLE</td>
-            <td colspan="2" rowspan="4">'.$row->user->name.'</td>
+            <td colspan="2" rowspan="4">'.$row->responsable.'</td>
         </tr>
         <tr>
             <td colspan="2" style="color:blue; text-align:left; ">FECHA DE TOMA DE MUESTRAS</td>

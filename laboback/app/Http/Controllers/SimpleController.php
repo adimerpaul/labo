@@ -194,7 +194,7 @@ font-size: 12px;
             </tr>
 
             <tr>
-                <td class="tdx" rowspan="3" style=";color: darkblue;font-weight: bold" >RESPONSABLE: '.$row->user->name.'</td>
+                <td class="tdx" rowspan="3" style=";color: darkblue;font-weight: bold" >RESPONSABLE: '.$row->responsable.'</td>
 
                 <td class="tdx" style=";color: blue;font-weight: bold">
                     FECHA DE TOMA DE MUESTRAS :<span style="color:black"> '.$row->fechatoma.'</span>

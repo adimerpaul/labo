@@ -184,7 +184,7 @@ class UretralController extends Controller
 
 
             <tr>
-                <td class="tdx" rowspan="2" style="color: blue;font-weight: bold" >RESPONSABLE: '.$row->user->name.'</td>
+                <td class="tdx" rowspan="2" style="color: blue;font-weight: bold" >RESPONSABLE: '.$row->responsable.'</td>
 
                 <td class="tdx" style="color: blue;font-weight: bold">
                     FECHA DE TOMA DE MUESTRAS :

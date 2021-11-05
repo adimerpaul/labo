@@ -157,7 +157,7 @@ font-size: 12px;
             </tr>
 
             <tr >
-                <td class="tdx" colspan="2" style="color: darkblue;font-weight: bold" >RESPONSABLE: '.$row->user->name.'</td>
+                <td class="tdx" colspan="2" style="color: darkblue;font-weight: bold" >RESPONSABLE: '.$row->responsable.'</td>
 
                 <td class="tdx" style="color: darkblue;font-weight: bold">
                     FECHA DE ENTREGA RESULTADOS: <span style="color:black">'.date('Y-m-d').'</span>

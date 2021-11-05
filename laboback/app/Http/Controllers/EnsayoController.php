@@ -243,7 +243,7 @@ table, th, td {
                 </tr>
     
                 <tr >
-                    <td colspan="2" rowspan="3" style="color:darkblue">RESPONSABLE: '.$row->user->name.'</td>
+                    <td colspan="2" rowspan="3" style="color:darkblue">RESPONSABLE: '.$row->responsable.'</td>
                     <td colspan="2">           FECHA DE TOMA DE MUESTRAS:              </td>
                     <td >'.$row->fechatoma.'</td>
                 </tr>

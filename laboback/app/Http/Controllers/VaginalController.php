@@ -195,7 +195,7 @@ table{
             </tr>
 
             <tr>
-                <td class="tdx" rowspan="2" style="color:darkblue">RESPONSABLE: '.$row->user->name.'</td>
+                <td class="tdx" rowspan="2" style="color:darkblue">RESPONSABLE: '.$row->responsable.'</td>
 
                 <td class="tdx" style="color:blue">
                     FECHA DE TOMA DE MUESTRAS :

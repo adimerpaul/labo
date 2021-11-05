@@ -164,7 +164,7 @@ table{
             </tr>
 
             <tr >
-                <td colspan="2" rowspan="3" style="color:darkblue">RESPONSABLE: '.$row->user->name.'</td>
+                <td colspan="2" rowspan="3" style="color:darkblue">RESPONSABLE: '.$row->responsable.'</td>
                 <td style="color:darkblue"> FECHA DE TOMA DE MUESTRAS: </td>
                 <td >'.$row->fechatoma.'</td>
             </tr>
