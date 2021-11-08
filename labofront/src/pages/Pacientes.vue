@@ -435,7 +435,7 @@
             </tr>
             <tr>
                 <td class="bg-negative text-white">Responsable:</td>
-                <td><q-select borderless dense :options="usuarios" v-model="hemograma.responsable" style="width:100%"/></td>
+                <td><q-select borderless dense :options="usuarios" required v-model="hemograma.responsable" style="width:100%"/></td>
             </tr>
             <tr>
                 <td class="bg-negative text-white">HORA DE TOMA DE MUESTRA:</td>
@@ -670,7 +670,7 @@
             </tr>
             <tr>
                 <td colspan="2" rowspan="3" class="bg-blue text-center text-white">RESPONSABLE</td>
-                <td colspan="2" rowspan="3"><q-select borderless dense :options="usuarios" v-model="sanguinia.responsable" style="width:100%"/></td>
+                <td colspan="2" rowspan="3"><q-select borderless dense :options="usuarios" required v-model="sanguinia.responsable" style="width:100%"/></td>
                 <td colspan="3" class="bg-blue text-center text-white">FECHA TOMA DE MUESTRA</td>
                 <td><input placeholder="00" type="date" v-model="sanguinia.fechatoma"   style="width: 100%" ></td>
             </tr>
@@ -910,7 +910,7 @@
             </tr>
             <tr>
                 <td rowspan="4">RESPONSABLE</td>
-                <td colspan="2" rowspan="4"><q-select borderless dense :options="usuarios" v-model="orina   .responsable" style="width:100%"/></td>
+                <td colspan="2" rowspan="4"><q-select borderless dense :options="usuarios" required v-model="orina.responsable" style="width:100%"/></td>
             </tr>
             <tr>
                 <td colspan="2">FECHA DE TOMA DE MUESTRAS</td>
@@ -1061,7 +1061,7 @@
 
 
             <tr>
-                <td rowspan="2" >RESPONSABLE: <q-select borderless dense :options="usuarios" v-model="uretral.responsable" style="width:100%"/></td>
+                <td rowspan="2" >RESPONSABLE: <q-select borderless dense :options="usuarios" required v-model="uretral.responsable" style="width:100%"/></td>
                 <td>
                     FECHA DE TOMA DE MUESTRAS
                     <input placeholder="00" type="date"  style="width: 100%" v-model="uretral.fechatoma">
@@ -1209,7 +1209,7 @@
             </tr>
 
             <tr>
-                <td rowspan="2" >RESPONSABLE: <q-select borderless dense :options="usuarios" v-model="vaginal.responsable" style="width:100%"/></td>
+                <td rowspan="2" >RESPONSABLE: <q-select borderless dense :options="usuarios" required v-model="vaginal.responsable" style="width:100%"/></td>
                 <td>
                     FECHA DE TOMA DE MUESTRAS
                     <input placeholder="00" type="date"  style="width: 100%" v-model="vaginal.fechatoma">
@@ -1369,7 +1369,7 @@
             </tr>
 
             <tr>
-                <td rowspan="2" >RESPONSABLE: <q-select borderless dense :options="usuarios" v-model="hece.responsable" style="width:100%"/></td>
+                <td rowspan="2" >RESPONSABLE: <q-select borderless dense :options="usuarios" required v-model="hece.responsable" style="width:100%"/></td>
                 <td>
                     FECHA DE TOMA DE MUESTRAS
                     <input placeholder="00" type="date"  style="width: 100%" v-model="hece.fechatoma">
@@ -1522,7 +1522,7 @@
             </tr>
 
             <tr>
-                <td rowspan="3" >RESPONSABLE: <q-select borderless dense :options="usuarios" v-model="simple.responsable" style="width:100%"/> </td>
+                <td rowspan="3" >RESPONSABLE: <q-select borderless dense :options="usuarios" required v-model="simple.responsable" style="width:100%"/> </td>
                 <td>
                     FECHA DE TOMA DE MUESTRAS
                     <input placeholder="00" type="date"  style="width: 100%" v-model="simple.fechatoma">
@@ -1645,7 +1645,7 @@
             </tr>
 
             <tr >
-                <td colspan="2" >RESPONSABLE: <q-select borderless dense :options="usuarios" v-model="seriado.responsable" style="width:100%"/></td>
+                <td colspan="2" >RESPONSABLE: <q-select borderless dense :options="usuarios" required v-model="seriado.responsable" style="width:100%"/></td>
                 <td>
                     FECHA DE ENTREGA RESULTADOS
                     <input type="date"  style="width: 100%">
@@ -1789,7 +1789,7 @@
             </tr>
 
             <tr >
-                <td colspan="2" rowspan="2" >RESPONSABLE: <q-select borderless dense :options="usuarios" v-model="serologia.responsable" style="width:100%"/></td>
+                <td colspan="2" rowspan="2" >RESPONSABLE: <q-select borderless dense :options="usuarios" required v-model="serologia.responsable" style="width:100%"/></td>
                 <td colspan="2">
                     FECHA DE TOMA DE MUESTRAS
                     <input placeholder="00" type="date"  style="width: 100%" v-model="serologia.fechatoma">
@@ -1953,7 +1953,7 @@
             </tr>
 
             <tr >
-                <td colspan="2" rowspan="3" >RESPONSABLE: <q-select borderless dense :options="usuarios" v-model="labserologia.responsable" style="width:100%"/> </td>
+                <td colspan="2" rowspan="3" >RESPONSABLE: <q-select borderless dense :options="usuarios" required v-model="labserologia.responsable" style="width:100%"/> </td>
                 <td colspan="2">
                     FECHA DE TOMA DE MUESTRAS
                     <input placeholder="00" type="date"  style="width: 100%" v-model="labserologia.fechatoma">
@@ -2080,7 +2080,7 @@
             </tr>
 
             <tr >
-                <td colspan="2" rowspan="3" >RESPONSABLE: <q-select borderless dense :options="usuarios" v-model="reserologia.responsable" style="width:100%"/></td>
+                <td colspan="2" rowspan="3" >RESPONSABLE: <q-select borderless dense :options="usuarios" required v-model="reserologia.responsable" style="width:100%"/></td>
                 <td colspan="2">
                     FECHA DE TOMA DE MUESTRAS
                     <input placeholder="00" type="date"  style="width: 100%" v-model="reserologia.fechatoma">
@@ -2244,7 +2244,7 @@
             </tr>
 
             <tr >
-                <td colspan="2" rowspan="3" >RESPONSABLE: <q-select borderless dense :options="usuarios" v-model="ensayo.responsable" style="width:100%"/></td>
+                <td colspan="2" rowspan="3" >RESPONSABLE: <q-select borderless dense :options="usuarios" required v-model="ensayo.responsable" style="width:100%"/></td>
                 <td colspan="3">
                     FECHA DE TOMA DE MUESTRAS
                     <input placeholder="00" type="date"  style="width: 100%" v-model="ensayo.fechatoma">
@@ -2446,9 +2446,25 @@ export default {
             res.data.forEach(e => {
                 this.doctors.push({label:e.nombre+' '+e.paterno+' '+e.materno,value:e.id})
              });
-         this.requerido=this.doctors[0];
+                this.requerido=this.doctors[0];
+                this.doctini();
           })
     },
+    doctini(){
+        this.hemograma.responsable=this.doctors[0];
+        this.orina.responsable=this.doctors[0];
+        this.sanguinia.responsable=this.doctors[0];
+        this.uretral.responsable=this.doctors[0];
+        this.vaginal.responsable=this.doctors[0];
+        this.hece.responsable=this.doctors[0];
+        this.simple.responsable=this.doctors[0];
+        this.seriado.responsable=this.doctors[0];
+        this.serologia.responsable=this.doctors[0];
+        this.labserologia.responsable=this.doctors[0];
+        this.reserologia.responsable=this.doctors[0];
+        this.ensayo.responsable=this.doctors[0];
+    },
+
     listado(){
           this.$axios.get(process.env.API+'/paciente').then(res=>{
        console.log(res.data)
@@ -2507,6 +2523,7 @@ export default {
              color:'green'
             })
             this.hemograma={fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')};
+                this.doctini();
 
         })
     },
@@ -2519,7 +2536,8 @@ export default {
               icon: 'done',
              color:'green'
             })
-            this.sanguinia={};
+            this.sanguinia={fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')};
+                this.doctini();
         })
     },
       onOrina(){
@@ -2531,6 +2549,7 @@ export default {
           icon: 'beaker'
         })
         this.orina={fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')};
+                this.doctini();
         })
     },
           onUretral(){
@@ -2543,6 +2562,7 @@ export default {
              color:'green'
             })
             this.uretral={fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')};
+                this.doctini();
         })
     },
     onVaginal(){
@@ -2555,6 +2575,7 @@ export default {
              color:'green'
             })
             this.vaginal={fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')};
+                this.doctini();
         })
     },
     onHece(){
@@ -2567,6 +2588,7 @@ export default {
              color:'green'
             })
             this.hece={fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')};
+                this.doctini();
         })
     },
     onSimple(){
@@ -2579,6 +2601,8 @@ export default {
              color:'green'
             })
             this.simple={fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')};
+                this.doctini();
+
         })
     },
         onSeriado(){
@@ -2591,6 +2615,8 @@ export default {
              color:'green'
             })
             this.seriado={fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')};
+                this.doctini();
+
         })
     },
     onSerologia(){
@@ -2603,6 +2629,8 @@ export default {
              color:'green'
             })
             this.serologia={fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')};
+                this.doctini();
+
         })
     },
     onLabserologia(){
@@ -2615,6 +2643,8 @@ export default {
              color:'green'
             })
             this.labserologia={fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')};
+                this.doctini();
+
         })
     },
         onReserologia(){
@@ -2627,6 +2657,8 @@ export default {
              color:'green'
             })
             this.reserologia={fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')};
+                this.doctini();
+
         })
     },
             onEnsayo(){
@@ -2639,6 +2671,8 @@ export default {
              color:'green'
             })
             this.ensayo={fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'hh:m')};
+                this.doctini();
+
         })
     },
     labRow(props){
