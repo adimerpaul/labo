@@ -225,7 +225,7 @@ class OrinaController extends Controller
             <td style="text-align:center; '.$cd21.'">'.$row->d21.'</td>
             <td style="color:blue; text-align:center; ">Hasta 5/c</td>
             <td style="color:blue; text-align:left; ">Eritrocitario</td>
-            <tdstyle="text-align:center; ">'.$row->d22.'</td>
+            <td style="text-align:center; ">'.$row->d22.'</td>
             <td style="color:blue; text-align:center; ">Negativo</td>
         </tr>
         <tr>
@@ -307,6 +307,7 @@ class OrinaController extends Controller
         </tr>
         </table>
         ';
+        //return $cadena;
         $pdf = App::make('dompdf.wrapper');
         //        $customPaper = array(0,0,360,360);
                 $pdf->setPaper('letter','landscape');

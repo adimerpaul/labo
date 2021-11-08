@@ -127,7 +127,9 @@ class SanguiniaController extends Controller
   border-collapse: collapse;
 }
 table{
-margin-left:10px;}
+    margin-left:10px;
+    margin-rigth:5px;
+}
 *{
 margin: 0px;
 padding: 0px;
@@ -137,7 +139,7 @@ font-size: 12px;
 </style>
         <table style="width: 100%;color: black;padding-top:5px;padding-left: 10px;padding-right: 15px">
         <tr >
-            <td rowspan="5" ><img src="./img/natividad.jpeg" style="height: 1.6cm;"></td>
+            <td rowspan="5" ><img src="./img/natividad.jpeg" style="height: 1.8cm;"></td>
             <td style="text-align:center;color:darkblue; ">SERVICIO DE LABORATORIO </td>
         </tr>
 

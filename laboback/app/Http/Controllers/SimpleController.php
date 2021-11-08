@@ -114,56 +114,56 @@ font-size: 12px;
         </table>
         <table class="tablex" style="padding-left:10px;padding-right:15px;width: 100%;">
             <tr >
-                <td class="tdx" colspan="2" style="text-align: center ;color: darkblue;font-weight: bold">COPRAPARASITOLOGICO SIMPLE</td>
+                <td class="tdx" colspan="3" style="text-align: center ;color: darkblue;font-weight: bold">COPRAPARASITOLOGICO SIMPLE</td>
             </tr>
             <tr>
-                <td class="tdx" style="color:blue" >ASPECTO DE LA MUESTRA</td>
+                <td class="tdx" style="color:blue;" colspan="2">ASPECTO DE LA MUESTRA</td>
                 <td class="tdx" style="text-align:center">'.$row->d1.'</td>
             </tr>
             <tr>
-                <td class="tdx" style="color:blue" >COLOR</td>
+                <td class="tdx" style="color:blue" colspan="2">COLOR</td>
                 <td class="tdx" style="text-align:center">'.$row->d2.'</td>
             </tr>
             <tr>
-                <td class="tdx" style="color:blue" >CELULAS EPITELIALES</td>
+                <td class="tdx" style="color:blue" colspan="2">CELULAS EPITELIALES</td>
                 <td class="tdx" style="text-align:center">'.$row->d3.'</td>
             </tr>
             <tr>
-                <td class="tdx" style="color:blue" >LEUCOCITOS</td>
+                <td class="tdx" style="color:blue" colspan="2">LEUCOCITOS</td>
                 <td class="tdx" style="text-align:center">'.$row->d4.'</td>
             </tr>
             <tr>
-                <td class="tdx" style="color:blue" >HEMATIES</td>
+                <td class="tdx" style="color:blue" colspan="2">HEMATIES</td>
                 <td class="tdx" style="text-align:center">'.$row->d5.'</td>
             </tr>
             <tr>
-                <td class="tdx" style="color:blue" >GRASAS</td>
+                <td class="tdx" style="color:blue" colspan="2">GRASAS</td>
                 <td class="tdx" style="text-align:center">'.$row->d6.'</td>
             </tr>
             <tr>
-                <td class="tdx" style="color:blue" >LEVADURAS</td>
+                <td class="tdx" style="color:blue" colspan="2">LEVADURAS</td>
                 <td class="tdx" style="text-align:center">'.$row->d7.'</td>
             </tr>
             <tr>
-                <td class="tdx" style="color:blue" >ESPORAS MICOTICAS</td>
+                <td class="tdx" style="color:blue" colspan="2">ESPORAS MICOTICAS</td>
                 <td class="tdx" style="text-align:center">'.$row->d8.'</td>
             </tr>
             <tr>
-                <td class="tdx" style="color:blue" >ALMIDON</td>
+                <td class="tdx" style="color:blue" colspan="2">ALMIDON</td>
                 <td class="tdx" style="text-align:center">'.$row->d9.'</td>
             </tr>
             <tr>
-                <td class="tdx" style="color:blue" >PARASITOS</td>
+                <td class="tdx" style="color:blue" colspan="2">PARASITOS</td>
                 <td class="tdx" style="text-align:center">'.$row->d10.'</td>
             </tr>
             <tr>
-                <td class="tdx" style="color:blue" >PIOCITOS</td>
+                <td class="tdx" style="color:blue" colspan="2">PIOCITOS</td>
                 <td class="tdx" style="text-align:center">'.$row->d11.'</td>
             </tr>
 
             <tr>
-                <td class="tdx" rowspan="2" style="color:blue" >MOCO FECAL:
-                <span style="color:black;text-align:center">'.$row->d12.'</span>               </td>
+                <td class="tdx" rowspan="2" style="color:blue;width:20%" >MOCO FECAL:</td>
+                <td class="tdx" rowspan="2"  style="width:20%"><span style="color:black;text-align:center;">'.$row->d12.'</span>               </td>
                 <td class="tdx"> Polimorfonucleares: <span style="color:black">'.$row->d13.'</span></td>
 
             </tr>
@@ -172,29 +172,29 @@ font-size: 12px;
 
             </tr>
             <tr>
-                <td class="tdx" style="color:red" >OBSERVACIONES</td>
+                <td class="tdx" style="color:red" colspan="2">OBSERVACIONES</td>
                 <td class="tdx" style="text-align:center">'.$row->d15.'</td>
             </tr>
 
-            <tr colspan="2">
-                <td class="tdx" colspan="2" style="text-align:center;color: darkblue;font-weight: bold">OTROS</td>
+            <tr colspan="3">
+                <td class="tdx" colspan="3" style="text-align:center;color: darkblue;font-weight: bold">OTROS</td>
             </tr>
             <tr>
-                <td class="tdx" style="color:blue" >SANGRE OCULTA EN HECES</td>
+                <td class="tdx" style="color:blue" colspan="2">SANGRE OCULTA EN HECES</td>
                 <td class="tdx" style="text-align:center">'.$row->d16.'</td>
             </tr>
             <tr>
-                <td class="tdx" style="color:blue" >TEST DE BENEDICT</td>
+                <td class="tdx" style="color:blue" colspan="2">TEST DE BENEDICT</td>
                 <td class="tdx" style="text-align:center">'.$row->d17.'</td>
             </tr>
 
             <tr>
-                <td class="tdx" style="color:blue" >OBSERVACIONES</td>
+                <td class="tdx" style="color:blue" colspan="2">OBSERVACIONES</td>
                 <td class="tdx"style="text-align:center" >'.$row->d18.'</td>
             </tr>
 
             <tr>
-                <td class="tdx" rowspan="3" style=";color: darkblue;font-weight: bold" >RESPONSABLE: '.$row->responsable.'</td>
+                <td class="tdx" rowspan="3" colspan="2" style=";color: darkblue;font-weight: bold" >RESPONSABLE: '.$row->responsable.'</td>
 
                 <td class="tdx" style=";color: blue;font-weight: bold">
                     FECHA DE TOMA DE MUESTRAS :<span style="color:black"> '.$row->fechatoma.'</span>
@@ -210,7 +210,7 @@ font-size: 12px;
             </tr>
             <tr>
 
-            <td class="tdx" style=";color: blue;font-weight: bold">
+            <td class="tdx" style="color: blue;font-weight: bold">
                 FECHA DE ENTREGA DE MUESTRAS : <span style="color:black">'.date('Y-m-d').'</span>   
 
             </td>

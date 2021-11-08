@@ -119,95 +119,95 @@ font-size: 12px;
     </table>
     <table class="tablex" border="1" style="width: 100%;color: black;padding-left: 10px;padding-right: 15px">
         <tr >
-            <td class="tdx" colspan="2" style="text-align: center;font:bold;color:darkblue ">EXAMEN EN FRESCO</td>
+            <td class="tdx" colspan="3" style="text-align: center;font:bold;color:darkblue ">EXAMEN EN FRESCO</td>
         </tr>
         <tr>
-            <td class="tdx" style="color:red">ASPECTO DE LA MUESTRA</td>
-            <td class="tdx" >'.$row->d1.'</td>
+            <td class="tdx" style="color:red" colspan="2">ASPECTO DE LA MUESTRA</td>
+            <td class="tdx" style="text-align:center">'.$row->d1.'</td>
         </tr>
         <tr>
-            <td class="tdx" style="color:red">COLOR</td>
-            <td class="tdx" >'.$row->d2.'</td>
+            <td class="tdx" style="color:red"  colspan="2">COLOR</td>
+            <td class="tdx" style="text-align:center">'.$row->d2.'</td>
         </tr>
         <tr>
-            <td class="tdx" style="color:red">CELULAS EPITELIALES</td>
-            <td class="tdx" >'.$row->d3.'</td>
+            <td class="tdx" style="color:red"  colspan="2">CELULAS EPITELIALES</td>
+            <td class="tdx" style="text-align:center">'.$row->d3.'</td>
         </tr>
         <tr>
-            <td class="tdx" style="color:red">LEUCOCITOS</td>
-            <td class="tdx" >'.$row->d4.'</td>
+            <td class="tdx" style="color:red"  colspan="2">LEUCOCITOS</td>
+            <td class="tdx" style="text-align:center">'.$row->d4.'</td>
         </tr>
         <tr>
-            <td class="tdx" style="color:red">HEMATIES</td>
-            <td class="tdx" >'.$row->d5.'</td>
+            <td class="tdx" style="color:red"  colspan="2">HEMATIES</td>
+            <td class="tdx" style="text-align:center">'.$row->d5.'</td>
         </tr>
         <tr>
-            <td class="tdx" style="color:red">ALMIDON</td>
-            <td class="tdx" >'.$row->d6.'</td>
+            <td class="tdx" style="color:red"  colspan="2">ALMIDON</td>
+            <td class="tdx" style="text-align:center">'.$row->d6.'</td>
         </tr>
         <tr>
-            <td class="tdx" style="color:red">LEVADURAS</td>
-            <td class="tdx" >'.$row->d7.'</td>
+            <td class="tdx" style="color:red"  colspan="2">LEVADURAS</td>
+            <td class="tdx" style="text-align:center" >'.$row->d7.'</td>
         </tr>
         <tr>
-            <td class="tdx" style="color:red">GRASAS</td>
-            <td class="tdx" >'.$row->d8.'</td>
+            <td class="tdx" style="color:red"  colspan="2">GRASAS</td>
+            <td class="tdx" style="text-align:center">'.$row->d8.'</td>
         </tr>
         <tr>
-            <td class="tdx" style="color:red">PARASITOS</td>
-            <td class="tdx" >'.$row->d9.'</td>
+            <td class="tdx" style="color:red"  colspan="2">PARASITOS</td>
+            <td class="tdx" style="text-align:center">'.$row->d9.'</td>
         </tr>
 
         <tr>
-            <td class="tdx" rowspan="2" style="color:red">MOCO FECAL :
-            <span style="color:black">'.$row->d10.'</span>             </td>
-            <td class="tdx"> Polimorfonucleares: <span style="color:black">'.$row->d11.'</span></td>
+            <td class="tdx" rowspan="2" style="color:red:width:20%">MOCO FECAL :</td>
+            <td rowspan="2"><span style="color:black; width:20%">'.$row->d10.'</span>             </td>
+            <td class="tdx"> Polimorfonucleares: <span style="color:black; text-align:center">'.$row->d11.'</span></td>
 
         </tr>
         <tr>
-            <td class="tdx">Mononucleares: <span style="color:black">'.$row->d12.'</span></td>
+            <td class="tdx">Mononucleares: <span style="color:black;text-align:center">'.$row->d12.'</span></td>
 
         </tr>
         <tr>
-            <td class="tdx" style="color:red">OTROS</td>
-            <td class="tdx" >'.$row->d13.'</td>
+            <td class="tdx" style="color:red"  colspan="2">OTROS</td>
+            <td class="tdx" style="text-align:center">'.$row->d13.'</td>
         </tr>
 
         <tr colspan="2">
-            <td class="tdx" colspan="2"  style="text-align: center;font:bold;color:darkblue ">TINCION DE GRAM</td>
+            <td class="tdx" colspan="3"  style="text-align: center;font:bold;color:darkblue ">TINCION DE GRAM</td>
         </tr>
         <tr>
-            <td class="tdx" style="color:red">BACILOS GRAM POSITIVOS</td>
-            <td class="tdx" >'.$row->d14.'</td>
+            <td class="tdx" style="color:red"  colspan="2">BACILOS GRAM POSITIVOS</td>
+            <td class="tdx" style="text-align:center">'.$row->d14.'</td>
         </tr>
         <tr>
-            <td class="tdx" style="color:red">BACILOS GRAM NEGATIVOS</td>
+            <td class="tdx" style="color:red"  colspan="2">BACILOS GRAM NEGATIVOS</td>
             <td class="tdx" >'.$row->d15.'</td>
         </tr>
         <tr>
-            <td class="tdx" style="color:red">COCOS GRAM POSITIVOS</td>
-            <td class="tdx" >'.$row->d16.'</td>
+            <td class="tdx" style="color:red"  colspan="2">COCOS GRAM POSITIVOS</td>
+            <td class="tdx" style="text-align:center">'.$row->d16.'</td>
         </tr>
         <tr>
-            <td class="tdx" style="color:red">COCOS GRAM NEGATIVOS</td>
-            <td class="tdx" >'.$row->d17.'</td>
+            <td class="tdx" style="color:red"  colspan="2">COCOS GRAM NEGATIVOS</td>
+            <td class="tdx" style="text-align:center">'.$row->d17.'</td>
         </tr>
         <tr>
-            <td class="tdx" style="color:red">COCOBACILOS GRAM</td>
-            <td class="tdx" >'.$row->d18.'</td>
+            <td class="tdx" style="color:red"  colspan="2">COCOBACILOS GRAM</td>
+            <td class="tdx" style="text-align:center" >'.$row->d18.'</td>
         </tr>
         <tr>
-            <td class="tdx" style="color:red">ESPORAS MICOTICAS</td>
-            <td class="tdx" >'.$row->d19.'</td>
-        </tr>
-
-        <tr>
-            <td class="tdx" style="color:red">OTROS</td>
-            <td class="tdx" >'.$row->d20.'</td>
+            <td class="tdx" style="color:red"  colspan="2">ESPORAS MICOTICAS</td>
+            <td class="tdx" style="text-align:center">'.$row->d19.'</td>
         </tr>
 
         <tr>
-            <td class="tdx" rowspan="2" style="color:darkblue">RESPONSABLE: '.$row->responsable.'</td>
+            <td class="tdx" style="color:red" colspan="2">OTROS</td>
+            <td class="tdx" style="text-align:center">'.$row->d20.'</td>
+        </tr>
+
+        <tr>
+            <td class="tdx" rowspan="2"  colspan="2" style="color:darkblue">RESPONSABLE: '.$row->responsable.'</td>
 
             <td class="tdx" style="color:darkblue">
                 FECHA DE TOMA DE MUESTRAS: '.$row->fechatoma.'
