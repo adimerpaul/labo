@@ -153,11 +153,11 @@ class UserController extends Controller
         $user->delete();
     }
     public function mispagos(Request $request){
-        return Pago::whereDate('fechapago',$request->fecha)
-            ->where('user_id',$request->user()->id)
-            ->with('responsable')
-            ->with('user')
-            ->where('estado','PAGADO')
-            ->get();
+    //    return Pago::whereDate('fechapago',$request->fecha)
+   //         ->where('user_id',$request->user()->id)
+     //       ->with('responsable')
+       //     ->with('user')
+         //   ->where('estado','PAGADO')
+           // ->get();
     }
 }

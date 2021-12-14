@@ -487,16 +487,7 @@ export default {
     },
     onMod() {
       this.$q.loading.show();
-      this.$axios.put(process.env.API + "/user/" + this.dato2.id, {
-        name:this.dato2.name,
-        // password:this.dato2.password,
-        // name:this.dato2.name,
-        email:this.dato2.email,
-        carnet:this.dato2.carnet,
-        celular:this.dato2.celular,
-        fechalimite:this.dato2.fechalimite,
-        // codigo:this.dato2.codigo,
-      }).then((res) => {
+      this.$axios.put(process.env.API + "/user/" + this.dato2.id, this.dato2).then((res) => {
         this.$q.notify({
           color: "green-4",
           textColor: "white",
