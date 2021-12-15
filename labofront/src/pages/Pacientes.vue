@@ -2515,7 +2515,7 @@ export default {
     },
     onHemograma(){
         this.$axios.post(process.env.API+'/hemograma',{paciente:this.dato2,doctor:this.requerido.value,hemograma:this.hemograma}).then(res=>{
-          console.log(res.data)
+          // console.log(res.data)
          this.dialog_lab=false;
            this.$q.notify({
               message: 'Registro Realizado',
