@@ -45,8 +45,8 @@ class HemogramaController extends Controller
 //        $datos->user_id=Auth::user()->id;
 ////        array_push($datos,array('user_id'=>1));
 //        return $request->requerido;
-        //return $request;
-        $dato=Hemograma::create($request->hemograma + ['user_id' => Auth::user()->id,'paciente_id'=>$request->paciente['id'],'doctor_id'=>$request->doctor]);
+        return $request;
+//        $dato=Hemograma::create($request->hemograma + ['user_id' => Auth::user()->id,'paciente_id'=>$request->paciente['id'],'doctor_id'=>$request->doctor]);
 //        $pdf = App::make('dompdf.wrapper');
 //        $pdf->loadHTML($this->generar($dato->id));
 //        return $pdf->download('Hemograma.pdf');
