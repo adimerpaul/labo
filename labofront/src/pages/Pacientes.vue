@@ -2376,6 +2376,7 @@ export default {
              res.data.forEach(element => {
                  this.usuarios.push(element.name);
              });
+          //console.log(this.usuarios)
           })
 
       },
@@ -2451,18 +2452,18 @@ export default {
           })
     },
     doctini(){
-        this.hemograma.responsable=this.doctors[0];
-        this.orina.responsable=this.doctors[0];
-        this.sanguinia.responsable=this.doctors[0];
-        this.uretral.responsable=this.doctors[0];
-        this.vaginal.responsable=this.doctors[0];
-        this.hece.responsable=this.doctors[0];
-        this.simple.responsable=this.doctors[0];
-        this.seriado.responsable=this.doctors[0];
-        this.serologia.responsable=this.doctors[0];
-        this.labserologia.responsable=this.doctors[0];
-        this.reserologia.responsable=this.doctors[0];
-        this.ensayo.responsable=this.doctors[0];
+        this.hemograma.responsable=this.usuarios[0];
+        this.orina.responsable=this.usuarios[0];
+        this.sanguinia.responsable=this.usuarios[0];
+        this.uretral.responsable=this.usuarios[0];
+        this.vaginal.responsable=this.usuarios[0];
+        this.hece.responsable=this.usuarios[0];
+        this.simple.responsable=this.usuarios[0];
+        this.seriado.responsable=this.usuarios[0];
+        this.serologia.responsable=this.usuarios[0];
+        this.labserologia.responsable=this.usuarios[0];
+        this.reserologia.responsable=this.usuarios[0];
+        this.ensayo.responsable=this.usuarios[0];
     },
 
     listado(){
@@ -2514,6 +2515,7 @@ export default {
       })
     },
     onHemograma(){
+      console.log(this.hemograma)
         this.$axios.post(process.env.API+'/hemograma',{paciente:this.dato2,doctor:this.requerido.value,hemograma:this.hemograma}).then(res=>{
           // console.log(res.data)
          this.dialog_lab=false;

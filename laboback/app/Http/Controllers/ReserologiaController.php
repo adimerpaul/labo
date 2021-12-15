@@ -83,14 +83,14 @@ table{
                 <td style="color: darkblue; text-align:center; border:0;">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
-                <td style="color: darkblue; text-align:center;border:0; ">Telf: 5254721 Fax: 52-83667 </td>                
+                <td style="color: darkblue; text-align:center;border:0; ">Telf: 5254721 Fax: 52-83667 </td>
             </tr>
             <tr>
-                <td style="color: darkblue; text-align:center; border:0;">Emergencia las 24 horas del dia. </td>                
+                <td style="color: darkblue; text-align:center; border:0;">Emergencia las 24 horas del dia. </td>
             </tr>
             <tr>
-                <td style="color: red; text-align:center; border:0;">Nº Registro CODELAB 000045 </td>                
-                <td style="color: darkblue; text-align:center; border:0;">Bolivar Nº 753 entre Arica e Iquique </td>                
+                <td style="color: red; text-align:center; border:0;">Nº Registro CODELAB 000045 </td>
+                <td style="color: darkblue; text-align:center; border:0;">Bolivar Nº 753 entre Arica e Iquique </td>
             </tr>
         </table>
         <table border="1" style="color: black">
@@ -142,13 +142,13 @@ table{
                 El test proporciona un resultado de "<span style="color:red">POSITIVO</span>" o "<span style="color:red">NEGATIVO</span>"<br>
                 Los antigenos son parte de la estructura del virus, como las proteinas de espiga.<br><br>
                 La muestra de Hisopado nasofaringeo pasa por una linea que detecta antigenos y cambia de color, durante la prueba el anticuerpo monocianal de raton anti-SARS-CoV-2 en la muestra
-                interactua con el Anticuerpo monocianal lgG anti-COVID-19 conjugando con particulas de color que forman un complejo de particulas de antigeno-anticuerpo. Este complejo migra en la 
-                menbrana por accion capilar hasta la linea de prueba, donde aera capturado por el anticuerpo por el anticuerpo monocianal anti-SARS-CoV-2 de raton. Una linea de prueba coloreada 
+                interactua con el Anticuerpo monocianal lgG anti-COVID-19 conjugando con particulas de color que forman un complejo de particulas de antigeno-anticuerpo. Este complejo migra en la
+                menbrana por accion capilar hasta la linea de prueba, donde aera capturado por el anticuerpo por el anticuerpo monocianal anti-SARS-CoV-2 de raton. Una linea de prueba coloreada
                 seria visible en la ventana de resultados si los antigenos del SARS-CoV-2 estan presentes en la muestra. <br><br>
                 Funciona mejor en la etapa inicial con una <span style="color:red">CARGA VIRAL ALTA</span> y sintomalogia hasta los 10 dias.<br>
                 Los resultados <span style="color:red">Negativos</span> indica ausencia de Antigenos detectables de SARS-CoV-2 y cuando la carga viral o la cantidad de antigeno presente se encuentra debajo del limite de deteccion.<br><br>
                 Los resultados <span style="color:red">Psitivos</span> no diferencian entre SARS-COV y SARS-COV-2
-            
+
                 </td>
             </tr>
             <tr>
