@@ -46,7 +46,7 @@ class HemogramaController extends Controller
 ////        array_push($datos,array('user_id'=>1));
 //        return $request->requerido;
         //return $request;
-        $dato=Hemograma::create($request->hemograma+ ['user_id' => Auth::user()->id,'paciente_id'=>$request->paciente['id'],'doctor_id'=>$request->doctor]);
+        $dato=Hemograma::create($request->hemograma + ['user_id' => Auth::user()->id,'paciente_id'=>$request->paciente['id'],'doctor_id'=>$request->doctor]);
 //        $pdf = App::make('dompdf.wrapper');
 //        $pdf->loadHTML($this->generar($dato->id));
 //        return $pdf->download('Hemograma.pdf');
@@ -59,35 +59,35 @@ class HemogramaController extends Controller
         ->where('id',$id)
         ->get();
         $row=$row[0];
-        $cd1=''; 
-        $cd2=''; 
-        $cd3=''; 
-        $cd4=''; 
-        $cd5=''; 
-        $cd6=''; 
-        $cd7=''; 
-        $cd8=''; 
-        $cd9=''; 
-        $cd10=''; 
-        $cd11=''; 
-        $cd12=''; 
-        $cd13=''; 
-        $cd14=''; 
-        $cd15=''; 
-        $cd16=''; 
-        $cd17=''; 
-        $cd18=''; 
-        $cd19=''; 
-        $cd20=''; 
-        $cd21=''; 
-        $cd22=''; 
-        $cd23=''; 
-        $cd24=''; 
-        $cd25=''; 
-        $cd26=''; 
-        $cd27=''; 
-        $cd28=''; 
-        $cd29=''; 
+        $cd1='';
+        $cd2='';
+        $cd3='';
+        $cd4='';
+        $cd5='';
+        $cd6='';
+        $cd7='';
+        $cd8='';
+        $cd9='';
+        $cd10='';
+        $cd11='';
+        $cd12='';
+        $cd13='';
+        $cd14='';
+        $cd15='';
+        $cd16='';
+        $cd17='';
+        $cd18='';
+        $cd19='';
+        $cd20='';
+        $cd21='';
+        $cd22='';
+        $cd23='';
+        $cd24='';
+        $cd25='';
+        $cd26='';
+        $cd27='';
+        $cd28='';
+        $cd29='';
         //1-2
         if($row->paciente->sexo=='Masculino' && $row->d1!='' && ($row->d1<5.1 || $row->d1>5.7))$cd1='background-color:#ff726f;';
         if($row->paciente->sexo=='Femenino' && $row->d1!='' && ($row->d1<4.8 || $row->d1>5.4))$cd1='background-color:#ff726f;';
@@ -180,7 +180,7 @@ font-size: 13px;
             <tr>
             <td style="text-align:left; color:red;">N Regsitro CODEDLAB 000045 </td>
             <td style="text-align:center; color:darkblue;">Emergencia las 24 horas del dia. </td>
-                
+
             </tr>
         </table>
         <table style="padding-right:10px;padding-left:0px;width: 100%;" class="tablex">
