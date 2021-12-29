@@ -18,8 +18,6 @@
               v-model="dato.ci"
               label="Cedula Identidad"
               hint="Numero de carnet"
-              lazy-rules
-              :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']"
             />
             <q-input
               filled
@@ -58,16 +56,14 @@
               v-model="dato.matricula"
               label="Matricula "
               hint="Ingresar Matricula "
-              lazy-rules
-              :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']"
-            />            
+
+            />
             <q-input
               filled
               v-model="dato.celular"
               label="Celular (Whatsapp)"
               hint="Numero de celular"
-              lazy-rules
-              :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']"
+
             />
             <div>
               <q-btn label="Crear" type="submit" color="positive" icon="add_circle"/>
@@ -110,7 +106,7 @@
               <q-btn  dense round flat color="red" @click="deleteRow(props)" icon="delete"></q-btn>
           </q-td>
       </template>
-            
+
 
       </q-table>
             <q-dialog v-model="dialog_mod">
@@ -128,8 +124,7 @@
               v-model="dato2.ci"
               label="Cedula Identidad"
               hint="Numero de carnet"
-              lazy-rules
-              :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']"
+
             />
             <q-input
               filled
@@ -164,16 +159,14 @@
               v-model="dato2.matricula"
               label="Matricula "
               hint="Ingresar Matricula"
-              lazy-rules
-              :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']"
+
             />
             <q-input
               filled
               v-model="dato2.celular"
               label="Celular (Whatsapp)"
               hint="Numero de celular"
-              lazy-rules
-              :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']"
+
             />
             <div>
               <q-btn label="Modificar" type="submit" color="positive" icon="add_circle"/>

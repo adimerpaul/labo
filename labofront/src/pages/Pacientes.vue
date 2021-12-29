@@ -17,8 +17,7 @@
               v-model="dato.ci"
               label="Cedula Identidad"
               hint="Numero de carnet"
-              lazy-rules
-              :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']"
+
             />
             <q-input
               filled
@@ -58,8 +57,7 @@
               v-model="dato.celular"
               label="Celular (Whatsapp)"
               hint="Numero de celular"
-              lazy-rules
-              :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']"
+
             />
             <div>
               <q-btn label="Crear" type="submit" color="positive" icon="add_circle"/>
@@ -110,8 +108,7 @@
               v-model="dato2.ci"
               label="Cedula Identidad"
               hint="Numero de carnet"
-              lazy-rules
-              :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']"
+
             />
             <q-input
               filled
@@ -148,8 +145,7 @@
               v-model="dato2.celular"
               label="Celular (Whatsapp)"
               hint="Numero de celular"
-              lazy-rules
-              :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']"
+
             />
             <div>
               <q-btn label="Modificar" type="submit" color="positive" icon="add_circle"/>
@@ -177,8 +173,8 @@
           <q-td key="opcion" :props="props">
               <q-btn  dense round flat color="teal" @click="impRow(props)" icon="print"></q-btn>
               <q-btn  dense round flat color="red" @click="eliminar(props)" icon="delete"></q-btn>
-              <q-btn  dense round flat color="green" @click="whppRow(props)" icon="whatsapp"></q-btn>
-              <q-btn  dense round flat color="blue" @click="whpdRow(props)" icon="whatsapp"></q-btn>
+              <q-btn  dense round flat color="green" @click="whppRow(props)" icon="whatsapp" v-if="dato2.celular"></q-btn>
+              <q-btn  dense round flat color="blue" @click="whpdRow(props)" icon="whatsapp" v-if="props.row.dcelular"></q-btn>
           </q-td>
         </q-tr>
       </template>
@@ -196,21 +192,7 @@
               <q-tab-panels v-model="tab.value" animated class="shadow-2 rounded-borders">
         <q-tab-panel name="hemograma">
             <q-form @submit.prevent="onHemograma" >
-        <table style="width: 100%;color: black">
-            <tr >
-                <td rowspan="4" ><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 3cm; width:8cm;"></td>
-                <td style="color: blue; text-align:center; ">SERVICIO DE LABORATORIO </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Telf: 5254721 Fax: 52-83667 </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Emergencia las 24 horas del dia. </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Bolivar Nº 753 entre Arica e Iquique </td>
-            </tr>
-        </table>
+
         <table border="1" style="width: 100%;color: black">
             <tr>
                 <td colspan="3" style="text-align: center">HEMOGRAMA COMPLETO</td>
@@ -225,7 +207,7 @@
             <tr>
                 <td style="color: darkblue">REQUERIDO POR</td>
                 <td>
-                    <q-select borderless  :options="doctors" v-model="requerido" style="width:100%"/>
+                    <q-select  borderless  dense :options="doctors" v-model="requerido" style="width:100%;"/>
                 </td>
 
                 <td style="color: darkblue">SEXO </td>
@@ -234,7 +216,7 @@
             <tr>
                 <td style="color: darkblue">TIPO MUESTRA</td>
                 <td>
-                <q-input borderless type="text" style="width: 100%" placeholder="Tipo muestra" v-model="hemograma.tipomuestra" required list="ophemograma"/>
+                <q-input dense borderless type="text" style="width: 100%" placeholder="Tipo muestra" v-model="hemograma.tipomuestra" required list="ophemograma"/>
                 <datalist id="ophemograma">
                     <option v-for="(film,index) in ophemograma" :key="index">{{film}}</option>
                 </datalist>
@@ -261,7 +243,7 @@
                 <td class="bg-negative text-white">Globulos Rojos</td>
                 <td><input borderless type="text" placeholder="00" v-model="hemograma.d1"   style="width: 100%"/></td>
                 <td>x10 <sup>12 </sup>/L</td>
-                <td>Varon 5.1-5.7x10 <sup>12</sup>/L <br> Mujer 4.8-5.4x10 <sup>12</sup>/L</td>
+                <td><small>Varon 5.1-5.7x10 <sup>12</sup>/L <br> Mujer 4.8-5.4x10 <sup>12</sup>/L</small></td>
                 <td class="bg-negative text-white">Tiempo de cuagulacion</td>
                 <td><input borderless type="text" placeholder="00"  style="width: 100%" v-model="hemograma.d2"/></td>
                 <td>5-10 min</td>
@@ -435,7 +417,7 @@
             </tr>
             <tr>
                 <td class="bg-negative text-white">Responsable:</td>
-                <td><q-select borderless dense :options="usuarios" required v-model="hemograma.responsable" style="width:100%"/></td>
+                <td><q-select dense borderless  :options="usuarios" required v-model="hemograma.responsable" style="width:100%"/></td>
             </tr>
             <tr>
                 <td class="bg-negative text-white">HORA DE TOMA DE MUESTRA:</td>
@@ -454,21 +436,6 @@
         <q-tab-panel name="sanguinia">
             <q-form @submit.prevent="onSanguinia" >
 
-        <table style="width: 100%;color: black">
-            <tr >
-                <td rowspan="4" ><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 1.5cm; "></td>
-                <td style="color: blue; text-align:center; ">SERVICIO DE LABORATORIO </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Telf: 5254721 Fax: 52-83667 </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Emergencia las 24 horas del dia. </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Bolivar Nº 753 entre Arica e Iquique </td>
-            </tr>
-        </table>
         <table border="1" style="width: 100%;color: black">
             <tr>
                 <td colspan="3" style="text-align: center">QUIMICA sanguinia</td>
@@ -482,7 +449,7 @@
             </tr>
             <tr>
                 <td style="color: darkblue">REQUERIDO POR</td>
-                <td> <q-select borderless  :options="doctors" v-model="requerido" style="width:100%"/></td>
+                <td> <q-select dense borderless  :options="doctors" v-model="requerido" style="width:100%"/></td>
                 <td style="color: darkblue">SEXO</td>
                 <td>{{dato2.sexo}}</td>
             </tr>
@@ -670,7 +637,7 @@
             </tr>
             <tr>
                 <td colspan="2" rowspan="3" class="bg-blue text-center text-white">RESPONSABLE</td>
-                <td colspan="2" rowspan="3"><q-select borderless dense :options="usuarios" required v-model="sanguinia.responsable" style="width:100%"/></td>
+                <td colspan="2" rowspan="3"><q-select  borderless dense :options="usuarios" required v-model="sanguinia.responsable" style="width:100%"/></td>
                 <td colspan="3" class="bg-blue text-center text-white">FECHA TOMA DE MUESTRA</td>
                 <td><input placeholder="00" type="date" v-model="sanguinia.fechatoma"   style="width: 100%" ></td>
             </tr>
@@ -694,21 +661,7 @@
 
         <q-tab-panel name="orina">
             <q-form @submit.prevent="onOrina" >
-        <table style="width: 100%;color: black">
-            <tr >
-                <td rowspan="4" ><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 1.5cm; "></td>
-                <td style="color: blue; text-align:center; ">SERVICIO DE LABORATORIO </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Telf: 5254721 Fax: 52-83667 </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Emergencia las 24 horas del dia. </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Bolivar Nº 753 entre Arica e Iquique </td>
-            </tr>
-        </table>
+
         <table border="1" style="width: 100%;color: black">
             <tr>
                 <td colspan="3" style="text-align: center">EXAMEN GENERAL DE ORINA</td>
@@ -722,7 +675,7 @@
             </tr>
             <tr>
                 <td style="color: darkblue">REQUERIDO POR</td>
-                <td> <q-select borderless  :options="doctors" v-model="requerido" style="width:100%"/></td>
+                <td> <q-select dense borderless  :options="doctors" v-model="requerido" style="width:100%"/></td>
                 <td style="color: darkblue">SEXO</td>
                 <td>{{dato2.sexo}}</td>
             </tr>
@@ -937,21 +890,7 @@
 
                 <q-tab-panel name="uretral">
             <q-form @submit.prevent="onUretral">
-            <table style="width: 100%;color: black">
-            <tr >
-                <td rowspan="4" ><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 1.5cm; "></td>
-                <td style="color: blue; text-align:center; ">SERVICIO DE LABORATORIO </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Telf: 5254721 Fax: 52-83667 </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Emergencia las 24 horas del dia. </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Bolivar Nº 753 entre Arica e Iquique </td>
-            </tr>
-        </table>
+
         <table border="1" style="width: 100%;color: black">
             <tr>
                 <td colspan="3" style="text-align: center">ANALISIS DE SECRECION URETRAL</td>
@@ -965,7 +904,7 @@
             </tr>
             <tr>
                 <td style="color: darkblue">REQUERIDO POR</td>
-                <td> <q-select borderless  :options="doctors" v-model="requerido" style="width:100%"/></td>
+                <td> <q-select dense  borderless  :options="doctors" v-model="requerido" style="width:100%"/></td>
                 <td style="color: darkblue">SEXO</td>
                 <td>{{dato2.sexo}}</td>
             </tr>
@@ -1086,21 +1025,7 @@
 
                 <q-tab-panel name="vaginal">
               <q-form @submit.prevent="onVaginal">
-            <table style="width: 100%;color: black">
-            <tr >
-                <td rowspan="4" ><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 1.5cm; "></td>
-                <td style="color: blue; text-align:center; ">SERVICIO DE LABORATORIO </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Telf: 5254721 Fax: 52-83667 </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Emergencia las 24 horas del dia. </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Bolivar Nº 753 entre Arica e Iquique </td>
-            </tr>
-        </table>
+
         <table border="1" style="width: 100%;color: black">
             <tr>
                 <td colspan="3" style="text-align: center">ANALISIS DE SECRECION VAGINAL</td>
@@ -1114,7 +1039,7 @@
             </tr>
             <tr>
                 <td style="color: darkblue">REQUERIDO POR</td>
-                <td> <q-select borderless  :options="doctors" v-model="requerido" style="width:100%"/></td>
+                <td> <q-select dense borderless  :options="doctors" v-model="requerido" style="width:100%"/></td>
                 <td style="color: darkblue">SEXO</td>
                 <td>{{dato2.sexo}}</td>
             </tr>
@@ -1234,21 +1159,7 @@
 
         <q-tab-panel name="hece">
         <q-form @submit.prevent="onHece">
-        <table style="width: 100%;color: black">
-            <tr >
-                <td rowspan="4" ><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 1.5cm; "></td>
-                <td style="color: blue; text-align:center; ">SERVICIO DE LABORATORIO </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Telf: 5254721 Fax: 52-83667 </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Emergencia las 24 horas del dia. </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Bolivar Nº 753 entre Arica e Iquique </td>
-            </tr>
-        </table>
+
         <table border="1" style="width: 100%;color: black">
             <tr>
                 <td colspan="3" style="text-align: center">ANALISIS DE HECES</td>
@@ -1262,7 +1173,7 @@
             </tr>
             <tr>
                 <td style="color: darkblue">REQUERIDO POR</td>
-                <td> <q-select borderless  :options="doctors" v-model="requerido" style="width:100%"/></td>
+                <td> <q-select dense borderless  :options="doctors" v-model="requerido" style="width:100%"/></td>
                 <td style="color: darkblue">SEXO</td>
                 <td>{{dato2.sexo}}</td>
             </tr>
@@ -1394,21 +1305,7 @@
 
           <q-tab-panel name="simple">
         <q-form @submit.prevent="onSimple">
-        <table style="width: 100%;color: black">
-            <tr >
-                <td rowspan="4" ><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 1.5cm; "></td>
-                <td style="color: blue; text-align:center; ">SERVICIO DE LABORATORIO </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Telf: 5254721 Fax: 52-83667 </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Emergencia las 24 horas del dia. </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Bolivar Nº 753 entre Arica e Iquique </td>
-            </tr>
-        </table>
+
         <table border="1" style="width: 100%;color: black">
             <tr>
                 <td colspan="3" style="text-align: center">COPRAPARASITOLOGICO SIMPLE</td>
@@ -1422,7 +1319,7 @@
             </tr>
             <tr>
                 <td style="color: darkblue">REQUERIDO POR</td>
-                <td> <q-select borderless  :options="doctors" v-model="requerido" style="width:100%"/></td>
+                <td> <q-select  dense borderless  :options="doctors" v-model="requerido" style="width:100%"/></td>
                 <td style="color: darkblue">SEXO</td>
                 <td>{{dato2.sexo}}</td>
             </tr>
@@ -1553,21 +1450,7 @@
 
           <q-tab-panel name="seriado">
              <q-form @submit.prevent="onSeriado">
-        <table style="width: 100%;color: black">
-            <tr >
-                <td rowspan="4" ><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 1.5cm; "></td>
-                <td style="color: blue; text-align:center; ">SERVICIO DE LABORATORIO </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Telf: 5254721 Fax: 52-83667 </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Emergencia las 24 horas del dia. </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Bolivar Nº 753 entre Arica e Iquique </td>
-            </tr>
-        </table>
+
         <table border="1" style="width: 100%;color: black">
             <tr>
                 <td colspan="3" style="text-align: center">COPROPARASITOLOGICO SERIADO</td>
@@ -1581,7 +1464,7 @@
             </tr>
             <tr>
                 <td style="color: darkblue">REQUERIDO POR</td>
-                <td> <q-select borderless  :options="doctors" v-model="requerido" style="width:100%"/></td>
+                <td> <q-select dense borderless  :options="doctors" v-model="requerido" style="width:100%"/></td>
                 <td style="color: darkblue">SEXO</td>
                 <td>{{dato2.sexo}}</td>
             </tr>
@@ -1664,21 +1547,7 @@
 
           <q-tab-panel name="serologia">
               <q-form @submit.prevent="onSerologia">
-        <table style="width: 100%;color: black">
-            <tr >
-                <td rowspan="4" ><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 1.5cm; "></td>
-                <td style="color: blue; text-align:center; ">SERVICIO DE LABORATORIO </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Telf: 5254721 Fax: 52-83667 </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Emergencia las 24 horas del dia. </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Bolivar Nº 753 entre Arica e Iquique </td>
-            </tr>
-        </table>
+
         <table border="1" style="width: 100%;color: black">
             <tr>
                 <td colspan="3" style="text-align: center">SEROLOGIA</td>
@@ -1692,7 +1561,7 @@
             </tr>
             <tr>
                 <td style="color: darkblue">REQUERIDO POR</td>
-                <td> <q-select borderless  :options="doctors" v-model="requerido" style="width:100%"/></td>
+                <td> <q-select  dense borderless  :options="doctors" v-model="requerido" style="width:100%"/></td>
                 <td style="color: darkblue">SEXO</td>
                 <td>{{dato2.sexo}}</td>
             </tr>
@@ -1813,21 +1682,7 @@
 
           <q-tab-panel name="labserologia">
               <q-form @submit.prevent="onLabserologia">
-        <table style="width: 100%;color: black">
-            <tr >
-                <td rowspan="4" ><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 1.5cm; "></td>
-                <td style="color: blue; text-align:center; ">SERVICIO DE LABORATORIO </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Telf: 5254721 Fax: 52-83667 </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Emergencia las 24 horas del dia. </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Bolivar Nº 753 entre Arica e Iquique </td>
-            </tr>
-        </table>
+
         <table border="1" style="width: 100%;color: black">
             <tr>
                 <td colspan="3" style="text-align: center">SEROLOGIA</td>
@@ -1841,7 +1696,7 @@
             </tr>
             <tr>
                 <td style="color: darkblue">REQUERIDO POR</td>
-                <td> <q-select borderless  :options="doctors" v-model="requerido" style="width:100%"/></td>
+                <td> <q-select dense borderless  :options="doctors" v-model="requerido" style="width:100%"/></td>
                 <td style="color: darkblue">SEXO</td>
                 <td>{{dato2.sexo}}</td>
             </tr>
@@ -1985,21 +1840,7 @@
 
           <q-tab-panel name="reserologia">
               <q-form @submit.prevent="onReserologia">
-        <table style="width: 100%;color: black">
-            <tr >
-                <td rowspan="4" ><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 1.5cm; "></td>
-                <td style="color: blue; text-align:center; ">SERVICIO DE LABORATORIO </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Telf: 5254721 Fax: 52-83667 </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Emergencia las 24 horas del dia. </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Bolivar Nº 753 entre Arica e Iquique </td>
-            </tr>
-        </table>
+
         <table border="1" style="width: 100%;color: black">
             <tr>
                 <td colspan="3" style="border:0; text-align: center; color:darkblue;"><b> SEROLOGIA</b></td>
@@ -2013,7 +1854,7 @@
             </tr>
             <tr>
                 <td style="color: darkblue">REQUERIDO POR</td>
-                <td> <q-select borderless  :options="doctors" v-model="requerido" style="width:100%"/></td>
+                <td> <q-select dense  borderless  :options="doctors" v-model="requerido" style="width:100%"/></td>
                 <td style="color: darkblue">SEXO</td>
                 <td>{{dato2.sexo}}</td>
             </tr>
@@ -2111,22 +1952,6 @@
 
           <q-tab-panel name="ensayo">
              <q-form @submit.prevent="onEnsayo">
-               <table style="width: 100%;color: black">
-            <tr >
-                <td rowspan="4" ><img src="../assets/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 1.5cm; "></td>
-                <td style="color: blue; text-align:center; ">SERVICIO DE LABORATORIO </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Telf: 5254721 Fax: 52-83667 </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Emergencia las 24 horas del dia. </td>
-            </tr>
-            <tr>
-                <td style="color: blue; text-align:center; ">Bolivar Nº 753 entre Arica e Iquique </td>
-            </tr>
-        </table>
-
 
         <table border="1" style="width: 100%;color: black">
             <tr>
@@ -2141,7 +1966,7 @@
             </tr>
             <tr>
                 <td style="color: darkblue">REQUERIDO POR</td>
-                <td> <q-select borderless  :options="doctors" v-model="requerido" style="width:100%"/></td>
+                <td> <q-select dense borderless  :options="doctors" v-model="requerido" style="width:100%"/></td>
                 <td style="color: darkblue">SEXO</td>
                 <td>{{dato2.sexo}}</td>
             </tr>
@@ -2368,6 +2193,7 @@ export default {
     this.listdoctor();
     this.listusers();
     this.tab={value:"hemograma",label:"Hemograma completo" };
+    this.doctini();
   },
   methods: {
       listusers(){
@@ -2730,6 +2556,10 @@ export default {
             //oReq.send();
            //window.open(url, '_blank');
             window.open("https://api.whatsapp.com/send?phone=591"+this.dato2.celular+"&text="+url, '_blank');
+    },
+    whpdRow(props){
+        let url=(process.env.API+'/'+props.row.formulario+'/'+props.row.id);
+        window.open("https://api.whatsapp.com/send?phone=591"+props.row.dcelular+"&text="+url, '_blank');
     },
     onMod(){
       console.log(this.dato2)

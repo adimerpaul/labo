@@ -28,7 +28,7 @@ class DoctorController extends Controller
     public function listdoctor(){
         return Doctor::where('activo',1)->get();
     }
-    
+
     public function store(Request $request)
     {
         //
@@ -86,7 +86,7 @@ class DoctorController extends Controller
     public function destroy(Doctor $doctor)
     {
         //
-        $doctor=Doctor::find($request->id);
+        $doctor=Doctor::find($doctor->id);
         $doctor->delete();
 //        return redirect('doctor');
     }

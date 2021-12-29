@@ -98,18 +98,18 @@ class PacienteController extends Controller
 
     public function historialform($id){
         $r1=DB::select(
-            "SELECT id,tipomuestra,fechatoma,'hemograma' as formulario FROM hemogramas WHERE paciente_id='$id' union
-            SELECT id,tipomuestra,fechatoma,'orina' as formulario FROM orinas WHERE paciente_id='$id' union
-            SELECT id,tipomuestra,fechatoma,'sanguinia' as formulario FROM sanguinias WHERE paciente_id='$id' union
-            SELECT id,tipomuestra,fechatoma,'uretral' as formulario FROM uretrals WHERE paciente_id='$id' union
-            SELECT id,tipomuestra,fechatoma,'vaginal' as formulario FROM vaginals WHERE paciente_id='$id' union
-            SELECT id,tipomuestra,fechatoma,'hece' as formulario FROM heces WHERE paciente_id='$id' union
-            SELECT id,tipomuestra,fechatoma,'simple' as formulario FROM simples WHERE paciente_id='$id' union
-            SELECT id,tipomuestra,fechatoma,'seriado' as formulario FROM seriados WHERE paciente_id='$id' union
-            SELECT id,tipomuestra,fechatoma,'serologia' as formulario FROM serologias WHERE paciente_id='$id' union
-            SELECT id,tipomuestra,fechatoma,'labserologia' as formulario FROM labserologias WHERE paciente_id='$id' union
-            SELECT id,tipomuestra,fechatoma,'reserologia' as formulario FROM reserologias WHERE paciente_id='$id' union
-            SELECT id,tipomuestra,fechatoma,'ensayo' as formulario FROM ensayos WHERE paciente_id='$id' "
+            "SELECT f.id,tipomuestra,fechatoma,'hemograma' as formulario, doctors.celular as dcelular FROM hemogramas f inner join doctors on f.doctor_id=doctors.id WHERE paciente_id='$id' union
+            SELECT f.id,tipomuestra,fechatoma,'orina' as formulario, doctors.celular as dcelular FROM orinas f inner join doctors on f.doctor_id=doctors.id WHERE paciente_id='$id' union
+            SELECT f.id,tipomuestra,fechatoma,'sanguinia' as formulario, doctors.celular as dcelular FROM sanguinias f inner join doctors on f.doctor_id=doctors.id WHERE paciente_id='$id' union
+            SELECT f.id,tipomuestra,fechatoma,'uretral' as formulario , doctors.celular as dcelular FROM uretrals f inner join doctors on f.doctor_id=doctors.id WHERE paciente_id='$id' union
+            SELECT f.id,tipomuestra,fechatoma,'vaginal' as formulario , doctors.celular as dcelular FROM vaginals f inner join doctors on f.doctor_id=doctors.id WHERE paciente_id='$id' union
+            SELECT f.id,tipomuestra,fechatoma,'hece' as formulario , doctors.celular as dcelular FROM heces f inner join doctors on f.doctor_id=doctors.id WHERE paciente_id='$id' union
+            SELECT f.id,tipomuestra,fechatoma,'simple' as formulario , doctors.celular as dcelular FROM simples f inner join doctors on f.doctor_id=doctors.id WHERE paciente_id='$id' union
+            SELECT f.id,tipomuestra,fechatoma,'seriado' as formulario , doctors.celular as dcelular FROM seriados f inner join doctors on f.doctor_id=doctors.id WHERE paciente_id='$id' union
+            SELECT f.id,tipomuestra,fechatoma,'serologia' as formulario , doctors.celular as dcelular FROM serologias f inner join doctors on f.doctor_id=doctors.id WHERE paciente_id='$id' union
+            SELECT f.id,tipomuestra,fechatoma,'labserologia' as formulario , doctors.celular as dcelular FROM labserologias f inner join doctors on f.doctor_id=doctors.id WHERE paciente_id='$id' union
+            SELECT f.id,tipomuestra,fechatoma,'reserologia' as formulario , doctors.celular as dcelular FROM reserologias f inner join doctors on f.doctor_id=doctors.id WHERE paciente_id='$id' union
+            SELECT f.id,tipomuestra,fechatoma,'ensayo' as formulario , doctors.celular as dcelular FROM ensayos f inner join doctors on f.doctor_id=doctors.id WHERE paciente_id='$id' "
         );
         return $r1;
     }
@@ -117,18 +117,18 @@ class PacienteController extends Controller
 
     public function muestra(){
         $r1=DB::select(
-            "SELECT id,tipomuestra,fechatoma,'hemograma' as formulario FROM hemogramas union
-            SELECT id,tipomuestra,fechatoma,'orina' as formulario FROM orinas union
-            SELECT id,tipomuestra,fechatoma,'sanguinia' as formulario FROM sanguinias union
-            SELECT id,tipomuestra,fechatoma,'uretral' as formulario FROM uretrals union
-            SELECT id,tipomuestra,fechatoma,'vaginal' as formulario FROM vaginals union
-            SELECT id,tipomuestra,fechatoma,'hece' as formulario FROM heces union
-            SELECT id,tipomuestra,fechatoma,'simple' as formulario FROM simples union
-            SELECT id,tipomuestra,fechatoma,'seriado' as formulario FROM seriados union
-            SELECT id,tipomuestra,fechatoma,'serologia' as formulario FROM serologias union
-            SELECT id,tipomuestra,fechatoma,'labserologia' as formulario FROM labserologias union
-            SELECT id,tipomuestra,fechatoma,'reserologia' as formulario FROM reserologias union
-            SELECT id,tipomuestra,fechatoma,'ensayo' as formulario FROM ensayos "
+            "SELECT tipomuestra,'hemograma' as formulario FROM hemogramas group by tipomuestra union
+            SELECT tipomuestra,'orina' as formulario FROM orinas group by tipomuestra union
+            SELECT tipomuestra,'sanguinia' as formulario FROM sanguinias group by tipomuestra union
+            SELECT tipomuestra,'uretral' as formulario FROM uretrals group by tipomuestra union
+            SELECT tipomuestra,'vaginal' as formulario FROM vaginals group by tipomuestra union
+            SELECT tipomuestra,'hece' as formulario FROM heces group by tipomuestra union
+            SELECT tipomuestra,'simple' as formulario FROM simples group by tipomuestra union
+            SELECT tipomuestra,'seriado' as formulario FROM seriados group by tipomuestra union
+            SELECT tipomuestra,'serologia' as formulario FROM serologias group by tipomuestra union
+            SELECT tipomuestra,'labserologia' as formulario FROM labserologias group by tipomuestra union
+            SELECT tipomuestra,'reserologia' as formulario FROM reserologias group by tipomuestra union
+            SELECT tipomuestra,'ensayo' as formulario FROM ensayos group by tipomuestra"
         );
         return $r1;
     }
