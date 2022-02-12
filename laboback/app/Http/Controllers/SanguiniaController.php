@@ -126,18 +126,20 @@ class SanguiniaController extends Controller
   border: 1px solid black;
   border-collapse: collapse;
 }
-table{
-    margin-left:10px;
-    margin-rigth:5px;
-}
+
 *{
 margin: 0px;
 padding: 0px;
 border: 0px;
 font-size: 12px;
 }
+table{
+    margin-left:10px;
+    margin-right:15px;
+    padding-right: 15px;
+}
 </style>
-        <table style="width: 100%;color: black;padding-top:5px;padding-left: 10px;padding-right: 15px">
+        <table style="width: 95%;color: black;padding-top:5px;padding-left: 10px;padding-right: 15px">
         <tr >
             <td rowspan="5" ><img src="./img/natividad.jpeg" style="height: 1.8cm;"></td>
             <td style="text-align:center;color:darkblue; ">SERVICIO DE LABORATORIO </td>
@@ -156,7 +158,7 @@ font-size: 12px;
             <td style="text-align:center;color:red;">Nº Registro CODELAB 000045</td>
         </tr>
     </table>
-        <table class="tablex"  style=" width: 100%;padding-left: 10px;padding-right: 15px">
+        <table class="tablex"  style=" width: 95%;padding-left: 10px;padding-right: 15px">
             <tr>
                 <td colspan="3" style="text-align: center;border:0;font:bold; color:darkblue"><h3>QUIMICA SANGUINEA</h3></td>
                 <td style="color:red">Form. 002</td>
@@ -180,7 +182,7 @@ font-size: 12px;
                 <td class="tdx" style="text-align:center;color:red">'.$row->paciente->id.'</td>
             </tr>
         </table>
-        <table class="tablex" style="width: 100%;color: black ;padding-left: 10px;padding-right: 15px" >
+        <table class="tablex" style="width: 95%;color: black ;padding-left: 10px;padding-right: 15px" >
             <tr style="color:purple;font-weight: bold">
                 <th class="thx" style="width:15%">PRUEBA</th>
                 <th class="thx" style="width:20%">VALOR</th>
