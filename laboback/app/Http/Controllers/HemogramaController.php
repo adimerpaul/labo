@@ -226,9 +226,9 @@ font-size: 13px;
             <tr>
                 <td class="tdx" style="color: dodgerblue" align="center">Globulos Rojos</td>
                 <td class="tdx" style="text-align:center;'.$cd1.'">'.$row->d1.'</td>
-                <td class="tdx" style="color: dodgerblue" align="center">x10 <sup>12 </sup>/L</td>
-                <td class="tdx" style="color: dodgerblue" align="center">Varon 5.1-5.7x10 <sup>12</sup>/L <br> Mujer 4.8-5.4x10 <sup>12</sup>/L</td>
-                <td class="tdx" style="color: dodgerblue" align="center">Tiempo de cuagulacion</td>
+                <td class="tdx" style="color: dodgerblue;" align="center">x10 <sup>12 </sup>/L</td>
+                <td class="tdx" style="color: dodgerblue; font-size: 10px;" align="center">Varon 5.1-5.7x10 <sup>12</sup>/L <br> Mujer 4.8-5.4x10 <sup>12</sup>/L</td>
+                <td class="tdx" style="color: dodgerblue;" align="center">Tiempo de cuagulacion</td>
                 <td class="tdx" style="text-align:center;'.$cd2.'">'.$row->d2.'</td>
                 <td class="tdx" style="color: dodgerblue" align="center">5-10 min</td>
             </tr>
@@ -236,7 +236,7 @@ font-size: 13px;
                 <td class="tdx" style="color: dodgerblue" align="center">Hemoglobina</td>
                 <td class="tdx" style="text-align:center;'.$cd3.'">'.$row->d3.'</td>
                 <td class="tdx" style="color: dodgerblue" align="center">g/L</td>
-                <td class="tdx" style="color: dodgerblue" align="center">Varon 151-175 g/L <br> Mujer Mujer 141-165 g/L</td>
+                <td class="tdx" style="color: dodgerblue; font-size: 10px;" align="center">Varon 151-175 g/L <br> Mujer Mujer 141-165 g/L</td>
                 <td class="tdx" style="color: dodgerblue" align="center">Tiempo de sangria</td>
                 <td class="tdx" style="text-align:center;'.$cd4.'">'.$row->d4.'</td>
                 <td class="tdx" style="color: dodgerblue" align="center">1-3 min</td>
@@ -245,7 +245,7 @@ font-size: 13px;
                 <td class="tdx" style="color: dodgerblue" align="center">Hematocrito</td>
                 <td class="tdx" style="text-align:center;'.$cd5.'">'.$row->d5.'</td>
                 <td class="tdx" style="color: dodgerblue" align="center">L/L</td>
-                <td class="tdx" style="color: dodgerblue" align="center">Varon 0.51-0.57 L/L <br> Mujer 0.46-0.53 L/L</td>
+                <td class="tdx" style="color: dodgerblue; font-size: 10px;" align="center">Varon 0.51-0.57 L/L <br> Mujer 0.46-0.53 L/L</td>
                 <td class="tdx" style="color: dodgerblue" align="center">Tiempo de Protrombina</td>
                 <td class="tdx" style="text-align:center;'.$cd6.'">'.$row->d6.'</td>
                 <td class="tdx" style="color: dodgerblue" align="center">12-13 seg</td>
@@ -254,7 +254,7 @@ font-size: 13px;
                 <td class="tdx" style="color: dodgerblue" align="center">V.E.S.</td>
                 <td class="tdx" style="text-align:center;'.$cd8.'">'.$row->d7.'</td>
                 <td class="tdx" style="color: dodgerblue" align="center">mm.</td>
-                <td class="tdx" style="color: dodgerblue" align="center">Varon 15 mm/hora <br> Mujer 20 mm/hora</td>
+                <td class="tdx" style="color: dodgerblue; font-size: 10px;" align="center">Varon 15 mm/hora <br> Mujer 20 mm/hora</td>
                 <td class="tdx" style="color: dodgerblue" align="center">% Actividad</td>
                 <td class="tdx" style="text-align:center;'.$cd8.'">'.$row->d8.'</td>
                 <td class="tdx" style="color: dodgerblue" align="center">95-100%</td>

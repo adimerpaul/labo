@@ -240,79 +240,79 @@
                 <td>REFERENCIA</td>
             </tr>
             <tr>
-                <td class="bg-negative text-white">Globulos Rojos</td>
+                <td class="text-red">Globulos Rojos</td>
                 <td><input borderless type="text" placeholder="00" v-model="hemograma.d1"   style="width: 100%"/></td>
                 <td>x10 <sup>12 </sup>/L</td>
                 <td><small>Varon 5.1-5.7x10 <sup>12</sup>/L <br> Mujer 4.8-5.4x10 <sup>12</sup>/L</small></td>
-                <td class="bg-negative text-white">Tiempo de cuagulacion</td>
+                <td class="text-red">Tiempo de cuagulacion</td>
                 <td><input borderless type="text" placeholder="00"  style="width: 100%" v-model="hemograma.d2"/></td>
                 <td>5-10 min</td>
             </tr>
             <tr>
-                <td class="bg-negative text-white">Hemoglobina</td>
+                <td class="text-red">Hemoglobina</td>
                 <td><input borderless type="text" placeholder="00" name="d3"   style="width: 100%" v-model="hemograma.d3"/></td>
                 <td>g/L</td>
                 <td>Varon 151-175 g/L <br> Mujer Mujer 141-165 g/L</td>
-                <td class="bg-negative text-white">Tiempo de sangria</td>
+                <td class="text-red">Tiempo de sangria</td>
                 <td><input type="text" placeholder="00" name="d4"   style="width: 100%" v-model="hemograma.d4"/></td>
                 <td>1-3 min</td>
             </tr>
             <tr>
-                <td class="bg-negative text-white">Hematocrito</td>
+                <td class="text-red">Hematocrito</td>
                 <td><input type="text" placeholder="00" name="d5"   style="width: 100%" v-model="hemograma.d5"/></td>
                 <td>L/L</td>
                 <td>Varon 0.51-0.57 L/L <br> Mujer 0.46-0.53 L/L</td>
-                <td class="bg-negative text-white">Tiempo de Protrombina</td>
+                <td class="text-red">Tiempo de Protrombina</td>
                 <td><input type="text" placeholder="00" name="d6"   style="width: 100%" v-model="hemograma.d6"/></td>
                 <td>12-13 seg</td>
             </tr>
             <tr>
-                <td class="bg-negative text-white">V.E.S.</td>
+                <td class="text-red">V.E.S.</td>
                 <td><input type="text" placeholder="00" name="d7"   style="width: 100%" v-model="hemograma.d7"/></td>
                 <td>mm.</td>
                 <td>Varon 15 mm/hora <br> Mujer 20 mm/hora</td>
-                <td class="bg-negative text-white">% Actividad</td>
+                <td class="text-red">% Actividad</td>
                 <td><input type="text" placeholder="00" name="d8"   style="width: 100%" v-model="hemograma.d8"/></td>
                 <td>95-100%</td>
             </tr>
 
             <tr>
-                <td class="bg-negative text-white">V.C.M.</td>
+                <td class="text-red">V.C.M.</td>
                 <td><input type="text" placeholder="00" name="d9"   style="width: 100%" v-model="hemograma.d9"/></td>
                 <td>ft.</td>
                 <td>Varon 83.0-97.0 ft</td>
-                <td class="bg-negative text-white">INR</td>
+                <td class="text-red">INR</td>
                 <td><input type="text" placeholder="00" name="d10"   style="width: 100%" v-model="hemograma.d10"/></td>
                 <td>0.97-1.04</td>
             </tr>
             <tr>
-                <td class="bg-negative text-white">Hb.C.M.</td>
+                <td class="text-red">Hb.C.M.</td>
                 <td><input type="text" placeholder="00" name="d11"   style="width: 100%" v-model="hemograma.d11"/></td>
                 <td>pg.</td>
                 <td>27.0-31.0 pg.</td>
-                <td class="bg-negative text-white">Grupofactor</td>
+                <td class="text-red">Grupofactor</td>
                 <td colspan="2"><input type="text" placeholder="00" name="d12"   style="width: 100%" v-model="hemograma.d12"/></td>
             </tr>
             <tr>
-                <td class="bg-negative text-white">C. Hb.C.M.</td>
+                <td class="text-red">C. Hb.C.M.</td>
                 <td><input type="text" placeholder="00" name="d13"   style="width: 100%" v-model="hemograma.d13"/></td>
                 <td>%</td>
                 <td>32-36%</td>
-                <td class="bg-negative text-white">Reticulocitos</td>
+                <td class="text-red">Reticulocitos</td>
                 <td><input type="text" placeholder="00" name="d14"   style="width: 100%" v-model="hemograma.d14"/></td>
                 <td>0.5-2%</td>
             </tr>
             <tr>
-                <td class="bg-negative text-white">Globulos Blancos</td>
+                <td class="text-red">Globulos Blancos</td>
                 <td><input type="text" placeholder="00" name="d15"   style="width: 100%" v-model="hemograma.d15"/></td>
                 <td>10 <sup>9</sup>/L</td>
                 <td> 4.5-10.5x10 <sup>9</sup>/L</td>
-                <td class="bg-negative text-white">IPR</td>
+                <td class="text-red">IPR</td>
                 <td><input type="text" placeholder="00" name="d16"   style="width: 100%" v-model="hemograma.d16"/></td>
                 <td></td>
             </tr>
             <tr>
-                <td class="bg-negative text-white">Plaquetas</td>
+                <td class="text-red">Plaquetas</td>
                 <td><input hide-bottom-space type="text" placeholder="00" style="width: 100%" v-model="hemograma.d17"/></td>
                 <td>x10 <sup>9 </sup>/L</td>
                 <td>105-400x10 <sup>9</sup> /L</td>
@@ -325,14 +325,14 @@
                 <td colspan="2">VALOR REFERENCIAL</td>
             </tr>
             <tr>
-                <td class="bg-negative text-white"></td>
+                <td class="text-red"></td>
                 <td colspan="2">RELATIVA</td>
                 <td colspan="2">ABSOLUTA</td>
                 <td>RELATIVA</td>
                 <td>ABSOLUTA</td>
             </tr>
             <tr>
-                <td class="bg-negative text-white">Cayados</td>
+                <td class="text-red">Cayados</td>
                 <td><input type="text" placeholder="00" name="d18"   style="width: 100%" v-model="hemograma.d18"></td>
                 <td>%</td>
                 <td><input type="text" placeholder="00" name="d19"   style="width: 100%" v-model="hemograma.d19"></td>
@@ -341,7 +341,7 @@
                 <td>0.00-0.35x10 <sup>9</sup>/L</td>
             </tr>
             <tr>
-                <td class="bg-negative text-white">Neutrofilos</td>
+                <td class="text-red">Neutrofilos</td>
                 <td><input type="text" placeholder="00" name="d20"   style="width: 100%" v-model="hemograma.d20"></td>
                 <td>%</td>
                 <td><input type="text" placeholder="00" name="d21"   style="width: 100%" v-model="hemograma.d21"></td>
@@ -350,7 +350,7 @@
                 <td>2.50-7.35x10 <sup>9</sup>/L</td>
             </tr>
             <tr>
-                <td class="bg-negative text-white">Eosinofilos</td>
+                <td class="text-red">Eosinofilos</td>
                 <td><input type="text" placeholder="00" name="d22"   style="width: 100%" v-model="hemograma.d22"></td>
                 <td>%</td>
                 <td><input type="text" placeholder="00" name="d23"   style="width: 100%" v-model="hemograma.d23"></td>
@@ -359,7 +359,7 @@
                 <td>0.00-0.35x10 <sup>9</sup>/L</td>
             </tr>
             <tr>
-                <td class="bg-negative text-white">Basofilos</td>
+                <td class="text-red">Basofilos</td>
                 <td><input type="text" placeholder="00" name="d24"   style="width: 100%" v-model="hemograma.d24"></td>
                 <td>%</td>
                 <td><input type="text" placeholder="00" name="d25"   style="width: 100%" v-model="hemograma.d25"></td>
@@ -368,7 +368,7 @@
                 <td>0.00-0.15x10 <sup>9</sup>/L</td>
             </tr>
             <tr>
-                <td class="bg-negative text-white">Linfocitos</td>
+                <td class="text-red">Linfocitos</td>
                 <td><input type="text" placeholder="00" name="d26"   style="width: 100%" v-model="hemograma.d26"></td>
                 <td>%</td>
                 <td><input type="text" placeholder="00" name="d27"   style="width: 100%" v-model="hemograma.d27"></td>
@@ -377,7 +377,7 @@
                 <td>1.25-4.200x10 <sup>9</sup>/L</td>
             </tr>
             <tr>
-                <td class="bg-negative text-white">Monocitos</td>
+                <td class="text-red">Monocitos</td>
                 <td><input type="text" placeholder="00" name="d28"   style="width: 100%" v-model="hemograma.d28"></td>
                 <td>%</td>
                 <td><input type="text" placeholder="00" name="d29"   style="width: 100%" v-model="hemograma.d29"></td>
@@ -386,7 +386,7 @@
                 <td>2.00-8.40x10 <sup>9</sup>/L</td>
             </tr>
             <tr>
-                <td class="bg-negative text-white">BLASTOS</td>
+                <td class="text-red">BLASTOS</td>
                 <td><input type="text" placeholder="00" name="d30"   style="width: 100%" v-model="hemograma.d30"></td>
                 <td>%</td>
                 <td></td>
@@ -400,27 +400,27 @@
                 <td colspan="2">MORFOLOGIA DE FRONTIS DE SANGRE PERIFERICA</td>
             </tr>
             <tr>
-                <td class="bg-negative text-white">Serie Rojas:</td>
+                <td class="text-red">Serie Rojas:</td>
                 <td><input type="text" placeholder="00" name="d31"   style="width: 100%" v-model="hemograma.d31"></td>
             </tr>
             <tr>
-                <td class="bg-negative text-white">Serie Blancas:</td>
+                <td class="text-red">Serie Blancas:</td>
                 <td><input type="text" placeholder="00" name="d32"   style="width: 100%" v-model="hemograma.d32"></td>
             </tr>
             <tr>
-                <td class="bg-negative text-white">Serie Plaquetarias:</td>
+                <td class="text-red">Serie Plaquetarias:</td>
                 <td><input type="text" placeholder="00" name="d33"   style="width: 100%" v-model="hemograma.d33"></td>
             </tr>
             <tr>
-                <td class="bg-negative text-white">FECHA DE TOMA DE MUESTRA:</td>
+                <td class="text-red">FECHA DE TOMA DE MUESTRA:</td>
                 <td><input type="date" name="fechatoma"   style="width: 100%" v-model="hemograma.fechatoma"></td>
             </tr>
             <tr>
-                <td class="bg-negative text-white">Responsable:</td>
+                <td class="text-red">Responsable:</td>
                 <td><q-select dense borderless  :options="usuarios" required v-model="hemograma.responsable" style="width:100%"/></td>
             </tr>
             <tr>
-                <td class="bg-negative text-white">HORA DE TOMA DE MUESTRA:</td>
+                <td class="text-red">HORA DE TOMA DE MUESTRA:</td>
                 <td><input type="time" name="horatoma"   style="width: 100%" v-model="hemograma.horatoma"></td>
             </tr>
             <tr>
@@ -477,47 +477,47 @@
                 <th>METODO</th>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">Glicemia</td>
+                <td class="text-center text-red">Glicemia</td>
                 <td><input placeholder="00" type="text" v-model="sanguinia.d1"   style="width: 100%"></td>
                 <td>70-105mg/dl</td>
                 <td>Glucosa Oxidasa</td>
-                <td class="bg-red text-center text-white">Fosfatasa alcalina</td>
+                <td class="text-center text-red">Fosfatasa alcalina</td>
                 <td><input placeholder="00" type="text" v-model="sanguinia.d2"   style="width: 100%"></td>
                 <td>adultos hasta 100UI/L</td>
                 <td>Cinetico</td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">Creatinina</td>
+                <td class="text-center text-red">Creatinina</td>
                 <td><input placeholder="00" type="text" v-model="sanguinia.d3"   style="width: 100%"></td>
                 <td>0.7-1.5mg/dl</td>
                 <td>Picrato Alcalino</td>
-                <td class="bg-red text-center text-white">Fosfatasa alcalina</td>
+                <td class="text-center text-red">Fosfatasa alcalina</td>
                 <td><input placeholder="00" type="text" v-model="sanguinia.d4"   style="width: 100%"></td>
                 <td>niños 100-400UI/L</td>
                 <td>Cinetico</td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">Urea</td>
+                <td class="text-center text-red">Urea</td>
                 <td><input placeholder="00" type="text" v-model="sanguinia.d5"   style="width: 100%"></td>
                 <td>15-45mg/dl</td>
                 <td>Enzimatico UV</td>
-                <td class="bg-red text-center text-white">Transamisas GOT</td>
+                <td class="text-center text-red">Transamisas GOT</td>
                 <td><input placeholder="00" type="text" v-model="sanguinia.d6"   style="width: 100%"></td>
                 <td>hasta 40UI/L</td>
                 <td>Cinetico</td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">NUS-BUN</td>
+                <td class="text-center text-red">NUS-BUN</td>
                 <td><input placeholder="00" type="text" v-model="sanguinia.d7"   style="width: 100%"></td>
                 <td>7-18mg/dl</td>
                 <td>Cinetico UV</td>
-                <td class="bg-red text-center text-white">Transamisas GPT</td>
+                <td class="text-center text-red">Transamisas GPT</td>
                 <td><input placeholder="00" type="text" v-model="sanguinia.d8"   style="width: 100%"></td>
                 <td>hasta 41UI/L</td>
                 <td>Cinetico</td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">Acido Urico</td>
+                <td class="text-center text-red">Acido Urico</td>
                 <td><input placeholder="00" type="text" v-model="sanguinia.d9"   style="width: 100%"></td>
                 <td>2.6-7.2mg/dl</td>
                 <td>Uricasa/Peroxidasa</td>
@@ -527,47 +527,47 @@
                 <td></td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">Proteinas Totales</td>
+                <td class="text-center text-red">Proteinas Totales</td>
                 <td><input placeholder="00" type="text" v-model="sanguinia.d10"   style="width: 100%"></td>
                 <td>6.2-8.5g/dl</td>
                 <td>Biuret</td>
-                <td class="bg-red text-center text-white">Trigliceridos</td>
+                <td class="text-center text-red">Trigliceridos</td>
                 <td><input placeholder="00" type="text" v-model="sanguinia.d11"   style="width: 100%"></td>
                 <td>40-160mg/dl</td>
                 <td>GPO-PAP</td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">Albumina</td>
+                <td class="text-center text-red">Albumina</td>
                 <td><input placeholder="00" type="text" v-model="sanguinia.d12"   style="width: 100%"></td>
                 <td>3.5-5.3g/dl</td>
                 <td>Verde Bromocresol</td>
-                <td class="bg-red text-center text-white">Colesterol Total</td>
+                <td class="text-center text-red">Colesterol Total</td>
                 <td><input placeholder="00" type="text" v-model="sanguinia.d13"   style="width: 100%"></td>
                 <td>menor 200mg/dl</td>
                 <td>CHOD-PAP</td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">Globulina</td>
+                <td class="text-center text-red">Globulina</td>
                 <td><input placeholder="00" type="text" v-model="sanguinia.d14"   style="width: 100%"></td>
                 <td>2.8-3.5g/dl</td>
                 <td></td>
-                <td class="bg-red text-center text-white">HDL-Col.</td>
+                <td class="text-center text-red">HDL-Col.</td>
                 <td><input placeholder="00" type="text" v-model="sanguinia.d15"   style="width: 100%"></td>
                 <td>35-65mg/dl</td>
                 <td>CHOD-PAP</td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">Amilasa</td>
+                <td class="text-center text-red">Amilasa</td>
                 <td><input placeholder="00" type="text" v-model="sanguinia.d16"   style="width: 100%"></td>
                 <td>menor a 120 UI/L</td>
                 <td>Enzimatico a Amilasa</td>
-                <td class="bg-red text-center text-white">LDL-Col.</td>
+                <td class="text-center text-red">LDL-Col.</td>
                 <td><input placeholder="00" type="text" v-model="sanguinia.d17"   style="width: 100%"></td>
                 <td>Hasta 150mg/dl</td>
                 <td>CHOD-PAP</td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">Lipasa</td>
+                <td class="text-center text-red">Lipasa</td>
                 <td><input placeholder="00" type="text" v-model="sanguinia.d18"   style="width: 100%"></td>
                 <td>10-150UI/L</td>
                 <td>Enzimatica Colorimetrica</td>
@@ -577,76 +577,76 @@
                 <td></td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">Bilirrubina Total</td>
+                <td class="text-center text-red">Bilirrubina Total</td>
                 <td><input placeholder="00" type="text" v-model="sanguinia.d19"   style="width: 100%"></td>
                 <td>hasta 1.2 mg/dl</td>
                 <td rowspan="3">Acido Sulfanilico con Diaazo</td>
-                <td class="bg-red text-center text-white">Sodio</td>
+                <td class="text-center text-red">Sodio</td>
                 <td><input placeholder="00" type="text" v-model="sanguinia.d20"   style="width: 100%"></td>
                 <td>135-155 mEq/L</td>
                 <td rowspan="4">Automatizado CORNLEY AFT-500</td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">Bilirrubina Directa</td>
+                <td class="text-center text-red">Bilirrubina Directa</td>
                 <td><input placeholder="00" type="text" v-model="sanguinia.d21"   style="width: 100%"></td>
                 <td>hasta 0.3 mg/dl</td>
-                <td class="bg-red text-center text-white">Cloro</td>
+                <td class="text-center text-red">Cloro</td>
                 <td><input placeholder="00" type="text" v-model="sanguinia.d22"   style="width: 100%"></td>
                 <td>98-106 mEq/L</td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">Bilirrubina Inderecta</td>
+                <td class="text-center text-red">Bilirrubina Inderecta</td>
                 <td><input placeholder="00" type="text" v-model="sanguinia.d23"   style="width: 100%"></td>
                 <td>hasta 0.9 mg/dl</td>
-                <td class="bg-red text-center text-white">Potasio</td>
+                <td class="text-center text-red">Potasio</td>
                 <td><input placeholder="00" type="text" v-model="sanguinia.d24"   style="width: 100%"></td>
                 <td>3.4-5.3 mEq/L</td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">CK-MB</td>
+                <td class="text-center text-red">CK-MB</td>
                 <td><input placeholder="00" type="text" v-model="sanguinia.d25"   style="width: 100%"></td>
                 <td>0-24 UI/L</td>
                 <td>Enzimatico </td>
-                <td class="bg-red text-center text-white">Calcio</td>
+                <td class="text-center text-red">Calcio</td>
                 <td><input placeholder="00" type="text" v-model="sanguinia.d26"   style="width: 100%"></td>
                 <td>8.5-10.5mg/dl</td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">LDH</td>
+                <td class="text-center text-red">LDH</td>
                 <td><input placeholder="00" type="text" v-model="sanguinia.d27"   style="width: 100%"></td>
                 <td>200-480UI/L</td>
                 <td>Piruvato Lactato</td>
-                <td class="bg-red text-center text-white">Magnesio</td>
+                <td class="text-center text-red">Magnesio</td>
                 <td><input placeholder="00" type="text" v-model="sanguinia.d28"   style="width: 100%"></td>
                 <td>1.7-2.4mg/dl</td>
                 <td>Colorimetrico calmagita</td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">Hierro</td>
+                <td class="text-center text-red">Hierro</td>
                 <td><input placeholder="00" type="text" v-model="sanguinia.d29"   style="width: 100%"></td>
                 <td>50-170ug/dl</td>
                 <td>Goodwing Modificado</td>
-                <td class="bg-red text-center text-white">Fosforo</td>
+                <td class="text-center text-red">Fosforo</td>
                 <td><input placeholder="00" type="text" v-model="sanguinia.d30"   style="width: 100%"></td>
                 <td>2.5-4.5mg/dl</td>
                 <td>Fosfomolibdato UV</td>
             </tr>
             <tr>
-                <td colspan="2" class="bg-blue text-center text-white">OBSERVACIONES</td>
-                <td colspan="6"><input placeholder="00" type="text" v-model="sanguinia.d31"   style="width: 100%" ></td>
+                <td colspan="2" class=" text-center text-blue">OBSERVACIONES</td>
+                <td colspan="6"><input  type="text" v-model="sanguinia.d31"   style="width: 100%" ></td>
             </tr>
             <tr>
-                <td colspan="2" rowspan="3" class="bg-blue text-center text-white">RESPONSABLE</td>
+                <td colspan="2" rowspan="3" class=" text-center text-blue">RESPONSABLE</td>
                 <td colspan="2" rowspan="3"><q-select  borderless dense :options="usuarios" required v-model="sanguinia.responsable" style="width:100%"/></td>
-                <td colspan="3" class="bg-blue text-center text-white">FECHA TOMA DE MUESTRA</td>
+                <td colspan="3" class=" text-center text-blue">FECHA TOMA DE MUESTRA</td>
                 <td><input placeholder="00" type="date" v-model="sanguinia.fechatoma"   style="width: 100%" ></td>
             </tr>
             <tr>
-                <td colspan="3" class="bg-blue text-center text-white">HORA DE TOMA DE MUESTRA</td>
+                <td colspan="3" class=" text-center text-blue">HORA DE TOMA DE MUESTRA</td>
                 <td><input placeholder="00" type="time"  style="width: 100%" v-model="sanguinia.horatoma"></td>
             </tr>
             <tr>
-                <td colspan="3" class="bg-blue text-center text-white">FECHA DE ENTREGA DE RESULTADO</td>
+                <td colspan="3" class=" text-center text-blue">FECHA DE ENTREGA DE RESULTADO</td>
                 <td><input placeholder="00" type="date"  style="width: 100%" ></td>
             </tr>
             <tr>
@@ -694,66 +694,66 @@
         </table>
         <table border="1" style="width: 100%;color: black">
             <tr>
-                <td class="bg-red text-center text-white">EX. FISICO</td>
-                <td class="bg-red text-center text-white">VALOR</td>
+                <td class="text-center text-red">EX. FISICO</td>
+                <td class="text-center text-red">VALOR</td>
                 <td>REFERENCIA</td>
                 <td>EX. QUIMICO</td>
-                <td class="bg-red text-center text-white">VALOR</td>
+                <td class="text-center text-red">VALOR</td>
                 <td>REFERENCIA</td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">Color</td>
+                <td class="text-center text-red">Color</td>
                 <td><input placeholder="00" type="text"  v-model="orina.d1"></td>
                 <td>Amarillo</td>
-                <td class="bg-red text-center text-white">Proteinas</td>
+                <td class="text-center text-red">Proteinas</td>
                 <td><input placeholder="00" type="text"  v-model="orina.d2"></td>
                 <td>Negativo</td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">Olor</td>
+                <td class="text-center text-red">Olor</td>
                 <td><input placeholder="00" type="text"  v-model="orina.d3"></td>
                 <td>Sui-generis</td>
-                <td class="bg-red text-center text-white">Glucosa</td>
+                <td class="text-center text-red">Glucosa</td>
                 <td><input placeholder="00" type="text"  v-model="orina.d4"></td>
                 <td>Negativo</td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">Aspecto</td>
+                <td class="text-center text-red">Aspecto</td>
                 <td><input placeholder="00" type="text"  v-model="orina.d5"></td>
                 <td>Limpido o lig opal</td>
-                <td class="bg-red text-center text-white">C. cetonicos</td>
+                <td class="text-center text-red">C. cetonicos</td>
                 <td><input placeholder="00" type="text"  v-model="orina.d6"></td>
                 <td>Negativo</td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">Espuma</td>
+                <td class="text-center text-red">Espuma</td>
                 <td><input placeholder="00" type="text"  v-model="orina.d7"></td>
                 <td>Blanco fugaz</td>
-                <td class="bg-red text-center text-white">Bilirrubina</td>
+                <td class="text-center text-red">Bilirrubina</td>
                 <td><input placeholder="00" type="text"  v-model="orina.d8"></td>
                 <td>Negativo</td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">Deposito</td>
+                <td class="text-center text-red">Deposito</td>
                 <td><input placeholder="00" type="text"  v-model="orina.d9"></td>
                 <td>Nulo o escacaso</td>
-                <td class="bg-red text-center text-white">Hemoglobina</td>
+                <td class="text-center text-red">Hemoglobina</td>
                 <td><input placeholder="00" type="text"  v-model="orina.d10"></td>
                 <td>Negativo</td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">Densidad</td>
+                <td class="text-center text-red">Densidad</td>
                 <td><input placeholder="00" type="text"  v-model="orina.d11"></td>
                 <td>1.010-1.030</td>
-                <td class="bg-red text-center text-white">Urobilina</td>
+                <td class="text-center text-red">Urobilina</td>
                 <td><input placeholder="00" type="text"  v-model="orina.d12"></td>
                 <td>Normal</td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">Reaccion</td>
+                <td class="text-center text-red">Reaccion</td>
                 <td><input placeholder="00" type="text"  v-model="orina.d13"></td>
                 <td>Lig. acida</td>
-                <td class="bg-red text-center text-white">Nitrinos</td>
+                <td class="text-center text-red">Nitrinos</td>
                 <td><input placeholder="00" type="text"  v-model="orina.d14"></td>
                 <td>Negativo</td>
             </tr>
@@ -761,104 +761,104 @@
                 <td colspan="6" style="text-align: center">SEDIMENTO: EXAMEN MICROSCOPICO</td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">CELULAS</td>
-                <td class="bg-red text-center text-white">VALOR</td>
+                <td class="text-center text-red">CELULAS</td>
+                <td class="text-center text-red">VALOR</td>
                 <td>REFERENCIA</td>
                 <td>CILINDROS</td>
-                <td class="bg-red text-center text-white">VALOR</td>
+                <td class="text-center text-red">VALOR</td>
                 <td>REFERENCIA</td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">Celulas epiteliales</td>
+                <td class="text-center text-red">Celulas epiteliales</td>
                 <td><input placeholder="00" type="text"  v-model="orina.d15"></td>
                 <td>Hasta 2/c.</td>
-                <td class="bg-red text-center text-white">Hialino</td>
+                <td class="text-center text-red">Hialino</td>
                 <td><input placeholder="00" type="text"  v-model="orina.d16"></td>
                 <td>Negativo</td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">Celulas de transicion</td>
+                <td class="text-center text-red">Celulas de transicion</td>
                 <td><input placeholder="00" type="text"  v-model="orina.d17"></td>
                 <td>Negativo</td>
-                <td class="bg-red text-center text-white">Granuloso</td>
+                <td class="text-center text-red">Granuloso</td>
                 <td><input placeholder="00" type="text"  v-model="orina.d18"></td>
                 <td>Negativo</td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">Celulas clave</td>
+                <td class="text-center text-red">Celulas clave</td>
                 <td><input placeholder="00" type="text"  v-model="orina.d19"></td>
                 <td>Negativo</td>
-                <td class="bg-red text-center text-white">Epiteliales</td>
+                <td class="text-center text-red">Epiteliales</td>
                 <td><input placeholder="00" type="text"  v-model="orina.d20"></td>
                 <td>Negativo</td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">Leucocitos</td>
+                <td class="text-center text-red">Leucocitos</td>
                 <td><input placeholder="00" type="text"  v-model="orina.d21"></td>
                 <td>Hasta 5/c</td>
-                <td class="bg-red text-center text-white">Eritrocitario</td>
+                <td class="text-center text-red">Eritrocitario</td>
                 <td><input placeholder="00" type="text"  v-model="orina.d22"></td>
                 <td>Negativo</td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">Eritrocitos</td>
+                <td class="text-center text-red">Eritrocitos</td>
                 <td><input placeholder="00" type="text"  v-model="orina.d23"></td>
                 <td>Hasta 3/c</td>
-                <td class="bg-red text-center text-white">Leucositario</td>
+                <td class="text-center text-red">Leucositario</td>
                 <td><input placeholder="00" type="text"  v-model="orina.d24"></td>
                 <td>Negativo</td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">Bacterias</td>
+                <td class="text-center text-red">Bacterias</td>
                 <td><input placeholder="00" type="text"  v-model="orina.d25"></td>
                 <td>Escaso</td>
-                <td class="bg-red text-center text-white">Cereos</td>
+                <td class="text-center text-red">Cereos</td>
                 <td><input placeholder="00" type="text"  v-model="orina.d26"></td>
                 <td>Negativo</td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">CRISTALES</td>
+                <td class="text-center text-red">CRISTALES</td>
                 <td colspan="2"></td>
-                <td class="bg-red text-center text-white">Mixtos</td>
+                <td class="text-center text-red">Mixtos</td>
                 <td><input placeholder="00" type="text"  v-model="orina.d27"></td>
                 <td>Negativo</td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">Uratos amorfos</td>
+                <td class="text-center text-red">Uratos amorfos</td>
                 <td><input placeholder="00" type="text"  v-model="orina.d28"></td>
                 <td>Escasos</td>
                 <td colspan="3">OTROS</td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">Fosfato amorfo</td>
+                <td class="text-center text-red">Fosfato amorfo</td>
                 <td><input placeholder="00" type="text"  v-model="orina.d29"></td>
                 <td>Escasos</td>
-                <td class="bg-red text-center text-white">Filamento mucoso</td>
+                <td class="text-center text-red">Filamento mucoso</td>
                 <td colspan="2"><input placeholder="00" type="text"  v-model="orina.d30"></td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">Oxalato de calcio</td>
+                <td class="text-center text-red">Oxalato de calcio</td>
                 <td><input placeholder="00" type="text"  v-model="orina.d31"></td>
                 <td>Escasos</td>
-                <td class="bg-red text-center text-white">Piocitos</td>
+                <td class="text-center text-red">Piocitos</td>
                 <td colspan="2"><input placeholder="00" type="text"  v-model="orina.d32"></td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">Fosfato de calcio</td>
+                <td class="text-center text-red">Fosfato de calcio</td>
                 <td><input placeholder="00" type="text"  v-model="orina.d33"></td>
                 <td>Escasos</td>
-                <td class="bg-red text-center text-white">Levaduras</td>
+                <td class="text-center text-red">Levaduras</td>
                 <td colspan="2"><input placeholder="00" type="text"  v-model="orina.d34"></td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">Acido Urico</td>
+                <td class="text-center text-red">Acido Urico</td>
                 <td><input placeholder="00" type="text"  v-model="orina.d35"></td>
                 <td>Escasos</td>
-                <td class="bg-red text-center text-white">Esporas micoticas</td>
+                <td class="text-center text-red">Esporas micoticas</td>
                 <td colspan="2"><input placeholder="00" type="text"  v-model="orina.d36"></td>
             </tr>
             <tr>
-                <td class="bg-red text-center text-white">OBSERVACIONES</td>
+                <td class="text-center text-red">OBSERVACIONES</td>
                 <td colspan="5"><input placeholder="00" type="text"  v-model="orina.d37"></td>
             </tr>
             <tr>
@@ -1659,14 +1659,18 @@
 
             <tr >
                 <td colspan="2" rowspan="2" >RESPONSABLE: <q-select borderless dense :options="usuarios" required v-model="serologia.responsable" style="width:100%"/></td>
-                <td colspan="2">
+                <td >
                     FECHA DE TOMA DE MUESTRAS
+                </td>
+                <td >
                     <input placeholder="00" type="date"  style="width: 100%" v-model="serologia.fechatoma">
                 </td>
             </tr>
             <tr>
-                <td colspan="2">
+                <td >
                     FECHA DE ENTREGA DE MUESTRAS
+                </td>
+                <td >
                     <input placeholder="00" type="date" style="width: 100%" >
                 </td>
             </tr>
@@ -1809,20 +1813,26 @@
 
             <tr >
                 <td colspan="2" rowspan="3" >RESPONSABLE: <q-select borderless dense :options="usuarios" required v-model="labserologia.responsable" style="width:100%"/> </td>
-                <td colspan="2">
+                <td>
                     FECHA DE TOMA DE MUESTRAS
+                </td>
+                <td>
                     <input placeholder="00" type="date"  style="width: 100%" v-model="labserologia.fechatoma">
                 </td>
             </tr>
                         <tr>
-                <td colspan="2">
+                <td >
                     HORA DE TOMA DE MUESTRAS
+                </td>
+                <td >
                     <input placeholder="00" type="time"  style="width: 100%" name="fechaentrega" v-model="labserologia.horatoma">
                 </td>
             </tr>
             <tr>
-                <td colspan="2">
+                <td>
                     FECHA DE ENTREGA DE MUESTRAS
+                </td>
+                <td>
                     <input placeholder="00" type="date"  style="width: 100%" name="fechaentrega">
                 </td>
             </tr>
@@ -1922,20 +1932,26 @@
 
             <tr >
                 <td colspan="2" rowspan="3" >RESPONSABLE: <q-select borderless dense :options="usuarios" required v-model="reserologia.responsable" style="width:100%"/></td>
-                <td colspan="2">
+                <td >
                     FECHA DE TOMA DE MUESTRAS
+                </td>
+                <td >
                     <input placeholder="00" type="date"  style="width: 100%" v-model="reserologia.fechatoma">
                 </td>
             </tr>
                         <tr>
-                <td colspan="2">
+                <td>
                     Hora DE TOMA DE MUESTRAS
+                </td>
+                <td>
                     <input placeholder="00" type="time"  style="width: 100%" name="fechaentrega" v-model="reserologia.horatoma">
                 </td>
             </tr>
             <tr>
-                <td colspan="2">
+                <td>
                     FECHA DE ENTREGA DE MUESTRAS
+                </td>
+                <td>
                     <input placeholder="00" type="date"  style="width: 100%" name="fechaentrega">
                 </td>
             </tr>
@@ -1999,16 +2015,13 @@
             </tr>
 
             <tr>
-                <td rowspan="2" class="text-left text-red" style="width: 20%">FERRITINA</td>
-                <td rowspan="2"><input  type="text"  v-model="ensayo.d2" ></td>
-                <td rowspan="2" class="text-center text-blue">ng/ml</td>
-                <td rowspan="2" class="text-center text-blue">Suero</td>
-                <td class="text-center text-blue">30-350 ng/ml Varon </td>
+                <td  class="text-left text-red" style="width: 20%">FERRITINA</td>
+                <td ><input  type="text"  v-model="ensayo.d2" ></td>
+                <td  class="text-center text-blue">ng/ml</td>
+                <td  class="text-center text-blue">Suero</td>
+                <td class="text-center text-blue">30-350 ng/ml Varon <br>20-250 ng/ml Mujer </td>
             </tr>
-            <tr>
-                <td class="text-center text-blue">20-250 ng/ml Mujer</td>
 
-            </tr>
             <tr>
                 <td class="text-left text-red" style="width: 20%">IL-6</td>
                 <td ><input  type="text"  v-model="ensayo.d3" ></td>
@@ -2038,31 +2051,19 @@
                 <td class="text-center text-blue">0.0 - 0.11 ng/ml</td>
             </tr>
             <tr>
-                <td rowspan="2" class="text-left text-red" style="width: 20%">B - HCG</td>
-                <td rowspan="2"><input  type="text"  v-model="ensayo.d7" ></td>
-                <td rowspan="2" class="text-center text-blue">mlU/ml</td>
-                <td rowspan="2" class="text-center text-blue">Suero</td>
-                <td class="text-center text-blue">Mujer No Embarazada menor  10 mlU/ml </td>
+                <td  class="text-left text-red" style="width: 20%">B - HCG</td>
+                <td ><input  type="text"  v-model="ensayo.d7" ></td>
+                <td  class="text-center text-blue">mlU/ml</td>
+                <td  class="text-center text-blue">Suero</td>
+                <td class="text-center text-blue">Mujer No Embarazada menor  10 mlU/ml <br>Mujer en postmenopausia menor 10 mlU/ml</td>
             </tr>
-            <tr>
-                <td class="text-center text-blue">Mujer en postmenopausia menor 10 mlU/ml</td>
 
-            </tr>
             <tr>
-                <td rowspan="4" class="text-left text-red" style="width: 20%">PROCALCITONINA</td>
-                <td rowspan="4" ><input  type="text"  v-model="ensayo.d8" ></td>
-                <td rowspan="4" class="text-center text-blue">ng/ml</td>
-                <td rowspan="4"  class="text-center text-blue">Suero</td>
-                <td class="text-center text-blue">PCT menor 0.5 Es posible infeccion Bacteriana Local</td>
-            </tr>
-            <tr>
-                <td class="text-center text-blue">PCT 0.5 - 2 Posible Infeccion </td>
-            </tr>
-            <tr>
-                <td class="text-center text-blue">PCT 2 - 10 Es muy Probable Infeccion (sepsis) a menos que se conozcan otras causas </td>
-            </tr>
-            <tr>
-                <td class="text-center text-blue">PCT > 10 Sepsis Bacteriana severa o shock septico </td>
+                <td  class="text-left text-red" style="width: 20%">PROCALCITONINA</td>
+                <td  ><input  type="text"  v-model="ensayo.d8" ></td>
+                <td  class="text-center text-blue">ng/ml</td>
+                <td   class="text-center text-blue">Suero</td>
+                <td class="text-center text-blue">PCT menor 0.5 Es posible infeccion Bacteriana Local <br>PCT 0.5 - 2 Posible Infeccion <br>PCT 2 - 10 Es muy Probable Infeccion (sepsis) a menos que se conozcan otras causas <br>PCT > 10 Sepsis Bacteriana severa o shock septico </td>
             </tr>
             <tr>
                 <td colspan="6"></td>
@@ -2070,19 +2071,26 @@
 
             <tr >
                 <td colspan="2" rowspan="3" >RESPONSABLE: <q-select borderless dense :options="usuarios" required v-model="ensayo.responsable" style="width:100%"/></td>
-                <td colspan="3">
+                <td colspan="2">
                     FECHA DE TOMA DE MUESTRAS
+                </td>
+                <td>
                     <input placeholder="00" type="date"  style="width: 100%" v-model="ensayo.fechatoma">
                 </td>
             </tr>
             <tr>
-                <td colspan="3">
+                <td colspan="2">
                     HORA DE TOMA DE MUESTRAS
+                </td>
+                <td>
                     <input placeholder="00" type="time"  style="width: 100%" name="fechaentrega" v-model="ensayo.horatoma">
                 </td>
             </tr>            <tr>
-                <td colspan="3">
+                <td colspan="2">
+
                     FECHA DE ENTREGA DE MUESTRAS
+                                               </td>
+                <td>
                     <input placeholder="00" type="date"  style="width: 100%" name="fechaentrega">
                 </td>
             </tr>
