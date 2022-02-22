@@ -56,10 +56,10 @@ class LabserologiaController extends Controller
         $cd2='';
         $cd3='';
         $cd13='';
-        if(($row->d1<0 || $row->d1>8)&& $row->d1!='')$cd1='background-color:#ff726f;';
-        if(($row->d2<0 || $row->d2>200)&& $row->d2!='')$cd2='background-color:#ff726f;';
-        if(($row->d3<0 || $row->d3>0.8)&& $row->d3!='')$cd3='background-color:#ff726f;';
-        if(($row->d13<0 || $row->d13>4)&& $row->d13!='')$cd13='background-color:#ff726f;';
+        if(($row->d1<0 || $row->d1>8)&& $row->d1!='')$cd1='color:#ff726f;';
+        if(($row->d2<0 || $row->d2>200)&& $row->d2!='')$cd2='color:#ff726f;';
+        if(($row->d3<0 || $row->d3>0.8)&& $row->d3!='')$cd3='color:#ff726f;';
+        if(($row->d13<0 || $row->d13>4)&& $row->d13!='')$cd13='color:#ff726f;';
         $cadena='
             <style>
             table, th, td {

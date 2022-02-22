@@ -167,11 +167,10 @@ font-size: 12px;
         </table>
 
             ';
-        $pdf = App::make('dompdf.wrapper');
-//        $customPaper = array(0,0,360,360);
-        $pdf->setPaper('letter');
-        $pdf->loadHTML($cadena);
-        return $pdf->stream();
+            $pdf = App::make('dompdf.wrapper');
+            $pdf->setPaper('letter');
+            $pdf->loadHTML($cadena);
+            return $pdf->stream();
     }
     /**
      * Display the specified resource.

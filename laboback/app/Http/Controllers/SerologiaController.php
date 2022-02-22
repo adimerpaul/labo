@@ -49,7 +49,7 @@ class SerologiaController extends Controller
     }
 
     public function generar($id){
-        $row= serologia::with('paciente')
+        $row= Serologia::with('paciente')
             ->with('user')
             ->with('doctor')
         ->where('id',$id)
@@ -218,7 +218,6 @@ font-size: 11px;
 
             ';
         $pdf = App::make('dompdf.wrapper');
-//        $customPaper = array(0,0,360,360);
         $pdf->setPaper('letter');
         $pdf->loadHTML($cadena);
         return $pdf->stream();
