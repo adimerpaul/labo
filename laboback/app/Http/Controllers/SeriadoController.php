@@ -70,7 +70,7 @@ font-size: 12px;
 </style>
             <table style="padding-right:15px;padding-left:10px;width: 100%;color: black;padding-top: 10px">
             <tr >
-                <td rowspan="3" ><img src="./img/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 1.5cm; "></td>
+                <td rowspan="3" ><img src="./img/natividad.jpeg" alt="Logo Clinica" style="height: 1.5cm; "></td>
                 <td style="text-align:center; color:darkblue;">SERVICIO DE LABORATORIO </td>
             </tr>
 

@@ -71,7 +71,7 @@ font-size: 11px;
 </style>
             <table style="padding-left:10px;padding-right:15px;width: 100%;color: black;padding-top: 5px">
             <tr >
-                <td rowspan="3" ><img src="./img/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 1.5cm; "></td>
+                <td rowspan="3" ><img src="./img/natividad.jpeg" alt="Logo Clinica" style="height: 1.5cm; "></td>
                 <td style=" text-align:center; color:darkblue">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
@@ -123,7 +123,7 @@ font-size: 11px;
                 <td class="tdx" style="text-align:center; color:red;" >lgM</td>
                 <td class="tdx" style="text-align:center">'.$row->lgm.'</td>
                 <td class="tdx" style="text-align:center">'.$row->d1.'</td>
-                <td class="tdx"  style="text-align:center;color:blue"> menor a 0.9 NEGATIVO PARA lgG/lgM</td>
+                <td class="tdx"  style="text-align:center;color:blue"> menor a 0.9 NEGATIVO PARA lgG/lgM </td>
             </tr>
             <tr>
                 <td class="tdx"></td>
@@ -135,7 +135,7 @@ font-size: 11px;
                 <td class="tdx" style="text-align:center; color:red;" >lgG</td>
                 <td class="tdx" style="text-align:center">'.$row->lgg.'</td>
                 <td class="tdx" style="text-align:center">'.$row->d2.'</td>
-                <td class="tdx" style="text-align:center;color:blue"> mayor igual 1.1 POSITIVO lgG/lgM</td>
+                <td class="tdx" style="text-align:center;color:blue"> mayor igual 1.1 POSITIVO lgG/lgM </td>
             </tr>
 
             </tr>
@@ -214,9 +214,7 @@ font-size: 11px;
                 <span style="color:black">'.date('Y-m-d').'</span>
             </td>
         </tr>
-        </table>
-
-            ';
+        </table>';
         $pdf = App::make('dompdf.wrapper');
         $pdf->setPaper('letter');
         $pdf->loadHTML($cadena);
