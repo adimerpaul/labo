@@ -149,26 +149,26 @@ font-size: 11px;
                 <td class="tdx">COMENTARIO</td>
             </tr>
             <tr style="text-align:center">
-                <td class="tdx"><img  alt="negativo"  style="height: 0.5cm; width:0.5cm;"></td>
-                <td class="tdx"><img  alt="negativo"  style="height: 0.5cm; width:0.5cm;"></td>
+                <td class="tdx">NEGATIVO</td>
+                <td class="tdx">NEGATIVO</td>
                 <td class="tdx">Ausencia de la Enfermedad o Falso Negativo</td>
                 <td class="tdx">Paciente en fase de evolucion de la enfermedad mayor de 21 dias</td>
             </tr>
             <tr style="text-align:center">
-                <td class="tdx"><img  alt="positivo"  style="height: 0.5cm; width:0.5cm;"></td>
-                <td class="tdx"><img  alt="negativo"  style="height: 0.5cm; width:0.5cm;"></td>
+                <td class="tdx">POSITIVO</td>
+                <td class="tdx">NEGATIVO</td>
                 <td class="tdx">Inicio Temprano de ka Enfermedad Infeccion Aguda de la Enfermedad</td>
                 <td class="tdx">Se debe repetir dentro de 5 a 7 dias la prueba</td>
             </tr>
             <tr style="text-align:center">
-                <td class="tdx"><img  alt="positivo" style="height: 0.5cm; width:0.5cm;"></td>
-                <td class="tdx"><img  alt="positivo" style="height: 0.5cm; width:0.5cm;"></td>
+                <td class="tdx">POSITIVO</td>
+                <td class="tdx">POSITIVO</td>
                 <td class="tdx">Fase activa de la Enfermedad</td>
                 <td class="tdx">Correlacionar con clinica del paciente y realizar examenes complementarios (Rayos X, Tomografia)</td>
             </tr>
             <tr style="text-align:center">
-                <td class="tdx"><img  alt="negativo" style="height: 0.5cm; width:0.5cm;"></td>
-                <td class="tdx"><img  alt="positivo" style="height: 0.5cm; width:0.5cm;"></td>
+                <td class="tdx">NEGATIVO</td>
+                <td class="tdx">POSITIVO</td>
                 <td class="tdx">Inmunidad Fase final de la Infeccion Infeccion pasada y curada</td>
                 <td class="tdx">Paciente en fase de evolucion de la enfermedad mayor a 21 dias</td>
             </tr>
