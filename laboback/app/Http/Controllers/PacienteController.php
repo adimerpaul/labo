@@ -17,7 +17,7 @@ class PacienteController extends Controller
     public function index()
     {
         //
-        return Paciente::get();
+        return Paciente::with('seguro')->get();
     }
 
     /**
@@ -46,6 +46,7 @@ class PacienteController extends Controller
         $paciente->fechanac=$request->fechanac;
         $paciente->sexo=$request->sexo;
         $paciente->celular=$request->celular;
+        $paciente->seguro_id=$request->seguro;
         $paciente->save();
         return $paciente;
     }
@@ -81,7 +82,16 @@ class PacienteController extends Controller
      */
     public function update(Request $request,Paciente $paciente)
     {
-        $paciente->update($request->all());
+        $paciente=Paciente::find($request->id);
+        $paciente->ci=$request->ci;
+        $paciente->nombre=strtoupper($request->nombre);
+        $paciente->paterno=strtoupper($request->paterno);
+        $paciente->materno=strtoupper($request->materno);
+        $paciente->fechanac=$request->fechanac;
+        $paciente->sexo=$request->sexo;
+        $paciente->celular=$request->celular;
+        $paciente->seguro_id=$request->seguro;
+        $paciente->save();
         return $paciente;
     }
 

@@ -21,4 +21,7 @@ class Paciente extends Model
     {
         return Carbon::parse($this->attributes['fechanac'])->age;
     }
+    public function seguro(){
+        return $this->belongsTo(Seguro::class);
+    }
 }

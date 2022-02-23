@@ -59,6 +59,7 @@
               hint="Numero de celular"
 
             />
+            <q-select  outlined v-model="seguro" :options="seguros" label="Seguro" />
             <div>
               <q-btn label="Crear" type="submit" color="positive" icon="add_circle"/>
                 <q-btn  label="Cancelar" icon="delete" color="negative" v-close-popup />
@@ -147,6 +148,7 @@
               hint="Numero de celular"
 
             />
+            <q-select  outlined v-model="seguro" :options="seguros" label="Seguro" />
             <div>
               <q-btn label="Modificar" type="submit" color="positive" icon="add_circle"/>
                 <q-btn  label="Cancelar" icon="delete" color="negative" v-close-popup />
@@ -2178,6 +2180,8 @@ export default {
       actual:date.formatDate(Date.now(),'YYYY-MM-DD'),
       tab:{},
       historial:[],
+      seguros:[],
+      seguro:{},
       columns:[
         { name: 'ci', label: 'ci', field: 'ci',align: 'center',},
         { name: 'nombre', label: 'nombre', field: 'nombre',align: 'center',},
@@ -2186,6 +2190,7 @@ export default {
         { name: 'fechanac', label: 'fechanac', field: 'fechanac', align: 'center',},
         { name: 'sexo', label: 'sexo', field: 'sexo',align: 'center',},
         { name: 'celular', label: 'celular', field: 'celular',align: 'center',},
+        { name: 'seguro', label: 'seguro', field: row=>row.seguro.nombre,align: 'center',},
         { name: 'opcion', label: 'opcion', field: 'opcion',align: 'center',},
       ],
     columns2:[
@@ -2202,8 +2207,20 @@ export default {
     this.listusers();
     this.tab={value:"hemograma",label:"Hemograma completo" };
     this.doctini();
+    this.listseguro();
   },
   methods: {
+      listseguro(){
+          this.seguros=[]
+          this.seguro={label:''}
+          this.$axios.get(process.env.API+'/seguro').then(res=>{
+              res.data.forEach(r => {
+                  this.seguros.push({label:r.nombre,r});
+              });
+              
+          })
+
+      },
       listusers(){
           this.usuarios=[]
           this.$axios.post(process.env.API+'/listuser').then(res=>{
@@ -2308,6 +2325,7 @@ export default {
     },
     editRow(props){
       this.dato2=props.row;
+      this.seguro={label:this.dato2.seguro.nombre,r:this.dato2.seguro}
       this.dialog_mod=true;
     },
     deleteRow(props){
@@ -2329,6 +2347,7 @@ export default {
       })
     },
     onSubmit(){
+        this.dato.seguro=this.seguro.r.id
       this.$q.loading.show()
       this.$axios.post(process.env.API+'/paciente',this.dato).then(res=>{
         this.dato={}
@@ -2570,6 +2589,7 @@ export default {
         window.open("https://api.whatsapp.com/send?phone=591"+props.row.dcelular+"&text="+url, '_blank');
     },
     onMod(){
+      this.dato2.seguro=this.seguro.r.id
       console.log(this.dato2)
       this.$axios.put(process.env.API+'/paciente/'+this.dato2.id,this.dato2).then(res=>{
          this.$q.notify({
