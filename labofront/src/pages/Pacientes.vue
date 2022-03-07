@@ -466,7 +466,7 @@
             </tr>
         </table>
         <table border="1" style="width: 100%;color: black">
-            <tr class="bg-purpal text-white">
+            <tr class="bg-purple text-white">
                 <th>PRUEBA</th>
                 <th>VALOR</th>
                 <th>REFERENCIA</th>
@@ -521,7 +521,7 @@
                 <td><input placeholder="00" type="text" v-model="sanguinia.d9"   style="width: 100%"></td>
                 <td>2.6-7.2mg/dl</td>
                 <td>Uricasa/Peroxidasa</td>
-                <td class="bg-purpal text-center text-white">LIPIDOGRAMA</td>
+                <td class="bg-purple text-center text-white">LIPIDOGRAMA</td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -571,7 +571,7 @@
                 <td><input placeholder="00" type="text" v-model="sanguinia.d18"   style="width: 100%"></td>
                 <td>10-150UI/L</td>
                 <td>Enzimatica Colorimetrica</td>
-                <td class="bg-purpal text-center text-white">ELECTROLITOS</td>
+                <td class="bg-purple text-center text-white">ELECTROLITOS</td>
                 <td></td>
                 <td></td>
                 <td></td>
