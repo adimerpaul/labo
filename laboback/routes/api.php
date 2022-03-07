@@ -37,6 +37,7 @@ Route::group(['middleware'=>'auth:sanctum'],function (){
 //    Route::resource('/contribuyente',\App\Http\Controllers\ContribuyenteController::class);
     Route::resource('/historial', App\Http\Controllers\HistorialController::class);
     Route::resource('/permiso', App\Http\Controllers\PermisoController::class);
+    Route::resource('/seguro', App\Http\Controllers\SeguroController::class);
     Route::apiResource('/user', App\Http\Controllers\UserController::class);
     Route::post('/estado/{user}', [App\Http\Controllers\UserController::class, 'estado']);
     Route::post('/listuser', [App\Http\Controllers\UserController::class, 'listuser']);

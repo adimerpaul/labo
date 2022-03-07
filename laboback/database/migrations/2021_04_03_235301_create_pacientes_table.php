@@ -20,10 +20,10 @@ class CreatePacientesTable extends Migration
             $table->string('paterno')->nullable();
             $table->string('materno')->nullable();
             $table->date('fechanac');
-//            $table->string('requerido');
             $table->string('sexo');
             $table->string('celular')->nullable();
-//            $table->string('tipomuestra');
+            $table->unsignedBigInteger('seguro_id');
+            $table->foreign('seguro_id')->references('id')->on('seguros');
             $table->timestamps();
         });
     }

@@ -49,7 +49,7 @@ class SerologiaController extends Controller
     }
 
     public function generar($id){
-        $row= serologia::with('paciente')
+        $row= Serologia::with('paciente')
             ->with('user')
             ->with('doctor')
         ->where('id',$id)
@@ -71,7 +71,7 @@ font-size: 11px;
 </style>
             <table style="padding-left:10px;padding-right:15px;width: 100%;color: black;padding-top: 5px">
             <tr >
-                <td rowspan="3" ><img src="./img/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 1.5cm; "></td>
+                <td rowspan="3" ><img src="./img/natividad.jpeg" alt="Logo Clinica" style="height: 1.5cm; "></td>
                 <td style=" text-align:center; color:darkblue">SERVICIO DE LABORATORIO </td>
             </tr>
             <tr>
@@ -123,7 +123,7 @@ font-size: 11px;
                 <td class="tdx" style="text-align:center; color:red;" >lgM</td>
                 <td class="tdx" style="text-align:center">'.$row->lgm.'</td>
                 <td class="tdx" style="text-align:center">'.$row->d1.'</td>
-                <td class="tdx"  style="text-align:center;color:blue"> menor a 0.9 NEGATIVO PARA lgG/lgM</td>
+                <td class="tdx"  style="text-align:center;color:blue"> menor a 0.9 NEGATIVO PARA lgG/lgM </td>
             </tr>
             <tr>
                 <td class="tdx"></td>
@@ -135,7 +135,7 @@ font-size: 11px;
                 <td class="tdx" style="text-align:center; color:red;" >lgG</td>
                 <td class="tdx" style="text-align:center">'.$row->lgg.'</td>
                 <td class="tdx" style="text-align:center">'.$row->d2.'</td>
-                <td class="tdx" style="text-align:center;color:blue"> mayor igual 1.1 POSITIVO lgG/lgM</td>
+                <td class="tdx" style="text-align:center;color:blue"> mayor igual 1.1 POSITIVO lgG/lgM </td>
             </tr>
 
             </tr>
@@ -149,26 +149,26 @@ font-size: 11px;
                 <td class="tdx">COMENTARIO</td>
             </tr>
             <tr style="text-align:center">
-                <td class="tdx"><img src="./img/resta.png" alt="negativo" srcset="" style="height: 0.5cm; width:0.5cm;"></td>
-                <td class="tdx"><img src="./img/resta.png" alt="negativo" srcset="" style="height: 0.5cm; width:0.5cm;"></td>
+                <td class="tdx"><img src="./img/resta.JPEG" alt="negativo"  style="height: 0.5cm; width:0.5cm;"></td>
+                <td class="tdx"><img src="./img/resta.JPEG" alt="negativo"  style="height: 0.5cm; width:0.5cm;"></td>
                 <td class="tdx">Ausencia de la Enfermedad o Falso Negativo</td>
                 <td class="tdx">Paciente en fase de evolucion de la enfermedad mayor de 21 dias</td>
             </tr>
             <tr style="text-align:center">
-                <td class="tdx"><img src="./img/suma.png" alt="positivo" srcset="" style="height: 0.5cm; width:0.5cm;"></td>
-                <td class="tdx"><img src="./img/resta.png" alt="negativo" srcset="" style="height: 0.5cm; width:0.5cm;"></td>
+                <td class="tdx"><img src="./img/suma.JPEG" alt="positivo"  style="height: 0.5cm; width:0.5cm;"></td>
+                <td class="tdx"><img src="./img/resta.JPEG" alt="negativo"  style="height: 0.5cm; width:0.5cm;"></td>
                 <td class="tdx">Inicio Temprano de ka Enfermedad Infeccion Aguda de la Enfermedad</td>
                 <td class="tdx">Se debe repetir dentro de 5 a 7 dias la prueba</td>
             </tr>
             <tr style="text-align:center">
-                <td class="tdx"><img src="./img/suma.png" alt="positivo" srcset="" style="height: 0.5cm; width:0.5cm;"></td>
-                <td class="tdx"><img src="./img/suma.png" alt="positivo" srcset="" style="height: 0.5cm; width:0.5cm;"></td>
+                <td class="tdx"><img src="./img/suma.JPEG" alt="positivo" style="height: 0.5cm; width:0.5cm;"></td>
+                <td class="tdx"><img src="./img/suma.JPEG" alt="positivo" style="height: 0.5cm; width:0.5cm;"></td>
                 <td class="tdx">Fase activa de la Enfermedad</td>
                 <td class="tdx">Correlacionar con clinica del paciente y realizar examenes complementarios (Rayos X, Tomografia)</td>
             </tr>
             <tr style="text-align:center">
-                <td class="tdx"><img src="./img/resta.png" alt="negativo" srcset="" style="height: 0.5cm; width:0.5cm;"></td>
-                <td class="tdx"><img src="./img/suma.png" alt="positivo" srcset="" style="height: 0.5cm; width:0.5cm;"></td>
+                <td class="tdx"><img src="./img/resta.JPEG" alt="negativo" style="height: 0.5cm; width:0.5cm;"></td>
+                <td class="tdx"><img src="./img/suma.JPEG" alt="positivo" style="height: 0.5cm; width:0.5cm;"></td>
                 <td class="tdx">Inmunidad Fase final de la Infeccion Infeccion pasada y curada</td>
                 <td class="tdx">Paciente en fase de evolucion de la enfermedad mayor a 21 dias</td>
             </tr>
@@ -214,11 +214,8 @@ font-size: 11px;
                 <span style="color:black">'.date('Y-m-d').'</span>
             </td>
         </tr>
-        </table>
-
-            ';
+        </table>';
         $pdf = App::make('dompdf.wrapper');
-//        $customPaper = array(0,0,360,360);
         $pdf->setPaper('letter');
         $pdf->loadHTML($cadena);
         return $pdf->stream();
