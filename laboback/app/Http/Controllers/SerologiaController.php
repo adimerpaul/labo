@@ -55,6 +55,24 @@ class SerologiaController extends Controller
         ->where('id',$id)
         ->get();
         $row=$row[0];
+        $cdlgm1='';
+        $cdlgm2='';
+        $cdop1='';
+        $cdop2='';
+        $cd1='';
+        $cd2='';
+        if(floatval($row->lgm) < 0.9) $cd1='color:#ff726f;';
+        if(floatval($row->lgm) >= 0.9 && floatval($row->lgm) < 1.1)
+        {$cd1='color:#ff726f;';
+            $cdlgm2=floatval($row->lgm).'';
+            $cdop2=$row->d1;
+        }
+        else
+        {
+            $cdlgm1=floatval($row->lgm).'';
+            $cdop1=$row->d1;
+        }
+        if($row->lgg < 1.1) $cd2='color:#ff726f;';
 
         $cadena='
         <style>
@@ -118,23 +136,23 @@ font-size: 11px;
             <tr>
                 <td class="tdx" colspan="3" style="text-align: center ;color: blue;font-weight: bold">METODO: INMUNOENSAYO DE FLUORECENCIA (FIA)</td>
                 <td class="tdx"  style="text-align: center ;color: red;font-weight: bold">Valor de Referencia</td>
-            </tr>   
+            </tr>
             <tr>
                 <td class="tdx" style="text-align:center; color:red;" >lgM</td>
-                <td class="tdx" style="text-align:center">'.$row->lgm.'</td>
-                <td class="tdx" style="text-align:center">'.$row->d1.'</td>
+                <td class="tdx" style="text-align:center">'.$cdlgm1.'</td>
+                <td class="tdx" style="text-align:center;'.$cd1.'">'.$cdop1.'</td>
                 <td class="tdx"  style="text-align:center;color:blue"> menor a 0.9 NEGATIVO PARA lgG/lgM </td>
             </tr>
             <tr>
                 <td class="tdx"></td>
-                <td class="tdx"></td>
-                <td class="tdx"></td>
+                <td class="tdx" style="text-align:center">'.$cdlgm2.'</td>
+                <td class="tdx" style="text-align:center;'.$cd1.'">'.$cdop2.'</td>
                 <td class="tdx" style="text-align:center;color:blue"> 0.9 menor igual & mayor 1.1 INDETERMINADO </td>
             </tr>
             <tr>
                 <td class="tdx" style="text-align:center; color:red;" >lgG</td>
                 <td class="tdx" style="text-align:center">'.$row->lgg.'</td>
-                <td class="tdx" style="text-align:center">'.$row->d2.'</td>
+                <td class="tdx" style="text-align:center;'.$cd2.'">'.$row->d2.'</td>
                 <td class="tdx" style="text-align:center;color:blue"> mayor igual 1.1 POSITIVO lgG/lgM </td>
             </tr>
 
@@ -204,7 +222,7 @@ font-size: 11px;
             </tr>
             <tr>
                 <td class="tdx" colspan="2" style="color: darkblue;font-weight: bold">
-                    HORA DE TOMA DE MUESTRAS: 
+                    HORA DE TOMA DE MUESTRAS:
                     <span style="color:black">'.$row->horatoma.'</span>
                 </td>
             </tr>
