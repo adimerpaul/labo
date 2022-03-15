@@ -39,7 +39,7 @@ class InventarioController extends Controller
     public function store(Request $request)
     {
         //
-        DB::SELECT("UPDATE inventarios set estado='INACTIVO'");
+        DB::SELECT("UPDATE inventarios set estado='INACTIVO' where reactivo_id=$request->reactivo_id");
         $inventario=new Inventario;
         $inventario->fecha=$request->fecha;
         $inventario->fechavencimiento=$request->fechavencimiento;
@@ -110,6 +110,6 @@ class InventarioController extends Controller
 
     public function fvencido(){
         $fec=date('Y-m-d');
-        return DB::SELECT("UPDATE inventarios set estado='INACTIVO' where estado='ACTIVO' and date(fechavencimiento) > '$fec' or saldo<=0");
+        return DB::SELECT("UPDATE inventarios set estado='INACTIVO' where estado='ACTIVO' and date(fechavencimiento) < '$fec' or saldo<=0");
     }
 }
