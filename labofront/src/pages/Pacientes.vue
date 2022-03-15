@@ -1916,7 +1916,7 @@
                 seria visible en la ventana de resultados si los antigenos del SARS-CoV-2 estan presentes en la muestra. <br><br>
                 Funciona mejor en la etapa inicial con una <span style="color:red">CARGA VIRAL ALTA</span> y sintomalogia hasta los 10 dias.<br>
                 Los resultados <span style="color:red">Negativos</span> indica ausencia de Antigenos detectables de SARS-CoV-2 y cuando la carga viral o la cantidad de antigeno presente se encuentra debajo del limite de deteccion.<br><br>
-                Los resultados <span style="color:red">Psitivos</span> no diferencian entre SARS-COV y SARS-COV-2
+                Los resultados <span style="color:red">Positivos</span> no diferencian entre SARS-COV y SARS-COV-2
 
                 </td>
             </tr>
@@ -2217,7 +2217,7 @@ export default {
               res.data.forEach(r => {
                   this.seguros.push({label:r.nombre,r});
               });
-              
+
           })
 
       },

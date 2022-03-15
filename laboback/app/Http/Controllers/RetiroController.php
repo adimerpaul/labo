@@ -48,11 +48,15 @@ class RetiroController extends Controller
         $retiro->reactivo_id=$request->reactivo_id;
         $retiro->user_id=Auth::user()->id;
         $retiro->save();
+
         $inventario=Inventario::find($request->inventario_id);
-        if($inventario->saldo < $request->egreso)
-            $inventario->saldo=0;   
+        if($inventario->saldo <= $request->egreso)
+        {
+            $inventario->saldo=0;
+            $inventario->estado='INACTIVO';
+        }
         else
-            $inventario->saldo-=$request->egreso;
+            $inventario->saldo=$inventario->saldo - $request->egreso;
         $inventario->save();
         return $retiro;
     }
@@ -74,16 +78,20 @@ class RetiroController extends Controller
      * @param  \App\Models\Retiro  $retiro
      * @return \Illuminate\Http\Response
      */
-    
+
     public function listretiro(Request $request)
     {
         //
         //return Retiro::where('inventario_id',$request->id)->get();
-        return DB::select("select id,inventario_id ,fecharetiro as fecha, null as fechavencimiento,'' as marca,'' as lote, '' as ingreso,'' as saldo,egreso, observacion from retiros where inventario_id=$request->id");
+        return DB::select("SELECT id,inventario_id ,fecharetiro as fecha, null as fechavencimiento,'' as marca,'' as lote, '' as ingreso,'' as saldo,egreso, observacion from retiros where inventario_id=$request->id");
     }
     public function edit(Retiro $retiro)
     {
         //
+    }
+
+    public function invent(Request $request){
+        return DB::SELECT("SELECT * from inventarios where estado='ACTIVO' and reactivo_id=$request->reactivo_id");
     }
 
     /**
@@ -108,4 +116,5 @@ class RetiroController extends Controller
     {
         //
     }
+
 }

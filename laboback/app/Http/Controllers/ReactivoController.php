@@ -6,6 +6,7 @@ use App\Models\Reactivo;
 use App\Models\Inventario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ReactivoController extends Controller
 {
@@ -16,7 +17,7 @@ class ReactivoController extends Controller
      */
     public function index()
     {
-        return $reactivos=Reactivo::with('inventarios')->get();
+        return Reactivo::with('inventarios')->get();
     }
 
     /**
@@ -30,6 +31,8 @@ class ReactivoController extends Controller
         $reactivo=new Reactivo;
         $reactivo->codigo=$request->codigo;
         $reactivo->nombre=strtoupper($request->nombre);
+        $reactivo->unidad=strtoupper($request->unidad);
+        $reactivo->minimo=$request->minimo;
         $reactivo->user_id=Auth::user()->id;
         return $reactivo->save();
     }
@@ -61,9 +64,11 @@ class ReactivoController extends Controller
     {
         $reactivo=reactivo::find($request->id);
         $reactivo->codigo=$request->codigo;
+        $reactivo->unidad=strtoupper($request->unidad);
+        $reactivo->minimo=$request->minimo;
         $reactivo->nombre=strtoupper($request->nombre);
         return $reactivo->save();
-        
+
 
     }
 
@@ -91,6 +96,73 @@ class ReactivoController extends Controller
 //        return redirect('/reactivos');
     }
     public function caduca(){
-        return $reactivos=Inventario::where('estado','ACTIVO')->whereDate('fechavencimiento','>=',now())->get();
+        $fec=date('Y-m-d', strtotime(date('Y-m-d'). ' + 7 days'));
+        return DB::SELECT("SELECT r.nombre from reactivos r inner join inventarios i on r.id=i.reactivo_id where i.estado='ACTIVO' and date(i.fechavencimiento)>='$fec'");
+
+        //return Inventario::where('estado','ACTIVO')->whereDate('fechavencimiento','>=',$fec)->get();
+    }
+
+    public function minimo(){
+        return DB::SELECT("SELECT r.nombre from reactivos r inner join inventarios i on r.id=i.reactivo_id
+        where i.estado='ACTIVO' and i.saldo<= r.minimo;");
+    }
+
+    public function impresion(Request $request){
+        $inventario =DB::SELECT("SELECT * FROM inventarios where date(fecha)>= $request->fecha");
+        $cadena='
+        <style>
+        table, th, td {
+            border: 1px solid;
+          }
+          table {
+              width:100%;
+            border-collapse: collapse;
+          }
+          </style>
+        <table>
+        <tr>
+        <td colspan=4 rowspan=3><img src="/img/natividad.jpeg" alt="Logo Clinica" style="height: 1.5cm; "/></td>
+        <th colspan=4>KARDEX DE LABORATORIO</th>
+        </tr>
+        <tr><th>REACTIVO</th><td colspan=3>'.$request->reactivo['nombre'].'</td></tr>
+        <tr><th>CODIGO</th><td colspan=3>'.$request->reactivo['codigo'].'</td></tr>
+        <tr>
+        <th>FECHA</th>
+        <th>VENC</th>
+        <th>MARCA</th>
+        <th>LOTE</th>
+        <th>INGRESO</th>
+        <th>EGRESO</th>
+        <th>SALDO</th>
+        <th>OBS</th>
+        </tr>
+        ';
+        foreach ($inventario as $r) {
+            $cadena.="<tr>
+                <td>$r->fecha</td>
+                <td>$r->fechavencimiento</td>
+                <td>$r->marca</td>
+                <td>$r->lote</td>
+                <td>$r->ingreso</td>
+                <td></td>
+                <td></td>
+                <td>$r->observacion</td>
+            </tr>";
+            $retiro=DB::SELECT("SELECT * FROM retiros where inventario_id=$r->id");
+            foreach ($retiro as $t) {
+                $cadena.="<tr>
+                <td>$t->fecharetiro</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>$t->egreso</td>
+                <td>".intval($r->ingreso) - intval($t->egreso)."</td>
+                <td>$t->observacion</td>
+                </tr>";
+            }
+        }
+        $cadena.="</table>";
+        return $cadena;
     }
 }
