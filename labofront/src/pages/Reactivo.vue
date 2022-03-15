@@ -467,13 +467,20 @@ export default {
       }).onOk(data => {
         if(data) {
           this.$axios.post(process.env.API+'/impresion',{reactivo:this.reactivo,fecha:data}).then(res=>{
-            console.log(res.data)
-                    let myWindow = window.open("", "Imprimir", "width=1000,height=1000");
-        myWindow.document.write(res.data);
+            let cad=" <html><style> table, th, td {border: 1px solid;} table { width:100%; border-collapse: collapse;} </style><body>"
+                cad+='<table><tr><td colspan=4 rowspan=3><img src="img/natividad.jpeg" style="height: 1.5cm;"></td><th colspan=4>KARDEX DE LABORATORIO</th></tr>';
+                cad+="<tr><th>REACTIVO</th><td colspan=3>"+this.reactivo.nombre+"</td></tr>";
+                cad+="<tr><th>CODIGO</th><td colspan=3>"+this.reactivo.codigo+"</td></tr>";
+                cad+=res.data;
+            console.log(cad)
+        let myWindow = window.open("", "Imprimir", "width=1000,height=500");
+        myWindow.document.write(cad);
         myWindow.document.close();
-            myWindow.focus();
-            myWindow.print();
-            myWindow.close();
+        myWindow.focus();
+        setTimeout(function(){
+          myWindow.print();
+          myWindow.close();
+        },500);
           })
         }
       }).onCancel(() => {

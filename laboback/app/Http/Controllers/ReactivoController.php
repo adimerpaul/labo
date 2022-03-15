@@ -110,22 +110,6 @@ class ReactivoController extends Controller
     public function impresion(Request $request){
         $inventario =DB::SELECT("SELECT * FROM inventarios where date(fecha)>= $request->fecha");
         $cadena='
-        <style>
-        table, th, td {
-            border: 1px solid;
-          }
-          table {
-              width:100%;
-            border-collapse: collapse;
-          }
-          </style>
-        <table>
-        <tr>
-        <td colspan=4 rowspan=3><img src="/img/natividad.jpeg" alt="Logo Clinica" style="height: 1.5cm; "/></td>
-        <th colspan=4>KARDEX DE LABORATORIO</th>
-        </tr>
-        <tr><th>REACTIVO</th><td colspan=3>'.$request->reactivo['nombre'].'</td></tr>
-        <tr><th>CODIGO</th><td colspan=3>'.$request->reactivo['codigo'].'</td></tr>
         <tr>
         <th>FECHA</th>
         <th>VENC</th>
@@ -162,7 +146,7 @@ class ReactivoController extends Controller
                 </tr>";
             }
         }
-        $cadena.="</table>";
+        $cadena.="</table></body></html>";
         return $cadena;
     }
 }
