@@ -161,54 +161,27 @@
             @submit="onRegistro"
             class="q-gutter-md"
           >
-            <q-input
-              filled
-              v-model="dato2.nombre"
-              label="codigo"
-              hint="codigo"
-              readonly
-            />
-            <q-input
-              filled
-              v-model="invent.marca"
-              label="Marca "
-              hint="Ingresar marca "
-              lazy-rules
-              :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']"
-            />
-            <q-input
-              filled
-              v-model="invent.lote"
-              label="Lote "
-              hint="Ingresar lote "
-              lazy-rules
-              :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']"
-            />
-            <q-input
-              filled
-              v-model="invent.ingreso"
-              label="Ingreso "
-              hint="Ingresar cantidad "
-              lazy-rules
-              :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']"
-            />
-            <q-input
-              filled
-              v-model="invent.observacion"
-              label="Observacion "
-              hint="Ingresar dato "
-              lazy-rules
-              :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']"
-            />
-            <q-input
-              filled
-              type="date"
-              v-model="invent.fechavencimiento"
-              label="Fecha Vencimiento  "
-              hint="Ingresar dato "
-              lazy-rules
-              :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']"
-            />
+            <q-input filled v-model="dato2.nombre" label="codigo" hint="codigo" readonly />
+          <div class="row">
+          <div class="col-md-6 col-sm-12">
+          <q-input filled v-model="invent.marca" label="Marca " hint="Ingresar marca " lazy-rules :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']"/>
+          </div>
+          <div class="col-md-6 col-sm-12">
+          
+            <q-input filled v-model="invent.lote" label="Lote " hint="Ingresar lote " lazy-rules :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']" />
+          </div>
+          </div>
+            
+            <q-input filled v-model="invent.ingreso" label="Ingreso " hint="Ingresar cantidad " type="number" lazy-rules :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']" />
+            <q-input filled v-model="invent.observacion" label="Observacion " hint="Ingresar dato " lazy-rules :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']" />
+                      <div class="row">
+          <div class="col-md-6 col-sm-12">
+            <q-input filled type="date" v-model="invent.fechavencimiento" label="Fecha Vencimiento  " hint="Ingresar dato " lazy-rules :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']" />
+          </div>
+          <div class="col-md-6 col-sm-12">
+            <q-input filled type="date" v-model="invent.fecha" label="Fecha Reg" hint="Ingresar dato " lazy-rules :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']" />
+          </div>
+          </div>
 
             <div>
               <q-btn label="Registrar" type="submit" color="positive" icon="add_circle"/>
@@ -253,6 +226,14 @@
             @submit="onRetiro"
             class="q-gutter-md"
           >
+                      <q-input
+              filled
+              v-model="retiro.fecha"
+              label="Fecha Reg"
+              type="date"
+              lazy-rules
+              :rules="[ val =>  val.length > 0 || 'Por favor fecha ']"
+            />
             <q-input
               filled
               v-model="retiro.egreso"
@@ -286,6 +267,7 @@
 </template>
 
 <script>
+import {date} from 'quasar'
 export default {
   data(){
     return{
@@ -293,7 +275,7 @@ export default {
       rows:[],
       dato:{},
       dato2:{},
-      invent:{},
+      invent:{fechavencimiento:date.formatDate(Date.now(),'YYYY-MM-DD'),fecha:date.formatDate(Date.now(),'YYYY-MM-DD')},
       alert:false,
       dialog_mod:false,
       dialog_reg:false,
@@ -301,7 +283,7 @@ export default {
       dialog_retiro:false,
       inventarios:[],
       inventario:{},
-      retiro:{},
+      retiro:{fecha:date.formatDate(Date.now(),'YYYY-MM-DD')},
       reactivo:{},
       columns:[
         { name: 'codigo', label: 'CODIGO', field: 'codigo'},
@@ -403,6 +385,7 @@ export default {
           color: 'green'
         })
         this.dialog_retiro=false;
+        this.retiro={fecha:date.formatDate(Date.now(),'YYYY-MM-DD')}
       })
 
     },
@@ -528,7 +511,8 @@ export default {
           message: 'Registrado correctamente!'
         });
         this.dialog_reg=false;
-        this.invent={};
+        this.invent={fechavencimiento:date.formatDate(Date.now(),'YYYY-MM-DD'),fecha:date.formatDate(Date.now(),'YYYY-MM-DD')};
+        
         this.listado();
      })
     },
