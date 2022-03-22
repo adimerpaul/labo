@@ -11,6 +11,9 @@ class Reactivo extends Model
     protected $fillable=[
         'nombre',
         'codigo',
+        'minimo',
+        'unidad',
+        'stock',
         'estado',
         'user_id'
     ];

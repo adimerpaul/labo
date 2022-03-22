@@ -241,7 +241,7 @@
               hint="Cantidad"
               type="number"
               lazy-rules
-              :rules="[ val => val>0 && val <= inventario.saldo || 'Por favor cantidad ']"
+              :rules="[ val => val>0 && val <= reactivo.stock || 'Por favor cantidad ']"
             />
 
             <q-input
@@ -289,6 +289,7 @@ export default {
         { name: 'codigo', label: 'CODIGO', field: 'codigo'},
         { name: 'nombre', label: 'NOMBRE', field: 'nombre'},
         { name: 'unidad', label: 'UNIDAD', field: 'unidad'},
+        { name: 'stock', label: 'STOCK', field: 'stock'},
         { name: 'minimo', label: 'MINIMO', field: 'minimo'},
         { name: 'activo', label: 'ESTADO', field: 'activo',align:"center"},
         { name: 'opcion', label: 'OPCION', field: 'opcion'},
@@ -297,7 +298,7 @@ export default {
       columns2:[
         { name: 'marca', label: 'MARCA', field: 'marca'},
         { name: 'lote', label: 'LOTE', field: 'lote'},
-        { name: 'saldo', label: 'SALDO', field: 'saldo'},
+        { name: 'ingreso', label: 'INGRESO', field: 'ingreso'},
         { name: 'fechavencimiento', label: 'FEC VENC', field: 'fechavencimiento'},
         { name: 'observacion', label: 'OBSERVACION', field: 'observacion'},
         { name: 'estado', label: 'ESTADO', field: 'estado'},
@@ -326,22 +327,7 @@ export default {
   methods: {
     labRow(props){
       this.reactivo=props.row;
-      this.$axios.post(process.env.API+'/invent',{'reactivo_id':this.reactivo.id}).then(res=>{
-        console.log(res.data)
-        if(res.data.length!=1)
-        {
-        this.$q.notify({
-          color: 'red-8',
-          textColor: 'white',
-          icon: 'report',
-          message: 'NO ESTA ACTIVO'
-        });
-        return false
-        }
-        this.inventario=res.data[0]
-              console.log(this.inventario)
       this.dialog_retiro=true;
-      })
 
     },
     baja(){
@@ -450,6 +436,8 @@ export default {
       }).onOk(data => {
         if(data) {
           this.$axios.post(process.env.API+'/impresion',{reactivo:this.reactivo,fecha:data}).then(res=>{
+            console.log(res.data)
+            //return false
             let cad=" <html><style> table, th, td {border: 1px solid;} table { width:100%; border-collapse: collapse;} </style><body>"
                 cad+='<table><tr><td colspan=4 rowspan=3><img src="img/natividad.jpeg" style="height: 1.5cm;"></td><th colspan=4>KARDEX DE LABORATORIO</th></tr>';
                 cad+="<tr><th>REACTIVO</th><td colspan=3>"+this.reactivo.nombre+"</td></tr>";

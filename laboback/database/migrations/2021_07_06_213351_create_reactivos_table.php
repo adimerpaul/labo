@@ -19,6 +19,7 @@ class CreateReactivosTable extends Migration
             $table->string('codigo')->unique();
             $table->string('unidad');
             $table->integer('minimo')->default(1);
+            $table->integer('stock')->default(0);
             $table->tinyInteger('activo')->default(1);
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');

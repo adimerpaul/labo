@@ -97,18 +97,18 @@ class ReactivoController extends Controller
     }
     public function caduca(){
         $fec=date('Y-m-d', strtotime(date('Y-m-d'). ' + 7 days'));
-        return DB::SELECT("SELECT r.nombre from reactivos r inner join inventarios i on r.id=i.reactivo_id where i.estado='ACTIVO' and date(i.fechavencimiento)>='$fec'");
+        return DB::SELECT("SELECT r.nombre from reactivos r inner join inventarios i on r.id=i.reactivo_id where i.estado='ACTIVO' and date(i.fechavencimiento)<='$fec'");
 
         //return Inventario::where('estado','ACTIVO')->whereDate('fechavencimiento','>=',$fec)->get();
     }
 
     public function minimo(){
-        return DB::SELECT("SELECT r.nombre from reactivos r inner join inventarios i on r.id=i.reactivo_id
-        where i.estado='ACTIVO' and i.saldo<= r.minimo;");
+        return DB::SELECT("SELECT nombre from reactivos where stock <= minimo");
     }
 
     public function impresion(Request $request){
-        $inventario =DB::SELECT("SELECT * FROM inventarios where date(fecha)>= $request->fecha");
+        $resultado=DB::SELECT("(SELECT id,fecha, fechavencimiento, marca, lote, ingreso, saldo,0 as egreso, observacion from inventarios where reactivo_id=".$request->reactivo['id']." and fecha>='$request->fecha') union (SELECT id,fecharetiro as fecha, null as fechavencimiento,'' as marca,'' as lote, 0 as ingreso,0 as saldo,egreso,observacion from retiros where reactivo_id=".$request->reactivo['id']." and fecharetiro>='$request->fecha' ) order by fecha");
+
         $cadena='
         <tr>
         <th>FECHA</th>
@@ -121,30 +121,19 @@ class ReactivoController extends Controller
         <th>OBS</th>
         </tr>
         ';
-        foreach ($inventario as $r) {
+            $total=0;
+            foreach ($resultado as $r) {
+                $total=$total + $r->saldo + $r->ingreso - $r->egreso;
             $cadena.="<tr>
                 <td>$r->fecha</td>
                 <td>$r->fechavencimiento</td>
                 <td>$r->marca</td>
                 <td>$r->lote</td>
                 <td>$r->ingreso</td>
-                <td></td>
-                <td></td>
+                <td>$r->egreso</td>
+                <td>$total</td>
                 <td>$r->observacion</td>
             </tr>";
-            $retiro=DB::SELECT("SELECT * FROM retiros where inventario_id=$r->id");
-            foreach ($retiro as $t) {
-                $cadena.="<tr>
-                <td>$t->fecharetiro</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>$t->egreso</td>
-                <td>".intval($r->ingreso) - intval($t->egreso)."</td>
-                <td>$t->observacion</td>
-                </tr>";
-            }
         }
         $cadena.="</table></body></html>";
         return $cadena;

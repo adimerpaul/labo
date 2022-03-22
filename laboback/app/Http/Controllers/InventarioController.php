@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Inventario;
+use App\Models\Reactivo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -39,18 +40,23 @@ class InventarioController extends Controller
     public function store(Request $request)
     {
         //
-        DB::SELECT("UPDATE inventarios set estado='INACTIVO' where reactivo_id=$request->reactivo_id");
+        $reactivo=Reactivo::find($request->reactivo_id);
+        $anterior=$reactivo->stock;
+        $reactivo->stock=intval($reactivo->stock) + intval($request->ingreso);
+        $reactivo->save();
+
         $inventario=new Inventario;
         $inventario->fecha=$request->fecha;
         $inventario->fechavencimiento=$request->fechavencimiento;
         $inventario->marca=$request->marca;
         $inventario->lote=$request->lote;
         $inventario->ingreso=$request->ingreso;
-        $inventario->saldo=$request->ingreso;
+        $inventario->saldo= $anterior;
         $inventario->observacion=$request->observacion;
         $inventario->reactivo_id=$request->reactivo_id;
         $inventario->user_id=Auth::user()->id;
-        return $inventario->save();
+        $inventario->save();
+
 
 
     }
@@ -110,6 +116,6 @@ class InventarioController extends Controller
 
     public function fvencido(){
         $fec=date('Y-m-d');
-        return DB::SELECT("UPDATE inventarios set estado='INACTIVO' where estado='ACTIVO' and date(fechavencimiento) < '$fec' or saldo<=0");
+        return DB::SELECT("UPDATE inventarios set estado='INACTIVO' where estado='ACTIVO' and date(fechavencimiento) < '$fec' ");
     }
 }

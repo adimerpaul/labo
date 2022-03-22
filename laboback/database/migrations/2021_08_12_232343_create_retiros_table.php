@@ -20,8 +20,6 @@ class CreateRetirosTable extends Migration
             $table->string('observacion')->nullable();
             $table->unsignedBigInteger('reactivo_id');
             $table->foreign('reactivo_id')->references('id')->on('reactivos');
-            $table->unsignedBigInteger('inventario_id');
-            $table->foreign('inventario_id')->references('id')->on('inventarios');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
