@@ -107,7 +107,7 @@ class ReactivoController extends Controller
     }
 
     public function impresion(Request $request){
-        $resultado=DB::SELECT("(SELECT id,fecha, fechavencimiento, marca, lote, ingreso, saldo,0 as egreso, observacion from inventarios where reactivo_id=".$request->reactivo['id']." and fecha>='$request->fecha') union (SELECT id,fecharetiro as fecha, null as fechavencimiento,'' as marca,'' as lote, 0 as ingreso,0 as saldo,egreso,observacion from retiros where reactivo_id=".$request->reactivo['id']." and fecharetiro>='$request->fecha' ) order by fecha");
+        $resultado=DB::SELECT("(SELECT id,fecha, fechavencimiento, marca, lote, ingreso, saldo,0 as egreso, observacion,created_at from inventarios where reactivo_id=".$request->reactivo['id']." and fecha>='$request->fecha') union (SELECT id,fecharetiro as fecha, null as fechavencimiento,'' as marca,'' as lote, 0 as ingreso,0 as saldo,egreso,observacion,created_at from retiros where reactivo_id=".$request->reactivo['id']." and fecharetiro>='$request->fecha' ) order by created_at asc");
 
         $cadena='
         <tr>
@@ -123,7 +123,7 @@ class ReactivoController extends Controller
         ';
             $total=0;
             foreach ($resultado as $r) {
-                $total=$total + $r->saldo + $r->ingreso - $r->egreso;
+                $total=$total + $r->ingreso - $r->egreso;
             $cadena.="<tr>
                 <td>$r->fecha</td>
                 <td>$r->fechavencimiento</td>

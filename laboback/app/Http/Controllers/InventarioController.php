@@ -41,8 +41,8 @@ class InventarioController extends Controller
     {
         //
         $reactivo=Reactivo::find($request->reactivo_id);
-        $anterior=$reactivo->stock;
         $reactivo->stock=intval($reactivo->stock) + intval($request->ingreso);
+        $anterior=$reactivo->stock;
         $reactivo->save();
 
         $inventario=new Inventario;
