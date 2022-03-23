@@ -12,7 +12,6 @@ class Retiro extends Model
         'fecharetiro',
         'egreso',
         'observacion',
-        'inventario_id',
         'reactivo_id',
         'user_id',
     ];
