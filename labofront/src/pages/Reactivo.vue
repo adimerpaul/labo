@@ -210,7 +210,7 @@
           </q-td>
       </template>
       <template v-slot:body-cell-opcion="props">
-      <q-td key="opcion" :props="props" style="text-align:center">
+      <q-td key="opcion" :props="props" style="text-align:center" v-if="props.row.saldo>0">
               <q-btn  dense round flat color="teal" @click="retirarRow(props)" icon="science"></q-btn>
 
       </q-td>
