@@ -45,11 +45,12 @@ class RetiroController extends Controller
         $retiro->fecharetiro=$request->fecha;
         $retiro->egreso=$request->egreso;
         $retiro->observacion=$request->observacion;
+        $retiro->inventario_id=$request->inventario_id;
         $retiro->reactivo_id=$request->reactivo_id;
         $retiro->user_id=Auth::user()->id;
         $retiro->save();
 
-        /*$inventario=Inventario::find($request->inventario_id);
+        $inventario=Inventario::find($request->inventario_id);
         if($inventario->saldo <= $request->egreso)
         {
             $inventario->saldo=0;
@@ -57,7 +58,8 @@ class RetiroController extends Controller
         }
         else
             $inventario->saldo=$inventario->saldo - $request->egreso;
-        $inventario->save();*/
+        $inventario->save();
+        
         $reactivo=Reactivo::find($request->reactivo_id);
         $reactivo->stock= intval($reactivo->stock) - intval($request->egreso);
         $reactivo->save();

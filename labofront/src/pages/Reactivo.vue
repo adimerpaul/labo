@@ -90,7 +90,6 @@
           <q-td key="opcion" :props="props" v-if="props.row.activo">
               <q-btn  dense round flat color="green" @click="invRow(props)" icon="inventory_2"></q-btn>
               <q-btn  dense round flat color="accent" @click="retRow(props)" icon="receipt"></q-btn>
-              <q-btn  dense round flat color="teal" @click="labRow(props)" icon="science"></q-btn>
               <q-btn  dense round flat color="yellow" @click="editRow(props)" icon="edit"></q-btn>
               <q-btn  dense round flat color="red" @click="deleteRow(props)" icon="delete"></q-btn>
               <q-btn  dense round flat color="info" @click="printRow(props)" icon="print"></q-btn>
@@ -210,6 +209,12 @@
               </q-badge>
           </q-td>
       </template>
+      <template v-slot:body-cell-opcion="props">
+      <q-td key="opcion" :props="props" style="text-align:center">
+              <q-btn  dense round flat color="teal" @click="retirarRow(props)" icon="science"></q-btn>
+
+      </q-td>
+      </template>
 
         </q-table>
         </q-card-section>
@@ -241,7 +246,7 @@
               hint="Cantidad"
               type="number"
               lazy-rules
-              :rules="[ val => val>0 && val <= reactivo.stock || 'Por favor cantidad ']"
+              :rules="[ val => val>0 && val <= inventario.saldo || 'Por favor cantidad ']"
             />
 
             <q-input
@@ -299,9 +304,11 @@ export default {
         { name: 'marca', label: 'MARCA', field: 'marca'},
         { name: 'lote', label: 'LOTE', field: 'lote'},
         { name: 'ingreso', label: 'INGRESO', field: 'ingreso'},
+        { name: 'saldo', label: 'SALDO', field: 'saldo'},
         { name: 'fechavencimiento', label: 'FEC VENC', field: 'fechavencimiento'},
         { name: 'observacion', label: 'OBSERVACION', field: 'observacion'},
         { name: 'estado', label: 'ESTADO', field: 'estado'},
+        { name: 'opcion', label: 'OPCION', field: 'opcion'},
       ]
     }
   },
@@ -364,13 +371,15 @@ export default {
     },
     onRetiro(){
       this.retiro.inventario_id=this.inventario.id;
-      this.retiro.reactivo_id=this.reactivo.id;
+      this.retiro.reactivo_id=this.dato2.id;
       this.$axios.post(process.env.API+'/retiro',this.retiro).then(res=>{
                  this.$q.notify({
           message: 'Se Retiro correctamente',
           color: 'green'
         })
+        this.dialog_inv=false;
         this.dialog_retiro=false;
+        this.listado();
         this.retiro={fecha:date.formatDate(Date.now(),'YYYY-MM-DD')}
       })
 

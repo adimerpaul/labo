@@ -13,6 +13,7 @@ class Retiro extends Model
         'egreso',
         'observacion',
         'reactivo_id',
+        'inventario_id',
         'user_id',
     ];
 }
