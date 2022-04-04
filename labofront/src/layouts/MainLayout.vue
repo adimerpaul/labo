@@ -98,15 +98,27 @@
               <!--              <q-item-label caption>Controlar usuarios</q-item-label>-->
             </q-item-section>
           </q-item>
+
+                    <q-item to="seguros"  exact clickable v-ripple v-if="$store.state.login.boolseguro">
+            <q-item-section avatar>
+              <q-icon name="list" />
+            </q-item-section>
+            <q-item-section>
+              <q-item-label> Seguros</q-item-label>
+<!--              <q-item-label caption>Controlar usuarios</q-item-label>-->
+            </q-item-section>
+          </q-item>
+
+          <!--
           <q-item to="porcaducar"  exact clickable v-ripple v-if="$store.state.login.boolporcaducar">
             <q-item-section avatar>
               <q-icon name="list" />
             </q-item-section>
             <q-item-section>
               <q-item-label> Por caducar</q-item-label>
-              <!--              <q-item-label caption>Controlar usuarios</q-item-label>-->
+                          <q-item-label caption>Controlar usuarios</q-item-label>
             </q-item-section>
-          </q-item>
+          </q-item>-->
           <q-item @click="logout"  exact clickable v-ripple v-if="$store.getters['login/isLoggedIn']">
             <q-item-section avatar>
               <q-icon name="logout" />

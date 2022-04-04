@@ -10,5 +10,6 @@ export default function () {
     boolhistorial:false,
     boolreactivo:false,
     boolporcaducar:false,
+    boolseguro:false,
   }
 }

@@ -15,6 +15,7 @@ export function auth_success(state, data){
   state.boolhistorial=data.user.permisos.find(permiso=>permiso.id===4)!=undefined
   state.boolreactivo=data.user.permisos.find(permiso=>permiso.id===5)!=undefined
   state.boolporcaducar=data.user.permisos.find(permiso=>permiso.id===6)!=undefined
+  state.boolseguro=data.user.permisos.find(permiso=>permiso.id===7)!=undefined
 }
 export function   auth_error(state){
   state.status = 'error'
@@ -29,4 +30,5 @@ export function salir(state){
   state.boolhistorial=false
   state.boolreactivo=false
   state.boolporcaducar=false
+  state.boolporseguro=false
 }

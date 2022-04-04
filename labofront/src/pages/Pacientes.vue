@@ -47,8 +47,7 @@
               type="date"
               v-model="dato.fechanac"
               label="Fecha Nac"
-              lazy-rules
-              :rules="[ val => val && val.length > 0 && val<=actual || 'Por favor ingresa datos']"
+
             />
             <q-radio v-model="dato.sexo" val="Masculino" label="Masculino" />
             <q-radio v-model="dato.sexo" val="Femenino" label="Femenino" />
@@ -136,8 +135,6 @@
               type="date"
               v-model="dato2.fechanac"
               label="Fecha Nac"
-              lazy-rules
-              :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']"
             />
             <q-radio v-model="dato2.sexo" val="Masculino" label="Masculino" />
             <q-radio v-model="dato2.sexo" val="Femenino" label="Femenino" />

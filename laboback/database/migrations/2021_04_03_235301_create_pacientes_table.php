@@ -19,7 +19,7 @@ class CreatePacientesTable extends Migration
             $table->string('nombre');
             $table->string('paterno')->nullable();
             $table->string('materno')->nullable();
-            $table->date('fechanac');
+            $table->date('fechanac')->nullable();
             $table->string('sexo');
             $table->string('celular')->nullable();
             $table->unsignedBigInteger('seguro_id');

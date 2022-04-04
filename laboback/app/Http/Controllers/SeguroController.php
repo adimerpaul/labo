@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Seguro;
-use App\Http\Requests\StoreSeguroRequest;
-use App\Http\Requests\UpdateSeguroRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class SeguroController extends Controller
 {
@@ -35,9 +36,12 @@ class SeguroController extends Controller
      * @param  \App\Http\Requests\StoreSeguroRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSeguroRequest $request)
+    public function store(Request $request)
     {
         //
+        $seguro=new Seguro;
+        $seguro->nombre=strtoupper($request->nombre);
+        $seguro->save();
     }
 
     /**
@@ -69,9 +73,12 @@ class SeguroController extends Controller
      * @param  \App\Models\Seguro  $seguro
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSeguroRequest $request, Seguro $seguro)
+    public function update(Request $request, Seguro $seguro)
     {
         //
+        $seguro=Seguro::find($request->id);
+        $seguro->nombre=strtoupper($request->nombre);
+        $seguro->save();
     }
 
     /**
@@ -80,8 +87,10 @@ class SeguroController extends Controller
      * @param  \App\Models\Seguro  $seguro
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Seguro $seguro)
+    public function destroy($id)
     {
         //
+        $seguro=Seguro::find($id);
+        $seguro->delete();
     }
 }
