@@ -201,7 +201,7 @@ class UretralController extends Controller
             ';
         $pdf = App::make('dompdf.wrapper');
 //        $customPaper = array(0,0,360,360);
-        $pdf->setPaper('letter');
+        $pdf->setPaper('legal');
         $pdf->loadHTML($cadena);
         return $pdf->stream();
             }

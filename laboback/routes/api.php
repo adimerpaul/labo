@@ -63,6 +63,7 @@ Route::group(['middleware'=>'auth:sanctum'],function (){
     Route::resource('/reserologia',\App\Http\Controllers\ReserologiaController::class);
     Route::resource('/ensayo',\App\Http\Controllers\EnsayoController::class);
     Route::resource('/inventario',\App\Http\Controllers\InventarioController ::class);
+    Route::resource('/embarazo',\App\Http\Controllers\EmbarazoController ::class);
     Route::post('/fvencido',[\App\Http\Controllers\InventarioController ::class,'fvencido']);
     Route::resource('/retiro',\App\Http\Controllers\RetiroController::class);
     Route::post('/invent',[\App\Http\Controllers\RetiroController::class,'invent']);

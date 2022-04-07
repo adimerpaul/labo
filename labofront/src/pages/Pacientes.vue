@@ -49,6 +49,13 @@
               label="Fecha Nac"
 
             />
+                        <q-input
+              filled
+              type="number"
+              v-model="dato.edad"
+              label="Edad"
+
+            />
             <q-radio v-model="dato.sexo" val="Masculino" label="Masculino" />
             <q-radio v-model="dato.sexo" val="Femenino" label="Femenino" />
             <q-input
@@ -135,6 +142,13 @@
               type="date"
               v-model="dato2.fechanac"
               label="Fecha Nac"
+            />
+
+                        <q-input
+              filled
+              type="number"
+              v-model="dato2.edad"
+              label="Edad"
             />
             <q-radio v-model="dato2.sexo" val="Masculino" label="Masculino" />
             <q-radio v-model="dato2.sexo" val="Femenino" label="Femenino" />
@@ -2103,6 +2117,94 @@
     </q-form>
           </q-tab-panel>
 
+          <q-tab-panel name="embarazo">
+             <q-form @submit.prevent="onEmbarazo">
+
+        <table border="1" style="width: 100%;color: black">
+            <tr>
+                <td colspan="3" style="text-align: center; border:0">PRUEBA RAPIDA INMUNOCROMATOGRAFICA</td>
+                <td>Form. 008</td>
+            </tr>
+            <tr>
+                <td style="color: darkblue">PACIENTE</td>
+                <td>{{dato2.nombre}} {{dato2.paterno}} {{dato2.materno}}</td>
+                <td style="color: darkblue">EDAD</td>
+                <td>{{dato2.edad}}</td>
+            </tr>
+            <tr>
+                <td style="color: darkblue">REQUERIDO POR</td>
+                <td> <q-select dense borderless  :options="doctors" v-model="requerido" style="width:100%"/></td>
+                <td style="color: darkblue">SEXO</td>
+                <td>{{dato2.sexo}}</td>
+            </tr>
+            <tr>
+                <td style="color: darkblue">METODO</td>
+                <td><input type="text" style="width: 100%" v-model="embarazo.tipomuestra" placeholder="metodo" ></td>
+                <td style="color: darkblue">N PACIENTE</td>
+                <td>{{dato2.id}}</td>
+            </tr>
+
+        </table>
+        <br>
+        <table border="1" style="width: 100%;color: black">
+            <tr><td colspan="5" class="text-center text-red">
+                METODO: PRUEBA RAPIDA INMUNOCROMATOGRAFICA
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="3" class="text-center text-blue">TEST EMBARAZO EN SANGRE</td>
+                <td colspan="2" >
+                      <q-radio v-model="embarazo.d1" val="POSITIVO" label="POSITIVO" />
+                      <q-radio v-model="embarazo.d1" val="NEGATIVO" label="NEGATIVO"  />
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="3" class="text-center text-blue">F.U.M.</td>
+                <td colspan="2"><input  type="DATE"  v-model="embarazo.fum" ></td>
+            </tr>
+
+            <tr>
+                <td  colspan="3" class="text-center text-blue">OBSERVACIONES</td>
+                <td colspan="2"><input  type="text"  v-model="embarazo.obs" ></td>
+            </tr>
+
+            <tr >
+                <td colspan="2" rowspan="3" >RESPONSABLE: <q-select borderless dense :options="usuarios" required v-model="embarazo.responsable" style="width:100%"/></td>
+                <td colspan="2">
+                    FECHA DE TOMA DE MUESTRAS
+                </td>
+                <td>
+                    <input placeholder="00" type="date"  style="width: 100%" v-model="embarazo.fechatoma">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    HORA DE TOMA DE MUESTRAS
+                </td>
+                <td>
+                    <input placeholder="00" type="time"  style="width: 100%" name="fechaentrega" v-model="embarazo.horatoma">
+                </td>
+            </tr>            <tr>
+                <td colspan="2">
+
+                    FECHA DE ENTREGA DE MUESTRAS
+                                               </td>
+                <td>
+                    <input placeholder="00" type="date"  style="width: 100%" name="fechaentrega">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    <q-btn type="submit" class="btn btn-success btn-block full-width" color="teal"><i class="fa fa-save"></i> REGISTRAR</q-btn>
+                </td>
+            </tr>
+        </table>
+
+    </q-form>
+          </q-tab-panel>
+
       </q-tab-panels>
         </q-card-section>
                       <q-card-actions align="right" class="text-primary">
@@ -2146,7 +2248,8 @@ export default {
          {value:"serologia"        ,label:"Serologia" },
          {value:"labserologia"        ,label:"Laboratorio Serologia" },
          {value:"reserologia"        ,label:"Resultado Serologia" },
-         {value:"ensayo"        ,label:"Inmunoensayo de Fluorescencia" }
+         {value:"ensayo"        ,label:"Inmunoensayo de Fluorescencia" },
+         {value:"embarazo"        ,label:"Test Embarazo" }
       ],
       hemograma:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'HH:mm')},
       orina:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'HH:mm')},
@@ -2160,6 +2263,7 @@ export default {
       labserologia:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'HH:mm')},
       reserologia:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'HH:mm')},
       ensayo:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'HH:mm')},
+      embarazo:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'HH:mm')},
       ophemograma:[],
       oporina:[],
       opsanguinia:[],
@@ -2172,6 +2276,7 @@ export default {
       oplabserologia:[],
       opreserologia:[],
       opensayo:[],
+      opembarazo:[],
       requerido:{},
       usuarios:[],
       actual:date.formatDate(Date.now(),'YYYY-MM-DD'),
@@ -2241,6 +2346,7 @@ export default {
         this.oplabserologia=[];
         this.opreserologia=[];
         this.opensayo=[];
+        this.opembarzo=[];
           this.$axios.get(process.env.API+'/muestra').then(res=>{
               res.data.forEach(element => {
                   switch (element.formulario) {
@@ -2280,7 +2386,9 @@ export default {
                       case 'ensayo':
                             this.opensayo.push(element.tipomuestra);
                           break;
-
+                      case 'embarazo':
+                            this.opembarzo.push(element.tipomuestra);
+                          break;
                       default:
                           break;
                   }
@@ -2312,6 +2420,7 @@ export default {
         this.labserologia.responsable=this.usuarios[0];
         this.reserologia.responsable=this.usuarios[0];
         this.ensayo.responsable=this.usuarios[0];
+        this.embarazo.responsable=this.usuarios[0];
     },
 
     listado(){
@@ -2523,6 +2632,20 @@ export default {
              color:'green'
             })
             this.ensayo={fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'HH:mm')};
+                this.doctini();
+
+        })
+    },
+                onEmbarazo(){
+        this.$axios.post(process.env.API+'/embarazo',{paciente:this.dato2,doctor:this.requerido.value,embarazo:this.embarazo}).then(res=>{
+          console.log(res.data)
+          this.dialog_lab=false;
+            this.$q.notify({
+              message: 'Registro Realizado',
+              icon: 'done',
+             color:'green'
+            })
+            this.embarazo={fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'HH:mm')};
                 this.doctini();
 
         })

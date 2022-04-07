@@ -43,6 +43,7 @@ class PacienteController extends Controller
         $paciente->nombre=strtoupper($request->nombre);
         $paciente->paterno=strtoupper($request->paterno);
         $paciente->materno=strtoupper($request->materno);
+        $paciente->edad=$request->edad;
         $paciente->fechanac=$request->fechanac;
         $paciente->sexo=$request->sexo;
         $paciente->celular=$request->celular;
@@ -88,6 +89,7 @@ class PacienteController extends Controller
         $paciente->paterno=strtoupper($request->paterno);
         $paciente->materno=strtoupper($request->materno);
         $paciente->fechanac=$request->fechanac;
+        $paciente->edad=$request->edad;
         $paciente->sexo=$request->sexo;
         $paciente->celular=$request->celular;
         $paciente->seguro_id=$request->seguro;
@@ -119,7 +121,9 @@ class PacienteController extends Controller
             SELECT f.id,tipomuestra,fechatoma,'serologia' as formulario , doctors.celular as dcelular FROM serologias f inner join doctors on f.doctor_id=doctors.id WHERE paciente_id='$id' union
             SELECT f.id,tipomuestra,fechatoma,'labserologia' as formulario , doctors.celular as dcelular FROM labserologias f inner join doctors on f.doctor_id=doctors.id WHERE paciente_id='$id' union
             SELECT f.id,tipomuestra,fechatoma,'reserologia' as formulario , doctors.celular as dcelular FROM reserologias f inner join doctors on f.doctor_id=doctors.id WHERE paciente_id='$id' union
-            SELECT f.id,tipomuestra,fechatoma,'ensayo' as formulario , doctors.celular as dcelular FROM ensayos f inner join doctors on f.doctor_id=doctors.id WHERE paciente_id='$id' "
+            SELECT f.id,tipomuestra,fechatoma,'ensayo' as formulario , doctors.celular as dcelular FROM ensayos f inner join doctors on f.doctor_id=doctors.id WHERE paciente_id='$id' union
+            SELECT f.id,tipomuestra,fechatoma,'embarazo' as formulario , doctors.celular as dcelular FROM embarazos f inner join doctors on f.doctor_id=doctors.id WHERE paciente_id='$id' 
+            "
         );
         return $r1;
     }
@@ -138,7 +142,8 @@ class PacienteController extends Controller
             SELECT tipomuestra,'serologia' as formulario FROM serologias group by tipomuestra union
             SELECT tipomuestra,'labserologia' as formulario FROM labserologias group by tipomuestra union
             SELECT tipomuestra,'reserologia' as formulario FROM reserologias group by tipomuestra union
-            SELECT tipomuestra,'ensayo' as formulario FROM ensayos group by tipomuestra"
+            SELECT tipomuestra,'ensayo' as formulario FROM ensayos group by tipomuestra union
+            SELECT tipomuestra,'embarazo' as formulario FROM embarazos group by tipomuestra"
         );
         return $r1;
     }
@@ -164,7 +169,6 @@ class PacienteController extends Controller
             case 'hece':
                 $tabla='heces';
                 break;
-
             case 'simple':
                 $tabla='simples';
                 break;
@@ -182,6 +186,9 @@ class PacienteController extends Controller
                 break;
             case 'ensayo':
                 $tabla='ensayos';
+                break;
+            case 'embarazo':
+                $tabla='embarazos';
                 break;
             default:
                 # code...
@@ -202,7 +209,8 @@ class PacienteController extends Controller
             SELECT count(*) as total,'serologia' as formulario FROM serologias WHERE date(fechatoma)>= '$request->ini' and date(fechatoma)<='$request->fin'  union
             SELECT count(*) as total,'labserologia' as formulario FROM labserologias WHERE date(fechatoma)>= '$request->ini' and date(fechatoma)<='$request->fin'  union
             SELECT count(*) as total,'reserologia' as formulario FROM reserologias WHERE date(fechatoma)>= '$request->ini' and date(fechatoma)<='$request->fin'  union
-            SELECT count(*) as total,'ensayo' as formulario FROM ensayos WHERE date(fechatoma)>= '$request->ini' and date(fechatoma)<='$request->fin'  "
+            SELECT count(*) as total,'ensayo' as formulario FROM ensayos WHERE date(fechatoma)>= '$request->ini' and date(fechatoma)<='$request->fin'  union
+            SELECT count(*) as total,'embarazo' as formulario FROM embarazos WHERE date(fechatoma)>= '$request->ini' and date(fechatoma)<='$request->fin'            "
         );
         return $r1;
     }

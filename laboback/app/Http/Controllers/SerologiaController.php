@@ -234,7 +234,7 @@ font-size: 11px;
         </tr>
         </table>';
         $pdf = App::make('dompdf.wrapper');
-        $pdf->setPaper('letter');
+        $pdf->setPaper('legal');
         $pdf->loadHTML($cadena);
         return $pdf->stream();
     }

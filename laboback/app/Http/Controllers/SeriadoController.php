@@ -168,7 +168,7 @@ font-size: 12px;
 
             ';
             $pdf = App::make('dompdf.wrapper');
-            $pdf->setPaper('letter');
+            $pdf->setPaper('legal');
             $pdf->loadHTML($cadena);
             return $pdf->stream();
     }

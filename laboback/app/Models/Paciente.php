@@ -14,12 +14,15 @@ class Paciente extends Model
     'nombre',
     'paterno',
     'materno',
+    'edad',
     'fechanac','sexo','celular'];
     protected $hidden = ["created_at", "updated_at"];
 
     public function age()
     {
-        return Carbon::parse($this->attributes['fechanac'])->age;
+         if($this->attributes['fechanac']!=null) return Carbon::parse($this->attributes['fechanac'])->age;
+         else 
+         return $this->attributes['edad'];
     }
     public function seguro(){
         return $this->belongsTo(Seguro::class);
