@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Embarazo;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
+use App\Models\Doctor;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\App;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class EmbarazoController extends Controller
 {
@@ -80,7 +84,7 @@ class EmbarazoController extends Controller
         //
     }
     public function generar($id){
-        $row= Ensayo::with('paciente')->with('user')->with('doctor')
+        $row= Embarazo::with('paciente')->with('user')->with('doctor')
         ->where('id',$id)
         ->get();
         $row=$row[0];
@@ -99,7 +103,7 @@ table, th, td {
     }
     table{
         margin-left: 10px;
-        width: 50%;
+        width: 95%;
         } 
 </style>
             <table style="color: black;border:0">
@@ -152,23 +156,18 @@ table, th, td {
                     </td>
                 </tr>
                 <tr>
-                    <td></td>
                     <td colspan="2" style="text-align:center; color:darkblue;" > TEST EMBARAZO EN SANGRE</td>
-                    <td colspan="2" style="text-align:center; ">'.$row->d1.'</td>
+                    <td colspan="3" style="text-align:center; ">'.$row->d1.'</td>
                 </tr>
                 <tr>
-                    <td style="color:blue;"></td>
                     <td colspan="2" style="text-align:center; color:darkblue;" > F.U.M.</td>
-                    <td colspan="2" style="text-align:center;">'.$row->fum.'</td>
-                </tr>
-    
+                    <td colspan="3" style="text-align:center;">'.$row->fum.'</td>
+                </tr>  
 
                 <tr>
-                <td style="color:blue;"></td>
-                <td colspan="1" style="text-align:center; color:darkblue;" > OBSERVACIONES:</td>
+                <td colspan="2" style="text-align:center; color:darkblue;" > OBSERVACIONES:</td>
                 <td colspan="3" style="text-align:center;">'.$row->obs.'</td>
-                </tr>
-          
+                </tr>         
     
                 <tr >
                     <td colspan="2" rowspan="3" style="color:darkblue">RESPONSABLE: '.$row->responsable.'</td>
@@ -190,7 +189,7 @@ table, th, td {
             </table>';
             $pdf = App::make('dompdf.wrapper');
             //        $customPaper = array(0,0,360,360);
-                    $pdf->setPaper('letter','landscape');
+                    $pdf->setPaper('legal');
                     $pdf->loadHTML($cadena);
                     return $pdf->stream();
     

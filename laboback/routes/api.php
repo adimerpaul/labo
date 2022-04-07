@@ -30,6 +30,7 @@ Route::get('/serologia/{id}',[\App\Http\Controllers\SerologiaController::class,'
 Route::get('/labserologia/{id}',[\App\Http\Controllers\LabserologiaController::class,'generar']);
 Route::get('/reserologia/{id}',[\App\Http\Controllers\ReserologiaController::class,'generar']);
 Route::get('/ensayo/{id}',[\App\Http\Controllers\EnsayoController::class,'generar']);
+Route::get('/embarazo/{id}',[\App\Http\Controllers\EmbarazoController::class,'generar']);
 
 Route::group(['middleware'=>'auth:sanctum'],function (){
     Route::post('/logout',[\App\Http\Controllers\UserController::class,'logout']);
