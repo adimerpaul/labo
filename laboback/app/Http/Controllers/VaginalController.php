@@ -57,26 +57,24 @@ class VaginalController extends Controller
         $row=$row[0];
         $cadena='
         <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            border: 0px;
+            font-size: 12px;
+            }
             .tablex, .tdx , .thx {
   border: 1px solid black;
   border-collapse: collapse;
 }
-table{
-    margin-left:10px;
+.tablex{
+    margin-right: 10px;
+    margin-left: 10px;
+    padding-right:10px;
 }
-*{
-margin: 0px;
-padding: 0px;
-border: 0px;
-font-size: 12px;
-}
-table{
-    margin-left: 5px;
-    margin-right: 5px;
-    width: 50%;
-    } 
+
             </style>
-            <table style="width: 100%;color: black;padding-top: 5px">
+            <table style="width: 95%;color: black;padding-top: 5px">
             <tr >
                 <td rowspan="3" ><img src="./img/natividad.jpeg" alt="Logo Clinica" srcset="" style="height: 1.5cm; "></td>
                 <td style="text-align:center;color:darkblue">SERVICIO DE LABORATORIO </td>
@@ -92,7 +90,7 @@ table{
                 <td style="text-align:center;color:darkblue">Telf: 5254721 Fax: 52-83667 </td>
             </tr>
         </table>
-        <table class="tablex" style="width: 100%;color: black">
+        <table class="tablex" style="width: 95%;color: black; padding-right:10px;">
             <tr>
                 <td class="tdx" colspan="3" style="text-align:center; border:0; color:darkblue;font:bold"><h3>ANALISIS DE SECRECION VAGINAL</h3></td>
                 <td class="tdx" style="color:red;text-align:center;">Form. 004</td>
@@ -117,7 +115,7 @@ table{
             </tr>
 
         </table>
-        <table class="tablex" border="1" style="width: 100%;color: black">
+        <table class="tablex" border="1" style="width: 95%;color: black; padding-right:10px;">
             <tr>
                 <td class="tdx" colspan="2" style="text-align: center;color:purple;font:bold ">EXAMEN EN FRESCO</td>
             </tr>

@@ -106,9 +106,14 @@ table, th, td {
     }
     table{
         margin-left: 10px;
-        width: 50%;
+        margin-right: 10px;
+        width: 95%;
         } 
 </style>
+<table style="width: 100%; border:0;">
+<tr style="border:0;">
+<td style="width: 50%; border:0;"></td>
+<td style="border:0;">
             <table style="color: black;border:0">
                 <tr style="border:0">
                     <td rowspan="3" style="border:0"><img src="./img/natividad.jpeg" alt="Logo Clinica" srcset="" style="height:1.5cm"></td>
@@ -259,7 +264,8 @@ table, th, td {
                     </td>
                     <td > '.date('Y-m-d').'</td>
                 </tr>          
-            </table>';
+            </table></td></tr></table>'
+            ;
             $pdf = App::make('dompdf.wrapper');
             //        $customPaper = array(0,0,360,360);
                     $pdf->setPaper('legal','landscape');

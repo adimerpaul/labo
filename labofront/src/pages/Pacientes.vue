@@ -346,7 +346,7 @@
             </tr>
             <tr>
                 <td class="text-red">Cayados</td>
-                <td><input type="text" placeholder="00" name="d18"   style="width: 100%" v-model="hemograma.d18"></td>
+                <td><input type="number" step="0.1" min=0 max=100 placeholder="00" name="d18"   style="width: 100%" v-model="hemograma.d18"></td>
                 <td>%</td>
                 <td><input type="text" placeholder="00" name="d19"   style="width: 100%" v-model="hemograma.d19"></td>
                 <td>x10 <sup>9</sup>/L</td>
@@ -355,7 +355,7 @@
             </tr>
             <tr>
                 <td class="text-red">Neutrofilos</td>
-                <td><input type="text" placeholder="00" name="d20"   style="width: 100%" v-model="hemograma.d20"></td>
+                <td><input type="number" step="0.1" min=0 max=100 placeholder="00" name="d20"   style="width: 100%" v-model="hemograma.d20"></td>
                 <td>%</td>
                 <td><input type="text" placeholder="00" name="d21"   style="width: 100%" v-model="hemograma.d21"></td>
                 <td>x10 <sup>9</sup>/L</td>
@@ -364,7 +364,7 @@
             </tr>
             <tr>
                 <td class="text-red">Eosinofilos</td>
-                <td><input type="text" placeholder="00" name="d22"   style="width: 100%" v-model="hemograma.d22"></td>
+                <td><input type="number" step="0.1" min=0 max=100 placeholder="00" name="d22"   style="width: 100%" v-model="hemograma.d22"></td>
                 <td>%</td>
                 <td><input type="text" placeholder="00" name="d23"   style="width: 100%" v-model="hemograma.d23"></td>
                 <td>x10 <sup>9</sup>/L</td>
@@ -373,7 +373,7 @@
             </tr>
             <tr>
                 <td class="text-red">Basofilos</td>
-                <td><input type="text" placeholder="00" name="d24"   style="width: 100%" v-model="hemograma.d24"></td>
+                <td><input type="number" step="0.1" min=0 max=100 placeholder="00" name="d24"   style="width: 100%" v-model="hemograma.d24"></td>
                 <td>%</td>
                 <td><input type="text" placeholder="00" name="d25"   style="width: 100%" v-model="hemograma.d25"></td>
                 <td>x10 <sup>9</sup>/L</td>
@@ -382,7 +382,7 @@
             </tr>
             <tr>
                 <td class="text-red">Linfocitos</td>
-                <td><input type="text" placeholder="00" name="d26"   style="width: 100%" v-model="hemograma.d26"></td>
+                <td><input type="number" step="0.1" min=0 max=100 placeholder="00" name="d26"   style="width: 100%" v-model="hemograma.d26"></td>
                 <td>%</td>
                 <td><input type="text" placeholder="00" name="d27"   style="width: 100%" v-model="hemograma.d27"></td>
                 <td>x10 <sup>9</sup>/L</td>
@@ -391,7 +391,7 @@
             </tr>
             <tr>
                 <td class="text-red">Monocitos</td>
-                <td><input type="text" placeholder="00" name="d28"   style="width: 100%" v-model="hemograma.d28"></td>
+                <td><input type="number" step="0.1" min=0 max=100 placeholder="00" name="d28"   style="width: 100%" v-model="hemograma.d28"></td>
                 <td>%</td>
                 <td><input type="text" placeholder="00" name="d29"   style="width: 100%" v-model="hemograma.d29"></td>
                 <td>x10 <sup>9</sup>/L</td>
@@ -400,7 +400,7 @@
             </tr>
             <tr>
                 <td class="text-red">BLASTOS</td>
-                <td><input type="text" placeholder="00" name="d30"   style="width: 100%" v-model="hemograma.d30"></td>
+                <td><input type="number" step="0.1" min=0 max=100 placeholder="00" name="d30"   style="width: 100%" v-model="hemograma.d30"></td>
                 <td>%</td>
                 <td></td>
                 <td></td>
@@ -2474,6 +2474,19 @@ export default {
       })
     },
     onHemograma(){
+        let total=0
+
+        total=parseFloat(this.hemograma.d18) + parseFloat(this.hemograma.d20) + parseFloat(this.hemograma.d22) + parseFloat(this.hemograma.d24) + parseFloat(this.hemograma.d26)
+        + parseFloat(this.hemograma.d28) + parseFloat(this.hemograma.d30) 
+    if(total!=100 )
+    {
+         this.$q.notify({
+              message: 'No suma el 100 % ',
+              icon: 'info',
+             color:'red'
+            })
+        return false;
+    }
       console.log(this.hemograma)
         this.$axios.post(process.env.API+'/hemograma',{paciente:this.dato2,doctor:this.requerido.value,hemograma:this.hemograma}).then(res=>{
           // console.log(res.data)

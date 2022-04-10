@@ -61,22 +61,26 @@ class ReserologiaController extends Controller
         $row=$row[0];
         $cadena='
         <style>
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-  witdh:50%;
-}
+
 *{
     padding: 0px;
     margin: 0px;
     font-size: 12px;
     }
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
 table{
-    width:50%;
-    margin-left:10px;
+    margin-right:10px;
+    width:95%;
 
 }
 </style>
+<table style="width: 100%; border:0;">
+<tr style="border:0;">
+<td style="width: 50%; border:0;"></td>
+<td style="border:0;">
         <table style="color: black; margin-top:5px; border:0;">
             <tr style=" border:0;">
                 <td rowspan="3" style="border:0;"><img src="./img/natividad.jpeg" alt="Logo Clinica" srcset="" style="height:1.5cm"></td>
@@ -93,7 +97,7 @@ table{
                 <td style="color: darkblue; text-align:center; border:0;">Bolivar Nº 753 entre Arica e Iquique </td>
             </tr>
         </table>
-        <table border="1" style="color: black">
+        <table border="1" style="color: black;">
             <tr>
                 <td colspan="3" style="border:0; text-align: center; color:darkblue;font:bold"><h3><b> SEROLOGIA</b></h3></td>
                 <td style="color:red">Form. 005</td>
@@ -178,7 +182,7 @@ table{
             </tr>
 
         </table>
-
+    </td></tr></table>
 
         ';
         $pdf = App::make('dompdf.wrapper');

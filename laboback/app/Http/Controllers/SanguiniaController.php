@@ -138,6 +138,10 @@ table{
     margin-right:15px;
     padding-right: 15px;
 }
+.tabley>tr>td{
+    font-size: 14px;
+
+}
 </style>
         <table style="width: 95%;color: black;padding-top:5px;padding-left: 10px;padding-right: 15px">
         <tr >
@@ -158,7 +162,7 @@ table{
             <td style="text-align:center;color:red;">Nº Registro CODELAB 000045</td>
         </tr>
     </table>
-        <table class="tablex"  style=" width: 95%;padding-left: 10px;padding-right: 15px">
+        <table class="tablex tabley"  style=" width: 95%;padding-left: 10px;padding-right: 15px">
             <tr>
                 <td colspan="3" style="text-align: center;border:0;font:bold; color:darkblue"><h3>QUIMICA SANGUINEA</h3></td>
                 <td style="color:red">Form. 002</td>

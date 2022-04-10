@@ -137,12 +137,15 @@ class OrinaController extends Controller
                 font-size: 12px;
                 }
             table{
-                width:50%;
-                margin-left:10px;
+                margin-rigth:10px;
 
             }
 </style>
-    <table style="border:0; margin-top:5px;" >
+<table style="width: 100%; border:0;">
+<tr style="border:0;">
+<td style="width: 50%; border:0;"></td>
+<td style="border:0;">
+    <table style="padding-right:10px;padding-left:0px;width: 100%;margin-top: 5px;border:0">
         <tr >
             <td rowspan="3" style="border:0; "><img src="./img/natividad.jpeg" alt="Logo Clinica" style="height: 1.5cm; "></td>
             <td style="color: blue; text-align:center;border:0; ">SERVICIO DE LABORATORIO </td>
@@ -158,7 +161,7 @@ class OrinaController extends Controller
             <td style="color: blue; text-align:center;border:0;  ">Bolivar Nº 753 entre Arica e Iquique </td>
         </tr>
     </table>
-    <table >
+    <table style="padding-right:10px;padding-left:0px;width: 100%;">
         <tr>
             <td colspan="3" style="text-align: center; border:0; font:bold; color: darkblue;">EXAMEN GENERAL DE ORINA</td>
             <td style="color:darkblue; text-align:center;">Form. 003</td>
@@ -183,7 +186,7 @@ class OrinaController extends Controller
             <td style="text-align:center;color:red">'.$row->paciente->id.'</td>
         </tr>
     </table>
-    <table >
+    <table style="padding-right:10px;padding-left:0px;width: 100%;">
         <tr>
             <td style="color:darkblue; text-align:center; font:bold; ">EX. FISICO</td>
             <td style="color:darkblue; text-align:center; font:bold; ">VALOR</td>
@@ -368,6 +371,9 @@ class OrinaController extends Controller
             <td colspan="2" style="color:blue; text-align:left; ">HORA TOMA DE MUESTRA</td>
             <td style="text-align:center;">'.date('H:i:s').'</td>
         </tr>
+        </table>
+        
+        </td>        </tr>
         </table>
         ';
         //return $cadena;

@@ -232,7 +232,9 @@ font-size: 11px;
                 <span style="color:black">'.date('Y-m-d').'</span>
             </td>
         </tr>
-        </table>';
+        </table>
+        
+        ';
         $pdf = App::make('dompdf.wrapper');
         $pdf->setPaper('legal');
         $pdf->loadHTML($cadena);

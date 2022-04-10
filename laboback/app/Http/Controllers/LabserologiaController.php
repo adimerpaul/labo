@@ -72,11 +72,15 @@ class LabserologiaController extends Controller
                 font-size: 12px;
                 }
             table{
-                width:50%;
+                width:95%;
                 margin-left:10px;
 
             }
             </style>
+            <table style="width: 100%; border:0;">
+<tr style="border:0;">
+<td style="width: 50%; border:0;"></td>
+<td style="border:0;">
             <table style="border:0; margin-top:5px;" >
             <tr >
                 <td rowspan="3" style="border:0;"><img src="./img/natividad.jpeg" alt="Logo Clinica" srcset="" style="height:1.5cm"></td>
@@ -226,7 +230,7 @@ class LabserologiaController extends Controller
             </tr>
 
         </table>
-
+            </td></tr></table>
             ';
             $pdf = App::make('dompdf.wrapper');
             //        $customPaper = array(0,0,360,360);

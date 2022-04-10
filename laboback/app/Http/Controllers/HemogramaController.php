@@ -89,51 +89,51 @@ class HemogramaController extends Controller
         $cd28='';
         $cd29='';
         //1-2
-        if($row->paciente->sexo=='Masculino' && $row->d1!='' && ($row->d1<5.1 || $row->d1>5.7))$cd1='color:#ff726f;';
-        if($row->paciente->sexo=='Femenino' && $row->d1!='' && ($row->d1<4.8 || $row->d1>5.4))$cd1='color:#ff726f;';
-        if(($row->d2<5 || $row->d2>10) && $row->d2!='') $cd2='color:#ff726f;';
+        if($row->paciente->sexo=='Masculino' && $row->d1!='' && ($row->d1<5.1 || $row->d1>5.7))$cd1='color:red;';
+        if($row->paciente->sexo=='Femenino' && $row->d1!='' && ($row->d1<4.8 || $row->d1>5.4))$cd1='color:red;';
+        if(($row->d2<5 || $row->d2>10) && $row->d2!='') $cd2='color:red;';
 //3-4
-        if($row->paciente->sexo=='Masculino' && $row->d3!='' && ($row->d3<151 || $row->d3>175))$cd3='color:#ff726f;';
-        if($row->paciente->sexo=='Femenino' && $row->d3!='' && ($row->d3<141 || $row->d3>165))$cd3='color:#ff726f;';
-        if(($row->d4<1 || $row->d4>3) && $row->d4!='') $cd4='color:#ff726f;';
+        if($row->paciente->sexo=='Masculino' && $row->d3!='' && ($row->d3<151 || $row->d3>175))$cd3='color:red;';
+        if($row->paciente->sexo=='Femenino' && $row->d3!='' && ($row->d3<141 || $row->d3>165))$cd3='color:red;';
+        if(($row->d4<1 || $row->d4>3) && $row->d4!='') $cd4='color:red;';
 //5-6
-        if($row->paciente->sexo=='Masculino' && $row->d5!='' && ($row->d5<0.51 || $row->d5>0.57))$cd5='color:#ff726f;';
-        if($row->paciente->sexo=='Femenino' && $row->d5!='' && ($row->d5<0.46 || $row->d5>0.53))$cd5='color:#ff726f;';
-        if(($row->d6<12 || $row->d6>13) && $row->d6!='') $cd6='color:#ff726f;';
+        if($row->paciente->sexo=='Masculino' && $row->d5!='' && ($row->d5<0.51 || $row->d5>0.57))$cd5='color:red;';
+        if($row->paciente->sexo=='Femenino' && $row->d5!='' && ($row->d5<0.46 || $row->d5>0.53))$cd5='color:red;';
+        if(($row->d6<12 || $row->d6>13) && $row->d6!='') $cd6='color:red;';
 //7-8
-        if($row->paciente->sexo=='Masculino' && $row->d7!='' && ($row->d7<0 || $row->d7>15))$cd7='color:#ff726f;';
-        if($row->paciente->sexo=='Femenino' && $row->d7!='' && ($row->d7<0 || $row->d7>20))$cd7='color:#ff726f;';
-        if(($row->d8 <95 || $row->d8>100) && $row->d8!='') $cd8='color:#ff726f;';
+        if($row->paciente->sexo=='Masculino' && $row->d7!='' && ($row->d7<0 || $row->d7>15))$cd7='color:red;';
+        if($row->paciente->sexo=='Femenino' && $row->d7!='' && ($row->d7<0 || $row->d7>20))$cd7='color:red;';
+        if(($row->d8 <95 || $row->d8>100) && $row->d8!='') $cd8='color:red;';
 //9-10
-        if(($row->d9<83 || $row->d9>97) && $row->d9!='')$cd9='color:#ff726f;';
-        if(($row->d10<0.97 || $row->d10>1.04) && $row->d10!='') $cd10='color:#ff726f;';
+        if(($row->d9<83 || $row->d9>97) && $row->d9!='')$cd9='color:red;';
+        if(($row->d10<0.97 || $row->d10>1.04) && $row->d10!='') $cd10='color:red;';
         //11-12
-        if(($row->d11<27 || $row->d11>31) && $row->d11!='')$cd11='color:#ff726f;';
+        if(($row->d11<27 || $row->d11>31) && $row->d11!='')$cd11='color:red;';
         //13-14
-        if(($row->d13<32 || $row->d13>36) && $row->d13!='')$cd13='color:#ff726f;';
-        if(($row->d14<0.5 || $row->d14>2) && $row->d14!='') $cd14='color:#ff726f;';
+        if(($row->d13<32 || $row->d13>36) && $row->d13!='')$cd13='color:red;';
+        if(($row->d14<0.5 || $row->d14>2) && $row->d14!='') $cd14='color:red;';
         //15-16
-        if(($row->d15<4.5 || $row->d15>10.5) && $row->d15!='')$cd15='color:#ff726f;';
+        if(($row->d15<4.5 || $row->d15>10.5) && $row->d15!='')$cd15='color:red;';
         //17
-        if(($row->d17<150 || $row->d17>400) && $row->d17!='')$cd17='color:#ff726f;';
+        if(($row->d17<150 || $row->d17>400) && $row->d17!='')$cd17='color:red;';
         //18-19
-        if(($row->d18<0 || $row->d18>3) && $row->d18!='')$cd18='color:#ff726f;';
-        if(($row->d19<0 || $row->d19>0.35) && $row->d19!='')$cd19='color:#ff726f;';
+        if(($row->d18<0 || $row->d18>3) && $row->d18!='')$cd18='color:red;';
+        if(($row->d19<0 || $row->d19>0.35) && $row->d19!='')$cd19='color:red;';
                 //20-21
-        if(($row->d20<50 || $row->d20>70) && $row->d20!='')$cd20='color:#ff726f;';
-        if(($row->d21<2.5 || $row->d21>7.35) && $row->d21!='')$cd21='color:#ff726f;';
+        if(($row->d20<50 || $row->d20>70) && $row->d20!='')$cd20='color:red;';
+        if(($row->d21<2.5 || $row->d21>7.35) && $row->d21!='')$cd21='color:red;';
         //22-23
-        if(($row->d22<0 || $row->d22>3) && $row->d22!='')$cd22='color:#ff726f;';
-        if(($row->d23<0 || $row->d23>0.35) && $row->d23!='')$cd23='color:#ff726f;';
+        if(($row->d22<0 || $row->d22>3) && $row->d22!='')$cd22='color:red;';
+        if(($row->d23<0 || $row->d23>0.35) && $row->d23!='')$cd23='color:red;';
         //24-25
-        if(($row->d24<0 || $row->d24>1) && $row->d24!='')$cd24='color:#ff726f;';
-        if(($row->d25<0 || $row->d25>0.15) && $row->d25!='')$cd25='color:#ff726f;';
+        if(($row->d24<0 || $row->d24>1) && $row->d24!='')$cd24='color:red;';
+        if(($row->d25<0 || $row->d25>0.15) && $row->d25!='')$cd25='color:red;';
         //26-27
-        if(($row->d26<25 || $row->d26>40) && $row->d26!='')$cd26='color:#ff726f;';
-        if(($row->d27<1.25 || $row->d27>4.2) && $row->d27!='')$cd27='color:#ff726f;';
+        if(($row->d26<25 || $row->d26>40) && $row->d26!='')$cd26='color:red;';
+        if(($row->d27<1.25 || $row->d27>4.2) && $row->d27!='')$cd27='color:red;';
         //28-29
-        if(($row->d28<4 || $row->d28>8) && $row->d28!='')$cd28='color:#ff726f;';
-        if(($row->d29<2 || $row->d29>8.4) && $row->d29!='')$cd29='color:#ff726f;';
+        if(($row->d28<4 || $row->d28>8) && $row->d28!='')$cd28='color:red;';
+        if(($row->d29<2 || $row->d29>8.4) && $row->d29!='')$cd29='color:red;';
 
         $cadena='
         <style>
@@ -218,88 +218,88 @@ font-size: 13px;
                 <td class="tdx" style="width:10%"></td>
                 <td class="tdx" style="width:10%"></td>
                 <td class="tdx" style="width:10%"></td>
-                <td class="tdx" style="color: NAVY;font: bold" align="center">REFERENCIA</td>
+                <td class="tdx" style="color: NAVY;font: bold" align="center">REF</td>
                 <td class="tdx" style="width:10%"></td>
                 <td class="tdx" style="width:10%"></td>
-                <td class="tdx" style="color: NAVY;font: bold" align="center">REFERENCIA</td>
+                <td class="tdx" style="color: NAVY;font: bold" align="center">REF</td>
             </tr>
             <tr>
-                <td class="tdx" style="color: dodgerblue" align="center">Globulos Rojos</td>
+                <td class="tdx" style="color: darkblue" align="center">Globulos Rojos</td>
                 <td class="tdx" style="text-align:center;'.$cd1.'">'.$row->d1.'</td>
-                <td class="tdx" style="color: dodgerblue;" align="center">x10 <sup>12 </sup>/L</td>
-                <td class="tdx" style="color: dodgerblue; font-size: 10px;" align="center">Varon 5.1-5.7x10 <sup>12</sup>/L <br> Mujer 4.8-5.4x10 <sup>12</sup>/L</td>
-                <td class="tdx" style="color: dodgerblue;" align="center">Tiempo de cuagulacion</td>
+                <td class="tdx" style="color: darkblue;" align="center">x10 <sup>12 </sup>/L</td>
+                <td class="tdx" style="color: darkblue; font-size: 10px;" align="center">Varon 5.1-5.7x10 <sup>12</sup>/L <br> Mujer 4.8-5.4x10 <sup>12</sup>/L</td>
+                <td class="tdx" style="color: darkblue;" align="center">Tiempo de cuagulacion</td>
                 <td class="tdx" style="text-align:center;'.$cd2.'">'.$row->d2.'</td>
-                <td class="tdx" style="color: dodgerblue" align="center">5-10 min</td>
+                <td class="tdx" style="color: darkblue" align="center">5-10 min</td>
             </tr>
             <tr>
-                <td class="tdx" style="color: dodgerblue" align="center">Hemoglobina</td>
+                <td class="tdx" style="color: darkblue" align="center">Hemoglobina</td>
                 <td class="tdx" style="text-align:center;'.$cd3.'">'.$row->d3.'</td>
-                <td class="tdx" style="color: dodgerblue" align="center">g/L</td>
-                <td class="tdx" style="color: dodgerblue; font-size: 10px;" align="center">Varon 151-175 g/L <br> Mujer Mujer 141-165 g/L</td>
-                <td class="tdx" style="color: dodgerblue" align="center">Tiempo de sangria</td>
+                <td class="tdx" style="color: darkblue" align="center">g/L</td>
+                <td class="tdx" style="color: darkblue; font-size: 10px;" align="center">Varon 151-175 g/L <br> Mujer Mujer 141-165 g/L</td>
+                <td class="tdx" style="color: darkblue" align="center">Tiempo de sangria</td>
                 <td class="tdx" style="text-align:center;'.$cd4.'">'.$row->d4.'</td>
-                <td class="tdx" style="color: dodgerblue" align="center">1-3 min</td>
+                <td class="tdx" style="color: darkblue" align="center">1-3 min</td>
             </tr>
             <tr>
-                <td class="tdx" style="color: dodgerblue" align="center">Hematocrito</td>
+                <td class="tdx" style="color: darkblue" align="center">Hematocrito</td>
                 <td class="tdx" style="text-align:center;'.$cd5.'">'.$row->d5.'</td>
-                <td class="tdx" style="color: dodgerblue" align="center">L/L</td>
-                <td class="tdx" style="color: dodgerblue; font-size: 10px;" align="center">Varon 0.51-0.57 L/L <br> Mujer 0.46-0.53 L/L</td>
-                <td class="tdx" style="color: dodgerblue" align="center">Tiempo de Protrombina</td>
+                <td class="tdx" style="color: darkblue" align="center">L/L</td>
+                <td class="tdx" style="color: darkblue; font-size: 10px;" align="center">Varon 0.51-0.57 L/L <br> Mujer 0.46-0.53 L/L</td>
+                <td class="tdx" style="color: darkblue" align="center">Tiempo de Protrombina</td>
                 <td class="tdx" style="text-align:center;'.$cd6.'">'.$row->d6.'</td>
-                <td class="tdx" style="color: dodgerblue" align="center">12-13 seg</td>
+                <td class="tdx" style="color: darkblue" align="center">12-13 seg</td>
             </tr>
             <tr>
-                <td class="tdx" style="color: dodgerblue" align="center">V.E.S.</td>
+                <td class="tdx" style="color: darkblue" align="center">V.E.S.</td>
                 <td class="tdx" style="text-align:center;'.$cd8.'">'.$row->d7.'</td>
-                <td class="tdx" style="color: dodgerblue" align="center">mm.</td>
-                <td class="tdx" style="color: dodgerblue; font-size: 10px;" align="center">Varon 15 mm/hora <br> Mujer 20 mm/hora</td>
-                <td class="tdx" style="color: dodgerblue" align="center">% Actividad</td>
+                <td class="tdx" style="color: darkblue" align="center">mm.</td>
+                <td class="tdx" style="color: darkblue; font-size: 10px;" align="center">Varon 15 mm/hora <br> Mujer 20 mm/hora</td>
+                <td class="tdx" style="color: darkblue" align="center">% Actividad</td>
                 <td class="tdx" style="text-align:center;'.$cd8.'">'.$row->d8.'</td>
-                <td class="tdx" style="color: dodgerblue" align="center">95-100%</td>
+                <td class="tdx" style="color: darkblue" align="center">95-100%</td>
             </tr>
 
             <tr>
-                <td class="tdx" style="color: dodgerblue" align="center">V.C.M.</td>
+                <td class="tdx" style="color: darkblue" align="center">V.C.M.</td>
                 <td class="tdx" style="text-align:center;'.$cd9.'">'.$row->d9.'</td>
-                <td class="tdx" style="color: dodgerblue" align="center">ft.</td>
-                <td class="tdx" style="color: dodgerblue" align="center">Varon 83.0-97.0 ft</td>
-                <td class="tdx" style="color: dodgerblue" align="center">INR</td>
+                <td class="tdx" style="color: darkblue" align="center">ft.</td>
+                <td class="tdx" style="color: darkblue" align="center">Varon 83.0-97.0 ft</td>
+                <td class="tdx" style="color: darkblue" align="center">INR</td>
                 <td class="tdx" style="text-align:center;'.$cd10.'">'.$row->d10.'</td>
-                <td class="tdx" style="color: dodgerblue" align="center">0.97-1.04</td>
+                <td class="tdx" style="color: darkblue" align="center">0.97-1.04</td>
             </tr>
             <tr>
-                <td class="tdx" style="color: dodgerblue" align="center">Hb.C.M.</td>
+                <td class="tdx" style="color: darkblue" align="center">Hb.C.M.</td>
                 <td class="tdx" style="text-align:center;'.$cd11.'">'.$row->d11.'</td>
-                <td class="tdx" style="color: dodgerblue" align="center" >pg.</td>
-                <td class="tdx" style="color: dodgerblue" align="center" >27.0-31.0 pg.</td>
-                <td class="tdx" style="color: dodgerblue" align="center">Grupofactor</td>
+                <td class="tdx" style="color: darkblue" align="center" >pg.</td>
+                <td class="tdx" style="color: darkblue" align="center" >27.0-31.0 pg.</td>
+                <td class="tdx" style="color: darkblue" align="center">Grupofactor</td>
                 <td class="tdx" style="text-align:center" colspan="2">'.$row->d12.'</td>
             </tr>
             <tr>
-                <td class="tdx" style="color: dodgerblue" align="center">C. Hb.C.M.</td>
+                <td class="tdx" style="color: darkblue" align="center">C. Hb.C.M.</td>
                 <td class="tdx" style="text-align:center;'.$cd13.'">'.$row->d13.'</td>
-                <td class="tdx" style="color: dodgerblue" align="center">%</td>
-                <td class="tdx" style="color: dodgerblue" align="center">32-36%</td>
-                <td class="tdx" style="color: dodgerblue" align="center">Reticulocitos</td>
+                <td class="tdx" style="color: darkblue" align="center">%</td>
+                <td class="tdx" style="color: darkblue" align="center">32-36%</td>
+                <td class="tdx" style="color: darkblue" align="center">Reticulocitos</td>
                 <td class="tdx" style="text-align:center;'.$cd14.'">'.$row->d14.'</td>
-                <td class="tdx" style="color: dodgerblue" align="center">0.5-2%</td>
+                <td class="tdx" style="color: darkblue" align="center">0.5-2%</td>
             </tr>
             <tr>
-                <td class="tdx" style="color: dodgerblue" align="center">Globulos Blancos</td>
+                <td class="tdx" style="color: darkblue" align="center">Globulos Blancos</td>
                 <td class="tdx" style="text-align:center;'.$cd15.'">'.$row->d15.'</td>
-                <td class="tdx" style="color: dodgerblue" align="center">10 <sup>9</sup>/L</td>
-                <td class="tdx" style="color: dodgerblue" align="center"> 4.5-10.5x10 <sup>9</sup>/L</td>
-                <td class="tdx" style="color: dodgerblue" align="center">IPR</td>
+                <td class="tdx" style="color: darkblue" align="center">10 <sup>9</sup>/L</td>
+                <td class="tdx" style="color: darkblue" align="center"> 4.5-10.5x10 <sup>9</sup>/L</td>
+                <td class="tdx" style="color: darkblue" align="center">IPR</td>
                 <td class="tdx" style="text-align:center;'.$cd16.'">'.$row->d16.'</td>
                 <td class="tdx"></td>
             </tr>
             <tr>
-                <td class="tdx" style="color: dodgerblue" align="center">Plaquetas</td>
+                <td class="tdx" style="color: darkblue" align="center">Plaquetas</td>
                 <td class="tdx" style="text-align:center;'.$cd17.'">'.$row->d17.'</td>
-                <td class="tdx" style="color: dodgerblue" align="center">x10 <sup>9 </sup>/L</td>
-                <td class="tdx" style="color: dodgerblue" align="center">105-400x10 <sup>9</sup> /L</td>
+                <td class="tdx" style="color: darkblue" align="center">x10 <sup>9 </sup>/L</td>
+                <td class="tdx" style="color: darkblue" align="center">105-400x10 <sup>9</sup> /L</td>
                 <td class="tdx" colspan="3"></td>
             </tr>
         </table>
@@ -316,63 +316,63 @@ font-size: 13px;
                 <td class="tdx" style="color: navy;font: bold" align="center">ABSOLUTA</td>
             </tr>
             <tr>
-                <td class="tdx" style="color: dodgerblue" align="center">Cayados</td>
+                <td class="tdx" style="color: darkblue" align="center">Cayados</td>
                 <td class="tdx" style="text-align:center;'.$cd18.'">'.$row->d18.'</td>
-                <td class="tdx" style="color: dodgerblue" align="center">%</td>
+                <td class="tdx" style="color: darkblue" align="center">%</td>
                 <td class="tdx" style="text-align:center;'.$cd19.'">'.$row->d19.'</td>
-                <td class="tdx" style="color: dodgerblue" align="center">x10 <sup>9</sup>/L</td>
-                <td class="tdx" style="color: dodgerblue" align="center">0-3%</td>
-                <td class="tdx" style="color: dodgerblue" align="center">0.00-0.35x10 <sup>9</sup>/L</td>
+                <td class="tdx" style="color: darkblue" align="center">x10 <sup>9</sup>/L</td>
+                <td class="tdx" style="color: darkblue" align="center">0-3%</td>
+                <td class="tdx" style="color: darkblue" align="center">0.00-0.35x10 <sup>9</sup>/L</td>
             </tr>
             <tr>
-                <td class="tdx" style="color: dodgerblue" align="center">Neutrofilos</td>
+                <td class="tdx" style="color: darkblue" align="center">Neutrofilos</td>
                 <td class="tdx" style="text-align:center;'.$cd20.'">'.$row->d20.'</td>
-                <td class="tdx" style="color: dodgerblue" align="center">%</td>
+                <td class="tdx" style="color: darkblue" align="center">%</td>
                 <td class="tdx" style="text-align:center;'.$cd21.'">'.$row->d21.'</td>
-                <td class="tdx" style="color: dodgerblue" align="center">x10 <sup>9</sup>/L</td>
-                <td class="tdx" style="color: dodgerblue" align="center">50-70%</td>
-                <td class="tdx" style="color: dodgerblue" align="center">2.50-7.35x10 <sup>9</sup>/L</td>
+                <td class="tdx" style="color: darkblue" align="center">x10 <sup>9</sup>/L</td>
+                <td class="tdx" style="color: darkblue" align="center">50-70%</td>
+                <td class="tdx" style="color: darkblue" align="center">2.50-7.35x10 <sup>9</sup>/L</td>
             </tr>
             <tr>
-                <td class="tdx" style="color: dodgerblue" align="center">Eosinofilos</td>
+                <td class="tdx" style="color: darkblue" align="center">Eosinofilos</td>
                 <td class="tdx" style="text-align:center;'.$cd22.'">'.$row->d22.'</td>
-                <td class="tdx" style="color: dodgerblue" align="center">%</td>
+                <td class="tdx" style="color: darkblue" align="center">%</td>
                 <td class="tdx" style="text-align:center;'.$cd23.'">'.$row->d23.'</td>
-                <td class="tdx" style="color: dodgerblue" align="center">x10 <sup>9</sup>/L</td>
-                <td class="tdx" style="color: dodgerblue" align="center">0-3%</td>
-                <td class="tdx" style="color: dodgerblue" align="center">0.00-0.35x10 <sup>9</sup>/L</td>
+                <td class="tdx" style="color: darkblue" align="center">x10 <sup>9</sup>/L</td>
+                <td class="tdx" style="color: darkblue" align="center">0-3%</td>
+                <td class="tdx" style="color: darkblue" align="center">0.00-0.35x10 <sup>9</sup>/L</td>
             </tr>
             <tr>
-                <td class="tdx" style="color: dodgerblue" align="center">Basofilos</td>
+                <td class="tdx" style="color: darkblue" align="center">Basofilos</td>
                 <td class="tdx" style="text-align:center;'.$cd24.'">'.$row->d24.'</td>
-                <td class="tdx" style="color: dodgerblue" align="center">%</td>
+                <td class="tdx" style="color: darkblue" align="center">%</td>
                 <td class="tdx" style="text-align:center;'.$cd25.'">'.$row->d25.'</td>
-                <td class="tdx" style="color: dodgerblue" align="center">x10 <sup>9</sup>/L</td>
-                <td class="tdx" style="color: dodgerblue" align="center">0-1%</td>
-                <td class="tdx" style="color: dodgerblue" align="center">0.00-0.15x10 <sup>9</sup>/L</td>
+                <td class="tdx" style="color: darkblue" align="center">x10 <sup>9</sup>/L</td>
+                <td class="tdx" style="color: darkblue" align="center">0-1%</td>
+                <td class="tdx" style="color: darkblue" align="center">0.00-0.15x10 <sup>9</sup>/L</td>
             </tr>
             <tr>
-                <td class="tdx" style="color: dodgerblue" align="center">Linfocitos</td>
+                <td class="tdx" style="color: darkblue" align="center">Linfocitos</td>
                 <td class="tdx" style="text-align:center;'.$cd26.'">'.$row->d26.'</td>
-                <td class="tdx" style="color: dodgerblue" align="center">%</td>
+                <td class="tdx" style="color: darkblue" align="center">%</td>
                 <td class="tdx" style="text-align:center;'.$cd27.'">'.$row->d27.'</td>
-                <td class="tdx" style="color: dodgerblue" align="center">x10 <sup>9</sup>/L</td>
-                <td class="tdx" style="color: dodgerblue" align="center">25-40%</td>
-                <td class="tdx" style="color: dodgerblue" align="center">1.25-4.200x10 <sup>9</sup>/L</td>
+                <td class="tdx" style="color: darkblue" align="center">x10 <sup>9</sup>/L</td>
+                <td class="tdx" style="color: darkblue" align="center">25-40%</td>
+                <td class="tdx" style="color: darkblue" align="center">1.25-4.200x10 <sup>9</sup>/L</td>
             </tr>
             <tr>
-                <td class="tdx" style="color: dodgerblue" align="center">Monocitos</td>
+                <td class="tdx" style="color: darkblue" align="center">Monocitos</td>
                 <td class="tdx" style="text-align:center;'.$cd28.'">'.$row->d28.'</td>
-                <td class="tdx" style="color: dodgerblue" align="center">%</td>
+                <td class="tdx" style="color: darkblue" align="center">%</td>
                 <td class="tdx" style="text-align:center;'.$cd29.'">'.$row->d29.'</td>
-                <td class="tdx" style="color: dodgerblue" align="center">x10 <sup>9</sup>/L</td>
-                <td class="tdx" style="color: dodgerblue" align="center">4-8%</td>
-                <td class="tdx" style="color: dodgerblue" align="center">2.00-8.40x10 <sup>9</sup>/L</td>
+                <td class="tdx" style="color: darkblue" align="center">x10 <sup>9</sup>/L</td>
+                <td class="tdx" style="color: darkblue" align="center">4-8%</td>
+                <td class="tdx" style="color: darkblue" align="center">2.00-8.40x10 <sup>9</sup>/L</td>
             </tr>
             <tr>
-                <td class="tdx" style="color: dodgerblue" align="center">BLASTOS</td>
+                <td class="tdx" style="color: darkblue" align="center">BLASTOS</td>
                 <td class="tdx" style="text-align:center;">'.$row->d30.'</td>
-                <td class="tdx" style="color: dodgerblue" align="center">%</td>
+                <td class="tdx" style="color: darkblue" align="center">%</td>
                 <td class="tdx"></td>
                 <td class="tdx"></td>
                 <td class="tdx"></td>
@@ -384,29 +384,29 @@ font-size: 13px;
                 <td class="tdx" style="color: navy;font: bold"align="center" colspan="4">MORFOLOGIA DE FROTIS DE SANGRE PERIFERICA</td>
             </tr>
             <tr>
-                <td class="tdx" style="color: dodgerblue; width:20%" align="center; " >Serie Rojas:</td>
+                <td class="tdx" style="color: darkblue; width:20%" align="center; " >Serie Rojas:</td>
                 <td class="tdx" colspan=3 >'.$row->d31.'</td>
             </tr>
             <tr>
-                <td class="tdx" style="color: dodgerblue; width:20%" align="center">Serie Blancas:</td>
+                <td class="tdx" style="color: darkblue; width:20%" align="center">Serie Blancas:</td>
                 <td class="tdx" colspan=3>'.$row->d32.'</td>
             </tr>
             <tr>
-                <td class="tdx" style="color: dodgerblue; width:20%" align="center">Serie Plaquetarias:</td>
+                <td class="tdx" style="color: darkblue; width:20%" align="center">Serie Plaquetarias:</td>
                 <td class="tdx" colspan=3>'.$row->d33.'</td>
             </tr>
 
             <tr>
-                <td class="tdx" style="color: dodgerblue;" align="center" rowspan="3"01 colspan=2>Responsable: '.$row->responsable.'</td>
-                <td class="tdx" style="color: dodgerblue; align="center">FECHA DE TOMA DE MUESTRA:</td>
+                <td class="tdx" style="color: darkblue;" align="center" rowspan="3"01 colspan=2>Responsable: '.$row->responsable.'</td>
+                <td class="tdx" style="color: darkblue; align="center">FECHA DE TOMA DE MUESTRA:</td>
                 <td class="tdx">'.$row->fechatoma.'</td>
             </tr>
             <tr>
-                <td class="tdx" style="color: dodgerblue; align="center">HORA DE TOMA MUESTRA:</td>
+                <td class="tdx" style="color: darkblue; align="center">HORA DE TOMA MUESTRA:</td>
                 <td class="tdx">'.$row->horatoma.'</td>
             </tr>
             <tr>
-                <td class="tdx" style="color: dodgerblue; align="center">FECHA DE ENTREGA RESULTADO:</td>
+                <td class="tdx" style="color: darkblue; align="center">FECHA DE ENTREGA RESULTADO:</td>
                 <td class="tdx">'.date('Y-m-d').'</td>
             </tr>
 
