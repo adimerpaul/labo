@@ -2475,6 +2475,13 @@ export default {
     },
     onHemograma(){
         let total=0
+        if (this.hemograma.d18 == undefined || this.hemograma.d18=='') this.hemograma.d18=0;
+        if (this.hemograma.d20 == undefined || this.hemograma.d20=='') this.hemograma.d20=0;
+        if (this.hemograma.d22 == undefined || this.hemograma.d22=='') this.hemograma.d22=0;
+        if (this.hemograma.d24 == undefined || this.hemograma.d24=='') this.hemograma.d24=0;
+        if (this.hemograma.d26 == undefined || this.hemograma.d26=='') this.hemograma.d26=0;
+        if (this.hemograma.d28 == undefined || this.hemograma.d28=='') this.hemograma.d28=0;
+        if (this.hemograma.d30 == undefined || this.hemograma.d30=='') this.hemograma.d30=0;
 
         total=parseFloat(this.hemograma.d18) + parseFloat(this.hemograma.d20) + parseFloat(this.hemograma.d22) + parseFloat(this.hemograma.d24) + parseFloat(this.hemograma.d26)
         + parseFloat(this.hemograma.d28) + parseFloat(this.hemograma.d30) 
