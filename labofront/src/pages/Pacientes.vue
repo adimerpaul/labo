@@ -2268,7 +2268,13 @@ export default {
       vaginal:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'HH:mm')},
       hece:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'HH:mm')},
       simple:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'HH:mm')},
-      seriado:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'HH:mm')},
+      seriado:{
+        muestra1:'<b>Aspecto de la Muestar : Heces Duras&nbsp; &nbsp; &nbsp; Color:cafe</b><br><div><b>Leucocitos: 1 - 2 xc</b></div><div><b>Hematies: </b>No se Observa</div><div><b>Parasitos: Nose observa formas parasitarias intestinales</b></div>',
+        muestra2:'<b>Aspecto de la Muestar : Heces Duras&nbsp; &nbsp; &nbsp; Color:cafe</b><br><div><b>Leucocitos: 1 - 2 xc</b></div><div><b>Hematies: </b>No se Observa</div><div><b>Parasitos: Nose observa formas parasitarias intestinales</b></div>',
+        muestra3:'<b>Aspecto de la Muestar : Heces Duras&nbsp; &nbsp; &nbsp; Color:cafe</b><br><div><b>Leucocitos: 1 - 2 xc</b></div><div><b>Hematies: </b>No se Observa</div><div><b>Parasitos: Nose observa formas parasitarias intestinales</b></div>',
+        fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),
+        horatoma:date.formatDate(Date.now(),'HH:mm')
+      },
       serologia:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'HH:mm')},
       labserologia:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'HH:mm')},
       reserologia:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'HH:mm')},
