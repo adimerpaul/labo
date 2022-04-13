@@ -70,19 +70,12 @@ font-size: 12px;
 </style>
             <table style="padding-right:15px;padding-left:10px;width: 100%;color: black;padding-top: 10px">
             <tr >
-                <td rowspan="3" ><img src="./img/natividad.jpeg" alt="Logo Clinica" style="height: 1.2cm; "></td>
-                <td style="text-align:center; color:darkblue;">SERVICIO DE LABORATORIO </td>
+                <td colspan=2><img src="./img/natividad.jpeg" alt="Logo Clinica" style="height: 1.2cm; "></td>
+                <td style="text-align:center; color:darkblue;">SERVICIO DE LABORATORIO <br>Emergencia las 24 horas del dia.<br>Bolivar Nº 753 entre Arica e Iquique<br>Telf: 5254721 Fax: 52-83667</td>
             </tr>
 
             <tr>
-                <td style="text-align:center; color:darkblue;">Emergencia las 24 horas del dia. </td>
-            </tr>
-            <tr>
-                <td style="text-align:center; color:darkblue;">Bolivar Nº 753 entre Arica e Iquique </td>
-            </tr>
-            <tr>
                 <td style="text-align:center;color:red;">Nº Registro CODELAB 000045</td>
-                <td style="text-align:center;color:darkblue;">Telf: 5254721 Fax: 52-83667 </td>
             </tr>
         </table>
         <table class="tablex" border="1" style="padding-right:15px;padding-left:10px;width: 100%;color: black">
