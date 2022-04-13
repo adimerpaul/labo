@@ -372,7 +372,7 @@ class OrinaController extends Controller
             <td style="text-align:center;">'.date('H:i:s').'</td>
         </tr>
         </table>
-        
+
         </td>        </tr>
         </table>
         ';

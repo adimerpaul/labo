@@ -346,7 +346,7 @@
             </tr>
             <tr>
                 <td class="text-red">Cayados</td>
-                <td><input type="number" step="0.1" min=0 max=100 placeholder="00" name="d18"   style="width: 100%" v-model="hemograma.d18"></td>
+                <td><input type="number" step="0.1" min=0 max=100 placeholder="00" name="d18" @keyup="valcien"  style="width: 100%" v-model="hemograma.d18"></td>
                 <td>%</td>
                 <td><input type="text" placeholder="00" name="d19"   style="width: 100%" v-model="hemograma.d19"></td>
                 <td>x10 <sup>9</sup>/L</td>
@@ -355,7 +355,7 @@
             </tr>
             <tr>
                 <td class="text-red">Neutrofilos</td>
-                <td><input type="number" step="0.1" min=0 max=100 placeholder="00" name="d20"   style="width: 100%" v-model="hemograma.d20"></td>
+                <td><input type="number" step="0.1" min=0 max=100 placeholder="00" name="d20" @keyup="valcien"  style="width: 100%" v-model="hemograma.d20"></td>
                 <td>%</td>
                 <td><input type="text" placeholder="00" name="d21"   style="width: 100%" v-model="hemograma.d21"></td>
                 <td>x10 <sup>9</sup>/L</td>
@@ -364,7 +364,7 @@
             </tr>
             <tr>
                 <td class="text-red">Eosinofilos</td>
-                <td><input type="number" step="0.1" min=0 max=100 placeholder="00" name="d22"   style="width: 100%" v-model="hemograma.d22"></td>
+                <td><input type="number" step="0.1" min=0 max=100 placeholder="00" name="d22"  @keyup="valcien" style="width: 100%" v-model="hemograma.d22"></td>
                 <td>%</td>
                 <td><input type="text" placeholder="00" name="d23"   style="width: 100%" v-model="hemograma.d23"></td>
                 <td>x10 <sup>9</sup>/L</td>
@@ -373,7 +373,7 @@
             </tr>
             <tr>
                 <td class="text-red">Basofilos</td>
-                <td><input type="number" step="0.1" min=0 max=100 placeholder="00" name="d24"   style="width: 100%" v-model="hemograma.d24"></td>
+                <td><input type="number" step="0.1" min=0 max=100 placeholder="00" name="d24" @keyup="valcien"  style="width: 100%" v-model="hemograma.d24"></td>
                 <td>%</td>
                 <td><input type="text" placeholder="00" name="d25"   style="width: 100%" v-model="hemograma.d25"></td>
                 <td>x10 <sup>9</sup>/L</td>
@@ -382,7 +382,7 @@
             </tr>
             <tr>
                 <td class="text-red">Linfocitos</td>
-                <td><input type="number" step="0.1" min=0 max=100 placeholder="00" name="d26"   style="width: 100%" v-model="hemograma.d26"></td>
+                <td><input type="number" step="0.1" min=0 max=100 placeholder="00" name="d26" @keyup="valcien"  style="width: 100%" v-model="hemograma.d26"></td>
                 <td>%</td>
                 <td><input type="text" placeholder="00" name="d27"   style="width: 100%" v-model="hemograma.d27"></td>
                 <td>x10 <sup>9</sup>/L</td>
@@ -391,7 +391,7 @@
             </tr>
             <tr>
                 <td class="text-red">Monocitos</td>
-                <td><input type="number" step="0.1" min=0 max=100 placeholder="00" name="d28"   style="width: 100%" v-model="hemograma.d28"></td>
+                <td><input type="number" step="0.1" min=0 max=100 placeholder="00" name="d28" @keyup="valcien"  style="width: 100%" v-model="hemograma.d28"></td>
                 <td>%</td>
                 <td><input type="text" placeholder="00" name="d29"   style="width: 100%" v-model="hemograma.d29"></td>
                 <td>x10 <sup>9</sup>/L</td>
@@ -400,7 +400,7 @@
             </tr>
             <tr>
                 <td class="text-red">BLASTOS</td>
-                <td><input type="number" step="0.1" min=0 max=100 placeholder="00" name="d30"   style="width: 100%" v-model="hemograma.d30"></td>
+                <td><input type="number" step="0.1" min=0 max=100 placeholder="00" name="d30" @keyup="valcien"  style="width: 100%" v-model="hemograma.d30"></td>
                 <td>%</td>
                 <td></td>
                 <td></td>
@@ -2252,7 +2252,7 @@ export default {
          {value:"embarazo"        ,label:"Test Embarazo" }
       ],
       hemograma:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'HH:mm')},
-      orina:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'HH:mm')},
+      orina:{d2:'NEGATIVO',d4:'NEGATIVO',d6:'NEGATIVO',d8:'NEGATIVO',d10:'NEGATIVO',d12:'NORMAL',d14:'NEGATIVO',d16:'NEGATIVO',d18:'NEGATIVO',d20:'NEGATIVO',d22:'NEGATIVO',d24:'NEGATIVO',d26:'NEGATIVO',d27:'NEGATIVO',d15:'N.S.O.',d17:'N.S.O.',d19:'N.S.O.',d21:'N.S.O.',d23:'N.S.O.',d25:'ESCASO',d28:'N.S.O.',d29:'N.S.O.',d31:'N.S.O.',d33:'N.S.O.',d35:'N.S.O.',fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'HH:mm')},
       sanguinia:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'HH:mm')},
       uretral:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'HH:mm')},
       vaginal:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'HH:mm')},
@@ -2473,6 +2473,27 @@ export default {
         })
       })
     },
+    valcien(){
+              let total=0
+        if (this.hemograma.d18 == undefined || this.hemograma.d18=='') this.hemograma.d18=0;
+        if (this.hemograma.d20 == undefined || this.hemograma.d20=='') this.hemograma.d20=0;
+        if (this.hemograma.d22 == undefined || this.hemograma.d22=='') this.hemograma.d22=0;
+        if (this.hemograma.d24 == undefined || this.hemograma.d24=='') this.hemograma.d24=0;
+        if (this.hemograma.d26 == undefined || this.hemograma.d26=='') this.hemograma.d26=0;
+        if (this.hemograma.d28 == undefined || this.hemograma.d28=='') this.hemograma.d28=0;
+        if (this.hemograma.d30 == undefined || this.hemograma.d30=='') this.hemograma.d30=0;
+
+        total=parseFloat(this.hemograma.d18) + parseFloat(this.hemograma.d20) + parseFloat(this.hemograma.d22) + parseFloat(this.hemograma.d24) + parseFloat(this.hemograma.d26)
+        + parseFloat(this.hemograma.d28) + parseFloat(this.hemograma.d30)
+    if(total!=100 )
+    {
+         this.$q.notify({
+              message: 'No suma el 100 % ',
+              icon: 'info',
+             color:'red'
+            })
+    }
+    },
     onHemograma(){
         let total=0
         if (this.hemograma.d18 == undefined || this.hemograma.d18=='') this.hemograma.d18=0;
@@ -2484,7 +2505,7 @@ export default {
         if (this.hemograma.d30 == undefined || this.hemograma.d30=='') this.hemograma.d30=0;
 
         total=parseFloat(this.hemograma.d18) + parseFloat(this.hemograma.d20) + parseFloat(this.hemograma.d22) + parseFloat(this.hemograma.d24) + parseFloat(this.hemograma.d26)
-        + parseFloat(this.hemograma.d28) + parseFloat(this.hemograma.d30) 
+        + parseFloat(this.hemograma.d28) + parseFloat(this.hemograma.d30)
     if(total!=100 )
     {
          this.$q.notify({
@@ -2529,7 +2550,7 @@ export default {
           message: 'Registro Realizado',
           icon: 'beaker'
         })
-        this.orina={fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'HH:mmm')};
+        this.orina={d2:'NEGATIVO',d4:'NEGATIVO',d6:'NEGATIVO',d8:'NEGATIVO',d10:'NEGATIVO',d12:'NORMAL',d14:'NEGATIVO',d16:'NEGATIVO',d18:'NEGATIVO',d20:'NEGATIVO',d22:'NEGATIVO',d24:'NEGATIVO',d26:'NEGATIVO',d27:'NEGATIVO',d15:'N.S.O.',d17:'N.S.O.',d19:'N.S.O.',d21:'N.S.O.',d23:'N.S.O.',d25:'ESCASO',d28:'N.S.O.',d29:'N.S.O.',d31:'N.S.O.',d33:'N.S.O.',d35:'N.S.O.',fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'HH:mmm')};
                 this.doctini();
         })
     },
