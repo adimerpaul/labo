@@ -1501,7 +1501,10 @@
             </tr>
             <tr>
                 <td colspan="2" class="text-center text-red" style="width: 20%">1 MUESTRA</td>
-                <td rowspan=3><textarea style="width: 100%" v-model="seriado.muestra1"/></td>
+                <td rowspan=3>
+<!--                  <textarea style="width: 100%" v-model="seriado.muestra1"/>-->
+                  <q-editor v-model="seriado.muestra1" min-height="5rem" />
+                </td>
             </tr>
             <tr>
                 <td class="text-left text-red">Fecha</td>
@@ -1513,7 +1516,11 @@
             </tr>
             <tr>
                 <td colspan="2" class="text-center text-red" style="width: 20%">2 MUESTRA</td>
-                <td rowspan=3><textarea style="width: 100%" v-model="seriado.muestra2"/></td>
+                <td rowspan=3>
+<!--                  <textarea style="width: 100%" v-model="seriado.muestra2"/>-->
+                  <q-editor v-model="seriado.muestra2" min-height="5rem" />
+                </td>
+
             </tr>
             <tr>
                 <td class="text-left text-red">Fecha</td>
@@ -1525,7 +1532,10 @@
             </tr>
             <tr>
                 <td colspan="2" class="text-center text-red" style="width: 20%">3 MUESTRA</td>
-                <td rowspan=3><textarea style="width: 100%" v-model="seriado.muestra3"/></td>
+                <td rowspan=3>
+<!--                  <textarea style="width: 100%" v-model="seriado.muestra3"/>-->
+                  <q-editor v-model="seriado.muestra3" min-height="5rem" />
+                </td>
             </tr>
             <tr>
                 <td class="text-left text-red">Fecha</td>
