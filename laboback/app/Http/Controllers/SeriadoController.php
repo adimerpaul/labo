@@ -70,7 +70,7 @@ font-size: 12px;
 </style>
             <table style="padding-right:15px;padding-left:10px;width: 100%;color: black;padding-top: 10px">
             <tr >
-                <td rowspan="3" ><img src="./img/natividad.jpeg" alt="Logo Clinica" style="height: 1.5cm; "></td>
+                <td rowspan="3" ><img src="./img/natividad.jpeg" alt="Logo Clinica" style="height: 1.2cm; "></td>
                 <td style="text-align:center; color:darkblue;">SERVICIO DE LABORATORIO </td>
             </tr>
 
@@ -87,7 +87,7 @@ font-size: 12px;
         </table>
         <table class="tablex" border="1" style="padding-right:15px;padding-left:10px;width: 100%;color: black">
             <tr>
-                <td class="tdx" colspan="3" style="text-align: center;color:darkblue;font:bold;border:0"><h3>COPROPARASITOLOGICO SERIADO</h3></td>
+                <td class="tdx" colspan="3" style="font-size:16px;text-align: center;color:darkblue;font:bold;border:0">COPROPARASITOLOGICO SERIADO</td>
                 <td class="tdx" style="color:red">Form. 009</td>
             </tr>
             <tr>
