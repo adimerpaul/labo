@@ -2132,7 +2132,7 @@
 
         <table border="1" style="width: 100%;color: black">
             <tr>
-                <td colspan="3" style="text-align: center; border:0">PRUEBA RAPIDA INMUNOCROMATOGRAFICA</td>
+                <td colspan="3" style="text-align: center; border:0"><div class="text-h5 text-center text-bold bg-blue-8 text-white">TEST EMBARAZO</div></td>
                 <td>Form. 008</td>
             </tr>
             <tr>
@@ -2177,7 +2177,10 @@
 
             <tr>
                 <td  colspan="3" class="text-center text-blue">OBSERVACIONES</td>
-                <td colspan="2"><input  type="text"  v-model="embarazo.obs" ></td>
+                <td colspan="2">
+<!--                  <q-input  type="text"  v-model="embarazo.obs" >-->
+                    <q-editor v-model="embarazo.obs" min-height="5rem" />
+                </td>
             </tr>
 
             <tr >
@@ -2279,7 +2282,11 @@ export default {
       labserologia:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'HH:mm')},
       reserologia:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'HH:mm')},
       ensayo:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'HH:mm')},
-      embarazo:{fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),horatoma:date.formatDate(Date.now(),'HH:mm')},
+      embarazo:{
+        obs:'',
+        fechatoma:date.formatDate(Date.now(),'YYYY-MM-DD'),
+        horatoma:date.formatDate(Date.now(),'HH:mm')
+      },
       ophemograma:[],
       oporina:[],
       opsanguinia:[],

@@ -20,7 +20,7 @@ class CreateEmbarazosTable extends Migration
             $table->time('horatoma')->nullable();
             $table->string('d1')->default('')->nullable();
             $table->date('fum')->nullable();
-            $table->string('obs')->default('')->nullable();
+            $table->text('obs')->default('')->nullable();
             $table->string('responsable')->nullable()->default('');
             $table->unsignedBigInteger('paciente_id');
             $table->foreign('paciente_id')->references('id')->on('pacientes');

@@ -21,10 +21,13 @@ class Paciente extends Model
     public function age()
     {
          if($this->attributes['fechanac']!=null) return Carbon::parse($this->attributes['fechanac'])->age;
-         else 
+         else
          return $this->attributes['edad'];
     }
     public function seguro(){
         return $this->belongsTo(Seguro::class);
+    }
+    public function laboratorios(){
+        return $this->hasMany(Laboratorio::class)->with('tipo');
     }
 }

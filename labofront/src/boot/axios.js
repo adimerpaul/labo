@@ -26,6 +26,11 @@ export default boot(({ app, router, store }) => {
       // store.state.user=res.data;
       // store().commit('login/auth_success', {token:token,user:res.data})
       store.commit('login/auth_success',{token:token,user:res.data})
+    }).catch(err=>{
+      // console.error('aas')
+      store.commit('login/salir')
+      localStorage.removeItem('tokenlabo')
+
     })
   }
 

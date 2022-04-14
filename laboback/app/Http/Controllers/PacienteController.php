@@ -17,7 +17,7 @@ class PacienteController extends Controller
     public function index()
     {
         //
-        return Paciente::with('seguro')->get();
+        return Paciente::with('seguro')->with('laboratorios')->get();
     }
 
     /**
@@ -122,7 +122,7 @@ class PacienteController extends Controller
             SELECT f.id,tipomuestra,fechatoma,'labserologia' as formulario , doctors.celular as dcelular FROM labserologias f inner join doctors on f.doctor_id=doctors.id WHERE paciente_id='$id' union
             SELECT f.id,tipomuestra,fechatoma,'reserologia' as formulario , doctors.celular as dcelular FROM reserologias f inner join doctors on f.doctor_id=doctors.id WHERE paciente_id='$id' union
             SELECT f.id,tipomuestra,fechatoma,'ensayo' as formulario , doctors.celular as dcelular FROM ensayos f inner join doctors on f.doctor_id=doctors.id WHERE paciente_id='$id' union
-            SELECT f.id,tipomuestra,fechatoma,'embarazo' as formulario , doctors.celular as dcelular FROM embarazos f inner join doctors on f.doctor_id=doctors.id WHERE paciente_id='$id' 
+            SELECT f.id,tipomuestra,fechatoma,'embarazo' as formulario , doctors.celular as dcelular FROM embarazos f inner join doctors on f.doctor_id=doctors.id WHERE paciente_id='$id'
             "
         );
         return $r1;

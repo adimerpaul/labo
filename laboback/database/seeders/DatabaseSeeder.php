@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             PermisoSeeder::class,
             PermisoUserSeeder::class,
             SeguroSeeder::class,
+            TipoSeeder::class
         ]);
 //        \App\Models\User::factory(2)->create();
 //        \App\Models\Doctor::factory(2)->create();
