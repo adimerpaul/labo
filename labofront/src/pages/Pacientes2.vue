@@ -2,6 +2,9 @@
 <q-page class="q-pa-xs">
   <div class="row">
     <div class="col-12">
+      <iframe id="docpdf" src="" frameborder="0" style="width: 100%;height: 100vh"></iframe>
+    </div>
+    <div class="col-12">
       <q-table title1="Listado de pacientes" :rows="pacientes" :columns="columspaciente" :filter="filter">
         <template v-slot:body-cell-seguro="props">
           <q-td :props="props">{{ props.row.seguro.nombre}}</q-td>
@@ -109,6 +112,8 @@
 <script>
 import {date} from "quasar";
 import {jsPDF} from "jspdf";
+import $ from 'jquery'
+
 
 export default {
   data(){
@@ -185,6 +190,94 @@ export default {
       ]
     }
   },
+  mounted() {
+    var doc = new jsPDF('landscape',undefined,'legal')
+    doc.setFont("arial");
+    doc.setFontSize(10);
+    var img = new Image()
+    img.src = 'img/natividad.jpeg'
+    doc.addImage(img, 'jpg', 190, 3, 70, 20)
+    let x=0
+    let y=0
+    //inicio datos paciete
+    doc.setDrawColor(120);
+    doc.rect(x+195, y+27, 155, 23)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+320, y+10,'center')
+    doc.setTextColor(195,47,47)
+    doc.text('N Registro CODEDLAB 000045',x+225, y+25)
+    doc.setTextColor(211,47,47)
+    doc.text('Form. 001',x+323, y+30)
+    doc.setTextColor(57,73,171)
+    doc.text('HEMOGRAMA COMPLETO',x+270, y+30,'center')
+    doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA','METODO'],x+196, y+35)
+    doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'normal')
+    doc.text(['ADIEMR PAUL CHAMBI AJATA','ADIMER PAUL CHAMBI AJATA A','COMPLRETA'],x+268, y+35,'center')
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'bold')
+    doc.text(['EDAD','SEXO'],x+305, y+35)
+    doc.setTextColor(211,47,47)
+    doc.text('N PACIENTE',x+305, y+43)
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(0,0,0)
+    doc.text(['9999 ','MACULJONO','11'],x+337, y+35,'center')
+    doc.setTextColor(57,73,171)
+    doc.text('CONTADOR Hematologico MINDRAY BC 5130',x+300, y+47,'center')
+    //fin datos paciete
+    //inicio datos
+    doc.rect(x+195, y+51, 155, 77)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('REFERENCIA',x+253,y+55)
+    doc.setFont(undefined, 'normal')
+    doc.text(['Globulos rojos',' ','Hemoglobina',' ','Hematocrito',' ','V.E.S.',' ','V.C.M.',' ','Hb.C.M.',' ','C.Hb.C.M.',' ','Globulos Blancos',' ','Plaquetas'],x+209,y+60,'center')
+    doc.setTextColor(0,0,0)
+    doc.text(['10',' ','20',' ','10',' ','20',' ','10',' ','20',' ','10',' ','20',' ','10'],x+226,y+60,'center')
+    doc.setTextColor(57,73,171)
+    doc.text(['x10^(12)/L',' ','g/L',' ','L/L',' ','mm.',' ','ft.',' ','pg.',' ','%',' ','x10^(9)L',' ','x10^(9)L'],x+240,y+60,'center')
+    doc.text(['Varon 5.1x10^(12)L','Mujer 5.1x10^(12)L','Varon 151-175 g/L','Mujer 141-165 g/L','Varon 0.51-0.57 L/L','Mujer 0.46-0.53 L/L','Varon 15 mm/hora','Mujer 20mm/hora','Varon 83.0-97.0 ft','','27.0-31.0 pg.','','32-36%','','4.5-10.5x10^(9)/L','','105-400x10^(9)L'],x+265,y+60,'center')
+
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'bold')
+    doc.text('REFERENCIA',x+325,y+55)
+    doc.setFont(undefined, 'normal')
+    doc.text(['Tiempo cuagulacion',' ','Tiempo sangria',' ','Tiempo Protrombina',' ','% Actividad',' ','INR',' ','Grupo factor',' ','Reticulocitos',' ','IPR'],x+296,y+60,'center')
+    doc.setTextColor(0,0,0)
+    doc.text(['8m 53s',' ','20',' ','10',' ','20',' ','10',' ','20',' ','10',' ','20',' '],x+318,y+60,'center')
+    doc.setTextColor(57,73,171)
+    doc.text(['5-10min',' ','1-3min',' ','12-13seg',' ','95-100%',' ','0.97-1.04.',' ','',' ','0.5-2%'],x+337,y+60,'center')
+
+    doc.rect(x+195, y+129, 155, 40)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('VALOR REFERENCIAL',x+300,y+133)
+    doc.text('RELATIVA               ABSOLUTA               RELATIVA               ABSOLUTA',x+220,y+138)
+    doc.setFont(undefined, 'nomral')
+    doc.text(['Cayados','Neutrofilos','Eosinofilos','Basofilos','Linfocitos','Monocitos','BLASTOS'],x+209,y+143,'center')
+    doc.setTextColor(0,0,0)
+    doc.text(['10','10','10','10','10','10','10'],x+225,y+143,'center')
+    doc.setTextColor(57,73,171)
+    doc.text(['%','%','%','%','%','%','%'],x+233,y+143,'center')
+    doc.setTextColor(0,0,0)
+    doc.text(['10','10','10','10','10','10','10'],x+256,y+143,'center')
+    doc.setTextColor(57,73,171)
+    doc.text(['x10^(9)L','x10^(9)L','x10^(9)L','x10^(9)L','x10^(9)L','x10^(9)L'],x+268,y+143,'center')
+    doc.text(['0-3%','50-70%','0-3%','0-1%','25-40%','4-8%'],x+295,y+143,'center')
+    doc.text(['0.00-0.35x10^(9)L','2.50-7.35x10^(9)L','0.00-0.35x10^(9)L','0.00-0.15x10^(9)L','1.25-4.20x10^(9)L','2.00-8.40x10^(9)L'],x+327,y+143,'center')
+    // doc.html('<div style="border:1px solid black;width: 50px;font-size: 3px"><b><i>Adimer paul chambi ajata</i></b></div>', {
+    //   callback: function (doc) {
+    //     window.open(doc.output('bloburl'), '_blank');
+    //   },
+    //   x: 10,
+    //   y: 10,
+    // });
+    // doc.save("Pago"+date.formatDate(Date.now(),'DD-MM-YYYY')+".pdf");
+    // window.open(doc.output('bloburl'), '_blank');
+
+    $( '#docpdf' ).attr('src', doc.output('datauristring'));
+  },
   created() {
     this.mispacientes()
     this.$axios.get(process.env.API+'/tipo').then(res=> {
@@ -207,29 +300,45 @@ export default {
     })
   },
   methods:{
-    imprimirlaboratorio(paciente,laboratorio){
-      var doc = new jsPDF('landscape','cm','letter')
+    imprimirlaboratorio(p,l){
+      // console.log(l)
+      var doc = new jsPDF('landscape',undefined,'legal')
       doc.setFont("arial");
-      doc.setFontSize(9);
-      // var img = new Image()
-      // img.src = 'img/natividad.jpeg'
-      // doc.addImage(img, 'jpg', 0.5, -0.3, 7, 3)
+      doc.setFontSize(10);
+      var img = new Image()
+      img.src = 'img/natividad.jpeg'
+      doc.addImage(img, 'jpg', 190, 3, 70, 20)
       let x=0
       let y=0
-      doc.setDrawColor(0);
-      doc.setFillColor(255,0,0);
-      doc.rect(0, 20, 10, 10, 'FD');
+      doc.setDrawColor(120);
+      doc.rect(195, 27, 155, 30);
       doc.setFont(undefined, 'bold')
-      doc.rect(20, 20, 10, 10);
-      doc.text(x+13, y+1,'SERVICIO DE LABORATORIO','center')
-      doc.text(x+13, y+1.3,'Bolivar N°753 entre Arica e Iquique','center')
-      doc.text(x+13, y+1.6,'Telf: 5254721 Fax: 52-83667','center')
-      doc.text(x+13, y+1.9,'Emergencia las 24 horas del dia.','center')
+      doc.setTextColor(57,73,171);
+      doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+320, y+10,'center')
+      doc.setTextColor(211,47,47);
+      doc.text('N Registro CODEDLAB 000045',x+225, y+25)
+      doc.setTextColor(57,73,171);
+      doc.text('HEMOGRAMA COMPLETO',x+280, y+30,'center')
+      doc.setTextColor(211,47,47);
+      doc.text('Form. 001',x+323, y+30)
+      doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA','METODO'],x+221, y+33)
       doc.setTextColor(0,0,0);
       doc.setFont(undefined, 'normal')
-      doc.text(x+5, y+2,'PRUEBA')
+      doc.text([p.paciente,l.doctor.paterno+' '+l.doctor.materno+' '+l.doctor.nombre,l.tipomuestra],x+275, y+33,'center')
+      doc.setTextColor(57,73,171);
+      doc.text('CONTADOR Hematologico MINDRAY BC 5130',x+305, y+44,'center')
+      // doc.html('<div style="border:1px solid black;width: 50px;font-size: 3px"><b><i>Adimer paul chambi ajata</i></b></div>', {
+      //   callback: function (doc) {
+      //     window.open(doc.output('bloburl'), '_blank');
+      //   },
+      //   x: 10,
+      //   y: 10,
+      // });
+
       // doc.save("Pago"+date.formatDate(Date.now(),'DD-MM-YYYY')+".pdf");
-      window.open(doc.output('bloburl'), '_blank');
+      // window.open(doc.output('bloburl'), '_blank');
+      $( '#docpdf' ).attr('src', doc.output('datauristring'));
+
     },
     createLaboratorio(){
       this.laboratorio.tipo_id=this.tipo.id
@@ -251,7 +360,7 @@ export default {
         this.pacientes=[]
         res.data.forEach(r=>{
           let d=r
-          console.log(r)
+          // console.log(r)
           d.paciente=r.paterno+' '+r.materno+' '+r.nombre
           this.pacientes.push(d)
         })

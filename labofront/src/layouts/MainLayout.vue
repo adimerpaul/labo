@@ -16,7 +16,7 @@
         </q-toolbar-title>
         <div>v{{ $q.version }}</div>
       </q-toolbar>
-      <div class="q-px-lg q-pt-xl q-mb-md">
+      <div class="">
         <div class="text-h3">Laboratorio</div>
         <div class="text-subtitle1">{{now}} </div>
       </div>

@@ -28,6 +28,6 @@ class Paciente extends Model
         return $this->belongsTo(Seguro::class);
     }
     public function laboratorios(){
-        return $this->hasMany(Laboratorio::class)->with('tipo');
+        return $this->hasMany(Laboratorio::class)->with('tipo')->with('doctor');
     }
 }
