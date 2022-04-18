@@ -191,7 +191,36 @@ export default {
     }
   },
   mounted() {
-    var doc = new jsPDF('landscape',undefined,'legal')
+
+
+    this.embarazo();
+  },
+
+  created() {
+    this.embarazo;
+    this.mispacientes()
+    this.$axios.get(process.env.API+'/tipo').then(res=> {
+      this.tipos=[]
+      res.data.forEach(r=>{
+        let d=r
+        d.label=r.nombre
+        this.tipos.push(d)
+      })
+      this.tipo=this.tipos[0]
+    })
+    this.$axios.get(process.env.API+'/doctor').then(res=> {
+      this.doctors=[]
+      res.data.forEach(r=>{
+        let d=r
+        d.label=r.paterno+' '+r.materno+' '+r.nombre
+        this.doctors.push(d)
+      })
+      this.doctor=this.doctors[0]
+    })
+  },
+  methods:{
+      hemograma(){
+            var doc = new jsPDF('landscape',undefined,'legal')
     doc.setFont("arial");
     doc.setFontSize(10);
     var img = new Image()
@@ -277,29 +306,73 @@ export default {
     // window.open(doc.output('bloburl'), '_blank');
 
     $( '#docpdf' ).attr('src', doc.output('datauristring'));
+      },
+      embarazo() {
+    var doc = new jsPDF('P',undefined,'legal')
+    doc.setFont("arial");
+    doc.setFontSize(10);
+    var img = new Image()
+    img.src = 'img/natividad.jpeg'
+    doc.addImage(img, 'jpg', 5, 2, 70, 20)
+    let x=0
+    let y=0
+    //inicio datos paciete
+    doc.setDrawColor(120);
+    doc.rect(x+5, y+27, 205, 23)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+175, y+8,'center')
+    doc.setTextColor(195,47,47)
+    doc.text('N Registro CODEDLAB 000045',x+150, y+25)
+    doc.setTextColor(211,47,47)
+    doc.text('Form. 008',x+190, y+30)
+    doc.setTextColor(57,73,171)
+    doc.text('PRUEBA RAPIDA INMUNOCROMATOGRAFICA',x+100, y+30,'center')
+    doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA','METODO'],x+6, y+35)
+    doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'normal')
+    doc.text(['ADIEMR PAUL CHAMBI AJATA','ADIMER PAUL CHAMBI AJATA A','COMPLRETA'],x+70, y+35,'center')
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'bold')
+    doc.text(['EDAD','SEXO'],x+130, y+35)
+    doc.setTextColor(211,47,47)
+    doc.text('N PACIENTE',x+130, y+43)
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(0,0,0)
+    doc.text(['9999 ','MACULJONO','11'],x+160, y+35,'center')
+    doc.setTextColor(57,73,171)
+    doc.text('PRUEBA RAPIDA INMUNOCROMATOGRAFICA',x+100, y+47,'center')
+    //fin datos paciete
+    //inicio datos
+    doc.rect(x+5, y+51, 205, 50)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('TEST EMBARAZO EN SANGRE',x+25,y+60)
+    doc.setFont(undefined, 'normal')
+    doc.text('POSITIVO',x+100,y+65,'center')
+    doc.setTextColor(0,0,0)
+    doc.text('F.U.M.',x+45,y+75,'center')
+    doc.setTextColor(57,73,171)
+    doc.text('2022-04-17',x+100,y+80,'center')
+
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'bold')
+    doc.text('OBSERVACIONES:',x+20,y+90)
+    doc.setFont(undefined, 'normal')
+    doc.text('SADASDASDADADSADSDSDADASDASDASD',x+30,y+95,'left')
+
+    doc.rect(x+5, y+102, 205, 20)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('RESPONSABLE',x+6,y+110)
+    doc.setFont(undefined, 'NORMAL')
+    doc.text('RELATIVA RELATIVA  ABSOLUTA',x+8,y+115)
+    doc.setFont(undefined, 'normal')
+    doc.text(['FECHA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+110,'center')
+    doc.setTextColor(0,0,0)
+
+    $( '#docpdf' ).attr('src', doc.output('datauristring'));
   },
-  created() {
-    this.mispacientes()
-    this.$axios.get(process.env.API+'/tipo').then(res=> {
-      this.tipos=[]
-      res.data.forEach(r=>{
-        let d=r
-        d.label=r.nombre
-        this.tipos.push(d)
-      })
-      this.tipo=this.tipos[0]
-    })
-    this.$axios.get(process.env.API+'/doctor').then(res=> {
-      this.doctors=[]
-      res.data.forEach(r=>{
-        let d=r
-        d.label=r.paterno+' '+r.materno+' '+r.nombre
-        this.doctors.push(d)
-      })
-      this.doctor=this.doctors[0]
-    })
-  },
-  methods:{
     imprimirlaboratorio(p,l){
       // console.log(l)
       var doc = new jsPDF('landscape',undefined,'legal')
