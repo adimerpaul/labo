@@ -193,7 +193,7 @@ export default {
   mounted() {
 
 
-    this.embarazo();
+    this.reserologia();
   },
 
   created() {
@@ -305,6 +305,168 @@ export default {
     // doc.save("Pago"+date.formatDate(Date.now(),'DD-MM-YYYY')+".pdf");
     // window.open(doc.output('bloburl'), '_blank');
 
+    $( '#docpdf' ).attr('src', doc.output('datauristring'));
+      },
+      ensayo(){
+            var doc = new jsPDF('landscape',undefined,'legal')
+    doc.setFont("arial");
+    doc.setFontSize(10);
+    var img = new Image()
+    img.src = 'img/natividad.jpeg'
+    doc.addImage(img, 'jpg', 190, 3, 70, 20)
+    let x=0
+    let y=0
+    //inicio datos paciete
+    doc.setDrawColor(120);
+    doc.rect(x+195, y+27, 155, 23)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+320, y+10,'center')
+    doc.setTextColor(195,47,47)
+    doc.text('N Registro CODEDLAB 000045',x+225, y+25)
+    doc.setTextColor(211,47,47)
+    doc.text('Form. 0010',x+323, y+30)
+    doc.setTextColor(57,73,171)
+    doc.text('',x+270, y+30,'center')
+    doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA','METODO'],x+196, y+35)
+    doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'normal')
+    doc.text(['ADIEMR PAUL CHAMBI AJATA','ADIMER PAUL CHAMBI AJATA A','COMPLRETA'],x+268, y+35,'center')
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'bold')
+    doc.text(['EDAD','SEXO'],x+305, y+35)
+    doc.setTextColor(211,47,47)
+    doc.text('N PACIENTE',x+305, y+43)
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(0,0,0)
+    doc.text(['9999 ','MACULJONO','11'],x+337, y+35,'center')
+    doc.setTextColor(211,47,47)
+    doc.text('CONTADOR Hematologico MINDRAY BC 5130',x+260, y+47,'center')
+    doc.setTextColor(57,73,171)
+    //fin datos paciete
+    //inicio datos
+    doc.rect(x+195, y+51, 155, 110)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(211,47,47)
+    doc.text('METODO: INMUNOENSAYO DE FLUORESCENCIA (FIA)',x+233,y+55)
+    doc.setTextColor(57,73,171)
+    doc.setFontSize(10);
+    doc.text('UNIDAD   TIPO MUESTRA   VALOR REF',x+260,y+60)
+    doc.setFontSize(12);
+
+    doc.setFont(undefined, 'normal')
+    doc.setFontSize(12);
+    doc.text(['DIMEROS D',' ','FERRITINA',' ','IL-6',' ','PSA CUANTITATIVO',' ','PCR CUANTITATIVO',' ','TROPONINA I',' ',' ','B - HCG',' ',' ',' ','PROCALCITONINA'],x+200,y+65,'left')
+    doc.setTextColor(0,0,0)
+        /*if(($row->d1<0 || $row->d1>500)&& $row->d1!='')
+        doc.setTextColor(195,47,47)
+        else
+        doc.setTextColor(0,0,0)
+
+        if($row->paciente->sexo=='Masculino' && ($row->d2<30 || $row->d2>350)&& $row->d2!='')$cd2='color:#ff726f;';
+        if($row->paciente->sexo=='Femenino' && ($row->d2<20 || $row->d2>250)&& $row->d2!='')$cd2='color:#ff726f;';
+        if(($row->d3<0 || $row->d3>7)&& $row->d3!='')$cd3='color:#ff726f;';
+        if(($row->d4<0 || $row->d4>4)&& $row->d4!='')$cd4='color:#ff726f;';
+        if(($row->d5<0 || $row->d5>10)&& $row->d5!='')$cd5='color:#ff726f;';
+        if(($row->d6<0 || $row->d6>0.11)&& $row->d6!='')$cd6='color:#ff726f;';
+        if(($row->d7<0 || $row->d7>10)&& $row->d7!='')$cd7='color:#ff726f;';*/
+    doc.text(['100',' ','100',' ','100',' ','100',' ','100',' ','100',' ',' ','100',' ',' ',' ','100'],x+250,y+65,'center')
+    doc.text(['ng/ml',' ','ng/ml',' ','pg/ml',' ','ng/ml',' ','mg/ml',' ','ng/ml',' ',' ','mlU/ml',' ',' ',' ','ng/ml'],x+270,y+65,'center')
+    doc.setFontSize(10);
+    doc.text(['Plasma Citratado',' ','Suero',' ',' ','Suero/plasma',' ','Suero',' ',' ','Sangre Entera',' ','Suero',' ',' ',' ','Suero',' ',' ',' ','Suero'],x+290,y+65,'center')
+    doc.setTextColor(57,73,171)
+    doc.setFontSize(8);
+    doc.text(['Hasta 500 ng/ml','','30-350 ng/ml Varon','20-250 ng/ml Mujer','',' ','7 pg/ml','',' ','Menor a 4 ng/ml','',' ','<10 mg/L','',' ','0.0 - 0.11 ng/ml','',' ',' ','Mujer No Embarazada < 10 mlU/ml','Mujer en postmenopausia <10 mlU/ml','','PCT < 0.5 Es posible infeccion' ,'  bacteriana local','PCT 0.5 - 2 Posible infeccion','PCT 2 -10 Es muy probable ',' infeccion(sepsia) a menores que se ','conozcan otras causas','PCT > 10 Sepsia Bacteriana severa',' o shock septico'],x+305,y+65,'left')
+    doc.setFontSize(10);
+
+
+    doc.rect(x+195, y+160, 155, 30)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('RESPONSABLE',x+205,y+165,'left')
+    doc.setFontSize(10);
+    doc.text(['Fecha toma de Muestra','Fecha Entrega de Resultado','Hora toma Muestra'],x+280,y+165,'left')
+ 
+    $( '#docpdf' ).attr('src', doc.output('datauristring'));
+      },
+      reserologia(){
+                    var doc = new jsPDF('landscape',undefined,'legal')
+    doc.setFont("arial");
+    doc.setFontSize(10);
+    var img = new Image()
+    img.src = 'img/natividad.jpeg'
+    doc.addImage(img, 'jpg', 190, 3, 70, 20)
+    let x=0
+    let y=0
+    //inicio datos paciete
+    doc.setDrawColor(120);
+    doc.rect(x+195, y+27, 155, 23)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+320, y+10,'center')
+    doc.setTextColor(195,47,47)
+    doc.text('N Registro CODEDLAB 000045',x+225, y+25)
+    doc.setTextColor(211,47,47)
+    doc.text('Form. 005',x+323, y+30)
+    doc.setTextColor(57,73,171)
+    doc.text('',x+270, y+30,'center')
+    doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA','METODO'],x+196, y+35)
+    doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'normal')
+    doc.text(['ADIEMR PAUL CHAMBI AJATA','ADIMER PAUL CHAMBI AJATA A','COMPLRETA'],x+268, y+35,'center')
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'bold')
+    doc.text(['EDAD','SEXO'],x+305, y+35)
+    doc.setTextColor(211,47,47)
+    doc.text('N PACIENTE',x+305, y+43)
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(0,0,0)
+    doc.text(['9999 ','MACULJONO','11'],x+337, y+35,'center')
+    doc.setTextColor(211,47,47)
+    doc.text('CONTADOR Hematologico MINDRAY BC 5130',x+260, y+47,'center')
+    doc.setTextColor(57,73,171)
+    //fin datos paciete
+    //inicio datos
+    doc.rect(x+195, y+51, 155, 25)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(211,47,47)
+    doc.text('PRUEBA RAPIDA ANTIGENOS SARS COV 2',x+233,y+55)
+    doc.setTextColor(57,73,171)
+    doc.setFontSize(10);
+    doc.text('METODO:  INMUNOGRAMATOGRAFIA CUALITATIVA',x+220,y+60)
+    doc.setFontSize(12);
+
+    doc.setFont(undefined, 'normal')
+    doc.setFontSize(10);
+    doc.setTextColor(211,47,47)
+    doc.text(['ANTIGENO','SARS COV 2'],x+250,y+70,'left')
+    doc.setTextColor(57,73,171)
+    doc.text('POSITIVO',x+285,y+73,'left')
+    doc.setTextColor(0,0,0)
+    doc.rect(x+195, y+75, 155, 72)
+
+    doc.text('FUNDAMENTO E INTERPRETACION DE LOS RESULTADO',x+220,y+80)
+    doc.text(['La prueba rapida de Antigeno Nasal puede revelar una Infeccion activa de SARS-COV-2.','El test proporciona un resultado de "POSITIVO" o "NEGATIVO"','Los antigenos son parte de la estructura del virus, como las proteinas de espiga.'],x+205,y+85)
+    doc.text(['La muestra de Hisopado nasofaringeo pasa por una linea que detecta antigenos y cambia de color, ','durante la prueba el anticuerpo monocianal de raton anti-SARS-CoV-2 en la muestra interactua con ','el Anticuerpo monocianal lgG anti-COVID-19 conjugando con particulas de color que forman un ','complejo de particulas de antigeno-anticuerpo. Este complejo migra en la menbrana por accion ','capilar hasta la linea de prueba, donde aera capturado por el anticuerpo por el anticuerpo monocianal ','anti-SARS-CoV-2 de raton. Una linea de prueba coloreada seria visible en la ventana de resultados ','si los antigenos del SARS-CoV-2 estan presentes en la muestra.'],x+205,y+100)
+    doc.text(['Funciona mejor en la etapa inicial con una CARGA VIRAL ALTA y sintomalogia hasta los 10 dias.','Los resultados Negativos indica ausencia de Antigenos detectables de SARS-CoV-2 y cuando la ','carga viral o la cantidad de antigeno presente se encuentra debajo del limite de deteccion.'],x+205,y+130)
+
+    doc.text('Los resultados Psitivos no diferencian entre SARS-COV y SARS-COV-2',x+205,y+145)
+    doc.rect(x+195, y+148, 155, 10)
+    doc.text(['NOTA: Las pruebas rapidas para COVID-19 NO SON CONFIRMATORIAS Los Resultados deben ','ser interpretados en funcion de la Clinica del paciente y dias de evolucion de la enfermedad'],x+205,y+152)
+
+   //doc.text('El test proporciona un resultado de "POSITIVO" o "NEGATIVO"',x+205,y+85)
+    doc.setFontSize(10);
+
+
+    doc.rect(x+195, y+160, 155, 10)
+    doc.text('OBSERVACION',x+200,y+165)
+    doc.rect(x+195, y+170, 155, 30)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('RESPONSABLE',x+205,y+175,'left')
+    doc.setFontSize(10);
+    doc.text(['Fecha toma de Muestra','Fecha Entrega de Resultado','Hora toma Muestra'],x+280,y+175,'left')
+ 
     $( '#docpdf' ).attr('src', doc.output('datauristring'));
       },
       embarazo() {
