@@ -193,7 +193,7 @@ export default {
   mounted() {
 
 
-    this.reserologia();
+    this.serologia();
   },
 
   created() {
@@ -219,6 +219,87 @@ export default {
     })
   },
   methods:{
+          serologia(){
+            var doc = new jsPDF('landscape',undefined,'legal')
+    doc.setFont("arial");
+    doc.setFontSize(10);
+    var img = new Image()
+    img.src = 'img/natividad.jpeg'
+    doc.addImage(img, 'jpg', 190, 3, 70, 20)
+    let x=0
+    let y=0
+    //inicio datos paciete
+    doc.setDrawColor(120);
+    doc.rect(x+195, y+27, 155, 23)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+320, y+10,'center')
+    doc.setTextColor(195,47,47)
+    doc.text('N Registro CODEDLAB 000045',x+225, y+25)
+    doc.setTextColor(211,47,47)
+    doc.text('Form. 005',x+323, y+30)
+    doc.setTextColor(57,73,171)
+    doc.text('SEROLOGIA',x+270, y+30,'center')
+    doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA','METODO'],x+196, y+35)
+    doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'normal')
+    doc.text(['ADIEMR PAUL CHAMBI AJATA','ADIMER PAUL CHAMBI AJATA A','COMPLRETA'],x+268, y+35,'center')
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'bold')
+    doc.text(['EDAD','SEXO'],x+305, y+35)
+    doc.setTextColor(211,47,47)
+    doc.text('N PACIENTE',x+305, y+43)
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(0,0,0)
+    doc.text(['9999 ','MACULJONO','11'],x+337, y+35,'center')
+    doc.setTextColor(211,47,47)
+    doc.text('CONTADOR Hematologico MINDRAY BC 5130',x+260, y+47,'center')
+    doc.setTextColor(57,73,171)
+    //fin datos paciete
+    //inicio datos
+    doc.rect(x+195, y+53, 155, 125)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(211,47,47)
+    doc.text('',x+233,y+55)
+    doc.setTextColor(57,73,171)
+    doc.setFontSize(10);
+    doc.text('                   VALOR REF             METODO DE PRUEBA',x+260,y+60)
+    doc.setFontSize(12);
+
+    doc.setFont(undefined, 'normal')
+    doc.setFontSize(11);
+    doc.text(['Factor Reumatoide ','    (Latex)','Antiestreptolisina',' ','Proteina C Reactiva','','RPR','','Prueba Rapida Sifilis ','','Prueba Rapida VIH ',' ','Hepatitis A ',' ','Hepatitis B ',' ','Hepatitis C  ',' ','Helicobacter Pylori ','   en Sangre','Helicobacter Pylori ','    en Heces' ,'Troponina I ','','PSA'],x+200,y+65,'left')
+    doc.setTextColor(0,0,0)
+        /*if(($row->d1<0 || $row->d1>500)&& $row->d1!='')
+        doc.setTextColor(195,47,47)
+        else
+        doc.setTextColor(0,0,0)
+
+        if($row->paciente->sexo=='Masculino' && ($row->d2<30 || $row->d2>350)&& $row->d2!='')$cd2='color:#ff726f;';
+        if($row->paciente->sexo=='Femenino' && ($row->d2<20 || $row->d2>250)&& $row->d2!='')$cd2='color:#ff726f;';
+        if(($row->d3<0 || $row->d3>7)&& $row->d3!='')$cd3='color:#ff726f;';
+        if(($row->d4<0 || $row->d4>4)&& $row->d4!='')$cd4='color:#ff726f;';
+        if(($row->d5<0 || $row->d5>10)&& $row->d5!='')$cd5='color:#ff726f;';
+        if(($row->d6<0 || $row->d6>0.11)&& $row->d6!='')$cd6='color:#ff726f;';
+        if(($row->d7<0 || $row->d7>10)&& $row->d7!='')$cd7='color:#ff726f;';*/
+    //doc.text(['100',' ','100',' ','100',' ','100',' ','100',' ','100',' ',' ','100',' ',' ',' ','100'],x+250,y+65,'center')
+    doc.setFontSize(11);
+    doc.text(['Hasta 8 UI/ml ',' ','Hasta 200 UI/l',' ','Hasta 0.8 mg/dl ',' ','No Reactivo',' ','No Reactivo',' ','No Reactivo',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','Hasta 4 ng/ml'],x+290,y+65,'center')
+    doc.setTextColor(57,73,171)
+    doc.text(['Aglutinacion directa','','Aglutinacion directa','','Aglutinacion directa','','Floculacion directa','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida ','Semicuantitativo'],x+312,y+65,'left')
+    doc.setFontSize(11);
+
+
+    doc.rect(x+195, y+180, 155, 30)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('RESPONSABLE',x+205,y+185,'left')
+    doc.setFontSize(10);
+    doc.setLineHeightFactor(1.5)
+    doc.text(['Fecha toma de Muestra','Fecha Entrega de Resultado','Hora toma Muestra'],x+280,y+185,'left')
+ 
+    $( '#docpdf' ).attr('src', doc.output('datauristring'));
+      },
       hemograma(){
             var doc = new jsPDF('landscape',undefined,'legal')
     doc.setFont("arial");
