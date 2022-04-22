@@ -178,6 +178,47 @@
           <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
           </template>
+                              <template v-if="tipo.label=='QUIMICA SANGUINIA'">
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Glicemia" v-model="laboratorio.d1" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Fosfatasa alcalina" v-model="laboratorio.d2" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Creatina" v-model="laboratorio.d3" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Fosfatasa alcalina" v-model="laboratorio.d4" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Urea" v-model="laboratorio.d5" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Transamisas GOT" v-model="laboratorio.d6" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="NUS-BUN" v-model="laboratorio.d7" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Transamisas GPT" v-model="laboratorio.d8" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Acido Urico" v-model="laboratorio.d9" /></div>
+          <div class="col-6 col-sm-6"></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Proteinas Totales" v-model="laboratorio.d10" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Trigliceridos" v-model="laboratorio.d11" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Albumina" v-model="laboratorio.d12" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Colesterol Total" v-model="laboratorio.d13" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Globulina" v-model="laboratorio.d14" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="HDL-Col" v-model="laboratorio.d15" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Amilasa" v-model="laboratorio.d16" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="LDL-Col." v-model="laboratorio.d17" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Lipasa" v-model="laboratorio.d18" /></div>
+          <div class="col-6 col-sm-6"></div>
+
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Bilirrubina Total" v-model="laboratorio.d19" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Sodio" v-model="laboratorio.d20" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Bilirrubina Directa" v-model="laboratorio.d21" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Cloro" v-model="laboratorio.d22" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Bilirrubina Indirecta" v-model="laboratorio.d23" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Potasio" v-model="laboratorio.d24" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="CK-MB" v-model="laboratorio.d25" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Calcio" v-model="laboratorio.d26" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="LDH" v-model="laboratorio.d27" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Magnesio" v-model="laboratorio.d28" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Hierro" v-model="laboratorio.d29" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Fosforo" v-model="laboratorio.d30" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Observaciones" v-model="laboratorio.d31" /></div>
+
+          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>           
+
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          </template>
           <div class="col-12">
             <q-btn label="Guardar" type="submit" class="full-width" icon="add_circle" color="positive" />
           </div>
@@ -257,6 +298,7 @@ export default {
         d43:'',
         d44:'',
         d45:'',
+        responsable:'',
         tipo_id:'',
         paciente_id:'',
         user_id:this.$store.state.login.user.id,
@@ -276,7 +318,7 @@ export default {
   mounted() {
 
 
-    this.serologia();
+    //this.sanguinea();
     this.listusers();
     this.listseguro();
   },
@@ -304,6 +346,75 @@ export default {
     })
   },
   methods:{
+        sanguinea(p,l){
+    var doc = new jsPDF('P',undefined,'legal')
+    doc.setFont("arial");
+    doc.setFontSize(10);
+    var img = new Image()
+    img.src = 'img/natividad.jpeg'
+    doc.addImage(img, 'jpg', 5, 2, 70, 20)
+    let x=0
+    let y=0
+    //inicio datos paciete
+    doc.setDrawColor(120);
+    doc.rect(x+5, y+27, 205, 20)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+175, y+8,'center')
+    doc.setTextColor(195,47,47)
+    doc.text('N Registro CODEDLAB 000045',x+150, y+25)
+    doc.setTextColor(211,47,47)
+    doc.text('Form. 002',x+190, y+30)
+    doc.setTextColor(57,73,171)
+    doc.text('QUIMICA SANGUINEA',x+100, y+30,'center')
+    doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
+    doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'normal')
+    doc.text([p.paciente,l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno,l.tipomuestra],x+70, y+35,'center')
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'bold')
+    doc.text(['EDAD','SEXO'],x+130, y+35)
+    doc.setTextColor(211,47,47)
+    doc.text('N PACIENTE',x+130, y+43)
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(0,0,0)
+    doc.text([p.edad+'',p.sexo,p.id+''],x+160, y+35,'center')
+    doc.setTextColor(57,73,171)
+    //fin datos paciete
+    //inicio datos
+    doc.rect(x+5, y+48, 205, 73)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('          PRUEBA                      VALOR                   REFRENCIA                   PRUEBA                     VALOR                 VALOR',x+6,y+52)
+    doc.setFont(undefined, 'normal')
+    doc.text(['Glicemia','Creatina','Urea','NUS-BUN','Acido Urico','Proteinas Totales','Albumina','Globulina','Amilasa','Lipasa','Bilirrubina Total','Bilirrubina Directa','Bilirrubina Indirecta','CK-MB','LDH','Hierro'],x+8,y+58) 
+    doc.text(['70-105mg/dl','0.7-1.5mmg/dl','15-45mg/dl','7-18mg/dl','2.6-7.2mg/dl','6.2-8.5g/dl','3.5-5.3g/dl','2.8-3.5g/dl','menor a 120UI/L','10-150UI/L','hasta 1.2 mg/dl','hasta 0.3 mg/dl','hasta 0.9 mg/dl','0-24 UI/L','200-480 UI/L','50-170ug/dl'],x+80,y+58,'left')
+    doc.text(['Fosfatasa alcalina','Fosfatasa alcalina','Transamisa GOT','Transamisas GPT','LIPIDOGRAMA','Trigliceridos','Colesterol Total','HDL-Col','LDL-Col','ELECTROLITOS','Sodio','Cloro','Potasio','Calcio','Magnesio','Fosforo'],x+110,y+58,'left')
+    doc.text(['adultos hasta 100UI/L','niños 100-400UI/L','hasta 40UI/L','hasta 41UI/L','','10-160mg/dl','menor 200mg/dl','35-65mg/dl','hasta 150mg/dl','','135-155mEq/L','98-106 mEq/L','3.4-5.3 mEq/L','8.5-10.5mg/dl','1.7-2.4mg/dl','2.5-4.5mg/dl'],x+175,y+58,'left')
+    doc.setTextColor(0,0,0)
+    doc.text([l.d1,l.d3,l.d5,l.d7,l.d9,l.d10,l.d12,l.d14,l.d16,l.d18,l.d19,l.d21,l.d23,l.d25,l.d27,l.d29],x+55,y+58) 
+    doc.text([l.d2,l.d4,l.d6,l.d8,'',l.d11,l.d13,l.d15,l.d17,'',l.d20,l.d22,l.d24,l.d26,l.d28,l.d30],x+160,y+58) 
+
+
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'bold')
+    doc.text('OBSERVACIONES:',x+6,y+125)
+    doc.setFont(undefined, 'normal')
+    doc.text(l.d31,x+6,y+128,'left')
+
+    doc.rect(x+5, y+122, 205, 25)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('RESPONSABLE',x+6,y+135)
+    doc.setFont(undefined, 'NORMAL')
+    doc.text(l.responsable,x+8,y+140)
+    doc.setFont(undefined, 'normal')
+    doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+135,'center')
+    doc.setTextColor(0,0,0)
+    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+135,'left')
+
+    $( '#docpdf' ).attr('src', doc.output('datauristring'));
+    },
         valcien(){
               let total=0
         if (this.laboratorio.d18 == undefined || this.laboratorio.d18=='') this.laboratorio.d18=0;
@@ -567,10 +678,19 @@ export default {
     doc.text(['x10^(9)L','x10^(9)L','x10^(9)L','x10^(9)L','x10^(9)L','x10^(9)L'],x+268,y+143,'center')
     doc.text(['0-3%','50-70%','0-3%','0-1%','25-40%','4-8%'],x+295,y+143,'center')
     doc.text(['0.00-0.35x10^(9)L','2.50-7.35x10^(9)L','0.00-0.35x10^(9)L','0.00-0.15x10^(9)L','1.25-4.20x10^(9)L','2.00-8.40x10^(9)L'],x+327,y+143,'center')
+    doc.rect(x+195, y+170, 155, 15)
+
     doc.text('MORFOLOGIA DE FROTIS DE SANGRE PERIFERICA',x+265,y+173,'center')
     doc.text(['Serie Rojas','Serie Blancas','Serie Plaquetarias'],x+223,y+176,'right')
-    doc.text([l.d31,l.d32,l.d33],x+230,y+176,'left')
-    doc.text('responsable',x+235,y+173,'right')
+    doc.setTextColor(0,0,0)
+    doc.text([l.d31,l.d32,l.d33],x+228,y+176,'left')
+    doc.setTextColor(57,73,171)
+    doc.rect(x+195, y+186, 155, 15)
+
+    doc.text('RESPONSABLE',x+205,y+190,'left')
+    doc.text(l.responsable,x+215,y+195,'center')
+    doc.text(['Fecha de Toma de Muestra','Hora de Toma de Muestra:','Fecha de Entrega Resultado'],x+265,y+190,'left')
+    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+310,y+190,'left')
    // doc.text(l.responsable,x+235,y+178,'right')
 
     // doc.html('<div style="border:1px solid black;width: 50px;font-size: 3px"><b><i>Adimer paul chambi ajata</i></b></div>', {
@@ -816,6 +936,8 @@ export default {
     imprimirlaboratorio(p,l){
       if(l.tipo_id==1)
         this.hemograma(p,l)
+      if(l.tipo_id==2)
+        this.sanguinea(p,l)
        console.log(p)
        console.log(l)
       return false
