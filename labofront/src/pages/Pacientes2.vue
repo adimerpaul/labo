@@ -31,7 +31,7 @@
           </q-td>
         </template>
         <template v-slot:top-right>
-          <q-btn color="primary" icon="add_circle" label="crear paciente" />
+          <q-btn color="primary" icon="add_circle" label="crear paciente" @click="alert = true"  />
           <q-input outlined dense debounce="300" v-model="filter" placeholder="Search">
             <template v-slot:append>
               <q-icon name="search" />
@@ -41,6 +41,79 @@
       </q-table>
     </div>
   </div>
+      <q-dialog v-model="alert">
+      <q-card>
+        <q-card-section class="bg-green-14 text-white">
+          <div class="text-h6">Registro</div>
+        </q-card-section>
+        <q-card-section class="q-pt-xs">
+          <q-form
+            @submit.prevent="onSubmit"
+            class="q-gutter-md"
+          >
+            <q-input
+              filled
+              v-model="dato.ci"
+              label="Cedula Identidad"
+              hint="Numero de carnet"
+
+            />
+            <q-input
+              filled
+              v-model="dato.nombre"
+              label="Nombre "
+              hint="Ingresar Nombre "
+                  style="text-transform: uppercase;"
+              lazy-rules
+              :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']"
+            />
+            <q-input
+              filled
+              v-model="dato.paterno"
+              label="Ap Paterno "
+              hint="Ingresar Paterno "
+                  style="text-transform: uppercase;"
+            />
+            <q-input
+              filled
+              v-model="dato.materno"
+              label="Ap Materno "
+              hint="Ingresar Materno "
+                  style="text-transform: uppercase;"
+            />
+            <q-input
+              filled
+              type="date"
+              v-model="dato.fechanac"
+              label="Fecha Nac"
+
+            />
+                        <q-input
+              filled
+              type="number"
+              v-model="dato.edad"
+              label="Edad"
+
+            />
+            <q-radio v-model="dato.sexo" val="Masculino" label="Masculino" />
+            <q-radio v-model="dato.sexo" val="Femenino" label="Femenino" />
+            <q-input
+              filled
+              v-model="dato.celular"
+              label="Celular (Whatsapp)"
+              hint="Numero de celular"
+
+            />
+            <q-select  outlined v-model="seguro" :options="seguros" label="Seguro" />
+            <div>
+              <q-btn label="Crear" type="submit" color="positive" icon="add_circle"/>
+                <q-btn  label="Cancelar" icon="delete" color="negative" v-close-popup />
+            </div>
+          </q-form>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
+
   <q-dialog v-model="dialoglaboratorio" full-width full-height>
     <q-card>
       <q-card-section >
@@ -62,42 +135,48 @@
           </div>
 
           <template v-if="tipo.label=='HEMOGRAMA COMPLETO'">
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d1" /></div>
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Tiempo de cuagulacion" v-model="laboratorio.d2" /></div>
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Hemoglobina" v-model="laboratorio.d3" /></div>
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Tiempo de sangria" v-model="laboratorio.d4" /></div>
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Hematocrito" v-model="laboratorio.d5" /></div>
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Tiempo de Protrombina" v-model="laboratorio.d6" /></div>
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d7" /></div>
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d8" /></div>
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d9" /></div>
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d10" /></div>
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d11" /></div>
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d12" /></div>
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d13" /></div>
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d14" /></div>
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d15" /></div>
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d16" /></div>
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d17" /></div>
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d18" /></div>
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d19" /></div>
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d20" /></div>
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d21" /></div>
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d22" /></div>
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d23" /></div>
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d24" /></div>
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d25" /></div>
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d26" /></div>
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d27" /></div>
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d28" /></div>
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d29" /></div>
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d30" /></div>
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d31" /></div>
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d32" /></div>
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d33" /></div>
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d34" /></div>
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d35" /></div>
-          <div class="col-6 col-sm-2"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d36" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d1" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Tiempo de cuagulacion" v-model="laboratorio.d2" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Hemoglobina" v-model="laboratorio.d3" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Tiempo de sangria" v-model="laboratorio.d4" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Hematocrito" v-model="laboratorio.d5" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Tiempo de Protrombina" v-model="laboratorio.d6" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="V.E.S." v-model="laboratorio.d7" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="% Actividad" v-model="laboratorio.d8" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="V.C.M." v-model="laboratorio.d9" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="INR" v-model="laboratorio.d10" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Hb.C.M." v-model="laboratorio.d11" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Grupo Factor" v-model="laboratorio.d12" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="C.Hb.C.M." v-model="laboratorio.d13" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Reticulocitos" v-model="laboratorio.d14" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Globolus Blancos" v-model="laboratorio.d15" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="IPR" v-model="laboratorio.d16" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Plaquetas" v-model="laboratorio.d17" /></div>
+          <div class="col-6 col-sm-6"></div>
+
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Cayados" v-model="laboratorio.d18" @keyup="valcien" type="number"/></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="x10^9/L" v-model="laboratorio.d19" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Neutrofilos" v-model="laboratorio.d20" @keyup="valcien" type="number"/></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="x10^9/L" v-model="laboratorio.d21" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Eosinofilos" v-model="laboratorio.d22" @keyup="valcien" type="number"/></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="x10^9/L" v-model="laboratorio.d23" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Basofilos" v-model="laboratorio.d24" @keyup="valcien" type="number"/></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="x10^9/L" v-model="laboratorio.d25" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Linfocitos" v-model="laboratorio.d26" @keyup="valcien" type="number"/></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="x10^9/L" v-model="laboratorio.d27" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Monocitos" v-model="laboratorio.d28" @keyup="valcien" type="number"/></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="x10^9/L" v-model="laboratorio.d29" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="BLASTOS" v-model="laboratorio.d30" @keyup="valcien" type="number"/></div>
+
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Serie Rojas" v-model="laboratorio.d31" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Serie Blancas" v-model="laboratorio.d32" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Serie Plaquetarias" v-model="laboratorio.d33" /></div>
+
+          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
+            
+
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
           </template>
           <div class="col-12">
             <q-btn label="Guardar" type="submit" class="full-width" icon="add_circle" color="positive" />
@@ -120,16 +199,19 @@ export default {
     return{
       dialoglaboratorio:false,
       filter:'',
+      alert:false,
+      dato:{},
       pacientes:[],
       paciente:{},
       tipos:[],
       tipo:{},
       doctors:[],
       doctor:{},
+      user:{},
       laboratorio:{
         tipomuestra:'COMPLETA',
         fechatoma:date.formatDate(new Date(),'YYYY-MM-DD'),
-        horatoma:date.formatDate(new Date(),'HH:mm:ss'),
+        horatoma:date.formatDate(new Date(),'HH:mm'),
         d1:'',
         d2:'',
         d3:'',
@@ -179,6 +261,7 @@ export default {
         paciente_id:'',
         user_id:this.$store.state.login.user.id,
         doctor_id:'',
+        usuarios:[]
       },
       columspaciente:[
         {name:'opciones',field:'opciones',label:'opciones'},
@@ -194,6 +277,8 @@ export default {
 
 
     this.serologia();
+    this.listusers();
+    this.listseguro();
   },
 
   created() {
@@ -219,6 +304,27 @@ export default {
     })
   },
   methods:{
+        valcien(){
+              let total=0
+        if (this.laboratorio.d18 == undefined || this.laboratorio.d18=='') this.laboratorio.d18=0;
+        if (this.laboratorio.d20 == undefined || this.laboratorio.d20=='') this.laboratorio.d20=0;
+        if (this.laboratorio.d22 == undefined || this.laboratorio.d22=='') this.laboratorio.d22=0;
+        if (this.laboratorio.d24 == undefined || this.laboratorio.d24=='') this.laboratorio.d24=0;
+        if (this.laboratorio.d26 == undefined || this.laboratorio.d26=='') this.laboratorio.d26=0;
+        if (this.laboratorio.d28 == undefined || this.laboratorio.d28=='') this.laboratorio.d28=0;
+        if (this.laboratorio.d30 == undefined || this.laboratorio.d30=='') this.laboratorio.d30=0;
+
+        total=parseFloat(this.laboratorio.d18) + parseFloat(this.laboratorio.d20) + parseFloat(this.laboratorio.d22) + parseFloat(this.laboratorio.d24) + parseFloat(this.laboratorio.d26)
+        + parseFloat(this.laboratorio.d28) + parseFloat(this.laboratorio.d30)
+    if(total!=100 )
+    {
+         this.$q.notify({
+              message: 'No suma el 100 % ',
+              icon: 'info',
+             color:'red'
+            })
+    }
+    },
           serologia(){
             var doc = new jsPDF('landscape',undefined,'legal')
     doc.setFont("arial");
@@ -300,7 +406,7 @@ export default {
  
     $( '#docpdf' ).attr('src', doc.output('datauristring'));
       },
-      hemograma(){
+      hemograma(p,l){
             var doc = new jsPDF('landscape',undefined,'legal')
     doc.setFont("arial");
     doc.setFontSize(10);
@@ -324,7 +430,7 @@ export default {
     doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA','METODO'],x+196, y+35)
     doc.setTextColor(0,0,0)
     doc.setFont(undefined, 'normal')
-    doc.text(['ADIEMR PAUL CHAMBI AJATA','ADIMER PAUL CHAMBI AJATA A','COMPLRETA'],x+268, y+35,'center')
+    doc.text([p.paciente,l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno,l.tipomuestra],x+268, y+35,'center')
     doc.setTextColor(57,73,171)
     doc.setFont(undefined, 'bold')
     doc.text(['EDAD','SEXO'],x+305, y+35)
@@ -332,7 +438,7 @@ export default {
     doc.text('N PACIENTE',x+305, y+43)
     doc.setFont(undefined, 'normal')
     doc.setTextColor(0,0,0)
-    doc.text(['9999 ','MACULJONO','11'],x+337, y+35,'center')
+    doc.text([p.edad+'',p.sexo,p.id+''],x+337, y+35,'center')
     doc.setTextColor(57,73,171)
     doc.text('CONTADOR Hematologico MINDRAY BC 5130',x+300, y+47,'center')
     //fin datos paciete
@@ -344,7 +450,7 @@ export default {
     doc.setFont(undefined, 'normal')
     doc.text(['Globulos rojos',' ','Hemoglobina',' ','Hematocrito',' ','V.E.S.',' ','V.C.M.',' ','Hb.C.M.',' ','C.Hb.C.M.',' ','Globulos Blancos',' ','Plaquetas'],x+209,y+60,'center')
     doc.setTextColor(0,0,0)
-    doc.text(['10',' ','20',' ','10',' ','20',' ','10',' ','20',' ','10',' ','20',' ','10'],x+226,y+60,'center')
+    doc.text([l.d1,' ',l.d3,' ',l.d5,' ',l.d7,' ',l.d9,' ',l.d11,' ',l.d13,' ',l.d15,' ',l.d17],x+226,y+60,'center')
     doc.setTextColor(57,73,171)
     doc.text(['x10^(12)/L',' ','g/L',' ','L/L',' ','mm.',' ','ft.',' ','pg.',' ','%',' ','x10^(9)L',' ','x10^(9)L'],x+240,y+60,'center')
     doc.text(['Varon 5.1x10^(12)L','Mujer 5.1x10^(12)L','Varon 151-175 g/L','Mujer 141-165 g/L','Varon 0.51-0.57 L/L','Mujer 0.46-0.53 L/L','Varon 15 mm/hora','Mujer 20mm/hora','Varon 83.0-97.0 ft','','27.0-31.0 pg.','','32-36%','','4.5-10.5x10^(9)/L','','105-400x10^(9)L'],x+265,y+60,'center')
@@ -355,7 +461,7 @@ export default {
     doc.setFont(undefined, 'normal')
     doc.text(['Tiempo cuagulacion',' ','Tiempo sangria',' ','Tiempo Protrombina',' ','% Actividad',' ','INR',' ','Grupo factor',' ','Reticulocitos',' ','IPR'],x+296,y+60,'center')
     doc.setTextColor(0,0,0)
-    doc.text(['8m 53s',' ','20',' ','10',' ','20',' ','10',' ','20',' ','10',' ','20',' '],x+318,y+60,'center')
+    doc.text([l.d2,' ',l.d4,' ',l.d6,' ',l.d8,' ',l.d10,' ',l.d12,' ',l.d14,' ',l.d16,' '],x+318,y+60,'center')
     doc.setTextColor(57,73,171)
     doc.text(['5-10min',' ','1-3min',' ','12-13seg',' ','95-100%',' ','0.97-1.04.',' ','',' ','0.5-2%'],x+337,y+60,'center')
 
@@ -367,15 +473,21 @@ export default {
     doc.setFont(undefined, 'nomral')
     doc.text(['Cayados','Neutrofilos','Eosinofilos','Basofilos','Linfocitos','Monocitos','BLASTOS'],x+209,y+143,'center')
     doc.setTextColor(0,0,0)
-    doc.text(['10','10','10','10','10','10','10'],x+225,y+143,'center')
+    doc.text([l.d18,l.d20,l.d22,l.d24,l.d26,l.d28,l.d30],x+225,y+143,'center')
     doc.setTextColor(57,73,171)
     doc.text(['%','%','%','%','%','%','%'],x+233,y+143,'center')
     doc.setTextColor(0,0,0)
-    doc.text(['10','10','10','10','10','10','10'],x+256,y+143,'center')
+    doc.text([l.d19,l.d21,l.d23,l.d25,l.d27,l.d29],x+256,y+143,'center')
     doc.setTextColor(57,73,171)
     doc.text(['x10^(9)L','x10^(9)L','x10^(9)L','x10^(9)L','x10^(9)L','x10^(9)L'],x+268,y+143,'center')
     doc.text(['0-3%','50-70%','0-3%','0-1%','25-40%','4-8%'],x+295,y+143,'center')
     doc.text(['0.00-0.35x10^(9)L','2.50-7.35x10^(9)L','0.00-0.35x10^(9)L','0.00-0.15x10^(9)L','1.25-4.20x10^(9)L','2.00-8.40x10^(9)L'],x+327,y+143,'center')
+    doc.text('MORFOLOGIA DE FROTIS DE SANGRE PERIFERICA',x+265,y+173,'center')
+    doc.text(['Serie Rojas','Serie Blancas','Serie Plaquetarias'],x+223,y+176,'right')
+    doc.text([l.d31,l.d32,l.d33],x+230,y+176,'left')
+    doc.text('responsable',x+235,y+173,'right')
+   // doc.text(l.responsable,x+235,y+178,'right')
+
     // doc.html('<div style="border:1px solid black;width: 50px;font-size: 3px"><b><i>Adimer paul chambi ajata</i></b></div>', {
     //   callback: function (doc) {
     //     window.open(doc.output('bloburl'), '_blank');
@@ -617,7 +729,11 @@ export default {
     $( '#docpdf' ).attr('src', doc.output('datauristring'));
   },
     imprimirlaboratorio(p,l){
-      // console.log(l)
+      if(l.tipo_id==1)
+        this.hemograma(p,l)
+       console.log(p)
+       console.log(l)
+      return false
       var doc = new jsPDF('landscape',undefined,'legal')
       doc.setFont("arial");
       doc.setFontSize(10);
@@ -660,6 +776,7 @@ export default {
       this.laboratorio.tipo_id=this.tipo.id
       this.laboratorio.paciente_id=this.paciente.id
       this.laboratorio.doctor_id=this.doctor.id
+      this.laboratorio.responsable=this.user
       this.$axios.post(process.env.API+'/laboratorio',this.laboratorio).then(res=> {
         // console.log(res.data)
         this.mispacientes()
@@ -669,6 +786,59 @@ export default {
       this.paciente=paciente
       this.dialoglaboratorio=true
     },
+        onSubmit(){
+        this.dato.seguro=this.seguro.r.id
+      this.$q.loading.show()
+      this.$axios.post(process.env.API+'/paciente',this.dato).then(res=>{
+        this.dato={}
+         this.$q.notify({
+          message: 'Se registro correctamente',
+          color: 'success'
+        })
+        this.$q.loading.hide()
+        this.alert=false;
+        this.listado();
+      }).catch(err=>{
+        this.$q.loading.hide()
+        this.$q.notify({
+          message:err.response.data.message,
+          color:'red',
+          icon:'error'
+        })
+      })
+    },
+        listdoctor(){
+        this.doctors=[];
+          this.$axios.get(process.env.API+'/doctor').then(res=>{
+            // console.log(res.data);
+            res.data.forEach(e => {
+                this.doctors.push({label:e.nombre+' '+e.paterno+' '+e.materno,value:e.id})
+             });
+                this.requerido=this.doctors[0];
+          })
+    },
+          listusers(){
+          this.usuarios=[]
+          this.$axios.post(process.env.API+'/listuser').then(res=>{
+             res.data.forEach(element => {
+                 this.usuarios.push(element.name);
+             });
+             this.user=this.usuarios[0]
+          //console.log(this.usuarios)
+          })
+
+      },
+          listseguro(){
+          this.seguros=[]
+          this.seguro={label:''}
+          this.$axios.get(process.env.API+'/seguro').then(res=>{
+              res.data.forEach(r => {
+                  this.seguros.push({label:r.nombre,r});
+              });
+
+          })
+
+      },
     mispacientes(){
       this.$q.loading.show()
       this.$axios.get(process.env.API+'/paciente').then(res=>{
