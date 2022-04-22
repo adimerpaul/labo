@@ -395,6 +395,97 @@ export default {
     })
   },
   methods:{
+            orina(p,l){
+    var doc = new jsPDF('P',undefined,'legal')
+    doc.setFont("arial");
+    doc.setFontSize(10);
+    var img = new Image()
+    img.src = 'img/natividad.jpeg'
+    doc.addImage(img, 'jpg', 5, 2, 70, 20)
+    let x=0
+    let y=0
+    //inicio datos paciete
+    doc.setDrawColor(120);
+    doc.rect(x+5, y+27, 205, 20)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+175, y+8,'center')
+    doc.setTextColor(195,47,47)
+    doc.text('N Registro CODEDLAB 000045',x+150, y+25)
+    doc.setTextColor(211,47,47)
+    doc.text('Form. 002',x+190, y+30)
+    doc.setTextColor(57,73,171)
+    doc.text('EXAMEN GENERAL DE ORINA',x+100, y+30,'center')
+    doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
+    doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'normal')
+    doc.text([p.paciente,l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno,l.tipomuestra],x+70, y+35,'center')
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'bold')
+    doc.text(['EDAD','SEXO'],x+130, y+35)
+    doc.setTextColor(211,47,47)
+    doc.text('N PACIENTE',x+130, y+43)
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(0,0,0)
+    doc.text([p.edad+'',p.sexo,p.id+''],x+160, y+35,'center')
+    doc.setTextColor(57,73,171)
+    //fin datos paciete
+    //inicio datos
+    doc.rect(x+5, y+48, 205, 94)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('          EX FISICO                      VALOR                   REFERENCIA                   EX QUIMICO                     VALOR              REFERENCIA',x+6,y+52)
+    doc.setFont(undefined, 'normal')
+    doc.text(['Color','Olor','Aspecto','Espuma','Deposito','Densidad','Reaccion'],x+8,y+58) 
+    doc.text(['Amarillo','Sui-generis','Limpido o lig opal','Blanco fugaz','Nulo o escaso','1.010-1.030','Lig acida'],x+80,y+58,'center')
+    doc.text(['Proteinas','Glucosa','C cetonicos','Bilirrubina','Hemoglobina','Urobilina','Nitrinos'],x+110,y+58,'left')
+    doc.text(['Negativo','Negativo','Negativo','Negativo','Negativo','Normal','Negativo'],x+185,y+58,'left')
+    doc.setTextColor(0,0,0)
+    doc.text([l.d1,l.d3,l.d5,l.d7,l.d9,l.d11,l.d13],x+55,y+58) 
+    doc.text([l.d2,l.d4,l.d6,l.d8,l.d10,l.d12,l.d14],x+160,y+58) 
+    doc.setTextColor(57,73,171)
+    doc.text('SEDIMENTO: EXAMEN MICROSCOPICO',x+75,y+87,'center')
+
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('          CELULAS                      VALOR                   REFERENCIA                   CILINDROS                     VALOR              REFERENCIA',x+6,y+90)
+    doc.setFont(undefined, 'normal')
+    doc.text(['Celulas epitaliales','Celulas de transicion','Celulas Clave','Leucocitos','Eritrocitos','Bacterias','CRISTALES'],x+8,y+95) 
+    doc.text(['Hasta 2/c','Negativo','Negativo','Hasta 5/c','Hasta 3/c','Escaso',''],x+80,y+95,'center')
+    doc.text(['Hialino','Granuloso','Epiteliales','Eritrocitario','Leucositario','Cereos','Mixtos'],x+110,y+95,'left')
+    doc.text(['Negativo','Negativo','Negativo','Negativo','Negativo','Negativo','Negativo'],x+185,y+95,'left')
+    doc.setTextColor(0,0,0)
+    doc.text([l.d15,l.d17,l.d19,l.d21,l.d23,l.d25],x+55,y+95) 
+    doc.text([l.d16,l.d18,l.d20,l.d22,l.d24,l.d26,l.d27,'OTROS'],x+160,y+95) 
+
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'normal')
+    doc.text(['Uratos amorfos','Fosfato amorfo','Oxalato de calcio','Fosfato de calcio','Acido Urico'],x+8,y+125) 
+    doc.text(['Escaso','Escaso','Escaso','Escaso','Escaso'],x+80,y+125,'center')
+    doc.text(['Filamento mucoso','Piocitos','Levaduras','Esporas micoticas'],x+110,y+128,'left')
+    doc.setTextColor(0,0,0)
+    doc.text([l.d28,l.d29,l.d31,l.d33,l.d35],x+55,y+125) 
+    doc.text([l.d30,l.d32,l.d34,l.d36],x+160,y+128) 
+
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'bold')
+    doc.text('OBSERVACIONES:',x+6,y+145)
+    doc.setFont(undefined, 'normal')
+    doc.text(l.d37,x+6,y+150,'left')
+
+    doc.rect(x+5, y+142, 205, 22)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('RESPONSABLE',x+6,y+155)
+    doc.setFont(undefined, 'NORMAL')
+    doc.text(l.responsable,x+8,y+160)
+    doc.setFont(undefined, 'normal')
+    doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+155,'center')
+    doc.setTextColor(0,0,0)
+    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+155,'left')
+
+    $( '#docpdf' ).attr('src', doc.output('datauristring'));
+    },
         sanguinea(p,l){
     var doc = new jsPDF('P',undefined,'legal')
     doc.setFont("arial");
@@ -639,7 +730,7 @@ export default {
       '',
     ],x+315,y+65,'center')
     doc.setFontSize(11);
-5
+
 
     doc.rect(x+195, y+180, 155, 30)
     doc.setFont(undefined, 'bold')
@@ -987,6 +1078,8 @@ export default {
         this.hemograma(p,l)
       if(l.tipo_id==2)
         this.sanguinea(p,l)
+      if(l.tipo_id==3)
+        this.orina(p,l)
        console.log(p)
        console.log(l)
       return false
