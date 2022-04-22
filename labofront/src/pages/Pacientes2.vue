@@ -219,6 +219,55 @@
           <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
           </template>
+
+                                        <template v-if="tipo.label=='EXAMEN GENERAL DE ORINA'">
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Color" v-model="laboratorio.d1" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Proteinas" v-model="laboratorio.d2" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Olor" v-model="laboratorio.d3" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Glucosa" v-model="laboratorio.d4" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Aspecto" v-model="laboratorio.d5" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="C cetonicos" v-model="laboratorio.d6" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Espuma" v-model="laboratorio.d7" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Bilirrubina" v-model="laboratorio.d8" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Deposito" v-model="laboratorio.d9" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Hemoglogina" v-model="laboratorio.d10" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Densidad" v-model="laboratorio.d11" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Urobilina" v-model="laboratorio.d12" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Reaccion" v-model="laboratorio.d13" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Nitrinos" v-model="laboratorio.d14" /></div>
+          <div class="col-12 col-sm-12"></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Celulas epiteleales" v-model="laboratorio.d15" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Hialino" v-model="laboratorio.d16" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Celulas de transicion" v-model="laboratorio.d17" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Granuloso" v-model="laboratorio.d18" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Celulas clave" v-model="laboratorio.d19" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Epiteliales" v-model="laboratorio.d20" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Leucocitos" v-model="laboratorio.d21" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Eritrocitario" v-model="laboratorio.d22" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Eritrocis" v-model="laboratorio.d23" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Leucositario" v-model="laboratorio.d24" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Bacterias" v-model="laboratorio.d25" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Cereos" v-model="laboratorio.d26" /></div>
+          <div class="col-6 col-sm-6"></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Mixtos" v-model="laboratorio.d27" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Uratros amorfos" v-model="laboratorio.d28" /></div>
+          <div class="col-6 col-sm-6"></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Fosfato amorfo" v-model="laboratorio.d29" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Filamento mucoso" v-model="laboratorio.d30" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Oxalato de calcio" v-model="laboratorio.d31" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Piocitos" v-model="laboratorio.d32" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Fosfato de calcio" v-model="laboratorio.d33" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Levaduras" v-model="laboratorio.d34" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Acido Urico" v-model="laboratorio.d35" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Esporas micoticas" v-model="laboratorio.d36" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Observaciones" v-model="laboratorio.d37" /></div>
+
+          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>           
+
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          </template>
+
           <div class="col-12">
             <q-btn label="Guardar" type="submit" class="full-width" icon="add_circle" color="positive" />
           </div>
