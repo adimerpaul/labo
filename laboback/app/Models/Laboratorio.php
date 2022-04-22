@@ -57,6 +57,7 @@ class Laboratorio extends Model
         'd43',
         'd44',
         'd45',
+        'responsable',
         'tipo_id',
         'paciente_id',
         'user_id',
