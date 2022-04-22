@@ -173,7 +173,7 @@
           <div class="col-6 col-sm-12"><q-input dense outlined label="Serie Plaquetarias" v-model="laboratorio.d33" /></div>
 
           <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-            
+
 
           <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
@@ -345,7 +345,7 @@ export default {
     doc.setTextColor(211,47,47)
     doc.text('Form. 005',x+323, y+30)
     doc.setTextColor(57,73,171)
-    doc.text('SEROLOGIA',x+270, y+30,'center')
+    doc.text('INMUNOENSAYO DE FLUORESCENCIA',x+270, y+30,'center')
     doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA','METODO'],x+196, y+35)
     doc.setTextColor(0,0,0)
     doc.setFont(undefined, 'normal')
@@ -369,32 +369,117 @@ export default {
     doc.text('',x+233,y+55)
     doc.setTextColor(57,73,171)
     doc.setFontSize(10);
-    doc.text('                   VALOR REF             METODO DE PRUEBA',x+260,y+60)
+    doc.text('       UNIDAD         TIPO MUESTRA      VALOR REFE',x+250,y+60)
     doc.setFontSize(12);
 
     doc.setFont(undefined, 'normal')
     doc.setFontSize(11);
-    doc.text(['Factor Reumatoide ','    (Latex)','Antiestreptolisina',' ','Proteina C Reactiva','','RPR','','Prueba Rapida Sifilis ','','Prueba Rapida VIH ',' ','Hepatitis A ',' ','Hepatitis B ',' ','Hepatitis C  ',' ','Helicobacter Pylori ','   en Sangre','Helicobacter Pylori ','    en Heces' ,'Troponina I ','','PSA'],x+200,y+65,'left')
+    doc.text(['DIMEROS D',
+      '',
+      'FERRITINA',
+      '',
+      'IL-6',
+      '',
+      'PSA CUANTITATIVO',
+      '',
+      'PCR CUANTITATIVO',
+      '',
+      'TROPONINA I ',
+      ' ',
+      ' ',
+      'B - HCG ',
+      ' ',
+      ' ',
+      'PROCALCITONINA',
+    ],x+197,y+65,'left')
     doc.setTextColor(0,0,0)
-        /*if(($row->d1<0 || $row->d1>500)&& $row->d1!='')
-        doc.setTextColor(195,47,47)
-        else
-        doc.setTextColor(0,0,0)
-
-        if($row->paciente->sexo=='Masculino' && ($row->d2<30 || $row->d2>350)&& $row->d2!='')$cd2='color:#ff726f;';
-        if($row->paciente->sexo=='Femenino' && ($row->d2<20 || $row->d2>250)&& $row->d2!='')$cd2='color:#ff726f;';
-        if(($row->d3<0 || $row->d3>7)&& $row->d3!='')$cd3='color:#ff726f;';
-        if(($row->d4<0 || $row->d4>4)&& $row->d4!='')$cd4='color:#ff726f;';
-        if(($row->d5<0 || $row->d5>10)&& $row->d5!='')$cd5='color:#ff726f;';
-        if(($row->d6<0 || $row->d6>0.11)&& $row->d6!='')$cd6='color:#ff726f;';
-        if(($row->d7<0 || $row->d7>10)&& $row->d7!='')$cd7='color:#ff726f;';*/
-    //doc.text(['100',' ','100',' ','100',' ','100',' ','100',' ','100',' ',' ','100',' ',' ',' ','100'],x+250,y+65,'center')
     doc.setFontSize(11);
-    doc.text(['Hasta 8 UI/ml ',' ','Hasta 200 UI/l',' ','Hasta 0.8 mg/dl ',' ','No Reactivo',' ','No Reactivo',' ','No Reactivo',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','Hasta 4 ng/ml'],x+290,y+65,'center')
+    doc.setFont(undefined, 'normal')
+    doc.setFontSize(11);
+    doc.text([
+      'DAS',
+      '',
+      'DAS',
+      '',
+      'DAS',
+      '',
+      'DAS',
+      '',
+      'DAS',
+      '',
+      'DAS',
+      '',
+      ' ',
+      'DAS',
+      ' ',
+      ' ',
+      'DAS',
+      '',
+    ],x+241,y+65,'center')
     doc.setTextColor(57,73,171)
-    doc.text(['Aglutinacion directa','','Aglutinacion directa','','Aglutinacion directa','','Floculacion directa','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida ','Semicuantitativo'],x+312,y+65,'left')
+    doc.text([
+      'ng/ml ',
+      '',
+      'ng/ml ',
+      '',
+      'ng/ml',
+      '',
+      'pg/ml',
+      '',
+      'ng/ml',
+      '',
+      'mg/L',
+      '',
+      '',
+      'mlU/ml ',
+      '',
+      ' ',
+      'ng/ml',
+      '',
+    ],x+254,y+65,'center')
+    doc.text([
+      'Plasma Citratado',
+      '',
+      'Suero',
+      '',
+      'Suero/plasma',
+      '',
+      'Suero',
+      '',
+      'Sangre Entera ',
+      '',
+      'Suero',
+      '',
+      '',
+      'Suero',
+      '',
+      ' ',
+      'Suero',
+      '',
+    ],x+275,y+65,'center')
     doc.setFontSize(11);
-
+    doc.text([
+      'Hasta 500 ng/ml',
+      '',
+      '30-350 ng/ml Varon',
+      '20-250 ng/ml Mujer',
+      '7 pg/ml',
+      '',
+      'Menor a 4 ng/ml',
+      '',
+      'Menor a 10 mg/L',
+      '',
+      '0.0 - 0.11 ng/ml',
+      '',
+      'Mujer no Embarazada',
+      'menor a 10 mlU/ml',
+      'Mujer en postmenopausia',
+      'menor a 10 mlU/ml',
+      'Suero',
+      '',
+    ],x+315,y+65,'center')
+    doc.setFontSize(11);
+5
 
     doc.rect(x+195, y+180, 155, 30)
     doc.setFont(undefined, 'bold')
@@ -403,7 +488,7 @@ export default {
     doc.setFontSize(10);
     doc.setLineHeightFactor(1.5)
     doc.text(['Fecha toma de Muestra','Fecha Entrega de Resultado','Hora toma Muestra'],x+280,y+185,'left')
- 
+
     $( '#docpdf' ).attr('src', doc.output('datauristring'));
       },
       hemograma(p,l){
@@ -579,7 +664,7 @@ export default {
     doc.text('RESPONSABLE',x+205,y+165,'left')
     doc.setFontSize(10);
     doc.text(['Fecha toma de Muestra','Fecha Entrega de Resultado','Hora toma Muestra'],x+280,y+165,'left')
- 
+
     $( '#docpdf' ).attr('src', doc.output('datauristring'));
       },
       reserologia(){
@@ -659,7 +744,7 @@ export default {
     doc.text('RESPONSABLE',x+205,y+175,'left')
     doc.setFontSize(10);
     doc.text(['Fecha toma de Muestra','Fecha Entrega de Resultado','Hora toma Muestra'],x+280,y+175,'left')
- 
+
     $( '#docpdf' ).attr('src', doc.output('datauristring'));
       },
       embarazo() {
