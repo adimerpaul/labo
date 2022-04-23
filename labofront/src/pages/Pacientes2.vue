@@ -295,6 +295,63 @@
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
           </template>
 
+                                                  <template v-if="tipo.label=='ANALISIS DE SECRECION VAGINAL'">
+          <div class="col-6 col-sm-12">EXAMEN EN FRESCO</div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="CELULAS EPITELIALES" v-model="laboratorio.d1" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="LEUCOCITOS" v-model="laboratorio.d2" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="HEMATIES" v-model="laboratorio.d3" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="CELULAS CLAVE" v-model="laboratorio.d4" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="LEVADURAS" v-model="laboratorio.d5" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="PARASITOS" v-model="laboratorio.d6" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="BACTERIAS" v-model="laboratorio.d7" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="KOH" v-model="laboratorio.d8" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="PH" v-model="laboratorio.d9" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d10" /></div>
+          <div class="col-6 col-sm-12">TINCION DE GRAM</div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="BACILOS GRAM POSITIVO" v-model="laboratorio.d11" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="BACILOS GRAM NEGATIVO" v-model="laboratorio.d12" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="COCOS GRAM POSITIVO" v-model="laboratorio.d13" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="COCOBASILOS GRAM POSITIVO" v-model="laboratorio.d14" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="COCOBACILOS GRAM NEGATIVO" v-model="laboratorio.d15" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="ESPORAS E HIFAS MICOTICAS" v-model="laboratorio.d16" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d17" /></div>
+
+          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>           
+
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          </template>
+
+                                                  <template v-if="tipo.label=='ANALISIS DE HECES'">
+          <div class="col-6 col-sm-12">EXAMEN EN FRESCO</div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="ASPECTO DE LA MUESTRA" v-model="laboratorio.d1" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="COLOR" v-model="laboratorio.d2" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="CELULAS EPITELIALES" v-model="laboratorio.d3" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="LEUCOCITOS" v-model="laboratorio.d4" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="HEMATIES" v-model="laboratorio.d5" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="ALMIDON" v-model="laboratorio.d6" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="LEVADURAS" v-model="laboratorio.d7" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="GRASAS" v-model="laboratorio.d8" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="PARASITOS" v-model="laboratorio.d9" /></div>
+          <div class="col-6 col-sm-4"><q-input dense outlined label="MOCO FETAL" v-model="laboratorio.d10" /></div>
+          <div class="col-6 col-sm-4"><q-input dense outlined label="Polimorfonucleares" v-model="laboratorio.d11" /></div>
+          <div class="col-6 col-sm-4"><q-input dense outlined label="Mononuclueares" v-model="laboratorio.d12" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="OTROS" v-model="laboratorio.d13" /></div>
+          <div class="col-6 col-sm-12">TINCION DE GRAM</div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="BACILOS GRAM POSITIVOS" v-model="laboratorio.d14" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="BACILOS GRAM NEGATIVOS" v-model="laboratorio.d15" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="COCOS GRAM POSITIVOS" v-model="laboratorio.d16" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="COCOS GRAM NEGATIVOS" v-model="laboratorio.d17" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="COCOBACILOS GRAM" v-model="laboratorio.d18" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="ESPORAS MICOTICAS" v-model="laboratorio.d19" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="OTROS" v-model="laboratorio.d20" /></div>
+
+          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>           
+
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          </template>
+
           <div class="col-12">
             <q-btn label="Guardar" type="submit" class="full-width" icon="add_circle" color="positive" />
           </div>
@@ -422,6 +479,86 @@ export default {
     })
   },
   methods:{
+    heces(p,l){
+    var doc = new jsPDF('P',undefined,'legal')
+    doc.setFont("arial");
+    doc.setFontSize(10);
+    var img = new Image()
+    img.src = 'img/natividad.jpeg'
+    doc.addImage(img, 'jpg', 5, 2, 70, 20)
+    let x=0
+    let y=0
+    //inicio datos paciete
+    doc.setDrawColor(120);
+    doc.rect(x+5, y+27, 205, 20)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+175, y+8,'center')
+    doc.setTextColor(195,47,47)
+    doc.text('N Registro CODEDLAB 000045',x+150, y+25)
+    doc.setTextColor(211,47,47)
+    doc.text('Form. 010',x+190, y+30)
+    doc.setTextColor(57,73,171)
+    doc.text('ANALISIS DE HECES',x+100, y+30,'center')
+    doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
+    doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'normal')
+    doc.text([p.paciente,l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno,l.tipomuestra],x+70, y+35,'center')
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'bold')
+    doc.text(['EDAD','SEXO'],x+130, y+35)
+    doc.setTextColor(211,47,47)
+    doc.text('N PACIENTE',x+130, y+43)
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(0,0,0)
+    doc.text([p.edad+'',p.sexo,p.id+''],x+160, y+35,'center')
+    doc.setTextColor(57,73,171)
+    //fin datos paciete
+    //inicio datos
+    doc.rect(x+5, y+48, 205, 93)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('                                          EXAMEN EN FRESCO',x+50,y+52)
+    doc.setFont(undefined, 'normal')
+    doc.text(['ASPECTO DE LA MUESTRA','COLOR','CELULAS EPITELIALES','LEUCOCITOS','HEMATIES','ALMIDON','LEVADURAS','GRASAS','PARASITOS'],x+8,y+58) 
+    doc.setTextColor(0,0,0)
+    doc.text([l.d1,l.d2,l.d3,l.d4,l.d5,l.d6,l.d7,l.d8,l.d9],x+70,y+58) 
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('MOCO FETAL       '+l.d10,x+8,y+95)
+    doc.setFont(undefined, 'normal')
+    doc.text(['Polimorfonuclueares: '+l.d11,'Mononuclueras: '+l.d12],x+100,y+95) 
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('OTROS',x+8,y+105) 
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(0,0,0)
+    doc.text(l.d13,x+70,y+105) 
+
+
+
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('                                         TINCION DE GRAM',x+50,y+110)
+    doc.setFont(undefined, 'normal')
+    doc.text(['BACILOS GRAM POSITIVOS','BACILOS GRAM NEGATIVOS','COCOS GRAM POSITIVOS','COCOS GRAM NEGATIVOS','COCOBACILOS GRAM','ESPORAS MICOTICAS','OTROS'],x+8,y+115) 
+    doc.setTextColor(0,0,0)
+    doc.text([l.d14,l.d15,l.d16,l.d17,l.d18,l.d19,l.d20],x+70,y+115) 
+
+    doc.rect(x+5, y+142, 205, 22)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('RESPONSABLE',x+6,y+145)
+    doc.setFont(undefined, 'NORMAL')
+    doc.text(l.responsable,x+8,y+150)
+    doc.setFont(undefined, 'normal')
+    doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+145,'center')
+    doc.setTextColor(0,0,0)
+    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+145,'left')
+
+    $( '#docpdf' ).attr('src', doc.output('datauristring'));
+    },
+
             orina(p,l){
     var doc = new jsPDF('P',undefined,'legal')
     doc.setFont("arial");
@@ -535,6 +672,73 @@ export default {
     doc.text('Form. 004',x+190, y+30)
     doc.setTextColor(57,73,171)
     doc.text('ANALISIS DE SECRECION URETRAL',x+100, y+30,'center')
+    doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
+    doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'normal')
+    doc.text([p.paciente,l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno,l.tipomuestra],x+70, y+35,'center')
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'bold')
+    doc.text(['EDAD','SEXO'],x+130, y+35)
+    doc.setTextColor(211,47,47)
+    doc.text('N PACIENTE',x+130, y+43)
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(0,0,0)
+    doc.text([p.edad+'',p.sexo,p.id+''],x+160, y+35,'center')
+    doc.setTextColor(57,73,171)
+    //fin datos paciete
+    //inicio datos
+    doc.rect(x+5, y+48, 205, 85)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('                                          EXAMEN EN FRESCO',x+50,y+52)
+    doc.setFont(undefined, 'normal')
+    doc.text(['CELULAS EPITELIALES','LEUCOCITOS','HEMATIES','CELULAS CLAVE','LEVADURAS','PARASITOS','BACTERIAS','KOH','PH','OBSERVAIONES'],x+8,y+58) 
+    doc.setTextColor(0,0,0)
+    doc.text([l.d1,l.d2,l.d3,l.d4,l.d5,l.d6,l.d7,l.d8,l.d9,l.d10],x+70,y+58) 
+
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('                                         TINCION DE GRAM',x+50,y+100)
+    doc.setFont(undefined, 'normal')
+    doc.text(['BACILOS GRAM POSITIVO','BACILOS GRAM NEGATIVO','COCOS GRAM POSITIVO','COCOBACILOS GRAM POSITIVO','COCOBACILOS GRAM NEGATIVO','ESPORAS E HIFAS MICOTICAS','OBSERVACIONNES'],x+8,y+105) 
+    doc.setTextColor(0,0,0)
+    doc.text([l.d11,l.d12,l.d13,l.d14,l.d15,l.d16,l.d17],x+70,y+105) 
+
+    doc.rect(x+5, y+135, 205, 22)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('RESPONSABLE',x+6,y+140)
+    doc.setFont(undefined, 'NORMAL')
+    doc.text(l.responsable,x+8,y+145)
+    doc.setFont(undefined, 'normal')
+    doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+145,'center')
+    doc.setTextColor(0,0,0)
+    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+145,'left')
+
+    $( '#docpdf' ).attr('src', doc.output('datauristring'));
+    },
+
+            vaginal(p,l){
+    var doc = new jsPDF('P',undefined,'legal')
+    doc.setFont("arial");
+    doc.setFontSize(10);
+    var img = new Image()
+    img.src = 'img/natividad.jpeg'
+    doc.addImage(img, 'jpg', 5, 2, 70, 20)
+    let x=0
+    let y=0
+    //inicio datos paciete
+    doc.setDrawColor(120);
+    doc.rect(x+5, y+27, 205, 20)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+175, y+8,'center')
+    doc.setTextColor(195,47,47)
+    doc.text('N Registro CODEDLAB 000045',x+150, y+25)
+    doc.setTextColor(211,47,47)
+    doc.text('Form. 004',x+190, y+30)
+    doc.setTextColor(57,73,171)
+    doc.text('ANALISIS DE SECRECION VAGINAL',x+100, y+30,'center')
     doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
     doc.setTextColor(0,0,0)
     doc.setFont(undefined, 'normal')
@@ -1175,8 +1379,12 @@ sanguinea(p,l){
         this.sanguinea(p,l)
       if(l.tipo_id==3)
         this.orina(p,l)
-              if(l.tipo_id==4)
+      if(l.tipo_id==4)
         this.uretral(p,l)
+      if(l.tipo_id==5)
+        this.vaginal(p,l)
+      if(l.tipo_id==6)
+        this.heces(p,l)        
        console.log(p)
        console.log(l)
       return false
@@ -1222,6 +1430,7 @@ sanguinea(p,l){
       this.laboratorio.tipo_id=this.tipo.id
       this.laboratorio.paciente_id=this.paciente.id
       this.laboratorio.doctor_id=this.doctor.id
+      this.laboratorio.user_id=this.$store.state.login.user.id
       this.laboratorio.responsable=this.user
       this.$axios.post(process.env.API+'/laboratorio',this.laboratorio).then(res=> {
         // console.log(res.data)
