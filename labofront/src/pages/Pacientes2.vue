@@ -352,6 +352,35 @@
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
           </template>
 
+
+                                                  <template v-if="tipo.label=='COPRAPARASITOLOGICO SIMPLE'">
+          <div class="col-6 col-sm-12">COPRAPARASITOLOGICO SIMPLE</div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="ASPECTO DE LA MUESTRA" v-model="laboratorio.d1" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="COLOR" v-model="laboratorio.d2" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="CELULAS EPITELIALES" v-model="laboratorio.d3" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="LEUCOCITOS" v-model="laboratorio.d4" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="HEMATIES" v-model="laboratorio.d5" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="GRASAS" v-model="laboratorio.d6" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="LEVADURAS" v-model="laboratorio.d7" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="ESPORAS MICOTICAS" v-model="laboratorio.d8" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="ALMIDON" v-model="laboratorio.d9" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="PARASITOS" v-model="laboratorio.d10" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="PIOCITOS" v-model="laboratorio.d11" /></div>
+          <div class="col-6 col-sm-4"><q-input dense outlined label="MOCO FETAL" v-model="laboratorio.d12" /></div>
+          <div class="col-6 col-sm-4"><q-input dense outlined label="Polimorfonucleares" v-model="laboratorio.d13" /></div>
+          <div class="col-6 col-sm-4"><q-input dense outlined label="Mononuclueares" v-model="laboratorio.d14" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d15" /></div>
+          <div class="col-6 col-sm-12">OTROS</div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="SANGRE OCULTA EN HECES" v-model="laboratorio.d16" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="TEST DE BENEDICT" v-model="laboratorio.d17" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d18" /></div>
+
+          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>           
+
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          </template>
+
           <div class="col-12">
             <q-btn label="Guardar" type="submit" class="full-width" icon="add_circle" color="positive" />
           </div>
@@ -479,6 +508,84 @@ export default {
     })
   },
   methods:{
+    simple(p,l){
+    var doc = new jsPDF('P',undefined,'legal')
+    doc.setFont("arial");
+    doc.setFontSize(10);
+    var img = new Image()
+    img.src = 'img/natividad.jpeg'
+    doc.addImage(img, 'jpg', 5, 2, 70, 20)
+    let x=0
+    let y=0
+    //inicio datos paciete
+    doc.setDrawColor(120);
+    doc.rect(x+5, y+27, 205, 20)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+175, y+8,'center')
+    doc.setTextColor(195,47,47)
+    doc.text('N Registro CODEDLAB 000045',x+150, y+25)
+    doc.setTextColor(211,47,47)
+    doc.text('Form. 010',x+190, y+30)
+    doc.setTextColor(57,73,171)
+    doc.text('COPRAPARASITOLOGICO SIMPLE',x+100, y+30,'center')
+    doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
+    doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'normal')
+    doc.text([p.paciente,l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno,l.tipomuestra],x+70, y+35,'center')
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'bold')
+    doc.text(['EDAD','SEXO'],x+130, y+35)
+    doc.setTextColor(211,47,47)
+    doc.text('N PACIENTE',x+130, y+43)
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(0,0,0)
+    doc.text([p.edad+'',p.sexo,p.id+''],x+160, y+35,'center')
+    doc.setTextColor(57,73,171)
+    //fin datos paciete
+    //inicio datos
+    doc.rect(x+5, y+48, 205, 85)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('                             COPRAPARASITOLOGICO SIMPLE',x+50,y+52)
+    doc.setFont(undefined, 'normal')
+    doc.text(['ASPECTO DE LA MUESTRA','COLOR','CELULAS EPITELIALES','LEUCOCITOS','HEMATIES','GRASAS','LEVADURAS','ESPORAS MICOTICAS','ALMIDON','PARASITOS','PIOCITOS'],x+8,y+58) 
+    doc.setTextColor(0,0,0)
+    doc.text([l.d1,l.d2,l.d3,l.d4,l.d5,l.d6,l.d7,l.d8,l.d9,l.d10,l.d11],x+70,y+58) 
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('MOCO FETAL       '+l.d12,x+8,y+102)
+    doc.setFont(undefined, 'normal')
+    doc.text(['Polimorfonuclueares: '+l.d13,'Mononuclueras: '+l.d14],x+100,y+102) 
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('OBSERVACIONES',x+8,y+110) 
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(0,0,0)
+    doc.text(l.d15,x+70,y+110) 
+
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('                                        OTROS',x+50,y+115)
+    doc.setFont(undefined, 'normal')
+    doc.text(['SANGRE OCULTA EN HECES','TEST DE BENEDICT','OBSERVACIONES'],x+8,y+120) 
+    doc.setTextColor(0,0,0)
+    doc.text([l.d16,l.d17,l.d18],x+70,y+120) 
+
+    doc.rect(x+5, y+135, 205, 20)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('RESPONSABLE',x+6,y+140)
+    doc.setFont(undefined, 'NORMAL')
+    doc.text(l.responsable,x+8,y+145)
+    doc.setFont(undefined, 'normal')
+    doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+140,'center')
+    doc.setTextColor(0,0,0)
+    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+140,'left')
+
+    $( '#docpdf' ).attr('src', doc.output('datauristring'));
+    },
+
     heces(p,l){
     var doc = new jsPDF('P',undefined,'legal')
     doc.setFont("arial");
@@ -534,8 +641,6 @@ export default {
     doc.setFont(undefined, 'normal')
     doc.setTextColor(0,0,0)
     doc.text(l.d13,x+70,y+105) 
-
-
 
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
@@ -1384,7 +1489,9 @@ sanguinea(p,l){
       if(l.tipo_id==5)
         this.vaginal(p,l)
       if(l.tipo_id==6)
-        this.heces(p,l)        
+        this.heces(p,l)   
+              if(l.tipo_id==7)
+        this.simple(p,l)        
        console.log(p)
        console.log(l)
       return false
