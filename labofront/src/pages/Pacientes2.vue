@@ -381,6 +381,20 @@
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
           </template>
 
+                                                            <template v-if="tipo.label=='SEROLOGIA'">
+          <div class="col-6 col-sm-12">PRUEBA ANTICUERPOS CUANTITATIVOS ANTI SARS COV-2 lg M / lg G</div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="lgM" v-model="laboratorio.d1" /></div>
+          <div class="col-6 col-sm-6"><q-select :options="['NEGATIVO','INDETERMINADO','POSITIVO']" dense outlined label="referencia" v-model="laboratorio.d2" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="lgG" v-model="laboratorio.d3" /></div>
+          <div class="col-6 col-sm-6"><q-select :options="['NEGATIVO','INDETERMINADO','POSITIVO']" dense outlined label="referencia" v-model="laboratorio.d4" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d5" /></div>
+
+          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>           
+
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          </template>
+
           <div class="col-12">
             <q-btn label="Guardar" type="submit" class="full-width" icon="add_circle" color="positive" />
           </div>
@@ -508,6 +522,108 @@ export default {
     })
   },
   methods:{
+    lgmserologia(p,l){
+          var doc = new jsPDF('P',undefined,'legal')
+    doc.setFont("arial");
+    doc.setFontSize(10);
+    var img = new Image()
+    var imgmas = new Image()
+    var imgmenos = new Image()
+    img.src = 'img/natividad.jpeg'
+    imgmas.src = 'img/suma.jpeg'
+    imgmenos.src = 'img/resta.jpeg'
+    doc.addImage(img, 'jpg', 5, 2, 70, 20)
+    let x=0
+    let y=0
+    //inicio datos paciete
+    doc.setDrawColor(120);
+    doc.rect(x+5, y+27, 205, 20)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+175, y+8,'center')
+    doc.setTextColor(195,47,47)
+    doc.text('N Registro CODEDLAB 000045',x+150, y+25)
+    doc.setTextColor(211,47,47)
+    doc.text('Form. 005',x+190, y+30)
+    doc.setTextColor(57,73,171)
+    doc.text('SEROLOGIA',x+100, y+30,'center')
+    doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
+    doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'normal')
+    doc.text([p.paciente,l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno,l.tipomuestra],x+70, y+35,'center')
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'bold')
+    doc.text(['EDAD','SEXO'],x+130, y+35)
+    doc.setTextColor(211,47,47)
+    doc.text('N PACIENTE',x+130, y+43)
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(0,0,0)
+    doc.text([p.edad+'',p.sexo,p.id+''],x+160, y+35,'center')
+    doc.setTextColor(57,73,171)
+    //fin datos paciete
+    //inicio datos
+    doc.rect(x+5, y+48, 205, 25)
+    doc.rect(x+5, y+75, 205, 72)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('               PRUEBA ANTICUERPOS CUANTITATIVOS ANTI SARS COV-2 lg M / lg G',x+50,y+52)
+    doc.setFont(undefined, 'normal')
+    doc.text('      METODO: INMUNOENSAYO DE FLUORECENCIA (FIA)                                Valor de Referencia',x+8,y+58) 
+    let vallggm1='',vallggm2='',obs1='',obs2=''
+     if( parseFloat(l.d1) < 0.9) {vallggm1=l.d1 
+     obs1=l.d2}
+            if(parseFloat(l.d1) >= 0.9) {vallggm2=l.d1
+            obs2=l.d2
+            }
+    doc.text(['lgM','','lgG'],x+30,y+63) 
+    doc.text([vallggm1,vallggm2,l.d3],x+70,y+63) 
+    doc.text([obs1,obs2,l.d4],x+100,y+63) 
+    doc.text(['menor a 0.9 NEGATIVO PARA lgG/lgM','0.9 menor igual & mayor 1.1 INDETERMINADO','mayor igual 1.1 POSITIVO lgG/lgM'],x+170,y+63,'center') 
+    doc.text('                        INTERPRETACION DE RESULTADOS',x+50,y+80)
+
+
+
+    doc.setTextColor(0,0,0)
+    doc.text('              lgM                lgG                         INTERPRETACION                          COMENTARIO',x+5,y+85) 
+    doc.addImage(imgmenos, 'jpeg', 20, 90, 5, 5)
+    doc.addImage(imgmenos, 'jpeg', 40, 90, 5, 5)
+    doc.addImage(imgmas, 'jpeg', 20, 95, 5, 5)
+    doc.addImage(imgmenos, 'jpeg', 40, 95, 5, 5)
+    doc.addImage(imgmas, 'jpeg', 20, 100, 5, 5)
+    doc.addImage(imgmas, 'jpeg', 40, 100, 5, 5)
+    doc.addImage(imgmenos, 'jpeg', 20, 105, 5, 5)
+    doc.addImage(imgmas, 'jpeg',  40, 105, 5, 5)
+    doc.setFont(undefined, 'normal')
+    doc.setFontSize(9);
+
+    doc.text(['>Ausencia de la Enfermedad o Falso Negativo','>Inicio Temprano de ka Enfermedad Infeccion','   Aguda de la Enfermedad','>Fase activa de la Enfermedad','>Inmunidad Fase final de la Infeccion','  pasada y curada'],x+50,y+90,'left') 
+    doc.text(['Paciente en fase de evolucion de la enfermedad mayor de 21 dias','Se debe repetir dentro de 5 a 7 dias la prueba','Correlacionar con clinica del paciente y realizar examenes ','  complementarios (Rayos X, Tomografia)','Paciente en fase de evolucion de la enfermedad ','  mayor a 21 dias'],x+120,y+90,'left') 
+    doc.setTextColor(57,73,171)
+    doc.setFontSize(9);
+    doc.text(['NOTA: Las pruebas rapidas para COVID-19 NO SON CONFIRMATORIAS, en caso de salir positivo alguno de los anticuerpo , se recomienda',' una segunda toma de muestra con la Tecnica de HISOPADO NASOFARINGEO para RT - PCR y asi confirmar su DIAGNOSTICO','','Todas las personas producimos anticuerpos a diferente velocidad dependiendo del agente patogeno y nuestra genetica que es lo que determina la ','funcionalidad de nuestro Sistema Inmunologico',
+    '','Los Resultados deben ser interpretados en funcion de la Clinica del paciente y dias de evolucion de la enfermedad'],x+8,y+115,'left') 
+
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'normal')
+    doc.text('OBSERVACIONES',x+8,y+142) 
+    doc.text(l.d5,x+8,y+145) 
+    doc.setTextColor(0,0,0)
+
+    doc.rect(x+5, y+147, 205, 15)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('RESPONSABLE',x+6,y+150)
+    doc.setFont(undefined, 'NORMAL')
+    doc.text(l.responsable,x+8,y+155)
+    doc.setFont(undefined, 'normal')
+    doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+150,'center')
+    doc.setTextColor(0,0,0)
+    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+150,'left')
+
+    $( '#docpdf' ).attr('src', doc.output('datauristring'));
+
+    },
     simple(p,l){
     var doc = new jsPDF('P',undefined,'legal')
     doc.setFont("arial");
@@ -1490,8 +1606,10 @@ sanguinea(p,l){
         this.vaginal(p,l)
       if(l.tipo_id==6)
         this.heces(p,l)   
-              if(l.tipo_id==7)
-        this.simple(p,l)        
+      if(l.tipo_id==7)
+        this.simple(p,l)  
+      if(l.tipo_id==9)
+        this.lgmserologia(p,l)         
        console.log(p)
        console.log(l)
       return false
