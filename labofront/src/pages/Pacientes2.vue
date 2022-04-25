@@ -418,6 +418,18 @@
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
           </template>
 
+                                                                      <template v-if="tipo.label=='RESULTADO SEROLOGIA'">
+          <div class="col-6 col-sm-12">PRUEBA RAPIDA ANTIGENOS SARS COV 2</div>
+          <div class="col-6 col-sm-3"></div>
+          <div class="col-6 col-sm-3"><q-select :options="['POSITIVO','NEGATIVO']" dense outlined label="ANTIGENO SARS COV2" v-model="laboratorio.d1" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d2" /></div>
+
+          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>           
+
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          </template>
+
           <div class="col-12">
             <q-btn label="Guardar" type="submit" class="full-width" icon="add_circle" color="positive" />
           </div>
@@ -1556,7 +1568,7 @@ sanguinea(p,l){
 
     $( '#docpdf' ).attr('src', doc.output('datauristring'));
       },
-      reserologia(){
+      reserologia(p,l){
                     var doc = new jsPDF('landscape',undefined,'legal')
     doc.setFont("arial");
     doc.setFontSize(10);
@@ -1577,10 +1589,10 @@ sanguinea(p,l){
     doc.text('Form. 005',x+323, y+30)
     doc.setTextColor(57,73,171)
     doc.text('',x+270, y+30,'center')
-    doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA','METODO'],x+196, y+35)
+    doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+196, y+35)
     doc.setTextColor(0,0,0)
     doc.setFont(undefined, 'normal')
-    doc.text(['ADIEMR PAUL CHAMBI AJATA','ADIMER PAUL CHAMBI AJATA A','COMPLRETA'],x+268, y+35,'center')
+    doc.text([p.paciente,l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno,l.tipomuestra],x+268, y+35,'center')
     doc.setTextColor(57,73,171)
     doc.setFont(undefined, 'bold')
     doc.text(['EDAD','SEXO'],x+305, y+35)
@@ -1588,9 +1600,8 @@ sanguinea(p,l){
     doc.text('N PACIENTE',x+305, y+43)
     doc.setFont(undefined, 'normal')
     doc.setTextColor(0,0,0)
-    doc.text(['9999 ','MACULJONO','11'],x+337, y+35,'center')
+    doc.text([p.edad+'',p.sexo,p.id+''],x+337, y+35,'center')
     doc.setTextColor(211,47,47)
-    doc.text('CONTADOR Hematologico MINDRAY BC 5130',x+260, y+47,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -1608,7 +1619,7 @@ sanguinea(p,l){
     doc.setTextColor(211,47,47)
     doc.text(['ANTIGENO','SARS COV 2'],x+250,y+70,'left')
     doc.setTextColor(57,73,171)
-    doc.text('POSITIVO',x+285,y+73,'left')
+    doc.text(l.d1,x+285,y+73,'left')
     doc.setTextColor(0,0,0)
     doc.rect(x+195, y+75, 155, 72)
 
@@ -1626,13 +1637,16 @@ sanguinea(p,l){
 
 
     doc.rect(x+195, y+160, 155, 10)
-    doc.text('OBSERVACION',x+200,y+165)
+    doc.text('OBSERVACION',x+200,y+164)
+    doc.text(l.d2,x+200,y+168)
     doc.rect(x+195, y+170, 155, 30)
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
     doc.text('RESPONSABLE',x+205,y+175,'left')
+    doc.text(l.responsable,x+205,y+180,'left')
     doc.setFontSize(10);
-    doc.text(['Fecha toma de Muestra','Fecha Entrega de Resultado','Hora toma Muestra'],x+280,y+175,'left')
+    doc.text(['Fecha toma de Muestra','Hora toma Muestra','Fecha Entrega de Resultado'],x+280,y+175,'left')
+    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+325,y+175,'left')
 
     $( '#docpdf' ).attr('src', doc.output('datauristring'));
       },
@@ -1720,7 +1734,9 @@ sanguinea(p,l){
       if(l.tipo_id==9)
         this.lgmserologia(p,l)     
             if(l.tipo_id==10)
-        this.labserologia(p,l)     
+        this.labserologia(p,l)   
+      if(l.tipo_id==11)
+        this.reserologia(p,l)    
        console.log(p)
        console.log(l)
       return false
