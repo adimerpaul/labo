@@ -11,8 +11,8 @@
         </template>
         <template v-slot:body-cell-laboratorios="props">
           <q-td :props="props" auto-width>
-            <ul style="border: 0px;margin: 0px;margin: 0px;list-style: none">
-              <li style="border: 0px;margin: 0px;margin: 0px" v-for=" l in props.row.laboratorios" :key="l.id">
+            <ul style="border: 0px;margin: 0px;padding: 0px;list-style: none">
+              <li style="border: 0px;margin: 0px;padding: 0px" v-for=" l in props.row.laboratorios" :key="l.id">
                 <q-btn @click="imprimirlaboratorio(props.row,l)" size="xs" flat round color="info" icon="print" />
                 {{l.fechatoma}}
                 {{l.tipo.nombre}}
@@ -586,7 +586,7 @@ export default {
       columspaciente:[
         {name:'opciones',field:'opciones',label:'opciones'},
         {name:'paciente',field:'paciente',label:'paciente'},
-        {name:'laboratorios',field:'laboratorios',label:'laboratorios'},
+        {name:'laboratorios',field:'laboratorios',label:'laboratorios',align:'left'},
         {name:'celular',field:'celular',label:'celular'},
         {name:'seguro',field:'seguro',label:'seguro'},
         {name:'edad',field:'edad',label:'edad'},
@@ -667,21 +667,21 @@ export default {
     doc.setFont(undefined, 'normal')
     doc.text(['Fecha','Hora'],x+8,y+65)
     doc.text([l.d1,l.d2],x+20,y+65)
-    doc.text(l.d3,x+50,y+58)
+    // doc.text(l.d3,x+50,y+58)
 
         doc.setFont(undefined, 'bold')
     doc.text('     2º MUESTRA',x+8,y+80)
     doc.setFont(undefined, 'normal')
     doc.text(['Fecha','Hora'],x+8,y+85)
     doc.text([l.d4,l.d5],x+20,y+85)
-    doc.text(l.d6,x+50,y+80)
+    // doc.text(l.d6,x+50,y+80)
 
         doc.setFont(undefined, 'bold')
     doc.text('     3º MUESTRA',x+8,y+100)
     doc.setFont(undefined, 'normal')
     doc.text(['Fecha','Hora'],x+8,y+105)
     doc.text([l.d7+'',l.d8+''],x+20,y+105)
-    doc.text(l.d9+'',x+50,y+100)
+    // doc.text(l.d9+'',x+50,y+100)
 
     doc.setTextColor(57,73,171)
     doc.text('OBSERVACIONES',x+8,y+120)
@@ -704,9 +704,30 @@ export default {
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+140,'center')
     doc.setTextColor(0,0,0)
     doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+140,'left')
-
+     // doc.text(l.d3,x+50,y+58)
+     doc.html( '<div style="font-size: 3px">'+l.d3+'</div>' , {
+       callback: function (doc) {
+         doc.html( '<div style="font-size: 3px">'+l.d6+'</div>' , {
+           callback: function (doc) {
+             doc.html( '<div style="font-size: 3px">'+l.d9+'</div>' , {
+               callback: function (doc) {
+                 window.open(doc.output('bloburl'), '_blank');
+               },
+               x: x+50,
+               y: y+100,
+             })
+           },
+           x: x+50,
+           y: y+80,
+         })
+       },
+       x: x+50,
+       y: y+58,
+     })
+     // doc.save("Pago"+date.formatDate(Date.now(),'DD-MM-YYYY')+".pdf");
+     // window.open(doc.output('bloburl'), '_blank');
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
-     window.open(doc.output('bloburl'), '_blank');
+    //  window.open(doc.output('bloburl'), '_blank');
     },
 
 
