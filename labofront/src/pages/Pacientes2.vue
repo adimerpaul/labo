@@ -381,6 +381,32 @@
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
           </template>
 
+                                                            <template v-if="tipo.label=='COPRAPARASITOLOGICO SERIADO'">
+          <div class="col-6 col-sm-12">COPRAPARASITOLOGICO SERIADO</div>
+          <div class="col-6 col-sm-12">MUESTRA1</div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="FECHA" v-model="laboratorio.d1" type="date"/></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="HORA" v-model="laboratorio.d2" type="time"/></div>
+          <div class="col-6 col-sm-12"><q-editor v-model="laboratorio.d3" min-height="5rem" /></div>
+
+          <div class="col-6 col-sm-12">MUESTRA2</div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="FECHA" v-model="laboratorio.d4" type="date"/></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="HORA" v-model="laboratorio.d5" type="time"/></div>
+          <div class="col-6 col-sm-12"><q-editor v-model="laboratorio.d6" min-height="5rem" /></div>
+
+                    <div class="col-6 col-sm-12">MUESTRA3</div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="FECHA" v-model="laboratorio.d7" type="date"/></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="HORA" v-model="laboratorio.d8" type="time"/></div>
+          <div class="col-6 col-sm-12"><q-editor v-model="laboratorio.d9" min-height="5rem" /></div>
+
+          <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACION" v-model="laboratorio.d10"   /></div>
+
+          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>           
+
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          </template>
+
+
                                                             <template v-if="tipo.label=='SEROLOGIA'">
           <div class="col-6 col-sm-12">PRUEBA ANTICUERPOS CUANTITATIVOS ANTI SARS COV-2 lg M / lg G</div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="lgM" v-model="laboratorio.d1" /></div>
@@ -586,6 +612,93 @@ export default {
     })
   },
   methods:{
+   seriado(p,l){
+    var doc = new jsPDF('P',undefined,'legal')
+    doc.setFont("arial");
+    doc.setFontSize(10);
+    var img = new Image()
+    img.src = 'img/natividad.jpeg'
+    doc.addImage(img, 'jpg', 5, 2, 70, 20)
+    let x=0
+    let y=0
+    //inicio datos paciete
+    doc.setDrawColor(120);
+    doc.rect(x+5, y+27, 205, 20)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+175, y+8,'center')
+    doc.setTextColor(195,47,47)
+    doc.text('N Registro CODEDLAB 000045',x+150, y+25)
+    doc.setTextColor(211,47,47)
+    doc.text('Form. 010',x+190, y+30)
+    doc.setTextColor(57,73,171)
+    doc.text('COPRAPARASITOLOGICO SERIADO',x+100, y+30,'center')
+    doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
+    doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'normal')
+    doc.text([p.paciente,l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno,l.tipomuestra],x+70, y+35,'center')
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'bold')
+    doc.text(['EDAD','SEXO'],x+130, y+35)
+    doc.setTextColor(211,47,47)
+    doc.text('N PACIENTE',x+130, y+43)
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(0,0,0)
+    doc.text([p.edad+'',p.sexo,p.id+''],x+160, y+35,'center')
+    doc.setTextColor(57,73,171)
+    //fin datos paciete
+    //inicio datos
+    doc.rect(x+5, y+48, 205, 85)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('                             COPRAPARASITOLOGICO SERIADO',x+50,y+52)
+    doc.setFont(undefined, 'bold')
+    doc.text('     1º MUESTRA',x+8,y+58) 
+    doc.setFont(undefined, 'normal')
+    doc.text(['Fecha','Hora'],x+8,y+65) 
+    doc.text([l.d1,l.d2],x+20,y+65) 
+    doc.text(l.d3,x+50,y+58) 
+
+        doc.setFont(undefined, 'bold')
+    doc.text('     2º MUESTRA',x+8,y+80) 
+    doc.setFont(undefined, 'normal')
+    doc.text(['Fecha','Hora'],x+8,y+85) 
+    doc.text([l.d4,l.d5],x+20,y+85) 
+    doc.text(l.d6,x+50,y+80) 
+
+        doc.setFont(undefined, 'bold')
+    doc.text('     3º MUESTRA',x+8,y+100) 
+    doc.setFont(undefined, 'normal')
+    doc.text(['Fecha','Hora'],x+8,y+105) 
+    doc.text([l.d7+'',l.d8+''],x+20,y+105) 
+    doc.text(l.d9+'',x+50,y+100) 
+
+    doc.setTextColor(57,73,171)
+    doc.text('OBSERVACIONES',x+8,y+120) 
+    doc.text(l.d10,x+8,y+125) 
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(0,0,0)
+
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(0,0,0)
+
+    doc.rect(x+5, y+135, 205, 20)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('RESPONSABLE',x+6,y+140)
+    doc.setFont(undefined, 'NORMAL')
+    doc.text(l.responsable,x+8,y+145)
+    doc.setFont(undefined, 'normal')
+    doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+140,'center')
+    doc.setTextColor(0,0,0)
+    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+140,'left')
+
+    $( '#docpdf' ).attr('src', doc.output('datauristring'));
+    },
+
+
                   labserologia(p,l){
 
             var doc = new jsPDF('landscape',undefined,'legal')
@@ -1762,6 +1875,8 @@ sanguinea(p,l){
         this.heces(p,l)   
       if(l.tipo_id==7)
         this.simple(p,l)  
+            if(l.tipo_id==8)
+        this.seriado(p,l) 
       if(l.tipo_id==9)
         this.lgmserologia(p,l)     
             if(l.tipo_id==10)
