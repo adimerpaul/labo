@@ -447,6 +447,18 @@
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
           </template>
 
+                                                                      <template v-if="tipo.label=='TEST EMBARAZO'">
+          <div class="col-6 col-sm-12">PRUEBA RAPIDA INMUNOCROMATOGRAFICA</div>
+          <div class="col-6 col-sm-3"></div>
+          <div class="col-6 col-sm-12"><q-select :options="['POSITIVO','NEGATIVO']" dense outlined label="TEST EMBARAZO EN SANGRE" v-model="laboratorio.d1" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="F.U.M." type='date' v-model="laboratorio.d2" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d3" /></div>
+          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>           
+
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          </template>
+
           <div class="col-12">
             <q-btn label="Guardar" type="submit" class="full-width" icon="add_circle" color="positive" />
           </div>
@@ -1668,7 +1680,7 @@ sanguinea(p,l){
 
     $( '#docpdf' ).attr('src', doc.output('datauristring'));
       },
-      embarazo() {
+      embarazo(p,l) {
     var doc = new jsPDF('P',undefined,'legal')
     doc.setFont("arial");
     doc.setFontSize(10);
@@ -1692,7 +1704,7 @@ sanguinea(p,l){
     doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA','METODO'],x+6, y+35)
     doc.setTextColor(0,0,0)
     doc.setFont(undefined, 'normal')
-    doc.text(['ADIEMR PAUL CHAMBI AJATA','ADIMER PAUL CHAMBI AJATA A','COMPLRETA'],x+70, y+35,'center')
+    doc.text([p.paciente,l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno,l.tipomuestra],x+70, y+35,'center')
     doc.setTextColor(57,73,171)
     doc.setFont(undefined, 'bold')
     doc.text(['EDAD','SEXO'],x+130, y+35)
@@ -1700,7 +1712,7 @@ sanguinea(p,l){
     doc.text('N PACIENTE',x+130, y+43)
     doc.setFont(undefined, 'normal')
     doc.setTextColor(0,0,0)
-    doc.text(['9999 ','MACULJONO','11'],x+160, y+35,'center')
+    doc.text([p.edad+'',p.sexo,p.id+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     doc.text('PRUEBA RAPIDA INMUNOCROMATOGRAFICA',x+100, y+47,'center')
     //fin datos paciete
@@ -1710,26 +1722,27 @@ sanguinea(p,l){
     doc.setTextColor(57,73,171)
     doc.text('TEST EMBARAZO EN SANGRE',x+25,y+60)
     doc.setFont(undefined, 'normal')
-    doc.text('POSITIVO',x+100,y+65,'center')
+    doc.text(l.d1,x+100,y+65,'center')
     doc.setTextColor(0,0,0)
     doc.text('F.U.M.',x+45,y+75,'center')
     doc.setTextColor(57,73,171)
-    doc.text('2022-04-17',x+100,y+80,'center')
+    doc.text(l.d2,x+100,y+80,'center')
 
     doc.setTextColor(57,73,171)
     doc.setFont(undefined, 'bold')
     doc.text('OBSERVACIONES:',x+20,y+90)
     doc.setFont(undefined, 'normal')
-    doc.text('SADASDASDADADSADSDSDADASDASDASD',x+30,y+95,'left')
+    doc.text(l.d3,x+30,y+95,'left')
 
     doc.rect(x+5, y+102, 205, 20)
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
     doc.text('RESPONSABLE',x+6,y+110)
     doc.setFont(undefined, 'NORMAL')
-    doc.text('RELATIVA RELATIVA  ABSOLUTA',x+8,y+115)
+    doc.text(l.responsable,x+8,y+115)
     doc.setFont(undefined, 'normal')
-    doc.text(['FECHA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+110,'center')
+    doc.text(['FECHA DE TOMA DE MUESTRA','HORA TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+110,'center')
+    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+110,'left')
     doc.setTextColor(0,0,0)
 
     $( '#docpdf' ).attr('src', doc.output('datauristring'));
@@ -1757,6 +1770,8 @@ sanguinea(p,l){
         this.reserologia(p,l)  
               if(l.tipo_id==12)
         this.ensayo(p,l)    
+                      if(l.tipo_id==13)
+        this.embarazo(p,l) 
        console.log(p)
        console.log(l)
       return false
