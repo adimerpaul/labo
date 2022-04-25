@@ -395,6 +395,29 @@
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
           </template>
 
+                                                                      <template v-if="tipo.label=='LABORATORIO SEROLOGIA'">
+          <div class="col-6 col-sm-12">SEROLOGIA</div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Factor Reumatoide(Latex)" v-model="laboratorio.d1" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Antiestreptolisina" v-model="laboratorio.d2" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Proteina C Reactiva" v-model="laboratorio.d3" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="RPR" v-model="laboratorio.d4" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Prueba Rapida Sifilis" v-model="laboratorio.d5" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Prueba Rapida VIH" v-model="laboratorio.d6" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Hepatitis A" v-model="laboratorio.d7" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Hepatitis B" v-model="laboratorio.d8" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Hepatitis C" v-model="laboratorio.d9" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Helicobacter Pylori en Sangre" v-model="laboratorio.d10" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Helicobacter Pylori en Heces" v-model="laboratorio.d11" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Troponina I" v-model="laboratorio.d12" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="PSA" v-model="laboratorio.d13" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d14" /></div>
+
+          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>           
+
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          </template>
+
           <div class="col-12">
             <q-btn label="Guardar" type="submit" class="full-width" icon="add_circle" color="positive" />
           </div>
@@ -522,6 +545,92 @@ export default {
     })
   },
   methods:{
+                  labserologia(p,l){
+
+            var doc = new jsPDF('landscape',undefined,'legal')
+    doc.setFont("arial");
+    doc.setFontSize(10);
+    var img = new Image()
+    img.src = 'img/natividad.jpeg'
+    doc.addImage(img, 'jpg', 190, 3, 70, 20)
+    let x=0
+    let y=0
+    //inicio datos paciete
+    doc.setDrawColor(120);
+    doc.rect(x+195, y+27, 155, 23)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+320, y+10,'center')
+    doc.setTextColor(195,47,47)
+    doc.text('N Registro CODEDLAB 000045',x+225, y+25)
+    doc.setTextColor(211,47,47)
+    doc.text('Form. 005',x+323, y+30)
+    doc.setTextColor(57,73,171)
+    doc.text('SEROLOGIA',x+270, y+30,'center')
+    doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+196, y+35)
+    doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'normal')
+    doc.text([p.paciente,l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno,l.tipomuestra],x+268, y+35,'center')
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'bold')
+    doc.text(['EDAD','SEXO'],x+305, y+35)
+    doc.setTextColor(211,47,47)
+    doc.text('N PACIENTE',x+305, y+43)
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(0,0,0)
+    doc.text([p.edad+'',p.sexo,p.id+''],x+337, y+35,'center')
+    doc.setTextColor(211,47,47)
+    doc.setTextColor(57,73,171)
+    //fin datos paciete
+    //inicio datos
+    doc.rect(x+195, y+53, 155, 130)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(211,47,47)
+    doc.text('',x+233,y+55)
+    doc.setTextColor(57,73,171)
+    doc.setFontSize(10);
+    doc.text('                   VALOR REF             METODO DE PRUEBA',x+260,y+60)
+    doc.setFontSize(12);
+
+    doc.setFont(undefined, 'normal')
+    doc.setFontSize(11);
+    doc.text(['Factor Reumatoide ','    (Latex)','Antiestreptolisina',' ','Proteina C Reactiva','','RPR','','Prueba Rapida Sifilis ','','Prueba Rapida VIH ',' ','Hepatitis A ',' ','Hepatitis B ',' ','Hepatitis C  ',' ','Helicobacter Pylori ','   en Sangre','Helicobacter Pylori ','    en Heces' ,'Troponina I ','','PSA','','OBSERVACIONES'],x+200,y+65,'left')
+    doc.setTextColor(0,0,0)
+    doc.text([l.d1,'',l.d2,' ',l.d3,'',l.d4,'',l.d5,'',l.d6,' ',l.d7,' ',l.d8,' ',l.d9,' ',l.d10,'',l.d11 ,'' ,l.d12,'',l.d13,'',l.d14],x+240,y+65,'left')
+
+        /*if(($row->d1<0 || $row->d1>500)&& $row->d1!='')
+        doc.setTextColor(195,47,47)
+        else
+        doc.setTextColor(0,0,0)
+
+        if($row->paciente->sexo=='Masculino' && ($row->d2<30 || $row->d2>350)&& $row->d2!='')$cd2='color:#ff726f;';
+        if($row->paciente->sexo=='Femenino' && ($row->d2<20 || $row->d2>250)&& $row->d2!='')$cd2='color:#ff726f;';
+        if(($row->d3<0 || $row->d3>7)&& $row->d3!='')$cd3='color:#ff726f;';
+        if(($row->d4<0 || $row->d4>4)&& $row->d4!='')$cd4='color:#ff726f;';
+        if(($row->d5<0 || $row->d5>10)&& $row->d5!='')$cd5='color:#ff726f;';
+        if(($row->d6<0 || $row->d6>0.11)&& $row->d6!='')$cd6='color:#ff726f;';
+        if(($row->d7<0 || $row->d7>10)&& $row->d7!='')$cd7='color:#ff726f;';*/
+    //doc.text(['100',' ','100',' ','100',' ','100',' ','100',' ','100',' ',' ','100',' ',' ',' ','100'],x+250,y+65,'center')
+    doc.setFontSize(11);
+    doc.text(['Hasta 8 UI/ml ',' ','Hasta 200 UI/l',' ','Hasta 0.8 mg/dl ',' ','No Reactivo',' ','No Reactivo',' ','No Reactivo',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','Hasta 4 ng/ml'],x+290,y+65,'center')
+    doc.setTextColor(57,73,171)
+    doc.text(['Aglutinacion directa','','Aglutinacion directa','','Aglutinacion directa','','Floculacion directa','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida ','Semicuantitativo'],x+312,y+65,'left')
+    doc.setFontSize(11);
+
+
+    doc.rect(x+195, y+185, 155, 20)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('RESPONSABLE',x+205,y+190,'left')
+    doc.text(l.responsable,x+205,y+195,'left')
+    doc.setFontSize(10);
+    doc.setLineHeightFactor(1.5)
+    doc.text(['Fecha toma de Muestra','Hora toma Muestra','Fecha Entrega de Resultado'],x+280,y+190,'left')
+    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+330,y+190,'left')
+ 
+    $( '#docpdf' ).attr('src', doc.output('datauristring'));
+      },
+
     lgmserologia(p,l){
           var doc = new jsPDF('P',undefined,'legal')
     doc.setFont("arial");
@@ -1609,7 +1718,9 @@ sanguinea(p,l){
       if(l.tipo_id==7)
         this.simple(p,l)  
       if(l.tipo_id==9)
-        this.lgmserologia(p,l)         
+        this.lgmserologia(p,l)     
+            if(l.tipo_id==10)
+        this.labserologia(p,l)     
        console.log(p)
        console.log(l)
       return false
