@@ -2,10 +2,10 @@
 <q-page class="q-pa-xs">
   <div class="row">
     <div class="col-12">
-      <iframe id="docpdf" src="" frameborder="0" style="width: 100%;height: 100vh"></iframe>
+<!--      <iframe id="docpdf" src="" frameborder="0" style="width: 100%;height: 100vh"></iframe>-->
     </div>
     <div class="col-12">
-      <q-table title1="Listado de pacientes" :rows="pacientes" :columns="columspaciente" :filter="filter">
+      <q-table title1="Listado de pacientes" :rows="pacientes" :columns="columspaciente" :filter="filter" :rows-per-page-options="[10,100,200,0]">
         <template v-slot:body-cell-seguro="props">
           <q-td :props="props">{{ props.row.seguro.nombre}}</q-td>
         </template>
@@ -22,12 +22,43 @@
         </template>
         <template v-slot:body-cell-opciones="props">
           <q-td :props="props" auto-width>
-            <q-btn @click="frmlaboratorio(props.row)" size="xs"  icon="science" color="primary" label="agregar" />
+<!--            <q-btn @click="frmlaboratorio(props.row)" size="xs"  icon="science" color="primary" label="agregar" />-->
+            <q-btn-dropdown color="primary" label="Opciones"  icon="science">
+              <q-list>
+                <q-item clickable v-close-popup @click="frmlaboratorio(props.row)">
+                  <q-item-section>
+                    <q-item-label>Agregar laboratorio</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+<!--                <q-item clickable v-close-popup @click="onItemClick">-->
+<!--                  <q-item-section>-->
+<!--                    <q-item-label>Videos</q-item-label>-->
+<!--                  </q-item-section>-->
+<!--                </q-item>-->
+
+<!--                <q-item clickable v-close-popup @click="onItemClick">-->
+<!--                  <q-item-section>-->
+<!--                    <q-item-label>Articles</q-item-label>-->
+<!--                  </q-item-section>-->
+<!--                </q-item>-->
+              </q-list>
+            </q-btn-dropdown>
           </q-td>
         </template>
         <template v-slot:body-cell-paciente="props">
           <q-td :props="props" auto-width>
             {{ props.row.paciente }}
+          </q-td>
+        </template>
+        <template v-slot:body-cell-edad="props">
+          <q-td :props="props" auto-width>
+            <template v-if="props.row.edad==undefined||props.row.edad==null||props.row.edad==''">
+              {{ props.row.tiempo }}
+            </template>
+            <template v-else>
+              {{ props.row.edad}}
+            </template>
           </q-td>
         </template>
         <template v-slot:top-right>
@@ -41,70 +72,51 @@
       </q-table>
     </div>
   </div>
-      <q-dialog v-model="alert">
+      <q-dialog v-model="alert" full-width>
       <q-card>
         <q-card-section class="bg-green-14 text-white">
-          <div class="text-h6">Registro</div>
+          <div class="text-h6">Registro de paciente</div>
         </q-card-section>
         <q-card-section class="q-pt-xs">
           <q-form
             @submit.prevent="onSubmit"
             class="q-gutter-md"
           >
-            <q-input
-              filled
-              v-model="dato.ci"
-              label="Cedula Identidad"
-              hint="Numero de carnet"
-
-            />
-            <q-input
-              filled
-              v-model="dato.nombre"
-              label="Nombre "
-              hint="Ingresar Nombre "
-                  style="text-transform: uppercase;"
-              lazy-rules
-              :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']"
-            />
-            <q-input
-              filled
-              v-model="dato.paterno"
-              label="Ap Paterno "
-              hint="Ingresar Paterno "
-                  style="text-transform: uppercase;"
-            />
-            <q-input
-              filled
-              v-model="dato.materno"
-              label="Ap Materno "
-              hint="Ingresar Materno "
-                  style="text-transform: uppercase;"
-            />
-            <q-input
-              filled
-              type="date"
-              v-model="dato.fechanac"
-              label="Fecha Nac"
-
-            />
-                        <q-input
-              filled
-              type="number"
-              v-model="dato.edad"
-              label="Edad"
-
-            />
-            <q-radio v-model="dato.sexo" val="Masculino" label="Masculino" />
-            <q-radio v-model="dato.sexo" val="Femenino" label="Femenino" />
-            <q-input
-              filled
-              v-model="dato.celular"
-              label="Celular (Whatsapp)"
-              hint="Numero de celular"
-
-            />
-            <q-select  outlined v-model="seguro" :options="seguros" label="Seguro" />
+            <div class="row">
+              <div class="col-6"><q-input outlined v-model="dato.ci" label="Cedula Identidad" hint="Numero de carnet"
+                />
+              </div>
+              <div class="col-6">
+                <q-input outlined v-model="dato.nombre" label="Nombre " hint="Ingresar Nombre " style="text-transform: uppercase;" lazy-rules :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']"
+                />
+              </div>
+              <div class="col-6">
+                <q-input outlined v-model="dato.paterno" label="Ap Paterno " hint="Ingresar Paterno " style="text-transform: uppercase;"
+                />
+              </div>
+              <div class="col-6">
+                <q-input outlined v-model="dato.materno" label="Ap Materno " hint="Ingresar Materno " style="text-transform: uppercase;"
+                />
+              </div>
+              <div class="col-6">
+                <q-input outlined type="date" v-model="dato.fechanac" label="Fecha Nac"
+                />
+              </div>
+              <div class="col-6">
+                <q-input outlined type="number" v-model="dato.edad" label="Edad"
+                />
+              </div>
+              <div class="col-6">
+                <q-radio v-model="dato.sexo" val="Masculino" label="Masculino" />
+                <q-radio v-model="dato.sexo" val="Femenino" label="Femenino" />
+              </div>
+              <div class="col-6">
+                <q-input outlined v-model="dato.celular" label="Celular (Whatsapp)" hint="Numero de celular"/>
+              </div>
+              <div class="col-6">
+                <q-select  outlined v-model="seguro" :options="seguros" label="Seguro" />
+              </div>
+            </div>
             <div>
               <q-btn label="Crear" type="submit" color="positive" icon="add_circle"/>
                 <q-btn  label="Cancelar" icon="delete" color="negative" v-close-popup />
@@ -214,7 +226,7 @@
           <div class="col-6 col-sm-6"><q-input dense outlined label="Fosforo" v-model="laboratorio.d30" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="Observaciones" v-model="laboratorio.d31" /></div>
 
-          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>           
+          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
 
           <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
@@ -262,7 +274,7 @@
           <div class="col-6 col-sm-6"><q-input dense outlined label="Esporas micoticas" v-model="laboratorio.d36" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="Observaciones" v-model="laboratorio.d37" /></div>
 
-          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>           
+          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
 
           <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
@@ -288,14 +300,11 @@
           <div class="col-6 col-sm-12"><q-input dense outlined label="COCOBACILOS GRAM NEGATIVO" v-model="laboratorio.d15" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="ESPORAS E HIFAS MICOTICAS" v-model="laboratorio.d16" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d17" /></div>
-
-          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>           
-
+          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
           <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
           </template>
-
-                                                  <template v-if="tipo.label=='ANALISIS DE SECRECION VAGINAL'">
+          <template v-if="tipo.label=='ANALISIS DE SECRECION VAGINAL'">
           <div class="col-6 col-sm-12">EXAMEN EN FRESCO</div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="CELULAS EPITELIALES" v-model="laboratorio.d1" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="LEUCOCITOS" v-model="laboratorio.d2" /></div>
@@ -316,7 +325,7 @@
           <div class="col-6 col-sm-12"><q-input dense outlined label="ESPORAS E HIFAS MICOTICAS" v-model="laboratorio.d16" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d17" /></div>
 
-          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>           
+          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
 
           <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
@@ -346,7 +355,7 @@
           <div class="col-6 col-sm-12"><q-input dense outlined label="ESPORAS MICOTICAS" v-model="laboratorio.d19" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="OTROS" v-model="laboratorio.d20" /></div>
 
-          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>           
+          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
 
           <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
@@ -375,7 +384,7 @@
           <div class="col-6 col-sm-12"><q-input dense outlined label="TEST DE BENEDICT" v-model="laboratorio.d17" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d18" /></div>
 
-          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>           
+          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
 
           <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
@@ -400,7 +409,7 @@
 
           <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACION" v-model="laboratorio.d10"   /></div>
 
-          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>           
+          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
 
           <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
@@ -415,7 +424,7 @@
           <div class="col-6 col-sm-6"><q-select :options="['NEGATIVO','INDETERMINADO','POSITIVO']" dense outlined label="referencia" v-model="laboratorio.d4" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d5" /></div>
 
-          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>           
+          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
 
           <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
@@ -438,7 +447,7 @@
           <div class="col-6 col-sm-12"><q-input dense outlined label="PSA" v-model="laboratorio.d13" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d14" /></div>
 
-          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>           
+          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
 
           <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
@@ -450,7 +459,7 @@
           <div class="col-6 col-sm-3"><q-select :options="['POSITIVO','NEGATIVO']" dense outlined label="ANTIGENO SARS COV2" v-model="laboratorio.d1" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d2" /></div>
 
-          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>           
+          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
 
           <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
@@ -467,7 +476,7 @@
           <div class="col-6 col-sm-12"><q-input dense outlined label="TROPONINA I" v-model="laboratorio.d6" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="B - HCG" v-model="laboratorio.d7" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="PROCALCITONINA" v-model="laboratorio.d8" /></div>
-          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>           
+          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
 
           <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
@@ -479,7 +488,7 @@
           <div class="col-6 col-sm-12"><q-select :options="['POSITIVO','NEGATIVO']" dense outlined label="TEST EMBARAZO EN SANGRE" v-model="laboratorio.d1" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="F.U.M." type='date' v-model="laboratorio.d2" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d3" /></div>
-          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>           
+          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
 
           <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
@@ -499,6 +508,7 @@
 import {date} from "quasar";
 import {jsPDF} from "jspdf";
 import $ from 'jquery'
+import moment from 'moment'
 
 
 export default {
@@ -507,11 +517,13 @@ export default {
       dialoglaboratorio:false,
       filter:'',
       alert:false,
-      dato:{},
+      dato:{fechanac:date.formatDate(new Date(),'YYYY-MM-DD')},
       pacientes:[],
       paciente:{},
       tipos:[],
       tipo:{},
+      seguros:[],
+      seguro:{},
       doctors:[],
       doctor:{},
       user:{},
@@ -569,7 +581,7 @@ export default {
         paciente_id:'',
         user_id:this.$store.state.login.user.id,
         doctor_id:'',
-        usuarios:[]
+        usuarios:[],
       },
       columspaciente:[
         {name:'opciones',field:'opciones',label:'opciones'},
@@ -582,8 +594,6 @@ export default {
     }
   },
   mounted() {
-
-
     //this.sanguinea();
     this.listusers();
     this.listseguro();
@@ -653,29 +663,29 @@ export default {
     doc.setTextColor(57,73,171)
     doc.text('                             COPRAPARASITOLOGICO SERIADO',x+50,y+52)
     doc.setFont(undefined, 'bold')
-    doc.text('     1º MUESTRA',x+8,y+58) 
+    doc.text('     1º MUESTRA',x+8,y+58)
     doc.setFont(undefined, 'normal')
-    doc.text(['Fecha','Hora'],x+8,y+65) 
-    doc.text([l.d1,l.d2],x+20,y+65) 
-    doc.text(l.d3,x+50,y+58) 
+    doc.text(['Fecha','Hora'],x+8,y+65)
+    doc.text([l.d1,l.d2],x+20,y+65)
+    doc.text(l.d3,x+50,y+58)
 
         doc.setFont(undefined, 'bold')
-    doc.text('     2º MUESTRA',x+8,y+80) 
+    doc.text('     2º MUESTRA',x+8,y+80)
     doc.setFont(undefined, 'normal')
-    doc.text(['Fecha','Hora'],x+8,y+85) 
-    doc.text([l.d4,l.d5],x+20,y+85) 
-    doc.text(l.d6,x+50,y+80) 
+    doc.text(['Fecha','Hora'],x+8,y+85)
+    doc.text([l.d4,l.d5],x+20,y+85)
+    doc.text(l.d6,x+50,y+80)
 
         doc.setFont(undefined, 'bold')
-    doc.text('     3º MUESTRA',x+8,y+100) 
+    doc.text('     3º MUESTRA',x+8,y+100)
     doc.setFont(undefined, 'normal')
-    doc.text(['Fecha','Hora'],x+8,y+105) 
-    doc.text([l.d7+'',l.d8+''],x+20,y+105) 
-    doc.text(l.d9+'',x+50,y+100) 
+    doc.text(['Fecha','Hora'],x+8,y+105)
+    doc.text([l.d7+'',l.d8+''],x+20,y+105)
+    doc.text(l.d9+'',x+50,y+100)
 
     doc.setTextColor(57,73,171)
-    doc.text('OBSERVACIONES',x+8,y+120) 
-    doc.text(l.d10,x+8,y+125) 
+    doc.text('OBSERVACIONES',x+8,y+120)
+    doc.text(l.d10,x+8,y+125)
     doc.setFont(undefined, 'normal')
     doc.setTextColor(0,0,0)
 
@@ -695,7 +705,8 @@ export default {
     doc.setTextColor(0,0,0)
     doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+140,'left')
 
-    $( '#docpdf' ).attr('src', doc.output('datauristring'));
+    //$( '#docpdf' ).attr('src', doc.output('datauristring'));
+     window.open(doc.output('bloburl'), '_blank');
     },
 
 
@@ -781,8 +792,9 @@ export default {
     doc.setLineHeightFactor(1.5)
     doc.text(['Fecha toma de Muestra','Hora toma Muestra','Fecha Entrega de Resultado'],x+280,y+190,'left')
     doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+330,y+190,'left')
- 
-    $( '#docpdf' ).attr('src', doc.output('datauristring'));
+
+    //$( '#docpdf' ).attr('src', doc.output('datauristring'));
+                    window.open(doc.output('bloburl'), '_blank');
       },
 
     lgmserologia(p,l){
@@ -831,23 +843,23 @@ export default {
     doc.setTextColor(57,73,171)
     doc.text('               PRUEBA ANTICUERPOS CUANTITATIVOS ANTI SARS COV-2 lg M / lg G',x+50,y+52)
     doc.setFont(undefined, 'normal')
-    doc.text('      METODO: INMUNOENSAYO DE FLUORECENCIA (FIA)                                Valor de Referencia',x+8,y+58) 
+    doc.text('      METODO: INMUNOENSAYO DE FLUORECENCIA (FIA)                                Valor de Referencia',x+8,y+58)
     let vallggm1='',vallggm2='',obs1='',obs2=''
-     if( parseFloat(l.d1) < 0.9) {vallggm1=l.d1 
+     if( parseFloat(l.d1) < 0.9) {vallggm1=l.d1
      obs1=l.d2}
             if(parseFloat(l.d1) >= 0.9) {vallggm2=l.d1
             obs2=l.d2
             }
-    doc.text(['lgM','','lgG'],x+30,y+63) 
-    doc.text([vallggm1,vallggm2,l.d3],x+70,y+63) 
-    doc.text([obs1,obs2,l.d4],x+100,y+63) 
-    doc.text(['menor a 0.9 NEGATIVO PARA lgG/lgM','0.9 menor igual & mayor 1.1 INDETERMINADO','mayor igual 1.1 POSITIVO lgG/lgM'],x+170,y+63,'center') 
+    doc.text(['lgM','','lgG'],x+30,y+63)
+    doc.text([vallggm1,vallggm2,l.d3],x+70,y+63)
+    doc.text([obs1,obs2,l.d4],x+100,y+63)
+    doc.text(['menor a 0.9 NEGATIVO PARA lgG/lgM','0.9 menor igual & mayor 1.1 INDETERMINADO','mayor igual 1.1 POSITIVO lgG/lgM'],x+170,y+63,'center')
     doc.text('                        INTERPRETACION DE RESULTADOS',x+50,y+80)
 
 
 
     doc.setTextColor(0,0,0)
-    doc.text('              lgM                lgG                         INTERPRETACION                          COMENTARIO',x+5,y+85) 
+    doc.text('              lgM                lgG                         INTERPRETACION                          COMENTARIO',x+5,y+85)
     doc.addImage(imgmenos, 'jpeg', 20, 90, 5, 5)
     doc.addImage(imgmenos, 'jpeg', 40, 90, 5, 5)
     doc.addImage(imgmas, 'jpeg', 20, 95, 5, 5)
@@ -859,18 +871,18 @@ export default {
     doc.setFont(undefined, 'normal')
     doc.setFontSize(9);
 
-    doc.text(['>Ausencia de la Enfermedad o Falso Negativo','>Inicio Temprano de ka Enfermedad Infeccion','   Aguda de la Enfermedad','>Fase activa de la Enfermedad','>Inmunidad Fase final de la Infeccion','  pasada y curada'],x+50,y+90,'left') 
-    doc.text(['Paciente en fase de evolucion de la enfermedad mayor de 21 dias','Se debe repetir dentro de 5 a 7 dias la prueba','Correlacionar con clinica del paciente y realizar examenes ','  complementarios (Rayos X, Tomografia)','Paciente en fase de evolucion de la enfermedad ','  mayor a 21 dias'],x+120,y+90,'left') 
+    doc.text(['>Ausencia de la Enfermedad o Falso Negativo','>Inicio Temprano de ka Enfermedad Infeccion','   Aguda de la Enfermedad','>Fase activa de la Enfermedad','>Inmunidad Fase final de la Infeccion','  pasada y curada'],x+50,y+90,'left')
+    doc.text(['Paciente en fase de evolucion de la enfermedad mayor de 21 dias','Se debe repetir dentro de 5 a 7 dias la prueba','Correlacionar con clinica del paciente y realizar examenes ','  complementarios (Rayos X, Tomografia)','Paciente en fase de evolucion de la enfermedad ','  mayor a 21 dias'],x+120,y+90,'left')
     doc.setTextColor(57,73,171)
     doc.setFontSize(9);
     doc.text(['NOTA: Las pruebas rapidas para COVID-19 NO SON CONFIRMATORIAS, en caso de salir positivo alguno de los anticuerpo , se recomienda',' una segunda toma de muestra con la Tecnica de HISOPADO NASOFARINGEO para RT - PCR y asi confirmar su DIAGNOSTICO','','Todas las personas producimos anticuerpos a diferente velocidad dependiendo del agente patogeno y nuestra genetica que es lo que determina la ','funcionalidad de nuestro Sistema Inmunologico',
-    '','Los Resultados deben ser interpretados en funcion de la Clinica del paciente y dias de evolucion de la enfermedad'],x+8,y+115,'left') 
+    '','Los Resultados deben ser interpretados en funcion de la Clinica del paciente y dias de evolucion de la enfermedad'],x+8,y+115,'left')
 
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
     doc.setFont(undefined, 'normal')
-    doc.text('OBSERVACIONES',x+8,y+142) 
-    doc.text(l.d5,x+8,y+145) 
+    doc.text('OBSERVACIONES',x+8,y+142)
+    doc.text(l.d5,x+8,y+145)
     doc.setTextColor(0,0,0)
 
     doc.rect(x+5, y+147, 205, 15)
@@ -884,7 +896,8 @@ export default {
     doc.setTextColor(0,0,0)
     doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+150,'left')
 
-    $( '#docpdf' ).attr('src', doc.output('datauristring'));
+    //$( '#docpdf' ).attr('src', doc.output('datauristring'));
+    window.open(doc.output('bloburl'), '_blank');
 
     },
     simple(p,l){
@@ -928,28 +941,28 @@ export default {
     doc.setTextColor(57,73,171)
     doc.text('                             COPRAPARASITOLOGICO SIMPLE',x+50,y+52)
     doc.setFont(undefined, 'normal')
-    doc.text(['ASPECTO DE LA MUESTRA','COLOR','CELULAS EPITELIALES','LEUCOCITOS','HEMATIES','GRASAS','LEVADURAS','ESPORAS MICOTICAS','ALMIDON','PARASITOS','PIOCITOS'],x+8,y+58) 
+    doc.text(['ASPECTO DE LA MUESTRA','COLOR','CELULAS EPITELIALES','LEUCOCITOS','HEMATIES','GRASAS','LEVADURAS','ESPORAS MICOTICAS','ALMIDON','PARASITOS','PIOCITOS'],x+8,y+58)
     doc.setTextColor(0,0,0)
-    doc.text([l.d1,l.d2,l.d3,l.d4,l.d5,l.d6,l.d7,l.d8,l.d9,l.d10,l.d11],x+70,y+58) 
+    doc.text([l.d1,l.d2,l.d3,l.d4,l.d5,l.d6,l.d7,l.d8,l.d9,l.d10,l.d11],x+70,y+58)
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
     doc.text('MOCO FETAL       '+l.d12,x+8,y+102)
     doc.setFont(undefined, 'normal')
-    doc.text(['Polimorfonuclueares: '+l.d13,'Mononuclueras: '+l.d14],x+100,y+102) 
+    doc.text(['Polimorfonuclueares: '+l.d13,'Mononuclueras: '+l.d14],x+100,y+102)
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
-    doc.text('OBSERVACIONES',x+8,y+110) 
+    doc.text('OBSERVACIONES',x+8,y+110)
     doc.setFont(undefined, 'normal')
     doc.setTextColor(0,0,0)
-    doc.text(l.d15,x+70,y+110) 
+    doc.text(l.d15,x+70,y+110)
 
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
     doc.text('                                        OTROS',x+50,y+115)
     doc.setFont(undefined, 'normal')
-    doc.text(['SANGRE OCULTA EN HECES','TEST DE BENEDICT','OBSERVACIONES'],x+8,y+120) 
+    doc.text(['SANGRE OCULTA EN HECES','TEST DE BENEDICT','OBSERVACIONES'],x+8,y+120)
     doc.setTextColor(0,0,0)
-    doc.text([l.d16,l.d17,l.d18],x+70,y+120) 
+    doc.text([l.d16,l.d17,l.d18],x+70,y+120)
 
     doc.rect(x+5, y+135, 205, 20)
     doc.setFont(undefined, 'bold')
@@ -962,7 +975,8 @@ export default {
     doc.setTextColor(0,0,0)
     doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+140,'left')
 
-    $( '#docpdf' ).attr('src', doc.output('datauristring'));
+    //$( '#docpdf' ).attr('src', doc.output('datauristring'));
+    window.open(doc.output('bloburl'), '_blank');
     },
 
     heces(p,l){
@@ -1006,28 +1020,28 @@ export default {
     doc.setTextColor(57,73,171)
     doc.text('                                          EXAMEN EN FRESCO',x+50,y+52)
     doc.setFont(undefined, 'normal')
-    doc.text(['ASPECTO DE LA MUESTRA','COLOR','CELULAS EPITELIALES','LEUCOCITOS','HEMATIES','ALMIDON','LEVADURAS','GRASAS','PARASITOS'],x+8,y+58) 
+    doc.text(['ASPECTO DE LA MUESTRA','COLOR','CELULAS EPITELIALES','LEUCOCITOS','HEMATIES','ALMIDON','LEVADURAS','GRASAS','PARASITOS'],x+8,y+58)
     doc.setTextColor(0,0,0)
-    doc.text([l.d1,l.d2,l.d3,l.d4,l.d5,l.d6,l.d7,l.d8,l.d9],x+70,y+58) 
+    doc.text([l.d1,l.d2,l.d3,l.d4,l.d5,l.d6,l.d7,l.d8,l.d9],x+70,y+58)
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
     doc.text('MOCO FETAL       '+l.d10,x+8,y+95)
     doc.setFont(undefined, 'normal')
-    doc.text(['Polimorfonuclueares: '+l.d11,'Mononuclueras: '+l.d12],x+100,y+95) 
+    doc.text(['Polimorfonuclueares: '+l.d11,'Mononuclueras: '+l.d12],x+100,y+95)
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
-    doc.text('OTROS',x+8,y+105) 
+    doc.text('OTROS',x+8,y+105)
     doc.setFont(undefined, 'normal')
     doc.setTextColor(0,0,0)
-    doc.text(l.d13,x+70,y+105) 
+    doc.text(l.d13,x+70,y+105)
 
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
     doc.text('                                         TINCION DE GRAM',x+50,y+110)
     doc.setFont(undefined, 'normal')
-    doc.text(['BACILOS GRAM POSITIVOS','BACILOS GRAM NEGATIVOS','COCOS GRAM POSITIVOS','COCOS GRAM NEGATIVOS','COCOBACILOS GRAM','ESPORAS MICOTICAS','OTROS'],x+8,y+115) 
+    doc.text(['BACILOS GRAM POSITIVOS','BACILOS GRAM NEGATIVOS','COCOS GRAM POSITIVOS','COCOS GRAM NEGATIVOS','COCOBACILOS GRAM','ESPORAS MICOTICAS','OTROS'],x+8,y+115)
     doc.setTextColor(0,0,0)
-    doc.text([l.d14,l.d15,l.d16,l.d17,l.d18,l.d19,l.d20],x+70,y+115) 
+    doc.text([l.d14,l.d15,l.d16,l.d17,l.d18,l.d19,l.d20],x+70,y+115)
 
     doc.rect(x+5, y+142, 205, 22)
     doc.setFont(undefined, 'bold')
@@ -1040,7 +1054,8 @@ export default {
     doc.setTextColor(0,0,0)
     doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+145,'left')
 
-    $( '#docpdf' ).attr('src', doc.output('datauristring'));
+    //$( '#docpdf' ).attr('src', doc.output('datauristring'));
+    window.open(doc.output('bloburl'), '_blank');
     },
 
             orina(p,l){
@@ -1084,13 +1099,13 @@ export default {
     doc.setTextColor(57,73,171)
     doc.text('          EX FISICO                      VALOR                   REFERENCIA                  EX QUIMICO                   VALOR              REFERENCIA',x+6,y+52)
     doc.setFont(undefined, 'normal')
-    doc.text(['Color','Olor','Aspecto','Espuma','Deposito','Densidad','Reaccion'],x+8,y+58) 
+    doc.text(['Color','Olor','Aspecto','Espuma','Deposito','Densidad','Reaccion'],x+8,y+58)
     doc.text(['Amarillo','Sui-generis','Limpido o lig opal','Blanco fugaz','Nulo o escaso','1.010-1.030','Lig acida'],x+80,y+58,'center')
     doc.text(['Proteinas','Glucosa','C cetonicos','Bilirrubina','Hemoglobina','Urobilina','Nitrinos'],x+110,y+58,'left')
     doc.text(['Negativo','Negativo','Negativo','Negativo','Negativo','Normal','Negativo'],x+185,y+58,'left')
     doc.setTextColor(0,0,0)
-    doc.text([l.d1,l.d3,l.d5,l.d7,l.d9,l.d11,l.d13],x+55,y+58) 
-    doc.text([l.d2,l.d4,l.d6,l.d8,l.d10,l.d12,l.d14],x+160,y+58) 
+    doc.text([l.d1,l.d3,l.d5,l.d7,l.d9,l.d11,l.d13],x+55,y+58)
+    doc.text([l.d2,l.d4,l.d6,l.d8,l.d10,l.d12,l.d14],x+160,y+58)
     doc.setTextColor(57,73,171)
     doc.text('SEDIMENTO: EXAMEN MICROSCOPICO',x+75,y+87,'center')
 
@@ -1098,22 +1113,22 @@ export default {
     doc.setTextColor(57,73,171)
     doc.text('          CELULAS                      VALOR                   REFERENCIA                   CILINDROS                     VALOR              REFERENCIA',x+6,y+90)
     doc.setFont(undefined, 'normal')
-    doc.text(['Celulas epitaliales','Celulas de transicion','Celulas Clave','Leucocitos','Eritrocitos','Bacterias','CRISTALES'],x+8,y+95) 
+    doc.text(['Celulas epitaliales','Celulas de transicion','Celulas Clave','Leucocitos','Eritrocitos','Bacterias','CRISTALES'],x+8,y+95)
     doc.text(['Hasta 2/c','Negativo','Negativo','Hasta 5/c','Hasta 3/c','Escaso',''],x+80,y+95,'center')
     doc.text(['Hialino','Granuloso','Epiteliales','Eritrocitario','Leucositario','Cereos','Mixtos'],x+110,y+95,'left')
     doc.text(['Negativo','Negativo','Negativo','Negativo','Negativo','Negativo','Negativo'],x+185,y+95,'left')
     doc.setTextColor(0,0,0)
-    doc.text([l.d15,l.d17,l.d19,l.d21,l.d23,l.d25],x+55,y+95) 
-    doc.text([l.d16,l.d18,l.d20,l.d22,l.d24,l.d26,l.d27,'OTROS'],x+160,y+95) 
+    doc.text([l.d15,l.d17,l.d19,l.d21,l.d23,l.d25],x+55,y+95)
+    doc.text([l.d16,l.d18,l.d20,l.d22,l.d24,l.d26,l.d27,'OTROS'],x+160,y+95)
 
     doc.setTextColor(57,73,171)
     doc.setFont(undefined, 'normal')
-    doc.text(['Uratos amorfos','Fosfato amorfo','Oxalato de calcio','Fosfato de calcio','Acido Urico'],x+8,y+125) 
+    doc.text(['Uratos amorfos','Fosfato amorfo','Oxalato de calcio','Fosfato de calcio','Acido Urico'],x+8,y+125)
     doc.text(['Escaso','Escaso','Escaso','Escaso','Escaso'],x+80,y+125,'center')
     doc.text(['Filamento mucoso','Piocitos','Levaduras','Esporas micoticas'],x+110,y+128,'left')
     doc.setTextColor(0,0,0)
-    doc.text([l.d28,l.d29,l.d31,l.d33,l.d35],x+55,y+125) 
-    doc.text([l.d30,l.d32,l.d34,l.d36],x+160,y+128) 
+    doc.text([l.d28,l.d29,l.d31,l.d33,l.d35],x+55,y+125)
+    doc.text([l.d30,l.d32,l.d34,l.d36],x+160,y+128)
 
     doc.setTextColor(57,73,171)
     doc.setFont(undefined, 'bold')
@@ -1132,7 +1147,8 @@ export default {
     doc.setTextColor(0,0,0)
     doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+155,'left')
 
-    $( '#docpdf' ).attr('src', doc.output('datauristring'));
+    //$( '#docpdf' ).attr('src', doc.output('datauristring'));
+    window.open(doc.output('bloburl'), '_blank');
     },
 
             uretral(p,l){
@@ -1176,17 +1192,17 @@ export default {
     doc.setTextColor(57,73,171)
     doc.text('                                          EXAMEN EN FRESCO',x+50,y+52)
     doc.setFont(undefined, 'normal')
-    doc.text(['CELULAS EPITELIALES','LEUCOCITOS','HEMATIES','CELULAS CLAVE','LEVADURAS','PARASITOS','BACTERIAS','KOH','PH','OBSERVAIONES'],x+8,y+58) 
+    doc.text(['CELULAS EPITELIALES','LEUCOCITOS','HEMATIES','CELULAS CLAVE','LEVADURAS','PARASITOS','BACTERIAS','KOH','PH','OBSERVAIONES'],x+8,y+58)
     doc.setTextColor(0,0,0)
-    doc.text([l.d1,l.d2,l.d3,l.d4,l.d5,l.d6,l.d7,l.d8,l.d9,l.d10],x+70,y+58) 
+    doc.text([l.d1,l.d2,l.d3,l.d4,l.d5,l.d6,l.d7,l.d8,l.d9,l.d10],x+70,y+58)
 
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
     doc.text('                                         TINCION DE GRAM',x+50,y+100)
     doc.setFont(undefined, 'normal')
-    doc.text(['BACILOS GRAM POSITIVO','BACILOS GRAM NEGATIVO','COCOS GRAM POSITIVO','COCOBACILOS GRAM POSITIVO','COCOBACILOS GRAM NEGATIVO','ESPORAS E HIFAS MICOTICAS','OBSERVACIONNES'],x+8,y+105) 
+    doc.text(['BACILOS GRAM POSITIVO','BACILOS GRAM NEGATIVO','COCOS GRAM POSITIVO','COCOBACILOS GRAM POSITIVO','COCOBACILOS GRAM NEGATIVO','ESPORAS E HIFAS MICOTICAS','OBSERVACIONNES'],x+8,y+105)
     doc.setTextColor(0,0,0)
-    doc.text([l.d11,l.d12,l.d13,l.d14,l.d15,l.d16,l.d17],x+70,y+105) 
+    doc.text([l.d11,l.d12,l.d13,l.d14,l.d15,l.d16,l.d17],x+70,y+105)
 
     doc.rect(x+5, y+135, 205, 22)
     doc.setFont(undefined, 'bold')
@@ -1199,7 +1215,8 @@ export default {
     doc.setTextColor(0,0,0)
     doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+145,'left')
 
-    $( '#docpdf' ).attr('src', doc.output('datauristring'));
+    //$( '#docpdf' ).attr('src', doc.output('datauristring'));
+    window.open(doc.output('bloburl'), '_blank');
     },
 
             vaginal(p,l){
@@ -1243,17 +1260,17 @@ export default {
     doc.setTextColor(57,73,171)
     doc.text('                                          EXAMEN EN FRESCO',x+50,y+52)
     doc.setFont(undefined, 'normal')
-    doc.text(['CELULAS EPITELIALES','LEUCOCITOS','HEMATIES','CELULAS CLAVE','LEVADURAS','PARASITOS','BACTERIAS','KOH','PH','OBSERVAIONES'],x+8,y+58) 
+    doc.text(['CELULAS EPITELIALES','LEUCOCITOS','HEMATIES','CELULAS CLAVE','LEVADURAS','PARASITOS','BACTERIAS','KOH','PH','OBSERVAIONES'],x+8,y+58)
     doc.setTextColor(0,0,0)
-    doc.text([l.d1,l.d2,l.d3,l.d4,l.d5,l.d6,l.d7,l.d8,l.d9,l.d10],x+70,y+58) 
+    doc.text([l.d1,l.d2,l.d3,l.d4,l.d5,l.d6,l.d7,l.d8,l.d9,l.d10],x+70,y+58)
 
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
     doc.text('                                         TINCION DE GRAM',x+50,y+100)
     doc.setFont(undefined, 'normal')
-    doc.text(['BACILOS GRAM POSITIVO','BACILOS GRAM NEGATIVO','COCOS GRAM POSITIVO','COCOBACILOS GRAM POSITIVO','COCOBACILOS GRAM NEGATIVO','ESPORAS E HIFAS MICOTICAS','OBSERVACIONNES'],x+8,y+105) 
+    doc.text(['BACILOS GRAM POSITIVO','BACILOS GRAM NEGATIVO','COCOS GRAM POSITIVO','COCOBACILOS GRAM POSITIVO','COCOBACILOS GRAM NEGATIVO','ESPORAS E HIFAS MICOTICAS','OBSERVACIONNES'],x+8,y+105)
     doc.setTextColor(0,0,0)
-    doc.text([l.d11,l.d12,l.d13,l.d14,l.d15,l.d16,l.d17],x+70,y+105) 
+    doc.text([l.d11,l.d12,l.d13,l.d14,l.d15,l.d16,l.d17],x+70,y+105)
 
     doc.rect(x+5, y+135, 205, 22)
     doc.setFont(undefined, 'bold')
@@ -1266,7 +1283,8 @@ export default {
     doc.setTextColor(0,0,0)
     doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+145,'left')
 
-    $( '#docpdf' ).attr('src', doc.output('datauristring'));
+    //$( '#docpdf' ).attr('src', doc.output('datauristring'));
+    window.open(doc.output('bloburl'), '_blank');
     },
 
 sanguinea(p,l){
@@ -1310,13 +1328,13 @@ sanguinea(p,l){
     doc.setTextColor(57,73,171)
     doc.text('          PRUEBA                      VALOR                   REFRENCIA                   PRUEBA                     VALOR                 VALOR',x+6,y+52)
     doc.setFont(undefined, 'normal')
-    doc.text(['Glicemia','Creatina','Urea','NUS-BUN','Acido Urico','Proteinas Totales','Albumina','Globulina','Amilasa','Lipasa','Bilirrubina Total','Bilirrubina Directa','Bilirrubina Indirecta','CK-MB','LDH','Hierro'],x+8,y+58) 
+    doc.text(['Glicemia','Creatina','Urea','NUS-BUN','Acido Urico','Proteinas Totales','Albumina','Globulina','Amilasa','Lipasa','Bilirrubina Total','Bilirrubina Directa','Bilirrubina Indirecta','CK-MB','LDH','Hierro'],x+8,y+58)
     doc.text(['70-105mg/dl','0.7-1.5mmg/dl','15-45mg/dl','7-18mg/dl','2.6-7.2mg/dl','6.2-8.5g/dl','3.5-5.3g/dl','2.8-3.5g/dl','menor a 120UI/L','10-150UI/L','hasta 1.2 mg/dl','hasta 0.3 mg/dl','hasta 0.9 mg/dl','0-24 UI/L','200-480 UI/L','50-170ug/dl'],x+80,y+58,'left')
     doc.text(['Fosfatasa alcalina','Fosfatasa alcalina','Transamisa GOT','Transamisas GPT','LIPIDOGRAMA','Trigliceridos','Colesterol Total','HDL-Col','LDL-Col','ELECTROLITOS','Sodio','Cloro','Potasio','Calcio','Magnesio','Fosforo'],x+110,y+58,'left')
     doc.text(['adultos hasta 100UI/L','niños 100-400UI/L','hasta 40UI/L','hasta 41UI/L','','10-160mg/dl','menor 200mg/dl','35-65mg/dl','hasta 150mg/dl','','135-155mEq/L','98-106 mEq/L','3.4-5.3 mEq/L','8.5-10.5mg/dl','1.7-2.4mg/dl','2.5-4.5mg/dl'],x+175,y+58,'left')
     doc.setTextColor(0,0,0)
-    doc.text([l.d1,l.d3,l.d5,l.d7,l.d9,l.d10,l.d12,l.d14,l.d16,l.d18,l.d19,l.d21,l.d23,l.d25,l.d27,l.d29],x+55,y+58) 
-    doc.text([l.d2,l.d4,l.d6,l.d8,'',l.d11,l.d13,l.d15,l.d17,'',l.d20,l.d22,l.d24,l.d26,l.d28,l.d30],x+160,y+58) 
+    doc.text([l.d1,l.d3,l.d5,l.d7,l.d9,l.d10,l.d12,l.d14,l.d16,l.d18,l.d19,l.d21,l.d23,l.d25,l.d27,l.d29],x+55,y+58)
+    doc.text([l.d2,l.d4,l.d6,l.d8,'',l.d11,l.d13,l.d15,l.d17,'',l.d20,l.d22,l.d24,l.d26,l.d28,l.d30],x+160,y+58)
 
 
     doc.setTextColor(57,73,171)
@@ -1336,7 +1354,8 @@ sanguinea(p,l){
     doc.setTextColor(0,0,0)
     doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+135,'left')
 
-    $( '#docpdf' ).attr('src', doc.output('datauristring'));
+    //$( '#docpdf' ).attr('src', doc.output('datauristring'));
+    window.open(doc.output('bloburl'), '_blank');
     },
         valcien(){
               let total=0
@@ -1523,7 +1542,8 @@ sanguinea(p,l){
     doc.setLineHeightFactor(1.5)
     doc.text(['Fecha toma de Muestra','Fecha Entrega de Resultado','Hora toma Muestra'],x+280,y+185,'left')
 
-    $( '#docpdf' ).attr('src', doc.output('datauristring'));
+    //$( '#docpdf' ).attr('src', doc.output('datauristring'));
+    window.open(doc.output('bloburl'), '_blank');
       },
       hemograma(p,l){
             var doc = new jsPDF('landscape',undefined,'legal')
@@ -1626,7 +1646,8 @@ sanguinea(p,l){
     // doc.save("Pago"+date.formatDate(Date.now(),'DD-MM-YYYY')+".pdf");
     // window.open(doc.output('bloburl'), '_blank');
 
-    $( '#docpdf' ).attr('src', doc.output('datauristring'));
+    //$( '#docpdf' ).attr('src', doc.output('datauristring'));
+    window.open(doc.output('bloburl'), '_blank');
       },
       ensayo(p,l){
             var doc = new jsPDF('landscape',undefined,'legal')
@@ -1709,7 +1730,8 @@ sanguinea(p,l){
     doc.text(['Fecha toma de Muestra','Hora toma Muestra','Fecha Entrega de Resultado'],x+280,y+165,'left')
     doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+330,y+165,'left')
 
-    $( '#docpdf' ).attr('src', doc.output('datauristring'));
+    //$( '#docpdf' ).attr('src', doc.output('datauristring'));
+    window.open(doc.output('bloburl'), '_blank');
       },
       reserologia(p,l){
                     var doc = new jsPDF('landscape',undefined,'legal')
@@ -1791,7 +1813,8 @@ sanguinea(p,l){
     doc.text(['Fecha toma de Muestra','Hora toma Muestra','Fecha Entrega de Resultado'],x+280,y+175,'left')
     doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+325,y+175,'left')
 
-    $( '#docpdf' ).attr('src', doc.output('datauristring'));
+    //$( '#docpdf' ).attr('src', doc.output('datauristring'));
+    window.open(doc.output('bloburl'), '_blank');
       },
       embarazo(p,l) {
     var doc = new jsPDF('P',undefined,'legal')
@@ -1858,7 +1881,8 @@ sanguinea(p,l){
     doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+110,'left')
     doc.setTextColor(0,0,0)
 
-    $( '#docpdf' ).attr('src', doc.output('datauristring'));
+    //$( '#docpdf' ).attr('src', doc.output('datauristring'));
+    window.open(doc.output('bloburl'), '_blank');
   },
     imprimirlaboratorio(p,l){
       if(l.tipo_id==1)
@@ -1872,21 +1896,21 @@ sanguinea(p,l){
       if(l.tipo_id==5)
         this.vaginal(p,l)
       if(l.tipo_id==6)
-        this.heces(p,l)   
+        this.heces(p,l)
       if(l.tipo_id==7)
-        this.simple(p,l)  
+        this.simple(p,l)
             if(l.tipo_id==8)
-        this.seriado(p,l) 
+        this.seriado(p,l)
       if(l.tipo_id==9)
-        this.lgmserologia(p,l)     
+        this.lgmserologia(p,l)
             if(l.tipo_id==10)
-        this.labserologia(p,l)   
+        this.labserologia(p,l)
       if(l.tipo_id==11)
-        this.reserologia(p,l)  
+        this.reserologia(p,l)
               if(l.tipo_id==12)
-        this.ensayo(p,l)    
+        this.ensayo(p,l)
                       if(l.tipo_id==13)
-        this.embarazo(p,l) 
+        this.embarazo(p,l)
        console.log(p)
        console.log(l)
       return false
@@ -1925,7 +1949,8 @@ sanguinea(p,l){
 
       // doc.save("Pago"+date.formatDate(Date.now(),'DD-MM-YYYY')+".pdf");
       // window.open(doc.output('bloburl'), '_blank');
-      $( '#docpdf' ).attr('src', doc.output('datauristring'));
+      //$( '#docpdf' ).attr('src', doc.output('datauristring'));
+      window.open(doc.output('bloburl'), '_blank');
 
     },
     createLaboratorio(){
@@ -1937,6 +1962,7 @@ sanguinea(p,l){
       this.$axios.post(process.env.API+'/laboratorio',this.laboratorio).then(res=> {
         // console.log(res.data)
         this.mispacientes()
+        this.dialoglaboratorio=false
       })
     },
     frmlaboratorio(paciente){
@@ -1950,19 +1976,21 @@ sanguinea(p,l){
         this.dato={}
          this.$q.notify({
           message: 'Se registro correctamente',
-          color: 'success'
+          color: 'green',
+          icon: 'check',
         })
         this.$q.loading.hide()
         this.alert=false;
-        this.listado();
-      }).catch(err=>{
-        this.$q.loading.hide()
-        this.$q.notify({
-          message:err.response.data.message,
-          color:'red',
-          icon:'error'
-        })
+        this.mispacientes();
       })
+      //   .catch(err=>{
+      //   this.$q.loading.hide()
+      //   this.$q.notify({
+      //     message:err.response.data.message,
+      //     color:'red',
+      //     icon:'error'
+      //   })
+      // })
     },
         listdoctor(){
         this.doctors=[];
@@ -2004,6 +2032,10 @@ sanguinea(p,l){
         res.data.forEach(r=>{
           let d=r
           // console.log(r)
+          var nacimiento=moment(r.fechanac)
+          var hoy=moment()
+          var anios=hoy.diff(nacimiento,"years")
+          d.tiempo=anios
           d.paciente=r.paterno+' '+r.materno+' '+r.nombre
           this.pacientes.push(d)
         })

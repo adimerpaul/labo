@@ -17,7 +17,7 @@ class PacienteController extends Controller
     public function index()
     {
         //
-        return Paciente::with('seguro')->with('laboratorios')->get();
+        return Paciente::with('seguro')->with('laboratorios')->orderBy('id','DESC')->get();
     }
 
     /**
