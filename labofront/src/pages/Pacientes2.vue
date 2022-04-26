@@ -212,6 +212,8 @@
           </div>
 
           <template v-if="tipo.label=='HEMOGRAMA COMPLETO'">
+              <q-card class="my-card" style="width:100%">
+      <q-card-section style="width:100%"> <div class="row">
           <div class="col-6 col-sm-6"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d1" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Tiempo de cuagulacion" v-model="laboratorio.d2" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Hemoglobina" v-model="laboratorio.d3" /></div>
@@ -229,8 +231,9 @@
           <div class="col-6 col-sm-6"><q-input dense outlined label="Globolus Blancos" v-model="laboratorio.d15" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="IPR" v-model="laboratorio.d16" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Plaquetas" v-model="laboratorio.d17" /></div>
-          <div class="col-6 col-sm-6"></div>
-
+          <div class="col-6 col-sm-6"></div></div>
+          </q-card-section>
+      <q-card-section style="width:100%"> <div class="row">
           <div class="col-6 col-sm-6"><q-input dense outlined label="Cayados" v-model="laboratorio.d18" @keyup="valcien" type="number"/></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="x10^9/L" v-model="laboratorio.d19" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Neutrofilos" v-model="laboratorio.d20" @keyup="valcien" type="number"/></div>
@@ -244,16 +247,24 @@
           <div class="col-6 col-sm-6"><q-input dense outlined label="Monocitos" v-model="laboratorio.d28" @keyup="valcien" type="number"/></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="x10^9/L" v-model="laboratorio.d29" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="BLASTOS" v-model="laboratorio.d30" @keyup="valcien" type="number"/></div>
-
+          </div>
+          </q-card-section>
+      <q-card-section style="width:100%"> <div class="row">
           <div class="col-6 col-sm-12"><q-input dense outlined label="Serie Rojas" v-model="laboratorio.d31" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="Serie Blancas" v-model="laboratorio.d32" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="Serie Plaquetarias" v-model="laboratorio.d33" /></div>
-
+          </div>
+          </q-card-section>
+      <q-card-section style="width:100%"> <div class="row">
           <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
 
 
           <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+                    </div>
+          </q-card-section>
+            </q-card>
+
           </template>
                               <template v-if="tipo.label=='QUIMICA SANGUINIA'">
           <div class="col-6 col-sm-6"><q-input dense outlined label="Glicemia" v-model="laboratorio.d1" /></div>
@@ -2099,6 +2110,21 @@ sanguinea(p,l){
       this.laboratorio.doctor_id=this.doctor.id
       this.laboratorio.user_id=this.$store.state.login.user.id
       this.laboratorio.responsable=this.user
+      if(this.tipo.label=='HEMOGRAMA COMPLETO'){
+                      let total=0
+        if (this.laboratorio.d18 == undefined || this.laboratorio.d18=='') this.laboratorio.d18=0;
+        if (this.laboratorio.d20 == undefined || this.laboratorio.d20=='') this.laboratorio.d20=0;
+        if (this.laboratorio.d22 == undefined || this.laboratorio.d22=='') this.laboratorio.d22=0;
+        if (this.laboratorio.d24 == undefined || this.laboratorio.d24=='') this.laboratorio.d24=0;
+        if (this.laboratorio.d26 == undefined || this.laboratorio.d26=='') this.laboratorio.d26=0;
+        if (this.laboratorio.d28 == undefined || this.laboratorio.d28=='') this.laboratorio.d28=0;
+        if (this.laboratorio.d30 == undefined || this.laboratorio.d30=='') this.laboratorio.d30=0;
+
+        total=parseFloat(this.laboratorio.d18) + parseFloat(this.laboratorio.d20) + parseFloat(this.laboratorio.d22) + parseFloat(this.laboratorio.d24) + parseFloat(this.laboratorio.d26)
+        + parseFloat(this.laboratorio.d28) + parseFloat(this.laboratorio.d30)
+        if(total!=100 )
+          return false;
+          }
       this.$axios.post(process.env.API+'/laboratorio',this.laboratorio).then(res=> {
         // console.log(res.data)
         this.mispacientes()
