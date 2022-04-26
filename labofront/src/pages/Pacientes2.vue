@@ -212,8 +212,8 @@
           </div>
 
           <template v-if="tipo.label=='HEMOGRAMA COMPLETO'">
-              <q-card class="my-card" style="width:100%">
-      <q-card-section style="width:100%"> <div class="row">
+            <q-card class="my-card"  flat bordered>
+          <q-card-section  > <div class="row">
           <div class="col-6 col-sm-6"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d1" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Tiempo de cuagulacion" v-model="laboratorio.d2" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Hemoglobina" v-model="laboratorio.d3" /></div>
@@ -233,7 +233,8 @@
           <div class="col-6 col-sm-6"><q-input dense outlined label="Plaquetas" v-model="laboratorio.d17" /></div>
           <div class="col-6 col-sm-6"></div></div>
           </q-card-section>
-      <q-card-section style="width:100%"> <div class="row">
+          <q-separator/>
+          <q-card-section  > <div class="row">
           <div class="col-6 col-sm-6"><q-input dense outlined label="Cayados" v-model="laboratorio.d18" @keyup="valcien" type="number"/></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="x10^9/L" v-model="laboratorio.d19" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Neutrofilos" v-model="laboratorio.d20" @keyup="valcien" type="number"/></div>
@@ -249,13 +250,14 @@
           <div class="col-6 col-sm-6"><q-input dense outlined label="BLASTOS" v-model="laboratorio.d30" @keyup="valcien" type="number"/></div>
           </div>
           </q-card-section>
-      <q-card-section style="width:100%"> <div class="row">
+              <q-separator/>
+      <q-card-section  > <div class="row">
           <div class="col-6 col-sm-12"><q-input dense outlined label="Serie Rojas" v-model="laboratorio.d31" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="Serie Blancas" v-model="laboratorio.d32" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="Serie Plaquetarias" v-model="laboratorio.d33" /></div>
           </div>
           </q-card-section>
-      <q-card-section style="width:100%"> <div class="row">
+      <q-card-section  > <div class="row">
           <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
 
 
@@ -2179,19 +2181,20 @@ sanguinea(p,l){
       //   })
       // })
     },
-        deleteRow(props){
-      this.datos2=props.row;
+    deleteRow(props){
+      this.datos2=props;
       console.log(this.dato2);
-
       this.$q.dialog({
         title: 'Eliminar Paciente',
         message: 'Esta Seguro de Eliminar ?',
         cancel: true,
       }).onOk(() => {
+        this.$q.loading.show()
           this.$axios.delete(process.env.API+'/paciente/'+this.datos2.id).then(res=>{
          this.$q.notify({
           message: 'Se elimino correctamente',
-          color: 'success'
+          color: 'green',
+           icon:'check'
         })
         this.mispacientes();
           })
@@ -2204,6 +2207,7 @@ sanguinea(p,l){
         message: 'Esta seguro de eliminar?',
         cancel: true,
       }).onOk(() => {
+        this.$q.loading.show()
         // console.log('>>>> OK')
             console.log(props.row)
         this.$axios.delete(process.env.API+'/laboratorio/'+props.id).then(res=>{
@@ -2211,7 +2215,8 @@ sanguinea(p,l){
          this.$q.notify({
           message: 'Elimino el registro',
           icon:'delete',
-          color: 'success'
+          color: 'green',
+           icon:'check'
             })
             this.mispacientes()
         })
