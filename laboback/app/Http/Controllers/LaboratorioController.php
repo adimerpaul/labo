@@ -134,8 +134,10 @@ class LaboratorioController extends Controller
      * @param  \App\Models\Laboratorio  $laboratorio
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Laboratorio $laboratorio)
+    public function destroy($id)
     {
         //
+        $laboratorio=Laboratorio::find($id);
+        $laboratorio->delete();
     }
 }

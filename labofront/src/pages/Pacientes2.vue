@@ -13,6 +13,7 @@
           <q-td :props="props" auto-width>
             <ul style="border: 0px;margin: 0px;padding: 0px;list-style: none">
               <li style="border: 0px;margin: 0px;padding: 0px" v-for=" l in props.row.laboratorios" :key="l.id">
+                <q-btn @click="eliminar(l)" size="xs" flat round color="red" icon="delete" />
                 <q-btn @click="imprimirlaboratorio(props.row,l)" size="xs" flat round color="info" icon="print" />
                 {{l.fechatoma}}
                 {{l.tipo.nombre}}
@@ -25,12 +26,21 @@
 <!--            <q-btn @click="frmlaboratorio(props.row)" size="xs"  icon="science" color="primary" label="agregar" />-->
             <q-btn-dropdown color="primary" label="Opciones"  icon="science">
               <q-list>
+                <q-item clickable v-close-popup @click="modificar(props.row)">
+                  <q-item-section>
+                    <q-item-label>Modificar Paciente</q-item-label>
+                  </q-item-section>
+                </q-item>
                 <q-item clickable v-close-popup @click="frmlaboratorio(props.row)">
                   <q-item-section>
                     <q-item-label>Agregar laboratorio</q-item-label>
                   </q-item-section>
                 </q-item>
-
+                <q-item clickable v-close-popup @click="deleteRow(props.row)">
+                  <q-item-section>
+                    <q-item-label>Eliminar Paciente</q-item-label>
+                  </q-item-section>
+                </q-item>
 <!--                <q-item clickable v-close-popup @click="onItemClick">-->
 <!--                  <q-item-section>-->
 <!--                    <q-item-label>Videos</q-item-label>-->
@@ -125,6 +135,61 @@
         </q-card-section>
       </q-card>
     </q-dialog>
+
+      <q-dialog v-model="dialog_mod" full-width>
+      <q-card>
+        <q-card-section class="bg-green-14 text-white">
+          <div class="text-h6">Modificar paciente</div>
+        </q-card-section>
+        <q-card-section class="q-pt-xs">
+          <q-form
+            @submit.prevent="modpaciente"
+            class="q-gutter-md"
+          >
+            <div class="row">
+              <div class="col-6"><q-input outlined v-model="datos2.ci" label="Cedula Identidad" hint="Numero de carnet"
+                />
+              </div>
+              <div class="col-6">
+                <q-input outlined v-model="datos2.nombre" label="Nombre " hint="Ingresar Nombre " style="text-transform: uppercase;" lazy-rules :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']"
+                />
+              </div>
+              <div class="col-6">
+                <q-input outlined v-model="datos2.paterno" label="Ap Paterno " hint="Ingresar Paterno " style="text-transform: uppercase;"
+                />
+              </div>
+              <div class="col-6">
+                <q-input outlined v-model="datos2.materno" label="Ap Materno " hint="Ingresar Materno " style="text-transform: uppercase;"
+                />
+              </div>
+              <div class="col-6">
+                <q-input outlined type="date" v-model="datos2.fechanac" label="Fecha Nac"
+                />
+              </div>
+              <div class="col-6">
+                <q-input outlined type="number" v-model="datos2.edad" label="Edad"
+                />
+              </div>
+              <div class="col-6">
+                <q-radio v-model="datos2.sexo" val="Masculino" label="Masculino" />
+                <q-radio v-model="datos2.sexo" val="Femenino" label="Femenino" />
+              </div>
+              <div class="col-6">
+                <q-input outlined v-model="datos2.celular" label="Celular (Whatsapp)" hint="Numero de celular"/>
+              </div>
+              <div class="col-6">
+                <q-select  outlined v-model="seguro" :options="seguros" label="Seguro" />
+              </div>
+            </div>
+            <div>
+              <q-btn label="Crear" type="submit" color="positive" icon="add_circle"/>
+                <q-btn  label="Cancelar" icon="delete" color="negative" v-close-popup />
+            </div>
+          </q-form>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
+
 
   <q-dialog v-model="dialoglaboratorio" full-width full-height>
     <q-card>
@@ -515,9 +580,11 @@ export default {
   data(){
     return{
       dialoglaboratorio:false,
+        dialog_mod:false,
       filter:'',
       alert:false,
       dato:{fechanac:date.formatDate(new Date(),'YYYY-MM-DD')},
+      datos2:{},
       pacientes:[],
       paciente:{},
       tipos:[],
@@ -654,7 +721,11 @@ export default {
     doc.text('N PACIENTE',x+130, y+43)
     doc.setFont(undefined, 'normal')
     doc.setTextColor(0,0,0)
-    doc.text([p.edad+'',p.sexo,p.id+''],x+160, y+35,'center')
+    let anio=''
+    if(p.edad==null||p.edad==undefined||p.edad=='')
+    anio=p.tiempo
+    else anio=p.edad
+    doc.text([anio+'',p.sexo,p.id+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -714,15 +785,15 @@ export default {
                  window.open(doc.output('bloburl'), '_blank');
                },
                x: x+50,
-               y: y+100,
+               y: y+95,
              })
            },
            x: x+50,
-           y: y+80,
+           y: y+75,
          })
        },
        x: x+50,
-       y: y+58,
+       y: y+55,
      })
      // doc.save("Pago"+date.formatDate(Date.now(),'DD-MM-YYYY')+".pdf");
      // window.open(doc.output('bloburl'), '_blank');
@@ -764,7 +835,11 @@ export default {
     doc.text('N PACIENTE',x+305, y+43)
     doc.setFont(undefined, 'normal')
     doc.setTextColor(0,0,0)
-    doc.text([p.edad+'',p.sexo,p.id+''],x+337, y+35,'center')
+        let anio=''
+    if(p.edad==null||p.edad==undefined||p.edad=='')
+    anio=p.tiempo
+    else anio=p.edad
+    doc.text([anio+'',p.sexo,p.id+''],x+337, y+35,'center')
     doc.setTextColor(211,47,47)
     doc.setTextColor(57,73,171)
     //fin datos paciete
@@ -854,7 +929,11 @@ export default {
     doc.text('N PACIENTE',x+130, y+43)
     doc.setFont(undefined, 'normal')
     doc.setTextColor(0,0,0)
-    doc.text([p.edad+'',p.sexo,p.id+''],x+160, y+35,'center')
+        let anio=''
+    if(p.edad==null||p.edad==undefined||p.edad=='')
+    anio=p.tiempo
+    else anio=p.edad
+    doc.text([anio+'',p.sexo,p.id+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -953,7 +1032,11 @@ export default {
     doc.text('N PACIENTE',x+130, y+43)
     doc.setFont(undefined, 'normal')
     doc.setTextColor(0,0,0)
-    doc.text([p.edad+'',p.sexo,p.id+''],x+160, y+35,'center')
+        let anio=''
+    if(p.edad==null||p.edad==undefined||p.edad=='')
+    anio=p.tiempo
+    else anio=p.edad
+    doc.text([anio+'',p.sexo,p.id+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -1032,7 +1115,11 @@ export default {
     doc.text('N PACIENTE',x+130, y+43)
     doc.setFont(undefined, 'normal')
     doc.setTextColor(0,0,0)
-    doc.text([p.edad+'',p.sexo,p.id+''],x+160, y+35,'center')
+        let anio=''
+    if(p.edad==null||p.edad==undefined||p.edad=='')
+    anio=p.tiempo
+    else anio=p.edad
+    doc.text([anio+'',p.sexo,p.id+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -1111,7 +1198,11 @@ export default {
     doc.text('N PACIENTE',x+130, y+43)
     doc.setFont(undefined, 'normal')
     doc.setTextColor(0,0,0)
-    doc.text([p.edad+'',p.sexo,p.id+''],x+160, y+35,'center')
+        let anio=''
+    if(p.edad==null||p.edad==undefined||p.edad=='')
+    anio=p.tiempo
+    else anio=p.edad
+    doc.text([anio+'',p.sexo,p.id+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -1204,7 +1295,11 @@ export default {
     doc.text('N PACIENTE',x+130, y+43)
     doc.setFont(undefined, 'normal')
     doc.setTextColor(0,0,0)
-    doc.text([p.edad+'',p.sexo,p.id+''],x+160, y+35,'center')
+        let anio=''
+    if(p.edad==null||p.edad==undefined||p.edad=='')
+    anio=p.tiempo
+    else anio=p.edad
+    doc.text([anio+'',p.sexo,p.id+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -1272,7 +1367,11 @@ export default {
     doc.text('N PACIENTE',x+130, y+43)
     doc.setFont(undefined, 'normal')
     doc.setTextColor(0,0,0)
-    doc.text([p.edad+'',p.sexo,p.id+''],x+160, y+35,'center')
+        let anio=''
+    if(p.edad==null||p.edad==undefined||p.edad=='')
+    anio=p.tiempo
+    else anio=p.edad
+    doc.text([anio+'',p.sexo,p.id+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -1340,7 +1439,11 @@ sanguinea(p,l){
     doc.text('N PACIENTE',x+130, y+43)
     doc.setFont(undefined, 'normal')
     doc.setTextColor(0,0,0)
-    doc.text([p.edad+'',p.sexo,p.id+''],x+160, y+35,'center')
+        let anio=''
+    if(p.edad==null||p.edad==undefined||p.edad=='')
+    anio=p.tiempo
+    else anio=p.edad
+    doc.text([anio+'',p.sexo,p.id+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -1598,7 +1701,11 @@ sanguinea(p,l){
     doc.text('N PACIENTE',x+305, y+43)
     doc.setFont(undefined, 'normal')
     doc.setTextColor(0,0,0)
-    doc.text([p.edad+'',p.sexo,p.id+''],x+337, y+35,'center')
+        let anio=''
+    if(p.edad==null||p.edad==undefined||p.edad=='')
+    anio=p.tiempo
+    else anio=p.edad
+    doc.text([anio+'',p.sexo,p.id+''],x+337, y+35,'center')
     doc.setTextColor(57,73,171)
     doc.text('CONTADOR Hematologico MINDRAY BC 5130',x+300, y+47,'center')
     //fin datos paciete
@@ -1702,7 +1809,11 @@ sanguinea(p,l){
     doc.text('N PACIENTE',x+305, y+43)
     doc.setFont(undefined, 'normal')
     doc.setTextColor(0,0,0)
-    doc.text([p.edad+'',p.sexo,p.id+''],x+337, y+35,'center')
+        let anio=''
+    if(p.edad==null||p.edad==undefined||p.edad=='')
+    anio=p.tiempo
+    else anio=p.edad
+    doc.text([anio+'',p.sexo,p.id+''],x+337, y+35,'center')
     doc.setTextColor(211,47,47)
     doc.setTextColor(57,73,171)
     //fin datos paciete
@@ -1786,7 +1897,11 @@ sanguinea(p,l){
     doc.text('N PACIENTE',x+305, y+43)
     doc.setFont(undefined, 'normal')
     doc.setTextColor(0,0,0)
-    doc.text([p.edad+'',p.sexo,p.id+''],x+337, y+35,'center')
+        let anio=''
+    if(p.edad==null||p.edad==undefined||p.edad=='')
+    anio=p.tiempo
+    else anio=p.edad
+    doc.text([anio+'',p.sexo,p.id+''],x+337, y+35,'center')
     doc.setTextColor(211,47,47)
     doc.setTextColor(57,73,171)
     //fin datos paciete
@@ -1869,7 +1984,11 @@ sanguinea(p,l){
     doc.text('N PACIENTE',x+130, y+43)
     doc.setFont(undefined, 'normal')
     doc.setTextColor(0,0,0)
-    doc.text([p.edad+'',p.sexo,p.id+''],x+160, y+35,'center')
+        let anio=''
+    if(p.edad==null||p.edad==undefined||p.edad=='')
+    anio=p.tiempo
+    else anio=p.edad
+    doc.text([anio+'',p.sexo,p.id+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     doc.text('PRUEBA RAPIDA INMUNOCROMATOGRAFICA',x+100, y+47,'center')
     //fin datos paciete
@@ -1986,12 +2105,33 @@ sanguinea(p,l){
         this.dialoglaboratorio=false
       })
     },
+    modificar(paciente){
+      this.datos2=paciente
+      this.seguro=this.datos2.seguro
+      this.seguro.label=this.seguro.nombre
+      this.dialog_mod=true
+      console.log(this.datos2)
+    },
     frmlaboratorio(paciente){
       this.paciente=paciente
       this.dialoglaboratorio=true
     },
+    modpaciente(){
+              this.datos2.seguro=this.seguro.id
+      this.$q.loading.show()
+      this.$axios.put(process.env.API+'/paciente/'+this.datos2.id,this.datos2).then(res=>{
+         this.$q.notify({
+          message: 'Se Modificado correctamente',
+          color: 'green',
+          icon: 'check',
+        })
+        this.$q.loading.hide()
+        this.dialog_mod=false;
+        this.mispacientes();
+      })
+    },
         onSubmit(){
-        this.dato.seguro=this.seguro.r.id
+        this.dato.seguro=this.seguro.id
       this.$q.loading.show()
       this.$axios.post(process.env.API+'/paciente',this.dato).then(res=>{
         this.dato={}
@@ -2012,6 +2152,51 @@ sanguinea(p,l){
       //     icon:'error'
       //   })
       // })
+    },
+        deleteRow(props){
+      this.datos2=props.row;
+      console.log(this.dato2);
+
+      this.$q.dialog({
+        title: 'Eliminar Paciente',
+        message: 'Esta Seguro de Eliminar ?',
+        cancel: true,
+      }).onOk(() => {
+          this.$axios.delete(process.env.API+'/paciente/'+this.datos2.id).then(res=>{
+         this.$q.notify({
+          message: 'Se elimino correctamente',
+          color: 'success'
+        })
+        this.mispacientes();
+          })
+      })
+    },
+        eliminar(props) {
+          console.log(props)
+      this.$q.dialog({
+        title: 'Eliminar Formulario',
+        message: 'Esta seguro de eliminar?',
+        cancel: true,
+      }).onOk(() => {
+        // console.log('>>>> OK')
+            console.log(props.row)
+        this.$axios.delete(process.env.API+'/laboratorio/'+props.id).then(res=>{
+            this.dialog_lab=false;
+         this.$q.notify({
+          message: 'Elimino el registro',
+          icon:'delete',
+          color: 'success'
+            })
+            this.mispacientes()
+        })
+
+      }).onOk(() => {
+        // console.log('>>>> second OK catcher')
+      }).onCancel(() => {
+        // console.log('>>>> Cancel')
+      }).onDismiss(() => {
+        // console.log('I am triggered on both OK and Cancel')
+      })
     },
         listdoctor(){
         this.doctors=[];
@@ -2039,7 +2224,8 @@ sanguinea(p,l){
           this.seguro={label:''}
           this.$axios.get(process.env.API+'/seguro').then(res=>{
               res.data.forEach(r => {
-                  this.seguros.push({label:r.nombre,r});
+                  r.label=r.nombre
+                  this.seguros.push(r);
               });
 
           })
