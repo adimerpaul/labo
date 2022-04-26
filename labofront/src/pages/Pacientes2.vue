@@ -213,7 +213,7 @@
 
           <template v-if="tipo.label=='HEMOGRAMA COMPLETO'">
             <q-card class="my-card"  flat bordered>
-          <q-card-section  > <div class="row">
+          <q-card-section  class="bg-green-2"> <div class="row">
           <div class="col-6 col-sm-6"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d1" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Tiempo de cuagulacion" v-model="laboratorio.d2" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Hemoglobina" v-model="laboratorio.d3" /></div>
@@ -234,7 +234,7 @@
           <div class="col-6 col-sm-6"></div></div>
           </q-card-section>
           <q-separator/>
-          <q-card-section  > <div class="row">
+          <q-card-section class="bg-blue-2" > <div class="row">
           <div class="col-6 col-sm-6"><q-input dense outlined label="Cayados" v-model="laboratorio.d18" @keyup="valcien" type="number"/></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="x10^9/L" v-model="laboratorio.d19" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Neutrofilos" v-model="laboratorio.d20" @keyup="valcien" type="number"/></div>
@@ -251,13 +251,13 @@
           </div>
           </q-card-section>
               <q-separator/>
-      <q-card-section  > <div class="row">
+      <q-card-section  class="bg-amber-2" > <div class="row">
           <div class="col-6 col-sm-12"><q-input dense outlined label="Serie Rojas" v-model="laboratorio.d31" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="Serie Blancas" v-model="laboratorio.d32" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="Serie Plaquetarias" v-model="laboratorio.d33" /></div>
           </div>
           </q-card-section>
-      <q-card-section  > <div class="row">
+      <q-card-section  class="bg-red-2"> <div class="row">
           <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
 
 
@@ -664,8 +664,8 @@ export default {
         usuarios:[],
       },
       columspaciente:[
-        {name:'opciones',field:'opciones',label:'opciones'},
-        {name:'paciente',field:'paciente',label:'paciente'},
+        {name:'opciones',field:'opciones',label:'opciones',align:'center'},
+        {name:'paciente',field:'paciente',label:'paciente',align:'left'},
         {name:'laboratorios',field:'laboratorios',label:'laboratorios',align:'left'},
         {name:'celular',field:'celular',label:'celular'},
         {name:'seguro',field:'seguro',label:'seguro'},
@@ -789,11 +789,11 @@ export default {
     doc.setTextColor(0,0,0)
     doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+140,'left')
      // doc.text(l.d3,x+50,y+58)
-     doc.html( '<div style="font-size: 3px">'+l.d3+'</div>' , {
+     doc.html( '<div style="font-size: 3px;width: 500px">'+l.d3+'</div>' , {
        callback: function (doc) {
-         doc.html( '<div style="font-size: 3px">'+l.d6+'</div>' , {
+         doc.html( '<div style="font-size: 3px;width: 500px">'+l.d6+'</div>' , {
            callback: function (doc) {
-             doc.html( '<div style="font-size: 3px">'+l.d9+'</div>' , {
+             doc.html( '<div style="font-size: 3px;width: 500px">'+l.d9+'</div>' , {
                callback: function (doc) {
                  window.open(doc.output('bloburl'), '_blank');
                },
