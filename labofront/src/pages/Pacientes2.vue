@@ -269,6 +269,8 @@
 
           </template>
                               <template v-if="tipo.label=='QUIMICA SANGUINIA'">
+                                          <q-card class="my-card"  flat bordered>
+          <q-card-section  class="bg-green-2"> <div class="row">
           <div class="col-6 col-sm-6"><q-input dense outlined label="Glicemia" v-model="laboratorio.d1" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Fosfatasa alcalina" v-model="laboratorio.d2" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Creatina" v-model="laboratorio.d3" /></div>
@@ -289,7 +291,6 @@
           <div class="col-6 col-sm-6"><q-input dense outlined label="LDL-Col." v-model="laboratorio.d17" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Lipasa" v-model="laboratorio.d18" /></div>
           <div class="col-6 col-sm-6"></div>
-
           <div class="col-6 col-sm-6"><q-input dense outlined label="Bilirrubina Total" v-model="laboratorio.d19" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Sodio" v-model="laboratorio.d20" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Bilirrubina Directa" v-model="laboratorio.d21" /></div>
@@ -302,15 +303,23 @@
           <div class="col-6 col-sm-6"><q-input dense outlined label="Magnesio" v-model="laboratorio.d28" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Hierro" v-model="laboratorio.d29" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Fosforo" v-model="laboratorio.d30" /></div>
-          <div class="col-6 col-sm-12"><q-input dense outlined label="Observaciones" v-model="laboratorio.d31" /></div>
+          </div></q-card-section>
 
+      <q-card-section  class="bg-amber-2" > <div class="row">
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Observaciones" v-model="laboratorio.d31" /></div>
+        </div></q-card-section>
+      <q-card-section  class="bg-red-2"> <div class="row">
           <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
 
           <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          </div></q-card-section>
+                                          </q-card>
           </template>
 
                                         <template v-if="tipo.label=='EXAMEN GENERAL DE ORINA'">
+                                                                                  <q-card class="my-card"  flat bordered>
+          <q-card-section  class="bg-green-2"> <div class="row">
           <div class="col-6 col-sm-6"><q-input dense outlined label="Color" v-model="laboratorio.d1" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Proteinas" v-model="laboratorio.d2" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Olor" v-model="laboratorio.d3" /></div>
@@ -325,7 +334,9 @@
           <div class="col-6 col-sm-6"><q-input dense outlined label="Urobilina" v-model="laboratorio.d12" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Reaccion" v-model="laboratorio.d13" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Nitrinos" v-model="laboratorio.d14" /></div>
-          <div class="col-12 col-sm-12"></div>
+          <div class="col-12 col-sm-12"></div></div></q-card-section>
+      <q-card-section  class="bg-blue-2" > <div class="row">
+
           <div class="col-6 col-sm-6"><q-input dense outlined label="Celulas epiteleales" v-model="laboratorio.d15" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Hialino" v-model="laboratorio.d16" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Celulas de transicion" v-model="laboratorio.d17" /></div>
@@ -340,6 +351,9 @@
           <div class="col-6 col-sm-6"><q-input dense outlined label="Cereos" v-model="laboratorio.d26" /></div>
           <div class="col-6 col-sm-6"></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Mixtos" v-model="laboratorio.d27" /></div>
+          </div></q-card-section>
+        <q-card-section  class="bg-amber-2" > <div class="row">
+
           <div class="col-6 col-sm-6"><q-input dense outlined label="Uratros amorfos" v-model="laboratorio.d28" /></div>
           <div class="col-6 col-sm-6"></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Fosfato amorfo" v-model="laboratorio.d29" /></div>
@@ -350,15 +364,22 @@
           <div class="col-6 col-sm-6"><q-input dense outlined label="Levaduras" v-model="laboratorio.d34" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Acido Urico" v-model="laboratorio.d35" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Esporas micoticas" v-model="laboratorio.d36" /></div>
+
           <div class="col-6 col-sm-12"><q-input dense outlined label="Observaciones" v-model="laboratorio.d37" /></div>
+          </div></q-card-section>
+      <q-card-section  class="bg-red-2"> <div class="row">
 
           <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
 
           <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          </div></q-card-section>
+          </q-card>
           </template>
 
                                         <template v-if="tipo.label=='ANALISIS DE SECRECION URETRAL'">
+           <q-card class="my-card"  flat bordered>
+          <q-card-section  class="bg-green-2"> <div class="row">
           <div class="col-6 col-sm-12">EXAMEN EN FRESCO</div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="CELULAS EPITELIALES" v-model="laboratorio.d1" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="LEUCOCITOS" v-model="laboratorio.d2" /></div>
@@ -370,6 +391,9 @@
           <div class="col-6 col-sm-12"><q-input dense outlined label="KOH" v-model="laboratorio.d8" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="PH" v-model="laboratorio.d9" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d10" /></div>
+          </div></q-card-section>
+      <q-card-section  class="bg-blue-2" > <div class="row">
+
           <div class="col-6 col-sm-12">TINCION DE GRAM</div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="BACILOS GRAM POSITIVO" v-model="laboratorio.d11" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="BACILOS GRAM NEGATIVO" v-model="laboratorio.d12" /></div>
@@ -378,11 +402,19 @@
           <div class="col-6 col-sm-12"><q-input dense outlined label="COCOBACILOS GRAM NEGATIVO" v-model="laboratorio.d15" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="ESPORAS E HIFAS MICOTICAS" v-model="laboratorio.d16" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d17" /></div>
+          </div></q-card-section>
+      <q-card-section  class="bg-red-2" > <div class="row">
+
           <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
           <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          </div></q-card-section>
+           </q-card>
           </template>
+
           <template v-if="tipo.label=='ANALISIS DE SECRECION VAGINAL'">
+                     <q-card class="my-card"  flat bordered>
+          <q-card-section  class="bg-green-2"> <div class="row">
           <div class="col-6 col-sm-12">EXAMEN EN FRESCO</div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="CELULAS EPITELIALES" v-model="laboratorio.d1" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="LEUCOCITOS" v-model="laboratorio.d2" /></div>
@@ -394,6 +426,8 @@
           <div class="col-6 col-sm-12"><q-input dense outlined label="KOH" v-model="laboratorio.d8" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="PH" v-model="laboratorio.d9" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d10" /></div>
+          </div></q-card-section>
+          <q-card-section  class="bg-blue-2"> <div class="row">
           <div class="col-6 col-sm-12">TINCION DE GRAM</div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="BACILOS GRAM POSITIVO" v-model="laboratorio.d11" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="BACILOS GRAM NEGATIVO" v-model="laboratorio.d12" /></div>
@@ -402,14 +436,20 @@
           <div class="col-6 col-sm-12"><q-input dense outlined label="COCOBACILOS GRAM NEGATIVO" v-model="laboratorio.d15" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="ESPORAS E HIFAS MICOTICAS" v-model="laboratorio.d16" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d17" /></div>
+          </div></q-card-section>
+          <q-card-section  class="bg-red-2"> <div class="row">
 
           <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
 
           <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          </div></q-card-section>
+                     </q-card>
           </template>
 
                                                   <template v-if="tipo.label=='ANALISIS DE HECES'">
+           <q-card class="my-card"  flat bordered>
+          <q-card-section  class="bg-green-2"> <div class="row">
           <div class="col-6 col-sm-12">EXAMEN EN FRESCO</div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="ASPECTO DE LA MUESTRA" v-model="laboratorio.d1" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="COLOR" v-model="laboratorio.d2" /></div>
@@ -424,6 +464,9 @@
           <div class="col-6 col-sm-4"><q-input dense outlined label="Polimorfonucleares" v-model="laboratorio.d11" /></div>
           <div class="col-6 col-sm-4"><q-input dense outlined label="Mononuclueares" v-model="laboratorio.d12" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="OTROS" v-model="laboratorio.d13" /></div>
+          </div></q-card-section>
+          <q-card-section  class="bg-blue-2"> <div class="row">
+
           <div class="col-6 col-sm-12">TINCION DE GRAM</div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="BACILOS GRAM POSITIVOS" v-model="laboratorio.d14" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="BACILOS GRAM NEGATIVOS" v-model="laboratorio.d15" /></div>
@@ -432,15 +475,21 @@
           <div class="col-6 col-sm-12"><q-input dense outlined label="COCOBACILOS GRAM" v-model="laboratorio.d18" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="ESPORAS MICOTICAS" v-model="laboratorio.d19" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="OTROS" v-model="laboratorio.d20" /></div>
+          </div></q-card-section>
+          <q-card-section  class="bg-red-2"> <div class="row">
 
           <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
 
           <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          </div></q-card-section>
+           </q-card>
           </template>
 
 
-                                                  <template v-if="tipo.label=='COPRAPARASITOLOGICO SIMPLE'">
+           <template v-if="tipo.label=='COPRAPARASITOLOGICO SIMPLE'">
+           <q-card class="my-card"  flat bordered>
+          <q-card-section  class="bg-green-2"> <div class="row">
           <div class="col-6 col-sm-12">COPRAPARASITOLOGICO SIMPLE</div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="ASPECTO DE LA MUESTRA" v-model="laboratorio.d1" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="COLOR" v-model="laboratorio.d2" /></div>
@@ -457,58 +506,86 @@
           <div class="col-6 col-sm-4"><q-input dense outlined label="Polimorfonucleares" v-model="laboratorio.d13" /></div>
           <div class="col-6 col-sm-4"><q-input dense outlined label="Mononuclueares" v-model="laboratorio.d14" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d15" /></div>
+          </div></q-card-section>
+          <q-card-section  class="bg-blue-2"> <div class="row">
           <div class="col-6 col-sm-12">OTROS</div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="SANGRE OCULTA EN HECES" v-model="laboratorio.d16" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="TEST DE BENEDICT" v-model="laboratorio.d17" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d18" /></div>
+          </div></q-card-section>
+          <q-card-section  class="bg-red-2"> <div class="row">
 
           <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
 
           <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          </div></q-card-section>
+           </q-card>
           </template>
 
-                                                            <template v-if="tipo.label=='COPRAPARASITOLOGICO SERIADO'">
+           <template v-if="tipo.label=='COPRAPARASITOLOGICO SERIADO'">
+           <q-card class="my-card"  flat bordered style="width:100%">
+          <q-card-section  class="bg-green-2"> <div class="row">
           <div class="col-6 col-sm-12">COPRAPARASITOLOGICO SERIADO</div>
           <div class="col-6 col-sm-12">MUESTRA1</div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="FECHA" v-model="laboratorio.d1" type="date"/></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="HORA" v-model="laboratorio.d2" type="time"/></div>
           <div class="col-6 col-sm-12"><q-editor v-model="laboratorio.d3" min-height="5rem" /></div>
-
+          </div></q-card-section>
+          <q-card-section  class="bg-blue-2"> <div class="row">
           <div class="col-6 col-sm-12">MUESTRA2</div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="FECHA" v-model="laboratorio.d4" type="date"/></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="HORA" v-model="laboratorio.d5" type="time"/></div>
           <div class="col-6 col-sm-12"><q-editor v-model="laboratorio.d6" min-height="5rem" /></div>
-
+          </div></q-card-section>
+          <q-card-section  class="bg-amber-2"> <div class="row">
                     <div class="col-6 col-sm-12">MUESTRA3</div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="FECHA" v-model="laboratorio.d7" type="date"/></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="HORA" v-model="laboratorio.d8" type="time"/></div>
           <div class="col-6 col-sm-12"><q-editor v-model="laboratorio.d9" min-height="5rem" /></div>
+          </div></q-card-section>
 
+          <q-card-section  class="bg-teal-2"> <div class="row">
           <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACION" v-model="laboratorio.d10"   /></div>
+          </div></q-card-section>
+          <q-card-section  class="bg-red-2"> <div class="row">
 
           <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
 
           <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          </div></q-card-section>
+              </q-card>
           </template>
 
 
-                                                            <template v-if="tipo.label=='SEROLOGIA'">
-          <div class="col-6 col-sm-12">PRUEBA ANTICUERPOS CUANTITATIVOS ANTI SARS COV-2 lg M / lg G</div>
-          <div class="col-6 col-sm-6"><q-input dense outlined label="lgM" v-model="laboratorio.d1" /></div>
-          <div class="col-6 col-sm-6"><q-select :options="['NEGATIVO','INDETERMINADO','POSITIVO']" dense outlined label="referencia" v-model="laboratorio.d2" /></div>
-          <div class="col-6 col-sm-6"><q-input dense outlined label="lgG" v-model="laboratorio.d3" /></div>
-          <div class="col-6 col-sm-6"><q-select :options="['NEGATIVO','INDETERMINADO','POSITIVO']" dense outlined label="referencia" v-model="laboratorio.d4" /></div>
-          <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d5" /></div>
+           <template v-if="tipo.label=='SEROLOGIA'">
+           <q-card class="my-card"  flat bordered style="width:100%">
+          <q-card-section  class="bg-green-2"> <div class="row">
+          <div class="col-12 col-sm-12">PRUEBA ANTICUERPOS CUANTITATIVOS ANTI SARS COV-2 lg M / lg G</div>
+          <div class=" col-sm-6"><q-input dense outlined label="lgM" v-model="laboratorio.d1" /></div>
+          <div class=" col-sm-6"><q-select :options="['NEGATIVO','INDETERMINADO','POSITIVO']" dense outlined label="referencia" v-model="laboratorio.d2" /></div>
+          </div></q-card-section>
+          <q-card-section  class="bg-blue-2"> <div class="row">
+          <div class=" col-sm-6"><q-input dense outlined label="lgG" v-model="laboratorio.d3" /></div>
+          <div class=" col-sm-6"><q-select :options="['NEGATIVO','INDETERMINADO','POSITIVO']" dense outlined label="referencia" v-model="laboratorio.d4" /></div>
+          </div></q-card-section>
+          <q-card-section  class="bg-amber-2"> <div class="row">
+          <div class=" col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d5" /></div>
+          </div></q-card-section>
+          <q-card-section  class="bg-red-2"> <div class="row">
 
-          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
+          <div class=" col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
 
-          <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
-          <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          <div class=" col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
+          <div class=" col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          </div></q-card-section>
+           </q-card>
           </template>
 
-                                                                      <template v-if="tipo.label=='LABORATORIO SEROLOGIA'">
+             <template v-if="tipo.label=='LABORATORIO SEROLOGIA'">
+             <q-card class="my-card"  flat bordered>
+          <q-card-section  class="bg-green-2"> <div class="row">
           <div class="col-6 col-sm-12">SEROLOGIA</div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="Factor Reumatoide(Latex)" v-model="laboratorio.d1" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="Antiestreptolisina" v-model="laboratorio.d2" /></div>
@@ -523,27 +600,43 @@
           <div class="col-6 col-sm-12"><q-input dense outlined label="Helicobacter Pylori en Heces" v-model="laboratorio.d11" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="Troponina I" v-model="laboratorio.d12" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="PSA" v-model="laboratorio.d13" /></div>
+          </div></q-card-section>
+          <q-card-section  class="bg-blue-2"> <div class="row">
           <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d14" /></div>
+          </div></q-card-section>
+          <q-card-section  class="bg-red-2"> <div class="row">
 
           <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
 
           <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          </div></q-card-section>
+             </q-card>
           </template>
 
-                                                                      <template v-if="tipo.label=='RESULTADO SEROLOGIA'">
-          <div class="col-6 col-sm-12">PRUEBA RAPIDA ANTIGENOS SARS COV 2</div>
-          <div class="col-6 col-sm-3"></div>
-          <div class="col-6 col-sm-3"><q-select :options="['POSITIVO','NEGATIVO']" dense outlined label="ANTIGENO SARS COV2" v-model="laboratorio.d1" /></div>
-          <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d2" /></div>
+          <template v-if="tipo.label=='RESULTADO SEROLOGIA'">
+            <q-card class="my-card"  flat bordered style="width:100%">
+          <q-card-section  class="bg-green-2"> <div class="row">
+          <div class="col-12 col-sm-12">PRUEBA RAPIDA ANTIGENOS SARS COV 2</div>
+          <div class="col-12 col-sm-3"></div>
+          <div class="col-12 col-sm-6"><q-select :options="['POSITIVO','NEGATIVO']" dense outlined label="ANTIGENO SARS COV2" v-model="laboratorio.d1" /></div>
+          </div></q-card-section>
+          <q-card-section  class="bg-blue-2"> 
 
-          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
+          <div class="col-12 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d2" /></div>
+          </q-card-section>
+          <q-card-section  class="bg-red-2"> <div class="row">
 
-          <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
-          <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          <div class="col-12 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
+
+          <div class="col-12 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
+          <div class="col-12 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          </div></q-card-section></q-card>
           </template>
 
-                                                                      <template v-if="tipo.label=='INMUNOENSAYO DE FLUORESCENCIA'">
+            <template v-if="tipo.label=='INMUNOENSAYO DE FLUORESCENCIA'">
+           <q-card class="my-card"  flat bordered>
+          <q-card-section  class="bg-green-2"> <div class="row">
           <div class="col-6 col-sm-12">PRUEBA RAPIDA ANTIGENOS SARS COV 2</div>
           <div class="col-6 col-sm-3"></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="DIMEROS D" v-model="laboratorio.d1" /></div>
@@ -554,22 +647,32 @@
           <div class="col-6 col-sm-12"><q-input dense outlined label="TROPONINA I" v-model="laboratorio.d6" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="B - HCG" v-model="laboratorio.d7" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="PROCALCITONINA" v-model="laboratorio.d8" /></div>
+          </div></q-card-section>
+          <q-card-section  class="bg-red-2"> <div class="row">
           <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
 
           <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          </div></q-card-section></q-card>
           </template>
 
-                                                                      <template v-if="tipo.label=='TEST EMBARAZO'">
+             <template v-if="tipo.label=='TEST EMBARAZO'">
+           <q-card class="my-card"  flat bordered style="width:100%">
+          <q-card-section  class="bg-green-2"> <div class="row">
           <div class="col-6 col-sm-12">PRUEBA RAPIDA INMUNOCROMATOGRAFICA</div>
           <div class="col-6 col-sm-3"></div>
           <div class="col-6 col-sm-12"><q-select :options="['POSITIVO','NEGATIVO']" dense outlined label="TEST EMBARAZO EN SANGRE" v-model="laboratorio.d1" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="F.U.M." type='date' v-model="laboratorio.d2" /></div>
+          </div></q-card-section>
+          <q-card-section  class="bg-blue-2"> <div class="row">
           <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d3" /></div>
+          </div></q-card-section>
+          <q-card-section  class="bg-red-2"> <div class="row">
           <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
 
           <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          </div></q-card-section></q-card>
           </template>
 
           <div class="col-12">
