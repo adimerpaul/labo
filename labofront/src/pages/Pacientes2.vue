@@ -1017,8 +1017,8 @@ export default {
     var imgmas = new Image()
     var imgmenos = new Image()
     img.src = 'img/natividad.jpeg'
-    imgmas.src = 'img/suma.jpeg'
-    imgmenos.src = 'img/resta.jpeg'
+    imgmas.src = 'img/suma.JPEG'
+    imgmenos.src = 'img/resta.JPEG'
     doc.addImage(img, 'jpg', 5, 2, 70, 20)
     let x=0
     let y=0
@@ -2114,15 +2114,17 @@ sanguinea(p,l){
     doc.setTextColor(57,73,171)
     doc.text('TEST EMBARAZO EN SANGRE',x+25,y+60)
     doc.setFont(undefined, 'normal')
-    doc.text(l.d1,x+100,y+65,'center')
     doc.setTextColor(0,0,0)
-    doc.text('F.U.M.',x+45,y+75,'center')
+    doc.text(l.d1,x+100,y+65,'center')
     doc.setTextColor(57,73,171)
+    doc.text('F.U.M.',x+45,y+75,'center')
+    doc.setTextColor(0,0,0)
     doc.text(l.d2,x+100,y+80,'center')
 
     doc.setTextColor(57,73,171)
     doc.setFont(undefined, 'bold')
     doc.text('OBSERVACIONES:',x+20,y+90)
+    doc.setTextColor(57,73,171)
     doc.setFont(undefined, 'normal')
     doc.text(l.d3,x+30,y+95,'left')
 
@@ -2155,17 +2157,17 @@ sanguinea(p,l){
         this.heces(p,l)
       if(l.tipo_id==7)
         this.simple(p,l)
-            if(l.tipo_id==8)
+      if(l.tipo_id==8)
         this.seriado(p,l)
       if(l.tipo_id==9)
         this.lgmserologia(p,l)
-            if(l.tipo_id==10)
+      if(l.tipo_id==10)
         this.labserologia(p,l)
       if(l.tipo_id==11)
         this.reserologia(p,l)
-              if(l.tipo_id==12)
+      if(l.tipo_id==12)
         this.ensayo(p,l)
-                      if(l.tipo_id==13)
+      if(l.tipo_id==13)
         this.embarazo(p,l)
        console.log(p)
        console.log(l)
