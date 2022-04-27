@@ -460,7 +460,7 @@
           <div class="col-6 col-sm-12"><q-input dense outlined label="LEVADURAS" v-model="laboratorio.d7" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="GRASAS" v-model="laboratorio.d8" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="PARASITOS" v-model="laboratorio.d9" /></div>
-          <div class="col-6 col-sm-4"><q-input dense outlined label="MOCO FETAL" v-model="laboratorio.d10" /></div>
+          <div class="col-6 col-sm-4"><q-input dense outlined label="MOCO FECAL" v-model="laboratorio.d10" /></div>
           <div class="col-6 col-sm-4"><q-input dense outlined label="Polimorfonucleares" v-model="laboratorio.d11" /></div>
           <div class="col-6 col-sm-4"><q-input dense outlined label="Mononuclueares" v-model="laboratorio.d12" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="OTROS" v-model="laboratorio.d13" /></div>
@@ -502,7 +502,7 @@
           <div class="col-6 col-sm-12"><q-input dense outlined label="ALMIDON" v-model="laboratorio.d9" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="PARASITOS" v-model="laboratorio.d10" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="PIOCITOS" v-model="laboratorio.d11" /></div>
-          <div class="col-6 col-sm-4"><q-input dense outlined label="MOCO FETAL" v-model="laboratorio.d12" /></div>
+          <div class="col-6 col-sm-4"><q-input dense outlined label="MOCO FECAL" v-model="laboratorio.d12" /></div>
           <div class="col-6 col-sm-4"><q-input dense outlined label="Polimorfonucleares" v-model="laboratorio.d13" /></div>
           <div class="col-6 col-sm-4"><q-input dense outlined label="Mononuclueares" v-model="laboratorio.d14" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d15" /></div>
@@ -710,6 +710,8 @@ export default {
       doctors:[],
       doctor:{},
       user:{},
+      usuarios:[],
+
       laboratorio:{
         tipomuestra:'COMPLETA',
         fechatoma:date.formatDate(new Date(),'YYYY-MM-DD'),
@@ -764,7 +766,6 @@ export default {
         paciente_id:'',
         user_id:this.$store.state.login.user.id,
         doctor_id:'',
-        usuarios:[],
       },
       columspaciente:[
         {name:'opciones',field:'opciones',label:'opciones',align:'center'},
@@ -1166,7 +1167,7 @@ export default {
     doc.text([l.d1,l.d2,l.d3,l.d4,l.d5,l.d6,l.d7,l.d8,l.d9,l.d10,l.d11],x+70,y+58)
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
-    doc.text('MOCO FETAL       '+l.d12,x+8,y+102)
+    doc.text('MOCO FECAL       '+l.d12,x+8,y+102)
     doc.setFont(undefined, 'normal')
     doc.text(['Polimorfonuclueares: '+l.d13,'Mononuclueras: '+l.d14],x+100,y+102)
     doc.setFont(undefined, 'bold')
@@ -1249,7 +1250,7 @@ export default {
     doc.text([l.d1,l.d2,l.d3,l.d4,l.d5,l.d6,l.d7,l.d8,l.d9],x+70,y+58)
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
-    doc.text('MOCO FETAL       '+l.d10,x+8,y+95)
+    doc.text('MOCO FECAL       '+l.d10,x+8,y+95)
     doc.setFont(undefined, 'normal')
     doc.text(['Polimorfonuclueares: '+l.d11,'Mononuclueras: '+l.d12],x+100,y+95)
     doc.setFont(undefined, 'bold')
@@ -1328,11 +1329,11 @@ export default {
     doc.text('          EX FISICO                      VALOR                   REFERENCIA                  EX QUIMICO                   VALOR              REFERENCIA',x+6,y+52)
     doc.setFont(undefined, 'normal')
     doc.text(['Color','Olor','Aspecto','Espuma','Deposito','Densidad','Reaccion'],x+8,y+58)
-    doc.text(['Amarillo','Sui-generis','Limpido o lig opal','Blanco fugaz','Nulo o escaso','1.010-1.030','Lig acida'],x+80,y+58,'center')
+    doc.text(['Amarillo','Sui-generis','Limpido o lig opal','Blanco fugaz','Nulo o escaso','1.010-1.030','Lig acida'],x+90,y+58,'center')
     doc.text(['Proteinas','Glucosa','C cetonicos','Bilirrubina','Hemoglobina','Urobilina','Nitrinos'],x+110,y+58,'left')
     doc.text(['Negativo','Negativo','Negativo','Negativo','Negativo','Normal','Negativo'],x+185,y+58,'left')
     doc.setTextColor(0,0,0)
-    doc.text([l.d1,l.d3,l.d5,l.d7,l.d9,l.d11,l.d13],x+55,y+58)
+    doc.text([l.d1,l.d3,l.d5,l.d7,l.d9,l.d11,l.d13],x+50,y+58)
     doc.text([l.d2,l.d4,l.d6,l.d8,l.d10,l.d12,l.d14],x+160,y+58)
     doc.setTextColor(57,73,171)
     doc.text('SEDIMENTO: EXAMEN MICROSCOPICO',x+75,y+87,'center')
@@ -1342,38 +1343,38 @@ export default {
     doc.text('          CELULAS                      VALOR                   REFERENCIA                   CILINDROS                     VALOR              REFERENCIA',x+6,y+90)
     doc.setFont(undefined, 'normal')
     doc.text(['Celulas epitaliales','Celulas de transicion','Celulas Clave','Leucocitos','Eritrocitos','Bacterias','CRISTALES'],x+8,y+95)
-    doc.text(['Hasta 2/c','Negativo','Negativo','Hasta 5/c','Hasta 3/c','Escaso',''],x+80,y+95,'center')
+    doc.text(['Hasta 2/c','Negativo','Negativo','Hasta 5/c','Hasta 3/c','Escaso',''],x+90,y+95,'center')
     doc.text(['Hialino','Granuloso','Epiteliales','Eritrocitario','Leucositario','Cereos','Mixtos'],x+110,y+95,'left')
     doc.text(['Negativo','Negativo','Negativo','Negativo','Negativo','Negativo','Negativo'],x+185,y+95,'left')
     doc.setTextColor(0,0,0)
-    doc.text([l.d15,l.d17,l.d19,l.d21,l.d23,l.d25],x+55,y+95)
+    doc.text([l.d15,l.d17,l.d19,l.d21,l.d23,l.d25],x+50,y+95)
     doc.text([l.d16,l.d18,l.d20,l.d22,l.d24,l.d26,l.d27,'OTROS'],x+160,y+95)
 
     doc.setTextColor(57,73,171)
     doc.setFont(undefined, 'normal')
     doc.text(['Uratos amorfos','Fosfato amorfo','Oxalato de calcio','Fosfato de calcio','Acido Urico'],x+8,y+125)
-    doc.text(['Escaso','Escaso','Escaso','Escaso','Escaso'],x+80,y+125,'center')
+    doc.text(['Escaso','Escaso','Escaso','Escaso','Escaso'],x+90,y+125,'center')
     doc.text(['Filamento mucoso','Piocitos','Levaduras','Esporas micoticas'],x+110,y+128,'left')
     doc.setTextColor(0,0,0)
-    doc.text([l.d28,l.d29,l.d31,l.d33,l.d35],x+55,y+125)
+    doc.text([l.d28,l.d29,l.d31,l.d33,l.d35],x+50,y+125)
     doc.text([l.d30,l.d32,l.d34,l.d36],x+160,y+128)
 
     doc.setTextColor(57,73,171)
     doc.setFont(undefined, 'bold')
     doc.text('OBSERVACIONES:',x+6,y+145)
     doc.setFont(undefined, 'normal')
-    doc.text(l.d37,x+6,y+150,'left')
+    doc.text(l.d37,x+6,y+148,'left')
 
-    doc.rect(x+5, y+142, 205, 22)
+    doc.rect(x+5, y+142, 205, 20)
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
-    doc.text('RESPONSABLE',x+6,y+155)
+    doc.text('RESPONSABLE',x+6,y+152)
     doc.setFont(undefined, 'NORMAL')
-    doc.text(l.responsable,x+8,y+160)
+    doc.text(l.responsable,x+8,y+156)
     doc.setFont(undefined, 'normal')
-    doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+155,'center')
+    doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+152,'center')
     doc.setTextColor(0,0,0)
-    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+155,'left')
+    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+152,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     window.open(doc.output('bloburl'), '_blank');
@@ -1573,8 +1574,155 @@ sanguinea(p,l){
     doc.text(['Fosfatasa alcalina','Fosfatasa alcalina','Transamisa GOT','Transamisas GPT','LIPIDOGRAMA','Trigliceridos','Colesterol Total','HDL-Col','LDL-Col','ELECTROLITOS','Sodio','Cloro','Potasio','Calcio','Magnesio','Fosforo'],x+110,y+58,'left')
     doc.text(['adultos hasta 100UI/L','niños 100-400UI/L','hasta 40UI/L','hasta 41UI/L','','10-160mg/dl','menor 200mg/dl','35-65mg/dl','hasta 150mg/dl','','135-155mEq/L','98-106 mEq/L','3.4-5.3 mEq/L','8.5-10.5mg/dl','1.7-2.4mg/dl','2.5-4.5mg/dl'],x+175,y+58,'left')
     doc.setTextColor(0,0,0)
-    doc.text([l.d1,l.d3,l.d5,l.d7,l.d9,l.d10,l.d12,l.d14,l.d16,l.d18,l.d19,l.d21,l.d23,l.d25,l.d27,l.d29],x+55,y+58)
-    doc.text([l.d2,l.d4,l.d6,l.d8,'',l.d11,l.d13,l.d15,l.d17,'',l.d20,l.d22,l.d24,l.d26,l.d28,l.d30],x+160,y+58)
+    if(parseFloat(l.d1)<70 || parseFloat(l.d1)>105)
+      doc.setTextColor(255,0,0)
+      doc.text(l.d1,x+55,y+58)
+
+      doc.setTextColor(0,0,0)
+    if(parseFloat(l.d3)<0.7 || parseFloat(l.d3)>1.5)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d3,x+55,y+62)
+
+      doc.setTextColor(0,0,0)
+    if(parseFloat(l.d5)<15 || parseFloat(l.d5)>45)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d5,x+55,y+66)
+
+      doc.setTextColor(0,0,0)
+    if(parseFloat(l.d7)<7 || parseFloat(l.d7)>18)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d7,x+55,y+70)
+
+      doc.setTextColor(0,0,0)
+    if(parseFloat(l.d9)<2.6 || parseFloat(l.d9)>7.2)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d9,x+55,y+74)
+
+      doc.setTextColor(0,0,0)
+    if(parseFloat(l.d10)<6.2 || parseFloat(l.d10)>7.2)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d10,x+55,y+78)
+
+      doc.setTextColor(0,0,0)
+    if(parseFloat(l.d12)<3.5 || parseFloat(l.d12)>5.3)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d12,x+55,y+82)
+
+      doc.setTextColor(0,0,0)
+    if(parseFloat(l.d14)<2.8 || parseFloat(l.d14)>3.5)
+      doc.setTextColor(255,0,0)      
+    doc.text(l.d14,x+55,y+86)
+
+      doc.setTextColor(0,0,0)
+    if(parseFloat(l.d16)<0 || parseFloat(l.d16)>120)
+      doc.setTextColor(255,0,0) 
+    doc.text(l.d16,x+55,y+90)
+
+      doc.setTextColor(0,0,0)
+    if(parseFloat(l.d18)<10 || parseFloat(l.d18)>150)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d18,x+55,y+94)
+
+
+      doc.setTextColor(0,0,0)
+    if(parseFloat(l.d19)<0 || parseFloat(l.d19)>1.2)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d19,x+55,y+98)
+
+      doc.setTextColor(0,0,0)
+    if(parseFloat(l.d21)<0 || parseFloat(l.d21)>0.3)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d21,x+55,y+102)
+
+      doc.setTextColor(0,0,0)
+    if(parseFloat(l.d23)<0 || parseFloat(l.d23)>0.9)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d23,x+55,y+106)
+
+      doc.setTextColor(0,0,0)
+    if(parseFloat(l.d25)<0 || parseFloat(l.d25)>24)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d25,x+55,y+110)
+
+      doc.setTextColor(0,0,0)
+    if(parseFloat(l.d27)<200 || parseFloat(l.d27)>480)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d27,x+55,y+114)
+
+      doc.setTextColor(0,0,0)
+    if(parseFloat(l.d29)<50 || parseFloat(l.d29)>170)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d29,x+55,y+118)
+
+      doc.setTextColor(0,0,0)
+    if(parseFloat(l.d2)<0 || parseFloat(l.d2)>100)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d2,x+155,y+58)
+
+      doc.setTextColor(0,0,0)
+    if(parseFloat(l.d4)<100 || parseFloat(l.d4)>400)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d4,x+155,y+62)
+
+      doc.setTextColor(0,0,0)
+    if(parseFloat(l.d6)<0 || parseFloat(l.d6)>40)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d6,x+155,y+66)
+
+          doc.setTextColor(0,0,0)
+    if(parseFloat(l.d8)<0 || parseFloat(l.d8)>41)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d8,x+155,y+70)
+
+          doc.setTextColor(0,0,0)
+    if(parseFloat(l.d11)<10 || parseFloat(l.d11)>160)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d11,x+155,y+78)
+
+          doc.setTextColor(0,0,0)
+    if(parseFloat(l.d13)<0 || parseFloat(l.d13)>200)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d13,x+155,y+82)
+
+          doc.setTextColor(0,0,0)
+    if(parseFloat(l.d15)<35 || parseFloat(l.d15)>65)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d15,x+155,y+86)
+    
+      doc.setTextColor(0,0,0)
+    if(parseFloat(l.d17)<0 || parseFloat(l.d17)>150)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d17,x+155,y+90)
+
+      doc.setTextColor(0,0,0)
+    if(parseFloat(l.d20)<135 || parseFloat(l.d20)>155)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d20,x+155,y+98)
+
+      doc.setTextColor(0,0,0)
+    if(parseFloat(l.d22)<98 || parseFloat(l.d22)>106)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d22,x+155,y+102)
+
+      doc.setTextColor(0,0,0)
+    if(parseFloat(l.d24)<3.4 || parseFloat(l.d24)>5.3)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d24,x+155,y+106)
+
+      doc.setTextColor(0,0,0)
+    if(parseFloat(l.d26)<8.5 || parseFloat(l.d26)>10.5)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d26,x+155,y+110)
+
+      doc.setTextColor(0,0,0)
+    if(parseFloat(l.d28)<1.7 || parseFloat(l.d28)>2.4)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d28,x+155,y+114)
+
+      doc.setTextColor(0,0,0)
+    if(parseFloat(l.d30)<2.5 || parseFloat(l.d30)>4.5)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d30,x+155,y+118)
 
 
     doc.setTextColor(57,73,171)
@@ -1832,11 +1980,62 @@ sanguinea(p,l){
     doc.text('REFERENCIA',x+253,y+55)
     doc.setFont(undefined, 'normal')
     doc.text(['Globulos rojos',' ','Hemoglobina',' ','Hematocrito',' ','V.E.S.',' ','V.C.M.',' ','Hb.C.M.',' ','C.Hb.C.M.',' ','Globulos Blancos',' ','Plaquetas'],x+209,y+60,'center')
-    doc.setTextColor(0,0,0)
-    doc.text([l.d1,' ',l.d3,' ',l.d5,' ',l.d7,' ',l.d9,' ',l.d11,' ',l.d13,' ',l.d15,' ',l.d17],x+226,y+60,'center')
+      doc.setTextColor(0,0,0)
+    if((parseFloat(l.d1)<5.1 || parseFloat(l.d1)>5.7) && p.sexo=='Masculino')
+      doc.setTextColor(255,0,0)
+    if((parseFloat(l.d1)<4.8 || parseFloat(l.d1)>5.4) && p.sexo=='Femenino')
+      doc.setTextColor(255,0,0)  
+    doc.text(l.d1,x+226,y+60,'center')
+
+      doc.setTextColor(0,0,0)
+    if((parseFloat(l.d3)<151 || parseFloat(l.d3)>175) && p.sexo=='Masculino')
+      doc.setTextColor(255,0,0)
+    if((parseFloat(l.d3)<141 || parseFloat(l.d3)>165) && p.sexo=='Femenino')
+      doc.setTextColor(255,0,0) 
+    doc.text(l.d3,x+226,y+68,'center')
+      doc.setTextColor(0,0,0)
+    
+    if((parseFloat(l.d5)<0.51 || parseFloat(l.d5)>0.57) && p.sexo=='Masculino')
+      doc.setTextColor(255,0,0)
+    if((parseFloat(l.d5)<0.46 || parseFloat(l.d5)>0.53) && p.sexo=='Femenino')
+      doc.setTextColor(255,0,0) 
+    doc.text(l.d5,x+226,y+76,'center')
+          doc.setTextColor(0,0,0)
+    
+    if((parseFloat(l.d7)<0 || parseFloat(l.d7)>15) && p.sexo=='Masculino')
+      doc.setTextColor(255,0,0)
+    if((parseFloat(l.d7)<0 || parseFloat(l.d7)>20) && p.sexo=='Femenino')
+      doc.setTextColor(255,0,0) 
+    doc.text(l.d7,x+226,y+84,'center')
+          doc.setTextColor(0,0,0)
+    
+    if(parseFloat(l.d9)<83.0 || parseFloat(l.d9)>97.0)
+      doc.setTextColor(255,0,0)      
+    doc.text(l.d9,x+226,y+92,'center')
+
+      doc.setTextColor(0,0,0)    
+    if(parseFloat(l.d11)<27.0 || parseFloat(l.d11)>31.0)
+      doc.text(l.d11,x+226,y+100,'center')
+
+      doc.setTextColor(0,0,0)    
+    if(parseFloat(l.d13)<32.0 || parseFloat(l.d13)>36.0)
+      doc.setTextColor(255,0,0)      
+    
+      doc.text(l.d13,x+226,y+108,'center')
+
+      doc.setTextColor(0,0,0)    
+    if(parseFloat(l.d15)<4.5 || parseFloat(l.d15)>10.5)
+      doc.setTextColor(255,0,0) 
+
+    doc.text(l.d15,x+226,y+116,'center')
+      doc.setTextColor(0,0,0)    
+    if(parseFloat(l.d17)<150 || parseFloat(l.d17)>400)
+      doc.setTextColor(255,0,0) 
+    doc.text(l.d17,x+226,y+125,'center')
+
     doc.setTextColor(57,73,171)
     doc.text(['x10^(12)/L',' ','g/L',' ','L/L',' ','mm.',' ','ft.',' ','pg.',' ','%',' ','x10^(9)L',' ','x10^(9)L'],x+240,y+60,'center')
-    doc.text(['Varon 5.1x10^(12)L','Mujer 5.1x10^(12)L','Varon 151-175 g/L','Mujer 141-165 g/L','Varon 0.51-0.57 L/L','Mujer 0.46-0.53 L/L','Varon 15 mm/hora','Mujer 20mm/hora','Varon 83.0-97.0 ft','','27.0-31.0 pg.','','32-36%','','4.5-10.5x10^(9)/L','','105-400x10^(9)L'],x+265,y+60,'center')
+    doc.text(['Varon 5.1-5.7x10^12/L','Mujer 4.8-5.4x10^12/L','Varon 151-175 g/L','Mujer 141-165 g/L','Varon 0.51-0.57 L/L','Mujer 0.46-0.53 L/L','Varon 15 mm/hora','Mujer 20mm/hora','Varon 83.0-97.0 ft','','27.0-31.0 pg.','','32-36%','','4.5-10.5x10^(9)/L','','105-400x10^(9)L'],x+265,y+60,'center')
 
     doc.setTextColor(57,73,171)
     doc.setFont(undefined, 'bold')
@@ -1844,8 +2043,20 @@ sanguinea(p,l){
     doc.setFont(undefined, 'normal')
     doc.text(['Tiempo cuagulacion',' ','Tiempo sangria',' ','Tiempo Protrombina',' ','% Actividad',' ','INR',' ','Grupo factor',' ','Reticulocitos',' ','IPR'],x+296,y+60,'center')
     doc.setTextColor(0,0,0)
-    doc.text([l.d2,' ',l.d4,' ',l.d6,' ',l.d8,' ',l.d10,' ',l.d12,' ',l.d14,' ',l.d16,' '],x+318,y+60,'center')
+    doc.setFontSize(8)
+    doc.text(l.d2,x+315,y+60,'center')
+    doc.text(l.d4,x+315,y+68,'center')
+    doc.text(l.d6,x+315,y+76,'center')
+    doc.text(l.d8,x+315,y+84,'center')
+    doc.text(l.d10,x+315,y+92,'center')
+    doc.text(l.d12,x+315,y+100,'center')
+    doc.text(l.d14,x+315,y+108,'center')
+    doc.text(l.d16,x+315,y+116,'center')
+
+    //doc.text([l.d2,' ',' ',l.d4,' ',l.d6,' ',l.d8,' ',l.d10,' ',l.d12,' ',l.d14,' ',l.d16,' '],x+315,y+60,'center')
     doc.setTextColor(57,73,171)
+    doc.setFontSize(10)
+
     doc.text(['5-10min',' ','1-3min',' ','12-13seg',' ','95-100%',' ','0.97-1.04.',' ','',' ','0.5-2%'],x+337,y+60,'center')
 
     doc.rect(x+195, y+129, 155, 40)
@@ -2236,6 +2447,20 @@ sanguinea(p,l){
         // console.log(res.data)
         this.mispacientes()
         this.dialoglaboratorio=false
+        this.laboratorio={tipomuestra:'',
+        fechatoma:date.formatDate(new Date(),'YYYY-MM-DD'),
+        horatoma:date.formatDate(new Date(),'HH:mm'),
+        d1:'',d2:'',        d3:'',        d4:'',        d5:'',        d6:'',        d7:'',        d8:'',        d9:'',        d10:'',        d11:'',        d12:'',        d13:'',        d14:'',
+        d15:'',        d16:'',        d17:'',        d18:'',        d19:'',        d20:'',        d21:'',        d22:'',        d23:'',        d24:'',        d25:'',        d26:'',
+        d27:'',        d28:'',        d29:'',        d30:'',        d31:'',        d32:'',        d33:'',        d34:'',
+        d35:'',        d36:'',        d37:'',        d38:'',        d39:'',        d40:'',        d41:'',        d42:'',        d43:'',
+        d44:'',        d45:'',
+        responsable:'',
+        tipo_id:'',
+        paciente_id:'',
+        user_id:this.$store.state.login.user.id,
+        doctor_id:''}
+      
       })
     },
     modificar(paciente){
@@ -2350,7 +2575,7 @@ sanguinea(p,l){
              res.data.forEach(element => {
                  this.usuarios.push(element.name);
              });
-             this.user=this.usuarios[0]
+             this.user=''
           //console.log(this.usuarios)
           })
 
