@@ -17,7 +17,7 @@ class SeguroController extends Controller
     public function index()
     {
         //
-        return Seguro::all();
+        return Seguro::with('paciente')->get();
     }
 
     /**

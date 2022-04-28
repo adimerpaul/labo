@@ -43,7 +43,16 @@
           </q-input>
         </template>
 
-                      <template v-slot:body-cell-opcion="props">
+      <template v-slot:body-cell-paciente="props">
+
+          <q-td key="opcion" :props="props">
+          <ul>
+            <li v-for="p in props.row.paciente" :key="p">{{p.nombre}} {{p.paterno}} {{p.materno}}</li>
+          </ul>
+          </q-td>
+      </template>
+
+      <template v-slot:body-cell-opcion="props">
 
           <q-td key="opcion" :props="props">
               <q-btn  dense round flat color="yellow" @click="editRow(props)" icon="edit"></q-btn>
@@ -95,8 +104,9 @@ export default {
       rows:[],
 
       columns:[
-        { name: 'nombre', label: 'nombre', field: 'nombre'},
-        { name: 'opcion', label: 'opcion', field: 'opcion'},
+        { name: 'nombre', label: 'SEGURO', field: 'nombre'},
+        { name: 'paciente', label: 'PACIENTES', field: 'paciente'},
+        { name: 'opcion', label: 'OPCION', field: 'opcion'},
       ]
     }
   },
@@ -115,7 +125,7 @@ export default {
     listado(){
      this.$q.loading.show()
      this.$axios.get(process.env.API+'/seguro').then(res=>{
-       //console.log(res.data)
+       console.log(res.data)
        this.rows=res.data
        this.$q.loading.hide()
      })

@@ -11,4 +11,7 @@ class Seguro extends Model
     protected $fillable=[
         'nombre',
     ];
+    public function paciente(){
+        return $this->hasMany(Paciente::class)->with('laboratorios');
+    }
 }
