@@ -883,6 +883,9 @@ export default {
     doc.setTextColor(0,0,0)
 
     doc.rect(x+5, y+135, 205, 20)
+    doc.rect(x+5, y+54, 205, 22)
+    //doc.rect(x+5, y+75, 205, 25)
+    doc.rect(x+5, y+96, 205, 20)
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
     doc.text('RESPONSABLE',x+6,y+140)
