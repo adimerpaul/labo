@@ -113,7 +113,7 @@
                 />
               </div>
               <div class="col-6">
-                <q-input outlined type="number" v-model="dato.edad" label="Edad"
+                <q-input outlined type="text" v-model="dato.edad" label="Edad"
                 />
               </div>
               <div class="col-6">
@@ -167,7 +167,7 @@
                 />
               </div>
               <div class="col-6">
-                <q-input outlined type="number" v-model="datos2.edad" label="Edad"
+                <q-input outlined type="text" v-model="datos2.edad" label="Edad"
                 />
               </div>
               <div class="col-6">
@@ -621,7 +621,7 @@
           <div class="col-12 col-sm-3"></div>
           <div class="col-12 col-sm-6"><q-select :options="['POSITIVO','NEGATIVO']" dense outlined label="ANTIGENO SARS COV2" v-model="laboratorio.d1" /></div>
           </div></q-card-section>
-          <q-card-section  class="bg-blue-2"> 
+          <q-card-section  class="bg-blue-2">
 
           <div class="col-12 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d2" /></div>
           </q-card-section>
@@ -1613,12 +1613,12 @@ sanguinea(p,l){
 
       doc.setTextColor(0,0,0)
     if(parseFloat(l.d14)<2.8 || parseFloat(l.d14)>3.5)
-      doc.setTextColor(255,0,0)      
+      doc.setTextColor(255,0,0)
     doc.text(l.d14,x+55,y+86)
 
       doc.setTextColor(0,0,0)
     if(parseFloat(l.d16)<0 || parseFloat(l.d16)>120)
-      doc.setTextColor(255,0,0) 
+      doc.setTextColor(255,0,0)
     doc.text(l.d16,x+55,y+90)
 
       doc.setTextColor(0,0,0)
@@ -1691,7 +1691,7 @@ sanguinea(p,l){
     if(parseFloat(l.d15)<35 || parseFloat(l.d15)>65)
       doc.setTextColor(255,0,0)
     doc.text(l.d15,x+155,y+86)
-    
+
       doc.setTextColor(0,0,0)
     if(parseFloat(l.d17)<0 || parseFloat(l.d17)>150)
       doc.setTextColor(255,0,0)
@@ -1987,53 +1987,53 @@ sanguinea(p,l){
     if((parseFloat(l.d1)<5.1 || parseFloat(l.d1)>5.7) && p.sexo=='Masculino')
       doc.setTextColor(255,0,0)
     if((parseFloat(l.d1)<4.8 || parseFloat(l.d1)>5.4) && p.sexo=='Femenino')
-      doc.setTextColor(255,0,0)  
+      doc.setTextColor(255,0,0)
     doc.text(l.d1,x+226,y+60,'center')
 
       doc.setTextColor(0,0,0)
     if((parseFloat(l.d3)<151 || parseFloat(l.d3)>175) && p.sexo=='Masculino')
       doc.setTextColor(255,0,0)
     if((parseFloat(l.d3)<141 || parseFloat(l.d3)>165) && p.sexo=='Femenino')
-      doc.setTextColor(255,0,0) 
+      doc.setTextColor(255,0,0)
     doc.text(l.d3,x+226,y+68,'center')
       doc.setTextColor(0,0,0)
-    
+
     if((parseFloat(l.d5)<0.51 || parseFloat(l.d5)>0.57) && p.sexo=='Masculino')
       doc.setTextColor(255,0,0)
     if((parseFloat(l.d5)<0.46 || parseFloat(l.d5)>0.53) && p.sexo=='Femenino')
-      doc.setTextColor(255,0,0) 
+      doc.setTextColor(255,0,0)
     doc.text(l.d5,x+226,y+76,'center')
           doc.setTextColor(0,0,0)
-    
+
     if((parseFloat(l.d7)<0 || parseFloat(l.d7)>15) && p.sexo=='Masculino')
       doc.setTextColor(255,0,0)
     if((parseFloat(l.d7)<0 || parseFloat(l.d7)>20) && p.sexo=='Femenino')
-      doc.setTextColor(255,0,0) 
+      doc.setTextColor(255,0,0)
     doc.text(l.d7,x+226,y+84,'center')
           doc.setTextColor(0,0,0)
-    
+
     if(parseFloat(l.d9)<83.0 || parseFloat(l.d9)>97.0)
-      doc.setTextColor(255,0,0)      
+      doc.setTextColor(255,0,0)
     doc.text(l.d9,x+226,y+92,'center')
 
-      doc.setTextColor(0,0,0)    
+      doc.setTextColor(0,0,0)
     if(parseFloat(l.d11)<27.0 || parseFloat(l.d11)>31.0)
       doc.text(l.d11,x+226,y+100,'center')
 
-      doc.setTextColor(0,0,0)    
+      doc.setTextColor(0,0,0)
     if(parseFloat(l.d13)<32.0 || parseFloat(l.d13)>36.0)
-      doc.setTextColor(255,0,0)      
-    
+      doc.setTextColor(255,0,0)
+
       doc.text(l.d13,x+226,y+108,'center')
 
-      doc.setTextColor(0,0,0)    
+      doc.setTextColor(0,0,0)
     if(parseFloat(l.d15)<4.5 || parseFloat(l.d15)>10.5)
-      doc.setTextColor(255,0,0) 
+      doc.setTextColor(255,0,0)
 
     doc.text(l.d15,x+226,y+116,'center')
-      doc.setTextColor(0,0,0)    
+      doc.setTextColor(0,0,0)
     if(parseFloat(l.d17)<150 || parseFloat(l.d17)>400)
-      doc.setTextColor(255,0,0) 
+      doc.setTextColor(255,0,0)
     doc.text(l.d17,x+226,y+125,'center')
 
     doc.setTextColor(57,73,171)
@@ -2463,7 +2463,7 @@ sanguinea(p,l){
         paciente_id:'',
         user_id:this.$store.state.login.user.id,
         doctor_id:''}
-      
+
       })
     },
     modificar(paciente){
