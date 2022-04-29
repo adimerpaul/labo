@@ -47,7 +47,7 @@
 
           <q-td key="opcion" :props="props">
           <ul>
-            <li v-for="p in props.row.paciente" :key="p">{{p.nombre}} {{p.paterno}} {{p.materno}}</li>
+            <li v-for="p in props.row.paciente" :key="p"><q-btn flat round icon="list" dense color="accent" @click="labo(p)"/>{{p.nombre}} {{p.paterno}} {{p.materno}}</li>
           </ul>
           </q-td>
       </template>
@@ -89,6 +89,19 @@
       </q-card>
     </q-dialog>
 
+                <q-dialog v-model="dialog_lab">
+      <q-card>
+        <q-card-section class="bg-green-8 text-white">
+          <div class="text-h6">Paciente: {{paciente.nombre}} {{paciente.paterno}} {{paciente.materno}} > LABORATORIOS</div>
+        </q-card-section>
+        <q-card-section class="q-pt-xs">
+          <ul>
+            <li v-for="l in laboratorios" :key="l">{{l.fechatoma}} {{l.tipo.nombre}}</li>
+          </ul>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
+
     </q-card>
   </q-page>
 </template>
@@ -101,6 +114,8 @@ export default {
       alert:false,
       dialog_mod:false,
       dato:{},
+      paciente:{},
+      dialog_lab:false,
       rows:[],
 
       columns:[
@@ -122,6 +137,12 @@ export default {
 
   },
   methods: {
+    labo(paciente){
+      console.log(paciente.laboratorios)
+      this.paciente=paciente
+      this.laboratorios=paciente.laboratorios
+      this.dialog_lab=true
+    },
     listado(){
      this.$q.loading.show()
      this.$axios.get(process.env.API+'/seguro').then(res=>{
