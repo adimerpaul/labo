@@ -273,7 +273,7 @@
           <q-card-section  class="bg-green-2"> <div class="row">
           <div class="col-6 col-sm-6"><q-input dense outlined label="Glicemia" v-model="laboratorio.d1" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Fosfatasa alcalina" v-model="laboratorio.d2" /></div>
-          <div class="col-6 col-sm-6"><q-input dense outlined label="Creatina" v-model="laboratorio.d3" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Creatinina" v-model="laboratorio.d3" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Fosfatasa alcalina" v-model="laboratorio.d4" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Urea" v-model="laboratorio.d5" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Transamisas GOT" v-model="laboratorio.d6" /></div>
@@ -333,7 +333,7 @@
           <div class="col-6 col-sm-6"><q-input dense outlined label="Densidad" v-model="laboratorio.d11" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Urobilina" v-model="laboratorio.d12" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Reaccion" v-model="laboratorio.d13" /></div>
-          <div class="col-6 col-sm-6"><q-input dense outlined label="Nitrinos" v-model="laboratorio.d14" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Nitritos" v-model="laboratorio.d14" /></div>
           <div class="col-12 col-sm-12"></div></div></q-card-section>
       <q-card-section  class="bg-blue-2" > <div class="row">
 
@@ -346,7 +346,7 @@
           <div class="col-6 col-sm-6"><q-input dense outlined label="Leucocitos" v-model="laboratorio.d21" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Eritrocitario" v-model="laboratorio.d22" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Eritrocis" v-model="laboratorio.d23" /></div>
-          <div class="col-6 col-sm-6"><q-input dense outlined label="Leucositario" v-model="laboratorio.d24" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Leucocitario" v-model="laboratorio.d24" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Bacterias" v-model="laboratorio.d25" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Cereos" v-model="laboratorio.d26" /></div>
           <div class="col-6 col-sm-6"></div>
@@ -490,7 +490,7 @@
            <template v-if="tipo.label=='COPRAPARASITOLOGICO SIMPLE'">
            <q-card class="my-card"  flat bordered>
           <q-card-section  class="bg-green-2"> <div class="row">
-          <div class="col-6 col-sm-12">COPRAPARASITOLOGICO SIMPLE</div>
+          <div class="col-6 col-sm-12">COPROPARASITOLOGICO SIMPLE</div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="ASPECTO DE LA MUESTRA" v-model="laboratorio.d1" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="COLOR" v-model="laboratorio.d2" /></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="CELULAS EPITELIALES" v-model="laboratorio.d3" /></div>
@@ -526,7 +526,7 @@
            <template v-if="tipo.label=='COPRAPARASITOLOGICO SERIADO'">
            <q-card class="my-card"  flat bordered style="width:100%">
           <q-card-section  class="bg-green-2"> <div class="row">
-          <div class="col-6 col-sm-12">COPRAPARASITOLOGICO SERIADO</div>
+          <div class="col-6 col-sm-12">COPROPARASITOLOGICO SERIADO</div>
           <div class="col-6 col-sm-12">MUESTRA1</div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="FECHA" v-model="laboratorio.d1" type="date"/></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="HORA" v-model="laboratorio.d2" type="time"/></div>
@@ -826,7 +826,7 @@ export default {
     doc.setTextColor(211,47,47)
     doc.text('Form. 010',x+190, y+30)
     doc.setTextColor(57,73,171)
-    doc.text('COPRAPARASITOLOGICO SERIADO',x+100, y+30,'center')
+    doc.text('COPROPARASITOLOGICO SERIADO',x+100, y+30,'center')
     doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
     doc.setTextColor(0,0,0)
     doc.setFont(undefined, 'normal')
@@ -849,7 +849,7 @@ export default {
     doc.rect(x+5, y+48, 205, 85)
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
-    doc.text('                             COPRAPARASITOLOGICO SERIADO',x+50,y+52)
+    doc.text('                             COPROPARASITOLOGICO SERIADO',x+50,y+52)
     doc.setFont(undefined, 'bold')
     doc.text('     1º MUESTRA',x+8,y+58)
     doc.setFont(undefined, 'normal')
@@ -1140,7 +1140,7 @@ export default {
     doc.setTextColor(211,47,47)
     doc.text('Form. 010',x+190, y+30)
     doc.setTextColor(57,73,171)
-    doc.text('COPRAPARASITOLOGICO SIMPLE',x+100, y+30,'center')
+    doc.text('COPROPARASITOLOGICO SIMPLE',x+100, y+30,'center')
     doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
     doc.setTextColor(0,0,0)
     doc.setFont(undefined, 'normal')
@@ -1163,16 +1163,24 @@ export default {
     doc.rect(x+5, y+48, 205, 85)
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
-    doc.text('                             COPRAPARASITOLOGICO SIMPLE',x+50,y+52)
+    doc.text('                             COPROPARASITOLOGICO SIMPLE',x+50,y+52)
     doc.setFont(undefined, 'normal')
     doc.text(['ASPECTO DE LA MUESTRA','COLOR','CELULAS EPITELIALES','LEUCOCITOS','HEMATIES','GRASAS','LEVADURAS','ESPORAS MICOTICAS','ALMIDON','PARASITOS','PIOCITOS'],x+8,y+58)
     doc.setTextColor(0,0,0)
     doc.text([l.d1,l.d2,l.d3,l.d4,l.d5,l.d6,l.d7,l.d8,l.d9,l.d10,l.d11],x+70,y+58)
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
-    doc.text('MOCO FECAL       '+l.d12,x+8,y+102)
+    doc.text('MOCO FECAL       ',x+8,y+102)
+    doc.setTextColor(0,0,0)
     doc.setFont(undefined, 'normal')
-    doc.text(['Polimorfonuclueares: '+l.d13,'Mononuclueras: '+l.d14],x+100,y+102)
+    doc.text(l.d12,x+50,y+102)
+
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'bold')
+    doc.text(['Polimorfonuclueares: ','Mononuclueras: '],x+100,y+102)
+        doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'normal')
+    doc.text([l.d13,l.d14],x+145,y+102)
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
     doc.text('OBSERVACIONES',x+8,y+110)
@@ -1253,9 +1261,17 @@ export default {
     doc.text([l.d1,l.d2,l.d3,l.d4,l.d5,l.d6,l.d7,l.d8,l.d9],x+70,y+58)
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
-    doc.text('MOCO FECAL       '+l.d10,x+8,y+95)
+    doc.text('MOCO FECAL       ',x+8,y+95)
+    doc.setTextColor(0,0,0)
     doc.setFont(undefined, 'normal')
-    doc.text(['Polimorfonuclueares: '+l.d11,'Mononuclueras: '+l.d12],x+100,y+95)
+    doc.text(l.d10,x+50,y+95)
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'bold')
+    doc.text(['Polimorfonuclueares: ','Mononuclueras: '],x+100,y+95)
+    doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'normal')
+    doc.text([l.d11,l.d12],x+145,y+95)
+
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
     doc.text('OTROS',x+8,y+105)
@@ -1333,7 +1349,7 @@ export default {
     doc.setFont(undefined, 'normal')
     doc.text(['Color','Olor','Aspecto','Espuma','Deposito','Densidad','Reaccion'],x+8,y+58)
     doc.text(['Amarillo','Sui-generis','Limpido o lig opal','Blanco fugaz','Nulo o escaso','1.010-1.030','Lig acida'],x+90,y+58,'center')
-    doc.text(['Proteinas','Glucosa','C cetonicos','Bilirrubina','Hemoglobina','Urobilina','Nitrinos'],x+110,y+58,'left')
+    doc.text(['Proteinas','Glucosa','C cetonicos','Bilirrubina','Hemoglobina','Urobilina','Nitritos'],x+110,y+58,'left')
     doc.text(['Negativo','Negativo','Negativo','Negativo','Negativo','Normal','Negativo'],x+185,y+58,'left')
     doc.setTextColor(0,0,0)
     doc.text([l.d1,l.d3,l.d5,l.d7,l.d9,l.d11,l.d13],x+50,y+58)
@@ -1347,7 +1363,7 @@ export default {
     doc.setFont(undefined, 'normal')
     doc.text(['Celulas epitaliales','Celulas de transicion','Celulas Clave','Leucocitos','Eritrocitos','Bacterias','CRISTALES'],x+8,y+95)
     doc.text(['Hasta 2/c','Negativo','Negativo','Hasta 5/c','Hasta 3/c','Escaso',''],x+90,y+95,'center')
-    doc.text(['Hialino','Granuloso','Epiteliales','Eritrocitario','Leucositario','Cereos','Mixtos'],x+110,y+95,'left')
+    doc.text(['Hialino','Granuloso','Epiteliales','Eritrocitario','Leucocitario','Cereos','Mixtos'],x+110,y+95,'left')
     doc.text(['Negativo','Negativo','Negativo','Negativo','Negativo','Negativo','Negativo'],x+185,y+95,'left')
     doc.setTextColor(0,0,0)
     doc.text([l.d15,l.d17,l.d19,l.d21,l.d23,l.d25],x+50,y+95)
@@ -1428,7 +1444,7 @@ export default {
     doc.setTextColor(57,73,171)
     doc.text('                                          EXAMEN EN FRESCO',x+50,y+52)
     doc.setFont(undefined, 'normal')
-    doc.text(['CELULAS EPITELIALES','LEUCOCITOS','HEMATIES','CELULAS CLAVE','LEVADURAS','PARASITOS','BACTERIAS','KOH','PH','OBSERVAIONES'],x+8,y+58)
+    doc.text(['CELULAS EPITELIALES','LEUCOCITOS','HEMATIES','CELULAS CLAVE','LEVADURAS','PARASITOS','BACTERIAS','KOH','PH','OBSERVACIONES'],x+8,y+58)
     doc.setTextColor(0,0,0)
     doc.text([l.d1,l.d2,l.d3,l.d4,l.d5,l.d6,l.d7,l.d8,l.d9,l.d10],x+70,y+58)
 
@@ -1436,7 +1452,7 @@ export default {
     doc.setTextColor(57,73,171)
     doc.text('                                         TINCION DE GRAM',x+50,y+100)
     doc.setFont(undefined, 'normal')
-    doc.text(['BACILOS GRAM POSITIVO','BACILOS GRAM NEGATIVO','COCOS GRAM POSITIVO','COCOBACILOS GRAM POSITIVO','COCOBACILOS GRAM NEGATIVO','ESPORAS E HIFAS MICOTICAS','OBSERVACIONNES'],x+8,y+105)
+    doc.text(['BACILOS GRAM POSITIVO','BACILOS GRAM NEGATIVO','COCOS GRAM POSITIVO','COCOBACILOS GRAM POSITIVO','COCOBACILOS GRAM NEGATIVO','ESPORAS E HIFAS MICOTICAS','OBSERVACIONES'],x+8,y+105)
     doc.setTextColor(0,0,0)
     doc.text([l.d11,l.d12,l.d13,l.d14,l.d15,l.d16,l.d17],x+70,y+105)
 
@@ -1500,7 +1516,7 @@ export default {
     doc.setTextColor(57,73,171)
     doc.text('                                          EXAMEN EN FRESCO',x+50,y+52)
     doc.setFont(undefined, 'normal')
-    doc.text(['CELULAS EPITELIALES','LEUCOCITOS','HEMATIES','CELULAS CLAVE','LEVADURAS','PARASITOS','BACTERIAS','KOH','PH','OBSERVAIONES'],x+8,y+58)
+    doc.text(['CELULAS EPITELIALES','LEUCOCITOS','HEMATIES','CELULAS CLAVE','LEVADURAS','PARASITOS','BACTERIAS','KOH','PH','OBSERVACIONES'],x+8,y+58)
     doc.setTextColor(0,0,0)
     doc.text([l.d1,l.d2,l.d3,l.d4,l.d5,l.d6,l.d7,l.d8,l.d9,l.d10],x+70,y+58)
 
@@ -1508,7 +1524,7 @@ export default {
     doc.setTextColor(57,73,171)
     doc.text('                                         TINCION DE GRAM',x+50,y+100)
     doc.setFont(undefined, 'normal')
-    doc.text(['BACILOS GRAM POSITIVO','BACILOS GRAM NEGATIVO','COCOS GRAM POSITIVO','COCOBACILOS GRAM POSITIVO','COCOBACILOS GRAM NEGATIVO','ESPORAS E HIFAS MICOTICAS','OBSERVACIONNES'],x+8,y+105)
+    doc.text(['BACILOS GRAM POSITIVO','BACILOS GRAM NEGATIVO','COCOS GRAM POSITIVO','COCOBACILOS GRAM POSITIVO','COCOBACILOS GRAM NEGATIVO','ESPORAS E HIFAS MICOTICAS','OBSERVACIONES'],x+8,y+105)
     doc.setTextColor(0,0,0)
     doc.text([l.d11,l.d12,l.d13,l.d14,l.d15,l.d16,l.d17],x+70,y+105)
 
@@ -1572,9 +1588,9 @@ sanguinea(p,l){
     doc.setTextColor(57,73,171)
     doc.text('          PRUEBA                      VALOR                   REFRENCIA                   PRUEBA                     VALOR                 VALOR',x+6,y+52)
     doc.setFont(undefined, 'normal')
-    doc.text(['Glicemia','Creatina','Urea','NUS-BUN','Acido Urico','Proteinas Totales','Albumina','Globulina','Amilasa','Lipasa','Bilirrubina Total','Bilirrubina Directa','Bilirrubina Indirecta','CK-MB','LDH','Hierro'],x+8,y+58)
+    doc.text(['Glicemia','Creatinina','Urea','NUS-BUN','Acido Urico','Proteinas Totales','Albumina','Globulina','Amilasa','Lipasa','Bilirrubina Total','Bilirrubina Directa','Bilirrubina Indirecta','CK-MB','LDH','Hierro'],x+8,y+58)
     doc.text(['70-105mg/dl','0.7-1.5mmg/dl','15-45mg/dl','7-18mg/dl','2.6-7.2mg/dl','6.2-8.5g/dl','3.5-5.3g/dl','2.8-3.5g/dl','menor a 120UI/L','10-150UI/L','hasta 1.2 mg/dl','hasta 0.3 mg/dl','hasta 0.9 mg/dl','0-24 UI/L','200-480 UI/L','50-170ug/dl'],x+80,y+58,'left')
-    doc.text(['Fosfatasa alcalina','Fosfatasa alcalina','Transamisa GOT','Transamisas GPT','LIPIDOGRAMA','Trigliceridos','Colesterol Total','HDL-Col','LDL-Col','ELECTROLITOS','Sodio','Cloro','Potasio','Calcio','Magnesio','Fosforo'],x+110,y+58,'left')
+    doc.text(['Fosfatasa alcalina','Fosfatasa alcalina','Transamisas GOT','Transamisas GPT','LIPIDOGRAMA','Trigliceridos','Colesterol Total','HDL-Col','LDL-Col','ELECTROLITOS','Sodio','Cloro','Potasio','Calcio','Magnesio','Fosforo'],x+110,y+58,'left')
     doc.text(['adultos hasta 100UI/L','niños 100-400UI/L','hasta 40UI/L','hasta 41UI/L','','10-160mg/dl','menor 200mg/dl','35-65mg/dl','hasta 150mg/dl','','135-155mEq/L','98-106 mEq/L','3.4-5.3 mEq/L','8.5-10.5mg/dl','1.7-2.4mg/dl','2.5-4.5mg/dl'],x+175,y+58,'left')
     doc.setTextColor(0,0,0)
     if(parseFloat(l.d1)<70 || parseFloat(l.d1)>105)
@@ -2047,14 +2063,14 @@ sanguinea(p,l){
     doc.text(['Tiempo cuagulacion',' ','Tiempo sangria',' ','Tiempo Protrombina',' ','% Actividad',' ','INR',' ','Grupo factor',' ','Reticulocitos',' ','IPR'],x+296,y+60,'center')
     doc.setTextColor(0,0,0)
     doc.setFontSize(8)
-    doc.text(l.d2,x+315,y+60,'center')
-    doc.text(l.d4,x+315,y+68,'center')
-    doc.text(l.d6,x+315,y+76,'center')
-    doc.text(l.d8,x+315,y+84,'center')
-    doc.text(l.d10,x+315,y+92,'center')
-    doc.text(l.d12,x+315,y+100,'center')
-    doc.text(l.d14,x+315,y+108,'center')
-    doc.text(l.d16,x+315,y+116,'center')
+    doc.text(l.d2,x+320,y+60,'center')
+    doc.text(l.d4,x+320,y+68,'center')
+    doc.text(l.d6,x+320,y+76,'center')
+    doc.text(l.d8,x+320,y+84,'center')
+    doc.text(l.d10,x+320,y+92,'center')
+    doc.text(l.d12,x+320,y+100,'center')
+    doc.text(l.d14,x+320,y+108,'center')
+    doc.text(l.d16,x+320,y+116,'center')
 
     //doc.text([l.d2,' ',' ',l.d4,' ',l.d6,' ',l.d8,' ',l.d10,' ',l.d12,' ',l.d14,' ',l.d16,' '],x+315,y+60,'center')
     doc.setTextColor(57,73,171)

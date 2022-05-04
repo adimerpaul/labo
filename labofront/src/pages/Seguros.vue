@@ -120,7 +120,7 @@ export default {
 
       columns:[
         { name: 'nombre', label: 'SEGURO', field: 'nombre'},
-        { name: 'paciente', label: 'PACIENTES', field: 'paciente'},
+        { name: 'paciente', label: 'PACIENTES', field: 'paciente',align:'left'},
         { name: 'opcion', label: 'OPCION', field: 'opcion'},
       ]
     }
