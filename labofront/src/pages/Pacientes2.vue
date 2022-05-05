@@ -234,20 +234,24 @@
           <div class="col-6 col-sm-6"></div></div>
           </q-card-section>
           <q-separator/>
-          <q-card-section class="bg-blue-2" > <div class="row">
-          <div class="col-6 col-sm-6"><q-input dense outlined label="Cayados" v-model="laboratorio.d18" @keyup="valcien" type="number"/></div>
+          <q-card-section class="bg-blue-2" >
+          <div class="row">
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Cayados" v-model="laboratorio.d18" @keyup1="valcien" type="number"/></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="x10^9/L" v-model="laboratorio.d19" /></div>
-          <div class="col-6 col-sm-6"><q-input dense outlined label="Neutrofilos" v-model="laboratorio.d20" @keyup="valcien" type="number"/></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Neutrofilos" v-model="laboratorio.d20" @keyup1="valcien" type="number"/></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="x10^9/L" v-model="laboratorio.d21" /></div>
-          <div class="col-6 col-sm-6"><q-input dense outlined label="Eosinofilos" v-model="laboratorio.d22" @keyup="valcien" type="number"/></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Eosinofilos" v-model="laboratorio.d22" @keyup1="valcien" type="number"/></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="x10^9/L" v-model="laboratorio.d23" /></div>
-          <div class="col-6 col-sm-6"><q-input dense outlined label="Basofilos" v-model="laboratorio.d24" @keyup="valcien" type="number"/></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Basofilos" v-model="laboratorio.d24" @keyup1="valcien" type="number"/></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="x10^9/L" v-model="laboratorio.d25" /></div>
-          <div class="col-6 col-sm-6"><q-input dense outlined label="Linfocitos" v-model="laboratorio.d26" @keyup="valcien" type="number"/></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Linfocitos" v-model="laboratorio.d26" @keyup1="valcien" type="number"/></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="x10^9/L" v-model="laboratorio.d27" /></div>
-          <div class="col-6 col-sm-6"><q-input dense outlined label="Monocitos" v-model="laboratorio.d28" @keyup="valcien" type="number"/></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Monocitos" v-model="laboratorio.d28" @keyup1="valcien" type="number"/></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="x10^9/L" v-model="laboratorio.d29" /></div>
-          <div class="col-6 col-sm-6"><q-input dense outlined label="BLASTOS" v-model="laboratorio.d30" @keyup="valcien" type="number"/></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="BLASTOS" v-model="laboratorio.d30" @keyup1="valcien" type="number"/></div>
+          <div v-if="es100" class="col-12 text-red text-bold q-pa-xs" >
+            No suman 100%
+          </div>
           </div>
           </q-card-section>
               <q-separator/>
@@ -807,6 +811,25 @@ export default {
       })
       this.doctor=this.doctors[0]
     })
+  },
+  computed:{
+    es100(){
+      if(
+        (
+        parseInt(this.laboratorio.d18==''?0:this.laboratorio.d18)+
+        parseInt(this.laboratorio.d20==''?0:this.laboratorio.d20)+
+        parseInt(this.laboratorio.d22==''?0:this.laboratorio.d22)+
+        parseInt(this.laboratorio.d24==''?0:this.laboratorio.d24)+
+        parseInt(this.laboratorio.d26==''?0:this.laboratorio.d26)+
+        parseInt(this.laboratorio.d28==''?0:this.laboratorio.d28)+
+        parseInt(this.laboratorio.d30==''?0:this.laboratorio.d30)
+        )==100
+      ){
+        return false;
+      }else{
+        return true;
+      }
+    }
   },
   methods:{
    seriado(p,l){
@@ -2516,24 +2539,25 @@ sanguinea(p,l){
       this.laboratorio.responsable=this.user
       if(this.tipo.label=='HEMOGRAMA COMPLETO'){
                       let total=0
-        if (this.laboratorio.d18 == undefined || this.laboratorio.d18=='') this.laboratorio.d18=0;
-        if (this.laboratorio.d20 == undefined || this.laboratorio.d20=='') this.laboratorio.d20=0;
-        if (this.laboratorio.d22 == undefined || this.laboratorio.d22=='') this.laboratorio.d22=0;
-        if (this.laboratorio.d24 == undefined || this.laboratorio.d24=='') this.laboratorio.d24=0;
-        if (this.laboratorio.d26 == undefined || this.laboratorio.d26=='') this.laboratorio.d26=0;
-        if (this.laboratorio.d28 == undefined || this.laboratorio.d28=='') this.laboratorio.d28=0;
-        if (this.laboratorio.d30 == undefined || this.laboratorio.d30=='') this.laboratorio.d30=0;
+        //if (this.laboratorio.d18 == undefined || this.laboratorio.d18=='') this.laboratorio.d18=0;
+        //if (this.laboratorio.d20 == undefined || this.laboratorio.d20=='') this.laboratorio.d20=0;
+        //if (this.laboratorio.d22 == undefined || this.laboratorio.d22=='') this.laboratorio.d22=0;
+        //if (this.laboratorio.d24 == undefined || this.laboratorio.d24=='') this.laboratorio.d24=0;
+        //if (this.laboratorio.d26 == undefined || this.laboratorio.d26=='') this.laboratorio.d26=0;
+        //if (this.laboratorio.d28 == undefined || this.laboratorio.d28=='') this.laboratorio.d28=0;
+        //if (this.laboratorio.d30 == undefined || this.laboratorio.d30=='') this.laboratorio.d30=0;
 
-        total=parseFloat(this.laboratorio.d18) + parseFloat(this.laboratorio.d20) + parseFloat(this.laboratorio.d22) + parseFloat(this.laboratorio.d24) + parseFloat(this.laboratorio.d26)
-        + parseFloat(this.laboratorio.d28) + parseFloat(this.laboratorio.d30)
-        if(total!=100 )
-                 this.$q.notify({
-              message: 'No suma el 100 % ',
-              icon: 'info',
-             color:'red'
-            })
-          return false;
+        //total=parseFloat(this.laboratorio.d18) + parseFloat(this.laboratorio.d20) + parseFloat(this.laboratorio.d22) + parseFloat(this.laboratorio.d24) + parseFloat(this.laboratorio.d26)
+        //+ parseFloat(this.laboratorio.d28) + parseFloat(this.laboratorio.d30)
+          if(this.es100 ){
+              this.$q.notify({
+                message: 'No suma el 100 % ',
+                icon: 'info',
+              color:'red'
+              })
+              return false;
           }
+        }
       this.$axios.post(process.env.API+'/laboratorio',this.laboratorio).then(res=> {
         // console.log(res.data)
         this.mispacientes()
