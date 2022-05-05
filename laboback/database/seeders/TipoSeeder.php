@@ -28,6 +28,10 @@ class TipoSeeder extends Seeder
             ["nombre"=>"RESULTADO SEROLOGIA",],
             ["nombre"=>"INMUNOENSAYO DE FLUORESCENCIA",],
             ["nombre"=>"TEST EMBARAZO",],
+            ["nombre"=>"ALCOHOLEMIA",],
+            ["nombre"=>"REACCION DE WIDAL",],
+            ["nombre"=>"MULTIDROGAS",],
+            ["nombre"=>"HEMOGLOBINA GLICOSILADA",],
         ]);
     }
 }

@@ -196,7 +196,7 @@
       <q-card-section >
         <div class="row">
           <div class="col-5"><div class="text-subtitle2">{{paciente.paciente}}</div></div>
-          <div class="col-7"><q-select dense outlined :options="tipos" label="Laboratorio" v-model="tipo" required></q-select></div>
+          <div class="col-7"><q-select dense outlined :options="tipos" label="Laboratorio" v-model="tipo" @update:model-value="resetlabo" required></q-select></div>
         </div>
       </q-card-section>
       <q-separator/>
@@ -204,7 +204,7 @@
         <q-form @submit="createLaboratorio">
         <div class="row">
           <div class="col-12 col-sm-6">
-            <q-select dense outlined :options="doctors" label="Doctor" v-model="doctor" required></q-select>
+            <q-select dense outlined :options="doctors" label="Doctor" v-model="doctor" required ></q-select>
           </div>
 
           <div class="col-12 col-sm-6">
@@ -832,6 +832,63 @@ export default {
     }
   },
   methods:{
+    resetlabo(){
+            this.laboratorio={
+        tipomuestra:'',
+        fechatoma:date.formatDate(new Date(),'YYYY-MM-DD'),
+        horatoma:date.formatDate(new Date(),'HH:mm'),
+        d1:'',
+        d2:'',
+        d3:'',
+        d4:'',
+        d5:'',
+        d6:'',
+        d7:'',
+        d8:'',
+        d9:'',
+        d10:'',
+        d11:'',
+        d12:'',
+        d13:'',
+        d14:'',
+        d15:'',
+        d16:'',
+        d17:'',
+        d18:'',
+        d19:'',
+        d20:'',
+        d21:'',
+        d22:'',
+        d23:'',
+        d24:'',
+        d25:'',
+        d26:'',
+        d27:'',
+        d28:'',
+        d29:'',
+        d30:'',
+        d31:'',
+        d32:'',
+        d33:'',
+        d34:'',
+        d35:'',
+        d36:'',
+        d37:'',
+        d38:'',
+        d39:'',
+        d40:'',
+        d41:'',
+        d42:'',
+        d43:'',
+        d44:'',
+        d45:'',
+        responsable:'',
+        tipo_id:'',
+        paciente_id:'',
+        user_id:this.$store.state.login.user.id,
+        doctor_id:'',
+      }
+    },
    seriado(p,l){
     var doc = new jsPDF('P',undefined,'legal')
     doc.setFont("arial");
@@ -1339,7 +1396,7 @@ export default {
     let y=0
     //inicio datos paciete
     doc.setDrawColor(120);
-    doc.rect(x+5, y+27, 205, 20)
+    doc.rect(x+5, y+27, 205, 17)
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
     doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+175, y+8,'center')
@@ -1368,47 +1425,47 @@ export default {
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
-    doc.rect(x+5, y+48, 205, 94)
+    doc.rect(x+5, y+44, 205, 94)
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
-    doc.text('          EX FISICO                      VALOR                   REFERENCIA                  EX QUIMICO                   VALOR              REFERENCIA',x+6,y+52)
+    doc.text('          EX FISICO                      VALOR                   REFERENCIA                  EX QUIMICO                   VALOR              REFERENCIA',x+6,y+48)
     doc.setFont(undefined, 'normal')
-    doc.text(['Color','Olor','Aspecto','Espuma','Deposito','Densidad','Reaccion'],x+8,y+58)
-    doc.text(['Amarillo','Sui-generis','Limpido o lig opal','Blanco fugaz','Nulo o escaso','1.010-1.030','Lig acida'],x+90,y+58,'center')
-    doc.text(['Proteinas','Glucosa','C cetonicos','Bilirrubina','Hemoglobina','Urobilina','Nitritos'],x+110,y+58,'left')
-    doc.text(['Negativo','Negativo','Negativo','Negativo','Negativo','Normal','Negativo'],x+185,y+58,'left')
+    doc.text(['Color','Olor','Aspecto','Espuma','Deposito','Densidad','Reaccion'],x+8,y+54)
+    doc.text(['Amarillo','Sui-generis','Limpido o lig opal','Blanco fugaz','Nulo o escaso','1.010-1.030','Lig acida'],x+90,y+54,'center')
+    doc.text(['Proteinas','Glucosa','C cetonicos','Bilirrubina','Hemoglobina','Urobilina','Nitritos'],x+110,y+54,'left')
+    doc.text(['Negativo','Negativo','Negativo','Negativo','Negativo','Normal','Negativo'],x+185,y+54,'left')
     doc.setTextColor(0,0,0)
-    doc.text([l.d1,l.d3,l.d5,l.d7,l.d9,l.d11,l.d13],x+50,y+58)
+    doc.text([l.d1,l.d3,l.d5,l.d7,l.d9,l.d11,l.d13],x+50,y+54)
     doc.setTextColor(0,0,0)
     if(l.d2!='NEGATIVO')
       doc.setTextColor(255,0,0)
-    doc.text(l.d2,x+160,y+58)
+    doc.text(l.d2,x+160,y+54)
         doc.setTextColor(0,0,0)
     if(l.d4!='NEGATIVO')
       doc.setTextColor(255,0,0)
-    doc.text(l.d4,x+160,y+62)
+    doc.text(l.d4,x+160,y+58)
         doc.setTextColor(0,0,0)
     if(l.d6!='NEGATIVO')
       doc.setTextColor(255,0,0)
-    doc.text(l.d6,x+160,y+66)
+    doc.text(l.d6,x+160,y+62)
         doc.setTextColor(0,0,0)
     if(l.d8!='NEGATIVO')
       doc.setTextColor(255,0,0)
-    doc.text(l.d8,x+160,y+70)
+    doc.text(l.d8,x+160,y+66)
         doc.setTextColor(0,0,0)
     if(l.d10!='NEGATIVO')
       doc.setTextColor(255,0,0)
-    doc.text(l.d10,x+160,y+74)
+    doc.text(l.d10,x+160,y+70)
         doc.setTextColor(0,0,0)
     if(l.d12!='NORMAL')
       doc.setTextColor(255,0,0)
-    doc.text(l.d12,x+160,y+78)
+    doc.text(l.d12,x+160,y+74)
         doc.setTextColor(0,0,0)
     if(l.d14!='NEGATIVO')
       doc.setTextColor(255,0,0)
-    doc.text(l.d14,x+160,y+82)
+    doc.text(l.d14,x+160,y+78)
     doc.setTextColor(57,73,171)
-    doc.text('SEDIMENTO: EXAMEN MICROSCOPICO',x+75,y+87,'center')
+    doc.text('SEDIMENTO: EXAMEN MICROSCOPICO',x+75,y+83,'center')
 
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
@@ -2587,7 +2644,9 @@ sanguinea(p,l){
     },
     frmlaboratorio(paciente){
       this.paciente=paciente
+      this.resetlabo()
       this.dialoglaboratorio=true
+
     },
     modpaciente(){
               this.datos2.seguro=this.seguro.id
