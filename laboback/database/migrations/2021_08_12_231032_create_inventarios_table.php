@@ -21,7 +21,7 @@ class CreateInventariosTable extends Migration
             $table->string('lote');
             $table->integer('ingreso');
             $table->integer('saldo');
-            $table->string('observacion');
+            $table->string('observacion')->nullable();
             $table->string('estado')->default('ACTIVO');
             $table->unsignedBigInteger('reactivo_id');
             $table->foreign('reactivo_id')->references('id')->on('reactivos');

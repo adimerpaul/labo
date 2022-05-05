@@ -172,7 +172,7 @@
           </div>
             
             <q-input filled v-model="invent.ingreso" label="Ingreso " hint="Ingresar cantidad " type="number" lazy-rules :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']" />
-            <q-input filled v-model="invent.observacion" label="Observacion " hint="Ingresar dato " lazy-rules :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']" />
+            <q-input filled v-model="invent.observacion" label="Observacion " hint="Ingresar dato "  />
                       <div class="row">
           <div class="col-md-6 col-sm-12">
             <q-input filled type="date" v-model="invent.fechavencimiento" label="Fecha Vencimiento  " hint="Ingresar dato " lazy-rules :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']" />
@@ -254,8 +254,7 @@
               v-model="retiro.observacion"
               label="Observacion "
               hint="Ingresar dato "
-              lazy-rules
-              :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']"
+             
             />
 
             <div>

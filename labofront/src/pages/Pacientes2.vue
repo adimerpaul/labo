@@ -494,7 +494,7 @@
           </template>
 
 
-           <template v-if="tipo.label=='COPRAPARASITOLOGICO SIMPLE'">
+           <template v-if="tipo.label=='COPROPARASITOLOGICO SIMPLE'">
            <q-card class="my-card"  flat bordered>
           <q-card-section  class="bg-green-2"> <div class="row">
           <div class="col-6 col-sm-12">COPROPARASITOLOGICO SIMPLE</div>
@@ -530,7 +530,7 @@
            </q-card>
           </template>
 
-           <template v-if="tipo.label=='COPRAPARASITOLOGICO SERIADO'">
+           <template v-if="tipo.label=='COPROPARASITOLOGICO SERIADO'">
            <q-card class="my-card"  flat bordered style="width:100%">
           <q-card-section  class="bg-green-2"> <div class="row">
           <div class="col-6 col-sm-12">COPROPARASITOLOGICO SERIADO</div>
@@ -674,6 +674,85 @@
           <q-card-section  class="bg-blue-2"> <div class="row">
           <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d3" /></div>
           </div></q-card-section>
+          <q-card-section  class="bg-red-2"> <div class="row">
+          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
+
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          </div></q-card-section></q-card>
+          </template>
+
+                       <template v-if="tipo.label=='ALCOHOLEMIA'">
+           <q-card class="my-card"  flat bordered style="width:100%">
+          <q-card-section  class="bg-green-2"> <div class="row">
+          <div class="col-6 col-sm-3"></div>
+          <div class="col-6 col-sm-10 "><q-input dense outlined label="ALCOHOLEMIA"  v-model="laboratorio.d1" />  </div>
+          <div class="col-1 col-sm-1">mg/dl</div>
+          </div></q-card-section>
+
+          <q-card-section  class="bg-red-2"> <div class="row">
+          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
+
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          </div></q-card-section></q-card>
+          </template>
+
+             <template v-if="tipo.label=='REACCION DE WIDAL'">
+           <q-card class="my-card"  flat bordered style="width:100%">
+          <q-card-section  class="bg-green-2"> <div class="row">
+          <div class="col-6 col-sm-12">METODO AGLUTINACION DIRECTA</div>
+          <div class="col-6 col-sm-3">REACCION DE WIDAL</div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="A:"  v-model="laboratorio.d1" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="B:"  v-model="laboratorio.d2" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="H:"  v-model="laboratorio.d3" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="O:"  v-model="laboratorio.d4" /></div>
+          </div></q-card-section>
+          <q-card-section  class="bg-blue-2"> <div class="row">
+          <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d5" /></div>
+          </div></q-card-section>
+          <q-card-section  class="bg-red-2"> <div class="row">
+          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
+
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          </div></q-card-section></q-card>
+          </template>
+
+             <template v-if="tipo.label=='MULTIDROGAS'">
+           <q-card class="my-card"  flat bordered style="width:100%">
+          <q-card-section  class="bg-green-2"> <div class="row">
+          <div class="col-6 col-sm-12">METODO: PRUEBA RAPIDA INMUNOCROMATOTOGRAFICA DOA MULTI 6</div>
+          <div class="col-6 col-sm-6"><q-select :options="['POSITIVO','NEGATIVO']" dense outlined label="Marihuana THC" v-model="laboratorio.d1" /></div>
+          <div class="col-6 col-sm-6"><q-select :options="['POSITIVO','NEGATIVO']" dense outlined label="Metil-N-dioximetanfetamina" v-model="laboratorio.d2" /></div>
+          <div class="col-6 col-sm-6"><q-select :options="['POSITIVO','NEGATIVO']" dense outlined label="Cocaina COC" v-model="laboratorio.d3" /></div>
+          <div class="col-6 col-sm-6"><q-select :options="['POSITIVO','NEGATIVO']" dense outlined label="Benzodiazepinas BZO" v-model="laboratorio.d4" /></div>
+          <div class="col-6 col-sm-6"><q-select :options="['POSITIVO','NEGATIVO']" dense outlined label="Amfetamina AMP" v-model="laboratorio.d5" /></div>
+          <div class="col-6 col-sm-6"></div>
+          <div class="col-6 col-sm-6"><q-select :options="['POSITIVO','NEGATIVO']" dense outlined label="Metanfetamina MET" v-model="laboratorio.d6" /></div>
+          <div class="col-6 col-sm-6"></div>
+          <div class="col-6 col-sm-6"><q-select :options="['POSITIVO','NEGATIVO']" dense outlined label="Morfina MOP" v-model="laboratorio.d7" /></div>
+          <div class="col-6 col-sm-6"></div>
+          </div></q-card-section>
+          <q-card-section  class="bg-blue-2"> <div class="row">
+          <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d8" /></div>
+          </div></q-card-section>
+          <q-card-section  class="bg-red-2"> <div class="row">
+          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
+
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          </div></q-card-section></q-card>
+          </template>
+
+             <template v-if="tipo.label=='HEMOGLOBINA GLICOSILADA'">
+           <q-card class="my-card"  flat bordered style="width:100%">
+          <q-card-section  class="bg-green-2"> <div class="row">
+          <div class="col-6 col-sm-12">HbA1c METODO INMUNOENSAYP DE FLUORESENCIA (FIA)</div>
+          <div class="col-6 col-sm-3"></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="HbA1c"  v-model="laboratorio.d1" /></div>
+          </div></q-card-section>
+
           <q-card-section  class="bg-red-2"> <div class="row">
           <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
 
@@ -1469,71 +1548,71 @@ export default {
 
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
-    doc.text('          CELULAS                      VALOR                   REFERENCIA                   CILINDROS                     VALOR              REFERENCIA',x+6,y+90)
+    doc.text('          CELULAS                      VALOR                   REFERENCIA                   CILINDROS                     VALOR              REFERENCIA',x+6,y+86)
     doc.setFont(undefined, 'normal')
-    doc.text(['Celulas epitaliales','Celulas de transicion','Celulas Clave','Leucocitos','Eritrocitos','Bacterias','CRISTALES'],x+8,y+95)
-    doc.text(['Hasta 2/c','Negativo','Negativo','Hasta 5/c','Hasta 3/c','Escaso',''],x+90,y+95,'center')
-    doc.text(['Hialino','Granuloso','Epiteliales','Eritrocitario','Leucocitario','Cereos','Mixtos'],x+110,y+95,'left')
-    doc.text(['Negativo','Negativo','Negativo','Negativo','Negativo','Negativo','Negativo'],x+185,y+95,'left')
+    doc.text(['Celulas epitaliales','Celulas de transicion','Celulas Clave','Leucocitos','Eritrocitos','Bacterias','CRISTALES'],x+8,y+91)
+    doc.text(['Hasta 2/c','Negativo','Negativo','Hasta 5/c','Hasta 3/c','Escaso',''],x+90,y+91,'center')
+    doc.text(['Hialino','Granuloso','Epiteliales','Eritrocitario','Leucocitario','Cereos','Mixtos'],x+110,y+91,'left')
+    doc.text(['Negativo','Negativo','Negativo','Negativo','Negativo','Negativo','Negativo'],x+185,y+91,'left')
     doc.setTextColor(0,0,0)
-    doc.text([l.d15,l.d17,l.d19,l.d21,l.d23,l.d25],x+50,y+95)
+    doc.text([l.d15,l.d17,l.d19,l.d21,l.d23,l.d25],x+50,y+91)
     doc.setTextColor(0,0,0)
     if(l.d16!='NEGATIVO')
       doc.setTextColor(255,0,0)
-    doc.text(l.d16,x+160,y+95)
+    doc.text(l.d16,x+160,y+91)
         doc.setTextColor(0,0,0)
     if(l.d18!='NEGATIVO')
       doc.setTextColor(255,0,0)
-    doc.text(l.d18,x+160,y+99)
+    doc.text(l.d18,x+160,y+95)
         doc.setTextColor(0,0,0)
     if(l.d20!='NEGATIVO')
       doc.setTextColor(255,0,0)
-    doc.text(l.d20,x+160,y+103)
+    doc.text(l.d20,x+160,y+99)
         doc.setTextColor(0,0,0)
     if(l.d22!='NEGATIVO')
       doc.setTextColor(255,0,0)
-    doc.text(l.d22,x+160,y+107)
+    doc.text(l.d22,x+160,y+103)
         doc.setTextColor(0,0,0)
     if(l.d24!='NEGATIVO')
       doc.setTextColor(255,0,0)
-    doc.text(l.d24,x+160,y+111)
+    doc.text(l.d24,x+160,y+107)
         doc.setTextColor(0,0,0)
     if(l.d26!='NEGATIVO')
       doc.setTextColor(255,0,0)
-    doc.text(l.d26,x+160,y+115)
+    doc.text(l.d26,x+160,y+111)
         doc.setTextColor(0,0,0)
     if(l.d27!='NEGATIVO')
       doc.setTextColor(255,0,0)
-    doc.text(l.d27,x+160,y+119)
+    doc.text(l.d27,x+160,y+115)
     doc.setTextColor(57,73,171)
     doc.setFont(undefined, 'bold')
-    doc.text('OTROS',x+160,y+123)
+    doc.text('OTROS',x+160,y+119)
 
     doc.setTextColor(57,73,171)
     doc.setFont(undefined, 'normal')
-    doc.text(['Uratos amorfos','Fosfato amorfo','Oxalato de calcio','Fosfato de calcio','Acido Urico'],x+8,y+125)
-    doc.text(['Escaso','Escaso','Escaso','Escaso','Escaso'],x+90,y+125,'center')
-    doc.text(['Filamento mucoso','Piocitos','Levaduras','Esporas micoticas'],x+110,y+128,'left')
+    doc.text(['Uratos amorfos','Fosfato amorfo','Oxalato de calcio','Fosfato de calcio','Acido Urico'],x+8,y+121)
+    doc.text(['Escaso','Escaso','Escaso','Escaso','Escaso'],x+90,y+121,'center')
+    doc.text(['Filamento mucoso','Piocitos','Levaduras','Esporas micoticas'],x+110,y+124,'left')
     doc.setTextColor(0,0,0)
-    doc.text([l.d28,l.d29,l.d31,l.d33,l.d35],x+50,y+125)
-    doc.text([l.d30,l.d32,l.d34,l.d36],x+160,y+128)
+    doc.text([l.d28,l.d29,l.d31,l.d33,l.d35],x+50,y+121)
+    doc.text([l.d30,l.d32,l.d34,l.d36],x+160,y+124)
 
     doc.setTextColor(57,73,171)
     doc.setFont(undefined, 'bold')
-    doc.text('OBSERVACIONES:',x+6,y+145)
+    doc.text('OBSERVACIONES:',x+6,y+141)
     doc.setFont(undefined, 'normal')
    // doc.text(l.d37,x+6,y+148,'left')
 
-    doc.rect(x+5, y+142, 205, 25)
+    doc.rect(x+5, y+138, 205, 25)
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
-    doc.text('RESPONSABLE',x+6,y+157)
+    doc.text('RESPONSABLE',x+6,y+153)
     doc.setFont(undefined, 'NORMAL')
-    doc.text(l.responsable,x+8,y+161)
+    doc.text(l.responsable,x+8,y+157)
     doc.setFont(undefined, 'normal')
-    doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+157,'center')
+    doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+153,'center')
     doc.setTextColor(0,0,0)
-    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+157,'left')
+    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+153,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     //window.open(doc.output('bloburl'), '_blank');
@@ -1542,8 +1621,186 @@ export default {
                  window.open(doc.output('bloburl'), '_blank');
        },
        x: x+6,
-       y: y+145,
+       y: y+141,
      })
+    },
+
+
+    alcoholemia(p,l){
+    var doc = new jsPDF('P',undefined,'legal')
+    doc.setFont("arial");
+    doc.setFontSize(10);
+    var img = new Image()
+    img.src = 'img/natividad.jpeg'
+    doc.addImage(img, 'jpg', 5, 2, 70, 20)
+    let x=0
+    let y=0
+    //inicio datos paciete
+    doc.setDrawColor(120);
+    doc.rect(x+5, y+27, 205, 17)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+175, y+8,'center')
+    doc.setTextColor(195,47,47)
+    doc.text('N Registro CODEDLAB 000045',x+150, y+25)
+    doc.setTextColor(211,47,47)
+    doc.text('Form. 007',x+190, y+30)
+    doc.setTextColor(57,73,171)
+    doc.text('ALCOHOLEMIA',x+100, y+30,'center')
+    doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
+    doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'normal')
+    doc.text([p.paciente,l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno,l.tipomuestra],x+70, y+35,'center')
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'bold')
+    doc.text(['EDAD','SEXO'],x+130, y+35)
+    doc.setTextColor(211,47,47)
+    doc.text('N PACIENTE',x+130, y+43)
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(0,0,0)
+        let anio=''
+    if(p.edad==null||p.edad==undefined||p.edad=='')
+    anio=p.tiempo
+    else anio=p.edad
+    doc.text([anio+'',p.sexo,p.id+''],x+160, y+35,'center')
+    doc.setTextColor(57,73,171)
+    //fin datos paciete
+    //inicio datos
+    doc.rect(x+5, y+44, 205, 94)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.rect(x+75, y+55, 50, 7 )
+    doc.setTextColor(0,0,0)
+    doc.text(l.d1+' mg/dl',x+90,y+60)
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(0,0,0)
+
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'bold')
+    doc.text('VALOR REFERENCIAL:',x+30,y+85,'center')
+
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(0,0,0)
+    doc.rect(x+30, y+90, 150, 30)
+    doc.rect(x+30, y+110, 150, 10)
+    doc.text('10 - 50 mg/dl',x+50,y+100,'center')
+    doc.text('Mayor a 50 mg/dl',x+50,y+115,'center')
+    doc.setFont(undefined, 'bold')
+    doc.text('ALCOHOLEMIA NEGATIVO',x+120,y+95,'center')
+    doc.rect(x+80, y+90, 100, 20)
+    doc.setDrawColor(0);
+    doc.setFillColor(255,255,50);
+    doc.rect(x+80, y+110, 100, 10,'FD')
+    doc.text('ALCOHOLEMIA POSITIVO',x+120,y+115,'center')
+    doc.setFillColor(0, 0, 0);
+    doc.setFont(undefined, 'normal')
+    doc.text(['Alcoholes en sangre por la degradacion de alimentos', 'ingerido ricos en Hidratos de Carbono'],x+120,y+100,'center')
+   
+    doc.rect(x+5, y+138, 205, 20)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('RESPONSABLE',x+6,y+145)
+    doc.setFont(undefined, 'NORMAL')
+    doc.text(l.responsable,x+8,y+149)
+    doc.setFont(undefined, 'normal')
+    doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+145,'center')
+    doc.setTextColor(0,0,0)
+    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+145,'left')
+
+    //$( '#docpdf' ).attr('src', doc.output('datauristring'));
+    //window.open(doc.output('bloburl'), '_blank');
+    window.open(doc.output('bloburl'), '_blank');
+
+    },
+
+    widal(p,l){
+    var doc = new jsPDF('P',undefined,'legal')
+    doc.setFont("arial");
+    doc.setFontSize(10);
+    var img = new Image()
+    img.src = 'img/natividad.jpeg'
+    doc.addImage(img, 'jpg', 5, 2, 70, 20)
+    let x=0
+    let y=0
+    //inicio datos paciete
+    doc.setDrawColor(120);
+    doc.rect(x+5, y+27, 205, 17)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+175, y+8,'center')
+    doc.setTextColor(195,47,47)
+    doc.text('N Registro CODEDLAB 000045',x+150, y+25)
+    doc.setTextColor(211,47,47)
+    doc.text('Form. 008',x+190, y+30)
+    doc.setTextColor(57,73,171)
+    doc.text('REACCION DE WIDAL',x+100, y+30,'center')
+    doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
+    doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'normal')
+    doc.text([p.paciente,l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno,l.tipomuestra],x+70, y+35,'center')
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'bold')
+    doc.text(['EDAD','SEXO'],x+130, y+35)
+    doc.setTextColor(211,47,47)
+    doc.text('N PACIENTE',x+130, y+43)
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(0,0,0)
+        let anio=''
+    if(p.edad==null||p.edad==undefined||p.edad=='')
+    anio=p.tiempo
+    else anio=p.edad
+    doc.text([anio+'',p.sexo,p.id+''],x+160, y+35,'center')
+    doc.setTextColor(57,73,171)
+    //fin datos paciete
+    //inicio datos
+    doc.setFontSize(12);
+    doc.rect(x+5, y+44, 205, 94)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('METODO AGLUTINACION DIRECTA',x+20,y+50)
+    doc.text('REACCION DE WIDAL',x+20,y+60)
+    doc.setFontSize(13);
+
+    doc.setFont(undefined, 'bold')
+    doc.text(' A: ',x+80,y+60)
+    doc.text(' B: ',x+80,y+75)
+    doc.text(' H: ',x+80,y+90)
+    doc.text(' O: ',x+80,y+105)
+    doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'normal')
+    doc.text(l.d1,x+90,y+60)
+    doc.text(l.d2,x+90,y+75)
+    doc.text(l.d3,x+90,y+90)
+    doc.text(l.d4,x+90,y+105)
+    doc.setTextColor(0,0,0)
+    doc.setFontSize(11);
+
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'bold')
+    doc.text('OBSERVACIONES:',x+10,y+120,'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(0,0,0)
+    doc.text(l.d5,x+10,y+125,'left')
+    doc.setFontSize(10);
+
+    doc.rect(x+5, y+138, 205, 20)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('RESPONSABLE',x+6,y+145)
+    doc.setFont(undefined, 'NORMAL')
+    doc.text(l.responsable,x+8,y+149)
+    doc.setFont(undefined, 'normal')
+    doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+145,'center')
+    doc.setTextColor(0,0,0)
+    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+145,'left')
+
+    //$( '#docpdf' ).attr('src', doc.output('datauristring'));
+    //window.open(doc.output('bloburl'), '_blank');
+    window.open(doc.output('bloburl'), '_blank');
+
     },
 
             uretral(p,l){
@@ -2546,6 +2803,10 @@ sanguinea(p,l){
         this.ensayo(p,l)
       if(l.tipo_id==13)
         this.embarazo(p,l)
+      if(l.tipo_id==14)
+        this.alcoholemia(p,l)
+      if(l.tipo_id==15)
+        this.widal(p,l)        
        console.log(p)
        console.log(l)
       return false
