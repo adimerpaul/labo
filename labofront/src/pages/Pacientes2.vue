@@ -365,7 +365,10 @@
           <div class="col-6 col-sm-6"><q-input dense outlined label="Acido Urico" v-model="laboratorio.d35" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Esporas micoticas" v-model="laboratorio.d36" /></div>
 
-          <div class="col-6 col-sm-12"><q-input dense outlined label="Observaciones" v-model="laboratorio.d37" /></div>
+          <div class="col-6 col-sm-12">
+          <div>Observaciones</div>
+          <q-editor v-model="laboratorio.d37" min-height="3rem" />
+          </div>
           </div></q-card-section>
       <q-card-section  class="bg-red-2"> <div class="row">
 
@@ -1353,7 +1356,34 @@ export default {
     doc.text(['Negativo','Negativo','Negativo','Negativo','Negativo','Normal','Negativo'],x+185,y+58,'left')
     doc.setTextColor(0,0,0)
     doc.text([l.d1,l.d3,l.d5,l.d7,l.d9,l.d11,l.d13],x+50,y+58)
-    doc.text([l.d2,l.d4,l.d6,l.d8,l.d10,l.d12,l.d14],x+160,y+58)
+    doc.setTextColor(0,0,0)
+    if(l.d2!='NEGATIVO')
+      doc.setTextColor(255,0,0)
+    doc.text(l.d2,x+160,y+58)
+        doc.setTextColor(0,0,0)
+    if(l.d4!='NEGATIVO')
+      doc.setTextColor(255,0,0)
+    doc.text(l.d4,x+160,y+62)
+        doc.setTextColor(0,0,0)
+    if(l.d6!='NEGATIVO')
+      doc.setTextColor(255,0,0)
+    doc.text(l.d6,x+160,y+66)
+        doc.setTextColor(0,0,0)
+    if(l.d8!='NEGATIVO')
+      doc.setTextColor(255,0,0)
+    doc.text(l.d8,x+160,y+70)
+        doc.setTextColor(0,0,0)
+    if(l.d10!='NEGATIVO')
+      doc.setTextColor(255,0,0)
+    doc.text(l.d10,x+160,y+74)
+        doc.setTextColor(0,0,0)
+    if(l.d12!='NORMAL')
+      doc.setTextColor(255,0,0)
+    doc.text(l.d12,x+160,y+78)
+        doc.setTextColor(0,0,0)
+    if(l.d14!='NEGATIVO')
+      doc.setTextColor(255,0,0)
+    doc.text(l.d14,x+160,y+82)
     doc.setTextColor(57,73,171)
     doc.text('SEDIMENTO: EXAMEN MICROSCOPICO',x+75,y+87,'center')
 
@@ -1367,7 +1397,37 @@ export default {
     doc.text(['Negativo','Negativo','Negativo','Negativo','Negativo','Negativo','Negativo'],x+185,y+95,'left')
     doc.setTextColor(0,0,0)
     doc.text([l.d15,l.d17,l.d19,l.d21,l.d23,l.d25],x+50,y+95)
-    doc.text([l.d16,l.d18,l.d20,l.d22,l.d24,l.d26,l.d27,'OTROS'],x+160,y+95)
+    doc.setTextColor(0,0,0)
+    if(l.d16!='NEGATIVO')
+      doc.setTextColor(255,0,0)
+    doc.text(l.d16,x+160,y+95)
+        doc.setTextColor(0,0,0)
+    if(l.d18!='NEGATIVO')
+      doc.setTextColor(255,0,0)
+    doc.text(l.d18,x+160,y+99)
+        doc.setTextColor(0,0,0)
+    if(l.d20!='NEGATIVO')
+      doc.setTextColor(255,0,0)
+    doc.text(l.d20,x+160,y+103)
+        doc.setTextColor(0,0,0)
+    if(l.d22!='NEGATIVO')
+      doc.setTextColor(255,0,0)
+    doc.text(l.d22,x+160,y+107)
+        doc.setTextColor(0,0,0)
+    if(l.d24!='NEGATIVO')
+      doc.setTextColor(255,0,0)
+    doc.text(l.d24,x+160,y+111)
+        doc.setTextColor(0,0,0)
+    if(l.d26!='NEGATIVO')
+      doc.setTextColor(255,0,0)
+    doc.text(l.d26,x+160,y+115)
+        doc.setTextColor(0,0,0)
+    if(l.d27!='NEGATIVO')
+      doc.setTextColor(255,0,0)
+    doc.text(l.d27,x+160,y+119)
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'bold')
+    doc.text('OTROS',x+160,y+123)
 
     doc.setTextColor(57,73,171)
     doc.setFont(undefined, 'normal')
@@ -1382,21 +1442,28 @@ export default {
     doc.setFont(undefined, 'bold')
     doc.text('OBSERVACIONES:',x+6,y+145)
     doc.setFont(undefined, 'normal')
-    doc.text(l.d37,x+6,y+148,'left')
+   // doc.text(l.d37,x+6,y+148,'left')
 
-    doc.rect(x+5, y+142, 205, 20)
+    doc.rect(x+5, y+142, 205, 25)
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
-    doc.text('RESPONSABLE',x+6,y+152)
+    doc.text('RESPONSABLE',x+6,y+157)
     doc.setFont(undefined, 'NORMAL')
-    doc.text(l.responsable,x+8,y+156)
+    doc.text(l.responsable,x+8,y+161)
     doc.setFont(undefined, 'normal')
-    doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+152,'center')
+    doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+157,'center')
     doc.setTextColor(0,0,0)
-    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+152,'left')
+    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+157,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
-    window.open(doc.output('bloburl'), '_blank');
+    //window.open(doc.output('bloburl'), '_blank');
+    doc.html( '<div style="font-size: 3px;width: 300px">'+l.d37+'</div>' , {
+       callback: function (doc) {
+                 window.open(doc.output('bloburl'), '_blank');
+       },
+       x: x+6,
+       y: y+145,
+     })
     },
 
             uretral(p,l){
@@ -2460,6 +2527,11 @@ sanguinea(p,l){
         total=parseFloat(this.laboratorio.d18) + parseFloat(this.laboratorio.d20) + parseFloat(this.laboratorio.d22) + parseFloat(this.laboratorio.d24) + parseFloat(this.laboratorio.d26)
         + parseFloat(this.laboratorio.d28) + parseFloat(this.laboratorio.d30)
         if(total!=100 )
+                 this.$q.notify({
+              message: 'No suma el 100 % ',
+              icon: 'info',
+             color:'red'
+            })
           return false;
           }
       this.$axios.post(process.env.API+'/laboratorio',this.laboratorio).then(res=> {
