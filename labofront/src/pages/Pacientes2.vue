@@ -1034,9 +1034,11 @@ export default {
     // doc.text(l.d9+'',x+50,y+100)
 
     doc.setTextColor(57,73,171)
+        doc.setFont(undefined, 'bold')
     doc.text('OBSERVACIONES',x+8,y+120)
-    doc.text(l.d10,x+8,y+125)
+    doc.setTextColor(0,0,0)
     doc.setFont(undefined, 'normal')
+    doc.text(l.d10,x+8,y+125)
     doc.setTextColor(0,0,0)
 
     doc.setFont(undefined, 'bold')
@@ -1052,8 +1054,10 @@ export default {
     doc.setTextColor(57,73,171)
     doc.text('RESPONSABLE',x+6,y+140)
     doc.setFont(undefined, 'NORMAL')
+    doc.setTextColor(0,0,0)
     doc.text(l.responsable,x+8,y+145)
     doc.setFont(undefined, 'normal')
+    doc.setTextColor(57,73,171)
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+140,'center')
     doc.setTextColor(0,0,0)
     doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+140,'left')
@@ -1165,17 +1169,20 @@ export default {
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
     doc.text('RESPONSABLE',x+205,y+190,'left')
+    doc.setTextColor(0,0,0)
     doc.text(l.responsable,x+205,y+195,'left')
+    doc.setTextColor(57,73,171)
     doc.setFontSize(10);
     doc.setLineHeightFactor(1.5)
     doc.text(['Fecha toma de Muestra','Hora toma Muestra','Fecha Entrega de Resultado'],x+280,y+190,'left')
+    doc.setTextColor(0,0,0)
     doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+330,y+190,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
                     window.open(doc.output('bloburl'), '_blank');
       },
 
-    lgmserologia(p,l){
+   lgmserologia(p,l){
           var doc = new jsPDF('P',undefined,'legal')
     doc.setFont("arial");
     doc.setFontSize(10);
@@ -1224,8 +1231,8 @@ export default {
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
     doc.text('               PRUEBA ANTICUERPOS CUANTITATIVOS ANTI SARS COV-2 lg M / lg G',x+50,y+52)
+    doc.text('      METODO: INMUNOENSAYO DE FLUORECENCIA (FIA)                                      Valor de Referencia',x+8,y+58)
     doc.setFont(undefined, 'normal')
-    doc.text('      METODO: INMUNOENSAYO DE FLUORECENCIA (FIA)                                Valor de Referencia',x+8,y+58)
     let vallggm1='',vallggm2='',obs1='',obs2=''
      if( parseFloat(l.d1) < 0.9) {vallggm1=l.d1
      obs1=l.d2}
@@ -1233,15 +1240,20 @@ export default {
             obs2=l.d2
             }
     doc.text(['lgM','','lgG'],x+30,y+63)
+    doc.setTextColor(0,0,0)
     doc.text([vallggm1,vallggm2,l.d3],x+70,y+63)
     doc.text([obs1,obs2,l.d4],x+100,y+63)
+    doc.setTextColor(57,73,171)
     doc.text(['menor a 0.9 NEGATIVO PARA lgG/lgM','0.9 menor igual & mayor 1.1 INDETERMINADO','mayor igual 1.1 POSITIVO lgG/lgM'],x+170,y+63,'center')
+    doc.setFont(undefined, 'bold')
     doc.text('                        INTERPRETACION DE RESULTADOS',x+50,y+80)
 
 
 
     doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'normal')
     doc.text('              lgM                lgG                         INTERPRETACION                          COMENTARIO',x+5,y+85)
+    doc.setFont(undefined, 'normal')
     doc.addImage(imgmenos, 'jpeg', 20, 90, 5, 5)
     doc.addImage(imgmenos, 'jpeg', 40, 90, 5, 5)
     doc.addImage(imgmas, 'jpeg', 20, 95, 5, 5)
@@ -1260,20 +1272,22 @@ export default {
     doc.text(['NOTA: Las pruebas rapidas para COVID-19 NO SON CONFIRMATORIAS, en caso de salir positivo alguno de los anticuerpo , se recomienda',' una segunda toma de muestra con la Tecnica de HISOPADO NASOFARINGEO para RT - PCR y asi confirmar su DIAGNOSTICO','','Todas las personas producimos anticuerpos a diferente velocidad dependiendo del agente patogeno y nuestra genetica que es lo que determina la ','funcionalidad de nuestro Sistema Inmunologico',
     '','Los Resultados deben ser interpretados en funcion de la Clinica del paciente y dias de evolucion de la enfermedad'],x+8,y+115,'left')
 
-    doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
-    doc.setFont(undefined, 'normal')
+    doc.setFont(undefined, 'bold')
     doc.text('OBSERVACIONES',x+8,y+142)
-    doc.text(l.d5,x+8,y+145)
+    doc.setFont(undefined, 'normal')
     doc.setTextColor(0,0,0)
+    doc.text(l.d5,x+8,y+145)
 
     doc.rect(x+5, y+147, 205, 15)
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
     doc.text('RESPONSABLE',x+6,y+150)
     doc.setFont(undefined, 'NORMAL')
+    doc.setTextColor(0,0,0)
     doc.text(l.responsable,x+8,y+155)
     doc.setFont(undefined, 'normal')
+    doc.setTextColor(57,73,171)
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+150,'center')
     doc.setTextColor(0,0,0)
     doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+150,'left')
@@ -1363,8 +1377,10 @@ export default {
     doc.setTextColor(57,73,171)
     doc.text('RESPONSABLE',x+6,y+140)
     doc.setFont(undefined, 'NORMAL')
+    doc.setTextColor(0,0,0)
     doc.text(l.responsable,x+8,y+145)
     doc.setFont(undefined, 'normal')
+    doc.setTextColor(57,73,171)
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+140,'center')
     doc.setTextColor(0,0,0)
     doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+140,'left')
@@ -1454,8 +1470,10 @@ export default {
     doc.setTextColor(57,73,171)
     doc.text('RESPONSABLE',x+6,y+145)
     doc.setFont(undefined, 'NORMAL')
+    doc.setTextColor(0,0,0)
     doc.text(l.responsable,x+8,y+150)
     doc.setFont(undefined, 'normal')
+    doc.setTextColor(57,73,171)
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+145,'center')
     doc.setTextColor(0,0,0)
     doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+145,'left')
@@ -2072,8 +2090,10 @@ export default {
     doc.setTextColor(57,73,171)
     doc.text('RESPONSABLE',x+6,y+140)
     doc.setFont(undefined, 'NORMAL')
+    doc.setTextColor(0,0,0)
     doc.text(l.responsable,x+8,y+145)
     doc.setFont(undefined, 'normal')
+    doc.setTextColor(57,73,171)
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+145,'center')
     doc.setTextColor(0,0,0)
     doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+145,'left')
@@ -2144,8 +2164,10 @@ export default {
     doc.setTextColor(57,73,171)
     doc.text('RESPONSABLE',x+6,y+140)
     doc.setFont(undefined, 'NORMAL')
+    doc.setTextColor(0,0,0)
     doc.text(l.responsable,x+8,y+145)
     doc.setFont(undefined, 'normal')
+    doc.setTextColor(57,73,171)
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+145,'center')
     doc.setTextColor(0,0,0)
     doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+145,'left')
@@ -2359,6 +2381,7 @@ sanguinea(p,l){
     doc.setFont(undefined, 'bold')
     doc.text('OBSERVACIONES:',x+6,y+125)
     doc.setFont(undefined, 'normal')
+      doc.setTextColor(0,0,0)
     doc.text(l.d31,x+6,y+128,'left')
 
     doc.rect(x+5, y+122, 205, 25)
@@ -2895,15 +2918,20 @@ sanguinea(p,l){
 
 
     doc.rect(x+195, y+160, 155, 10)
+    doc.setTextColor(57,73,171)
     doc.text('OBSERVACION',x+200,y+164)
+    doc.setTextColor(0,0,0)
     doc.text(l.d2,x+200,y+168)
     doc.rect(x+195, y+170, 155, 30)
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
     doc.text('RESPONSABLE',x+205,y+175,'left')
+    doc.setTextColor(0,0,0)
     doc.text(l.responsable,x+205,y+180,'left')
+    doc.setTextColor(57,73,171)
     doc.setFontSize(10);
     doc.text(['Fecha toma de Muestra','Hora toma Muestra','Fecha Entrega de Resultado'],x+280,y+175,'left')
+    doc.setTextColor(0,0,0)
     doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+325,y+175,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
@@ -2965,7 +2993,7 @@ sanguinea(p,l){
     doc.setTextColor(57,73,171)
     doc.setFont(undefined, 'bold')
     doc.text('OBSERVACIONES:',x+20,y+90)
-    doc.setTextColor(57,73,171)
+    doc.setTextColor(0,0,0)
     doc.setFont(undefined, 'normal')
     doc.text(l.d3,x+30,y+95,'left')
 
@@ -2974,9 +3002,12 @@ sanguinea(p,l){
     doc.setTextColor(57,73,171)
     doc.text('RESPONSABLE',x+6,y+110)
     doc.setFont(undefined, 'NORMAL')
+    doc.setTextColor(0,0,0)
     doc.text(l.responsable,x+8,y+115)
     doc.setFont(undefined, 'normal')
+    doc.setTextColor(57,73,171)
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+110,'center')
+    doc.setTextColor(0,0,0)
     doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+110,'left')
     doc.setTextColor(0,0,0)
 
