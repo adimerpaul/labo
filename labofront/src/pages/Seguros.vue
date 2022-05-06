@@ -172,7 +172,7 @@ export default {
           var hoy=moment()
           var anios=hoy.diff(nacimiento,"years")
           this.paciente.tiempo=anios
-          this.paciente.paciente=this.paciente.paterno+' '+this.paciente.materno+' '+this.paciente.nombre
+          this.paciente.paciente=this.paciente.nombre+' '+this.paciente.paterno+' '+this.paciente.materno
       let p=this.paciente
       //console.log(this.paciente)
       //return false

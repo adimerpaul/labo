@@ -3281,7 +3281,7 @@ sanguinea(p,l){
           var hoy=moment()
           var anios=hoy.diff(nacimiento,"years")
           d.tiempo=anios
-          d.paciente=r.paterno+' '+r.materno+' '+r.nombre
+          d.paciente=r.nombre+''+r.paterno+' '+r.materno
           this.pacientes.push(d)
         })
       })
