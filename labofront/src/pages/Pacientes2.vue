@@ -228,7 +228,7 @@
           <div class="col-6 col-sm-6"><q-input dense outlined label="Grupo Factor" v-model="laboratorio.d12" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="C.Hb.C.M." v-model="laboratorio.d13" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Reticulocitos" v-model="laboratorio.d14" /></div>
-          <div class="col-6 col-sm-6"><q-input dense outlined label="Globolus Blancos" v-model="laboratorio.d15" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Globulos Blancos" v-model="laboratorio.d15" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="IPR" v-model="laboratorio.d16" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Plaquetas" v-model="laboratorio.d17" /></div>
           <div class="col-6 col-sm-6"></div></div>
@@ -3281,7 +3281,7 @@ sanguinea(p,l){
           var hoy=moment()
           var anios=hoy.diff(nacimiento,"years")
           d.tiempo=anios
-          d.paciente=r.nombre+''+r.paterno+' '+r.materno
+          d.paciente=r.nombre+' '+r.paterno+' '+r.materno
           this.pacientes.push(d)
         })
       })
