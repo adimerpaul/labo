@@ -2668,6 +2668,7 @@ sanguinea(p,l){
 
       doc.setTextColor(0,0,0)
     if(parseFloat(l.d11)<27.0 || parseFloat(l.d11)>31.0)
+      doc.setTextColor(255,0,0)
       doc.text(l.d11,x+226,y+100,'center')
 
       doc.setTextColor(0,0,0)
