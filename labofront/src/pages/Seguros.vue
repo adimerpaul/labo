@@ -250,7 +250,7 @@ export default {
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.id+''],x+160, y+35,'center')
+    doc.text([anio+'',p.sexo,p.nro+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -371,7 +371,7 @@ export default {
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.id+''],x+337, y+35,'center')
+    doc.text([anio+'',p.sexo,p.nro+''],x+337, y+35,'center')
     doc.setTextColor(211,47,47)
     doc.setTextColor(57,73,171)
     //fin datos paciete
@@ -468,7 +468,7 @@ export default {
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.id+''],x+160, y+35,'center')
+    doc.text([anio+'',p.sexo,p.nro+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -578,7 +578,7 @@ export default {
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.id+''],x+160, y+35,'center')
+    doc.text([anio+'',p.sexo,p.nro+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -671,7 +671,7 @@ export default {
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.id+''],x+160, y+35,'center')
+    doc.text([anio+'',p.sexo,p.nro+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -764,7 +764,7 @@ export default {
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.id+''],x+160, y+35,'center')
+    doc.text([anio+'',p.sexo,p.nro+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -926,7 +926,7 @@ export default {
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.id+''],x+160, y+35,'center')
+    doc.text([anio+'',p.sexo,p.nro+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -1015,7 +1015,7 @@ export default {
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.id+''],x+160, y+35,'center')
+    doc.text([anio+'',p.sexo,p.nro+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -1103,7 +1103,7 @@ export default {
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.id+''],x+160, y+35,'center')
+    doc.text([anio+'',p.sexo,p.nro+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -1223,7 +1223,7 @@ export default {
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.id+''],x+160, y+35,'center')
+    doc.text([anio+'',p.sexo,p.nro+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -1310,7 +1310,7 @@ export default {
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.id+''],x+160, y+35,'center')
+    doc.text([anio+'',p.sexo,p.nro+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -1384,7 +1384,7 @@ export default {
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.id+''],x+160, y+35,'center')
+    doc.text([anio+'',p.sexo,p.nro+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -1458,7 +1458,7 @@ sanguinea(p,l){
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.id+''],x+160, y+35,'center')
+    doc.text([anio+'',p.sexo,p.nro+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -1847,7 +1847,7 @@ sanguinea(p,l){
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.id+''],x+337, y+35,'center')
+    doc.text([anio+'',p.sexo,p.nro+''],x+337, y+35,'center')
     doc.setTextColor(57,73,171)
     doc.text('CONTADOR Hematologico MINDRAY BC 5130',x+300, y+47,'center')
     //fin datos paciete
@@ -2019,7 +2019,7 @@ sanguinea(p,l){
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.id+''],x+337, y+35,'center')
+    doc.text([anio+'',p.sexo,p.nro+''],x+337, y+35,'center')
     doc.setTextColor(211,47,47)
     doc.setTextColor(57,73,171)
     //fin datos paciete
@@ -2110,7 +2110,7 @@ sanguinea(p,l){
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.id+''],x+337, y+35,'center')
+    doc.text([anio+'',p.sexo,p.nro+''],x+337, y+35,'center')
     doc.setTextColor(211,47,47)
     doc.setTextColor(57,73,171)
     //fin datos paciete
@@ -2202,7 +2202,7 @@ sanguinea(p,l){
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.id+''],x+160, y+35,'center')
+    doc.text([anio+'',p.sexo,p.nro+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     doc.text('PRUEBA RAPIDA INMUNOCROMATOGRAFICA',x+100, y+47,'center')
     //fin datos paciete

@@ -40,6 +40,7 @@ class PacienteController extends Controller
     {
         $paciente=new Paciente;
         $paciente->ci=$request->ci;
+        $paciente->nro=$request->nro==null?'':$request->nro;
         $paciente->nombre=strtoupper($request->nombre);
         $paciente->paterno=strtoupper($request->paterno);
         $paciente->materno=strtoupper($request->materno);
@@ -85,6 +86,7 @@ class PacienteController extends Controller
     {
         $paciente=Paciente::find($request->id);
         $paciente->ci=$request->ci;
+        $paciente->nro=$request->nro==null?'':$request->nro;
         $paciente->nombre=strtoupper($request->nombre);
         $paciente->paterno=strtoupper($request->paterno);
         $paciente->materno=strtoupper($request->materno);

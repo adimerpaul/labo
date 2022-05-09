@@ -11,6 +11,7 @@ class Paciente extends Model
     use HasFactory;
     protected $fillable=[
         'ci',
+        'nro',
     'nombre',
     'paterno',
     'materno',
