@@ -1115,7 +1115,7 @@ export default {
     doc.setTextColor(57,73,171)
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+140,'center')
     doc.setTextColor(0,0,0)
-    doc.text([date.formatDate(l.fechatoma,'DD-MM-YYYY'),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+140,'left')
+    doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+140,'left')
      // doc.text(l.d3,x+50,y+58)
      doc.html( '<div style="font-size: 3px;width: 500px">'+l.d3+'</div>' , {
        callback: function (doc) {
@@ -1231,7 +1231,7 @@ export default {
     doc.setLineHeightFactor(1.5)
     doc.text(['Fecha toma de Muestra','Hora toma Muestra','Fecha Entrega de Resultado'],x+280,y+190,'left')
     doc.setTextColor(0,0,0)
-    doc.text([date.formatDate(l.fechatoma,'DD-MM-YYYY'),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+330,y+190,'left')
+    doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+330,y+190,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
                     window.open(doc.output('bloburl'), '_blank');
@@ -1345,7 +1345,7 @@ export default {
     doc.setTextColor(57,73,171)
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+150,'center')
     doc.setTextColor(0,0,0)
-    doc.text([date.formatDate(l.fechatoma,'DD-MM-YYYY'),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+150,'left')
+    doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+150,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     window.open(doc.output('bloburl'), '_blank');
@@ -1438,7 +1438,7 @@ export default {
     doc.setTextColor(57,73,171)
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+140,'center')
     doc.setTextColor(0,0,0)
-    doc.text([date.formatDate(l.fechatoma,'DD-MM-YYYY'),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+140,'left')
+    doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+140,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     window.open(doc.output('bloburl'), '_blank');
@@ -1531,7 +1531,7 @@ export default {
     doc.setTextColor(57,73,171)
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+145,'center')
     doc.setTextColor(0,0,0)
-    doc.text([date.formatDate(l.fechatoma,'DD-MM-YYYY'),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
+    doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     window.open(doc.output('bloburl'), '_blank');
@@ -1685,7 +1685,7 @@ export default {
     doc.setFont(undefined, 'normal')
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+153,'center')
     doc.setTextColor(0,0,0)
-    doc.text([date.formatDate(l.fechatoma,'DD-MM-YYYY'),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+153,'left')
+    doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+153,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     //window.open(doc.output('bloburl'), '_blank');
@@ -1770,7 +1770,7 @@ export default {
     doc.setFillColor(0, 0, 0);
     doc.setFont(undefined, 'normal')
     doc.text(['Alcoholes en sangre por la degradacion de alimentos', 'ingerido ricos en Hidratos de Carbono'],x+120,y+100,'center')
-   
+
     doc.rect(x+5, y+138, 205, 20)
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
@@ -1780,7 +1780,7 @@ export default {
     doc.setFont(undefined, 'normal')
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+145,'center')
     doc.setTextColor(0,0,0)
-    doc.text([date.formatDate(l.fechatoma,'DD-MM-YYYY'),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
+    doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     //window.open(doc.output('bloburl'), '_blank');
@@ -1868,7 +1868,7 @@ export default {
     doc.setFont(undefined, 'normal')
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+145,'center')
     doc.setTextColor(0,0,0)
-    doc.text([date.formatDate(l.fechatoma,'DD-MM-YYYY'),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
+    doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     //window.open(doc.output('bloburl'), '_blank');
@@ -1987,7 +1987,7 @@ export default {
     doc.setFont(undefined, 'normal')
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+145,'center')
     doc.setTextColor(0,0,0)
-    doc.text([date.formatDate(l.fechatoma,'DD-MM-YYYY'),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
+    doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     //window.open(doc.output('bloburl'), '_blank');
@@ -2075,7 +2075,7 @@ export default {
     doc.setFont(undefined, 'normal')
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+145,'center')
     doc.setTextColor(0,0,0)
-    doc.text([date.formatDate(l.fechatoma,'DD-MM-YYYY'),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
+    doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     //window.open(doc.output('bloburl'), '_blank');
@@ -2151,7 +2151,7 @@ export default {
     doc.setTextColor(57,73,171)
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+145,'center')
     doc.setTextColor(0,0,0)
-    doc.text([date.formatDate(l.fechatoma,'DD-MM-YYYY'),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
+    doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     window.open(doc.output('bloburl'), '_blank');
@@ -2225,7 +2225,7 @@ export default {
     doc.setTextColor(57,73,171)
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+145,'center')
     doc.setTextColor(0,0,0)
-    doc.text([date.formatDate(l.fechatoma,'DD-MM-YYYY'),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
+    doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     window.open(doc.output('bloburl'), '_blank');
@@ -2448,7 +2448,7 @@ sanguinea(p,l){
     doc.setFont(undefined, 'normal')
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+135,'center')
     doc.setTextColor(0,0,0)
-    doc.text([date.formatDate(l.fechatoma,'DD-MM-YYYY'),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+135,'left')
+    doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+135,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     window.open(doc.output('bloburl'), '_blank');
@@ -2807,7 +2807,7 @@ sanguinea(p,l){
     doc.text('RESPONSABLE',x+205,y+190,'left')
     doc.text(l.responsable,x+215,y+195,'center')
     doc.text(['Fecha de Toma de Muestra','Hora de Toma de Muestra:','Fecha de Entrega Resultado'],x+265,y+190,'left')
-    doc.text([date.formatDate(l.fechatoma,'DD-MM-YYYY'),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+310,y+190,'left')
+    doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+310,y+190,'left')
    // doc.text(l.responsable,x+235,y+178,'right')
 
     // doc.html('<div style="border:1px solid black;width: 50px;font-size: 3px"><b><i>Adimer paul chambi ajata</i></b></div>', {
@@ -2906,7 +2906,7 @@ sanguinea(p,l){
     doc.text(l.responsable,x+205,y+170,'left')
     doc.setFontSize(10);
     doc.text(['Fecha toma de Muestra','Hora toma Muestra','Fecha Entrega de Resultado'],x+280,y+165,'left')
-    doc.text([date.formatDate(l.fechatoma,'DD-MM-YYYY'),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+330,y+165,'left')
+    doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+330,y+165,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     window.open(doc.output('bloburl'), '_blank');
@@ -2998,7 +2998,7 @@ sanguinea(p,l){
     doc.setFontSize(10);
     doc.text(['Fecha toma de Muestra','Hora toma Muestra','Fecha Entrega de Resultado'],x+280,y+175,'left')
     doc.setTextColor(0,0,0)
-    doc.text([date.formatDate(l.fechatoma,'DD-MM-YYYY'),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+325,y+175,'left')
+    doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+325,y+175,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     window.open(doc.output('bloburl'), '_blank');
@@ -3074,7 +3074,7 @@ sanguinea(p,l){
     doc.setTextColor(57,73,171)
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+110,'center')
     doc.setTextColor(0,0,0)
-    doc.text([date.formatDate(l.fechatoma,'DD-MM-YYYY'),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+110,'left')
+    doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+110,'left')
     doc.setTextColor(0,0,0)
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
@@ -3110,11 +3110,11 @@ sanguinea(p,l){
       if(l.tipo_id==14)
         this.alcoholemia(p,l)
       if(l.tipo_id==15)
-        this.widal(p,l)  
+        this.widal(p,l)
       if(l.tipo_id==16)
-        this.multidrogas(p,l)    
+        this.multidrogas(p,l)
       if(l.tipo_id==17)
-        this.glicosilada(p,l)      
+        this.glicosilada(p,l)
        console.log(p)
        console.log(l)
       return false
