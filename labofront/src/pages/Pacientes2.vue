@@ -1058,7 +1058,7 @@ export default {
     doc.setTextColor(57,73,171)
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+140,'center')
     doc.setTextColor(0,0,0)
-    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+140,'left')
+    doc.text([date.formatDate(l.fechatoma,'DD-MM-YYYY'),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+140,'left')
      // doc.text(l.d3,x+50,y+58)
      doc.html( '<div style="font-size: 3px;width: 500px">'+l.d3+'</div>' , {
        callback: function (doc) {
@@ -1174,7 +1174,7 @@ export default {
     doc.setLineHeightFactor(1.5)
     doc.text(['Fecha toma de Muestra','Hora toma Muestra','Fecha Entrega de Resultado'],x+280,y+190,'left')
     doc.setTextColor(0,0,0)
-    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+330,y+190,'left')
+    doc.text([date.formatDate(l.fechatoma,'DD-MM-YYYY'),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+330,y+190,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
                     window.open(doc.output('bloburl'), '_blank');
@@ -1288,7 +1288,7 @@ export default {
     doc.setTextColor(57,73,171)
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+150,'center')
     doc.setTextColor(0,0,0)
-    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+150,'left')
+    doc.text([date.formatDate(l.fechatoma,'DD-MM-YYYY'),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+150,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     window.open(doc.output('bloburl'), '_blank');
@@ -1381,7 +1381,7 @@ export default {
     doc.setTextColor(57,73,171)
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+140,'center')
     doc.setTextColor(0,0,0)
-    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+140,'left')
+    doc.text([date.formatDate(l.fechatoma,'DD-MM-YYYY'),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+140,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     window.open(doc.output('bloburl'), '_blank');
@@ -1474,7 +1474,7 @@ export default {
     doc.setTextColor(57,73,171)
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+145,'center')
     doc.setTextColor(0,0,0)
-    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+145,'left')
+    doc.text([date.formatDate(l.fechatoma,'DD-MM-YYYY'),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     window.open(doc.output('bloburl'), '_blank');
@@ -1628,7 +1628,7 @@ export default {
     doc.setFont(undefined, 'normal')
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+153,'center')
     doc.setTextColor(0,0,0)
-    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+153,'left')
+    doc.text([date.formatDate(l.fechatoma,'DD-MM-YYYY'),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+153,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     //window.open(doc.output('bloburl'), '_blank');
@@ -1723,7 +1723,7 @@ export default {
     doc.setFont(undefined, 'normal')
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+145,'center')
     doc.setTextColor(0,0,0)
-    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+145,'left')
+    doc.text([date.formatDate(l.fechatoma,'DD-MM-YYYY'),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     //window.open(doc.output('bloburl'), '_blank');
@@ -1811,7 +1811,7 @@ export default {
     doc.setFont(undefined, 'normal')
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+145,'center')
     doc.setTextColor(0,0,0)
-    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+145,'left')
+    doc.text([date.formatDate(l.fechatoma,'DD-MM-YYYY'),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     //window.open(doc.output('bloburl'), '_blank');
@@ -1930,7 +1930,7 @@ export default {
     doc.setFont(undefined, 'normal')
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+145,'center')
     doc.setTextColor(0,0,0)
-    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+145,'left')
+    doc.text([date.formatDate(l.fechatoma,'DD-MM-YYYY'),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     //window.open(doc.output('bloburl'), '_blank');
@@ -2018,7 +2018,7 @@ export default {
     doc.setFont(undefined, 'normal')
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+145,'center')
     doc.setTextColor(0,0,0)
-    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+145,'left')
+    doc.text([date.formatDate(l.fechatoma,'DD-MM-YYYY'),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     //window.open(doc.output('bloburl'), '_blank');
@@ -2094,7 +2094,7 @@ export default {
     doc.setTextColor(57,73,171)
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+145,'center')
     doc.setTextColor(0,0,0)
-    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+145,'left')
+    doc.text([date.formatDate(l.fechatoma,'DD-MM-YYYY'),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     window.open(doc.output('bloburl'), '_blank');
@@ -2168,7 +2168,7 @@ export default {
     doc.setTextColor(57,73,171)
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+145,'center')
     doc.setTextColor(0,0,0)
-    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+145,'left')
+    doc.text([date.formatDate(l.fechatoma,'DD-MM-YYYY'),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     window.open(doc.output('bloburl'), '_blank');
@@ -2391,7 +2391,7 @@ sanguinea(p,l){
     doc.setFont(undefined, 'normal')
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+135,'center')
     doc.setTextColor(0,0,0)
-    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+135,'left')
+    doc.text([date.formatDate(l.fechatoma,'DD-MM-YYYY'),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+135,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     window.open(doc.output('bloburl'), '_blank');
@@ -2687,13 +2687,23 @@ sanguinea(p,l){
 
     doc.setTextColor(57,73,171)
     doc.text(['x10^(12)/L',' ','g/L',' ','L/L',' ','mm.',' ','ft.',' ','pg.',' ','%',' ','x10^(9)L',' ','x10^(9)L'],x+240,y+60,'center')
-    doc.text(['Varon 5.1-5.7x10^12/L','Mujer 4.8-5.4x10^12/L','Varon 151-175 g/L','Mujer 141-165 g/L','Varon 0.51-0.57 L/L','Mujer 0.46-0.53 L/L','Varon 15 mm/hora','Mujer 20mm/hora','Varon 83.0-97.0 ft','','27.0-31.0 pg.','','32-36%','','4.5-10.5x10^(9)/L','','105-400x10^(9)L'],x+265,y+60,'center')
+    doc.setFontSize(6);
+    doc.text(['Varon 5.1-5.7x10^12/L','Mujer 4.8-5.4x10^12/L'],x+265,y+60,'center')
+    doc.text(['Varon 151-175 g/L','Mujer 141-165 g/L'],x+265,y+68,'center')
+    doc.text(['Varon 0.51-0.57 L/L','Mujer 0.46-0.53 L/L'],x+265,y+76,'center')
+    doc.text(['Varon 15 mm/hora','Mujer 20mm/hora'],x+265,y+84,'center')
+    doc.text(['Varon 83.0-97.0 ft'],x+265,y+92,'center')
+    doc.text(['27.0-31.0 pg.'],x+265,y+100,'center')
+    doc.text(['32-36%'],x+265,y+108,'center')
+    doc.text(['4.5-10.5x10^(9)/L'],x+265,y+116,'center')
+    doc.text(['105-400x10^(9)L'],x+265,y+125,'center')
+    doc.setFontSize(10);
 
     doc.setTextColor(57,73,171)
     doc.setFont(undefined, 'bold')
     doc.text('REFERENCIA',x+325,y+55)
     doc.setFont(undefined, 'normal')
-    doc.text(['Tiempo cuagulacion',' ','Tiempo sangria',' ','Tiempo Protrombina',' ','% Actividad',' ','INR',' ','Grupo factor',' ','Reticulocitos',' ','IPR'],x+296,y+60,'center')
+    doc.text(['Tiempo','cuagulacion','Tiempo','sangria','Tiempo','Protrombina','% Actividad',' ','INR',' ','Grupo factor',' ','Reticulocitos',' ','IPR'],x+296,y+60,'center')
     doc.setTextColor(0,0,0)
     doc.setFontSize(8)
     doc.text(l.d2,x+320,y+60,'center')
@@ -2740,7 +2750,7 @@ sanguinea(p,l){
     doc.text('RESPONSABLE',x+205,y+190,'left')
     doc.text(l.responsable,x+215,y+195,'center')
     doc.text(['Fecha de Toma de Muestra','Hora de Toma de Muestra:','Fecha de Entrega Resultado'],x+265,y+190,'left')
-    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+310,y+190,'left')
+    doc.text([date.formatDate(l.fechatoma,'DD-MM-YYYY'),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+310,y+190,'left')
    // doc.text(l.responsable,x+235,y+178,'right')
 
     // doc.html('<div style="border:1px solid black;width: 50px;font-size: 3px"><b><i>Adimer paul chambi ajata</i></b></div>', {
@@ -2839,7 +2849,7 @@ sanguinea(p,l){
     doc.text(l.responsable,x+205,y+170,'left')
     doc.setFontSize(10);
     doc.text(['Fecha toma de Muestra','Hora toma Muestra','Fecha Entrega de Resultado'],x+280,y+165,'left')
-    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+330,y+165,'left')
+    doc.text([date.formatDate(l.fechatoma,'DD-MM-YYYY'),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+330,y+165,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     window.open(doc.output('bloburl'), '_blank');
@@ -2931,7 +2941,7 @@ sanguinea(p,l){
     doc.setFontSize(10);
     doc.text(['Fecha toma de Muestra','Hora toma Muestra','Fecha Entrega de Resultado'],x+280,y+175,'left')
     doc.setTextColor(0,0,0)
-    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+325,y+175,'left')
+    doc.text([date.formatDate(l.fechatoma,'DD-MM-YYYY'),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+325,y+175,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     window.open(doc.output('bloburl'), '_blank');
@@ -3007,7 +3017,7 @@ sanguinea(p,l){
     doc.setTextColor(57,73,171)
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+110,'center')
     doc.setTextColor(0,0,0)
-    doc.text([l.fechatoma,l.horatoma,date.formatDate(new Date(),'YYYY-MM-DD')],x+170,y+110,'left')
+    doc.text([date.formatDate(l.fechatoma,'DD-MM-YYYY'),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+110,'left')
     doc.setTextColor(0,0,0)
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
@@ -3096,27 +3106,24 @@ sanguinea(p,l){
       this.laboratorio.doctor_id=this.doctor.id
       this.laboratorio.user_id=this.$store.state.login.user.id
       this.laboratorio.responsable=this.user
-      if(this.tipo.label=='HEMOGRAMA COMPLETO'){
-                      let total=0
-        //if (this.laboratorio.d18 == undefined || this.laboratorio.d18=='') this.laboratorio.d18=0;
-        //if (this.laboratorio.d20 == undefined || this.laboratorio.d20=='') this.laboratorio.d20=0;
-        //if (this.laboratorio.d22 == undefined || this.laboratorio.d22=='') this.laboratorio.d22=0;
-        //if (this.laboratorio.d24 == undefined || this.laboratorio.d24=='') this.laboratorio.d24=0;
-        //if (this.laboratorio.d26 == undefined || this.laboratorio.d26=='') this.laboratorio.d26=0;
-        //if (this.laboratorio.d28 == undefined || this.laboratorio.d28=='') this.laboratorio.d28=0;
-        //if (this.laboratorio.d30 == undefined || this.laboratorio.d30=='') this.laboratorio.d30=0;
-
-        //total=parseFloat(this.laboratorio.d18) + parseFloat(this.laboratorio.d20) + parseFloat(this.laboratorio.d22) + parseFloat(this.laboratorio.d24) + parseFloat(this.laboratorio.d26)
-        //+ parseFloat(this.laboratorio.d28) + parseFloat(this.laboratorio.d30)
-          if(this.es100 ){
-              this.$q.notify({
-                message: 'No suma el 100 % ',
-                icon: 'info',
-              color:'red'
-              })
+       if(this.tipo.label=='HEMOGRAMA COMPLETO'){
+         if (this.laboratorio.d18!='' ||
+        this.laboratorio.d20!='' ||
+        this.laboratorio.d22!='' ||
+        this.laboratorio.d24!='' ||
+        this.laboratorio.d26!='' ||
+        this.laboratorio.d28!='' ||
+        this.laboratorio.d30!=''){
+                       let total=0
+           if(this.es100 ){
+               this.$q.notify({
+                 message: 'No suma el 100 % ',
+                 icon: 'info',
+               color:'red'
+               })
               return false;
-          }
-        }
+           }}
+         }
       this.$axios.post(process.env.API+'/laboratorio',this.laboratorio).then(res=> {
         // console.log(res.data)
         this.mispacientes()
