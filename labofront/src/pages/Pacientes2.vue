@@ -910,6 +910,63 @@ export default {
   },
   methods:{
     resetlabo(){
+      if(this.tipo.label=='EXAMEN GENERAL DE ORINA'){
+            this.laboratorio={
+        tipomuestra:'',
+        fechatoma:date.formatDate(new Date(),'YYYY-MM-DD'),
+        horatoma:date.formatDate(new Date(),'HH:mm'),
+        d1:'',
+        d2:'NEGATIVO',
+        d3:'',
+        d4:'NEGATIVO',
+        d5:'',
+        d6:'NEGATIVO',
+        d7:'',
+        d8:'NEGATIVO',
+        d9:'',
+        d10:'NEGATIVO',
+        d11:'',
+        d12:'NORMAL',
+        d13:'',
+        d14:'NEGATIVO',
+        d15:'',
+        d16:'NEGATIVO',
+        d17:'',
+        d18:'NEGATIVO',
+        d19:'',
+        d20:'NEGATIVO',
+        d21:'',
+        d22:'NEGATIVO',
+        d23:'',
+        d24:'NEGATIVO',
+        d25:'',
+        d26:'NEGATIVO',
+        d27:'NEGATIVO',
+        d28:'',
+        d29:'',
+        d30:'',
+        d31:'',
+        d32:'',
+        d33:'',
+        d34:'',
+        d35:'',
+        d36:'',
+        d37:'',
+        d38:'',
+        d39:'',
+        d40:'',
+        d41:'',
+        d42:'',
+        d43:'',
+        d44:'',
+        d45:'',
+        responsable:'',
+        tipo_id:'',
+        paciente_id:'',
+        user_id:this.$store.state.login.user.id,
+        doctor_id:'',
+      }
+      }else{
             this.laboratorio={
         tipomuestra:'',
         fechatoma:date.formatDate(new Date(),'YYYY-MM-DD'),
@@ -964,7 +1021,7 @@ export default {
         paciente_id:'',
         user_id:this.$store.state.login.user.id,
         doctor_id:'',
-      }
+      }}
     },
    seriado(p,l){
     var doc = new jsPDF('P',undefined,'legal')
@@ -1523,14 +1580,14 @@ export default {
     doc.rect(x+5, y+44, 205, 94)
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
-    doc.text('          EX FISICO                      VALOR                   REFERENCIA                  EX QUIMICO                   VALOR              REFERENCIA',x+6,y+48)
+    doc.text('      EX FISICO                  VALOR                         REFERENCIA                  EX QUIMICO                   VALOR              REFERENCIA',x+6,y+48)
     doc.setFont(undefined, 'normal')
     doc.text(['Color','Olor','Aspecto','Espuma','Deposito','Densidad','Reaccion'],x+8,y+54)
     doc.text(['Amarillo','Sui-generis','Limpido o lig opal','Blanco fugaz','Nulo o escaso','1.010-1.030','Lig acida'],x+90,y+54,'center')
     doc.text(['Proteinas','Glucosa','C cetonicos','Bilirrubina','Hemoglobina','Urobilina','Nitritos'],x+110,y+54,'left')
     doc.text(['Negativo','Negativo','Negativo','Negativo','Negativo','Normal','Negativo'],x+185,y+54,'left')
     doc.setTextColor(0,0,0)
-    doc.text([l.d1,l.d3,l.d5,l.d7,l.d9,l.d11,l.d13],x+50,y+54)
+    doc.text([l.d1,l.d3,l.d5,l.d7,l.d9,l.d11,l.d13],x+40,y+54)
     doc.setTextColor(0,0,0)
     if(l.d2!='NEGATIVO')
       doc.setTextColor(255,0,0)
@@ -3128,20 +3185,7 @@ sanguinea(p,l){
         // console.log(res.data)
         this.mispacientes()
         this.dialoglaboratorio=false
-        this.laboratorio={tipomuestra:'',
-        fechatoma:date.formatDate(new Date(),'YYYY-MM-DD'),
-        horatoma:date.formatDate(new Date(),'HH:mm'),
-        d1:'',d2:'',        d3:'',        d4:'',        d5:'',        d6:'',        d7:'',        d8:'',        d9:'',        d10:'',        d11:'',        d12:'',        d13:'',        d14:'',
-        d15:'',        d16:'',        d17:'',        d18:'',        d19:'',        d20:'',        d21:'',        d22:'',        d23:'',        d24:'',        d25:'',        d26:'',
-        d27:'',        d28:'',        d29:'',        d30:'',        d31:'',        d32:'',        d33:'',        d34:'',
-        d35:'',        d36:'',        d37:'',        d38:'',        d39:'',        d40:'',        d41:'',        d42:'',        d43:'',
-        d44:'',        d45:'',
-        responsable:'',
-        tipo_id:'',
-        paciente_id:'',
-        user_id:this.$store.state.login.user.id,
-        doctor_id:''}
-
+        this.resetlabo()
       })
     },
     modificar(paciente){
