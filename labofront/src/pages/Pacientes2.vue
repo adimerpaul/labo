@@ -2688,15 +2688,15 @@ sanguinea(p,l){
     doc.setTextColor(57,73,171)
     doc.text(['x10^(12)/L',' ','g/L',' ','L/L',' ','mm.',' ','ft.',' ','pg.',' ','%',' ','x10^(9)L',' ','x10^(9)L'],x+240,y+60,'center')
     doc.setFontSize(6);
-    doc.text(['Varon 5.1-5.7x10^12/L','Mujer 4.8-5.4x10^12/L'],x+265,y+60,'center')
-    doc.text(['Varon 151-175 g/L','Mujer 141-165 g/L'],x+265,y+68,'center')
-    doc.text(['Varon 0.51-0.57 L/L','Mujer 0.46-0.53 L/L'],x+265,y+76,'center')
-    doc.text(['Varon 15 mm/hora','Mujer 20mm/hora'],x+265,y+84,'center')
-    doc.text(['Varon 83.0-97.0 ft'],x+265,y+92,'center')
+    doc.text(['Varon 5.1-5.7x10^12/L','Mujer 4.8-5.4x10^12/L'],x+265,y+59,'center')
+    doc.text(['Varon 151-175 g/L','Mujer 141-165 g/L'],x+265,y+67,'center')
+    doc.text(['Varon 0.51-0.57 L/L','Mujer 0.46-0.53 L/L'],x+265,y+75,'center')
+    doc.text(['Varon 15 mm/hora','Mujer 20mm/hora'],x+265,y+83,'center')
+    doc.text(['83.0-97.0 ft'],x+265,y+92,'center')
     doc.text(['27.0-31.0 pg.'],x+265,y+100,'center')
     doc.text(['32-36%'],x+265,y+108,'center')
     doc.text(['4.5-10.5x10^(9)/L'],x+265,y+116,'center')
-    doc.text(['105-400x10^(9)L'],x+265,y+125,'center')
+    doc.text(['105-400x10^(9)L'],x+265,y+124,'center')
     doc.setFontSize(10);
 
     doc.setTextColor(57,73,171)
