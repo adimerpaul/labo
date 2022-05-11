@@ -480,15 +480,26 @@ export default {
     doc.text('      METODO: INMUNOENSAYO DE FLUORECENCIA (FIA)                                      Valor de Referencia',x+8,y+58)
     doc.setFont(undefined, 'normal')
     let vallggm1='',vallggm2='',obs1='',obs2=''
-     if( parseFloat(l.d1) < 0.9) {vallggm1=l.d1
-     obs1=l.d2}
-            if(parseFloat(l.d1) >= 0.9) {vallggm2=l.d1
+     if( parseFloat(l.d1) < 0.9 || parseFloat(l.d1)>=1.1) 
+     {vallggm1=l.d1
+      obs1=l.d2}
+            if(parseFloat(l.d1) >= 0.9 && parseFloat(l.d1)<1.1)
+            {vallggm2=l.d1
             obs2=l.d2
             }
     doc.text(['lgM','','lgG'],x+30,y+63)
     doc.setTextColor(0,0,0)
-    doc.text([vallggm1,vallggm2,l.d3],x+70,y+63)
-    doc.text([obs1,obs2,l.d4],x+100,y+63)
+    doc.text([vallggm1,vallggm2],x+70,y+63)
+    doc.text(l.d3,x+70,y+71)
+    if(l.d2=='POSITIVO')
+    doc.setTextColor(255,0,0)
+
+    doc.text([obs1,obs2],x+100,y+63)
+    doc.setTextColor(0,0,0)
+            if(l.d4=='POSITIVO')
+    doc.setTextColor(255,0,0)
+    doc.text(l.d4,x+100,y+71)
+    doc.setTextColor(0,0,0)
     doc.setTextColor(57,73,171)
     doc.text(['menor a 0.9 NEGATIVO PARA lgG/lgM','0.9 menor igual & mayor 1.1 INDETERMINADO','mayor igual 1.1 POSITIVO lgG/lgM'],x+170,y+63,'center')
     doc.setFont(undefined, 'bold')
@@ -1465,7 +1476,7 @@ sanguinea(p,l){
     doc.rect(x+5, y+48, 205, 73)
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
-    doc.text('          PRUEBA                      VALOR                   REFRENCIA                   PRUEBA                     VALOR                 VALOR',x+6,y+52)
+    doc.text('          PRUEBA                      VALOR                   REFERENCIA                  PRUEBA                     VALOR              REFERENCIA',x+6,y+52)
     doc.setFont(undefined, 'normal')
     doc.text(['Glicemia','Creatinina','Urea','NUS-BUN','Acido Urico','Proteinas Totales','Albumina','Globulina','Amilasa','Lipasa','Bilirrubina Total','Bilirrubina Directa','Bilirrubina Indirecta','CK-MB','LDH','Hierro'],x+8,y+58)
     doc.text(['70-105mg/dl','0.7-1.5mmg/dl','15-45mg/dl','7-18mg/dl','2.6-7.2mg/dl','6.2-8.5g/dl','3.5-5.3g/dl','2.8-3.5g/dl','menor a 120UI/L','10-150UI/L','hasta 1.2 mg/dl','hasta 0.3 mg/dl','hasta 0.9 mg/dl','0-24 UI/L','200-480 UI/L','50-170ug/dl'],x+80,y+58,'left')
@@ -1497,7 +1508,7 @@ sanguinea(p,l){
     doc.text(l.d9,x+55,y+74)
 
       doc.setTextColor(0,0,0)
-    if(parseFloat(l.d10)<6.2 || parseFloat(l.d10)>7.2)
+    if(parseFloat(l.d10)<6.2 || parseFloat(l.d10)>8.5)
       doc.setTextColor(255,0,0)
     doc.text(l.d10,x+55,y+78)
 
