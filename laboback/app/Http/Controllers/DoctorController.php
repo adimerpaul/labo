@@ -26,7 +26,7 @@ class DoctorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function listdoctor(){
-        return Doctor::where('activo',1)->get();
+        return Doctor::where('activo',1)->orderBy('nombre','asc')->get();
     }
 
     public function store(Request $request)

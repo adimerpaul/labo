@@ -203,7 +203,15 @@
         <q-form @submit="createLaboratorio">
         <div class="row">
           <div class="col-12 col-sm-6">
-            <q-select dense outlined :options="doctors" label="Doctor" v-model="doctor" required ></q-select>
+            <q-select dense outlined :options="doctors" label="Doctor" v-model="doctor" @filter="filterFn"   use-input  input-debounce="0" required >
+                    <template v-slot:no-option>
+          <q-item>
+            <q-item-section class="text-grey">
+              No results
+            </q-item-section>
+          </q-item>
+        </template>
+            </q-select>
           </div>
 
           <div class="col-12 col-sm-6">
@@ -782,7 +790,15 @@
         <q-form @submit="modLaboratorio">
         <div class="row">
           <div class="col-12 col-sm-6">
-            <q-select dense outlined :options="doctors" label="Doctor" v-model="doctor" required ></q-select>
+                        <q-select dense outlined :options="doctors" label="Doctor" v-model="doctor" @filter="filterFn"   use-input  input-debounce="0" required >
+                    <template v-slot:no-option>
+          <q-item>
+            <q-item-section class="text-grey">
+              No results
+            </q-item-section>
+          </q-item>
+        </template>
+            </q-select>
           </div>
 
           <div class="col-12 col-sm-6">
@@ -1375,6 +1391,7 @@ export default {
       seguro:{},
       doctors:[],
       doctor:{},
+      filterdoc:[],
       user:{},
       usuarios:[],
 
@@ -1461,14 +1478,15 @@ export default {
       })
       this.tipo=this.tipos[0]
     })
-    this.$axios.get(process.env.API+'/doctor').then(res=> {
+    this.$axios.get(process.env.API+'/listdoctor').then(res=> {
       this.doctors=[]
       res.data.forEach(r=>{
         let d=r
         d.label=r.nombre+' '+r.paterno+' '+r.materno
         this.doctors.push(d)
       })
-      this.doctor=this.doctors[0]
+      this.filterdoc=this.doctors
+      this.doctor={label:''}
     })
   },
   computed:{
@@ -1491,6 +1509,23 @@ export default {
     }
   },
   methods:{
+          filterFn (val, update) {
+        if (val === '') {
+          update(() => {
+            this.doctors = this.filterdoc
+
+            // here you have access to "ref" which
+            // is the Vue reference of the QSelect
+          })
+          return
+        }
+
+        update(() => {
+          const needle = val.toLowerCase()
+          this.doctors = this.filterdoc.filter(v => v.label.toLowerCase().indexOf(needle) > -1)
+        })
+      },
+    
       datformulario(cl,labo){
       console.log(cl)
       console.log(labo)
@@ -1535,6 +1570,9 @@ export default {
       })
     },
     resetlabo(){
+
+      this.doctor={label:''}
+      this.user=''
       if(this.tipo.label=='EXAMEN GENERAL DE ORINA'){
             this.laboratorio={
         tipomuestra:'',

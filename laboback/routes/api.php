@@ -45,6 +45,7 @@ Route::group(['middleware'=>'auth:sanctum'],function (){
     Route::put('/pass/{user}',[\App\Http\Controllers\UserController::class,'pass']);
     Route::put('/updatepermisos/{user}',[\App\Http\Controllers\UserController::class,'updatepermisos']);
     Route::post('/doctoractivo', [App\Http\Controllers\DoctorController::class,'doctoractivo']);
+    Route::get('/listdoctor', [App\Http\Controllers\DoctorController::class,'listdoctor']);
     Route::post('/reactivoestado', [App\Http\Controllers\ReactivoController::class,'reactivoestado']);
     Route::post('/listinventario', [App\Http\Controllers\InventarioController::class,'listinventario']);
     Route::post('/listretiro', [App\Http\Controllers\RetiroController::class, 'listretiro']);
