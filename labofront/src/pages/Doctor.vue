@@ -77,6 +77,7 @@
         title="Doctor"
         :columns="columns"
         :rows="rows"
+        :filter="filter"
       >
         <template v-slot:top-right>
           <q-input borderless dense debounce="300" v-model="filter" placeholder="Search">
@@ -265,16 +266,17 @@ export default {
           })
       })
     },
-        onMod(){
+    onMod(){
       console.log(this.dato2)
       this.$axios.put(process.env.API+'/doctor/'+this.dato2.id,this.dato2).then(res=>{
          this.$q.notify({
           message: 'Se modifico correctamente',
           color: 'green'
         })
+        this.dialog_mod=false;
+        this.listado();
       })
-      this.dialog_mod=false;
-      this.listado();
+
     }
   },
 
