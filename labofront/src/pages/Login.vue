@@ -130,8 +130,8 @@
 export default {
   data(){
     return{
-      email:'admin@test.com',
-      password:'admin',
+      email:'',
+      password:'',
       tab:'login',
       user:{},
       isPwd:true,
