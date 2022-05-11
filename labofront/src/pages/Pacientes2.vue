@@ -203,7 +203,7 @@
         <q-form @submit="createLaboratorio">
         <div class="row">
           <div class="col-12 col-sm-6">
-            <q-select dense outlined :options="doctors" label="Doctor" v-model="doctor" @filter="filterFn"   use-input  input-debounce="0" required >
+            <q-select dense outlined :options="doctors" label="Doctor" v-model="doctor" @filter="filterFn"   use-input  input-debounce="0"  >
                     <template v-slot:no-option>
           <q-item>
             <q-item-section class="text-grey">
@@ -790,7 +790,7 @@
         <q-form @submit="modLaboratorio">
         <div class="row">
           <div class="col-12 col-sm-6">
-                        <q-select dense outlined :options="doctors" label="Doctor" v-model="doctor" @filter="filterFn"   use-input  input-debounce="0" required >
+                        <q-select dense outlined :options="doctors" label="Doctor" v-model="doctor" @filter="filterFn"   use-input  input-debounce="0" >
                     <template v-slot:no-option>
           <q-item>
             <q-item-section class="text-grey">
