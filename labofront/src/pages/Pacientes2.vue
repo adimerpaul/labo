@@ -1465,7 +1465,7 @@ export default {
       this.doctors=[]
       res.data.forEach(r=>{
         let d=r
-        d.label=r.paterno+' '+r.materno+' '+r.nombre
+        d.label=r.nombre+' '+r.paterno+' '+r.materno
         this.doctors.push(d)
       })
       this.doctor=this.doctors[0]
