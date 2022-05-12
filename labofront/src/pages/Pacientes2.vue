@@ -348,7 +348,7 @@
           <div class="col-12 col-sm-12"></div></div></q-card-section>
       <q-card-section  class="bg-blue-2" > <div class="row">
 
-          <div class="col-6 col-sm-6"><q-input dense outlined label="Celulas epiteleales" v-model="laboratorio.d15" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="Celulas epiteliales" v-model="laboratorio.d15" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Hialino" v-model="laboratorio.d16" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Celulas de transicion" v-model="laboratorio.d17" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Granuloso" v-model="laboratorio.d18" /></div>
@@ -2298,7 +2298,7 @@ export default {
     doc.setTextColor(57,73,171)
     doc.text('          CELULAS                      VALOR                   REFERENCIA                   CILINDROS                     VALOR              REFERENCIA',x+6,y+86)
     doc.setFont(undefined, 'normal')
-    doc.text(['Celulas epitaliales','Celulas de transicion','Celulas Clave','Leucocitos','Eritrocitos','Bacterias','CRISTALES'],x+8,y+91)
+    doc.text(['Celulas epiteliales','Celulas de transicion','Celulas Clave','Leucocitos','Eritrocitos','Bacterias','CRISTALES'],x+8,y+91)
     doc.text(['Hasta 2/c','Negativo','Negativo','Hasta 5/c','Hasta 3/c','Escaso',''],x+90,y+91,'center')
     doc.text(['Hialino','Granuloso','Epiteliales','Eritrocitario','Leucocitario','Cereos','Mixtos'],x+110,y+91,'left')
     doc.text(['Negativo','Negativo','Negativo','Negativo','Negativo','Negativo','Negativo'],x+185,y+91,'left')

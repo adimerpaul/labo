@@ -825,7 +825,7 @@ export default {
     doc.setTextColor(57,73,171)
     doc.text('          CELULAS                      VALOR                   REFERENCIA                   CILINDROS                     VALOR              REFERENCIA',x+6,y+86)
     doc.setFont(undefined, 'normal')
-    doc.text(['Celulas epitaliales','Celulas de transicion','Celulas Clave','Leucocitos','Eritrocitos','Bacterias','CRISTALES'],x+8,y+91)
+    doc.text(['Celulas epiteliales','Celulas de transicion','Celulas Clave','Leucocitos','Eritrocitos','Bacterias','CRISTALES'],x+8,y+91)
     doc.text(['Hasta 2/c','Negativo','Negativo','Hasta 5/c','Hasta 3/c','Escaso',''],x+90,y+91,'center')
     doc.text(['Hialino','Granuloso','Epiteliales','Eritrocitario','Leucocitario','Cereos','Mixtos'],x+110,y+91,'left')
     doc.text(['Negativo','Negativo','Negativo','Negativo','Negativo','Negativo','Negativo'],x+185,y+91,'left')
