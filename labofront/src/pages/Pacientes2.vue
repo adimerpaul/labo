@@ -1495,15 +1495,15 @@ export default {
       if(this.dato.fechanac==null || this.dato.fechanac=='' || this.dato.fechanac==undefined)
         return ''
       else
-        return moment().diff(this.dato.fechanac, 'years');  
-        
+        return moment().diff(this.dato.fechanac, 'years');
+
     },
         calcular2(){
       if(this.datos2.fechanac==null || this.datos2.fechanac=='' || this.datos2.fechanac==undefined)
         return ''
       else
-        return moment().diff(this.datos2.fechanac, 'years');  
-        
+        return moment().diff(this.datos2.fechanac, 'years');
+
     },
     es100(){
       if(
@@ -1540,7 +1540,7 @@ export default {
           this.doctors = this.filterdoc.filter(v => v.label.toLowerCase().indexOf(needle) > -1)
         })
       },
-    
+
       datformulario(cl,labo){
       console.log(cl)
       console.log(labo)
@@ -1593,15 +1593,15 @@ export default {
         tipomuestra:'',
         fechatoma:date.formatDate(new Date(),'YYYY-MM-DD'),
         horatoma:date.formatDate(new Date(),'HH:mm'),
-        d1:'',
+        d1:'AMARILLO',
         d2:'NEGATIVO',
-        d3:'',
+        d3:'SUI-GENERIS',
         d4:'NEGATIVO',
-        d5:'',
+        d5:'LIMPIDO O LIG OPAL',
         d6:'NEGATIVO',
-        d7:'',
+        d7:'BLANCO O FUGAZ',
         d8:'NEGATIVO',
-        d9:'',
+        d9:'NULO O ESCASO',
         d10:'NEGATIVO',
         d11:'',
         d12:'NORMAL',
@@ -1939,7 +1939,7 @@ export default {
     doc.setTextColor(211,47,47)
     doc.text('Form. 005',x+190, y+30)
     doc.setTextColor(57,73,171)
-    doc.text('SEROLOGIA',x+100, y+30,'center')
+    doc.text('PRUEBA DE COVID-19',x+100, y+30,'center')
     doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
     doc.setTextColor(0,0,0)
     doc.setFont(undefined, 'normal')
@@ -1967,7 +1967,7 @@ export default {
     doc.text('      METODO: INMUNOENSAYO DE FLUORECENCIA (FIA)                                      Valor de Referencia',x+8,y+58)
     doc.setFont(undefined, 'normal')
     let vallggm1='',vallggm2='',obs1='',obs2=''
-     if( parseFloat(l.d1) < 0.9 || parseFloat(l.d1)>=1.1) 
+     if( parseFloat(l.d1) < 0.9 || parseFloat(l.d1)>=1.1)
      {vallggm1=l.d1
       obs1=l.d2}
             if(parseFloat(l.d1) >= 0.9 && parseFloat(l.d1)<1.1)

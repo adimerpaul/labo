@@ -113,7 +113,7 @@
           </q-td>
       </template>
           </q-table>
-          
+
         </q-card-section>
       </q-card>
     </q-dialog>
@@ -206,11 +206,11 @@ export default {
       if(l.tipo_id==14)
         this.alcoholemia(p,l)
       if(l.tipo_id==15)
-        this.widal(p,l)  
+        this.widal(p,l)
       if(l.tipo_id==16)
-        this.multidrogas(p,l)    
+        this.multidrogas(p,l)
       if(l.tipo_id==17)
-        this.glicosilada(p,l)     
+        this.glicosilada(p,l)
 
 
     },
@@ -452,7 +452,7 @@ export default {
     doc.setTextColor(211,47,47)
     doc.text('Form. 005',x+190, y+30)
     doc.setTextColor(57,73,171)
-    doc.text('SEROLOGIA',x+100, y+30,'center')
+    doc.text('PRUEBA DE COVID-19',x+100, y+30,'center')
     doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
     doc.setTextColor(0,0,0)
     doc.setFont(undefined, 'normal')
@@ -480,7 +480,7 @@ export default {
     doc.text('      METODO: INMUNOENSAYO DE FLUORECENCIA (FIA)                                      Valor de Referencia',x+8,y+58)
     doc.setFont(undefined, 'normal')
     let vallggm1='',vallggm2='',obs1='',obs2=''
-     if( parseFloat(l.d1) < 0.9 || parseFloat(l.d1)>=1.1) 
+     if( parseFloat(l.d1) < 0.9 || parseFloat(l.d1)>=1.1)
      {vallggm1=l.d1
       obs1=l.d2}
             if(parseFloat(l.d1) >= 0.9 && parseFloat(l.d1)<1.1)
@@ -972,7 +972,7 @@ export default {
     doc.setFillColor(0, 0, 0);
     doc.setFont(undefined, 'normal')
     doc.text(['Alcoholes en sangre por la degradacion de alimentos', 'ingerido ricos en Hidratos de Carbono'],x+120,y+100,'center')
-   
+
     doc.rect(x+5, y+138, 205, 20)
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
