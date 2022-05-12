@@ -109,8 +109,8 @@
                 />
               </div>
               <div class="col-6">
-                <q-input outlined type="date" v-model="dato.fechanac" label="Fecha Nac"
-                />
+                <q-input outlined type="date" v-model="dato.fechanac" label="Fecha Nac"/><br>
+                <span style="color:red" v-if="calcular!=''|| calcular > '0'">{{calcular}} Años</span>
               </div>
               <div class="col-6">
                 <q-input outlined type="text" v-model="dato.edad" label="Edad"
@@ -162,8 +162,8 @@
                 />
               </div>
               <div class="col-6">
-                <q-input outlined type="date" v-model="datos2.fechanac" label="Fecha Nac"
-                />
+                <q-input outlined type="date" v-model="datos2.fechanac" label="Fecha Nac"/>
+                <span style="color:red" v-if="calcular2!=''|| calcular2 > '0'">{{calcular2}} Años</span>
               </div>
               <div class="col-6">
                 <q-input outlined type="text" v-model="datos2.edad" label="Edad"
@@ -1393,6 +1393,7 @@ export default {
       doctor:{},
       filterdoc:[],
       user:{},
+      caledad:'',
       usuarios:[],
 
       laboratorio:{
@@ -1490,6 +1491,20 @@ export default {
     })
   },
   computed:{
+    calcular(){
+      if(this.dato.fechanac==null || this.dato.fechanac=='' || this.dato.fechanac==undefined)
+        return ''
+      else
+        return moment().diff(this.dato.fechanac, 'years');  
+        
+    },
+        calcular2(){
+      if(this.datos2.fechanac==null || this.datos2.fechanac=='' || this.datos2.fechanac==undefined)
+        return ''
+      else
+        return moment().diff(this.datos2.fechanac, 'years');  
+        
+    },
     es100(){
       if(
         (
