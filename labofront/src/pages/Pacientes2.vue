@@ -7,8 +7,10 @@
     <div class="col-12">
       <q-table title1="Listado de pacientes" :rows="pacientes" :columns="columspaciente" :filter="filter" :rows-per-page-options="[10,100,200,0]">
         <template v-slot:body-cell-seguro="props">
+                
           <q-td :props="props">{{ props.row.seguro.nombre}}</q-td>
         </template>
+
         <template v-slot:body-cell-laboratorios="props">
           <q-td :props="props" auto-width>
             <ul style="border: 0px;margin: 0px;padding: 0px;list-style: none">
@@ -16,6 +18,8 @@
                 <q-btn @click="eliminar(l)" size="xs" flat round color="red" icon="delete" />
                 <q-btn @click="imprimirlaboratorio(props.row,l)" size="xs" flat round color="info" icon="print" />
                 <q-btn @click="datformulario(props.row,l)" size="xs" flat round color="yellow" icon="edit" />
+                <q-btn @click="sobre(props.row,l)" size="xs" flat round color="teal" icon="mail_outline" />
+                <q-btn @click="Whatsapp(l.doctor.celular)" size="xs" flat round color="purple" icon="whatsapp" v-if="l.doctor.celular!='' && l.doctor.celular!=null"/>
                 {{l.fechatoma}}
                 {{l.tipo.nombre}}
               </li>
@@ -59,7 +63,7 @@
         </template>
         <template v-slot:body-cell-paciente="props">
           <q-td :props="props" auto-width>
-            {{ props.row.paciente }}
+           <q-btn @click="Whatsapp(props.row.celular)" size="xs" flat round color="green" icon="whatsapp" v-if="props.row.celular!='' && props.row.celular!=null"/> {{ props.row.paciente }}
           </q-td>
         </template>
         <template v-slot:body-cell-edad="props">
@@ -1524,6 +1528,28 @@ export default {
     }
   },
   methods:{
+    Whatsapp(celular){
+          window.open('https://wa.me/+591'+celular, '_blank');
+
+    },
+    sobre(p,l){
+
+            var doc = new jsPDF('p','cm','letter')
+    doc.setFont("arial");
+    doc.setFontSize(10);
+    let x=0
+    let y=0
+    //inicio datos paciete
+    doc.setFontSize(11);
+    doc.setTextColor(0,0,0)
+    doc.text(p.paciente,x+8,y+5.3,'left')
+    doc.text(l.doctor.nombre+' '+l.doctor.paterno+' '+l.doctor.materno,x+8,y+6,'left')
+    doc.text(l.doctor.especialidad,x+8,y+6.8,'left')
+
+                    window.open(doc.output('bloburl'), '_blank');
+
+
+    },
           filterFn (val, update) {
         if (val === '') {
           update(() => {
@@ -1801,7 +1827,7 @@ export default {
            callback: function (doc) {
              doc.html( '<div style="font-size: 3px;width: 500px">'+l.d9+'</div>' , {
                callback: function (doc) {
-                 window.open(doc.output('bloburl'), '_blank');
+                 doc.output('save','COPROPARASITOLOGICO SERIADO-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
                },
                x: x+50,
                y: y+95,
@@ -1912,7 +1938,8 @@ export default {
     doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+330,y+190,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
-                    window.open(doc.output('bloburl'), '_blank');
+      doc.output('save','LABORATORIO SEROLOGIA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
+                   // window.open(doc.output('bloburl'), '_blank');
       },
 
    lgmserologia(p,l){
@@ -2038,7 +2065,8 @@ export default {
     doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+150,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
-    window.open(doc.output('bloburl'), '_blank');
+      doc.output('save','SEROLOGIA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
+    //window.open(doc.output('bloburl'), '_blank');
 
     },
     simple(p,l){
@@ -2131,7 +2159,8 @@ export default {
     doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+140,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
-    window.open(doc.output('bloburl'), '_blank');
+      doc.output('save','COPROPARASITOLOGICO SIMPLE-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
+    //window.open(doc.output('bloburl'), '_blank');
     },
 
     heces(p,l){
@@ -2224,7 +2253,8 @@ export default {
     doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
-    window.open(doc.output('bloburl'), '_blank');
+      doc.output('save','ANALISIS DE HECES-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
+    //window.open(doc.output('bloburl'), '_blank');
     },
 
             orina(p,l){
@@ -2381,7 +2411,8 @@ export default {
     //window.open(doc.output('bloburl'), '_blank');
     doc.html( '<div style="font-size: 3px;width: 300px">'+l.d37+'</div>' , {
        callback: function (doc) {
-                 window.open(doc.output('bloburl'), '_blank');
+                doc.output('save','EXAMEN GENERAL DE ORINA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
+                 //window.open(doc.output('bloburl'), '_blank');
        },
        x: x+6,
        y: y+141,
@@ -2474,7 +2505,8 @@ export default {
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     //window.open(doc.output('bloburl'), '_blank');
-    window.open(doc.output('bloburl'), '_blank');
+    //window.open(doc.output('bloburl'), '_blank');
+                doc.output('save','ALCOHOLEMIA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
 
     },
 
@@ -2562,7 +2594,8 @@ export default {
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     //window.open(doc.output('bloburl'), '_blank');
-    window.open(doc.output('bloburl'), '_blank');
+    //window.open(doc.output('bloburl'), '_blank');
+                doc.output('save','REACCION DE WIDAL-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
 
     },
 
@@ -2681,7 +2714,7 @@ export default {
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     //window.open(doc.output('bloburl'), '_blank');
-    window.open(doc.output('bloburl'), '_blank');
+                doc.output('save','MULTIDROGAS-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
 
     },
 
@@ -2769,7 +2802,7 @@ export default {
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     //window.open(doc.output('bloburl'), '_blank');
-    window.open(doc.output('bloburl'), '_blank');
+                doc.output('save','HEMOGLOBINA GLICOSILADA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
 
     },
 
@@ -2844,7 +2877,8 @@ export default {
     doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
-    window.open(doc.output('bloburl'), '_blank');
+    //window.open(doc.output('bloburl'), '_blank');
+                doc.output('save','ANALISIS DE SECRECION URETRAL-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
     },
 
             vaginal(p,l){
@@ -2918,7 +2952,8 @@ export default {
     doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
-    window.open(doc.output('bloburl'), '_blank');
+    //window.open(doc.output('bloburl'), '_blank');
+                doc.output('save','ANALISIS DE SECRECION VAGINAL-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
     },
 
 sanguinea(p,l){
@@ -3141,7 +3176,8 @@ sanguinea(p,l){
     doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+135,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
-    window.open(doc.output('bloburl'), '_blank');
+    //window.open(doc.output('bloburl'), '_blank');
+                doc.output('save','QUIMICA SANGUINIA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
     },
         valcien(){
               let total=0
@@ -3329,7 +3365,8 @@ sanguinea(p,l){
     doc.text(['Fecha toma de Muestra','Fecha Entrega de Resultado','Hora toma Muestra'],x+280,y+185,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
-    window.open(doc.output('bloburl'), '_blank');
+    //window.open(doc.output('bloburl'), '_blank');
+                doc.output('save','QUIMICA SANGUINIA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
       },
       hemograma(p,l){
             var doc = new jsPDF('landscape',undefined,'legal')
@@ -3511,7 +3548,8 @@ sanguinea(p,l){
     // window.open(doc.output('bloburl'), '_blank');
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
-    window.open(doc.output('bloburl'), '_blank');
+    //window.open(doc.output('bloburl'), '_blank');
+                doc.output('save','HEMOGRAMA COMPLETO-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
       },
       ensayo(p,l){
             var doc = new jsPDF('landscape',undefined,'legal')
@@ -3599,7 +3637,8 @@ sanguinea(p,l){
     doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+330,y+165,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
-    window.open(doc.output('bloburl'), '_blank');
+    //window.open(doc.output('bloburl'), '_blank');
+                doc.output('save','INMUNOENSAYO DE FLUORESCENCIA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
       },
       reserologia(p,l){
                     var doc = new jsPDF('landscape',undefined,'legal')
@@ -3691,7 +3730,8 @@ sanguinea(p,l){
     doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+325,y+175,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
-    window.open(doc.output('bloburl'), '_blank');
+    //window.open(doc.output('bloburl'), '_blank');
+                doc.output('save','RESULTADO SEROLOGIA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
       },
       embarazo(p,l) {
     var doc = new jsPDF('P',undefined,'legal')
@@ -3768,7 +3808,8 @@ sanguinea(p,l){
     doc.setTextColor(0,0,0)
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
-    window.open(doc.output('bloburl'), '_blank');
+    //window.open(doc.output('bloburl'), '_blank');
+                doc.output('save','TEST EMBARAZO-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
   },
     imprimirlaboratorio(p,l){
       if(l.tipo_id==1)
