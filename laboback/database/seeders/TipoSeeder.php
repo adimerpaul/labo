@@ -23,7 +23,7 @@ class TipoSeeder extends Seeder
             ["nombre"=>"ANALISIS DE HECES",],
             ["nombre"=>"COPROPARASITOLOGICO SIMPLE",],
             ["nombre"=>"COPROPARASITOLOGICO SERIADO",],
-            ["nombre"=>"SEROLOGIA",],
+            ["nombre"=>"PRUEBA DE COVID-19",],
             ["nombre"=>"LABORATORIO SEROLOGIA",],
             ["nombre"=>"RESULTADO SEROLOGIA",],
             ["nombre"=>"INMUNOENSAYO DE FLUORESCENCIA",],
@@ -32,6 +32,7 @@ class TipoSeeder extends Seeder
             ["nombre"=>"REACCION DE WIDAL",],
             ["nombre"=>"MULTIDROGAS",],
             ["nombre"=>"HEMOGLOBINA GLICOSILADA",],
+            ["nombre"=>"GASOMETRIA",],
         ]);
     }
 }

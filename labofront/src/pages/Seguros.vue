@@ -211,7 +211,8 @@ export default {
         this.multidrogas(p,l)
       if(l.tipo_id==17)
         this.glicosilada(p,l)
-
+      if(l.tipo_id==18)
+        this.gasometria(p,l)
 
     },
 
@@ -538,7 +539,7 @@ export default {
     doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+150,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
-      doc.output('save','SEROLOGIA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
+      doc.output('save','PRUEBA DE COVID-19-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
     //window.open(doc.output('bloburl'), '_blank');
 
     },
@@ -1276,6 +1277,76 @@ export default {
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     //window.open(doc.output('bloburl'), '_blank');
                 doc.output('save','HEMOGLOBINA GLICOSILADA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
+
+    },
+    
+        gasometria (p,l){
+    var doc = new jsPDF('P',undefined,'legal')
+    doc.setFont("arial");
+    doc.setFontSize(10);
+    var img = new Image()
+    img.src = 'img/natividad.jpeg'
+    doc.addImage(img, 'jpg', 5, 2, 70, 20)
+    let x=0
+    let y=0
+    //inicio datos paciete
+    doc.setDrawColor(120);
+    doc.rect(x+5, y+27, 205, 17)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+175, y+8,'center')
+    doc.setTextColor(195,47,47)
+    doc.text('N Registro CODEDLAB 000045',x+150, y+25)
+    doc.setTextColor(211,47,47)
+    doc.text('Form. 018',x+190, y+30)
+    doc.setTextColor(57,73,171)
+    doc.text('GASOMETRIA',x+100, y+30,'center')
+    doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
+    doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'normal')
+    doc.text([p.paciente,l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno,l.tipomuestra],x+70, y+35,'center')
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'bold')
+    doc.text(['EDAD','SEXO'],x+130, y+35)
+    doc.setTextColor(211,47,47)
+    doc.text('N PACIENTE',x+130, y+43)
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(0,0,0)
+        let anio=''
+    if(p.edad==null||p.edad==undefined||p.edad=='')
+    anio=p.tiempo
+    else anio=p.edad
+    doc.text([anio+'',p.sexo,p.nro+''],x+160, y+35,'center')
+    doc.setTextColor(57,73,171)
+    //fin datos paciete
+    //inicio datos
+    doc.rect(x+5, y+44, 205, 94)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.setFontSize(12);
+    doc.text('GASOMETRIA ARTERIAL : ',x+10,y+60)
+    doc.setTextColor(0,0,0)
+    doc.text(l.d1,x+70,y+60)
+    //doc.setFontSize(12);
+
+    doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.setFontSize(10);
+    doc.rect(x+5, y+138, 205, 20)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('RESPONSABLE',x+6,y+145)
+    doc.setFont(undefined, 'NORMAL')
+    doc.text(l.responsable,x+8,y+149)
+    doc.setFont(undefined, 'normal')
+    doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+145,'center')
+    doc.setTextColor(0,0,0)
+    doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
+
+    //$( '#docpdf' ).attr('src', doc.output('datauristring'));
+    //window.open(doc.output('bloburl'), '_blank');
+                doc.output('save','GASOMETRIA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
 
     },
 

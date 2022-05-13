@@ -114,7 +114,7 @@
               </div>
               <div class="col-6">
                 <q-input outlined type="date" v-model="dato.fechanac" label="Fecha Nac"/><br>
-                <span style="color:red" v-if="calcular!=''|| calcular > '0'">{{calcular}} Años</span>
+                <span style="color:red" v-if="calcular!=''">{{calcular}} </span>
               </div>
               <div class="col-6">
                 <q-input outlined type="text" v-model="dato.edad" label="Edad"
@@ -167,7 +167,7 @@
               </div>
               <div class="col-6">
                 <q-input outlined type="date" v-model="datos2.fechanac" label="Fecha Nac"/>
-                <span style="color:red" v-if="calcular2!=''|| calcular2 > '0'">{{calcular2}} Años</span>
+                <span style="color:red" v-if="calcular2!='' ">{{calcular2}} </span>
               </div>
               <div class="col-6">
                 <q-input outlined type="text" v-model="datos2.edad" label="Edad"
@@ -577,7 +577,7 @@
           </template>
 
 
-           <template v-if="tipo.label=='SEROLOGIA'">
+           <template v-if="tipo.label=='PRUEBA DE COVID-19'">
            <q-card class="my-card"  flat bordered style="width:100%">
           <q-card-section  class="bg-green-2"> <div class="row">
           <div class="col-12 col-sm-12">PRUEBA ANTICUERPOS CUANTITATIVOS ANTI SARS COV-2 lg M / lg G</div>
@@ -762,6 +762,21 @@
           <div class="col-6 col-sm-12">HbA1c METODO INMUNOENSAYP DE FLUORESENCIA (FIA)</div>
           <div class="col-6 col-sm-3"></div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="HbA1c"  v-model="laboratorio.d1" /></div>
+          </div></q-card-section>
+
+          <q-card-section  class="bg-red-2"> <div class="row">
+          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
+
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          </div></q-card-section></q-card>
+          </template>
+
+          <template v-if="tipo.label=='GASOMETRIA'">
+           <q-card class="my-card"  flat bordered style="width:100%">
+          <q-card-section  class="bg-green-2"> <div class="row">
+          <div class="col-6 col-sm-3"></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="GASOMETRIA ARTERIAL"  v-model="laboratorio.d1" /></div>
           </div></q-card-section>
 
           <q-card-section  class="bg-red-2"> <div class="row">
@@ -1164,7 +1179,7 @@
           </template>
 
 
-           <template v-if="tipo.label=='SEROLOGIA'">
+           <template v-if="tipo.label=='PRUEBA DE COVID-19'">
            <q-card class="my-card"  flat bordered style="width:100%">
           <q-card-section  class="bg-green-2"> <div class="row">
           <div class="col-12 col-sm-12">PRUEBA ANTICUERPOS CUANTITATIVOS ANTI SARS COV-2 lg M / lg G</div>
@@ -1358,6 +1373,21 @@
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
           </div></q-card-section></q-card>
           </template>
+          
+          <template v-if="tipo.label=='GASOMETRIA'">
+           <q-card class="my-card"  flat bordered style="width:100%">
+          <q-card-section  class="bg-green-2"> <div class="row">
+          <div class="col-6 col-sm-3"></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="GASOMETRIA ARTERIAL"  v-model="laboratorio.d1" /></div>
+          </div></q-card-section>
+
+          <q-card-section  class="bg-red-2"> <div class="row">
+          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
+
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          </div></q-card-section></q-card>
+          </template>
 
           <div class="col-12">
             <q-btn label="Modificar" type="submit" class="full-width" icon="add_circle" color="positive" />
@@ -1498,15 +1528,81 @@ export default {
     calcular(){
       if(this.dato.fechanac==null || this.dato.fechanac=='' || this.dato.fechanac==undefined)
         return ''
-      else
-        return moment().diff(this.dato.fechanac, 'years');
+      else{
+        	var a = moment();
+	        var b = moment(this.dato.fechanac);
 
+          var years = a.diff(b, 'year');
+          b.add(years, 'years');
+
+          var months = a.diff(b, 'months');
+          b.add(months, 'months');
+
+          var days = a.diff(b, 'days');
+
+          if(years==0){
+            if(months<=1){
+              if(days<=1){
+                return months + ' MES ' + days + ' DIA'
+                }else{
+                return  months + ' MES ' + days + ' DIAS'
+                }
+            }else{
+              if(days<=1){
+                return months + ' MESES ' + days + ' DIA'
+              }else{
+                return months + ' MESES ' + days + ' DIAS'
+              }  
+	            }
+     
+            }else{
+              if(years==1){
+                return  years + ' AÑO'
+                }else{
+                return years + ' AÑOS'
+                }	
+	          }
+      }
     },
         calcular2(){
       if(this.datos2.fechanac==null || this.datos2.fechanac=='' || this.datos2.fechanac==undefined)
         return ''
       else
-        return moment().diff(this.datos2.fechanac, 'years');
+        {
+        	var a = moment();
+	        var b = moment(this.datos2.fechanac);
+
+          var years = a.diff(b, 'year');
+          b.add(years, 'years');
+
+          var months = a.diff(b, 'months');
+          b.add(months, 'months');
+
+          var days = a.diff(b, 'days');
+
+          if(years==0){
+            if(months<=1){
+              if(days<=1){
+                return months + ' MES ' + days + ' DIA'
+                }else{
+                return  months + ' MES ' + days + ' DIAS'
+                }
+            }else{
+              if(days<=1){
+                return months + ' MESES ' + days + ' DIA'
+              }else{
+                return months + ' MESES ' + days + ' DIAS'
+              }  
+	            }
+     
+            }else{
+              if(years==1){
+                return  years + ' AÑO'
+                }else{
+                return years + ' AÑOS'
+                }	
+	          }
+      }
 
     },
     es100(){
@@ -2064,7 +2160,7 @@ export default {
     doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+150,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
-      doc.output('save','SEROLOGIA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
+      doc.output('save','PRUEBA DE COVID-19-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
     //window.open(doc.output('bloburl'), '_blank');
 
     },
@@ -2718,7 +2814,7 @@ export default {
     },
 
 
-        glicosilada(p,l){
+        gasometria (p,l){
     var doc = new jsPDF('P',undefined,'legal')
     doc.setFont("arial");
     doc.setFontSize(10);
@@ -2736,9 +2832,9 @@ export default {
     doc.setTextColor(195,47,47)
     doc.text('N Registro CODEDLAB 000045',x+150, y+25)
     doc.setTextColor(211,47,47)
-    doc.text('Form. 017',x+190, y+30)
+    doc.text('Form. 018',x+190, y+30)
     doc.setTextColor(57,73,171)
-    doc.text('HEMOGLOBINA GLICOSILADA',x+100, y+30,'center')
+    doc.text('GASOMETRIA',x+100, y+30,'center')
     doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
     doc.setTextColor(0,0,0)
     doc.setFont(undefined, 'normal')
@@ -2762,32 +2858,15 @@ export default {
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
     doc.setFontSize(12);
-    doc.text('HbA1c METODO INMUNOENSAYO DE FLUORESCENCIA (FIA)',x+50,y+60)
+    doc.text('GASOMETRIA ARTERIAL : ',x+10,y+60)
     doc.setTextColor(0,0,0)
+    doc.text(l.d1,x+70,y+60)
     //doc.setFontSize(12);
 
     doc.setTextColor(0,0,0)
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
-    doc.text('Valor de Referencia: ',x+60,y+100)
-    doc.setFontSize(12);
-    doc.setTextColor(0,0,0)
-
-    doc.text(l.d1,x+100,y+75)
-    doc.setTextColor(255,0,0)
-    doc.rect(x+75, y+105, 60, 12)
-    doc.rect(x+75, y+105, 60, 6)
-    doc.rect(x+75, y+105, 24, 12)
-    doc.rect(x+75, y+70, 60, 6)
-
-    doc.text('NGSP ',x+80,y+110)
-    doc.text('IFCC ',x+80,y+115)
-    doc.setTextColor(0,0,0)
-    doc.text('4.5 - 6.5% ',x+105,y+110)
-    doc.text('26 - 48 mmol/mol',x+100,y+115)
-
     doc.setFontSize(10);
-
     doc.rect(x+5, y+138, 205, 20)
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
@@ -2801,7 +2880,7 @@ export default {
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     //window.open(doc.output('bloburl'), '_blank');
-                doc.output('save','HEMOGLOBINA GLICOSILADA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
+                doc.output('save','GASOMETRIA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
 
     },
 
@@ -3845,6 +3924,8 @@ sanguinea(p,l){
         this.multidrogas(p,l)
       if(l.tipo_id==17)
         this.glicosilada(p,l)
+      if(l.tipo_id==18)
+        this.gasometria(p,l)
        console.log(p)
        console.log(l)
       return false
