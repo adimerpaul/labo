@@ -1536,14 +1536,14 @@ export default {
 
             var doc = new jsPDF('p','cm','letter')
     doc.setFont("arial");
-    doc.setFontSize(12);
+    doc.setFontSize(14);
     let x=0
     let y=0
     //inicio datos paciete
     doc.setTextColor(0,0,0)
-    doc.text(p.paciente,x+9.5,y+5.3,'left')
-    doc.text(l.doctor.nombre+' '+l.doctor.paterno+' '+l.doctor.materno,x+9.5,y+8,'left')
-    doc.text(l.doctor.especialidad,x+9.5,y+8.8,'left')
+    doc.text(p.paciente,x+12.5,y+7.5,'left')
+    doc.text(l.doctor.nombre+' '+l.doctor.paterno+' '+l.doctor.materno,x+12.5,y+8.2,'left')
+    doc.text(l.doctor.especialidad,x+12.5,y+9,'left')
 
                     window.open(doc.output('bloburl'), '_blank');
 
@@ -1853,7 +1853,7 @@ export default {
     doc.setFontSize(10);
     var img = new Image()
     img.src = 'img/natividad.jpeg'
-    doc.addImage(img, 'jpg', 190, 3, 70, 20)
+    doc.addImage(img, 'jpg', 195, 3, 70, 20)
     let x=0
     let y=0
     //inicio datos paciete
@@ -3205,7 +3205,7 @@ sanguinea(p,l){
     doc.setFontSize(10);
     var img = new Image()
     img.src = 'img/natividad.jpeg'
-    doc.addImage(img, 'jpg', 190, 3, 70, 20)
+    doc.addImage(img, 'jpg', 195, 3, 70, 20)
     let x=0
     let y=0
     //inicio datos paciete
@@ -3373,7 +3373,7 @@ sanguinea(p,l){
     doc.setFontSize(10);
     var img = new Image()
     img.src = 'img/natividad.jpeg'
-    doc.addImage(img, 'jpg', 190, 3, 70, 20)
+    doc.addImage(img, 'jpg', 195, 3, 70, 20)
     let x=0
     let y=0
     //inicio datos paciete
@@ -3556,7 +3556,7 @@ sanguinea(p,l){
     doc.setFontSize(10);
     var img = new Image()
     img.src = 'img/natividad.jpeg'
-    doc.addImage(img, 'jpg', 190, 3, 70, 20)
+    doc.addImage(img, 'jpg', 195, 3, 70, 20)
     let x=0
     let y=0
     //inicio datos paciete
@@ -3645,7 +3645,7 @@ sanguinea(p,l){
     doc.setFontSize(10);
     var img = new Image()
     img.src = 'img/natividad.jpeg'
-    doc.addImage(img, 'jpg', 190, 3, 70, 20)
+    doc.addImage(img, 'jpg', 195, 3, 70, 20)
     let x=0
     let y=0
     //inicio datos paciete
@@ -3853,7 +3853,7 @@ sanguinea(p,l){
       doc.setFontSize(10);
       var img = new Image()
       img.src = 'img/natividad.jpeg'
-      doc.addImage(img, 'jpg', 190, 3, 70, 20)
+      doc.addImage(img, 'jpg', 195, 3, 70, 20)
       let x=0
       let y=0
       doc.setDrawColor(120);
