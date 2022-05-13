@@ -214,7 +214,8 @@ export default {
 
 
     },
-       seriado(p,l){
+
+   seriado(p,l){
     var doc = new jsPDF('P',undefined,'legal')
     doc.setFont("arial");
     doc.setFontSize(10);
@@ -232,7 +233,7 @@ export default {
     doc.setTextColor(195,47,47)
     doc.text('N Registro CODEDLAB 000045',x+150, y+25)
     doc.setTextColor(211,47,47)
-    doc.text('Form. 010',x+190, y+30)
+    doc.text('Form. 008',x+190, y+30)
     doc.setTextColor(57,73,171)
     doc.text('COPROPARASITOLOGICO SERIADO',x+100, y+30,'center')
     doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
@@ -314,7 +315,7 @@ export default {
            callback: function (doc) {
              doc.html( '<div style="font-size: 3px;width: 500px">'+l.d9+'</div>' , {
                callback: function (doc) {
-                 window.open(doc.output('bloburl'), '_blank');
+                 doc.output('save','COPROPARASITOLOGICO SERIADO-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
                },
                x: x+50,
                y: y+95,
@@ -341,7 +342,7 @@ export default {
     doc.setFontSize(10);
     var img = new Image()
     img.src = 'img/natividad.jpeg'
-    doc.addImage(img, 'jpg', 190, 3, 70, 20)
+    doc.addImage(img, 'jpg', 195, 3, 70, 20)
     let x=0
     let y=0
     //inicio datos paciete
@@ -353,7 +354,7 @@ export default {
     doc.setTextColor(195,47,47)
     doc.text('N Registro CODEDLAB 000045',x+225, y+25)
     doc.setTextColor(211,47,47)
-    doc.text('Form. 005',x+323, y+30)
+    doc.text('Form. 010',x+323, y+30)
     doc.setTextColor(57,73,171)
     doc.text('SEROLOGIA',x+270, y+30,'center')
     doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+196, y+35)
@@ -391,25 +392,11 @@ export default {
     doc.setTextColor(0,0,0)
     doc.text([l.d1,'',l.d2,' ',l.d3,'',l.d4,'',l.d5,'',l.d6,' ',l.d7,' ',l.d8,' ',l.d9,' ',l.d10,'',l.d11 ,'' ,l.d12,'',l.d13,'',l.d14],x+240,y+65,'left')
 
-        /*if(($row->d1<0 || $row->d1>500)&& $row->d1!='')
-        doc.setTextColor(195,47,47)
-        else
-        doc.setTextColor(0,0,0)
-
-        if($row->paciente->sexo=='Masculino' && ($row->d2<30 || $row->d2>350)&& $row->d2!='')$cd2='color:#ff726f;';
-        if($row->paciente->sexo=='Femenino' && ($row->d2<20 || $row->d2>250)&& $row->d2!='')$cd2='color:#ff726f;';
-        if(($row->d3<0 || $row->d3>7)&& $row->d3!='')$cd3='color:#ff726f;';
-        if(($row->d4<0 || $row->d4>4)&& $row->d4!='')$cd4='color:#ff726f;';
-        if(($row->d5<0 || $row->d5>10)&& $row->d5!='')$cd5='color:#ff726f;';
-        if(($row->d6<0 || $row->d6>0.11)&& $row->d6!='')$cd6='color:#ff726f;';
-        if(($row->d7<0 || $row->d7>10)&& $row->d7!='')$cd7='color:#ff726f;';*/
-    //doc.text(['100',' ','100',' ','100',' ','100',' ','100',' ','100',' ',' ','100',' ',' ',' ','100'],x+250,y+65,'center')
     doc.setFontSize(11);
     doc.text(['Hasta 8 UI/ml ',' ','Hasta 200 UI/l',' ','Hasta 0.8 mg/dl ',' ','No Reactivo',' ','No Reactivo',' ','No Reactivo',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','Hasta 4 ng/ml'],x+290,y+65,'center')
     doc.setTextColor(57,73,171)
     doc.text(['Aglutinacion directa','','Aglutinacion directa','','Aglutinacion directa','','Floculacion directa','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida ','Semicuantitativo'],x+312,y+65,'left')
     doc.setFontSize(11);
-
 
     doc.rect(x+195, y+185, 155, 20)
     doc.setFont(undefined, 'bold')
@@ -424,11 +411,11 @@ export default {
     doc.setTextColor(0,0,0)
     doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+330,y+190,'left')
 
-    //$( '#docpdf' ).attr('src', doc.output('datauristring'));
-                    window.open(doc.output('bloburl'), '_blank');
+      doc.output('save','LABORATORIO SEROLOGIA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
+                   // window.open(doc.output('bloburl'), '_blank');
       },
 
-    lgmserologia(p,l){
+   lgmserologia(p,l){
           var doc = new jsPDF('P',undefined,'legal')
     doc.setFont("arial");
     doc.setFontSize(10);
@@ -450,7 +437,7 @@ export default {
     doc.setTextColor(195,47,47)
     doc.text('N Registro CODEDLAB 000045',x+150, y+25)
     doc.setTextColor(211,47,47)
-    doc.text('Form. 005',x+190, y+30)
+    doc.text('Form. 009',x+190, y+30)
     doc.setTextColor(57,73,171)
     doc.text('PRUEBA DE COVID-19',x+100, y+30,'center')
     doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
@@ -500,6 +487,7 @@ export default {
     doc.setTextColor(255,0,0)
     doc.text(l.d4,x+100,y+71)
     doc.setTextColor(0,0,0)
+
     doc.setTextColor(57,73,171)
     doc.text(['menor a 0.9 NEGATIVO PARA lgG/lgM','0.9 menor igual & mayor 1.1 INDETERMINADO','mayor igual 1.1 POSITIVO lgG/lgM'],x+170,y+63,'center')
     doc.setFont(undefined, 'bold')
@@ -550,7 +538,8 @@ export default {
     doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+150,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
-    window.open(doc.output('bloburl'), '_blank');
+      doc.output('save','SEROLOGIA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
+    //window.open(doc.output('bloburl'), '_blank');
 
     },
     simple(p,l){
@@ -571,7 +560,7 @@ export default {
     doc.setTextColor(195,47,47)
     doc.text('N Registro CODEDLAB 000045',x+150, y+25)
     doc.setTextColor(211,47,47)
-    doc.text('Form. 010',x+190, y+30)
+    doc.text('Form. 007',x+190, y+30)
     doc.setTextColor(57,73,171)
     doc.text('COPROPARASITOLOGICO SIMPLE',x+100, y+30,'center')
     doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
@@ -643,7 +632,8 @@ export default {
     doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+140,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
-    window.open(doc.output('bloburl'), '_blank');
+      doc.output('save','COPROPARASITOLOGICO SIMPLE-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
+    //window.open(doc.output('bloburl'), '_blank');
     },
 
     heces(p,l){
@@ -664,7 +654,7 @@ export default {
     doc.setTextColor(195,47,47)
     doc.text('N Registro CODEDLAB 000045',x+150, y+25)
     doc.setTextColor(211,47,47)
-    doc.text('Form. 010',x+190, y+30)
+    doc.text('Form. 006',x+190, y+30)
     doc.setTextColor(57,73,171)
     doc.text('ANALISIS DE HECES',x+100, y+30,'center')
     doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
@@ -736,7 +726,8 @@ export default {
     doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
-    window.open(doc.output('bloburl'), '_blank');
+      doc.output('save','ANALISIS DE HECES-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
+    //window.open(doc.output('bloburl'), '_blank');
     },
 
             orina(p,l){
@@ -757,7 +748,7 @@ export default {
     doc.setTextColor(195,47,47)
     doc.text('N Registro CODEDLAB 000045',x+150, y+25)
     doc.setTextColor(211,47,47)
-    doc.text('Form. 002',x+190, y+30)
+    doc.text('Form. 003',x+190, y+30)
     doc.setTextColor(57,73,171)
     doc.text('EXAMEN GENERAL DE ORINA',x+100, y+30,'center')
     doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
@@ -893,7 +884,8 @@ export default {
     //window.open(doc.output('bloburl'), '_blank');
     doc.html( '<div style="font-size: 3px;width: 300px">'+l.d37+'</div>' , {
        callback: function (doc) {
-                 window.open(doc.output('bloburl'), '_blank');
+                doc.output('save','EXAMEN GENERAL DE ORINA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
+                 //window.open(doc.output('bloburl'), '_blank');
        },
        x: x+6,
        y: y+141,
@@ -919,7 +911,7 @@ export default {
     doc.setTextColor(195,47,47)
     doc.text('N Registro CODEDLAB 000045',x+150, y+25)
     doc.setTextColor(211,47,47)
-    doc.text('Form. 007',x+190, y+30)
+    doc.text('Form. 014',x+190, y+30)
     doc.setTextColor(57,73,171)
     doc.text('ALCOHOLEMIA',x+100, y+30,'center')
     doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
@@ -986,7 +978,8 @@ export default {
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     //window.open(doc.output('bloburl'), '_blank');
-    window.open(doc.output('bloburl'), '_blank');
+    //window.open(doc.output('bloburl'), '_blank');
+                doc.output('save','ALCOHOLEMIA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
 
     },
 
@@ -1008,7 +1001,7 @@ export default {
     doc.setTextColor(195,47,47)
     doc.text('N Registro CODEDLAB 000045',x+150, y+25)
     doc.setTextColor(211,47,47)
-    doc.text('Form. 008',x+190, y+30)
+    doc.text('Form. 015',x+190, y+30)
     doc.setTextColor(57,73,171)
     doc.text('REACCION DE WIDAL',x+100, y+30,'center')
     doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
@@ -1074,7 +1067,8 @@ export default {
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     //window.open(doc.output('bloburl'), '_blank');
-    window.open(doc.output('bloburl'), '_blank');
+    //window.open(doc.output('bloburl'), '_blank');
+                doc.output('save','REACCION DE WIDAL-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
 
     },
 
@@ -1096,7 +1090,7 @@ export default {
     doc.setTextColor(195,47,47)
     doc.text('N Registro CODEDLAB 000045',x+150, y+25)
     doc.setTextColor(211,47,47)
-    doc.text('Form. 007',x+190, y+30)
+    doc.text('Form. 016',x+190, y+30)
     doc.setTextColor(57,73,171)
     doc.text('MULTIDROGAS',x+100, y+30,'center')
     doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
@@ -1193,7 +1187,7 @@ export default {
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     //window.open(doc.output('bloburl'), '_blank');
-    window.open(doc.output('bloburl'), '_blank');
+                doc.output('save','MULTIDROGAS-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
 
     },
 
@@ -1216,7 +1210,7 @@ export default {
     doc.setTextColor(195,47,47)
     doc.text('N Registro CODEDLAB 000045',x+150, y+25)
     doc.setTextColor(211,47,47)
-    doc.text('Form. 007',x+190, y+30)
+    doc.text('Form. 017',x+190, y+30)
     doc.setTextColor(57,73,171)
     doc.text('HEMOGLOBINA GLICOSILADA',x+100, y+30,'center')
     doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
@@ -1281,7 +1275,7 @@ export default {
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     //window.open(doc.output('bloburl'), '_blank');
-    window.open(doc.output('bloburl'), '_blank');
+                doc.output('save','HEMOGLOBINA GLICOSILADA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
 
     },
 
@@ -1356,7 +1350,8 @@ export default {
     doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
-    window.open(doc.output('bloburl'), '_blank');
+    //window.open(doc.output('bloburl'), '_blank');
+                doc.output('save','ANALISIS DE SECRECION URETRAL-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
     },
 
             vaginal(p,l){
@@ -1377,7 +1372,7 @@ export default {
     doc.setTextColor(195,47,47)
     doc.text('N Registro CODEDLAB 000045',x+150, y+25)
     doc.setTextColor(211,47,47)
-    doc.text('Form. 004',x+190, y+30)
+    doc.text('Form. 005',x+190, y+30)
     doc.setTextColor(57,73,171)
     doc.text('ANALISIS DE SECRECION VAGINAL',x+100, y+30,'center')
     doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
@@ -1430,7 +1425,8 @@ export default {
     doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
-    window.open(doc.output('bloburl'), '_blank');
+    //window.open(doc.output('bloburl'), '_blank');
+                doc.output('save','ANALISIS DE SECRECION VAGINAL-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
     },
 
 sanguinea(p,l){
@@ -1653,15 +1649,17 @@ sanguinea(p,l){
     doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+135,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
-    window.open(doc.output('bloburl'), '_blank');
+    //window.open(doc.output('bloburl'), '_blank');
+                doc.output('save','QUIMICA SANGUINIA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
     },
+
           serologia(){
             var doc = new jsPDF('landscape',undefined,'legal')
     doc.setFont("arial");
     doc.setFontSize(10);
     var img = new Image()
     img.src = 'img/natividad.jpeg'
-    doc.addImage(img, 'jpg', 190, 3, 70, 20)
+    doc.addImage(img, 'jpg', 195, 3, 70, 20)
     let x=0
     let y=0
     //inicio datos paciete
@@ -1820,7 +1818,8 @@ sanguinea(p,l){
     doc.text(['Fecha toma de Muestra','Fecha Entrega de Resultado','Hora toma Muestra'],x+280,y+185,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
-    window.open(doc.output('bloburl'), '_blank');
+    //window.open(doc.output('bloburl'), '_blank');
+                doc.output('save','QUIMICA SANGUINIA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
       },
       hemograma(p,l){
             var doc = new jsPDF('landscape',undefined,'legal')
@@ -1828,7 +1827,7 @@ sanguinea(p,l){
     doc.setFontSize(10);
     var img = new Image()
     img.src = 'img/natividad.jpeg'
-    doc.addImage(img, 'jpg', 190, 3, 70, 20)
+    doc.addImage(img, 'jpg', 195, 3, 70, 20)
     let x=0
     let y=0
     //inicio datos paciete
@@ -2002,7 +2001,8 @@ sanguinea(p,l){
     // window.open(doc.output('bloburl'), '_blank');
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
-    window.open(doc.output('bloburl'), '_blank');
+    //window.open(doc.output('bloburl'), '_blank');
+                doc.output('save','HEMOGRAMA COMPLETO-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
       },
       ensayo(p,l){
             var doc = new jsPDF('landscape',undefined,'legal')
@@ -2010,7 +2010,7 @@ sanguinea(p,l){
     doc.setFontSize(10);
     var img = new Image()
     img.src = 'img/natividad.jpeg'
-    doc.addImage(img, 'jpg', 190, 3, 70, 20)
+    doc.addImage(img, 'jpg', 195, 3, 70, 20)
     let x=0
     let y=0
     //inicio datos paciete
@@ -2022,7 +2022,7 @@ sanguinea(p,l){
     doc.setTextColor(195,47,47)
     doc.text('N Registro CODEDLAB 000045',x+225, y+25)
     doc.setTextColor(211,47,47)
-    doc.text('Form. 0010',x+323, y+30)
+    doc.text('Form. 012',x+323, y+30)
     doc.setTextColor(57,73,171)
     doc.text('',x+270, y+30,'center')
     doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+196, y+35)
@@ -2084,16 +2084,14 @@ sanguinea(p,l){
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
     doc.text('RESPONSABLE',x+205,y+165,'left')
-    doc.setTextColor(0,0,0)
     doc.text(l.responsable,x+205,y+170,'left')
     doc.setFontSize(10);
-    doc.setTextColor(57,73,171)
     doc.text(['Fecha toma de Muestra','Hora toma Muestra','Fecha Entrega de Resultado'],x+280,y+165,'left')
-    doc.setTextColor(0,0,0)
     doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+330,y+165,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
-    window.open(doc.output('bloburl'), '_blank');
+    //window.open(doc.output('bloburl'), '_blank');
+                doc.output('save','INMUNOENSAYO DE FLUORESCENCIA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
       },
       reserologia(p,l){
                     var doc = new jsPDF('landscape',undefined,'legal')
@@ -2101,7 +2099,7 @@ sanguinea(p,l){
     doc.setFontSize(10);
     var img = new Image()
     img.src = 'img/natividad.jpeg'
-    doc.addImage(img, 'jpg', 190, 3, 70, 20)
+    doc.addImage(img, 'jpg', 195, 3, 70, 20)
     let x=0
     let y=0
     //inicio datos paciete
@@ -2113,7 +2111,7 @@ sanguinea(p,l){
     doc.setTextColor(195,47,47)
     doc.text('N Registro CODEDLAB 000045',x+225, y+25)
     doc.setTextColor(211,47,47)
-    doc.text('Form. 005',x+323, y+30)
+    doc.text('Form. 011',x+323, y+30)
     doc.setTextColor(57,73,171)
     doc.text('',x+270, y+30,'center')
     doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+196, y+35)
@@ -2178,14 +2176,15 @@ sanguinea(p,l){
     doc.text('RESPONSABLE',x+205,y+175,'left')
     doc.setTextColor(0,0,0)
     doc.text(l.responsable,x+205,y+180,'left')
-    doc.setFontSize(10);
     doc.setTextColor(57,73,171)
+    doc.setFontSize(10);
     doc.text(['Fecha toma de Muestra','Hora toma Muestra','Fecha Entrega de Resultado'],x+280,y+175,'left')
     doc.setTextColor(0,0,0)
     doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+325,y+175,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
-    window.open(doc.output('bloburl'), '_blank');
+    //window.open(doc.output('bloburl'), '_blank');
+                doc.output('save','RESULTADO SEROLOGIA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
       },
       embarazo(p,l) {
     var doc = new jsPDF('P',undefined,'legal')
@@ -2205,7 +2204,7 @@ sanguinea(p,l){
     doc.setTextColor(195,47,47)
     doc.text('N Registro CODEDLAB 000045',x+150, y+25)
     doc.setTextColor(211,47,47)
-    doc.text('Form. 008',x+190, y+30)
+    doc.text('Form. 013',x+190, y+30)
     doc.setTextColor(57,73,171)
     doc.text('PRUEBA RAPIDA INMUNOCROMATOGRAFICA',x+100, y+30,'center')
     doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA','METODO'],x+6, y+35)
@@ -2262,7 +2261,8 @@ sanguinea(p,l){
     doc.setTextColor(0,0,0)
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
-    window.open(doc.output('bloburl'), '_blank');
+    //window.open(doc.output('bloburl'), '_blank');
+                doc.output('save','TEST EMBARAZO-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
   },
 
     labo(paciente){
