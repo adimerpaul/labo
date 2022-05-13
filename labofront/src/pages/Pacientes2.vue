@@ -1536,15 +1536,14 @@ export default {
 
             var doc = new jsPDF('p','cm','letter')
     doc.setFont("arial");
-    doc.setFontSize(10);
+    doc.setFontSize(12);
     let x=0
     let y=0
     //inicio datos paciete
-    doc.setFontSize(11);
     doc.setTextColor(0,0,0)
-    doc.text(p.paciente,x+8,y+5.3,'left')
-    doc.text(l.doctor.nombre+' '+l.doctor.paterno+' '+l.doctor.materno,x+8,y+6,'left')
-    doc.text(l.doctor.especialidad,x+8,y+6.8,'left')
+    doc.text(p.paciente,x+9.5,y+5.3,'left')
+    doc.text(l.doctor.nombre+' '+l.doctor.paterno+' '+l.doctor.materno,x+9.5,y+8,'left')
+    doc.text(l.doctor.especialidad,x+9.5,y+8.8,'left')
 
                     window.open(doc.output('bloburl'), '_blank');
 
