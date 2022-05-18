@@ -2866,13 +2866,16 @@ export default {
     doc.text('Valor de Referencia: ',x+60,y+100)
     doc.setFontSize(12);
     doc.setTextColor(0,0,0)
+    if(parseFloat(l.d1)<4.5 || parseFloat(l.d1)>6.5)
+          doc.setTextColor(255,0,0)
+    doc.text(l.d1+' %',x+100,y+75)
+    doc.setTextColor(0,0,0)
 
-    doc.text(l.d1,x+100,y+75)
-    doc.setTextColor(255,0,0)
     doc.rect(x+75, y+105, 60, 12)
     doc.rect(x+75, y+105, 60, 6)
     doc.rect(x+75, y+105, 24, 12)
     doc.rect(x+75, y+70, 60, 6)
+    doc.setTextColor(255,0,0)
 
     doc.text('NGSP ',x+80,y+110)
     doc.text('IFCC ',x+80,y+115)
@@ -2945,6 +2948,7 @@ export default {
     doc.setFontSize(12);
     doc.text('GASOMETRIA ARTERIAL : ',x+10,y+60)
     doc.setTextColor(0,0,0)
+    
     doc.text(l.d1,x+70,y+60)
     //doc.setFontSize(12);
 
@@ -3799,7 +3803,7 @@ sanguinea(p,l){
       doc.setTextColor(255,0,0)
     doc.text(l.d5,x+250,y+104,'center')
     doc.setTextColor(0,0,0)
-    if(parseFloat(l.d6)>0.11 && parseFloat(l.d6)<0.0)
+    if(parseFloat(l.d6)>0.11 || parseFloat(l.d6)<0.0)
       doc.setTextColor(255,0,0)
     doc.text(l.d6,x+250,y+114,'center')
     doc.setTextColor(0,0,0)
