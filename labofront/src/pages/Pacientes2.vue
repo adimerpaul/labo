@@ -1485,6 +1485,7 @@ export default {
         user_id:this.$store.state.login.user.id,
         doctor_id:'',
       },
+      fechacalculo:'',
       columspaciente:[
         {name:'opciones',field:'opciones',label:'opciones',align:'center'},
         {name:'paciente',field:'paciente',label:'paciente',align:'left'},
@@ -1605,6 +1606,7 @@ export default {
       }
 
     },
+
     es100(){
       if(
         (
@@ -1624,6 +1626,45 @@ export default {
     }
   },
   methods:{
+            calcular3(fechanac){
+      if(fechanac==null || fechanac=='' || fechanac==undefined)
+        return ''
+      else{
+        	var a = moment();
+	        var b = moment(fechanac);
+
+          var years = a.diff(b, 'year');
+          b.add(years, 'years');
+
+          var months = a.diff(b, 'months');
+          b.add(months, 'months');
+
+          var days = a.diff(b, 'days');
+
+          if(years==0){
+            if(months<=1){
+              if(days<=1){
+                return months + ' MES ' + days + ' DIA'
+                }else{
+                return  months + ' MES ' + days + ' DIAS'
+                }
+            }else{
+              if(days<=1){
+                return months + ' MESES ' + days + ' DIA'
+              }else{
+                return months + ' MESES ' + days + ' DIAS'
+              }  
+	            }
+     
+            }else{
+              if(years==1){
+                return  years + ' AÑO'
+                }else{
+                return years + ' AÑOS'
+                }	
+	          }
+      }
+    },
     Whatsapp(celular){
           window.open('https://wa.me/+591'+celular, '_blank');
 
@@ -4253,8 +4294,9 @@ sanguinea(p,l){
           let d=r
           // console.log(r)
           var nacimiento=moment(r.fechanac)
+          //this.fechacalculo=moment(r.fechanac)
           var hoy=moment()
-          var anios=hoy.diff(nacimiento,"years")
+          var anios=this.calcular3(r.fechanac)
           d.tiempo=anios
           d.paciente=r.nombre+' '+r.paterno+' '+r.materno
           this.pacientes.push(d)
