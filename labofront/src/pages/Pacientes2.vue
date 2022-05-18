@@ -2812,7 +2812,92 @@ export default {
                 doc.output('save','MULTIDROGAS-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
 
     },
+        glicosilada(p,l){
+    var doc = new jsPDF('P',undefined,'legal')
+    doc.setFont("arial");
+    doc.setFontSize(10);
+    var img = new Image()
+    img.src = 'img/natividad.jpeg'
+    doc.addImage(img, 'jpg', 5, 2, 70, 20)
+    let x=0
+    let y=0
+    //inicio datos paciete
+    doc.setDrawColor(120);
+    doc.rect(x+5, y+27, 205, 17)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+175, y+8,'center')
+    doc.setTextColor(195,47,47)
+    doc.text('N Registro CODEDLAB 000045',x+150, y+25)
+    doc.setTextColor(211,47,47)
+    doc.text('Form. 017',x+190, y+30)
+    doc.setTextColor(57,73,171)
+    doc.text('HEMOGLOBINA GLICOSILADA',x+100, y+30,'center')
+    doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
+    doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'normal')
+    doc.text([p.paciente,l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno,l.tipomuestra],x+70, y+35,'center')
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'bold')
+    doc.text(['EDAD','SEXO'],x+130, y+35)
+    doc.setTextColor(211,47,47)
+    doc.text('N PACIENTE',x+130, y+43)
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(0,0,0)
+        let anio=''
+    if(p.edad==null||p.edad==undefined||p.edad=='')
+    anio=p.tiempo
+    else anio=p.edad
+    doc.text([anio+'',p.sexo,p.nro+''],x+160, y+35,'center')
+    doc.setTextColor(57,73,171)
+    //fin datos paciete
+    //inicio datos
+    doc.rect(x+5, y+44, 205, 94)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.setFontSize(12);
+    doc.text('HbA1c METODO INMUNOENSAYO DE FLUORESCENCIA (FIA)',x+50,y+60)
+    doc.setTextColor(0,0,0)
+    //doc.setFontSize(12);
 
+    doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('Valor de Referencia: ',x+60,y+100)
+    doc.setFontSize(12);
+    doc.setTextColor(0,0,0)
+
+    doc.text(l.d1,x+100,y+75)
+    doc.setTextColor(255,0,0)
+    doc.rect(x+75, y+105, 60, 12)
+    doc.rect(x+75, y+105, 60, 6)
+    doc.rect(x+75, y+105, 24, 12)
+    doc.rect(x+75, y+70, 60, 6)
+
+    doc.text('NGSP ',x+80,y+110)
+    doc.text('IFCC ',x+80,y+115)
+    doc.setTextColor(0,0,0)
+    doc.text('4.5 - 6.5% ',x+105,y+110)
+    doc.text('26 - 48 mmol/mol',x+100,y+115)
+
+    doc.setFontSize(10);
+
+    doc.rect(x+5, y+138, 205, 20)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('RESPONSABLE',x+6,y+145)
+    doc.setFont(undefined, 'NORMAL')
+    doc.text(l.responsable,x+8,y+149)
+    doc.setFont(undefined, 'normal')
+    doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+145,'center')
+    doc.setTextColor(0,0,0)
+    doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
+
+    //$( '#docpdf' ).attr('src', doc.output('datauristring'));
+    //window.open(doc.output('bloburl'), '_blank');
+                doc.output('save','HEMOGLOBINA GLICOSILADA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
+
+    },
 
         gasometria (p,l){
     var doc = new jsPDF('P',undefined,'legal')
