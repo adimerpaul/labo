@@ -3780,7 +3780,32 @@ sanguinea(p,l){
         if(($row->d5<0 || $row->d5>10)&& $row->d5!='')$cd5='color:#ff726f;';
         if(($row->d6<0 || $row->d6>0.11)&& $row->d6!='')$cd6='color:#ff726f;';
         if(($row->d7<0 || $row->d7>10)&& $row->d7!='')$cd7='color:#ff726f;';*/
-    doc.text([l.d1,' ',l.d2,' ',l.d3,' ',l.d4,' ',l.d5,' ',l.d6,' ',' ',l.d7,' ',' ',' ',l.d8],x+250,y+65,'center')
+    if(parseFloat(l.d1)>500.0)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d1,x+250,y+65,'center')
+    doc.setTextColor(0,0,0)
+    if((parseFloat(l.d2)<30 || parseFloat(l.d2)>350) && p.sexo=='Masculino')
+      doc.setTextColor(255,0,0)
+    if((parseFloat(l.d2)<20 || parseFloat(l.d2)>250) && p.sexo=='Femenino')
+      doc.setTextColor(255,0,0)
+    doc.text(l.d2,x+250,y+75,'center')
+    doc.setTextColor(0,0,0)
+    doc.text(l.d3,x+250,y+85,'center')
+    if(parseFloat(l.d4)>4)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d4,x+250,y+94,'center')
+    doc.setTextColor(0,0,0)
+    if(parseFloat(l.d5)>10)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d5,x+250,y+104,'center')
+    doc.setTextColor(0,0,0)
+    if(parseFloat(l.d6)>0.11 && parseFloat(l.d6)<0.0)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d6,x+250,y+114,'center')
+    doc.setTextColor(0,0,0)
+    
+    doc.text(l.d7,x+250,y+127,'center')
+    doc.text(l.d8,x+250,y+148,'center')
     doc.text(['ng/ml',' ','ng/ml',' ','pg/ml',' ','ng/ml',' ','mg/ml',' ','ng/ml',' ',' ','mlU/ml',' ',' ',' ','ng/ml'],x+270,y+65,'center')
     doc.setFontSize(10);
     doc.text(['Plasma Citratado',' ','Suero',' ',' ','Suero/plasma',' ','Suero',' ',' ','Sangre Entera',' ','Suero',' ',' ',' ','Suero',' ',' ',' ','Suero'],x+290,y+65,'center')
