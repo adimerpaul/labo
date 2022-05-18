@@ -2424,6 +2424,45 @@ sanguinea(p,l){
       this.listado();
     }
   },
+              calcular3(fechanac){
+      if(fechanac==null || fechanac=='' || fechanac==undefined)
+        return ''
+      else{
+        	var a = moment();
+	        var b = moment(fechanac);
+
+          var years = a.diff(b, 'year');
+          b.add(years, 'years');
+
+          var months = a.diff(b, 'months');
+          b.add(months, 'months');
+
+          var days = a.diff(b, 'days');
+
+          if(years==0){
+            if(months<=1){
+              if(days<=1){
+                return months + ' MES ' + days + ' DIA'
+                }else{
+                return  months + ' MES ' + days + ' DIAS'
+                }
+            }else{
+              if(days<=1){
+                return months + ' MESES ' + days + ' DIA'
+              }else{
+                return months + ' MESES ' + days + ' DIAS'
+              }  
+	            }
+     
+            }else{
+              if(years==1){
+                return  years + ' AÑO'
+                }else{
+                return years + ' AÑOS'
+                }	
+	          }
+      }
+    },
 
 }
 </script>
