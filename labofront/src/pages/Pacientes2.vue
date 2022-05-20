@@ -1761,7 +1761,7 @@ export default {
         d4:'NEGATIVO',
         d5:'LIMPIDO',
         d6:'NEGATIVO',
-        d7:'BLANCO O FUGAZ',
+        d7:'BLANCO FUGAZ',
         d8:'NEGATIVO',
         d9:'NULO',
         d10:'NEGATIVO',
