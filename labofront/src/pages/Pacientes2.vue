@@ -1761,7 +1761,7 @@ export default {
         d4:'NEGATIVO',
         d5:'LIMPIDO',
         d6:'NEGATIVO',
-        d7:'BLANCA O FUGAZ',
+        d7:'BLANCO O FUGAZ',
         d8:'NEGATIVO',
         d9:'NULO',
         d10:'NEGATIVO',
@@ -2053,8 +2053,21 @@ export default {
         if(($row->d6<0 || $row->d6>0.11)&& $row->d6!='')$cd6='color:#ff726f;';
         if(($row->d7<0 || $row->d7>10)&& $row->d7!='')$cd7='color:#ff726f;';*/
     //doc.text(['100',' ','100',' ','100',' ','100',' ','100',' ','100',' ',' ','100',' ',' ',' ','100'],x+250,y+65,'center')
+    doc.setFontSize(8);
+    doc.text('Hasta 8 UI/ml ',x+290,y+65,'center')
+    doc.text('Hasta 200 UI/l',x+290,y+74,'center')
+    doc.text('Hasta 0.8 mg/dl ',x+290,y+83,'center')
+    doc.text('No Reactivo',x+290,y+92,'center')
+    doc.text('No Reactivo',x+290,y+101,'center')
+    doc.text('No Reactivo',x+290,y+110,'center')
+    doc.text('NEGATIVO / POSITIVO ',x+290,y+119,'center')
+    doc.text('NEGATIVO / POSITIVO ',x+290,y+128,'center')
+    doc.text('NEGATIVO / POSITIVO ',x+290,y+137,'center')
+    doc.text('NEGATIVO / POSITIVO ',x+290,y+146,'center')
+    doc.text('NEGATIVO / POSITIVO ',x+290,y+155,'center')
+    doc.text('NEGATIVO / POSITIVO ',x+290,y+164,'center')
+    doc.text('Hasta 4 ng/ml',x+290,y+172,'center')
     doc.setFontSize(11);
-    doc.text(['Hasta 8 UI/ml ',' ','Hasta 200 UI/l',' ','Hasta 0.8 mg/dl ',' ','No Reactivo',' ','No Reactivo',' ','No Reactivo',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','Hasta 4 ng/ml'],x+290,y+65,'center')
     doc.setTextColor(57,73,171)
     doc.text(['Aglutinacion directa','','Aglutinacion directa','','Aglutinacion directa','','Floculacion directa','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida ','Semicuantitativo'],x+312,y+65,'left')
     doc.setFontSize(11);

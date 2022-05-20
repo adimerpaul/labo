@@ -393,8 +393,23 @@ export default {
     doc.setTextColor(0,0,0)
     doc.text([l.d1,'',l.d2,' ',l.d3,'',l.d4,'',l.d5,'',l.d6,' ',l.d7,' ',l.d8,' ',l.d9,' ',l.d10,'',l.d11 ,'' ,l.d12,'',l.d13,'',l.d14],x+240,y+65,'left')
 
+    //doc.setFontSize(11);
+    //doc.text(['Hasta 8 UI/ml ',' ','Hasta 200 UI/l',' ','Hasta 0.8 mg/dl ',' ','No Reactivo',' ','No Reactivo',' ','No Reactivo',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','Hasta 4 ng/ml'],x+290,y+65,'center')
+        doc.setFontSize(8);
+    doc.text('Hasta 8 UI/ml ',x+290,y+65,'center')
+    doc.text('Hasta 200 UI/l',x+290,y+74,'center')
+    doc.text('Hasta 0.8 mg/dl ',x+290,y+83,'center')
+    doc.text('No Reactivo',x+290,y+92,'center')
+    doc.text('No Reactivo',x+290,y+101,'center')
+    doc.text('No Reactivo',x+290,y+110,'center')
+    doc.text('NEGATIVO / POSITIVO ',x+290,y+119,'center')
+    doc.text('NEGATIVO / POSITIVO ',x+290,y+128,'center')
+    doc.text('NEGATIVO / POSITIVO ',x+290,y+137,'center')
+    doc.text('NEGATIVO / POSITIVO ',x+290,y+146,'center')
+    doc.text('NEGATIVO / POSITIVO ',x+290,y+155,'center')
+    doc.text('NEGATIVO / POSITIVO ',x+290,y+164,'center')
+    doc.text('Hasta 4 ng/ml',x+290,y+172,'center')
     doc.setFontSize(11);
-    doc.text(['Hasta 8 UI/ml ',' ','Hasta 200 UI/l',' ','Hasta 0.8 mg/dl ',' ','No Reactivo',' ','No Reactivo',' ','No Reactivo',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','Hasta 4 ng/ml'],x+290,y+65,'center')
     doc.setTextColor(57,73,171)
     doc.text(['Aglutinacion directa','','Aglutinacion directa','','Aglutinacion directa','','Floculacion directa','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida ','Semicuantitativo'],x+312,y+65,'left')
     doc.setFontSize(11);
