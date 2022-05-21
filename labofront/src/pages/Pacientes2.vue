@@ -787,13 +787,105 @@
           </div></q-card-section></q-card>
           </template>
 
-                    <template v-if="tipo.label=='HEPATITIS B'">
+          <template v-if="tipo.label=='HEPATITIS B'">
            <q-card class="my-card"  flat bordered style="width:100%">
           <q-card-section  class="bg-green-2"> <div class="row">
           <div class="col-6 col-sm-3"></div>
           <div class="col-6 col-sm-10"><q-input dense outlined label="Anti-HBS"  v-model="laboratorio.d1" /></div>
           <div class="col-6 col-sm-2">mlU/ml</div>
           <div class="col-6 col-sm-12"><q-select dense outlined v-model="laboratorio.d2" :options="['NEGATIVO','INDETERMINADO','POSITIVO']" label="VALOR" /></div>
+          </div></q-card-section>
+
+          <q-card-section  class="bg-red-2"> <div class="row">
+          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
+
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          </div></q-card-section></q-card>
+          </template>
+
+          <template v-if="tipo.label=='TOXOPLASMOSIS'">
+           <q-card class="my-card"  flat bordered style="width:100%">
+          <q-card-section  class="bg-green-2"> <div class="row">
+          <div class="col-6 col-sm-6"><q-input dense outlined label="lg M"  v-model="laboratorio.d1" /></div>
+          <div class="col-6 col-sm-6"><q-select dense outlined v-model="laboratorio.d2" :options="['NEGATIVO','INDETERMINADO','POSITIVO']" label="VALOR" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="lg G"  v-model="laboratorio.d3" /></div>
+          <div class="col-6 col-sm-6"><q-select dense outlined v-model="laboratorio.d4" :options="['NEGATIVO','INDETERMINADO','POSITIVO']" label="VALOR" /></div>
+          </div></q-card-section>
+
+          <q-card-section  class="bg-red-2"> <div class="row">
+          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
+
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          </div></q-card-section></q-card>
+          </template>
+
+         <template v-if="tipo.label=='HEMODIALISIS M Y B'">
+           <q-card class="my-card"  flat bordered style="width:100%">
+          <q-card-section  class="bg-green-2"> <div class="row">
+          <div class="col-6 col-sm-12">CONTROL MENSUAL</div>
+
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Glicemia"  v-model="laboratorio.d1" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Creatinina"  v-model="laboratorio.d2" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Urea"  v-model="laboratorio.d3" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="NUS-BUN"  v-model="laboratorio.d4" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Transaminasas GOT"  v-model="laboratorio.d5" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Transaminasas GPT"  v-model="laboratorio.d6" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Sodio"  v-model="laboratorio.d7" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Cloro"  v-model="laboratorio.d8" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Potasio"  v-model="laboratorio.d9" /></div>
+          </div></q-card-section>
+          <q-card-section  class="bg-blue-2"> <div class="row">
+          <div class="col-6 col-sm-12">CONTROL BIMENSUAL</div>
+
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Acido Urico"  v-model="laboratorio.d10" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Fosfatasa Alcalina"  v-model="laboratorio.d11" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Calcio"  v-model="laboratorio.d12" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Fosforo"  v-model="laboratorio.d13" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Observaciones"  v-model="laboratorio.d14" /></div>
+          </div></q-card-section>
+
+          <q-card-section  class="bg-red-2"> <div class="row">
+          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
+
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          </div></q-card-section></q-card>
+          </template>
+
+
+         <template v-if="tipo.label=='HEMODIALISIS TRI'">
+           <q-card class="my-card"  flat bordered style="width:100%">
+          <q-card-section  class="bg-green-2"> <div class="row">
+          <div class="col-6 col-sm-12">CONTROL TRIMESTRAL</div>
+
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Proteinas Totales"  v-model="laboratorio.d1" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Albumina"  v-model="laboratorio.d2" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Globulina"  v-model="laboratorio.d3" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Relacion A/G"  v-model="laboratorio.d4" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Trigliceridos"  v-model="laboratorio.d5" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Colesterol Total"  v-model="laboratorio.d6" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="HDL-Col"  v-model="laboratorio.d7" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="LDL-Col"  v-model="laboratorio.d8" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="VLDL-Col"  v-model="laboratorio.d9" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Hierro"  v-model="laboratorio.d10" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Prueba Rapida VIH"  v-model="laboratorio.d11" /></div>
+          </div></q-card-section>
+          <q-card-section  class="bg-blue-2"> <div class="row">
+          <div class="col-6 col-sm-12">CAPACIDAD DE FIJACION DE HIERRO</div>
+
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Capacidad Latente de Fijacion de Hierro"  v-model="laboratorio.d12" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Capacidad Total de Fijacion de Hierro"  v-model="laboratorio.d13" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Transferrina"  v-model="laboratorio.d14" /></div>
+          </div></q-card-section>
+          <q-card-section  class="bg-lime-2"> <div class="row">
+          <div class="col-6 col-sm-12">INMUNOENSAYO DE FLUORESCENCIA</div>
+
+          <div class="col-6 col-sm-12"><q-input dense outlined label="FERRITINA"  v-model="laboratorio.d15" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="HEPATITIS B"  v-model="laboratorio.d16" /></div>
+          <div class="col-6 col-sm-6"><q-select dense outlined v-model="laboratorio.d17" :options="['NEGATIVO','INDETERMINADO','POSITIVO']" label="VALOR" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="Observaciones"  v-model="laboratorio.d18" /></div>
           </div></q-card-section>
 
           <q-card-section  class="bg-red-2"> <div class="row">
