@@ -787,6 +787,23 @@
           </div></q-card-section></q-card>
           </template>
 
+                    <template v-if="tipo.label=='HEPATITIS B'">
+           <q-card class="my-card"  flat bordered style="width:100%">
+          <q-card-section  class="bg-green-2"> <div class="row">
+          <div class="col-6 col-sm-3"></div>
+          <div class="col-6 col-sm-10"><q-input dense outlined label="Anti-HBS"  v-model="laboratorio.d1" /></div>
+          <div class="col-6 col-sm-2">mlU/ml</div>
+          <div class="col-6 col-sm-12"><q-select dense outlined v-model="laboratorio.d2" :options="['NEGATIVO','INDETERMINADO','POSITIVO']" label="VALOR" /></div>
+          </div></q-card-section>
+
+          <q-card-section  class="bg-red-2"> <div class="row">
+          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
+
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          </div></q-card-section></q-card>
+          </template>
+
           <div class="col-12">
             <q-btn label="Guardar" type="submit" class="full-width" icon="add_circle" color="positive" />
           </div>
@@ -1750,8 +1767,9 @@ export default {
 
       this.doctor={label:''}
       this.user=''
-      if(this.tipo.label=='EXAMEN GENERAL DE ORINA'){
-            this.laboratorio={
+      switch (this.tipo.label) {
+        case 'EXAMEN GENERAL DE ORINA':
+                      this.laboratorio={
         tipomuestra:'',
         fechatoma:date.formatDate(new Date(),'YYYY-MM-DD'),
         horatoma:date.formatDate(new Date(),'HH:mm'),
@@ -1806,7 +1824,123 @@ export default {
         user_id:this.$store.state.login.user.id,
         doctor_id:'',
       }
-      }else{
+          break;
+      case "ANALISIS DE HECES":
+                              this.laboratorio={
+        tipomuestra:'',
+        fechatoma:date.formatDate(new Date(),'YYYY-MM-DD'),
+        horatoma:date.formatDate(new Date(),'HH:mm'),
+        d1:'Heces Pastosa',
+        d2:'Marron',
+        d3:'No se Observa',
+        d4:'No se Observa',
+        d5:'No se Observa',
+        d6:'No se Observa',
+        d7:'No se Observa',
+        d8:'No se Observa',
+        d9:'No se Observa Formas Parasitarias',
+        d10:'NEGATIVO',
+        d11:'',
+        d12:'',
+        d13:'',
+        d14:'Moderada Cantidad',
+        d15:'Moderada Cantidad',
+        d16:'Escasa Cantidad',
+        d17:'Esporadica Cantidad',
+        d18:'No se Observa',
+        d19:'No se Observa',
+        d20:'',
+        d21:'',
+        d22:'',
+        d23:'',
+        d24:'',
+        d25:'',
+        d26:'',
+        d27:'',
+        d28:'',
+        d29:'',
+        d30:'',
+        d31:'',
+        d32:'',
+        d33:'',
+        d34:'',
+        d35:'',
+        d36:'',
+        d37:'',
+        d38:'',
+        d39:'',
+        d40:'',
+        d41:'',
+        d42:'',
+        d43:'',
+        d44:'',
+        d45:'',
+        responsable:'',
+        tipo_id:'',
+        paciente_id:'',
+        user_id:this.$store.state.login.user.id,
+        doctor_id:'',
+      }
+        break;
+      case "COPROPARASITOLOGICO SIMPLE":
+                              this.laboratorio={
+        tipomuestra:'',
+        fechatoma:date.formatDate(new Date(),'YYYY-MM-DD'),
+        horatoma:date.formatDate(new Date(),'HH:mm'),
+        d1:'Heces Pastosa',
+        d2:'Cafe',
+        d3:'No se Observa',
+        d4:'No se Observa',
+        d5:'No se Observa',
+        d6:'No se Observa',
+        d7:'No se Observa',
+        d8:'No se Observa',
+        d9:'No se Observa',
+        d10:'No se Observa Formas Parasitarias Intestinales',
+        d11:'No se Observa',
+        d12:'NEGATIVO',
+        d13:'',
+        d14:'',
+        d15:'',
+        d16:'',
+        d17:'',
+        d18:'',
+        d19:'',
+        d20:'',
+        d21:'',
+        d22:'',
+        d23:'',
+        d24:'',
+        d25:'',
+        d26:'',
+        d27:'',
+        d28:'',
+        d29:'',
+        d30:'',
+        d31:'',
+        d32:'',
+        d33:'',
+        d34:'',
+        d35:'',
+        d36:'',
+        d37:'',
+        d38:'',
+        d39:'',
+        d40:'',
+        d41:'',
+        d42:'',
+        d43:'',
+        d44:'',
+        d45:'',
+        responsable:'',
+        tipo_id:'',
+        paciente_id:'',
+        user_id:this.$store.state.login.user.id,
+        doctor_id:'',
+      }
+        break;  
+        default:
+
             this.laboratorio={
         tipomuestra:'',
         fechatoma:date.formatDate(new Date(),'YYYY-MM-DD'),
@@ -1861,7 +1995,10 @@ export default {
         paciente_id:'',
         user_id:this.$store.state.login.user.id,
         doctor_id:'',
-      }}
+        
+      }
+                break;
+      }
     },
    seriado(p,l){
     var doc = new jsPDF('P',undefined,'legal')

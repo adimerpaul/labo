@@ -33,6 +33,10 @@ class TipoSeeder extends Seeder
             ["nombre"=>"MULTIDROGAS",],
             ["nombre"=>"HEMOGLOBINA GLICOSILADA",],
             ["nombre"=>"GASOMETRIA",],
+            ["nombre"=>"HEPATITIS B",],
+            ["nombre"=>"TOXOPLASMOSIS",],
+            ["nombre"=>"HEMODIALISIS M y B",],
+            ["nombre"=>"HEMODIALISIS TRI",],
         ]);
     }
 }
