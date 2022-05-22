@@ -3255,7 +3255,236 @@ export default {
                 doc.output('save','GASOMETRIA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
 
     },
+  hepatitis(p,l){
+        var doc = new jsPDF('P',undefined,'legal')
+    doc.setFont("arial");
+    doc.setFontSize(10);
+    var img = new Image()
+    img.src = 'img/natividad.jpeg'
+    doc.addImage(img, 'jpg', 5, 2, 70, 20)
+    let x=0
+    let y=0
+    //inicio datos paciete
+    doc.setDrawColor(120);
+    doc.rect(x+5, y+27, 205, 17)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+175, y+8,'center')
+    doc.setTextColor(195,47,47)
+    doc.text('N Registro CODEDLAB 000045',x+150, y+25)
+    doc.setTextColor(211,47,47)
+    doc.text('Form. 017',x+190, y+30)
+    doc.setTextColor(57,73,171)
+    doc.text('HEPATITIS B',x+100, y+30,'center')
+    doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
+    doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'normal')
+    doc.text([p.paciente,l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno,l.tipomuestra],x+70, y+35,'center')
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'bold')
+    doc.text(['EDAD','SEXO'],x+130, y+35)
+    doc.setTextColor(211,47,47)
+    doc.text('N PACIENTE',x+130, y+43)
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(0,0,0)
+        let anio=''
+    if(p.edad==null||p.edad==undefined||p.edad=='')
+    anio=p.tiempo
+    else anio=p.edad
+    doc.text([anio+'',p.sexo,p.nro+''],x+160, y+35,'center')
+    doc.setTextColor(57,73,171)
+    //fin datos paciete
+    //inicio datos
+    doc.rect(x+5, y+44, 205, 94)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.setFontSize(12);
+    doc.text('Anti-HBS METODO INMUNOENSAYO DE FLUORESCENCIA (FIA)',x+50,y+60)
+    doc.setTextColor(0,0,0)
+    //doc.setFontSize(12);
 
+    doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('Valor de Referencia: ',x+60,y+100)
+    doc.setFontSize(12);
+    doc.setTextColor(0,0,0)
+    if(parseFloat(l.d1)>15 )
+          doc.setTextColor(255,0,0)
+    doc.text(l.d1+' mlU/ml',x+100,y+75)
+    doc.setTextColor(0,0,0)
+
+    if(l.d2 =='POSITIVO' )
+          doc.setTextColor(255,0,0)
+    doc.text(l.d2,x+100,y+85)
+    doc.setTextColor(0,0,0)
+
+    doc.rect(x+75, y+105, 70, 12)
+    doc.rect(x+75, y+105, 70, 6)
+    doc.rect(x+75, y+105, 30, 12)
+    doc.rect(x+75, y+117, 70, 6)
+    doc.rect(x+75, y+117, 30, 6)
+    doc.rect(x+75, y+70, 70, 8)
+    doc.rect(x+75, y+80, 70, 8)
+        doc.setTextColor(57,73,171)
+
+
+    doc.text('< 5 mlU/ml ',x+80,y+110)
+    doc.text('5 - 15 mlU/ml ',x+80,y+115)
+    doc.text('> 15 mlU/ml ',x+80,y+120)
+    doc.setTextColor(0,0,0)
+    doc.text('NEGATIVO',x+112,y+110)
+    doc.text('INDETERMINADO',x+107,y+115)
+    doc.text('POSITIVO',x+112,y+120)
+
+    doc.setFontSize(10);
+
+    doc.rect(x+5, y+138, 205, 20)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('RESPONSABLE',x+6,y+145)
+    doc.setFont(undefined, 'NORMAL')
+    doc.text(l.responsable,x+8,y+149)
+    doc.setFont(undefined, 'normal')
+    doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+145,'center')
+    doc.setTextColor(0,0,0)
+    doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
+
+    //$( '#docpdf' ).attr('src', doc.output('datauristring'));
+    //window.open(doc.output('bloburl'), '_blank');
+                doc.output('save','HEPATITIS B-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
+
+  },
+  toxoplasmosis(p,l){
+        var doc = new jsPDF('P',undefined,'legal')
+    doc.setFont("arial");
+    doc.setFontSize(10);
+    var img = new Image()
+    img.src = 'img/natividad.jpeg'
+    doc.addImage(img, 'jpg', 5, 2, 70, 20)
+    let x=0
+    let y=0
+    //inicio datos paciete
+    doc.setDrawColor(120);
+    doc.rect(x+5, y+27, 205, 17)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+175, y+8,'center')
+    doc.setTextColor(195,47,47)
+    doc.text('N Registro CODEDLAB 000045',x+150, y+25)
+    doc.setTextColor(211,47,47)
+    doc.text('Form. 017',x+190, y+30)
+    doc.setTextColor(57,73,171)
+    doc.text('TOXOPLASMOSIS lg G / lg M',x+100, y+30,'center')
+    doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
+    doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'normal')
+    doc.text([p.paciente,l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno,l.tipomuestra],x+70, y+35,'center')
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'bold')
+    doc.text(['EDAD','SEXO'],x+130, y+35)
+    doc.setTextColor(211,47,47)
+    doc.text('N PACIENTE',x+130, y+43)
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(0,0,0)
+        let anio=''
+    if(p.edad==null||p.edad==undefined||p.edad=='')
+    anio=p.tiempo
+    else anio=p.edad
+    doc.text([anio+'',p.sexo,p.nro+''],x+160, y+35,'center')
+    doc.setTextColor(57,73,171)
+    //fin datos paciete
+    //inicio datos
+    doc.rect(x+5, y+44, 205, 94)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.setFontSize(12);
+    doc.text(' METODO INMUNOENSAYO DE FLUORESCENCIA (FIA)',x+50,y+55)
+    doc.setTextColor(0,0,0)
+    //doc.setFontSize(12);
+
+    doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('Valor de Referencia: ',x+55,y+85)
+    doc.setFontSize(12);
+    doc.setTextColor(0,0,0)
+    doc.text('lg M',x+60,y+65)
+    doc.text('lg G',x+60,y+75)
+    if(parseFloat(l.d1)>8 )
+          doc.setTextColor(255,0,0)
+    doc.text(l.d1+'',x+90,y+65)
+    doc.setTextColor(0,0,0)
+
+    if(parseFloat(l.d3)>1.1 )
+          doc.setTextColor(255,0,0)
+    doc.text(l.d3+'',x+90,y+75)
+    doc.setTextColor(0,0,0)
+
+    if(l.d2 =='POSITIVO' )
+          doc.setTextColor(255,0,0)
+    doc.text(l.d2,x+110,y+65)
+    doc.setTextColor(0,0,0)
+
+    if(l.d4 =='POSITIVO' )
+          doc.setTextColor(255,0,0)
+    doc.text(l.d4,x+110,y+75)
+    doc.setTextColor(0,0,0)
+    doc.rect(x+55, y+60, 25, 8)
+    doc.rect(x+80, y+60, 25, 8)
+    doc.rect(x+105, y+60, 50, 8)
+
+    doc.rect(x+55, y+70, 25, 8)
+    doc.rect(x+80, y+70, 25, 8)
+    doc.rect(x+105, y+70, 50, 8)
+
+    doc.rect(x+55, y+90, 25, 16)
+    doc.rect(x+55, y+106, 25, 16)    
+    doc.rect(x+80, y+90, 90, 16)
+    doc.rect(x+80, y+106, 90, 16)  
+    //doc.rect(x+75, y+105, 30, 12)
+    //doc.rect(x+75, y+117, 70, 6)
+    //doc.rect(x+75, y+117, 30, 6)
+    doc.setTextColor(0,0,0)
+
+
+    doc.text('lg G ',x+65,y+100)
+    doc.text('lg M',x+65,y+115)
+        doc.setTextColor(57,73,171)
+
+    doc.text('< 4 IU/ml',x+85,y+95)
+    doc.text('4 - 8 UI/ml',x+85,y+100)
+    doc.text('> 8 IU/ml',x+85,y+105)
+
+    doc.text('< 0.9 IU/ml',x+85,y+110)
+    doc.text('0.9 - 1.1 UI/ml',x+85,y+115)
+    doc.text('> 1.1 IU/ml',x+85,y+120)
+    doc.setTextColor(0,0,0)
+
+    doc.text('NEGATIVO',x+120,y+95)
+    doc.text('INDETERMINADO',x+120,y+100)
+    doc.text('POSITIVO',x+120,y+105)
+    doc.text('NEGATIVO',x+120,y+110)
+    doc.text('INDETERMINADO',x+120,y+115)
+    doc.text('POSITIVO',x+120,y+120)
+
+    doc.setFontSize(10);
+
+    doc.rect(x+5, y+138, 205, 20)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('RESPONSABLE',x+6,y+145)
+    doc.setFont(undefined, 'NORMAL')
+    doc.text(l.responsable,x+8,y+149)
+    doc.setFont(undefined, 'normal')
+    doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+145,'center')
+    doc.setTextColor(0,0,0)
+    doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
+
+    //$( '#docpdf' ).attr('src', doc.output('datauristring'));
+    //window.open(doc.output('bloburl'), '_blank');
+                doc.output('save','TOXOPLASMOSIS '+p.nombre+' '+p.paterno+' '+p.materno.pdf);
+  },
             uretral(p,l){
     var doc = new jsPDF('P',undefined,'legal')
     doc.setFont("arial");
@@ -4323,6 +4552,10 @@ sanguinea(p,l){
         this.glicosilada(p,l)
       if(l.tipo_id==18)
         this.gasometria(p,l)
+      if(l.tipo_id==19)
+        this.hepatitis(p,l)       
+      if(l.tipo_id==20)
+        this.toxoplasmosis(p,l)   
        console.log(p)
        console.log(l)
       return false
