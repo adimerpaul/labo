@@ -213,6 +213,14 @@ export default {
         this.glicosilada(p,l)
       if(l.tipo_id==18)
         this.gasometria(p,l)
+      if(l.tipo_id==19)
+        this.hepatitis(p,l)       
+      if(l.tipo_id==20)
+        this.toxoplasmosis(p,l)  
+      if(l.tipo_id==21)
+        this.hemodialisis(p,l)  
+      if(l.tipo_id==22)
+        this.hemodialisistri(p,l)   
 
     },
 
@@ -1366,7 +1374,426 @@ export default {
                 doc.output('save','GASOMETRIA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
 
     },
+  hepatitis(p,l){
+        var doc = new jsPDF('P',undefined,'legal')
+    doc.setFont("arial");
+    doc.setFontSize(10);
+    var img = new Image()
+    img.src = 'img/natividad.jpeg'
+    doc.addImage(img, 'jpg', 5, 2, 70, 20)
+    let x=0
+    let y=0
+    //inicio datos paciete
+    doc.setDrawColor(120);
+    doc.rect(x+5, y+27, 205, 17)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+175, y+8,'center')
+    doc.setTextColor(195,47,47)
+    doc.text('N Registro CODEDLAB 000045',x+150, y+25)
+    doc.setTextColor(211,47,47)
+    doc.text('Form. 017',x+190, y+30)
+    doc.setTextColor(57,73,171)
+    doc.text('HEPATITIS B',x+100, y+30,'center')
+    doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
+    doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'normal')
+    doc.text([p.paciente,l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno,l.tipomuestra],x+70, y+35,'center')
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'bold')
+    doc.text(['EDAD','SEXO'],x+130, y+35)
+    doc.setTextColor(211,47,47)
+    doc.text('N PACIENTE',x+130, y+43)
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(0,0,0)
+        let anio=''
+    if(p.edad==null||p.edad==undefined||p.edad=='')
+    anio=p.tiempo
+    else anio=p.edad
+    doc.text([anio+'',p.sexo,p.nro+''],x+160, y+35,'center')
+    doc.setTextColor(57,73,171)
+    //fin datos paciete
+    //inicio datos
+    doc.rect(x+5, y+44, 205, 94)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.setFontSize(12);
+    doc.text('Anti-HBS METODO INMUNOENSAYO DE FLUORESCENCIA (FIA)',x+50,y+60)
+    doc.setTextColor(0,0,0)
+    //doc.setFontSize(12);
 
+    doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('Valor de Referencia: ',x+60,y+100)
+    doc.setFontSize(12);
+    doc.setTextColor(0,0,0)
+    if(parseFloat(l.d1)>15 )
+          doc.setTextColor(255,0,0)
+    doc.text(l.d1+' mlU/ml',x+100,y+75)
+    doc.setTextColor(0,0,0)
+
+    if(l.d2 =='POSITIVO' )
+          doc.setTextColor(255,0,0)
+    doc.text(l.d2,x+100,y+85)
+    doc.setTextColor(0,0,0)
+
+    doc.rect(x+75, y+105, 70, 12)
+    doc.rect(x+75, y+105, 70, 6)
+    doc.rect(x+75, y+105, 30, 12)
+    doc.rect(x+75, y+117, 70, 6)
+    doc.rect(x+75, y+117, 30, 6)
+    doc.rect(x+75, y+70, 70, 8)
+    doc.rect(x+75, y+80, 70, 8)
+        doc.setTextColor(57,73,171)
+
+
+    doc.text('< 5 mlU/ml ',x+80,y+110)
+    doc.text('5 - 15 mlU/ml ',x+80,y+115)
+    doc.text('> 15 mlU/ml ',x+80,y+120)
+    doc.setTextColor(0,0,0)
+    doc.text('NEGATIVO',x+112,y+110)
+    doc.text('INDETERMINADO',x+107,y+115)
+    doc.text('POSITIVO',x+112,y+120)
+
+    doc.setFontSize(10);
+
+    doc.rect(x+5, y+138, 205, 20)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('RESPONSABLE',x+6,y+145)
+    doc.setFont(undefined, 'NORMAL')
+    doc.text(l.responsable,x+8,y+149)
+    doc.setFont(undefined, 'normal')
+    doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+145,'center')
+    doc.setTextColor(0,0,0)
+    doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
+
+    //$( '#docpdf' ).attr('src', doc.output('datauristring'));
+    //window.open(doc.output('bloburl'), '_blank');
+                doc.output('save','HEPATITIS B-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
+
+  },
+  toxoplasmosis(p,l){
+        var doc = new jsPDF('P',undefined,'legal')
+    doc.setFont("arial");
+    doc.setFontSize(10);
+    var img = new Image()
+    img.src = 'img/natividad.jpeg'
+    doc.addImage(img, 'jpg', 5, 2, 70, 20)
+    let x=0
+    let y=0
+    //inicio datos paciete
+    doc.setDrawColor(120);
+    doc.rect(x+5, y+27, 205, 17)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+175, y+8,'center')
+    doc.setTextColor(195,47,47)
+    doc.text('N Registro CODEDLAB 000045',x+150, y+25)
+    doc.setTextColor(211,47,47)
+    doc.text('Form. 017',x+190, y+30)
+    doc.setTextColor(57,73,171)
+    doc.text('TOXOPLASMOSIS lg G / lg M',x+100, y+30,'center')
+    doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
+    doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'normal')
+    doc.text([p.paciente,l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno,l.tipomuestra],x+70, y+35,'center')
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'bold')
+    doc.text(['EDAD','SEXO'],x+130, y+35)
+    doc.setTextColor(211,47,47)
+    doc.text('N PACIENTE',x+130, y+43)
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(0,0,0)
+        let anio=''
+    if(p.edad==null||p.edad==undefined||p.edad=='')
+    anio=p.tiempo
+    else anio=p.edad
+    doc.text([anio+'',p.sexo,p.nro+''],x+160, y+35,'center')
+    doc.setTextColor(57,73,171)
+    //fin datos paciete
+    //inicio datos
+    doc.rect(x+5, y+44, 205, 94)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.setFontSize(12);
+    doc.text(' METODO INMUNOENSAYO DE FLUORESCENCIA (FIA)',x+50,y+55)
+    doc.setTextColor(0,0,0)
+    //doc.setFontSize(12);
+
+    doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('Valor de Referencia: ',x+55,y+85)
+    doc.setFontSize(12);
+    doc.setTextColor(0,0,0)
+    doc.text('lg M',x+60,y+65)
+    doc.text('lg G',x+60,y+75)
+    if(parseFloat(l.d1)>8 )
+          doc.setTextColor(255,0,0)
+    doc.text(l.d1+'',x+90,y+65)
+    doc.setTextColor(0,0,0)
+
+    if(parseFloat(l.d3)>1.1 )
+          doc.setTextColor(255,0,0)
+    doc.text(l.d3+'',x+90,y+75)
+    doc.setTextColor(0,0,0)
+
+    if(l.d2 =='POSITIVO' )
+          doc.setTextColor(255,0,0)
+    doc.text(l.d2,x+110,y+65)
+    doc.setTextColor(0,0,0)
+
+    if(l.d4 =='POSITIVO' )
+          doc.setTextColor(255,0,0)
+    doc.text(l.d4,x+110,y+75)
+    doc.setTextColor(0,0,0)
+    doc.rect(x+55, y+60, 25, 8)
+    doc.rect(x+80, y+60, 25, 8)
+    doc.rect(x+105, y+60, 50, 8)
+
+    doc.rect(x+55, y+70, 25, 8)
+    doc.rect(x+80, y+70, 25, 8)
+    doc.rect(x+105, y+70, 50, 8)
+
+    doc.rect(x+55, y+90, 25, 16)
+    doc.rect(x+55, y+106, 25, 16)    
+    doc.rect(x+80, y+90, 90, 16)
+    doc.rect(x+80, y+106, 90, 16)  
+    //doc.rect(x+75, y+105, 30, 12)
+    //doc.rect(x+75, y+117, 70, 6)
+    //doc.rect(x+75, y+117, 30, 6)
+    doc.setTextColor(0,0,0)
+
+
+    doc.text('lg G ',x+65,y+100)
+    doc.text('lg M',x+65,y+115)
+        doc.setTextColor(57,73,171)
+
+    doc.text('< 4 IU/ml',x+85,y+95)
+    doc.text('4 - 8 UI/ml',x+85,y+100)
+    doc.text('> 8 IU/ml',x+85,y+105)
+
+    doc.text('< 0.9 IU/ml',x+85,y+110)
+    doc.text('0.9 - 1.1 UI/ml',x+85,y+115)
+    doc.text('> 1.1 IU/ml',x+85,y+120)
+    doc.setTextColor(0,0,0)
+
+    doc.text('NEGATIVO',x+120,y+95)
+    doc.text('INDETERMINADO',x+120,y+100)
+    doc.text('POSITIVO',x+120,y+105)
+    doc.text('NEGATIVO',x+120,y+110)
+    doc.text('INDETERMINADO',x+120,y+115)
+    doc.text('POSITIVO',x+120,y+120)
+
+    doc.setFontSize(10);
+
+    doc.rect(x+5, y+138, 205, 20)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('RESPONSABLE',x+6,y+145)
+    doc.setFont(undefined, 'NORMAL')
+    doc.text(l.responsable,x+8,y+149)
+    doc.setFont(undefined, 'normal')
+    doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+145,'center')
+    doc.setTextColor(0,0,0)
+    doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
+
+    //$( '#docpdf' ).attr('src', doc.output('datauristring'));
+    //window.open(doc.output('bloburl'), '_blank');
+                doc.output('save','TOXOPLASMOSIS '+p.nombre+' '+p.paterno+' '+p.materno.pdf);
+  },
+  hemodialisis(p,l){
+            var doc = new jsPDF('landscape',undefined,'legal')
+    doc.setFont("arial");
+    doc.setFontSize(10);
+    var img = new Image()
+    img.src = 'img/natividad.jpeg'
+    doc.addImage(img, 'jpg', 195, 3, 70, 20)
+    let x=0
+    let y=0
+    //inicio datos paciete
+    doc.setDrawColor(120);
+    doc.rect(x+195, y+27, 155, 23)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+320, y+10,'center')
+    doc.setTextColor(195,47,47)
+    doc.text('N Registro CODEDLAB 000045',x+225, y+25)
+    doc.setTextColor(211,47,47)
+    doc.text('Form. 010',x+323, y+30)
+    doc.setTextColor(57,73,171)
+    doc.text('HEMODIALISIS M Y B',x+270, y+30,'center')
+    doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+196, y+35)
+    doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'normal')
+    doc.text([p.paciente,l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno,l.tipomuestra],x+268, y+35,'center')
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'bold')
+    doc.text(['EDAD','SEXO'],x+305, y+35)
+    doc.setTextColor(211,47,47)
+    doc.text('N PACIENTE',x+305, y+43)
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(0,0,0)
+        let anio=''
+    if(p.edad==null||p.edad==undefined||p.edad=='')
+    anio=p.tiempo
+    else anio=p.edad
+    doc.text([anio+'',p.sexo,p.nro+''],x+337, y+35,'center')
+    doc.setTextColor(211,47,47)
+    doc.setTextColor(57,73,171)
+    //fin datos paciete
+    //inicio datos
+    doc.rect(x+195, y+53, 155, 130)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(211,47,47)
+    doc.text('',x+233,y+55)
+    doc.setTextColor(57,73,171)
+    doc.setFontSize(12);
+    doc.setLineHeightFactor(1.7);
+    doc.text('CONTROL MENSUAL',x+260,y+60)
+    doc.text('PRUEBA                           VALOR                                     REFERENCIA',x+200,y+65)
+    doc.setFontSize(12);
+
+    doc.setFont(undefined, 'normal')
+    doc.text(['Glicemia','Creatinina','Urea','NUS-BUN ','Transaminasas GOT','Transaminasas GPT','Sodio','Cloro','Potasio'],x+200,y+70,'left')
+    doc.setTextColor(0,0,0)
+    doc.text([l.d1,l.d2,l.d3,l.d4,l.d5,l.d6,l.d7,l.d8,l.d9],x+250,y+70,'left')
+
+  doc.setTextColor(57,73,171)
+
+    doc.text(['70 - 105 mg/dl','0.7 - 1.5 mg/dl','15 - 45 mg/dl','7 - 18 mg/dl ','hasta 40 UI/L','hasta 41 UI/L','135 - 155 mEq/L','98 - 106 mEq/L','3.4 - 5.6 mEq/L'],x+300,y+70,'left')
+    doc.setFont(undefined, 'bold')
+    doc.text('CONTROL BIMESTRAL',x+260,y+140)
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(57,73,171)
+    doc.setLineHeightFactor(1.7);
+    doc.text(['Acido Urico','Fosfatasa Alcalina','calcio','Fosforo','OBSERVACIONES'],x+200,y+145,'left')
+    doc.setTextColor(0,0,0)
+    doc.text([l.d10,l.d11,l.d12,l.d13,l.d14],x+250,y+145,'left')
+    doc.setTextColor(57,73,171)
+    doc.text(['2.6 - 7.2 mg/dl','adultos Hasta 135 UI/L','8.5 - 10.5 mg/dl','2.5 - 4.5 mg/dl'],x+300,y+145,'left')
+   
+    doc.setLineHeightFactor(1.5);
+    doc.rect(x+195, y+185, 155, 20)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('RESPONSABLE',x+205,y+190,'left')
+    doc.setTextColor(0,0,0)
+    doc.text(l.responsable,x+205,y+195,'left')
+    doc.setTextColor(57,73,171)
+    doc.setFontSize(10);
+    doc.setLineHeightFactor(1.5)
+    doc.text(['Fecha toma de Muestra','Hora toma Muestra','Fecha Entrega de Resultado'],x+280,y+190,'left')
+    doc.setTextColor(0,0,0)
+    doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+330,y+190,'left')
+
+    //$( '#docpdf' ).attr('src', doc.output('datauristring'));
+      doc.output('save','HEMODIALISIS M Y B-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
+                   // window.open(doc.output('bloburl'), '_blank');
+
+  },
+    hemodialisistri(p,l){
+            var doc = new jsPDF('landscape',undefined,'legal')
+    doc.setFont("arial");
+    doc.setFontSize(10);
+    var img = new Image()
+    img.src = 'img/natividad.jpeg'
+    doc.addImage(img, 'jpg', 195, 3, 70, 20)
+    let x=0
+    let y=0
+    //inicio datos paciete
+    doc.setDrawColor(120);
+    doc.rect(x+195, y+27, 155, 23)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+320, y+10,'center')
+    doc.setTextColor(195,47,47)
+    doc.text('N Registro CODEDLAB 000045',x+225, y+25)
+    doc.setTextColor(211,47,47)
+    doc.text('Form. 010',x+323, y+30)
+    doc.setTextColor(57,73,171)
+    doc.text('HEMODIALISIS TRIMENSUAL',x+270, y+30,'center')
+    doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+196, y+35)
+    doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'normal')
+    doc.text([p.paciente,l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno,l.tipomuestra],x+268, y+35,'center')
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'bold')
+    doc.text(['EDAD','SEXO'],x+305, y+35)
+    doc.setTextColor(211,47,47)
+    doc.text('N PACIENTE',x+305, y+43)
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(0,0,0)
+        let anio=''
+    if(p.edad==null||p.edad==undefined||p.edad=='')
+    anio=p.tiempo
+    else anio=p.edad
+    doc.text([anio+'',p.sexo,p.nro+''],x+337, y+35,'center')
+    doc.setTextColor(211,47,47)
+    doc.setTextColor(57,73,171)
+    //fin datos paciete
+    //inicio datos
+    doc.rect(x+195, y+53, 155, 130)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(211,47,47)
+    doc.text('',x+233,y+55)
+    doc.setTextColor(57,73,171)
+    doc.setFontSize(11);
+    doc.text('CONTROL TRIMENSUAL',x+260,y+60)
+    doc.text('PRUEBA                         VALOR                         UNIDAD                   REFERENCIA',x+200,y+65)
+
+    doc.setFont(undefined, 'normal')
+    doc.text(['Proteinas Totales','Albumina','Globulina','Relacion A/G','Trigliceridos','Colesterol Total','HDL - Col','LDL - Col','VLDL - Col','Hierro','Prueba Rapida VIH'],x+200,y+70,'left')
+    doc.setTextColor(0,0,0)
+    doc.text([l.d1,l.d2,l.d3,l.d4,l.d5,l.d6,l.d7,l.d8,l.d9,l.d10,l.d11],x+245,y+70,'left')
+    doc.text(['g/dl','g/dl','g/dl','g/dl','mg/dl','mg/dl','mg/dl','mg/dl','mg/dl','ug/dl',''],x+280,y+70,'left')
+     doc.setTextColor(57,73,171)
+    doc.text(['6.0 - 8.5 g/dl','3.5 - 5.3 g/dl','2.8 - 3.5 g/dl','1.2 - 2.2 g/dl','10 - 160 mmg/dl','menor 200 mg/dl','35 - 65 mg/dl','hasta 150 mg/dl','2 - 30 mg/dl','50 - 170 ug/dl','NO REACTIVO'],x+310,y+70,'left')
+
+     doc.setTextColor(57,73,171)
+
+    doc.setFont(undefined, 'bold')
+    doc.text('METODO: CAPACIDAD DE FIJACION DE HIERRO',x+220,y+120)
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(57,73,171)
+    doc.text(['Capacidad Latente de','  Fijacion de Hierro','Capacidad Total de ','  Fijacion de Hierro','Transferrina'],x+200,y+125,'left')
+    doc.setTextColor(0,0,0)
+    doc.text([l.d12,'',l.d13,'',l.d14],x+245,y+125,'left')
+    doc.text(['ug/dl','','ug/dl','','mg/dl'],x+280,y+125,'left')
+    doc.setTextColor(57,73,171)
+    doc.text(['140 - 280 ug/dl','','250 - 450 ug/dl','','200 - 300 mg/dl'],x+310,y+125,'left')
+  
+    doc.setFont(undefined, 'bold')
+    doc.text('METODO: INMUNOENSAYO DE FLUORESCENCIA (FIA)',x+220,y+150)
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(57,73,171)
+    doc.text(['FERRITNA','','','HEPATITIS B','','OBSERVACIONES'],x+200,y+155,'left')
+    doc.setTextColor(0,0,0)
+    doc.text([l.d15,'','',l.d16,l.d17,l.d18],x+240,y+155,'left')
+    doc.text(['ng/ml','','','mlU/dl',''],x+280,y+155,'left')
+    doc.setTextColor(57,73,171)
+    doc.text(['30-350 ng/ml Varon','20-250 ng/ml Mujer','< 5 mlU/ml POSITIVO','5-15 mlU/ml Indeterminado','> 15 mlU/ml NEGATIVO'],x+300,y+155,'left')
+    
+    doc.rect(x+195, y+185, 155, 20)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('RESPONSABLE',x+205,y+190,'left')
+    doc.setTextColor(0,0,0)
+    doc.text(l.responsable,x+205,y+195,'left')
+    doc.setTextColor(57,73,171)
+    doc.setFontSize(10);
+    doc.setLineHeightFactor(1.5)
+    doc.text(['Fecha toma de Muestra','Hora toma Muestra','Fecha Entrega de Resultado'],x+280,y+190,'left')
+    doc.setTextColor(0,0,0)
+    doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+330,y+190,'left')
+
+    //$( '#docpdf' ).attr('src', doc.output('datauristring'));
+      doc.output('save','HEMODIALISIS TRI-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
+                   // window.open(doc.output('bloburl'), '_blank');
+
+  },
             uretral(p,l){
     var doc = new jsPDF('P',undefined,'legal')
     doc.setFont("arial");
