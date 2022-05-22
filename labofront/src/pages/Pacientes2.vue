@@ -3485,6 +3485,96 @@ export default {
     //window.open(doc.output('bloburl'), '_blank');
                 doc.output('save','TOXOPLASMOSIS '+p.nombre+' '+p.paterno+' '+p.materno.pdf);
   },
+  hemodialisis(p,l){
+            var doc = new jsPDF('landscape',undefined,'legal')
+    doc.setFont("arial");
+    doc.setFontSize(10);
+    var img = new Image()
+    img.src = 'img/natividad.jpeg'
+    doc.addImage(img, 'jpg', 195, 3, 70, 20)
+    let x=0
+    let y=0
+    //inicio datos paciete
+    doc.setDrawColor(120);
+    doc.rect(x+195, y+27, 155, 23)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+320, y+10,'center')
+    doc.setTextColor(195,47,47)
+    doc.text('N Registro CODEDLAB 000045',x+225, y+25)
+    doc.setTextColor(211,47,47)
+    doc.text('Form. 010',x+323, y+30)
+    doc.setTextColor(57,73,171)
+    doc.text('HEMODIALISIS M Y B',x+270, y+30,'center')
+    doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+196, y+35)
+    doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'normal')
+    doc.text([p.paciente,l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno,l.tipomuestra],x+268, y+35,'center')
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'bold')
+    doc.text(['EDAD','SEXO'],x+305, y+35)
+    doc.setTextColor(211,47,47)
+    doc.text('N PACIENTE',x+305, y+43)
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(0,0,0)
+        let anio=''
+    if(p.edad==null||p.edad==undefined||p.edad=='')
+    anio=p.tiempo
+    else anio=p.edad
+    doc.text([anio+'',p.sexo,p.nro+''],x+337, y+35,'center')
+    doc.setTextColor(211,47,47)
+    doc.setTextColor(57,73,171)
+    //fin datos paciete
+    //inicio datos
+    doc.rect(x+195, y+53, 155, 130)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(211,47,47)
+    doc.text('',x+233,y+55)
+    doc.setTextColor(57,73,171)
+    doc.setFontSize(12);
+    doc.setLineHeightFactor(1.7);
+    doc.text('CONTROL MENSUAL',x+260,y+60)
+    doc.text('PRUEBA                           VALOR                                     REFERENCIA',x+200,y+65)
+    doc.setFontSize(12);
+
+    doc.setFont(undefined, 'normal')
+    doc.text(['Glicemia','Creatinina','Urea','NUS-BUN ','Transaminasas GOT','Transaminasas GPT','Sodio','Cloro','Potasio'],x+200,y+70,'left')
+    doc.setTextColor(0,0,0)
+    doc.text([l.d1,l.d2,l.d3,l.d4,l.d5,l.d6,l.d7,l.d8,l.d9],x+250,y+70,'left')
+
+  doc.setTextColor(57,73,171)
+
+    doc.text(['70 - 105 mg/dl','0.7 - 1.5 mg/dl','15 - 45 mg/dl','7 - 18 mg/dl ','hasta 40 UI/L','hasta 41 UI/L','135 - 155 mEq/L','98 - 106 mEq/L','3.4 - 5.6 mEq/L'],x+300,y+70,'left')
+    doc.setFont(undefined, 'bold')
+    doc.text('CONTROL BIMESTRAL',x+260,y+140)
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(57,73,171)
+    doc.setLineHeightFactor(1.7);
+    doc.text(['Acido Urico','Fosfatasa Alcalina','calcio','Fosforo','OBSERVACIONES'],x+200,y+145,'left')
+    doc.setTextColor(0,0,0)
+    doc.text([l.d10,l.d11,l.d12,l.d13,l.d14],x+250,y+145,'left')
+    doc.setTextColor(57,73,171)
+    doc.text(['2.6 - 7.2 mg/dl','adultos Hasta 135 UI/L','8.5 - 10.5 mg/dl','2.5 - 4.5 mg/dl'],x+300,y+145,'left')
+   
+    doc.setLineHeightFactor(1.5);
+    doc.rect(x+195, y+185, 155, 20)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('RESPONSABLE',x+205,y+190,'left')
+    doc.setTextColor(0,0,0)
+    doc.text(l.responsable,x+205,y+195,'left')
+    doc.setTextColor(57,73,171)
+    doc.setFontSize(10);
+    doc.setLineHeightFactor(1.5)
+    doc.text(['Fecha toma de Muestra','Hora toma Muestra','Fecha Entrega de Resultado'],x+280,y+190,'left')
+    doc.setTextColor(0,0,0)
+    doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+330,y+190,'left')
+
+    //$( '#docpdf' ).attr('src', doc.output('datauristring'));
+      doc.output('save','HEMODIALISIS M Y B-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
+                   // window.open(doc.output('bloburl'), '_blank');
+
+  },
             uretral(p,l){
     var doc = new jsPDF('P',undefined,'legal')
     doc.setFont("arial");
@@ -4555,7 +4645,11 @@ sanguinea(p,l){
       if(l.tipo_id==19)
         this.hepatitis(p,l)       
       if(l.tipo_id==20)
-        this.toxoplasmosis(p,l)   
+        this.toxoplasmosis(p,l)  
+      if(l.tipo_id==21)
+        this.hemodialisis(p,l)  
+      if(l.tipo_id==22)
+        this.hemodialisistri(p,l)             
        console.log(p)
        console.log(l)
       return false
