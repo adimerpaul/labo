@@ -64,8 +64,8 @@ export default {
       this.total=[];
      this.$axios.post(process.env.API+'/reporte',this.dato).then(res=>{
        res.data.forEach(element => {
-         this.formularios.push(element.formulario);
-         this.total.push(element.total);
+         this.formularios.push(element.nombre);
+         this.total.push(element.cantidad);
        });
        this.createChart('bar-chart');
      })

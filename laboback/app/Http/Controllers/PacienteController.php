@@ -199,7 +199,7 @@ class PacienteController extends Controller
         return DB::table($tabla)->where('id',$request->id)->delete();
     }
     public function reporte(Request $request){
-        $r1=DB::select(
+        /*$r1=DB::select(
             "SELECT count(*) as total,'hemograma' as formulario FROM hemogramas WHERE date(fechatoma)>= '$request->ini' and date(fechatoma)<='$request->fin' union
             SELECT count(*) as total,'orina' as formulario FROM orinas WHERE date(fechatoma)>= '$request->ini' and date(fechatoma)<='$request->fin'  union
             SELECT count(*) as total,'sanguinia' as formulario FROM sanguinias WHERE date(fechatoma)>= '$request->ini' and date(fechatoma)<='$request->fin'  union
@@ -214,6 +214,8 @@ class PacienteController extends Controller
             SELECT count(*) as total,'ensayo' as formulario FROM ensayos WHERE date(fechatoma)>= '$request->ini' and date(fechatoma)<='$request->fin'  union
             SELECT count(*) as total,'embarazo' as formulario FROM embarazos WHERE date(fechatoma)>= '$request->ini' and date(fechatoma)<='$request->fin'            "
         );
-        return $r1;
+        return $r1;*/
+
+        return DB::SELECT("select t.nombre,COUNT(*) cantidad from laboratorios l inner JOIN tipos t on l.tipo_id=t.id where l.fechatoma>='$request->ini' and l.fechatoma<='$request->fin' group by t.nombre");
     }
 }
