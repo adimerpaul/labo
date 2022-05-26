@@ -1978,6 +1978,7 @@ export default {
 
       this.doctor={label:''}
       this.user=''
+      this.imagen=null
       switch (this.tipo.label) {
         case 'EXAMEN GENERAL DE ORINA':
                       this.laboratorio={
