@@ -5113,10 +5113,10 @@ sanguinea(p,l){
         data.append('user_id',this.laboratorio.user_id)
         data.append('doctor_id',this.laboratorio.doctor_id)
       this.$axios.post(process.env.API+'/laboratorio',data).then(res=> {
-         console.log(res.data)
-       // this.mispacientes()
-        //this.dialoglaboratorio=false
-        //this.resetlabo()
+        // console.log(res.data)
+        this.mispacientes()
+        this.dialoglaboratorio=false
+        this.resetlabo()
       })
     },
     modificar(paciente){
