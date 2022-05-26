@@ -19,6 +19,8 @@
                 <q-btn @click="imprimirlaboratorio(props.row,l)" size="xs" flat round color="info" icon="print" />
                 <q-btn @click="datformulario(props.row,l)" size="xs" flat round color="yellow" icon="edit" />
                 <q-btn @click="sobre(props.row,l)" size="xs" flat round color="teal" icon="mail_outline" />
+                <q-btn @click="descargar(l)" size="xs" flat round color="deep-orange-5" icon="image" v-if="l.imagen!=NULL"/>
+                
                 <q-btn @click="Whatsapp(l.doctor.celular)" size="xs" flat round color="purple" icon="whatsapp" v-if="l.doctor.celular!='' && l.doctor.celular!=null"/>
                 {{l.fechatoma}}
                 {{l.tipo.nombre}}
@@ -220,6 +222,10 @@
 
           <div class="col-12 col-sm-6">
             <q-input dense outlined label="Tipo Muestra" v-model="laboratorio.tipomuestra" />
+          </div>
+          <div class="col-12 col-sm-6">
+            <label for="">IMAGEN : </label>
+            <input type="file" @change="getImage" >
           </div>
 
           <template v-if="tipo.label=='HEMOGRAMA COMPLETO'">
@@ -1702,7 +1708,9 @@ export default {
         doctor_id:'',
       },
       fechacalculo:'',
-      columspaciente:[
+      url:process.env.API,
+      imagen:null, 
+           columspaciente:[
         {name:'opciones',field:'opciones',label:'opciones',align:'center'},
         {name:'paciente',field:'paciente',label:'paciente',align:'left'},
         {name:'laboratorios',field:'laboratorios',label:'laboratorios',align:'left'},
@@ -1901,6 +1909,10 @@ export default {
                     window.open(doc.output('bloburl'), '_blank');
 
 
+    },
+    descargar(l){
+              var fileName=this.url+'/../imagenes/'+l.imagen; 
+              window.open(fileName, 'Download');
     },
           filterFn (val, update) {
         if (val === '') {
@@ -5017,6 +5029,9 @@ sanguinea(p,l){
       window.open(doc.output('bloburl'), '_blank');
 
     },
+    getImage(event){
+      this.imagen = event.target.files[0];
+    },
     createLaboratorio(){
       this.laboratorio.tipo_id=this.tipo.id
       this.laboratorio.paciente_id=this.paciente.id
@@ -5041,11 +5056,67 @@ sanguinea(p,l){
               return false;
            }}
          }
-      this.$axios.post(process.env.API+'/laboratorio',this.laboratorio).then(res=> {
-        // console.log(res.data)
-        this.mispacientes()
-        this.dialoglaboratorio=false
-        this.resetlabo()
+
+      var data = new  FormData();
+        data.append('imagen', this.imagen);
+        data.append('tipomuestra',this.laboratorio.tipomuestra)
+        data.append('fechatoma',this.laboratorio.fechatoma)
+        data.append('horatoma',this.laboratorio.horatoma)
+        data.append('d1',this.laboratorio.d1)
+        data.append('d2',this.laboratorio.d2)
+        data.append('d3',this.laboratorio.d3)
+        data.append('d4',this.laboratorio.d4)
+        data.append('d5',this.laboratorio.d5)
+        data.append('d6',this.laboratorio.d6)
+        data.append('d7',this.laboratorio.d7)
+        data.append('d8',this.laboratorio.d8)
+        data.append('d9',this.laboratorio.d9)
+        data.append('d10',this.laboratorio.d10)
+        data.append('d11',this.laboratorio.d11)
+        data.append('d12',this.laboratorio.d12)
+        data.append('d13',this.laboratorio.d13)
+        data.append('d14',this.laboratorio.d14)
+        data.append('d15',this.laboratorio.d15)
+        data.append('d16',this.laboratorio.d16)
+        data.append('d17',this.laboratorio.d17)
+        data.append('d18',this.laboratorio.d18)
+        data.append('d19',this.laboratorio.d19)
+        data.append('d20',this.laboratorio.d20)
+        data.append('d21',this.laboratorio.d21)
+        data.append('d22',this.laboratorio.d22)
+        data.append('d23',this.laboratorio.d23)
+        data.append('d24',this.laboratorio.d24)
+        data.append('d25',this.laboratorio.d25)
+        data.append('d26',this.laboratorio.d26)
+        data.append('d27',this.laboratorio.d27)
+        data.append('d28',this.laboratorio.d28)
+        data.append('d29',this.laboratorio.d29)
+        data.append('d30',this.laboratorio.d30)
+        data.append('d31',this.laboratorio.d31)
+        data.append('d32',this.laboratorio.d32)
+        data.append('d33',this.laboratorio.d33)
+        data.append('d34',this.laboratorio.d34)
+        data.append('d35',this.laboratorio.d35)
+        data.append('d36',this.laboratorio.d36)
+        data.append('d37',this.laboratorio.d37)
+        data.append('d38',this.laboratorio.d38)
+        data.append('d39',this.laboratorio.d39)
+        data.append('d40',this.laboratorio.d40)
+        data.append('d41',this.laboratorio.d41)
+        data.append('d42',this.laboratorio.d42)
+        data.append('d43',this.laboratorio.d43)
+        data.append('d44',this.laboratorio.d44)
+        data.append('d45',this.laboratorio.d45)
+        data.append('responsable',this.laboratorio.responsable)
+        data.append('tipo_id',this.laboratorio.tipo_id)
+        data.append('paciente_id',this.laboratorio.paciente_id)
+        data.append('user_id',this.laboratorio.user_id)
+        data.append('doctor_id',this.laboratorio.doctor_id)
+      this.$axios.post(process.env.API+'/laboratorio',data).then(res=> {
+         console.log(res.data)
+       // this.mispacientes()
+        //this.dialoglaboratorio=false
+        //this.resetlabo()
       })
     },
     modificar(paciente){

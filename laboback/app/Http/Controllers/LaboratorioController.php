@@ -35,8 +35,15 @@ class LaboratorioController extends Controller
      */
     public function store(Request $request)
     {
-//        return $request;
+        //return $request;
 //        return Laboratorio::create($request->all());
+        $nombreimagen=null;
+        if ($request->hasFile('imagen')) {
+            $file=$request->file('imagen');
+            $nombreimagen = time().".".$file->getClientOriginalExtension();
+            $file->move(\public_path('imagenes'), $nombreimagen);
+        }
+
         $labo=new Laboratorio();
         $labo->tipomuestra=$request->tipomuestra==null?'':$request->tipomuestra;
         $labo->fechatoma=$request->fechatoma==null?'':$request->fechatoma;
@@ -86,6 +93,7 @@ class LaboratorioController extends Controller
         $labo->d43=$request->d43==null?'':$request->d43;
         $labo->d44=$request->d44==null?'':$request->d44;
         $labo->d45=$request->d45==null?'':$request->d45;
+        $labo->imagen=$nombreimagen;
         $labo->responsable=$request->responsable==null?'':$request->responsable;
         $labo->tipo_id=$request->tipo_id==null?'':$request->tipo_id;
         $labo->paciente_id=$request->paciente_id==null?'':$request->paciente_id;
@@ -93,6 +101,7 @@ class LaboratorioController extends Controller
         $labo->doctor_id=$request->doctor_id==null?'':$request->doctor_id;
         $labo->save();
     }
+
 
     /**
      * Display the specified resource.

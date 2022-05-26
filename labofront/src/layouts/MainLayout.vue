@@ -71,21 +71,21 @@
 <!--              <q-item-label caption>Controlar doctores</q-item-label>-->
             </q-item-section>
           </q-item>
-          <q-item to="pacientes"  exact clickable v-ripple v-if="$store.state.login.boolpacientes">
+         <!--  <q-item to="pacientes"  exact clickable v-ripple v-if="$store.state.login.boolpacientes">
             <q-item-section avatar>
               <q-icon name="people" />
             </q-item-section>
             <q-item-section>
               <q-item-label> Pacientes</q-item-label>
-<!--              <q-item-label caption>Controlar pacientes</q-item-label>-->
+             <q-item-label caption>Controlar pacientes</q-item-label>
             </q-item-section>
-          </q-item>
+          </q-item> -->
           <q-item to="pacientes2"  exact clickable v-ripple v-if="$store.state.login.boolpacientes">
             <q-item-section avatar>
               <q-icon name="people" />
             </q-item-section>
             <q-item-section>
-              <q-item-label> Pacientes2</q-item-label>
+              <q-item-label> Pacientes</q-item-label>
               <!--              <q-item-label caption>Controlar pacientes</q-item-label>-->
             </q-item-section>
           </q-item>

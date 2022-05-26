@@ -64,6 +64,7 @@ class CreateLaboratoriosTable extends Migration
             $table->text('d43')->nullable()->default('');
             $table->text('d44')->nullable()->default('');
             $table->text('d45')->nullable()->default('');
+            $table->text('imagen')->nullable()->default('');
             $table->unsignedBigInteger('tipo_id');
             $table->foreign('tipo_id')->references('id')->on('tipos');
             $table->unsignedBigInteger('paciente_id');
