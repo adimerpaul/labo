@@ -19,7 +19,7 @@
                 <q-btn @click="imprimirlaboratorio(props.row,l)" size="xs" flat round color="info" icon="print" />
                 <q-btn @click="datformulario(props.row,l)" size="xs" flat round color="yellow" icon="edit" />
                 <q-btn @click="sobre(props.row,l)" size="xs" flat round color="teal" icon="mail_outline" />
-                <q-btn @click="descargar(l)" size="xs" flat round color="deep-orange-5" icon="image" v-if="l.imagen!=NULL"/>
+                <q-btn @click="descargar(l)" size="xs" flat round color="deep-orange-5" icon="image" v-if="l.imagen!=NULL && l.imagen!=''"/>
                 
                 <q-btn @click="Whatsapp(l.doctor.celular)" size="xs" flat round color="purple" icon="whatsapp" v-if="l.doctor.celular!='' && l.doctor.celular!=null"/>
                 {{l.fechatoma}}
