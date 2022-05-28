@@ -1369,6 +1369,20 @@ export default {
     doc.setTextColor(0,0,0)
     doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
 
+    if(l.imagen!=null && l.imagen!=''){
+
+        this.$axios.post(process.env.API+'/base64',{imagen:l.imagen}).then(res=>{
+            doc.addPage();
+            var imgData=''
+          //console.log(res.data)
+           imgData =res.data
+                     doc.addImage(imgData, "jpeg", 5, 5, 170, 145)
+          console.log(imgData)
+                doc.output('save','GASOMETRIA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf)
+                return false
+      })      
+    }
+    else
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     //window.open(doc.output('bloburl'), '_blank');
                 doc.output('save','GASOMETRIA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);

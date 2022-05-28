@@ -19,7 +19,7 @@
                 <q-btn @click="imprimirlaboratorio(props.row,l)" size="xs" flat round color="info" icon="print" />
                 <q-btn @click="datformulario(props.row,l)" size="xs" flat round color="yellow" icon="edit" />
                 <q-btn @click="sobre(props.row,l)" size="xs" flat round color="teal" icon="mail_outline" />
-                <q-btn @click="descargar(l)" size="xs" flat round color="deep-orange-5" icon="image" v-if="l.imagen!=NULL && l.imagen!=''"/>
+                <q-btn @click="descargar(l)" size="xs" flat round color="deep-orange-5" icon="image" v-if="l.imagen!=null && l.imagen!=''"/>
                 
                 <q-btn @click="Whatsapp(l.doctor.celular)" size="xs" flat round color="purple" icon="whatsapp" v-if="l.doctor.celular!='' && l.doctor.celular!=null"/>
                 {{l.fechatoma}}
@@ -221,7 +221,10 @@
           </div>
 
           <div class="col-12 col-sm-6">
-            <q-input dense outlined label="Tipo Muestra" v-model="laboratorio.tipomuestra" />
+            <q-input dense outlined label="Tipo Muestra" v-model="laboratorio.tipomuestra" list="listmuestra"/>
+                <datalist id="listmuestra">
+                    <option v-for="(film,index) in listmuestra" :key="index">{{film}}</option>
+                </datalist>
           </div>
           <div class="col-12 col-sm-6">
             <label for="">IMAGEN : </label>
@@ -1709,6 +1712,7 @@ export default {
       },
       fechacalculo:'',
       url:process.env.API,
+      listmuestra:[],
       imagen:null, 
            columspaciente:[
         {name:'opciones',field:'opciones',label:'opciones',align:'center'},
@@ -1724,6 +1728,7 @@ export default {
     //this.sanguinea();
     this.listusers();
     this.listseguro();
+    this.muestras();
   },
 
   created() {
@@ -1850,6 +1855,17 @@ export default {
     }
   },
   methods:{
+    muestras(){
+       this.listmuestra=[]
+      this.$axios.get(process.env.API+'/listmuestra').then(res=> {
+         res.data.forEach(r => {
+          this.listmuestra.push(r.tipomuestra)
+           
+         });
+
+      })
+
+    },
             calcular3(fechanac){
       if(fechanac==null || fechanac=='' || fechanac==undefined)
         return ''
@@ -3369,7 +3385,21 @@ export default {
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+145,'center')
     doc.setTextColor(0,0,0)
     doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
+    
+    if(l.imagen!=null && l.imagen!=''){
 
+        this.$axios.post(process.env.API+'/base64',{imagen:l.imagen}).then(res=>{
+            doc.addPage();
+            var imgData=''
+          //console.log(res.data)
+           imgData =res.data
+                     doc.addImage(imgData, "jpeg", 5, 5, 170, 145)
+          console.log(imgData)
+                doc.output('save','GASOMETRIA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf)
+                return false
+      })      
+    }
+    else
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     //window.open(doc.output('bloburl'), '_blank');
                 doc.output('save','GASOMETRIA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
@@ -5118,6 +5148,7 @@ sanguinea(p,l){
         this.mispacientes()
         this.dialoglaboratorio=false
         this.resetlabo()
+    this.muestras();
       })
     },
     modificar(paciente){
@@ -5149,7 +5180,19 @@ sanguinea(p,l){
     },
         onSubmit(){
         this.dato.seguro=this.seguro.id
-      this.$q.loading.show()
+      this.$axios.post(process.env.API+'/valpaciente',this.dato).then(res=>{
+          console.log(res.data.length > 0)
+          //return false
+          if(res.data.length > 0)
+          {
+                     this.$q.notify({
+          message: 'El paciente existe',
+          color: 'red',
+          icon: 'info',
+        })
+        return false
+          }else{
+                  this.$q.loading.show()
       this.$axios.post(process.env.API+'/paciente',this.dato).then(res=>{
         this.dato={}
          this.$q.notify({
@@ -5161,6 +5204,10 @@ sanguinea(p,l){
         this.alert=false;
         this.mispacientes();
       })
+          }
+      })
+
+
       //   .catch(err=>{
       //   this.$q.loading.hide()
       //   this.$q.notify({

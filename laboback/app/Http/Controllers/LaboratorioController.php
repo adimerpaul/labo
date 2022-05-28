@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Laboratorio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LaboratorioController extends Controller
 {
@@ -202,5 +203,21 @@ class LaboratorioController extends Controller
         //
         $laboratorio=Laboratorio::find($id);
         $laboratorio->delete();
+    }
+
+    public function base64(Request $request){
+        if ($request->imagen=='' || $request->imagen==null){
+            return '';
+        }
+        $path = 'imagenes/'.$request->imagen;
+        $type = pathinfo($path, PATHINFO_EXTENSION);
+        $data = file_get_contents($path);
+        $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+        return $base64;
+
+    }
+
+    public function listmuestra(){
+        return DB::SELECT("SELECT tipomuestra from laboratorios group by tipomuestra;");
     }
 }
