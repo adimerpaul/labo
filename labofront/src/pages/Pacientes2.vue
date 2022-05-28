@@ -3389,11 +3389,11 @@ export default {
     if(l.imagen!=null && l.imagen!=''){
 
         this.$axios.post(process.env.API+'/base64',{imagen:l.imagen}).then(res=>{
-            doc.addPage();
+            //doc.addPage();
             var imgData=''
           //console.log(res.data)
            imgData =res.data
-                     doc.addImage(imgData, "jpeg", 5, 5, 170, 145)
+                     doc.addImage(imgData, "jpeg", 90, 50, 90, 80)
           console.log(imgData)
                 doc.output('save','GASOMETRIA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf)
                 return false
