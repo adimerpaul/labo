@@ -94,6 +94,7 @@ class LaboratorioController extends Controller
         $labo->d43=$request->d43==null?'':$request->d43;
         $labo->d44=$request->d44==null?'':$request->d44;
         $labo->d45=$request->d45==null?'':$request->d45;
+        $labo->solicitud=$request->solicitud==null?'':$request->solicitud;
         $labo->imagen=$nombreimagen;
         $labo->responsable=$request->responsable==null?'':$request->responsable;
         $labo->tipo_id=$request->tipo_id==null?'':$request->tipo_id;
@@ -186,6 +187,7 @@ class LaboratorioController extends Controller
         $labo->d43=$request->d43==null?'':$request->d43;
         $labo->d44=$request->d44==null?'':$request->d44;
         $labo->d45=$request->d45==null?'':$request->d45;
+        $labo->solictud=$request->solictud==null?'':$request->solictud;
         $labo->responsable=$request->responsable==null?'':$request->responsable;
         $labo->user_id=$request->user_id==null?'':$request->user_id;
         $labo->doctor_id=$request->doctor_id==null?'':$request->doctor_id;

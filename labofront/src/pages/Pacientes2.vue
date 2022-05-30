@@ -23,7 +23,7 @@
                 
                 <q-btn @click="Whatsapp(l.doctor.celular)" size="xs" flat round color="purple" icon="whatsapp" v-if="l.doctor.celular!='' && l.doctor.celular!=null"/>
                 {{l.fechatoma}}
-                {{l.tipo.nombre}}
+                {{l.tipo.nombre}} - {{l.solicitud}}
               </li>
             </ul>
           </q-td>
@@ -208,7 +208,7 @@
       <q-card-section>
         <q-form @submit="createLaboratorio">
         <div class="row">
-          <div class="col-12 col-sm-6">
+          <div class="col-12 col-sm-4">
             <q-select dense outlined :options="doctors" label="Doctor" v-model="doctor" @filter="filterFn"   use-input  input-debounce="0"  >
                     <template v-slot:no-option>
           <q-item>
@@ -220,16 +220,16 @@
             </q-select>
           </div>
 
-          <div class="col-12 col-sm-6">
+          <div class="col-12 col-sm-4">
             <q-input dense outlined label="Tipo Muestra" v-model="laboratorio.tipomuestra" list="listmuestra"/>
                 <datalist id="listmuestra">
                     <option v-for="(film,index) in listmuestra" :key="index">{{film}}</option>
                 </datalist>
           </div>
-          <div class="col-12 col-sm-6">
-            <label for="">IMAGEN : </label>
-            <input type="file" @change="getImage" >
+          <div class="col-12 col-sm-4">
+            <q-input dense outlined label="N Solicitud" v-model="laboratorio.solicitud" type="number"/>
           </div>
+
 
           <template v-if="tipo.label=='HEMOGRAMA COMPLETO'">
             <q-card class="my-card"  flat bordered>
@@ -785,6 +785,11 @@
            <q-card class="my-card"  flat bordered style="width:100%">
           <q-card-section  class="bg-green-2"> <div class="row">
           <div class="col-6 col-sm-3"></div>
+                 <div class="col-6 col-sm-3"></div>
+                    <div class="col-12 col-sm-6">
+            <label for="">IMAGEN : </label>
+            <input type="file" @change="getImage" >
+          </div>
           <div class="col-6 col-sm-12"><q-input dense outlined label="GASOMETRIA ARTERIAL"  v-model="laboratorio.d1" /></div>
           </div></q-card-section>
 
@@ -926,7 +931,7 @@
       <q-card-section>
         <q-form @submit="modLaboratorio">
         <div class="row">
-          <div class="col-12 col-sm-6">
+          <div class="col-12 col-sm-4">
                         <q-select dense outlined :options="doctors" label="Doctor" v-model="doctor" @filter="filterFn"   use-input  input-debounce="0" >
                     <template v-slot:no-option>
           <q-item>
@@ -938,10 +943,15 @@
             </q-select>
           </div>
 
-          <div class="col-12 col-sm-6">
-            <q-input dense outlined label="Tipo Muestra" v-model="laboratorio.tipomuestra" />
+          <div class="col-12 col-sm-4">
+              <q-input dense outlined label="Tipo Muestra" v-model="laboratorio.tipomuestra" list="listmuestra"/>
+                <datalist id="listmuestra">
+                    <option v-for="(film,index) in listmuestra" :key="index">{{film}}</option>
+                </datalist>
           </div>
-
+          <div class="col-12 col-sm-4">
+            <q-input dense outlined label="N Solicitud" v-model="laboratorio.solicitud" type="number"/>
+          </div>
           <template v-if="tipo.label=='HEMOGRAMA COMPLETO'">
             <q-card class="my-card"  flat bordered>
           <q-card-section  class="bg-green-2"> <div class="row">
@@ -1495,8 +1505,9 @@
           <template v-if="tipo.label=='GASOMETRIA'">
            <q-card class="my-card"  flat bordered style="width:100%">
           <q-card-section  class="bg-green-2"> <div class="row">
-          <div class="col-6 col-sm-3"></div>
+   
           <div class="col-6 col-sm-12"><q-input dense outlined label="GASOMETRIA ARTERIAL"  v-model="laboratorio.d1" /></div>
+          
           </div></q-card-section>
 
           <q-card-section  class="bg-red-2"> <div class="row">
@@ -2046,6 +2057,7 @@ export default {
         d43:'',
         d44:'',
         d45:'',
+        solicitud:'',
         responsable:'',
         tipo_id:'',
         paciente_id:'',
@@ -2264,7 +2276,7 @@ export default {
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.nro+''],x+160, y+35,'center')
+    doc.text([anio+'',p.sexo,l.solicitud+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -2385,7 +2397,7 @@ export default {
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.nro+''],x+337, y+35,'center')
+    doc.text([anio+'',p.sexo,l.solicitud+''],x+337, y+35,'center')
     doc.setTextColor(211,47,47)
     doc.setTextColor(57,73,171)
     //fin datos paciete
@@ -2496,7 +2508,7 @@ export default {
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.nro+''],x+160, y+35,'center')
+    doc.text([anio+'',p.sexo,l.solicitud+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -2619,7 +2631,7 @@ export default {
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.nro+''],x+160, y+35,'center')
+    doc.text([anio+'',p.sexo,l.solicitud+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -2713,7 +2725,7 @@ export default {
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.nro+''],x+160, y+35,'center')
+    doc.text([anio+'',p.sexo,l.solicitud+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -2807,7 +2819,7 @@ export default {
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.nro+''],x+160, y+35,'center')
+    doc.text([anio+'',p.sexo,l.solicitud+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -2970,7 +2982,7 @@ export default {
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.nro+''],x+160, y+35,'center')
+    doc.text([anio+'',p.sexo,l.solicitud+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -3060,7 +3072,7 @@ export default {
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.nro+''],x+160, y+35,'center')
+    doc.text([anio+'',p.sexo,l.solicitud+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -3149,7 +3161,7 @@ export default {
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.nro+''],x+160, y+35,'center')
+    doc.text([anio+'',p.sexo,l.solicitud+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -3267,7 +3279,7 @@ export default {
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.nro+''],x+160, y+35,'center')
+    doc.text([anio+'',p.sexo,l.solicitud+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -3357,7 +3369,7 @@ export default {
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.nro+''],x+160, y+35,'center')
+    doc.text([anio+'',p.sexo,l.solicitud+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -3441,7 +3453,7 @@ export default {
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.nro+''],x+160, y+35,'center')
+    doc.text([anio+'',p.sexo,l.solicitud+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -3541,7 +3553,7 @@ export default {
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.nro+''],x+160, y+35,'center')
+    doc.text([anio+'',p.sexo,l.solicitud+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -3671,7 +3683,7 @@ export default {
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.nro+''],x+337, y+35,'center')
+    doc.text([anio+'',p.sexo,l.solicitud+''],x+337, y+35,'center')
     doc.setTextColor(211,47,47)
     doc.setTextColor(57,73,171)
     //fin datos paciete
@@ -3811,7 +3823,7 @@ export default {
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.nro+''],x+337, y+35,'center')
+    doc.text([anio+'',p.sexo,l.solicitud+''],x+337, y+35,'center')
     doc.setTextColor(211,47,47)
     doc.setTextColor(57,73,171)
     //fin datos paciete
@@ -3979,7 +3991,7 @@ export default {
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.nro+''],x+160, y+35,'center')
+    doc.text([anio+'',p.sexo,l.solicitud+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -4054,7 +4066,7 @@ export default {
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.nro+''],x+160, y+35,'center')
+    doc.text([anio+'',p.sexo,l.solicitud+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -4129,7 +4141,7 @@ sanguinea(p,l){
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.nro+''],x+160, y+35,'center')
+    doc.text([anio+'',p.sexo,l.solicitud+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
@@ -4541,7 +4553,7 @@ sanguinea(p,l){
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.nro+''],x+337, y+35,'center')
+    doc.text([anio+'',p.sexo,l.solicitud+''],x+337, y+35,'center')
     doc.setTextColor(57,73,171)
     doc.text('CONTADOR Hematologico MINDRAY BC 5130',x+300, y+47,'center')
     //fin datos paciete
@@ -4724,7 +4736,7 @@ sanguinea(p,l){
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.nro+''],x+337, y+35,'center')
+    doc.text([anio+'',p.sexo,l.solicitud+''],x+337, y+35,'center')
     doc.setTextColor(211,47,47)
     doc.setTextColor(57,73,171)
     //fin datos paciete
@@ -4838,7 +4850,7 @@ sanguinea(p,l){
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.nro+''],x+337, y+35,'center')
+    doc.text([anio+'',p.sexo,l.solicitud+''],x+337, y+35,'center')
     doc.setTextColor(211,47,47)
     doc.setTextColor(57,73,171)
     //fin datos paciete
@@ -4931,7 +4943,7 @@ sanguinea(p,l){
     if(p.edad==null||p.edad==undefined||p.edad=='')
     anio=p.tiempo
     else anio=p.edad
-    doc.text([anio+'',p.sexo,p.nro+''],x+160, y+35,'center')
+    doc.text([anio+'',p.sexo,l.solicitud+''],x+160, y+35,'center')
     doc.setTextColor(57,73,171)
     doc.text('PRUEBA RAPIDA INMUNOCROMATOGRAFICA',x+100, y+47,'center')
     //fin datos paciete
@@ -5093,6 +5105,7 @@ sanguinea(p,l){
         data.append('tipomuestra',this.laboratorio.tipomuestra)
         data.append('fechatoma',this.laboratorio.fechatoma)
         data.append('horatoma',this.laboratorio.horatoma)
+        data.append('solicitud',this.laboratorio.solicitud)
         data.append('d1',this.laboratorio.d1)
         data.append('d2',this.laboratorio.d2)
         data.append('d3',this.laboratorio.d3)
