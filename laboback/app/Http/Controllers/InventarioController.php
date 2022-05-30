@@ -108,9 +108,14 @@ class InventarioController extends Controller
      * @param  \App\Models\Inventario  $inventario
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Inventario $inventario)
+    public function destroy($id)
     {
         //
+        $inventario= Inventario::find($id);
+        $reactivo=Reactivo::find($inventario->reactivo_id);
+        $reactivo->stock=$reactivo->stock-$inventario->ingreso;
+        $reactivo->save();
+        $inventario->delete();
     }
 
     public function fvencido(){

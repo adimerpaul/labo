@@ -63,6 +63,7 @@
         title="Reactivo"
         :columns="columns"
         :rows="rows"
+        :filter="filter"
       >
         <template v-slot:top-right>
           <q-input borderless dense debounce="300" v-model="filter" placeholder="Search">
@@ -210,8 +211,9 @@
           </q-td>
       </template>
       <template v-slot:body-cell-opcion="props">
-      <q-td key="opcion" :props="props" style="text-align:center" v-if="props.row.saldo>0">
+              <q-td key="opcion" :props="props" style="text-align:center" v-if="props.row.saldo>0">
               <q-btn  dense round flat color="teal" @click="retirarRow(props)" icon="science"></q-btn>
+              <q-btn  dense round flat color="red" @click="delingreso(props)" icon="delete"></q-btn>
 
       </q-td>
       </template>
@@ -300,6 +302,7 @@ export default {
       ],
 
       columns2:[
+        { name: 'opcion', label: 'OPCION', field: 'opcion'},
         { name: 'marca', label: 'MARCA', field: 'marca'},
         { name: 'lote', label: 'LOTE', field: 'lote'},
         { name: 'ingreso', label: 'INGRESO', field: 'ingreso'},
@@ -307,7 +310,6 @@ export default {
         { name: 'fechavencimiento', label: 'FEC VENC', field: 'fechavencimiento'},
         { name: 'observacion', label: 'OBSERVACION', field: 'observacion'},
         { name: 'estado', label: 'ESTADO', field: 'estado'},
-        { name: 'opcion', label: 'OPCION', field: 'opcion'},
       ]
     }
   },
@@ -473,7 +475,7 @@ export default {
       console.log(this.dato2);
 
       this.$q.dialog({
-        title: 'Eliminar Doctor',
+        title: 'Eliminar Reactivo',
         message: 'Esta Seguro de Eliminar ?',
         cancel: true,
       }).onOk(() => {
@@ -486,6 +488,26 @@ export default {
           })
       })
     },
+
+        delingreso(props){
+      this.inventario=props.row;
+
+      this.$q.dialog({
+        title: 'Eliminar Reactivo',
+        message: 'Esta Seguro de Eliminar ?',
+        cancel: true,
+      }).onOk(() => {
+          this.$axios.delete(process.env.API+'/inventario/'+this.inventario.id).then(res=>{
+         this.$q.notify({
+          message: 'Se elimino correctamente',
+          color: 'green'
+        })
+        this.dialog_inv=false
+        this.listado();
+          })
+      })
+    },
+
         onMod(){
       console.log(this.dato2)
       this.$axios.put(process.env.API+'/reactivo/'+this.dato2.id,this.dato2).then(res=>{
