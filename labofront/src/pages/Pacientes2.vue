@@ -887,6 +887,7 @@
           <div class="col-6 col-sm-12"><q-input dense outlined label="Prueba Rapida VIH"  v-model="laboratorio.d11" /></div>
           </div></q-card-section>
           <q-card-section  class="bg-blue-2"> <div class="row">
+
           <div class="col-6 col-sm-12">CAPACIDAD DE FIJACION DE HIERRO</div>
 
           <div class="col-6 col-sm-12"><q-input dense outlined label="Capacidad Latente de Fijacion de Hierro"  v-model="laboratorio.d12" /></div>
@@ -1668,6 +1669,52 @@
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
           </div></q-card-section></q-card>
           </template>
+
+
+          <template v-if="tipo.label=='MISCELANEOS ORINA'">
+           <q-card class="my-card"  flat bordered style="width:100%">
+          <q-card-section  class="bg-green-2"> <div class="row">
+          <div class="col-6 col-sm-12"><q-input dense outlined label="ORINA EN 24 HORAS" v-model="laboratorio.d1" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="CREATINA EN SUERO" v-model="laboratorio.d2" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="CREATINA EN ORINA 24 HORAS" v-model="laboratorio.d3" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="CLEARENCE DE CREATININA" v-model="laboratorio.d4" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="PROTEINA EN ORINAL AL AZAR" v-model="laboratorio.d5" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="PROTEINURIA DE 24 HORAS" v-model="laboratorio.d6" /></div>
+          </div></q-card-section>
+          <q-card-section  class="bg-blue-2"> <div class="row">
+
+          <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACION" v-model="laboratorio.d7" /></div>
+          </div></q-card-section>
+          <q-card-section  class="bg-red-2"> <div class="row">
+
+          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
+
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          </div></q-card-section>
+           </q-card>
+          </template>
+
+          <template v-if="tipo.label=='FIJACION DE HIERRO'">
+           <q-card class="my-card"  flat bordered style="width:100%">
+          <q-card-section  class="bg-green-2"> <div class="row">
+          <div class="col-6 col-sm-12"><q-input dense outlined label="CAPACIDAD LATENTE DE FIJACION DE HIERRO" v-model="laboratorio.d1" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="CAPACIDAD TOTAL DE FIJACION DE HIERRO" v-model="laboratorio.d2" /></div>
+          <div class="col-6 col-sm-12"><q-input dense outlined label="TRANSFERRINA" v-model="laboratorio.d3" /></div>
+          </div></q-card-section>
+          <q-card-section  class="bg-blue-2"> <div class="row">
+          <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACION" v-model="laboratorio.d4" /></div>
+          </div></q-card-section>
+          <q-card-section  class="bg-red-2"> <div class="row">
+
+          <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
+
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
+          <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+          </div></q-card-section>
+           </q-card>
+          </template>
+
 
           <div class="col-12">
             <q-btn label="Modificar" type="submit" class="full-width" icon="add_circle" color="positive" />
