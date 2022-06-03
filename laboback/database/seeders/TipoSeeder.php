@@ -37,6 +37,8 @@ class TipoSeeder extends Seeder
             ["nombre"=>"TOXOPLASMOSIS",],
             ["nombre"=>"HEMODIALISIS M y B",],
             ["nombre"=>"HEMODIALISIS TRI",],
+            ["nombre"=>"MISCELANEOS ORINA",],
+            ["nombre"=>"FIJACION DE HIERRO",],
         ]);
     }
 }

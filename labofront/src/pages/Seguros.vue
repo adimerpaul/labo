@@ -221,6 +221,10 @@ export default {
         this.hemodialisis(p,l)  
       if(l.tipo_id==22)
         this.hemodialisistri(p,l)   
+              if(l.tipo_id==23)
+        this.miscelaneo(p,l)   
+              if(l.tipo_id==24)
+        this.hierro(p,l)   
 
     },
 
@@ -1926,6 +1930,202 @@ export default {
                    // window.open(doc.output('bloburl'), '_blank');
 
   },
+        miscelaneo(p,l){
+    var doc = new jsPDF('P',undefined,'legal')
+    doc.setFont("arial");
+    doc.setFontSize(10);
+    var img = new Image()
+    img.src = 'img/natividad.jpeg'
+    doc.addImage(img, 'jpg', 5, 2, 70, 20)
+    let x=0
+    let y=0
+    //inicio datos paciete
+    doc.setDrawColor(120);
+    doc.rect(x+5, y+27, 205, 20)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+175, y+8,'center')
+    doc.setTextColor(195,47,47)
+    doc.text('N Registro CODEDLAB 000045',x+150, y+25)
+    doc.setTextColor(211,47,47)
+    doc.text('Form. 023',x+190, y+30)
+    doc.setTextColor(57,73,171)
+    doc.text('MISCELANEOS - ORINA',x+100, y+30,'center')
+    doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
+    doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'normal')
+    doc.text([p.paciente,l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno,l.tipomuestra],x+70, y+35,'center')
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'bold')
+    doc.text(['EDAD','SEXO'],x+130, y+35)
+    doc.setTextColor(211,47,47)
+    doc.text('N PACIENTE',x+130, y+43)
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(0,0,0)
+        let anio=''
+    if(p.edad==null||p.edad==undefined||p.edad=='')
+    anio=p.tiempo
+    else anio=p.edad
+    doc.text([anio+'',p.sexo,l.solicitud+''],x+160, y+35,'center')
+    doc.setTextColor(57,73,171)
+    //fin datos paciete
+    //inicio datos
+    doc.rect(x+5, y+48, 205, 93)
+    doc.setFont(undefined, 'bold')
+    doc.setFontSize(12);
+    doc.setTextColor(57,73,171)
+    doc.setLineHeightFactor(2)
+    doc.text('                       RESULTADO               VALOR DE REFERENCIA',x+50,y+52)
+    doc.setFont(undefined, 'normal')
+    doc.text(['ORINA EN 24 HORAS','CREATININA EN SUERO','CREATININA EN ORINA 24', '    HORAS','CLEARENCE DE CREATININA','','PROTEINA EN ORINA AL AZAR','PROTEINURIA DE 24 HORAS'],x+8,y+60)
+    doc.setTextColor(0,0,0)
+    doc.text(l.d1,x+80,y+60)
+    if(parseFloat(l.d2)<0.6 || parseFloat(l.d2)>1.4)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d2,x+80,y+70)
+    doc.setTextColor(0,0,0)
+    if((parseFloat(l.d3)<1500 || parseFloat(l.d3)>2500) && p.sexo=='Masculino')
+      doc.setTextColor(255,0,0)
+    if((parseFloat(l.d3)<800 || parseFloat(l.d3)>1500) && p.sexo=='Femenino')
+      doc.setTextColor(255,0,0)
+    doc.text(l.d3,x+80,y+80)
+    doc.setTextColor(0,0,0)
+        if((parseFloat(l.d4)<97 || parseFloat(l.d4)>137) && p.sexo=='Masculino')
+      doc.setTextColor(255,0,0)
+    if((parseFloat(l.d4)<88 || parseFloat(l.d4)>128) && p.sexo=='Femenino')
+      doc.setTextColor(255,0,0)
+    doc.text(l.d4,x+80,y+95)
+    doc.setTextColor(0,0,0)
+    if(parseFloat(l.d5)<1 || parseFloat(l.d5)>15)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d5,x+80,y+110)
+    doc.setTextColor(0,0,0)
+        if(parseFloat(l.d6)<28 || parseFloat(l.d6)>141)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d6,x+80,y+120)
+    doc.setTextColor(0,0,0)
+    doc.text(['VOLUMEN','0.6 - 1.4 mg/dl','Varones 1500 - 2500 mg/24hrs','Mujeres 800 - 1500 mg/24hrs ','Varones 97 - 137 ml/min','Mujeres 88 - 128 ml/min ','1 - 15 mg/dl','28 - 141 mg/24hrs'],x+130,y+60)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('OBSERVACION',x+8,y+125)
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(0,0,0)
+    doc.text(l.d7,x+8,y+130)
+    doc.setFontSize(10);
+    doc.setLineHeightFactor(1.5)
+
+    doc.rect(x+5, y+142, 205, 22)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('RESPONSABLE',x+6,y+145)
+    doc.setFont(undefined, 'NORMAL')
+    doc.setTextColor(0,0,0)
+    doc.text(l.responsable,x+8,y+150)
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(57,73,171)
+    doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+145,'center')
+    doc.setTextColor(0,0,0)
+    doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
+
+    //$( '#docpdf' ).attr('src', doc.output('datauristring'));
+      doc.output('save','MICSCELANEOS ORINA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
+    //window.open(doc.output('bloburl'), '_blank');
+    },
+
+                     hierro(p,l){
+
+            var doc = new jsPDF('landscape',undefined,'legal')
+    doc.setFont("arial");
+    doc.setFontSize(10);
+    var img = new Image()
+    img.src = 'img/natividad.jpeg'
+    doc.addImage(img, 'jpg', 195, 3, 70, 20)
+    let x=0
+    let y=0
+    //inicio datos paciete
+    doc.setDrawColor(120);
+    doc.rect(x+195, y+27, 155, 23)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+320, y+10,'center')
+    doc.setTextColor(195,47,47)
+    doc.text('N Registro CODEDLAB 000045',x+225, y+25)
+    doc.setTextColor(211,47,47)
+    doc.text('Form. 024',x+323, y+30)
+    doc.setTextColor(57,73,171)
+    doc.text('FIJACION DE HIERRO',x+270, y+30,'center')
+    doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+196, y+35)
+    doc.setTextColor(0,0,0)
+    doc.setFont(undefined, 'normal')
+    doc.text([p.paciente,l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno,l.tipomuestra],x+268, y+35,'center')
+    doc.setTextColor(57,73,171)
+    doc.setFont(undefined, 'bold')
+    doc.text(['EDAD','SEXO'],x+305, y+35)
+    doc.setTextColor(211,47,47)
+    doc.text('N PACIENTE',x+305, y+43)
+    doc.setFont(undefined, 'normal')
+    doc.setTextColor(0,0,0)
+        let anio=''
+    if(p.edad==null||p.edad==undefined||p.edad=='')
+    anio=p.tiempo
+    else anio=p.edad
+    doc.text([anio+'',p.sexo,l.solicitud+''],x+337, y+35,'center')
+    doc.setTextColor(211,47,47)
+    doc.setTextColor(57,73,171)
+    //fin datos paciete
+    //inicio datos
+    doc.rect(x+195, y+53, 155, 130)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(211,47,47)
+    doc.text('',x+233,y+55)
+    doc.setTextColor(57,73,171)
+    doc.setFontSize(10);
+    doc.setFontSize(12);
+    doc.text('  PRUEBA                     VALOR               UNIDAD                REFERENCIA',x+200,y+60)
+
+    doc.setFont(undefined, 'normal')
+    doc.text(['Capacidad Latente de ',' Fijacion de Hierro','Capacitacion Total de ',' Fijacion de Hierro','Transferrina'],x+200,y+65,'left')
+    doc.setTextColor(0,0,0)
+    if(parseFloat(l.d1)<140 || parseFloat(l.d1)>280)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d1,x+250,y+65,'left')
+    doc.setTextColor(0,0,0)
+        if(parseFloat(l.d2)<250 || parseFloat(l.d2)>450)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d2,x+250,y+75,'left')
+    doc.setTextColor(0,0,0)
+            if(parseFloat(l.d3)<200 || parseFloat(l.d3)>300)
+      doc.setTextColor(255,0,0)
+    doc.text(l.d3,x+250,y+85,'left')
+    doc.setTextColor(0,0,0)
+    doc.text(['ug/dl',' ','ug/dl',' ','mg/dl'],x+280,y+65,'left')
+    doc.text(['140 - 280 ug/dl',' ','250 - 450 ug/dl',' ','200 - 300 mg/dl'],x+310,y+65,'left')
+
+    doc.setFontSize(11);
+    doc.setTextColor(57,73,171)
+    doc.text('OBSERVACION',x+200,y+175,'left')
+    doc.setTextColor(0,0,0)
+    doc.text(l.d4,x+200,y+180,'left')
+    doc.setFontSize(11);
+
+
+    doc.rect(x+195, y+185, 155, 20)
+    doc.setFont(undefined, 'bold')
+    doc.setTextColor(57,73,171)
+    doc.text('RESPONSABLE',x+205,y+190,'left')
+    doc.setTextColor(0,0,0)
+    doc.text(l.responsable,x+205,y+195,'left')
+    doc.setTextColor(57,73,171)
+    doc.setFontSize(10);
+    doc.setLineHeightFactor(1.5)
+    doc.text(['Fecha toma de Muestra','Hora toma Muestra','Fecha Entrega de Resultado'],x+280,y+190,'left')
+    doc.setTextColor(0,0,0)
+    doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+330,y+190,'left')
+
+    //$( '#docpdf' ).attr('src', doc.output('datauristring'));
+      doc.output('save','FIJACION HIERRO-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
+                   // window.open(doc.output('bloburl'), '_blank');
+      },
             uretral(p,l){
     var doc = new jsPDF('P',undefined,'legal')
     doc.setFont("arial");
