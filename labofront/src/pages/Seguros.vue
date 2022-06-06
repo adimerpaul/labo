@@ -1899,7 +1899,7 @@ export default {
       doc.setTextColor(255,0,0)      
     doc.text(l.d15,x+240,y+155,'left')
     doc.setTextColor(0,0,0)
-    if(parseFloat(l.d16)<5)
+    if(parseFloat(l.d16)>15)
       doc.setTextColor(255,0,0) 
     doc.text(l.d16,x+240,y+167,'left')
     doc.setTextColor(0,0,0)
@@ -1910,7 +1910,7 @@ export default {
     doc.text(l.d18,x+200,y+180,'left')
     doc.text(['ng/ml','','','mlU/dl',''],x+280,y+155,'left')
     doc.setTextColor(57,73,171)
-    doc.text(['30-350 ng/ml Varon','20-250 ng/ml Mujer','< 5 mlU/ml POSITIVO','5-15 mlU/ml Indeterminado','> 15 mlU/ml NEGATIVO'],x+300,y+155,'left')
+    doc.text(['30-350 ng/ml Varon','20-250 ng/ml Mujer','< 5 mlU/ml NEGATIVO','5-15 mlU/ml Indeterminado','> 15 mlU/ml POSITIVO'],x+300,y+155,'left')
     
     doc.rect(x+195, y+185, 155, 20)
     doc.setFont(undefined, 'bold')
