@@ -221,7 +221,7 @@
           </div>
 
           <div class="col-12 col-sm-4">
-            <q-input dense outlined label="Tipo Muestra" v-model="laboratorio.tipomuestra" list="listmuestra"/>
+            <q-input dense outlined label="Tipo Muestra" v-model="laboratorio.tipomuestra" list="listmuestra" class="text-uppercase"/>
                 <datalist id="listmuestra">
                     <option v-for="(film,index) in listmuestra" :key="index">{{film}}</option>
                 </datalist>
@@ -1849,7 +1849,7 @@ export default {
       this.doctors=[]
       res.data.forEach(r=>{
         let d=r
-        d.label=r.nombre+' '+r.paterno+' '+r.materno
+        d.label=r.nombre+' '+r.paterno+' '+r.materno+' - '+r.especialidad
         this.doctors.push(d)
       })
       this.filterdoc=this.doctors
@@ -2055,7 +2055,7 @@ export default {
       this.tipo=labo.tipo
       this.paciente=cl
       this.doctor=labo.doctor
-      this.doctor.label=this.doctor.nombre+' '+this.doctor.paterno+' '+this.doctor.materno
+      this.doctor.label=this.doctor.nombre+' '+this.doctor.paterno+' '+this.doctor.materno+' - '+ this.doctor.especialidad
       this.tipo.label=this.tipo.nombre
       this.laboratorio=labo
       this.user=this.laboratorio.responsable
@@ -5579,7 +5579,7 @@ sanguinea(p,l){
           this.$axios.get(process.env.API+'/doctor').then(res=>{
             // console.log(res.data);
             res.data.forEach(e => {
-                this.doctors.push({label:e.nombre+' '+e.paterno+' '+e.materno,value:e.id})
+                this.doctors.push({label:e.nombre+' '+e.paterno+' '+e.materno+' - '+ e.especialidad,value:e.id})
              });
                 this.requerido=this.doctors[0];
           })

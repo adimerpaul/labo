@@ -139,7 +139,7 @@ class LaboratorioController extends Controller
         //
 
         $labo=Laboratorio::find($request->id);
-        $labo->tipomuestra=$request->tipomuestra==null?'':$request->tipomuestra;
+        $labo->tipomuestra=$request->tipomuestra==null?'':strtoupper($request->tipomuestra);
         $labo->fechatoma=$request->fechatoma==null?'':$request->fechatoma;
         $labo->horatoma=$request->horatoma==null?'':$request->horatoma;
         $labo->d1=$request->d1==null?'':$request->d1;
