@@ -41,7 +41,7 @@ class LaboratorioController extends Controller
         $nombreimagen=null;
         if ($request->hasFile('imagen')) {
             $file=$request->file('imagen');
-            $nombreimagen = time().".".$file->getClientOriginalExtension();
+            $nombreimagen = date('Ymd').''.time().".".$file->getClientOriginalExtension();
             $file->move(\public_path('imagenes'), $nombreimagen);
         }
 
@@ -108,7 +108,7 @@ class LaboratorioController extends Controller
         $nombreimagen=null;
         if ($request->hasFile('imagen')) {
             $file=$request->file('imagen');
-            $nombreimagen = time().".".$file->getClientOriginalExtension();
+            $nombreimagen = date('Ymd').''.time().".".$file->getClientOriginalExtension();
             $file->move(\public_path('imagenes'), $nombreimagen);
         }
 
