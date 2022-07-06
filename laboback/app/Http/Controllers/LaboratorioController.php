@@ -104,6 +104,18 @@ class LaboratorioController extends Controller
         $labo->save();
     }
 
+    public function updateimagen(Request $request){
+        $nombreimagen=null;
+        if ($request->hasFile('imagen')) {
+            $file=$request->file('imagen');
+            $nombreimagen = time().".".$file->getClientOriginalExtension();
+            $file->move(\public_path('imagenes'), $nombreimagen);
+        }
+
+        $labo=Laboratorio::find($request->id);
+        $labo->imagen=$nombreimagen;
+        $labo->save();
+    }
 
     /**
      * Display the specified resource.

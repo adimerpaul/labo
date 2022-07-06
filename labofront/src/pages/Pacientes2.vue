@@ -19,6 +19,7 @@
                 <q-btn @click="imprimirlaboratorio(props.row,l)" size="xs" flat round color="info" icon="print" />
                 <q-btn @click="datformulario(props.row,l)" size="xs" flat round color="yellow" icon="edit" />
                 <q-btn @click="sobre(props.row,l)" size="xs" flat round color="teal" icon="mail_outline" />
+                <q-btn @click="upimagen(l)" size="xs" flat round color="purple-5" icon="add_photo_alternate" v-if="l.tipo_id==18"/>
                 <q-btn @click="descargar(l)" size="xs" flat round color="deep-orange-5" icon="image" v-if="l.imagen!=null && l.imagen!=''"/>
                 
                 <q-btn @click="Whatsapp(l.doctor.celular)" size="xs" flat round color="purple" icon="whatsapp" v-if="l.doctor.celular!='' && l.doctor.celular!=null"/>
@@ -138,6 +139,24 @@
                 <q-btn  label="Cancelar" icon="delete" color="negative" v-close-popup />
             </div>
           </q-form>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
+
+          <q-dialog v-model="dialogmodimg" >
+      <q-card>
+        <q-card-section class="bg-green-14 text-white">
+          <div class="text-h6">Modificar Imagen </div>
+        </q-card-section>
+        <q-card-section class="q-pt-xs">
+          <div class="col-12 col-sm-6">
+            <label for="">IMAGEN : </label>
+            <input type="file" @change="getImage" >
+          </div>
+        </q-card-section>
+        <q-card-section class="q-pt-xs">
+              <q-btn label="Crear" color="positive" icon="add_circle" @click="onmodimagen"/>
+                <q-btn  label="Cancelar" icon="delete" color="negative" v-close-popup />
         </q-card-section>
       </q-card>
     </q-dialog>
@@ -783,7 +802,8 @@
 
           <template v-if="tipo.label=='GASOMETRIA'">
            <q-card class="my-card"  flat bordered style="width:100%">
-          <q-card-section  class="bg-green-2"> <div class="row">
+          <q-card-section  class="bg-green-2"> 
+          <div class="row">
           <div class="col-6 col-sm-3"></div>
                  <div class="col-6 col-sm-3"></div>
                     <div class="col-12 col-sm-6">
@@ -1739,6 +1759,7 @@ export default {
     return{
       dialoglaboratorio:false,
       dialogmodlab:false,
+      dialogmodimg:false,
       dialog_mod:false,
       filter:'',
       alert:false,
@@ -1815,6 +1836,7 @@ export default {
       fechacalculo:'',
       url:process.env.API,
       listmuestra:[],
+      labmod:{},
       imagen:null, 
            columspaciente:[
         {name:'opciones',field:'opciones',label:'opciones',align:'center'},
@@ -2047,6 +2069,12 @@ export default {
           const needle = val.toLowerCase()
           this.doctors = this.filterdoc.filter(v => v.label.toLowerCase().indexOf(needle) > -1)
         })
+      },
+      upimagen(l){
+         this.imagen=''
+          this.labmod=l
+          this.dialogmodimg=true
+
       },
 
       datformulario(cl,labo){
@@ -5370,6 +5398,18 @@ sanguinea(p,l){
     },
     getImage(event){
       this.imagen = event.target.files[0];
+    },
+    onmodimagen(){
+      var data = new  FormData();
+        data.append('id', this.labmod.id);
+        data.append('imagen', this.imagen);
+      this.$axios.post(process.env.API+'/updateimagen',data).then(res=> {
+        // console.log(res.data)
+        this.mispacientes()
+        this.dialogmodimg=false
+        this.resetlabo()
+        this.imagen=''
+      })
     },
     createLaboratorio(){
       this.laboratorio.tipo_id=this.tipo.id
