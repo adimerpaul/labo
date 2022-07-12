@@ -20,6 +20,7 @@
       </div>
 
           <q-btn label="Buscar" type="submit" color="primary" />
+          <q-btn label="imrpesion" color="info" icon="print" @click="impresion"/>
     </div>
     </q-form>
 
@@ -44,13 +45,15 @@
 <script>
 import {date} from 'quasar'
     import Chart from 'chart.js/auto';
-
+import {jsPDF} from "jspdf";
+import $ from 'jquery'
 export default {
   data(){
     return{
       filter:'',
       total:[],
       formularios:[],
+      reporte:[],
       dato:{ini:date.formatDate(Date.now(),'YYYY-MM-DD'),fin:date.formatDate(Date.now(),'YYYY-MM-DD')},
 
     }
@@ -62,14 +65,50 @@ export default {
     buscar(){
       this.formularios=[];
       this.total=[];
+      this.reporte=[];
      this.$axios.post(process.env.API+'/reporte',this.dato).then(res=>{
+      this.reporte=res.data;
        res.data.forEach(element => {
+        
          this.formularios.push(element.nombre);
          this.total.push(element.cantidad);
        });
        this.createChart('bar-chart');
      })
 
+    },
+    impresion(){
+        var doc = new jsPDF('P','mm','letter')
+        doc.setFont("arial");
+        doc.setFontSize(10);
+        var img = new Image()
+        img.src = 'img/natividad.jpeg'
+        doc.addImage(img, 'jpg', 5, 2, 70, 20)
+        let x=0
+        let y=0
+        //inicio datos paciete
+        doc.setDrawColor(120);
+        doc.rect(x+5, y+27, 205, 1)
+        doc.setFont(undefined, 'bold')
+        doc.setTextColor(57,73,171)
+        doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+175, y+8,'center')
+        doc.setTextColor(0,0,0)
+        doc.text('REPORTE DE CANTIDAD DE FORMULARIOS FECHA: '+this.dato.ini +' al '+ this.dato.fin,x+100, y+35,'center')
+        doc.setTextColor(0,0,0)
+
+        doc.setTextColor(0,0,20)
+        doc.text('FORMULARIO ',x+25, y+40,'center')
+        doc.text('CANTIDAD ',x+150,y+40,'center')
+        y=40
+        doc.setFont(undefined, 'normal')
+        this.reporte.forEach(r => {
+          y+=5
+          doc.text(r.nombre,x+25, y,'left')
+          doc.text(r.cantidad+'',x+150,y,'left')          
+        });
+
+
+        doc.output('save','ReporteFormularios.pdf');
     },
     createChart (chartId) {
       const ctx = document.getElementById(chartId);
