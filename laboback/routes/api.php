@@ -82,6 +82,7 @@ Route::group(['middleware'=>'auth:sanctum'],function (){
     Route::post('/reporte',[\App\Http\Controllers\PacienteController::class,'reporte']);
     Route::post('/repseguro',[\App\Http\Controllers\PacienteController::class,'repseguro']);
     Route::post('/base64',[\App\Http\Controllers\LaboratorioController::class,'base64']);
+    Route::post('/repelemento',[\App\Http\Controllers\LaboratorioController::class,'repelemento']);
     Route::get('/listmuestra',[\App\Http\Controllers\LaboratorioController::class,'listmuestra']);
     Route::post('/valpaciente',[\App\Http\Controllers\PacienteController::class,'valpaciente']);
 
