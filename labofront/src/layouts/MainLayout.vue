@@ -89,6 +89,7 @@
               <!--              <q-item-label caption>Controlar pacientes</q-item-label>-->
             </q-item-section>
           </q-item>
+
           <q-item to="historial"  exact clickable v-ripple v-if="$store.state.login.boolhistorial">
             <q-item-section avatar>
               <q-icon name="code" />
@@ -98,6 +99,17 @@
 <!--              <q-item-label caption>Controlar usuarios</q-item-label>-->
             </q-item-section>
           </q-item>
+
+          <q-item to="reporte"  exact clickable v-ripple v-if="$store.state.login.boolhistorial">
+            <q-item-section avatar>
+              <q-icon name="code" />
+            </q-item-section>
+            <q-item-section>
+              <q-item-label> Reporte Seguro</q-item-label>
+<!--              <q-item-label caption>Controlar usuarios</q-item-label>-->
+            </q-item-section>
+          </q-item>
+
           <q-item to="reactivo"  exact clickable v-ripple v-if="$store.state.login.boolreactivo">
             <q-item-section avatar>
               <q-icon name="shop" />

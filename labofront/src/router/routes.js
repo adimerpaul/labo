@@ -9,6 +9,7 @@ import Porcaducar from "pages/Porcaducar";
 import Reactivo from "pages/Reactivo";
 import Seguros from "pages/Seguros";
 import Pacientes2 from "pages/Pacientes2";
+import Reporte from "pages/Reporte";
 
 const routes = [
   {
@@ -25,6 +26,7 @@ const routes = [
       { path: 'reactivo', component: Reactivo,meta:{requiresAuth: true}},
       { path: 'seguros', component: Seguros,meta:{requiresAuth: true}},
       { path: 'pacientes2', component: Pacientes2,meta:{requiresAuth: true}},
+      { path: 'reporte', component: Reporte,meta:{requiresAuth: true}},
     ]
   },
 

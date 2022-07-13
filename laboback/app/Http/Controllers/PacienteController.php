@@ -218,6 +218,10 @@ class PacienteController extends Controller
 
         return DB::SELECT("select t.nombre,COUNT(*) cantidad from laboratorios l inner JOIN tipos t on l.tipo_id=t.id where l.fechatoma>='$request->ini' and l.fechatoma<='$request->fin' group by t.nombre");
     }
+
+    public function repseguro(Request $request){
+        return DB::SELECT("select s.nombre,COUNT(*) as cantidad from pacientes p INNER JOIN seguros s on p.seguro_id=s.id inner JOIN laboratorios l on p.id=l.paciente_id where l.fechatoma>='$request->ini' and l.fechatoma<='$request->fin' group by s.nombre;");
+    }
     
     public function valpaciente(Request $request){
         return DB::SELECT("SELECT * from pacientes p where p.nombre='".strtoupper($request->nombre)."' and p.paterno='".strtoupper($request->paterno)."' and p.materno='".strtoupper($request->materno)."'");
