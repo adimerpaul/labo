@@ -96,7 +96,7 @@ export default {
         });
 
 
-        doc.output('save','ReporteFormularios.pdf');
+        doc.output('save','ReporteElemento.pdf');
       })
 
     },
