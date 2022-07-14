@@ -20,7 +20,7 @@ class CreateInventariosTable extends Migration
             $table->string('marca');
             $table->string('lote');
             $table->integer('ingreso');
-            $table->integer('saldo');
+            $table->integer('anterior');
             $table->string('observacion')->nullable();
             $table->string('estado')->default('ACTIVO');
             $table->unsignedBigInteger('reactivo_id');

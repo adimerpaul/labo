@@ -91,6 +91,7 @@
           <q-td key="opcion" :props="props" v-if="props.row.activo">
               <q-btn  dense round flat color="green" @click="invRow(props)" icon="inventory_2"></q-btn>
               <q-btn  dense round flat color="accent" @click="retRow(props)" icon="receipt"></q-btn>
+              <q-btn  dense round flat color="purple-14" @click="retirarRow(props)" icon="save_alt"></q-btn>
               <q-btn  dense round flat color="yellow" @click="editRow(props)" icon="edit"></q-btn>
               <q-btn  dense round flat color="red" @click="deleteRow(props)" icon="delete"></q-btn>
               <q-btn  dense round flat color="info" @click="printRow(props)" icon="print"></q-btn>
@@ -178,9 +179,9 @@
           <div class="col-md-6 col-sm-12">
             <q-input filled type="date" v-model="invent.fechavencimiento" label="Fecha Vencimiento  " hint="Ingresar dato " lazy-rules :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']" />
           </div>
-          <div class="col-md-6 col-sm-12">
+          <!--<div class="col-md-6 col-sm-12">
             <q-input filled type="date" v-model="invent.fecha" label="Fecha Reg" hint="Ingresar dato " lazy-rules :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']" />
-          </div>
+          </div>-->
           </div>
 
             <div>
@@ -211,9 +212,9 @@
           </q-td>
       </template>
       <template v-slot:body-cell-opcion="props">
-              <q-td key="opcion" :props="props" style="text-align:center" v-if="props.row.saldo>0">
-              <q-btn  dense round flat color="teal" @click="retirarRow(props)" icon="science"></q-btn>
-              <q-btn  dense round flat color="red" @click="delingreso(props)" icon="delete"></q-btn>
+              <q-td key="opcion" :props="props" style="text-align:center" >
+              <!--<q-btn  dense round flat color="teal" @click="retirarRow(props)" icon="science"></q-btn>-->
+              <q-btn  dense round flat color="red" @click="delingreso(props)" icon="delete" v-if="props.row.saldo>0" />
 
       </q-td>
       </template>
@@ -233,7 +234,8 @@
             @submit="onRetiro"
             class="q-gutter-md"
           >
-                      <q-input
+            <q-input
+             readonly
               filled
               v-model="retiro.fecha"
               label="Fecha Reg"
@@ -248,7 +250,7 @@
               hint="Cantidad"
               type="number"
               lazy-rules
-              :rules="[ val => val>0 && val <= inventario.saldo || 'Por favor cantidad ']"
+              :rules="[ val => val>0 && val <= reactivo.stock || 'Por favor cantidad ']"
             />
 
             <q-input
@@ -306,7 +308,6 @@ export default {
         { name: 'marca', label: 'MARCA', field: 'marca'},
         { name: 'lote', label: 'LOTE', field: 'lote'},
         { name: 'ingreso', label: 'INGRESO', field: 'ingreso'},
-        { name: 'saldo', label: 'SALDO', field: 'saldo'},
         { name: 'fechavencimiento', label: 'FEC VENC', field: 'fechavencimiento'},
         { name: 'observacion', label: 'OBSERVACION', field: 'observacion'},
         { name: 'estado', label: 'ESTADO', field: 'estado'},
@@ -371,14 +372,12 @@ export default {
       })
     },
     onRetiro(){
-      this.retiro.inventario_id=this.inventario.id;
-      this.retiro.reactivo_id=this.dato2.id;
+      this.retiro.reactivo_id=this.reactivo.id;
       this.$axios.post(process.env.API+'/retiro',this.retiro).then(res=>{
                  this.$q.notify({
           message: 'Se Retiro correctamente',
           color: 'green'
         })
-        this.dialog_inv=false;
         this.dialog_retiro=false;
         this.listado();
         this.retiro={fecha:date.formatDate(Date.now(),'YYYY-MM-DD')}
@@ -386,8 +385,9 @@ export default {
 
     },
     retirarRow(props){
-      this.inventario=props.row;
-      console.log(this.inventario)
+      //this.inventario=props.row;
+      //console.log(this.inventario)
+      this.reactivo=props.row
       this.dialog_retiro=true;
     },
     retRow(props){

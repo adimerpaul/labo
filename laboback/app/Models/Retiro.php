@@ -11,9 +11,9 @@ class Retiro extends Model
     protected $fillable=[
         'fecharetiro',
         'egreso',
+        'anterior',
         'observacion',
         'reactivo_id',
-        'inventario_id',
         'user_id',
     ];
 }

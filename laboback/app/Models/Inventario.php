@@ -14,7 +14,7 @@ class Inventario extends Model
         'marca',
         'lote',
         'ingreso',
-        'saldo',
+        'anterior',
         'observacion',
         'estado',
         'reactivo_id',

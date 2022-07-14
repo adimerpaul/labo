@@ -41,16 +41,17 @@ class RetiroController extends Controller
     public function store(Request $request)
     {
         //
+        $reactivo=Reactivo::find($request->reactivo_id);
         $retiro= new Retiro;
         $retiro->fecharetiro=$request->fecha;
         $retiro->egreso=$request->egreso;
+        $retiro->anterior=$reactivo->stock;
         $retiro->observacion=$request->observacion;
-        $retiro->inventario_id=$request->inventario_id;
         $retiro->reactivo_id=$request->reactivo_id;
         $retiro->user_id=Auth::user()->id;
         $retiro->save();
 
-        $inventario=Inventario::find($request->inventario_id);
+        /*$inventario=Inventario::find($request->inventario_id);
         if($inventario->saldo <= $request->egreso)
         {
             $inventario->saldo=0;
@@ -58,9 +59,8 @@ class RetiroController extends Controller
         }
         else
             $inventario->saldo=$inventario->saldo - $request->egreso;
-        $inventario->save();
+        $inventario->save();*/
         
-        $reactivo=Reactivo::find($request->reactivo_id);
         $reactivo->stock= intval($reactivo->stock) - intval($request->egreso);
         $reactivo->save();
     }

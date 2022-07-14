@@ -17,9 +17,8 @@ class CreateRetirosTable extends Migration
             $table->id();
             $table->date('fecharetiro');
             $table->integer('egreso');
+            $table->integer('anterior');
             $table->string('observacion')->nullable();
-            $table->unsignedBigInteger('inventario_id');
-            $table->foreign('inventario_id')->references('id')->on('inventarios');
             $table->unsignedBigInteger('reactivo_id');
             $table->foreign('reactivo_id')->references('id')->on('reactivos');
             $table->unsignedBigInteger('user_id');

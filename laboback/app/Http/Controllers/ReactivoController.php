@@ -107,7 +107,7 @@ class ReactivoController extends Controller
     }
 
     public function impresion(Request $request){
-        $resultado=DB::SELECT("(SELECT id,fecha, fechavencimiento, marca, lote, ingreso, saldo,0 as egreso, observacion,created_at from inventarios where reactivo_id=".$request->reactivo['id']." and fecha>='$request->fecha') union (SELECT id,fecharetiro as fecha, null as fechavencimiento,'' as marca,'' as lote, 0 as ingreso,0 as saldo,egreso,observacion,created_at from retiros where reactivo_id=".$request->reactivo['id']." and fecharetiro>='$request->fecha' ) order by created_at asc");
+        $resultado=DB::SELECT("(SELECT id,fecha, fechavencimiento, marca, lote, ingreso, anterior,0 as egreso, observacion,created_at from inventarios where reactivo_id=".$request->reactivo['id']." and fecha>='$request->fecha') union (SELECT id,fecharetiro as fecha, null as fechavencimiento,'' as marca,'' as lote, 0 as ingreso,anterior,egreso,observacion,created_at from retiros where reactivo_id=".$request->reactivo['id']." and fecharetiro>='$request->fecha' ) order by created_at asc");
         $col='white';
         $cadena='
         <tr>
@@ -123,12 +123,12 @@ class ReactivoController extends Controller
         ';
             $total=0;
             foreach ($resultado as $r) {
-                $total=$total + $r->ingreso - $r->egreso;
+                $total=$r->anterior + $r->ingreso - $r->egreso;
                 if($r->ingreso>0)
                 $col='red';
                 else
                 $col='white';
-            $cadena.="<tr style='background:".$col."'>
+                $cadena.="<tr style='background:".$col."'>
                 <td>$r->fecha</td>
                 <td>$r->fechavencimiento</td>
                 <td>$r->marca</td>
