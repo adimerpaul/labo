@@ -71,4 +71,8 @@ class Laboratorio extends Model
     public function doctor(){
         return $this->belongsTo(Doctor::class);
     }
+
+    public function paciente(){
+        return $this->belongsTo(Paciente::class);
+    }
 }

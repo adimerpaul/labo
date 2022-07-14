@@ -21,6 +21,8 @@
 
           <q-btn label="Buscar" type="submit" color="primary" />
           <q-btn label="imrpesion" color="info" icon="print" @click="impresion"/>
+          <q-btn label="elemento" color="cyan" icon="print" @click="conelemento"/>
+          <q-btn label="R Laboratorio" color="deep-purple-6" icon="print" @click="reslabo"/>
     </div>
     </q-form>
 
@@ -62,6 +64,104 @@ export default {
 
   },
   methods: {
+    reslabo(){
+      this.$axios.post(process.env.API+'/resumenlab',this.dato).then(res=>{
+        console.log(res.data)
+                var doc = new jsPDF('P','mm','letter')
+        doc.setFont("arial");
+        var img = new Image()
+                let x=0
+        let y=0
+        function head(fechas){
+        doc.setFontSize(8);
+        img.src = 'img/natividad.jpeg'
+        doc.addImage(img, 'jpg', 5, 2, 70, 20)
+
+        //inicio datos paciete
+        doc.setDrawColor(120);
+        doc.rect(x+5, y+27, 205, 1)
+        doc.setFont(undefined, 'bold')
+        doc.setTextColor(57,73,171)
+        doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+175, y+8,'center')
+        doc.setTextColor(0,0,0)
+        doc.text('REPORTE RESUMEN LABORATORIO: '+fechas.ini +' al '+ fechas.fin,x+100, y+35,'center')
+        doc.setTextColor(0,0,0)
+
+        doc.setTextColor(0,0,20)
+        doc.text('FECHA ',x+10, y+40,'left')
+        doc.text('CODIGO ',x+25,y+40,'left')
+        doc.text('PACIENTE ',x+45,y+40,'left')
+        doc.text('LABORATORIO ',x+95,y+40,'left')
+        doc.text('DOCTOR ',x+150,y+40,'left')
+        y=40
+        }
+        head(this.dato)
+        doc.setFont(undefined, 'normal')
+        res.data.forEach(r => {
+          y+=5
+          doc.text(r.fechatoma,x+7, y,'left')
+          doc.text(r.solicitud+'',x+25,y,'left')    
+          doc.text(r.paciente.nombre+' '+r.paciente.paterno+' '+ r.paciente.materno,x+45,y,'left')    
+          doc.text(r.tipo.nombre+'',x+95,y,'left')    
+          doc.text(r.doctor.nombre+' '+r.doctor.paterno+' '+ r.doctor.materno,x+150,y,'left')    
+          if(y+5>270){
+            y=0
+            doc.addPage()
+            head(this.dato)
+          }      
+        });
+
+
+        doc.output('save','ReporteElemento.pdf');
+      })
+
+    },
+        conelemento(){
+       this.$axios.post(process.env.API+'/repelemento',this.dato).then(res=>{
+        console.log(res.data)
+        var doc = new jsPDF('P','mm','letter')
+        doc.setFont("arial");
+        var img = new Image()
+                let x=0
+        let y=0
+        function head(fechas){
+        doc.setFontSize(10);
+        img.src = 'img/natividad.jpeg'
+        doc.addImage(img, 'jpg', 5, 2, 70, 20)
+
+        //inicio datos paciete
+        doc.setDrawColor(120);
+        doc.rect(x+5, y+27, 205, 1)
+        doc.setFont(undefined, 'bold')
+        doc.setTextColor(57,73,171)
+        doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+175, y+8,'center')
+        doc.setTextColor(0,0,0)
+        doc.text('REPORTE DE ELEMENTO CANTIDAD POR LABORATORIO: '+fechas.ini +' al '+ fechas.fin,x+100, y+35,'center')
+        doc.setTextColor(0,0,0)
+
+        doc.setTextColor(0,0,20)
+        doc.text('DETALLE ',x+25, y+40,'center')
+        doc.text('CANTIDAD ',x+150,y+40,'center')
+        y=40
+        }
+        head(this.dato)
+        doc.setFont(undefined, 'normal')
+        res.data.forEach(r => {
+          y+=5
+          doc.text(r.nombre,x+25, y,'left')
+          doc.text(r.cantidad+'',x+150,y,'left')    
+          if(y+5>270){
+            y=0
+            doc.addPage()
+            head(this.dato)
+          }      
+        });
+
+
+        doc.output('save','ReporteElemento.pdf');
+      })
+
+    },
     buscar(){
       this.formularios=[];
       this.total=[];

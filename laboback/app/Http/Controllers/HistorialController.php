@@ -102,4 +102,6 @@ class HistorialController extends Controller
     {
         //
     }
+
+
 }
