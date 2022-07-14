@@ -73,7 +73,7 @@ export default {
                 let x=0
         let y=0
         function head(fechas){
-        doc.setFontSize(8);
+        doc.setFontSize(6);
         img.src = 'img/natividad.jpeg'
         doc.addImage(img, 'jpg', 5, 2, 70, 20)
 
@@ -96,6 +96,7 @@ export default {
         y=40
         }
         head(this.dato)
+        doc.setFontSize(10);
         doc.setFont(undefined, 'normal')
         res.data.forEach(r => {
           y+=5
@@ -108,6 +109,8 @@ export default {
             y=0
             doc.addPage()
             head(this.dato)
+          doc.setFont(undefined, 'normal')
+          doc.setFontSize(10);
           }      
         });
 
