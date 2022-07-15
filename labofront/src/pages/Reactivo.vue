@@ -179,9 +179,9 @@
           <div class="col-md-6 col-sm-12">
             <q-input filled type="date" v-model="invent.fechavencimiento" label="Fecha Vencimiento  " hint="Ingresar dato " lazy-rules :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']" />
           </div>
-          <!--<div class="col-md-6 col-sm-12">
+          <div class="col-md-6 col-sm-12">
             <q-input filled type="date" v-model="invent.fecha" label="Fecha Reg" hint="Ingresar dato " lazy-rules :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']" />
-          </div>-->
+          </div>
           </div>
 
             <div>
@@ -235,7 +235,6 @@
             class="q-gutter-md"
           >
             <q-input
-             readonly
               filled
               v-model="retiro.fecha"
               label="Fecha Reg"

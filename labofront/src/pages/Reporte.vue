@@ -87,6 +87,7 @@ export default {
         doc.addImage(img, 'jpg', 5, 2, 70, 20)
         let x=0
         let y=0
+        let contador=0
         //inicio datos paciete
         doc.setDrawColor(120);
         doc.rect(x+5, y+27, 205, 1)
@@ -105,11 +106,17 @@ export default {
         this.reporte.forEach(r => {
           y+=5
           doc.text(r.nombre,x+25, y,'left')
-          doc.text(r.cantidad+'',x+150,y,'left')          
+          doc.text(r.cantidad+'',x+150,y,'left')
+          contador+=parseInt(r.cantidad)          
         });
+        y+=5
+          doc.setFont(undefined, 'bold')
+          doc.text('TOTAL',x+25, y,'left')
+        doc.setFont(undefined, 'normal')
+          doc.text(contador+'',x+150,y,'left')
 
 
-        doc.output('save','ReporteFormularios.pdf');
+        doc.output('save','Reporteseguros.pdf');
     },
     createChart (chartId) {
       const ctx = document.getElementById(chartId);

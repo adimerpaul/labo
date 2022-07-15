@@ -204,12 +204,18 @@ export default {
         doc.text('CANTIDAD ',x+150,y+40,'center')
         y=40
         doc.setFont(undefined, 'normal')
+        let contador=0
         this.reporte.forEach(r => {
           y+=5
           doc.text(r.nombre,x+25, y,'left')
-          doc.text(r.cantidad+'',x+150,y,'left')          
+          doc.text(r.cantidad+'',x+150,y,'left')  
+          contador+=parseInt(r.cantidad)        
         });
-
+          y+=5
+          doc.setFont(undefined, 'bold')
+          doc.text('TOTAL',x+25, y,'left')
+          doc.setFont(undefined, 'normal')
+          doc.text(contador+'',x+150,y,'left')  
 
         doc.output('save','ReporteFormularios.pdf');
     },
