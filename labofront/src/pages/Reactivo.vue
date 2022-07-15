@@ -507,9 +507,9 @@ export default {
           y+=5
           total = parseFloat(r.anterior) + parseFloat(r.ingreso) - parseFloat(r.egreso)
           doc.text(r.fecha+'',x+195, y+30,'left')
-          doc.text(r.fechavencimiento+'',x+215, y+30,'left')
-          doc.text(r.marca+'',x+235, y+30,'left')
-          doc.text(r.lote+'',x+255, y+30,'left')
+          doc.text(r.fechavencimiento==null?'':r.fechavencimiento,x+215, y+30,'left')
+          doc.text(r.marca==null?'':r.marca,x+235, y+30,'left')
+          doc.text(r.lote==null?'':r.lote,x+255, y+30,'left')
           doc.text(r.ingreso+'',x+275, y+30,'left')
           doc.text(r.egreso+'',x+295, y+30,'left')
           doc.text( total+'',x+315, y+30,'left')
