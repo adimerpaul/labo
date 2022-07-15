@@ -276,6 +276,8 @@
 
 <script>
 import {date} from 'quasar'
+import {jsPDF} from "jspdf";
+import $ from 'jquery'
 export default {
   data(){
     return{
@@ -448,7 +450,7 @@ export default {
           this.$axios.post(process.env.API+'/impresion',{reactivo:this.reactivo,fecha:data}).then(res=>{
             console.log(res.data)
             //return false
-            let cad=" <html><style> table, th, td {border: 1px solid;} table { width:100%; border-collapse: collapse;} </style><body>"
+            /*let cad=" <html><style> table, th, td {border: 1px solid;} table { width:100%; border-collapse: collapse;} </style><body>"
                 cad+='<table><tr><td colspan=4 rowspan=3><img src="img/natividad.jpeg" style="height: 1.5cm;"></td><th colspan=4>KARDEX DE LABORATORIO</th></tr>';
                 cad+="<tr><th>REACTIVO</th><td colspan=3>"+this.reactivo.nombre+"</td></tr>";
                 cad+="<tr><th>CODIGO</th><td colspan=3>"+this.reactivo.codigo+"</td></tr>";
@@ -462,8 +464,69 @@ export default {
           myWindow.print();
           myWindow.close();
         },500);
-          })
+          }
+          */
+         
+            var doc = new jsPDF('landscape','mm','legal')
+        doc.setFont("arial");
+        doc.setFontSize(10);
+        var img = new Image()
+        img.src = 'img/natividad.jpeg'
+        let x=0
+        let y=0
+        //inicio datos paciete
+        function header(nombre,codigo){
+        doc.setFontSize(10);
+        doc.addImage(img, 'jpg', 195, 3, 70, 20)
+        doc.rect(x+195, y+25, 155, 1)
+        doc.setFont(undefined, 'bold')
+        doc.setTextColor(57,73,171)
+        doc.text('KARDEX DE LABORATORIO',x+320, y+10,'center')
+        doc.text(['REACTIVO','CODIGO'],x+280, y+15,'left')
+        doc.setTextColor(0,0,0)
+        doc.text([nombre,codigo],x+300, y+15,'left')
+        doc.setTextColor(0,0,255)
+        doc.text('FECHA  ',x+195, y+30,'left')
+        doc.text('VENC ',x+215, y+30,'left')
+        doc.text('MARCA',x+235, y+30,'left')
+        doc.text('LOTE ',x+255, y+30,'left')
+        doc.text('INGRESO',x+275, y+30,'left')
+        doc.text('EGRESO ',x+295, y+30,'left')
+        doc.text('SALDO ',x+315, y+30,'left')
+        doc.text('OBS',x+330, y+30,'left')
         }
+
+
+        header(this.reactivo.nombre,this.reactivo.codigo);
+        doc.setTextColor(0,0,0)
+                  let total=0
+        doc.setFontSize(8);
+          //y=30
+        doc.setFont(undefined, 'normal')
+        res.data.forEach(r => {
+          y+=5
+          total = parseFloat(r.anterior) + parseFloat(r.ingreso) - parseFloat(r.egreso)
+          doc.text(r.fecha+'',x+195, y+30,'left')
+          doc.text(r.fechavencimiento+'',x+215, y+30,'left')
+          doc.text(r.marca,x+235, y+30,'left')
+          doc.text(r.lote,x+255, y+30,'left')
+          doc.text(r.ingreso+'',x+275, y+30,'left')
+          doc.text(r.egreso+'',x+295, y+30,'left')
+          doc.text( total+'',x+315, y+30,'left')
+          doc.text(r.observacion,x+330, y+30,'left')
+        if(y+5>210){
+          doc.addPage()
+          y=0
+          header();
+          doc.setFontSize(8);
+          doc.setFont(undefined, 'normal')
+        }
+
+        });
+        doc.output('save','Reactivo-'+this.reactivo.nombre+'.pdf');
+      
+         })}
+        
       }).onCancel(() => {
         // console.log('>>>> Cancel')
       }).onDismiss(() => {
