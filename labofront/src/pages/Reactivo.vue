@@ -516,9 +516,10 @@ export default {
         if(y+35>210){
           doc.addPage()
           y=0
-          header();
+          header(this.reactivo.nombre,this.reactivo.codigo);
           doc.setFontSize(8);
           doc.setFont(undefined, 'normal')
+           doc.setTextColor(0,0,0)
         }
 
         });

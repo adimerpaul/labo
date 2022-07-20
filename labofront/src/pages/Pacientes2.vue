@@ -2042,9 +2042,9 @@ export default {
     let y=0
     //inicio datos paciete
     doc.setTextColor(0,0,0)
-    doc.text(p.paciente,x+10.5,y+5.5,'left')
-    doc.text(l.doctor.nombre+' '+l.doctor.paterno+' '+l.doctor.materno,x+10.5,y+6.2,'left')
-    doc.text(l.doctor.especialidad,x+10.5,y+7,'left')
+    doc.text(p.paciente,x+10.5,y+5.4,'left')
+    doc.text(l.doctor.nombre+' '+l.doctor.paterno+' '+l.doctor.materno,x+10.5,y+6.3,'left')
+    doc.text(l.doctor.especialidad,x+10.5,y+7.2,'left')
 
                     window.open(doc.output('bloburl'), '_blank');
 
