@@ -317,4 +317,8 @@ class LaboratorioController extends Controller
     public function resumenlab(Request $request){
         return Laboratorio::with('tipo')->with('doctor')->with('paciente')->whereDate('fechatoma','>=',$request->ini)->whereDate('fechatoma','<=',$request->fin)->get();
     }
+
+    public function reporteformularios(){
+        
+    }
 }

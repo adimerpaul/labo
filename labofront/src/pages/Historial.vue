@@ -111,6 +111,7 @@ export default {
             head(this.dato)
           doc.setFont(undefined, 'normal')
           doc.setFontSize(6);
+          doc.setTextColor(0,0,0)
           }      
         });
 
@@ -157,6 +158,8 @@ export default {
             y=0
             doc.addPage()
             head(this.dato)
+            doc.setFont(undefined, 'normal')
+            doc.setTextColor(0,0,0)
           }      
         });
 
