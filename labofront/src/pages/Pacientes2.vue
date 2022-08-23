@@ -13,20 +13,8 @@
 
         <template v-slot:body-cell-laboratorios="props">
           <q-td :props="props" auto-width>
-            <ul style="border: 0px;margin: 0px;padding: 0px;list-style: none">
-              <li style="border: 0px;margin: 0px;padding: 0px" v-for=" l in props.row.laboratorios" :key="l.id">
-                <q-btn @click="eliminar(l)" size="xs" flat round color="red" icon="delete" />
-                <q-btn @click="imprimirlaboratorio(props.row,l)" size="xs" flat round color="info" icon="print" />
-                <q-btn @click="datformulario(props.row,l)" size="xs" flat round color="yellow" icon="edit" />
-                <q-btn @click="sobre(props.row,l)" size="xs" flat round color="teal" icon="mail_outline" />
-                <q-btn @click="upimagen(l)" size="xs" flat round color="purple-5" icon="add_photo_alternate" v-if="l.tipo_id==18"/>
-                <q-btn @click="descargar(l)" size="xs" flat round color="deep-orange-5" icon="image" v-if="l.imagen!=null && l.imagen!=''"/>
-                
-                <q-btn @click="Whatsapp(l.doctor.celular)" size="xs" flat round color="purple" icon="whatsapp" v-if="l.doctor.celular!='' && l.doctor.celular!=null"/>
-                {{l.fechatoma}}
-                {{l.tipo.nombre}} - {{l.solicitud}}
-              </li>
-            </ul>
+             <q-btn color="accent" @click="dialoglistlabo=true;paciente2=props.row;laboratorios=[]" label="Laboratorios"/>
+
           </q-td>
         </template>
         <template v-slot:body-cell-opciones="props">
@@ -34,6 +22,7 @@
 <!--            <q-btn @click="frmlaboratorio(props.row)" size="xs"  icon="science" color="primary" label="agregar" />-->
             <q-btn-dropdown color="primary" label="Opciones"  icon="science">
               <q-list>
+
                 <q-item clickable v-close-popup @click="modificar(props.row)">
                   <q-item-section>
                     <q-item-label>Modificar Paciente</q-item-label>
@@ -88,6 +77,39 @@
           </q-input>
         </template>
       </q-table>
+          <q-dialog v-model="dialoglistlabo" >
+          <q-card style="min-width: 350px">
+            <q-card-section>
+              <div class="text-h6">LISTA DE LABORATORIOS</div>
+            </q-card-section>
+
+            <q-card-section class="q-pt-none">
+              <div class="row">
+              <div class="col-6"><q-input dense v-model="fechalab" autofocus type="date"/></div>
+              <div class="col-6"><q-btn label="Consultar" @click="consultarLab"/></div>
+              </div>              
+            </q-card-section>
+            <q-card-section class="q-pt-none">
+            <ul style="border: 0px;margin: 0px;padding: 0px;list-style: none">
+              <li style="border: 0px;margin: 0px;padding: 0px" v-for=" l in laboratorios" :key="l.id">
+                <q-btn @click="eliminar(l)" size="xs" flat round color="red" icon="delete" />
+                <q-btn @click="imprimirlaboratorio(paciente2,l)" size="xs" flat round color="info" icon="print" />
+                <q-btn @click="datformulario(paciente2,l)" size="xs" flat round color="yellow" icon="edit" />
+                <q-btn @click="sobre(paciente2,l)" size="xs" flat round color="teal" icon="mail_outline" />
+                <q-btn @click="upimagen(l)" size="xs" flat round color="purple-5" icon="add_photo_alternate" v-if="l.tipo_id==18"/>
+                <q-btn @click="descargar(l)" size="xs" flat round color="deep-orange-5" icon="image" v-if="l.imagen!=null && l.imagen!=''"/>
+                
+                <q-btn @click="Whatsapp(l.doctor.celular)" size="xs" flat round color="purple" icon="whatsapp" v-if="l.doctor.celular!='' && l.doctor.celular!=null"/>
+                {{l.fechatoma}}
+                {{l.tipo.nombre}} - {{l.solicitud}}
+              </li>
+            </ul>
+            </q-card-section>
+            <q-card-actions align="right" class="text-primary">
+              <q-btn flat label="Cancel" v-close-popup />
+            </q-card-actions>
+          </q-card>
+        </q-dialog>
     </div>
   </div>
       <q-dialog v-model="alert" full-width>
@@ -1758,15 +1780,18 @@ export default {
   data(){
     return{
       dialoglaboratorio:false,
+      dialoglistlabo:false,
       dialogmodlab:false,
       dialogmodimg:false,
       dialog_mod:false,
       filter:'',
       alert:false,
       dato:{fechanac:date.formatDate(new Date(),'YYYY-MM-DD')},
+      fechalab:(moment().subtract(90, 'days').format("YYYY-MM-DD")),
       datos2:{},
       pacientes:[],
       paciente:{},
+      paciente2:{},
       tipos:[],
       tipo:{},
       seguros:[],
@@ -1777,7 +1802,7 @@ export default {
       user:{},
       caledad:'',
       usuarios:[],
-
+      laboratorios:[],
       laboratorio:{
         tipomuestra:'COMPLETA',
         fechatoma:date.formatDate(new Date(),'YYYY-MM-DD'),
@@ -1879,6 +1904,7 @@ export default {
     })
   },
   computed:{
+
     calcular(){
       if(this.dato.fechanac==null || this.dato.fechanac=='' || this.dato.fechanac==undefined)
         return ''
@@ -1979,6 +2005,15 @@ export default {
     }
   },
   methods:{
+    consultarLab(){
+      if(this.fechalab==null || this.fechalab==undefined){
+        return false
+      }
+      this.$axios.post(process.env.API+'/listLabo',{fecha:this.fechalab,id:this.paciente2.id}).then(res=> {
+        console.log(res.data)
+        this.laboratorios=res.data
+      })
+    },
     muestras(){
        this.listmuestra=[]
       this.$axios.get(process.env.API+'/listmuestra').then(res=> {
@@ -5604,6 +5639,7 @@ sanguinea(p,l){
            icon:'check'
             })
             this.mispacientes()
+            this.consultarLab()
         })
 
       }).onOk(() => {

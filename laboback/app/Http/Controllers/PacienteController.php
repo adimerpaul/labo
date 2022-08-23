@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Paciente;
+use App\Models\Laboratorio;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,7 +18,12 @@ class PacienteController extends Controller
     public function index()
     {
         //
-        return Paciente::with('seguro')->with('laboratorios')->orderBy('id','DESC')->get();
+        return Paciente::with('seguro')->orderBy('id','DESC')->get();
+    }
+
+    public function listLabo(Request $request){
+        
+        return Laboratorio::where('paciente_id',$request->id)->whereDate('fechatoma','>=',$request->fecha)->with('doctor')->with('tipo')->get();
     }
 
     /**

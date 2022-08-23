@@ -318,7 +318,22 @@ class LaboratorioController extends Controller
         return Laboratorio::with('tipo')->with('doctor')->with('paciente')->whereDate('fechatoma','>=',$request->ini)->whereDate('fechatoma','<=',$request->fin)->get();
     }
 
-    public function reporteformularios(){
-        
+    public function reporteformularios(Request $request){
+        $res1=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=1 and l.d1!='' GROUP by tipo_id;");
+        if(sizeof($res1)>0)
+            $sum1=$res1[0]->total;
+        else
+            $sum1=0;
+        $res2=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=1 and l.d2!='' GROUP by tipo_id;");
+        if(sizeof($res2)>0)
+            $sum2=$res2[0]->total;
+        else    
+            $sum2=0;
+        $res3=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=1 and l.d4!='' GROUP by tipo_id;");
+        if(sizeof($res3)>0)
+            $sum3=$res3[0]->total;
+        else    
+            $sum3=0;
+
     }
 }
