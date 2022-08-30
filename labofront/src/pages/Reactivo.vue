@@ -47,7 +47,7 @@
               hint="Ingresar el min "
               type="number"
               lazy-rules
-              :rules="[ val => val && val > 0 || 'Por favor ingresa datos']"
+              :rules="[ val => val && val >= 0 || 'Por favor ingresa datos']"
             />
 
             <div>
@@ -141,7 +141,7 @@
               hint="Ingresar el min "
               type="number"
               lazy-rules
-              :rules="[ val => val && val > 0 || 'Por favor ingresa datos']"
+              :rules="[ val => val && val >= 0 || 'Por favor ingresa datos']"
             />
             <div>
               <q-btn label="Modificar" type="submit" color="positive" icon="add_circle"/>
