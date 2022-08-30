@@ -246,58 +246,58 @@ class LaboratorioController extends Controller
         $creatinina=0;
         $proteniuria=0;
         //glicemia
-        $res1=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=2 and CAST(d1 as double)>160 GROUP by tipo_id;");
+        $res1=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=2 and CAST(d1 as double)>160 and d1!='' GROUP by tipo_id;");
         if(sizeof($res1)>0)
             $glicemia+=$res1[0]->total;
 
-        $res2=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=21 and CAST(d1 as double)>160 GROUP by tipo_id;");
+        $res2=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=21 and CAST(d1 as double)>160 and d1!='' GROUP by tipo_id;");
         if(sizeof($res2)>0)
             $glicemia+=$res2[0]->total;
         //glicosilada
-        $res3=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=17 and CAST(d1 as double)>6.5 GROUP by tipo_id;");
+        $res3=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=17 and CAST(d1 as double)>6.5 and d1!='' GROUP by tipo_id;");
         if(sizeof($res3)>0)
             $glicosilada+=$res3[0]->total;
 //coleterol
-        $res4=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=2 and CAST(d13 as double)>200 GROUP by tipo_id;");
+        $res4=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=2 and CAST(d13 as double)>200  and d13!='' GROUP by tipo_id;");
         if(sizeof($res4)>0)
             $colesterol+=$res4[0]->total;
-        $res5=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=22 and CAST(d6 as double)>200 GROUP by tipo_id;");
+        $res5=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=22 and CAST(d6 as double)>200 and d6!='' GROUP by tipo_id;");
         if(sizeof($res5)>0)
             $colesterol+=$res5[0]->total;
 //trigliceridos
-        $res6=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=2 and CAST(d11 as double)>200 GROUP by tipo_id;");
+        $res6=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=2 and CAST(d11 as double)>200 and d11!='' GROUP by tipo_id;");
         if(sizeof($res6)>0)
             $trigliceridos+=$res6[0]->total;
-        $res7=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=22 and CAST(d5 as double)>200 GROUP by tipo_id;");
+        $res7=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=22 and CAST(d5 as double)>200 and d5!='' GROUP by tipo_id;");
         if(sizeof($res7)>0)
             $trigliceridos+=$res7[0]->total;
 //hdlcol
-        $res8=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=2 and CAST(d15 as double)<35 GROUP by tipo_id;");
+        $res8=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=2 and CAST(d15 as double)<35 and d15!='' GROUP by tipo_id;");
         if(sizeof($res8)>0)
             $hdlcol+=$res8[0]->total;
-        $res9=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=22 and CAST(d7 as double)<35 GROUP by tipo_id;");
+        $res9=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=22 and CAST(d7 as double)<35 and d7!='' GROUP by tipo_id;");
         if(sizeof($res9)>0)
             $hdlcol+=$res9[0]->total;
 //ldlcol
-        $res10=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=2 and CAST(d17 as double)>150 GROUP by tipo_id;");
+        $res10=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=2 and CAST(d17 as double)>150 and d17!='' GROUP by tipo_id;");
         if(sizeof($res10)>0)
             $ldlcol+=$res10[0]->total;
-        $res11=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=22 and CAST(d8 as double)>150 GROUP by tipo_id;");
+        $res11=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=22 and CAST(d8 as double)>150 and d8!='' GROUP by tipo_id;");
         if(sizeof($res11)>0)
             $ldlcol+=$res11[0]->total;
 //vldl
-        $res12=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=22 and CAST(d9 as double)>30 GROUP by tipo_id;");
+        $res12=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=22 and CAST(d9 as double)>30 and d9!='' GROUP by tipo_id;");
         if(sizeof($res12)>0)
             $vldl+=$res12[0]->total;
 //creatinina
-        $res13=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=2 and CAST(d3 as double)>2 GROUP by tipo_id;");
+        $res13=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=2 and CAST(d3 as double)>2 and d3!='' GROUP by tipo_id;");
         if(sizeof($res13)>0)
             $creatinina+=$res13[0]->total;
-        $res14=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=21 and CAST(d2 as double)>2 GROUP by tipo_id;");
+        $res14=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=21 and CAST(d2 as double)>2 and d2!='' GROUP by tipo_id;");
         if(sizeof($res14)>0)
             $creatinina+=$res14[0]->total;
 //proteniuria
-        $res15=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=23 and CAST(d6 as double)>141 GROUP by tipo_id;");
+        $res15=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=23 and CAST(d6 as double)>141 and d6!='' GROUP by tipo_id;");
         if(sizeof($res15)>0)
             $proteniuria+=$res15[0]->total;
 
