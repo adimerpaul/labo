@@ -4505,7 +4505,7 @@ sanguinea(p,l){
     doc.text('          PRUEBA                      VALOR                   REFERENCIA                  PRUEBA                     VALOR              REFERENCIA',x+6,y+52)
     doc.setFont(undefined, 'normal')
     doc.text(['Glicemia','Creatinina','Urea','NUS-BUN','Acido Urico','Proteinas Totales','Albumina','Globulina','Amilasa','Lipasa','Bilirrubina Total','Bilirrubina Directa','Bilirrubina Indirecta','CK-MB','LDH','Hierro'],x+8,y+58)
-    doc.text(['70-105mg/dl','0.7-1.5mmg/dl','15-45mg/dl','7-18mg/dl','2.6-7.2mg/dl','6.2-8.5g/dl','3.5-5.3g/dl','2.8-3.5g/dl','menor a 120UI/L','10-150UI/L','hasta 1.2 mg/dl','hasta 0.3 mg/dl','hasta 0.9 mg/dl','0-24 UI/L','200-480 UI/L','50-170ug/dl'],x+80,y+58,'left')
+    doc.text(['70-105mg/dl','0.7-1.5mg/dl','15-45mg/dl','7-18mg/dl','2.6-7.2mg/dl','6.2-8.5g/dl','3.5-5.3g/dl','2.8-3.5g/dl','menor a 120UI/L','10-150UI/L','hasta 1.2 mg/dl','hasta 0.3 mg/dl','hasta 0.9 mg/dl','0-24 UI/L','200-480 UI/L','50-170ug/dl'],x+80,y+58,'left')
     doc.text(['Fosfatasa alcalina','Fosfatasa alcalina','Transamisas GOT','Transamisas GPT','LIPIDOGRAMA','Trigliceridos','Colesterol Total','HDL-Col','LDL-Col','ELECTROLITOS','Sodio','Cloro','Potasio','Calcio','Magnesio','Fosforo'],x+110,y+58,'left')
     doc.text(['adultos hasta 100UI/L','niños 100-400UI/L','hasta 40UI/L','hasta 41UI/L','','10-160mg/dl','menor 200mg/dl','35-65mg/dl','hasta 150mg/dl','','135-155mEq/L','98-106 mEq/L','3.4-5.3 mEq/L','8.5-10.5mg/dl','1.7-2.4mg/dl','2.5-4.5mg/dl'],x+175,y+58,'left')
     doc.setTextColor(0,0,0)
@@ -4518,7 +4518,7 @@ sanguinea(p,l){
     if(parseFloat(l.d3)<0.7 || parseFloat(l.d3)>1.5)
       doc.setTextColor(255,0,0)
       if(l.d3!='')
-    doc.text(l.d3+' mmg/dl',x+55,y+62)
+    doc.text(l.d3+' mg/dl',x+55,y+62)
 
       doc.setTextColor(0,0,0)
     if(parseFloat(l.d5)<15 || parseFloat(l.d5)>45)
