@@ -403,12 +403,20 @@ export default {
     doc.setFontSize(11);
     doc.text(['Factor Reumatoide ','    (Latex)','Antiestreptolisina',' ','Proteina C Reactiva','','RPR','','Prueba Rapida Sifilis ','','Prueba Rapida VIH ',' ','Hepatitis A ',' ','Hepatitis B ',' ','Hepatitis C  ',' ','Helicobacter Pylori ','   en Sangre','Helicobacter Pylori ','    en Heces' ,'Troponina I ','','PSA','','OBSERVACIONES'],x+200,y+65,'left')
     doc.setTextColor(0,0,0)
-    if( l.d1!='')
-    doc.text(l.d1+' UI/ml',x+240,y+65,'left')
-    if( l.d2!='')
-    doc.text(l.d2+' UI/l',x+240,y+73,'left')
-    if( l.d3!='')
-    doc.text(l.d3+ ' mg/dl',x+240,y+82,'left')
+    let regex = /^[0-9]+([,][0-9]+)?$/;
+    
+    if( l.d1!='' && regex.test(l.d1))
+      doc.text(l.d1+' UI/ml',x+240,y+65,'left')
+    else
+      doc.text(l.d1,x+240,y+65,'left')
+    if( l.d2!='' && regex.test(l.d2))
+      doc.text(l.d2+' UI/l',x+240,y+73,'left')
+    else
+    doc.text(l.d2,x+240,y+73,'left')
+    if( l.d3!='' && regex.test(l.d3))
+      doc.text(l.d3+ ' mg/dl',x+240,y+82,'left')
+    else
+      doc.text(l.d3,x+240,y+82,'left')
     doc.text(l.d4,x+240,y+91,'left')
     doc.text(l.d5,x+240,y+101,'left')
     doc.text(l.d6,x+240,y+110,'left')
@@ -418,8 +426,10 @@ export default {
     doc.text(l.d10,x+240,y+146,'left')
     doc.text(l.d11 ,x+240,y+156,'left')
     doc.text(l.d12,x+240,y+164,'left')
-    if(l.d13!='')
-    doc.text(l.d13+' ng/ml',x+240,y+172,'left')
+    if(l.d13!='' && regex.test(l.d13))
+      doc.text(l.d13+' ng/ml',x+240,y+172,'left')
+    else
+      doc.text(l.d13,x+240,y+172,'left')
     doc.text(l.d14,x+240,y+181,'left')
 
     //doc.setFontSize(11);
