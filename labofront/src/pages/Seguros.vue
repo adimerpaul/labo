@@ -993,7 +993,10 @@ export default {
     doc.setTextColor(57,73,171)
     doc.rect(x+75, y+55, 50, 7 )
     doc.setTextColor(0,0,0)
+    if(parseFloat(l.d1) > 50 )
+    doc.setTextColor(255,0,0)
     doc.text(l.d1+' mg/dl',x+90,y+60)
+    doc.setTextColor(0,0,0)
     doc.setFont(undefined, 'normal')
     doc.setTextColor(0,0,0)
 
@@ -1012,11 +1015,11 @@ export default {
     doc.setFont(undefined, 'bold')
     doc.text('ALCOHOLEMIA NEGATIVO',x+120,y+95,'center')
     doc.rect(x+80, y+90, 100, 20)
-    doc.setDrawColor(0);
-    doc.setFillColor(255,255,50);
-    doc.rect(x+80, y+110, 100, 10,'FD')
+    //doc.setDrawColor(0);
+    //doc.setFillColor(255,255,50);
+    doc.rect(x+80, y+110, 100, 10)
     doc.text('ALCOHOLEMIA POSITIVO',x+120,y+115,'center')
-    doc.setFillColor(0, 0, 0);
+    //doc.setFillColor(0, 0, 0);
     doc.setFont(undefined, 'normal')
     doc.text(['Alcoholes en sangre por la degradacion de alimentos', 'ingerido ricos en Hidratos de Carbono'],x+120,y+100,'center')
 
