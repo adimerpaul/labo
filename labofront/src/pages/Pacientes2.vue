@@ -5042,7 +5042,7 @@ sanguinea(p,l){
     doc.text(['27.0-31.0 pg.'],x+265,y+100,'center')
     doc.text(['32-36%'],x+265,y+108,'center')
     doc.text(['4.5-10.5x10^(9)/L'],x+265,y+116,'center')
-    doc.text(['105-400x10^(9)L'],x+265,y+124,'center')
+    doc.text(['150-400x10^(9)L'],x+265,y+124,'center')
     doc.setFontSize(10);
 
     doc.setTextColor(57,73,171)
@@ -5054,7 +5054,8 @@ sanguinea(p,l){
     doc.setFontSize(8)
     doc.text(l.d2,x+320,y+60,'center')
     doc.text(l.d4,x+320,y+68,'center')
-    doc.text(l.d6,x+320,y+76,'center')
+    if(l.d6!='')
+    doc.text(l.d6+'%',x+320,y+76,'center')
     doc.text(l.d8,x+320,y+84,'center')
     doc.text(l.d10,x+320,y+92,'center')
     doc.text(l.d12,x+320,y+100,'center')
