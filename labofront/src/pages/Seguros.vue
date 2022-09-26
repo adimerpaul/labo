@@ -2857,7 +2857,7 @@ sanguinea(p,l){
     doc.text(l.d4,x+320,y+68,'center')
     doc.text(l.d6,x+320,y+76,'center')
     if(l.d8!='')
-    doc.text(l.d8+'%',x+320,y+84,'center')
+    doc.text(l.d8+' %',x+320,y+84,'center')
     doc.text(l.d10,x+320,y+92,'center')
     doc.text(l.d12,x+320,y+100,'center')
     doc.text(l.d14,x+320,y+108,'center')
