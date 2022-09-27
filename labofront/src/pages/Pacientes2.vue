@@ -5206,7 +5206,7 @@ sanguinea(p,l){
     
     doc.text(l.d7,x+250,y+127,'center')
     doc.text(l.d8,x+250,y+148,'center')
-    doc.text(['ng/ml',' ','ng/ml',' ','pg/ml',' ','ng/ml',' ','mg/ml',' ','ng/ml',' ',' ','mlU/ml',' ',' ',' ','ng/ml'],x+270,y+65,'center')
+    doc.text(['ng/ml',' ','ng/ml',' ','pg/ml',' ','ng/ml',' ','mg/l',' ','ng/ml',' ',' ','mlU/ml',' ',' ',' ','ng/ml'],x+270,y+65,'center')
     doc.setFontSize(10);
     doc.text(['Plasma Citratado',' ','Suero',' ',' ','Suero/plasma',' ','Suero',' ',' ','Sangre Entera',' ','Suero',' ',' ',' ','Suero',' ',' ',' ','Suero'],x+290,y+65,'center')
     doc.setTextColor(57,73,171)
