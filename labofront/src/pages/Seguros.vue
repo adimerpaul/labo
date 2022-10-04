@@ -401,7 +401,9 @@ export default {
 
     doc.setFont(undefined, 'normal')
     doc.setFontSize(11);
-    doc.text(['Factor Reumatoide ','    (Latex)','Antiestreptolisina',' ','Proteina C Reactiva','','RPR','','Prueba Rapida Sifilis ','','Prueba Rapida VIH ',' ','Hepatitis A ',' ','Hepatitis B ',' ','Hepatitis C  ',' ','Helicobacter Pylori ','   en Sangre','Helicobacter Pylori ','    en Heces' ,'Troponina I ','','PSA','','OBSERVACIONES'],x+200,y+65,'left')
+    doc.setFontSize(11);
+    //doc.text(['Factor Reumatoide ','    (Latex)','Antiestreptolisina',' ','Proteina C Reactiva','','RPR','','Prueba Rapida Sifilis ','','Prueba Rapida VIH ',' ','Hepatitis A ',' ','Hepatitis B ',' ','Hepatitis C  ',' ','Helicobacter Pylori ','   en Sangre','Helicobacter Pylori ','    en Heces' ,'Troponina I ','','PSA','','OBSERVACIONES'],x+200,y+65,'left')
+    doc.text(['Factor Reumatoide ','    (Latex)','Antiestreptolisina',' ','Proteina C Reactiva','','RPR','','Prueba Rapida Sifilis ','','Prueba Rapida VIH ',' ','Hepatitis A ',' ','Hepatitis B ',' ','Hepatitis C  ',' ','Helicobacter Pylori ','   en Sangre',' ','    ' ,'','','','','OBSERVACIONES'],x+200,y+65,'left')
     doc.setTextColor(0,0,0)
     let regex = /^[0-9]+([,][0-9]+)?$/;
     
@@ -424,17 +426,28 @@ export default {
     doc.text(l.d8,x+240,y+128,'left')
     doc.text(l.d9,x+240,y+136,'left')
     doc.text(l.d10,x+240,y+146,'left')
-    doc.text(l.d11 ,x+240,y+156,'left')
-    doc.text(l.d12,x+240,y+164,'left')
-    if(l.d13!='' && regex.test(l.d13))
-      doc.text(l.d13+' ng/ml',x+240,y+172,'left')
-    else
-      doc.text(l.d13,x+240,y+172,'left')
+    //doc.text(l.d11 ,x+240,y+156,'left')
+    //doc.text(l.d12,x+240,y+164,'left')
+   // if(l.d13!='' && regex.test(l.d13))
+    //  doc.text(l.d13+' ng/ml',x+240,y+172,'left')
+   // else
+  //    doc.text(l.d13,x+240,y+172,'left')
     doc.text(l.d14,x+240,y+181,'left')
 
-    //doc.setFontSize(11);
-    //doc.text(['Hasta 8 UI/ml ',' ','Hasta 200 UI/l',' ','Hasta 0.8 mg/dl ',' ','No Reactivo',' ','No Reactivo',' ','No Reactivo',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','NEGATIVO / POSITIVO ',' ','Hasta 4 ng/ml'],x+290,y+65,'center')
-        doc.setFontSize(8);
+        /*if(($row->d1<0 || $row->d1>500)&& $row->d1!='')
+        doc.setTextColor(195,47,47)
+        else
+        doc.setTextColor(0,0,0)
+
+        if($row->paciente->sexo=='Masculino' && ($row->d2<30 || $row->d2>350)&& $row->d2!='')$cd2='color:#ff726f;';
+        if($row->paciente->sexo=='Femenino' && ($row->d2<20 || $row->d2>250)&& $row->d2!='')$cd2='color:#ff726f;';
+        if(($row->d3<0 || $row->d3>7)&& $row->d3!='')$cd3='color:#ff726f;';
+        if(($row->d4<0 || $row->d4>4)&& $row->d4!='')$cd4='color:#ff726f;';
+        if(($row->d5<0 || $row->d5>10)&& $row->d5!='')$cd5='color:#ff726f;';
+        if(($row->d6<0 || $row->d6>0.11)&& $row->d6!='')$cd6='color:#ff726f;';
+        if(($row->d7<0 || $row->d7>10)&& $row->d7!='')$cd7='color:#ff726f;';*/
+    //doc.text(['100',' ','100',' ','100',' ','100',' ','100',' ','100',' ',' ','100',' ',' ',' ','100'],x+250,y+65,'center')
+    doc.setFontSize(8);
     doc.text('Hasta 8 UI/ml ',x+290,y+65,'center')
     doc.text('Hasta 200 UI/l',x+290,y+74,'center')
     doc.text('Hasta 0.8 mg/dl ',x+290,y+83,'center')
@@ -445,13 +458,14 @@ export default {
     doc.text('NEGATIVO / POSITIVO ',x+290,y+128,'center')
     doc.text('NEGATIVO / POSITIVO ',x+290,y+137,'center')
     doc.text('NEGATIVO / POSITIVO ',x+290,y+146,'center')
-    doc.text('NEGATIVO / POSITIVO ',x+290,y+155,'center')
-    doc.text('NEGATIVO / POSITIVO ',x+290,y+164,'center')
-    doc.text('Hasta 4 ng/ml',x+290,y+172,'center')
+    //doc.text('NEGATIVO / POSITIVO ',x+290,y+155,'center')
+    //doc.text('NEGATIVO / POSITIVO ',x+290,y+164,'center')
+    //doc.text('Hasta 4 ng/ml',x+290,y+172,'center')
     doc.setFontSize(11);
     doc.setTextColor(57,73,171)
-    doc.text(['Aglutinacion directa','','Aglutinacion directa','','Aglutinacion directa','','Floculacion directa','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida ','Semicuantitativo'],x+312,y+65,'left')
-    doc.setFontSize(11);
+    //doc.text(['Aglutinacion directa','','Aglutinacion directa','','Aglutinacion directa','','Floculacion directa','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida ','Semicuantitativo'],x+312,y+65,'left')
+    doc.text(['Aglutinacion directa','','Aglutinacion directa','','Aglutinacion directa','','Floculacion directa','','Prueba Rapida ','Inmunocromatografica','Prueba Rapida ','Inmunocromatografica','Prueba Rapida ','Inmunocromatografica','Prueba Rapida ','Inmunocromatografica','Prueba Rapida ','Inmunocromatografica','Prueba Rapida ','Inmunocromatografica','Prueba Rapida ','Inmunocromatografica',' ','',' ',''],x+312,y+65,'left')
+       doc.setFontSize(11);
 
     doc.rect(x+195, y+185, 155, 20)
     doc.setFont(undefined, 'bold')
