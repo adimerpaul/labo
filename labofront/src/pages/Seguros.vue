@@ -405,7 +405,7 @@ export default {
     //doc.text(['Factor Reumatoide ','    (Latex)','Antiestreptolisina',' ','Proteina C Reactiva','','RPR','','Prueba Rapida Sifilis ','','Prueba Rapida VIH ',' ','Hepatitis A ',' ','Hepatitis B ',' ','Hepatitis C  ',' ','Helicobacter Pylori ','   en Sangre','Helicobacter Pylori ','    en Heces' ,'Troponina I ','','PSA','','OBSERVACIONES'],x+200,y+65,'left')
     doc.text(['Factor Reumatoide ','    (Latex)','Antiestreptolisina',' ','Proteina C Reactiva','','RPR','','Prueba Rapida Sifilis ','','Prueba Rapida VIH ',' ','Hepatitis A ',' ','Hepatitis B ',' ','Hepatitis C  ',' ','Helicobacter Pylori ','   en Sangre',' ','    ' ,'','','','','OBSERVACIONES'],x+200,y+65,'left')
     doc.setTextColor(0,0,0)
-    let regex = /^[0-9]+([,][0-9]+)?$/;
+    let regex = /^[0-9]+([.][0-9]+)?$/;
     
     if( l.d1!='' && regex.test(l.d1))
       doc.text(l.d1+' UI/ml',x+240,y+65,'left')
