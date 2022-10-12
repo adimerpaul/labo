@@ -1876,11 +1876,11 @@ export default {
   mounted() {
     //this.sanguinea();
     this.listusers();
-    this.listseguro();
     this.muestras();
   },
 
   created() {
+    this.listseguro();
     this.embarazo;
     this.mispacientes()
     this.$axios.get(process.env.API+'/tipo').then(res=> {
