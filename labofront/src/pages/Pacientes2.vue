@@ -247,7 +247,7 @@
       </q-card-section>
       <q-separator/>
       <q-card-section>
-        <q-form @submit="createLaboratorio">
+        <q-form @submit.prevent="createLaboratorio">
         <div class="row">
           <div class="col-12 col-sm-4">
             <q-select dense outlined :options="doctors" label="Doctor" v-model="doctor" @filter="filterFn"   use-input  input-debounce="0"  >
@@ -998,7 +998,7 @@
           </template>
 
           <div class="col-12">
-            <q-btn label="Guardar" type="submit" class="full-width" icon="add_circle" color="positive" />
+            <q-btn label="Guardar" type="submit" class="full-width" icon="add_circle" color="positive" :loading="loading"/>
           </div>
         </div>
         </q-form>
@@ -1016,7 +1016,7 @@
       </q-card-section>
       <q-separator/>
       <q-card-section>
-        <q-form @submit="modLaboratorio">
+        <q-form @submit.prevent="modLaboratorio">
         <div class="row">
           <div class="col-12 col-sm-4">
                         <q-select dense outlined :options="doctors" label="Doctor" v-model="doctor" @filter="filterFn"   use-input  input-debounce="0" >
@@ -1759,7 +1759,7 @@
 
 
           <div class="col-12">
-            <q-btn label="Modificar" type="submit" class="full-width" icon="add_circle" color="positive" />
+            <q-btn label="Modificar" type="submit" class="full-width" icon="add_circle" color="positive" :loading='loading' />
           </div>
         </div>
         </q-form>
@@ -2149,11 +2149,13 @@ export default {
               return false;
            }}
          }
+         this.loading=true
       this.$axios.put(process.env.API+'/laboratorio/'+this.laboratorio.id,this.laboratorio).then(res=> {
         // console.log(res.data)
         this.mispacientes()
         this.dialogmodlab=false
         this.resetlabo()
+        this.loading=true
       })
     },
     resetlabo(){
@@ -5590,12 +5592,14 @@ sanguinea(p,l){
         data.append('paciente_id',this.laboratorio.paciente_id)
         data.append('user_id',this.laboratorio.user_id)
         data.append('doctor_id',this.laboratorio.doctor_id)
+        this.loading=true
       this.$axios.post(process.env.API+'/laboratorio',data).then(res=> {
         // console.log(res.data)
         this.mispacientes()
         this.dialoglaboratorio=false
         this.resetlabo()
-    this.muestras();
+        this.muestras();
+        this.loading=false
       })
     },
     modificar(paciente){
