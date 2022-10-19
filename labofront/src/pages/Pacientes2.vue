@@ -7,7 +7,7 @@
     <div class="col-12">
       <q-table title1="Listado de pacientes" :rows="pacientes" :columns="columspaciente" :filter="filter" :rows-per-page-options="[10,100,200,0]">
         <template v-slot:body-cell-seguro="props">
-                
+
           <q-td :props="props">{{ props.row.seguro.nombre}}</q-td>
         </template>
 
@@ -87,7 +87,7 @@
               <div class="row">
               <div class="col-6"><q-input dense v-model="fechalab" autofocus type="date"/></div>
               <div class="col-6"><q-btn label="Consultar" @click="consultarLab"/></div>
-              </div>              
+              </div>
             </q-card-section>
             <q-card-section class="q-pt-none">
             <ul style="border: 0px;margin: 0px;padding: 0px;list-style: none">
@@ -98,7 +98,7 @@
                 <q-btn @click="sobre(paciente2,l)" size="xs" flat round color="teal" icon="mail_outline" />
                 <q-btn @click="upimagen(l)" size="xs" flat round color="purple-5" icon="add_photo_alternate" v-if="l.tipo_id==18"/>
                 <q-btn @click="descargar(l)" size="xs" flat round color="deep-orange-5" icon="image" v-if="l.imagen!=null && l.imagen!=''"/>
-                
+
                 <q-btn @click="Whatsapp(l.doctor.celular)" size="xs" flat round color="purple" icon="whatsapp" v-if="l.doctor.celular!='' && l.doctor.celular!=null"/>
                 {{l.fechatoma}}
                 {{l.tipo.nombre}} - {{l.solicitud}}
@@ -157,7 +157,7 @@
               </div>
             </div>
             <div>
-              <q-btn label="Crear" type="submit" color="positive" icon="add_circle"/>
+              <q-btn label="Crear" type="submit" color="positive" icon="add_circle" :loading="loading"/>
                 <q-btn  label="Cancelar" icon="delete" color="negative" v-close-popup />
             </div>
           </q-form>
@@ -824,7 +824,7 @@
 
           <template v-if="tipo.label=='GASOMETRIA'">
            <q-card class="my-card"  flat bordered style="width:100%">
-          <q-card-section  class="bg-green-2"> 
+          <q-card-section  class="bg-green-2">
           <div class="row">
           <div class="col-6 col-sm-3"></div>
                  <div class="col-6 col-sm-3"></div>
@@ -1588,13 +1588,13 @@
           <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
           </div></q-card-section></q-card>
           </template>
-          
+
           <template v-if="tipo.label=='GASOMETRIA'">
            <q-card class="my-card"  flat bordered style="width:100%">
           <q-card-section  class="bg-green-2"> <div class="row">
-   
+
           <div class="col-6 col-sm-12"><q-input dense outlined label="GASOMETRIA ARTERIAL"  v-model="laboratorio.d1" /></div>
-          
+
           </div></q-card-section>
 
           <q-card-section  class="bg-red-2"> <div class="row">
@@ -1862,7 +1862,8 @@ export default {
       url:process.env.API,
       listmuestra:[],
       labmod:{},
-      imagen:null, 
+      loading:false,
+      imagen:null,
            columspaciente:[
         {name:'opciones',field:'opciones',label:'opciones',align:'center'},
         {name:'paciente',field:'paciente',label:'paciente',align:'left'},
@@ -1932,15 +1933,15 @@ export default {
                 return months + ' MESES ' + days + ' DIA'
               }else{
                 return months + ' MESES ' + days + ' DIAS'
-              }  
+              }
 	            }
-     
+
             }else{
               if(years==1){
                 return  years + ' AÑO'
                 }else{
                 return years + ' AÑOS'
-                }	
+                }
 	          }
       }
     },
@@ -1972,15 +1973,15 @@ export default {
                 return months + ' MESES ' + days + ' DIA'
               }else{
                 return months + ' MESES ' + days + ' DIAS'
-              }  
+              }
 	            }
-     
+
             }else{
               if(years==1){
                 return  years + ' AÑO'
                 }else{
                 return years + ' AÑOS'
-                }	
+                }
 	          }
       }
 
@@ -2019,7 +2020,7 @@ export default {
       this.$axios.get(process.env.API+'/listmuestra').then(res=> {
          res.data.forEach(r => {
           this.listmuestra.push(r.tipomuestra)
-           
+
          });
 
       })
@@ -2052,15 +2053,15 @@ export default {
                 return months + ' MESES ' + days + ' DIA'
               }else{
                 return months + ' MESES ' + days + ' DIAS'
-              }  
+              }
 	            }
-     
+
             }else{
               if(years==1){
                 return  years + ' AÑO'
                 }else{
                 return years + ' AÑOS'
-                }	
+                }
 	          }
       }
     },
@@ -2086,7 +2087,7 @@ export default {
 
     },
     descargar(l){
-              var fileName=this.url+'/../imagenes/'+l.imagen; 
+              var fileName=this.url+'/../imagenes/'+l.imagen;
               window.open(fileName, 'Download');
     },
           filterFn (val, update) {
@@ -2332,7 +2333,7 @@ export default {
         user_id:this.$store.state.login.user.id,
         doctor_id:'',
       }
-        break;  
+        break;
         default:
 
             this.laboratorio={
@@ -2389,7 +2390,7 @@ export default {
         paciente_id:'',
         user_id:this.$store.state.login.user.id,
         doctor_id:'',
-        
+
       }
                 break;
       }
@@ -2571,7 +2572,7 @@ export default {
     doc.text(['Factor Reumatoide ','    (Latex)','Antiestreptolisina',' ','Proteina C Reactiva','','RPR','','Prueba Rapida Sifilis ','','Prueba Rapida VIH ',' ','Hepatitis A ',' ','Hepatitis B ',' ','Hepatitis C  ',' ','Helicobacter Pylori ','   en Sangre',' ','    ' ,'','','','','OBSERVACIONES'],x+200,y+65,'left')
     doc.setTextColor(0,0,0)
     let regex = /^[0-9]+([.][0-9]+)?$/;
-    
+
     if( l.d1!='' && regex.test(l.d1))
       doc.text(l.d1+' UI/ml',x+240,y+65,'left')
     else
@@ -3565,7 +3566,7 @@ export default {
     doc.setFontSize(12);
     doc.text('GASOMETRIA ARTERIAL : ',x+10,y+60)
     doc.setTextColor(0,0,0)
-    
+
     doc.text(l.d1,x+70,y+60)
     //doc.setFontSize(12);
 
@@ -3583,7 +3584,7 @@ export default {
     doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+145,'center')
     doc.setTextColor(0,0,0)
     doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+170,y+145,'left')
-    
+
     if(l.imagen!=null && l.imagen!=''){
 
         this.$axios.post(process.env.API+'/base64',{imagen:l.imagen}).then(res=>{
@@ -3595,7 +3596,7 @@ export default {
           console.log(imgData)
                 doc.output('save','GASOMETRIA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf)
                 return false
-      })      
+      })
     }
     else
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
@@ -3787,9 +3788,9 @@ export default {
     doc.rect(x+105, y+70, 50, 8)
 
     doc.rect(x+55, y+90, 25, 16)
-    doc.rect(x+55, y+106, 25, 16)    
+    doc.rect(x+55, y+106, 25, 16)
     doc.rect(x+80, y+90, 90, 16)
-    doc.rect(x+80, y+106, 90, 16)  
+    doc.rect(x+80, y+106, 90, 16)
     //doc.rect(x+75, y+105, 30, 12)
     //doc.rect(x+75, y+117, 70, 6)
     //doc.rect(x+75, y+117, 30, 6)
@@ -3909,19 +3910,19 @@ export default {
     doc.text(l.d5,x+250,y+99,'left')
     doc.setTextColor(0,0,0)
     if(parseFloat(l.d6)>41)
-      doc.setTextColor(255,0,0)    
+      doc.setTextColor(255,0,0)
     doc.text(l.d6,x+250,y+106,'left')
     doc.setTextColor(0,0,0)
     if(parseFloat(l.d7)<135 || parseFloat(l.d7)>155)
-      doc.setTextColor(255,0,0)    
+      doc.setTextColor(255,0,0)
     doc.text(l.d7,x+250,y+114,'left')
     doc.setTextColor(0,0,0)
     if(parseFloat(l.d8)<98 || parseFloat(l.d8)>106)
-      doc.setTextColor(255,0,0)  
+      doc.setTextColor(255,0,0)
     doc.text(l.d8,x+250,y+121,'left')
     doc.setTextColor(0,0,0)
     if(parseFloat(l.d9)<3.4 || parseFloat(l.d9)>5.6)
-      doc.setTextColor(255,0,0) 
+      doc.setTextColor(255,0,0)
     doc.text(l.d9,x+250,y+128,'left')
 
   doc.setTextColor(57,73,171)
@@ -3935,15 +3936,15 @@ export default {
     doc.text(['Acido Urico','Fosfatasa Alcalina','calcio','Fosforo','OBSERVACIONES'],x+200,y+145,'left')
     doc.setTextColor(0,0,0)
     if(parseFloat(l.d10)<2.6 || parseFloat(l.d10)>7.2)
-      doc.setTextColor(255,0,0) 
+      doc.setTextColor(255,0,0)
     doc.text(l.d10,x+250,y+145,'left')
     doc.setTextColor(0,0,0)
     if(parseFloat(l.d11)>135 )
-      doc.setTextColor(255,0,0) 
+      doc.setTextColor(255,0,0)
     doc.text(l.d11,x+250,y+152,'left')
     doc.setTextColor(0,0,0)
     if(parseFloat(l.d12)<8.5 || parseFloat(l.d12)>10.5)
-      doc.setTextColor(255,0,0) 
+      doc.setTextColor(255,0,0)
     doc.text(l.d12,x+250,y+160,'left')
     doc.setTextColor(0,0,0)
     if(parseFloat(l.d13)<2.5 || parseFloat(l.d13)>4.5)
@@ -3953,7 +3954,7 @@ export default {
     doc.text(l.d14,x+200,y+179,'left')
     doc.setTextColor(57,73,171)
     doc.text(['2.6 - 7.2 mg/dl','adultos Hasta 135 UI/L','8.5 - 10.5 mg/dl','2.5 - 4.5 mg/dl'],x+300,y+145,'left')
-   
+
     doc.setLineHeightFactor(1.5);
     doc.rect(x+195, y+185, 155, 20)
     doc.setFont(undefined, 'bold')
@@ -4039,35 +4040,35 @@ export default {
     doc.text(l.d3,x+245,y+78,'left')
     doc.setTextColor(0,0,0)
     if(parseFloat(l.d4)<1.2 || parseFloat(l.d4)>2.2)
-      doc.setTextColor(255,0,0)    
+      doc.setTextColor(255,0,0)
     doc.text(l.d4,x+245,y+82,'left')
     doc.setTextColor(0,0,0)
     if(parseFloat(l.d5)<10 || parseFloat(l.d5)>160)
-      doc.setTextColor(255,0,0)  
+      doc.setTextColor(255,0,0)
     doc.text(l.d5,x+245,y+86,'left')
     doc.setTextColor(0,0,0)
     if(parseFloat(l.d6)>=200)
-      doc.setTextColor(255,0,0)    
+      doc.setTextColor(255,0,0)
     doc.text(l.d6,x+245,y+90,'left')
     doc.setTextColor(0,0,0)
     if(parseFloat(l.d7)<35 || parseFloat(l.d7)>65)
-      doc.setTextColor(255,0,0)     
+      doc.setTextColor(255,0,0)
     doc.text(l.d7,x+245,y+94,'left')
     doc.setTextColor(0,0,0)
     if(parseFloat(l.d8)>150)
-      doc.setTextColor(255,0,0)    
+      doc.setTextColor(255,0,0)
     doc.text(l.d8,x+245,y+98,'left')
     doc.setTextColor(0,0,0)
     if(parseFloat(l.d9)<2 || parseFloat(l.d9)>30)
-      doc.setTextColor(255,0,0)     
+      doc.setTextColor(255,0,0)
     doc.text(l.d9,x+245,y+102,'left')
     doc.setTextColor(0,0,0)
     if(parseFloat(l.d10)<50 || parseFloat(l.d10)>170)
-      doc.setTextColor(255,0,0)     
+      doc.setTextColor(255,0,0)
     doc.text(l.d10,x+245,y+106,'left')
     doc.setTextColor(0,0,0)
     if(l.d11!='NO REACTIVO')
-      doc.setTextColor(255,0,0)  
+      doc.setTextColor(255,0,0)
     doc.text(l.d11,x+245,y+110,'left')
     doc.setTextColor(0,0,0)
     doc.text(['g/dl','g/dl','g/dl','g/dl','mg/dl','mg/dl','mg/dl','mg/dl','mg/dl','ug/dl',''],x+280,y+70,'left')
@@ -4087,17 +4088,17 @@ export default {
     doc.text(l.d12,x+245,y+125,'left')
     doc.setTextColor(0,0,0)
     if(parseFloat(l.d13)<250 || parseFloat(l.d13)>450)
-      doc.setTextColor(255,0,0)    
+      doc.setTextColor(255,0,0)
     doc.text(l.d13,x+245,y+133,'left')
     doc.setTextColor(0,0,0)
     if(parseFloat(l.d14)<200 || parseFloat(l.d14)>300)
-      doc.setTextColor(255,0,0)     
+      doc.setTextColor(255,0,0)
     doc.text(l.d14,x+245,y+141,'left')
     doc.setTextColor(0,0,0)
     doc.text(['ug/dl','','ug/dl','','mg/dl'],x+280,y+125,'left')
     doc.setTextColor(57,73,171)
     doc.text(['140 - 280 ug/dl','','250 - 450 ug/dl','','200 - 300 mg/dl'],x+310,y+125,'left')
-  
+
     doc.setFont(undefined, 'bold')
     doc.text('METODO: INMUNOENSAYO DE FLUORESCENCIA (FIA)',x+220,y+150)
     doc.setFont(undefined, 'normal')
@@ -4107,22 +4108,22 @@ export default {
     if((parseFloat(l.d15)<30 || parseFloat(l.d15)>350) && p.sexo=='Masculino')
       doc.setTextColor(255,0,0)
     if((parseFloat(l.d15)<20 || parseFloat(l.d15)>250) && p.sexo=='Femenino')
-      doc.setTextColor(255,0,0)      
+      doc.setTextColor(255,0,0)
     doc.text(l.d15,x+240,y+155,'left')
     doc.setTextColor(0,0,0)
     if(parseFloat(l.d16)>15)
-      doc.setTextColor(255,0,0) 
+      doc.setTextColor(255,0,0)
     doc.text(l.d16,x+240,y+167,'left')
     doc.setTextColor(0,0,0)
     if(l.d17 =='POSITIVO')
-      doc.setTextColor(255,0,0) 
+      doc.setTextColor(255,0,0)
     doc.text(l.d17,x+240,y+171,'left')
     doc.setTextColor(0,0,0)
     doc.text(l.d18,x+200,y+180,'left')
     doc.text(['ng/ml','','','mlU/dl',''],x+280,y+155,'left')
     doc.setTextColor(57,73,171)
     doc.text(['30-350 ng/ml Varon','20-250 ng/ml Mujer','< 5 mlU/ml NEGATIVO','5-15 mlU/ml Indeterminado','> 15 mlU/ml POSITIVO'],x+300,y+155,'left')
-    
+
     doc.rect(x+195, y+185, 155, 20)
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
@@ -4720,7 +4721,7 @@ sanguinea(p,l){
       doc.setTextColor(255,0,0)
       if(l.d30!='')
     doc.text(l.d30+' mg/dl',x+155,y+118)
-    
+
     doc.setTextColor(57,73,171)
     doc.setFont(undefined, 'bold')
     doc.text('OBSERVACIONES:',x+6,y+125)
@@ -5205,7 +5206,7 @@ sanguinea(p,l){
       doc.setTextColor(255,0,0)
     doc.text(l.d6,x+250,y+114,'center')
     doc.setTextColor(0,0,0)
-    
+
     doc.text(l.d7,x+250,y+127,'center')
     doc.text(l.d8,x+250,y+148,'center')
     doc.text(['ng/ml',' ','ng/ml',' ','pg/ml',' ','ng/ml',' ','mg/l',' ','ng/ml',' ',' ','mlU/ml',' ',' ',' ','ng/ml'],x+270,y+65,'center')
@@ -5439,18 +5440,18 @@ sanguinea(p,l){
       if(l.tipo_id==18)
         this.gasometria(p,l)
       if(l.tipo_id==19)
-        this.hepatitis(p,l)       
+        this.hepatitis(p,l)
       if(l.tipo_id==20)
-        this.toxoplasmosis(p,l)  
+        this.toxoplasmosis(p,l)
       if(l.tipo_id==21)
-        this.hemodialisis(p,l)  
+        this.hemodialisis(p,l)
 
       if(l.tipo_id==22)
-        this.hemodialisistri(p,l)  
+        this.hemodialisistri(p,l)
       if(l.tipo_id==23)
-        this.miscelaneo(p,l)   
+        this.miscelaneo(p,l)
       if(l.tipo_id==24)
-        this.hierro(p,l)                  
+        this.hierro(p,l)
        console.log(p)
        console.log(l)
       return false
@@ -5626,6 +5627,7 @@ sanguinea(p,l){
     },
         onSubmit(){
         this.dato.seguro=this.seguro.id
+        this.loading=true
       this.$axios.post(process.env.API+'/valpaciente',this.dato).then(res=>{
           console.log(res.data.length > 0)
           //return false
@@ -5636,6 +5638,7 @@ sanguinea(p,l){
           color: 'red',
           icon: 'info',
         })
+        this.loading=false
         return false
           }else{
                   this.$q.loading.show()
@@ -5647,8 +5650,10 @@ sanguinea(p,l){
           icon: 'check',
         })
         this.$q.loading.hide()
+        this.loading=false
         this.alert=false;
         this.mispacientes();
+
       })
           }
       })
@@ -5753,9 +5758,9 @@ sanguinea(p,l){
         res.data.forEach(r=>{
           let d=r
           // console.log(r)
-          var nacimiento=moment(r.fechanac)
+          //var nacimiento=moment(r.fechanac)
           //this.fechacalculo=moment(r.fechanac)
-          var hoy=moment()
+          //var hoy=moment()
           var anios=this.calcular3(r.fechanac)
           d.tiempo=anios
           d.paciente=r.nombre+' '+r.paterno+' '+r.materno

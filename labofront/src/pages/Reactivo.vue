@@ -168,11 +168,11 @@
           <q-input filled v-model="invent.marca" label="Marca " hint="Ingresar marca " lazy-rules :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']"/>
           </div>
           <div class="col-md-6 col-sm-12">
-          
+
             <q-input filled v-model="invent.lote" label="Lote " hint="Ingresar lote " lazy-rules :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']" />
           </div>
           </div>
-            
+
             <q-input filled v-model="invent.ingreso" label="Ingreso " hint="Ingresar cantidad " type="number" lazy-rules :rules="[ val => val && val.length > 0 || 'Por favor ingresa datos']" />
             <q-input filled v-model="invent.observacion" label="Observacion " hint="Ingresar dato "  />
                       <div class="row">
@@ -231,7 +231,7 @@
         </q-card-section>
         <q-card-section class="q-pt-xs">
           <q-form
-            @submit="onRetiro"
+            @submit.prevent="onRetiro"
             class="q-gutter-md"
           >
             <q-input
@@ -257,11 +257,11 @@
               v-model="retiro.observacion"
               label="Observacion "
               hint="Ingresar dato "
-             
+
             />
 
             <div>
-              <q-btn label="Registrar" type="submit" color="positive" icon="add_circle"/>
+              <q-btn label="Registrar" type="submit" color="positive" icon="add_circle" :loading="loading"/>
                 <q-btn  label="Cancelar" icon="delete" color="negative" v-close-popup />
             </div>
           </q-form>
@@ -284,6 +284,7 @@ export default {
       rows:[],
       dato:{},
       dato2:{},
+      loading:false,
       invent:{fechavencimiento:date.formatDate(Date.now(),'YYYY-MM-DD'),fecha:date.formatDate(Date.now(),'YYYY-MM-DD')},
       alert:false,
       dialog_mod:false,
@@ -373,6 +374,7 @@ export default {
       })
     },
     onRetiro(){
+      this.loading=true
       this.retiro.reactivo_id=this.reactivo.id;
       this.$axios.post(process.env.API+'/retiro',this.retiro).then(res=>{
                  this.$q.notify({
@@ -381,6 +383,7 @@ export default {
         })
         this.dialog_retiro=false;
         this.listado();
+        this.loading=false
         this.retiro={fecha:date.formatDate(Date.now(),'YYYY-MM-DD')}
       })
 
@@ -465,7 +468,7 @@ export default {
         },500);
           }
           */
-         
+
             var doc = new jsPDF('landscape','mm','legal')
         doc.setFont("arial");
         doc.setFontSize(10);
@@ -524,9 +527,9 @@ export default {
 
         });
         doc.output('save','Reactivo-'+this.reactivo.nombre+'.pdf');
-      
+
          })}
-        
+
       }).onCancel(() => {
         // console.log('>>>> Cancel')
       }).onDismiss(() => {
@@ -593,7 +596,7 @@ export default {
         });
         this.dialog_reg=false;
         this.invent={fechavencimiento:date.formatDate(Date.now(),'YYYY-MM-DD'),fecha:date.formatDate(Date.now(),'YYYY-MM-DD')};
-        
+
         this.listado();
      })
     },
