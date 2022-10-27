@@ -159,7 +159,7 @@
         </q-card-section>
         <q-card-section class="q-pt-xs">
           <q-form
-            @submit="onRegistro"
+            @submit.prevent="onRegistro"
             class="q-gutter-md"
           >
             <q-input filled v-model="dato2.nombre" label="codigo" hint="codigo" readonly />
@@ -185,7 +185,7 @@
           </div>
 
             <div>
-              <q-btn label="Registrar" type="submit" color="positive" icon="add_circle"/>
+              <q-btn label="Registrar" type="submit" color="positive" icon="add_circle" :loading="loading"/>
                 <q-btn  label="Cancelar" icon="delete" color="negative" v-close-popup />
             </div>
           </q-form>
@@ -587,6 +587,7 @@ export default {
     },
         onRegistro(){
         this.invent.reactivo_id=this.dato2.id;
+        this.loading=true
         this.$axios.post(process.env.API+'/inventario',this.invent).then(res=>{
         this.$q.notify({
           color: 'green-4',
@@ -598,6 +599,7 @@ export default {
         this.invent={fechavencimiento:date.formatDate(Date.now(),'YYYY-MM-DD'),fecha:date.formatDate(Date.now(),'YYYY-MM-DD')};
 
         this.listado();
+        this.loading=false
      })
     },
   },
