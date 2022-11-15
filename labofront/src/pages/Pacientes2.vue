@@ -5104,7 +5104,7 @@ sanguinea(p,l){
     doc.text(['Fecha de Toma de Muestra','Hora de Toma de Muestra:','Fecha de Entrega Resultado'],x+265,y+190,'left')
     doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+310,y+190,'left')
    // doc.text(l.responsable,x+235,y+178,'right')
-
+        
     // doc.html('<div style="border:1px solid black;width: 50px;font-size: 3px"><b><i>Adimer paul chambi ajata</i></b></div>', {
     //   callback: function (doc) {
     //     window.open(doc.output('bloburl'), '_blank');
@@ -5116,8 +5116,8 @@ sanguinea(p,l){
     // window.open(doc.output('bloburl'), '_blank');
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
-    //window.open(doc.output('bloburl'), '_blank');
-                doc.output('save','HEMOGRAMA COMPLETO-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
+    window.open(doc.output('bloburl'), '_blank');
+      //          doc.output('save','HEMOGRAMA COMPLETO-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
       },
       ensayo(p,l){
             var doc = new jsPDF('landscape',undefined,'legal')
