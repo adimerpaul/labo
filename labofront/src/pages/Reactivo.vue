@@ -477,16 +477,16 @@ export default {
         let x=0
         let y=0
         //inicio datos paciete
-        function header(nombre,codigo){
+        function header(nombre,codigo,stock){
         doc.setFontSize(10);
         doc.addImage(img, 'jpg', 195, 3, 70, 20)
         doc.rect(x+195, y+25, 155, 1)
         doc.setFont(undefined, 'bold')
         doc.setTextColor(57,73,171)
         doc.text('KARDEX DE LABORATORIO',x+320, y+10,'center')
-        doc.text(['REACTIVO','CODIGO'],x+280, y+15,'left')
+        doc.text(['REACTIVO','CODIGO','STOCK'],x+280, y+15,'left')
         doc.setTextColor(0,0,0)
-        doc.text([nombre,codigo],x+300, y+15,'left')
+        doc.text([nombre,codigo,stock+''],x+300, y+15,'left')
         doc.setTextColor(0,0,255)
         doc.text('FECHA  ',x+195, y+30,'left')
         doc.text('VENC ',x+215, y+30,'left')
@@ -494,32 +494,32 @@ export default {
         doc.text('LOTE ',x+255, y+30,'left')
         doc.text('INGRESO',x+275, y+30,'left')
         doc.text('EGRESO ',x+295, y+30,'left')
-        doc.text('SALDO ',x+315, y+30,'left')
+        //doc.text('SALDO ',x+315, y+30,'left')
         doc.text('OBS',x+330, y+30,'left')
         }
 
 
-        header(this.reactivo.nombre,this.reactivo.codigo);
+        header(this.reactivo.nombre,this.reactivo.codigo,this.reactivo.stock);
         doc.setTextColor(0,0,0)
-                  let total=0
+        //          let total=0
         doc.setFontSize(8);
           //y=30
         doc.setFont(undefined, 'normal')
         res.data.forEach(r => {
           y+=5
-          total = parseFloat(r.anterior) + parseFloat(r.ingreso) - parseFloat(r.egreso)
+        //  total = parseFloat(r.anterior) + parseFloat(r.ingreso) - parseFloat(r.egreso)
           doc.text(r.fecha+'',x+195, y+30,'left')
           doc.text(r.fechavencimiento==null?'':r.fechavencimiento,x+215, y+30,'left')
           doc.text(r.marca==null?'':r.marca,x+235, y+30,'left')
           doc.text(r.lote==null?'':r.lote,x+255, y+30,'left')
           doc.text(r.ingreso+'',x+275, y+30,'left')
           doc.text(r.egreso+'',x+295, y+30,'left')
-          doc.text( total+'',x+315, y+30,'left')
+          //doc.text( total+'',x+315, y+30,'left')
           doc.text(r.observacion==null?'':r.observacion,x+330, y+30,'left')
         if(y+35>210){
           doc.addPage()
           y=0
-          header(this.reactivo.nombre,this.reactivo.codigo);
+          header(this.reactivo.nombre,this.reactivo.codigo,this.reactivo.stock);
           doc.setFontSize(8);
           doc.setFont(undefined, 'normal')
            doc.setTextColor(0,0,0)
