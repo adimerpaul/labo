@@ -652,7 +652,7 @@ export default {
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
-    doc.rect(x+5, y+48, 205, 85)
+    doc.rect(x+5, y+48, 205, 86)
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
     doc.text('                             COPROPARASITOLOGICO SIMPLE',x+50,y+52)
@@ -684,9 +684,9 @@ export default {
     doc.setTextColor(57,73,171)
     doc.text('                                        OTROS',x+50,y+115)
     doc.setFont(undefined, 'normal')
-    doc.text(['SANGRE OCULTA EN HECES','TEST DE BENEDICT','OBSERVACIONES'],x+8,y+120)
+    doc.text(['SANGRE OCULTA EN HECES','TEST DE HELICOBACTER EN HECES','TEST DE BENEDICT','OBSERVACIONES'],x+8,y+120)
     doc.setTextColor(0,0,0)
-    doc.text([l.d16,l.d17,l.d18],x+70,y+120)
+    doc.text([l.d16,l.d19,l.d17,l.d18],x+70,y+120)
 
     doc.rect(x+5, y+135, 205, 20)
     doc.setFont(undefined, 'bold')
@@ -2971,7 +2971,7 @@ sanguinea(p,l){
     doc.setTextColor(57,73,171)
     //fin datos paciete
     //inicio datos
-    doc.rect(x+195, y+51, 155, 110)
+    doc.rect(x+195, y+51, 155, 130)
     doc.setFont(undefined, 'bold')
     doc.setTextColor(211,47,47)
     doc.text('METODO: INMUNOENSAYO DE FLUORESCENCIA (FIA)',x+233,y+55)
@@ -2981,21 +2981,21 @@ sanguinea(p,l){
     doc.setFontSize(12);
 
     doc.setFont(undefined, 'normal')
+    doc.setFontSize(10);
+    doc.text('DIMEROS D',x+198,y+65,'left')
+    doc.text('FERRITINA',x+198,y+73,'left')
+    doc.text('IL-6',x+198,y+81,'left')
+    doc.text('PSA CUANTITATIVO',x+198,y+89,'left')
+    doc.text('PCR CUANTITATIVO',x+198,y+97,'left')
+    doc.text('TROPONINA I',x+198,y+106,'left')
+    doc.text('B - HCG',x+198,y+114,'left')
+    doc.text('PROCALCITONINA',x+198,y+130,'left')
+    doc.text('Anti-HBS',x+198,y+152,'left')
+    doc.text('lg M',x+198,y+164,'left')
+    doc.text('lg G',x+198,y+174,'left')
     doc.setFontSize(12);
-    doc.text(['DIMEROS D',' ','FERRITINA',' ','IL-6',' ','PSA CUANTITATIVO',' ','PCR CUANTITATIVO',' ','TROPONINA I',' ',' ','B - HCG',' ',' ',' ','PROCALCITONINA'],x+198,y+65,'left')
     doc.setTextColor(0,0,0)
-        /*if(($row->d1<0 || $row->d1>500)&& $row->d1!='')
-        doc.setTextColor(195,47,47)
-        else
-        doc.setTextColor(0,0,0)
 
-        if($row->paciente->sexo=='Masculino' && ($row->d2<30 || $row->d2>350)&& $row->d2!='')$cd2='color:#ff726f;';
-        if($row->paciente->sexo=='Femenino' && ($row->d2<20 || $row->d2>250)&& $row->d2!='')$cd2='color:#ff726f;';
-        if(($row->d3<0 || $row->d3>7)&& $row->d3!='')$cd3='color:#ff726f;';
-        if(($row->d4<0 || $row->d4>4)&& $row->d4!='')$cd4='color:#ff726f;';
-        if(($row->d5<0 || $row->d5>10)&& $row->d5!='')$cd5='color:#ff726f;';
-        if(($row->d6<0 || $row->d6>0.11)&& $row->d6!='')$cd6='color:#ff726f;';
-        if(($row->d7<0 || $row->d7>10)&& $row->d7!='')$cd7='color:#ff726f;';*/
        if(parseFloat(l.d1)>500.0)
       doc.setTextColor(255,0,0)
     doc.text(l.d1,x+250,y+65,'center')
@@ -3004,41 +3004,83 @@ sanguinea(p,l){
       doc.setTextColor(255,0,0)
     if((parseFloat(l.d2)<20 || parseFloat(l.d2)>250) && p.sexo=='Femenino')
       doc.setTextColor(255,0,0)
-    doc.text(l.d2,x+250,y+75,'center')
+    doc.text(l.d2,x+250,y+73,'center')
     doc.setTextColor(0,0,0)
-    doc.text(l.d3,x+250,y+85,'center')
+    doc.text(l.d3,x+250,y+81,'center')
     if(parseFloat(l.d4)>4)
       doc.setTextColor(255,0,0)
-    doc.text(l.d4,x+250,y+94,'center')
+    doc.text(l.d4,x+250,y+89,'center')
     doc.setTextColor(0,0,0)
     if(parseFloat(l.d5)>10)
       doc.setTextColor(255,0,0)
-    doc.text(l.d5,x+250,y+104,'center')
+    doc.text(l.d5,x+250,y+97,'center')
     doc.setTextColor(0,0,0)
     if(parseFloat(l.d6)>0.11 || parseFloat(l.d6)<0.0)
       doc.setTextColor(255,0,0)
-    doc.text(l.d6,x+250,y+114,'center')
+    doc.text(l.d6,x+250,y+106,'center')
     doc.setTextColor(0,0,0)
     
-    doc.text(l.d7,x+250,y+127,'center')
-    doc.text(l.d8,x+250,y+148,'center')
-    doc.text(['ng/ml',' ','ng/ml',' ','pg/ml',' ','ng/ml',' ','mg/l',' ','ng/ml',' ',' ','mlU/ml',' ',' ',' ','ng/ml'],x+270,y+65,'center')
+    doc.text(l.d7,x+250,y+118,'center')
+    doc.text(l.d8,x+250,y+134,'center')
+
+    if(parseFloat(l.d9)>15 )
+      doc.setTextColor(255,0,0)
+    doc.text(l.d9,x+250,y+152,'center')
+    doc.setTextColor(0,0,0)
+    if(parseFloat(l.d10)>1.1 )
+      doc.setTextColor(255,0,0)
+      doc.text(l.d10,x+250,y+164,'center')
+      doc.setTextColor(0,0,0)
+    if(parseFloat(l.d11)>8 )
+      doc.setTextColor(255,0,0)
+    doc.text(l.d11,x+250,y+174,'center')
+    doc.setTextColor(0,0,0)
+
+    doc.text('ng/ml',x+270,y+65,'center')
+    doc.text('ng/ml',x+270,y+73,'center')
+    doc.text('pg/ml',x+270,y+81,'center')
+    doc.text('ng/ml',x+270,y+89,'center')
+    doc.text('mg/l',x+270,y+97,'center')
+    doc.text('ng/ml',x+270,y+106,'center')
+    doc.text('mlU/ml',x+270,y+118,'center')
+    doc.text('ng/ml',x+270,y+134,'center')
+    doc.text('mlU/ml',x+270,y+152,'center')
+    doc.text('IU/ml',x+270,y+164,'center')
+    doc.text('IU/ml',x+270,y+174,'center')
+
     doc.setFontSize(10);
-    doc.text(['Plasma Citratado',' ','Suero',' ',' ','Suero/plasma',' ','Suero',' ',' ','Sangre Entera',' ','Suero',' ',' ',' ','Suero',' ',' ',' ','Suero'],x+290,y+65,'center')
+    doc.text('Plasma Citratado',x+290,y+65,'center')
+    doc.text('Suero',x+290,y+73,'center')
+    doc.text('Suero/plasma',x+290,y+81,'center')
+    doc.text('Suero',x+290,y+89,'center')
+    doc.text('Sangre Entera',x+290,y+97,'center')
+    doc.text('Suero',x+290,y+106,'center')
+    doc.text('Suero',x+290,y+118,'center')
+    doc.text('Suero',x+290,y+134,'center')
+    doc.text('FIA',x+290,y+152,'center')
+    doc.text('FIA',x+290,y+164,'center')
+    doc.text('FIA',x+290,y+174,'center')
     doc.setTextColor(57,73,171)
     doc.setFontSize(8);
-    doc.text(['Hasta 500 ng/ml','','30-350 ng/ml Varon','20-250 ng/ml Mujer','',' ','7 pg/ml','',' ','Menor a 4 ng/ml','',' ','<10 mg/L','',' ','0.0 - 0.11 ng/ml','',' ',' ','Mujer No Embarazada < 10 mlU/ml','Mujer en postmenopausia <10 mlU/ml','','PCT < 0.5 Es posible infeccion' ,'  bacteriana local','PCT 0.5 - 2 Posible infeccion','PCT 2 -10 Es muy probable ',' infeccion(sepsia) a menores que se ','conozcan otras causas','PCT > 10 Sepsia Bacteriana severa',' o shock septico'],x+305,y+65,'left')
+    doc.setLineHeightFactor(1)
+    doc.text(['Hasta 500 ng/ml','','30-350 ng/ml Varon','20-250 ng/ml Mujer','',' ','7 pg/ml','',' ','Menor a 4 ng/ml','',' ','<10 mg/L','',' ','0.0 - 0.11 ng/ml','',' ','Mujer No Embarazada < 10 mlU/ml','Mujer en postmenopausia <10 mlU/ml','',
+    'PCT < 0.5 Es posible infeccion' ,'  bacteriana local','PCT 0.5 - 2 Posible infeccion','PCT 2 -10 Es muy probable ',' infeccion(sepsia) a menores que se ','conozcan otras causas',
+    'PCT > 10 Sepsia Bacteriana severa',' o shock septico','',
+    '< 5 mlU/ml NEGATIVO','5 - 15 mlU/ml INDETERMINADO','> 15 mlU/ml POSITIVO','','< 0.9 IU/ml NEGATIVO','0.9 - 1.1 UI/ml INTERMEDIO','> 1.1 IU/ml POSITIVO','',
+    '< 4 IU/ml NEGATIVO','4 - 8 UI/ml INTERMEDIO','> 8 IU/ml POSITIVO',''
+    ],x+305,y+65,'left')
+    doc.setLineHeightFactor(1.15)
     doc.setFontSize(10);
 
 
-    doc.rect(x+195, y+160, 155, 30)
+    doc.rect(x+195, y+184, 155, 20)
     doc.setFont(undefined, 'bold')
     doc.setTextColor(57,73,171)
-    doc.text('RESPONSABLE',x+205,y+165,'left')
-    doc.text(l.responsable,x+205,y+170,'left')
+    doc.text('RESPONSABLE',x+205,y+189,'left')
+    doc.text(l.responsable,x+205,y+193,'left')
     doc.setFontSize(10);
-    doc.text(['Fecha toma de Muestra','Hora toma Muestra','Fecha Entrega de Resultado'],x+280,y+165,'left')
-    doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+330,y+165,'left')
+    doc.text(['Fecha toma de Muestra','Hora toma Muestra','Fecha Entrega de Resultado'],x+280,y+189,'left')
+    doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+330,y+189,'left')
 
     //$( '#docpdf' ).attr('src', doc.output('datauristring'));
     window.open(doc.output('bloburl'), '_blank');

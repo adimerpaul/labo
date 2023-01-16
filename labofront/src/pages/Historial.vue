@@ -96,17 +96,25 @@ export default {
         }
         head(this.dato)
         doc.setFont(undefined, 'normal')
+        let sum=0
         res.data.forEach(r => {
+           
           y+=5
           if(r.tipo=='titulo'){
           doc.setFont(undefined, 'bold')
-          doc.text(r.nombre,x+55, y,'left')
+          doc.text('TOTAL: '+sum,x+25, y,'left')
+          doc.text(r.nombre,x+55, y+5,'left')
           doc.setFont(undefined, 'normal')
+          y+=5
+          sum=0
           }
           else
           {doc.text(r.nombre,x+25, y,'left')
 
-          doc.text(r.cantidad+'',x+150,y,'left')    }
+          doc.text(r.cantidad+'',x+150,y,'left')  
+          sum=sum + parseInt(r.cantidad)
+          }
+
           if(y+5>270){
             y=0
             doc.addPage()
@@ -116,6 +124,9 @@ export default {
           }      
         });
 
+          doc.setFont(undefined, 'bold')
+        doc.text('TOTAL: '+sum,x+25, y+5,'left')
+        doc.setFont(undefined, 'normal')
 
         doc.output('save','ReporteFormularios.pdf');
       })

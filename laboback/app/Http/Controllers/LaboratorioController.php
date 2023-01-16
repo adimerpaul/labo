@@ -232,7 +232,7 @@ class LaboratorioController extends Controller
     }
 
     public function listmuestra(){
-        return DB::SELECT("SELECT tipomuestra from laboratorios group by tipomuestra;");
+        return DB::SELECT("SELECT tipomuestra from laboratorios group by tipomuestra");
     }
 
     public function repelemento(Request $request){
