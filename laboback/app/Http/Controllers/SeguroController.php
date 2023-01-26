@@ -20,6 +20,12 @@ class SeguroController extends Controller
         return Seguro::with('paciente')->get();
     }
 
+    public function listseguro()
+    {
+        //
+        return Seguro::all();
+    }
+
     /**
      * Show the form for creating a new resource.
      *

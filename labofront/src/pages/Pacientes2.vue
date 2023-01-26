@@ -5116,7 +5116,7 @@ sanguinea(p,l){
     doc.text(['Fecha de Toma de Muestra','Hora de Toma de Muestra:','Fecha de Entrega Resultado'],x+265,y+190,'left')
     doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,date.formatDate(new Date(),'DD-MM-YYYY')],x+310,y+190,'left')
    // doc.text(l.responsable,x+235,y+178,'right')
-        
+
     // doc.html('<div style="border:1px solid black;width: 50px;font-size: 3px"><b><i>Adimer paul chambi ajata</i></b></div>', {
     //   callback: function (doc) {
     //     window.open(doc.output('bloburl'), '_blank');
@@ -5220,7 +5220,7 @@ sanguinea(p,l){
       doc.setTextColor(255,0,0)
     doc.text(l.d6,x+250,y+106,'center')
     doc.setTextColor(0,0,0)
-    
+
     doc.text(l.d7,x+250,y+118,'center')
     doc.text(l.d8,x+250,y+134,'center')
 
@@ -5799,7 +5799,7 @@ sanguinea(p,l){
           listseguro(){
           this.seguros=[]
           this.seguro={label:''}
-          this.$axios.get(process.env.API+'/seguro').then(res=>{
+          this.$axios.get(process.env.API+'/listseguro').then(res=>{
               res.data.forEach(r => {
                   r.label=r.nombre
                   this.seguros.push(r);

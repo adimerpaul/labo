@@ -42,6 +42,7 @@ Route::group(['middleware'=>'auth:sanctum'],function (){
     Route::apiResource('/user', App\Http\Controllers\UserController::class);
     Route::post('/estado/{user}', [App\Http\Controllers\UserController::class,'estado']);
     Route::post('/listuser', [App\Http\Controllers\UserController::class,'listuser']);
+    Route::get('/listseguro', [App\Http\Controllers\SeguroController::class,'listseguro']);
     Route::put('/pass/{user}',[\App\Http\Controllers\UserController::class,'pass']);
     Route::put('/updatepermisos/{user}',[\App\Http\Controllers\UserController::class,'updatepermisos']);
     Route::post('/doctoractivo', [App\Http\Controllers\DoctorController::class,'doctoractivo']);
@@ -68,8 +69,8 @@ Route::group(['middleware'=>'auth:sanctum'],function (){
     Route::resource('/embarazo',\App\Http\Controllers\EmbarazoController ::class);
     Route::post('/fvencido',[\App\Http\Controllers\InventarioController ::class,'fvencido']);
     Route::resource('/retiro',\App\Http\Controllers\RetiroController::class);
-    Route::resource('/laboratorio',\App\Http\Controllers\LaboratorioController::class); 
-    Route::post('/updateimagen',[\App\Http\Controllers\LaboratorioController::class,'updateimagen']); 
+    Route::resource('/laboratorio',\App\Http\Controllers\LaboratorioController::class);
+    Route::post('/updateimagen',[\App\Http\Controllers\LaboratorioController::class,'updateimagen']);
     Route::resource('/tipo',\App\Http\Controllers\TipoController::class);
     Route::post('/invent',[\App\Http\Controllers\RetiroController::class,'invent']);
     Route::post('/datos',[\App\Http\Controllers\EnsayoController::class,'datos']);
