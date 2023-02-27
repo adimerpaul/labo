@@ -494,7 +494,7 @@ export default {
         doc.text('LOTE ',x+255, y+30,'left')
         doc.text('INGRESO',x+275, y+30,'left')
         doc.text('EGRESO ',x+295, y+30,'left')
-        //doc.text('SALDO ',x+315, y+30,'left')
+        doc.text('SALDO ',x+315, y+30,'left')
         doc.text('OBS',x+330, y+30,'left')
         }
 
@@ -514,7 +514,7 @@ export default {
           doc.text(r.lote==null?'':r.lote,x+255, y+30,'left')
           doc.text(r.ingreso+'',x+275, y+30,'left')
           doc.text(r.egreso+'',x+295, y+30,'left')
-          //doc.text( total+'',x+315, y+30,'left')
+          doc.text( total+'',x+315, y+30,'left')
           doc.text(r.observacion==null?'':r.observacion,x+330, y+30,'left')
         if(y+35>210){
           doc.addPage()
