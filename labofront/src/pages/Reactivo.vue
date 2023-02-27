@@ -501,7 +501,7 @@ export default {
 
         header(this.reactivo.nombre,this.reactivo.codigo,this.reactivo.stock);
         doc.setTextColor(0,0,0)
-        //          let total=0
+                  let total=0
         doc.setFontSize(8);
           //y=30
         doc.setFont(undefined, 'normal')
