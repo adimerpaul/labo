@@ -507,7 +507,7 @@ export default {
         doc.setFont(undefined, 'normal')
         res.data.forEach(r => {
           y+=5
-        //  total = parseFloat(r.anterior) + parseFloat(r.ingreso) - parseFloat(r.egreso)
+          total = parseFloat(r.anterior) + parseFloat(r.ingreso) - parseFloat(r.egreso)
           doc.text(r.fecha+'',x+195, y+30,'left')
           doc.text(r.fechavencimiento==null?'':r.fechavencimiento,x+215, y+30,'left')
           doc.text(r.marca==null?'':r.marca,x+235, y+30,'left')
