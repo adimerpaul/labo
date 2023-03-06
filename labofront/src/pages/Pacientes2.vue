@@ -339,7 +339,7 @@
           <div class="col-6 col-sm-6"><q-input dense outlined label="Glicemia" v-model="laboratorio.d1" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Fosfatasa alcalina" v-model="laboratorio.d2" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Creatinina" v-model="laboratorio.d3" /></div>
-          <div class="col-6 col-sm-6"><q-input dense outlined label="Fosfatasa alcalina" v-model="laboratorio.d4" /></div>
+          <div class="col-6 col-sm-6"><q-input dense outlined label="GGT" v-model="laboratorio.d4" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Urea" v-model="laboratorio.d5" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="Transamisas GOT" v-model="laboratorio.d6" /></div>
           <div class="col-6 col-sm-6"><q-input dense outlined label="NUS-BUN" v-model="laboratorio.d7" /></div>
@@ -4553,8 +4553,8 @@ export default {
     doc.setFont(undefined, 'normal')
     doc.text(['Glicemia','Creatinina','Urea','NUS-BUN','Acido Urico','Proteinas Totales','Albumina','Globulina','Amilasa','Lipasa','Bilirrubina Total','Bilirrubina Directa','Bilirrubina Indirecta','CK-MB','LDH','Hierro'],x+8,y+58)
     doc.text(['70-105mg/dl','0.7-1.5mg/dl','15-45mg/dl','7-18mg/dl','2.6-7.2mg/dl','6.2-8.5g/dl','3.5-5.3g/dl','2.8-3.5g/dl','menor a 120UI/L','10-150UI/L','hasta 1.2 mg/dl','hasta 0.3 mg/dl','hasta 0.9 mg/dl','0-24 UI/L','200-480 UI/L','50-170ug/dl'],x+80,y+58,'left')
-    doc.text(['Fosfatasa alcalina','Fosfatasa alcalina','Transamisas GOT','Transamisas GPT','LIPIDOGRAMA','Trigliceridos','Colesterol Total','HDL-Col','LDL-Col','VLDL','ELECTROLITOS','Sodio','Cloro','Potasio','Calcio','Magnesio','Fosforo'],x+110,y+58,'left')
-    doc.text(['adultos hasta 100UI/L','niños 100-400UI/L','hasta 40UI/L','hasta 41UI/L','','10-160mg/dl','menor 200mg/dl','35-65mg/dl','hasta 150mg/dl','2-30 mg/dl','','135-155mEq/L','98-106 mEq/L','3.4-5.3 mEq/L','8.5-10.5mg/dl','1.7-2.4mg/dl','2.5-4.5mg/dl'],x+175,y+58,'left')
+    doc.text(['Fosfatasa alcalina','GGT','Transamisas GOT','Transamisas GPT','LIPIDOGRAMA','Trigliceridos','Colesterol Total','HDL-Col','LDL-Col','VLDL','ELECTROLITOS','Sodio','Cloro','Potasio','Calcio','Magnesio','Fosforo'],x+110,y+58,'left')
+    doc.text(['adultos hasta 100UI/L','15-45UI/L','hasta 40UI/L','hasta 41UI/L','','10-160mg/dl','menor 200mg/dl','35-65mg/dl','hasta 150mg/dl','2-30 mg/dl','','135-155mEq/L','98-106 mEq/L','3.4-5.3 mEq/L','8.5-10.5mg/dl','1.7-2.4mg/dl','2.5-4.5mg/dl'],x+175,y+58,'left')
     doc.setTextColor(0,0,0)
     if(parseFloat(l.d1)<70 || parseFloat(l.d1)>105)
       doc.setTextColor(255,0,0)
@@ -4658,7 +4658,7 @@ export default {
     doc.text(l.d2+' UI/L',x+155,y+58)
 
       doc.setTextColor(0,0,0)
-    if(parseFloat(l.d4)<100 || parseFloat(l.d4)>400)
+    if(parseFloat(l.d4)<15 || parseFloat(l.d4)>45)
       doc.setTextColor(255,0,0)
       if(l.d4!='')
     doc.text(l.d4+' UI/L',x+155,y+62)
