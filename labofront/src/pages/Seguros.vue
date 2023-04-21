@@ -49,7 +49,8 @@
 
           <q-td key="opcion" :props="props">
           <ul>
-            <li v-for="p in props.row.paciente" :key="p"><q-btn flat round icon="list" dense color="accent" @click="labo(p)"/>{{p.nombre}} {{p.paterno}} {{p.materno}}</li>
+            <!--<li v-for="p in props.row.paciente" :key="p"><q-btn flat round icon="list" dense color="accent" @click="labo(p)"/>{{p.nombre}} {{p.paterno}} {{p.materno}}</li>-->
+            <li v-for="p in props.row.paciente" :key="p">{{p.nombre}} {{p.paterno}} {{p.materno}}</li>
           </ul>
           </q-td>
       </template>

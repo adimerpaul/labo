@@ -12,6 +12,6 @@ class Seguro extends Model
         'nombre',
     ];
     public function paciente(){
-        return $this->hasMany(Paciente::class)->with('laboratorios');
+        return $this->hasMany(Paciente::class);
     }
 }
