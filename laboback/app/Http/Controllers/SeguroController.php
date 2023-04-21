@@ -20,6 +20,12 @@ class SeguroController extends Controller
         return Seguro::with('paciente')->get();
     }
 
+    public function listadoSeguro()
+    {
+        //
+        return Seguro::with('paciente')->get();
+    }
+
     public function listseguro()
     {
         //
