@@ -12,6 +12,7 @@ class Laboratorio extends Model
         'tipomuestra',
         'fechatoma',
         'horatoma',
+        'fechaimp',
         'd1',
         'd2',
         'd3',

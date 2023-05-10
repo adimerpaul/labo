@@ -49,6 +49,7 @@ class LaboratorioController extends Controller
         $labo->tipomuestra=$request->tipomuestra==null?'':$request->tipomuestra;
         $labo->fechatoma=$request->fechatoma==null?'':$request->fechatoma;
         $labo->horatoma=$request->horatoma==null?'':$request->horatoma;
+        $labo->fechaimp=$request->fechatoma==null?'':$request->fechatoma;
         $labo->d1=$request->d1==null?'':$request->d1;
         $labo->d2=$request->d2==null?'':$request->d2;
         $labo->d3=$request->d3==null?'':$request->d3;
@@ -154,6 +155,7 @@ class LaboratorioController extends Controller
         $labo->tipomuestra=$request->tipomuestra==null?'':strtoupper($request->tipomuestra);
         $labo->fechatoma=$request->fechatoma==null?'':$request->fechatoma;
         $labo->horatoma=$request->horatoma==null?'':$request->horatoma;
+        $labo->fechaimp=$request->fechaimp==null?'':$request->fechaimp;
         $labo->d1=$request->d1==null?'':$request->d1;
         $labo->d2=$request->d2==null?'':$request->d2;
         $labo->d3=$request->d3==null?'':$request->d3;

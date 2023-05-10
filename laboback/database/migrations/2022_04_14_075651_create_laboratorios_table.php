@@ -18,6 +18,7 @@ class CreateLaboratoriosTable extends Migration
             $table->string('tipomuestra')->nullable()->default('');
             $table->date('fechatoma')->nullable();
             $table->time('horatoma')->nullable();
+            $table->date('fechaimp')->nullable();
             $table->string('responsable')->default('');
             $table->text('d1')->nullable()->default('');
             $table->text('d2')->nullable()->default('');
