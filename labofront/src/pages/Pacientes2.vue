@@ -7,14 +7,14 @@
       <div class="col-12">
         <q-table title1="Listado de pacientes" :rows="pacientes" :columns="columspaciente" :filter="filter" :rows-per-page-options="[10,100,200,0]">
           <template v-slot:body-cell-seguro="props">
-  
+
             <q-td :props="props">{{ props.row.seguro.nombre}}</q-td>
           </template>
-  
+
           <template v-slot:body-cell-laboratorios="props">
             <q-td :props="props" auto-width>
                <q-btn color="accent" @click="dialoglistlabo=true;paciente2=props.row;laboratorios=[]" label="Laboratorios"/>
-  
+
             </q-td>
           </template>
           <template v-slot:body-cell-opciones="props">
@@ -22,7 +22,7 @@
   <!--            <q-btn @click="frmlaboratorio(props.row)" size="xs"  icon="science" color="primary" label="agregar" />-->
               <q-btn-dropdown color="primary" label="Opciones"  icon="science">
                 <q-list>
-  
+
                   <q-item clickable v-close-popup @click="modificar(props.row)">
                     <q-item-section>
                       <q-item-label>Modificar Paciente</q-item-label>
@@ -43,7 +43,7 @@
   <!--                    <q-item-label>Videos</q-item-label>-->
   <!--                  </q-item-section>-->
   <!--                </q-item>-->
-  
+
   <!--                <q-item clickable v-close-popup @click="onItemClick">-->
   <!--                  <q-item-section>-->
   <!--                    <q-item-label>Articles</q-item-label>-->
@@ -82,7 +82,7 @@
               <q-card-section>
                 <div class="text-h6">LISTA DE LABORATORIOS</div>
               </q-card-section>
-  
+
               <q-card-section class="q-pt-none">
                 <div class="row">
                 <div class="col-6"><q-input dense v-model="fechalab" autofocus type="date"/></div>
@@ -98,7 +98,7 @@
                   <q-btn @click="sobre(paciente2,l)" size="xs" flat round color="teal" icon="mail_outline" />
                   <q-btn @click="upimagen(l)" size="xs" flat round color="purple-5" icon="add_photo_alternate" v-if="l.tipo_id==18"/>
                   <q-btn @click="descargar(l)" size="xs" flat round color="deep-orange-5" icon="image" v-if="l.imagen!=null && l.imagen!=''"/>
-  
+
                   <q-btn @click="Whatsapp(l.doctor.celular)" size="xs" flat round color="purple" icon="whatsapp" v-if="l.doctor.celular!='' && l.doctor.celular!=null"/>
                   {{l.fechatoma}}
                   {{l.tipo.nombre}} - {{l.solicitud}}
@@ -164,7 +164,7 @@
           </q-card-section>
         </q-card>
       </q-dialog>
-  
+
             <q-dialog v-model="dialogmodimg" >
         <q-card>
           <q-card-section class="bg-green-14 text-white">
@@ -182,7 +182,7 @@
           </q-card-section>
         </q-card>
       </q-dialog>
-  
+
         <q-dialog v-model="dialog_mod" full-width>
         <q-card>
           <q-card-section class="bg-green-14 text-white">
@@ -235,8 +235,8 @@
           </q-card-section>
         </q-card>
       </q-dialog>
-  
-  
+
+
     <q-dialog v-model="dialoglaboratorio" full-width full-height>
       <q-card>
         <q-card-section >
@@ -260,7 +260,7 @@
           </template>
               </q-select>
             </div>
-  
+
             <div class="col-12 col-sm-4">
               <q-input dense outlined label="Tipo Muestra" v-model="laboratorio.tipomuestra" list="listmuestra" class="text-uppercase"/>
                   <datalist id="listmuestra">
@@ -270,8 +270,8 @@
             <div class="col-12 col-sm-4">
               <q-input dense outlined label="N Solicitud" v-model="laboratorio.solicitud" type="number"/>
             </div>
-  
-  
+
+
             <template v-if="tipo.label=='HEMOGRAMA COMPLETO'">
               <q-card class="my-card"  flat bordered>
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -324,14 +324,14 @@
             </q-card-section>
         <q-card-section  class="bg-red-2"> <div class="row">
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
-  
+
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
                       </div>
             </q-card-section>
               </q-card>
-  
+
             </template>
                                 <template v-if="tipo.label=='QUIMICA SANGUINIA'">
                                             <q-card class="my-card"  flat bordered>
@@ -369,19 +369,19 @@
             <div class="col-6 col-sm-6"><q-input dense outlined label="Hierro" v-model="laboratorio.d29" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="Fosforo" v-model="laboratorio.d30" /></div>
             </div></q-card-section>
-  
+
         <q-card-section  class="bg-amber-2" > <div class="row">
             <div class="col-6 col-sm-12"><q-input dense outlined label="Observaciones" v-model="laboratorio.d31" /></div>
           </div></q-card-section>
         <q-card-section  class="bg-red-2"> <div class="row">
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             </div></q-card-section>
                                             </q-card>
             </template>
-  
+
                                           <template v-if="tipo.label=='EXAMEN GENERAL DE ORINA'">
                                                                                     <q-card class="my-card"  flat bordered>
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -401,7 +401,7 @@
             <div class="col-6 col-sm-6"><q-input dense outlined label="Nitritos" v-model="laboratorio.d14" /></div>
             <div class="col-12 col-sm-12"></div></div></q-card-section>
         <q-card-section  class="bg-blue-2" > <div class="row">
-  
+
             <div class="col-6 col-sm-6"><q-input dense outlined label="Celulas epiteliales" v-model="laboratorio.d15" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="Hialino" v-model="laboratorio.d16" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="Celulas de transicion" v-model="laboratorio.d17" /></div>
@@ -418,7 +418,7 @@
             <div class="col-6 col-sm-6"><q-input dense outlined label="Mixtos" v-model="laboratorio.d27" /></div>
             </div></q-card-section>
           <q-card-section  class="bg-amber-2" > <div class="row">
-  
+
             <div class="col-6 col-sm-6"><q-input dense outlined label="Uratros amorfos" v-model="laboratorio.d28" /></div>
             <div class="col-6 col-sm-6"></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="Fosfato amorfo" v-model="laboratorio.d29" /></div>
@@ -429,22 +429,22 @@
             <div class="col-6 col-sm-6"><q-input dense outlined label="Levaduras" v-model="laboratorio.d34" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="Acido Urico" v-model="laboratorio.d35" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="Esporas micoticas" v-model="laboratorio.d36" /></div>
-  
+
             <div class="col-6 col-sm-12">
             <div>Observaciones</div>
             <q-editor v-model="laboratorio.d37" min-height="3rem" />
             </div>
             </div></q-card-section>
         <q-card-section  class="bg-red-2"> <div class="row">
-  
+
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             </div></q-card-section>
             </q-card>
             </template>
-  
+
                                           <template v-if="tipo.label=='ANALISIS DE SECRECION URETRAL'">
              <q-card class="my-card"  flat bordered>
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -461,7 +461,7 @@
             <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d10" /></div>
             </div></q-card-section>
         <q-card-section  class="bg-blue-2" > <div class="row">
-  
+
             <div class="col-6 col-sm-12">TINCION DE GRAM</div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="BACILOS GRAM POSITIVO" v-model="laboratorio.d11" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="BACILOS GRAM NEGATIVO" v-model="laboratorio.d12" /></div>
@@ -472,14 +472,14 @@
             <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d17" /></div>
             </div></q-card-section>
         <q-card-section  class="bg-red-2" > <div class="row">
-  
+
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             </div></q-card-section>
              </q-card>
             </template>
-  
+
             <template v-if="tipo.label=='ANALISIS DE SECRECION VAGINAL'">
                        <q-card class="my-card"  flat bordered>
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -506,15 +506,15 @@
             <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d17" /></div>
             </div></q-card-section>
             <q-card-section  class="bg-red-2"> <div class="row">
-  
+
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             </div></q-card-section>
                        </q-card>
             </template>
-  
+
                                                     <template v-if="tipo.label=='ANALISIS DE HECES'">
              <q-card class="my-card"  flat bordered>
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -534,7 +534,7 @@
             <div class="col-6 col-sm-12"><q-input dense outlined label="OTROS" v-model="laboratorio.d13" /></div>
             </div></q-card-section>
             <q-card-section  class="bg-blue-2"> <div class="row">
-  
+
             <div class="col-6 col-sm-12">TINCION DE GRAM</div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="BACILOS GRAM POSITIVOS" v-model="laboratorio.d14" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="BACILOS GRAM NEGATIVOS" v-model="laboratorio.d15" /></div>
@@ -545,16 +545,16 @@
             <div class="col-6 col-sm-12"><q-input dense outlined label="OTROS" v-model="laboratorio.d20" /></div>
             </div></q-card-section>
             <q-card-section  class="bg-red-2"> <div class="row">
-  
+
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             </div></q-card-section>
              </q-card>
             </template>
-  
-  
+
+
              <template v-if="tipo.label=='COPROPARASITOLOGICO SIMPLE'">
              <q-card class="my-card"  flat bordered>
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -583,15 +583,15 @@
             <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d18" /></div>
             </div></q-card-section>
             <q-card-section  class="bg-red-2"> <div class="row">
-  
+
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             </div></q-card-section>
              </q-card>
             </template>
-  
+
              <template v-if="tipo.label=='COPROPARASITOLOGICO SERIADO'">
              <q-card class="my-card"  flat bordered style="width:100%">
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -613,21 +613,21 @@
             <div class="col-6 col-sm-6"><q-input dense outlined label="HORA" v-model="laboratorio.d8" type="time"/></div>
             <div class="col-6 col-sm-12"><q-editor v-model="laboratorio.d9" min-height="5rem" /></div>
             </div></q-card-section>
-  
+
             <q-card-section  class="bg-teal-2"> <div class="row">
             <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACION" v-model="laboratorio.d10"   /></div>
             </div></q-card-section>
             <q-card-section  class="bg-red-2"> <div class="row">
-  
+
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             </div></q-card-section>
                 </q-card>
             </template>
-  
-  
+
+
              <template v-if="tipo.label=='PRUEBA DE COVID-19'">
              <q-card class="my-card"  flat bordered style="width:100%">
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -643,15 +643,15 @@
             <div class=" col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d5" /></div>
             </div></q-card-section>
             <q-card-section  class="bg-red-2"> <div class="row">
-  
+
             <div class=" col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class=" col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class=" col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             </div></q-card-section>
              </q-card>
             </template>
-  
+
                <template v-if="tipo.label=='LABORATORIO SEROLOGIA'">
                <q-card class="my-card"  flat bordered>
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -674,15 +674,15 @@
             <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d14" /></div>
             </div></q-card-section>
             <q-card-section  class="bg-red-2"> <div class="row">
-  
+
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             </div></q-card-section>
                </q-card>
             </template>
-  
+
             <template v-if="tipo.label=='RESULTADO SEROLOGIA'">
               <q-card class="my-card"  flat bordered style="width:100%">
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -691,18 +691,18 @@
             <div class="col-12 col-sm-6"><q-select :options="['POSITIVO','NEGATIVO']" dense outlined label="ANTIGENO SARS COV2" v-model="laboratorio.d1" /></div>
             </div></q-card-section>
             <q-card-section  class="bg-blue-2">
-  
+
             <div class="col-12 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d2" /></div>
             </q-card-section>
             <q-card-section  class="bg-red-2"> <div class="row">
-  
+
             <div class="col-12 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-12 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-12 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             </div></q-card-section></q-card>
             </template>
-  
+
               <template v-if="tipo.label=='INMUNOENSAYO DE FLUORESCENCIA'">
              <q-card class="my-card"  flat bordered>
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -722,12 +722,12 @@
             </div></q-card-section>
             <q-card-section  class="bg-red-2"> <div class="row">
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             </div></q-card-section></q-card>
             </template>
-  
+
                <template v-if="tipo.label=='TEST EMBARAZO'">
              <q-card class="my-card"  flat bordered style="width:100%">
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -741,12 +741,12 @@
             </div></q-card-section>
             <q-card-section  class="bg-red-2"> <div class="row">
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             </div></q-card-section></q-card>
             </template>
-  
+
                          <template v-if="tipo.label=='ALCOHOLEMIA'">
              <q-card class="my-card"  flat bordered style="width:100%">
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -754,15 +754,15 @@
             <div class="col-6 col-sm-10 "><q-input dense outlined label="ALCOHOLEMIA"  v-model="laboratorio.d1" />  </div>
             <div class="col-1 col-sm-1">mg/dl</div>
             </div></q-card-section>
-  
+
             <q-card-section  class="bg-red-2"> <div class="row">
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             </div></q-card-section></q-card>
             </template>
-  
+
                <template v-if="tipo.label=='REACCION DE WIDAL'">
              <q-card class="my-card"  flat bordered style="width:100%">
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -778,12 +778,12 @@
             </div></q-card-section>
             <q-card-section  class="bg-red-2"> <div class="row">
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             </div></q-card-section></q-card>
             </template>
-  
+
                <template v-if="tipo.label=='MULTIDROGAS'">
              <q-card class="my-card"  flat bordered style="width:100%">
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -804,12 +804,12 @@
             </div></q-card-section>
             <q-card-section  class="bg-red-2"> <div class="row">
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             </div></q-card-section></q-card>
             </template>
-  
+
                <template v-if="tipo.label=='HEMOGLOBINA GLICOSILADA'">
              <q-card class="my-card"  flat bordered style="width:100%">
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -817,15 +817,15 @@
             <div class="col-6 col-sm-3"></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="HbA1c"  v-model="laboratorio.d1" /></div>
             </div></q-card-section>
-  
+
             <q-card-section  class="bg-red-2"> <div class="row">
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             </div></q-card-section></q-card>
             </template>
-  
+
             <template v-if="tipo.label=='GASOMETRIA'">
              <q-card class="my-card"  flat bordered style="width:100%">
             <q-card-section  class="bg-green-2">
@@ -838,15 +838,15 @@
             </div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="GASOMETRIA ARTERIAL"  v-model="laboratorio.d1" /></div>
             </div></q-card-section>
-  
+
             <q-card-section  class="bg-red-2"> <div class="row">
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             </div></q-card-section></q-card>
             </template>
-  
+
             <template v-if="tipo.label=='HEPATITIS B'">
              <q-card class="my-card"  flat bordered style="width:100%">
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -855,15 +855,15 @@
             <div class="col-6 col-sm-2">mlU/ml</div>
             <div class="col-6 col-sm-12"><q-select dense outlined v-model="laboratorio.d2" :options="['NEGATIVO','INDETERMINADO','POSITIVO']" label="VALOR" /></div>
             </div></q-card-section>
-  
+
             <q-card-section  class="bg-red-2"> <div class="row">
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             </div></q-card-section></q-card>
             </template>
-  
+
             <template v-if="tipo.label=='TOXOPLASMOSIS'">
              <q-card class="my-card"  flat bordered style="width:100%">
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -872,20 +872,20 @@
             <div class="col-6 col-sm-6"><q-input dense outlined label="lg G"  v-model="laboratorio.d3" /></div>
             <div class="col-6 col-sm-6"><q-select dense outlined v-model="laboratorio.d4" :options="['NEGATIVO','INDETERMINADO','POSITIVO']" label="VALOR" /></div>
             </div></q-card-section>
-  
+
             <q-card-section  class="bg-red-2"> <div class="row">
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             </div></q-card-section></q-card>
             </template>
-  
+
            <template v-if="tipo.label=='HEMODIALISIS M Y B'">
              <q-card class="my-card"  flat bordered style="width:100%">
             <q-card-section  class="bg-green-2"> <div class="row">
             <div class="col-6 col-sm-12">CONTROL MENSUAL</div>
-  
+
             <div class="col-6 col-sm-12"><q-input dense outlined label="Glicemia"  v-model="laboratorio.d1" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="Creatinina"  v-model="laboratorio.d2" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="Urea"  v-model="laboratorio.d3" /></div>
@@ -898,28 +898,28 @@
             </div></q-card-section>
             <q-card-section  class="bg-blue-2"> <div class="row">
             <div class="col-6 col-sm-12">CONTROL BIMENSUAL</div>
-  
+
             <div class="col-6 col-sm-12"><q-input dense outlined label="Acido Urico"  v-model="laboratorio.d10" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="Fosfatasa Alcalina"  v-model="laboratorio.d11" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="Calcio"  v-model="laboratorio.d12" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="Fosforo"  v-model="laboratorio.d13" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="Observaciones"  v-model="laboratorio.d14" /></div>
             </div></q-card-section>
-  
+
             <q-card-section  class="bg-red-2"> <div class="row">
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             </div></q-card-section></q-card>
             </template>
-  
-  
+
+
            <template v-if="tipo.label=='HEMODIALISIS TRI'">
              <q-card class="my-card"  flat bordered style="width:100%">
             <q-card-section  class="bg-green-2"> <div class="row">
             <div class="col-6 col-sm-12">CONTROL TRIMESTRAL</div>
-  
+
             <div class="col-6 col-sm-12"><q-input dense outlined label="Proteinas Totales"  v-model="laboratorio.d1" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="Albumina"  v-model="laboratorio.d2" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="Globulina"  v-model="laboratorio.d3" /></div>
@@ -933,30 +933,30 @@
             <div class="col-6 col-sm-12"><q-input dense outlined label="Prueba Rapida VIH"  v-model="laboratorio.d11" /></div>
             </div></q-card-section>
             <q-card-section  class="bg-blue-2"> <div class="row">
-  
+
             <div class="col-6 col-sm-12">CAPACIDAD DE FIJACION DE HIERRO</div>
-  
+
             <div class="col-6 col-sm-12"><q-input dense outlined label="Capacidad Latente de Fijacion de Hierro"  v-model="laboratorio.d12" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="Capacidad Total de Fijacion de Hierro"  v-model="laboratorio.d13" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="Transferrina"  v-model="laboratorio.d14" /></div>
             </div></q-card-section>
             <q-card-section  class="bg-lime-2"> <div class="row">
             <div class="col-6 col-sm-12">INMUNOENSAYO DE FLUORESCENCIA</div>
-  
+
             <div class="col-6 col-sm-12"><q-input dense outlined label="FERRITINA"  v-model="laboratorio.d15" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="HEPATITIS B"  v-model="laboratorio.d16" /></div>
             <div class="col-6 col-sm-6"><q-select dense outlined v-model="laboratorio.d17" :options="['NEGATIVO','INDETERMINADO','POSITIVO']" label="VALOR" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="Observaciones"  v-model="laboratorio.d18" /></div>
             </div></q-card-section>
-  
+
             <q-card-section  class="bg-red-2"> <div class="row">
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             </div></q-card-section></q-card>
             </template>
-  
+
             <template v-if="tipo.label=='MISCELANEOS ORINA'">
              <q-card class="my-card"  flat bordered style="width:100%">
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -968,19 +968,19 @@
             <div class="col-6 col-sm-12"><q-input dense outlined label="PROTEINURIA DE 24 HORAS" v-model="laboratorio.d6" /></div>
             </div></q-card-section>
             <q-card-section  class="bg-blue-2"> <div class="row">
-  
+
             <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACION" v-model="laboratorio.d7" /></div>
             </div></q-card-section>
             <q-card-section  class="bg-red-2"> <div class="row">
-  
+
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             </div></q-card-section>
              </q-card>
             </template>
-  
+
             <template v-if="tipo.label=='FIJACION DE HIERRO'">
              <q-card class="my-card"  flat bordered style="width:100%">
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -992,15 +992,15 @@
             <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACION" v-model="laboratorio.d4" /></div>
             </div></q-card-section>
             <q-card-section  class="bg-red-2"> <div class="row">
-  
+
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             </div></q-card-section>
              </q-card>
             </template>
-  
+
             <div class="col-12">
               <q-btn label="Guardar" type="submit" class="full-width" icon="add_circle" color="positive" :loading="loading"/>
             </div>
@@ -1009,7 +1009,7 @@
         </q-card-section>
       </q-card>
     </q-dialog>
-  
+
       <q-dialog v-model="dialogmodlab" full-width full-height>
       <q-card>
         <q-card-section >
@@ -1033,7 +1033,7 @@
           </template>
               </q-select>
             </div>
-  
+
             <div class="col-12 col-sm-4">
                 <q-input dense outlined label="Tipo Muestra" v-model="laboratorio.tipomuestra" list="listmuestra"/>
                   <datalist id="listmuestra">
@@ -1095,24 +1095,24 @@
             </q-card-section>
         <q-card-section  class="bg-red-2"> <div class="row">
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
-  
+
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
-            
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
                       </div>
             </q-card-section>
               </q-card>
-  
+
             </template>
-                                <template v-if="tipo.label=='QUIMICA SANGUINIA'">
+            <template v-if="tipo.label=='QUIMICA SANGUINIA'">
                                             <q-card class="my-card"  flat bordered>
             <q-card-section  class="bg-green-2"> <div class="row">
             <div class="col-6 col-sm-6"><q-input dense outlined label="Glicemia" v-model="laboratorio.d1" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="Fosfatasa alcalina" v-model="laboratorio.d2" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="Creatinina" v-model="laboratorio.d3" /></div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="Fosfatasa alcalina" v-model="laboratorio.d4" /></div>
+            <div class="col-6 col-sm-6"><q-input dense outlined label="GGT" v-model="laboratorio.d4" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="Urea" v-model="laboratorio.d5" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="Transamisas GOT" v-model="laboratorio.d6" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="NUS-BUN" v-model="laboratorio.d7" /></div>
@@ -1128,7 +1128,7 @@
             <div class="col-6 col-sm-6"><q-input dense outlined label="Amilasa" v-model="laboratorio.d16" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="LDL-Col." v-model="laboratorio.d17" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="Lipasa" v-model="laboratorio.d18" /></div>
-            <div class="col-6 col-sm-6"></div>
+            <div class="col-6 col-sm-6"><q-input dense outlined label="VLDL" v-model="laboratorio.d32" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="Bilirrubina Total" v-model="laboratorio.d19" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="Sodio" v-model="laboratorio.d20" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="Bilirrubina Directa" v-model="laboratorio.d21" /></div>
@@ -1142,20 +1142,18 @@
             <div class="col-6 col-sm-6"><q-input dense outlined label="Hierro" v-model="laboratorio.d29" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="Fosforo" v-model="laboratorio.d30" /></div>
             </div></q-card-section>
-  
+
         <q-card-section  class="bg-amber-2" > <div class="row">
             <div class="col-6 col-sm-12"><q-input dense outlined label="Observaciones" v-model="laboratorio.d31" /></div>
           </div></q-card-section>
         <q-card-section  class="bg-red-2"> <div class="row">
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
-            <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
             </div></q-card-section>
                                             </q-card>
             </template>
-  
                                           <template v-if="tipo.label=='EXAMEN GENERAL DE ORINA'">
                                                                                     <q-card class="my-card"  flat bordered>
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -1175,7 +1173,7 @@
             <div class="col-6 col-sm-6"><q-input dense outlined label="Nitritos" v-model="laboratorio.d14" /></div>
             <div class="col-12 col-sm-12"></div></div></q-card-section>
         <q-card-section  class="bg-blue-2" > <div class="row">
-  
+
             <div class="col-6 col-sm-6"><q-input dense outlined label="Celulas epiteleales" v-model="laboratorio.d15" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="Hialino" v-model="laboratorio.d16" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="Celulas de transicion" v-model="laboratorio.d17" /></div>
@@ -1192,7 +1190,7 @@
             <div class="col-6 col-sm-6"><q-input dense outlined label="Mixtos" v-model="laboratorio.d27" /></div>
             </div></q-card-section>
           <q-card-section  class="bg-amber-2" > <div class="row">
-  
+
             <div class="col-6 col-sm-6"><q-input dense outlined label="Uratros amorfos" v-model="laboratorio.d28" /></div>
             <div class="col-6 col-sm-6"></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="Fosfato amorfo" v-model="laboratorio.d29" /></div>
@@ -1203,23 +1201,23 @@
             <div class="col-6 col-sm-6"><q-input dense outlined label="Levaduras" v-model="laboratorio.d34" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="Acido Urico" v-model="laboratorio.d35" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="Esporas micoticas" v-model="laboratorio.d36" /></div>
-  
+
             <div class="col-6 col-sm-12">
             <div>Observaciones</div>
             <q-editor v-model="laboratorio.d37" min-height="3rem" />
             </div>
             </div></q-card-section>
         <q-card-section  class="bg-red-2"> <div class="row">
-  
+
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
             </div></q-card-section>
             </q-card>
             </template>
-  
+
                                           <template v-if="tipo.label=='ANALISIS DE SECRECION URETRAL'">
              <q-card class="my-card"  flat bordered>
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -1236,7 +1234,7 @@
             <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d10" /></div>
             </div></q-card-section>
         <q-card-section  class="bg-blue-2" > <div class="row">
-  
+
             <div class="col-6 col-sm-12">TINCION DE GRAM</div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="BACILOS GRAM POSITIVO" v-model="laboratorio.d11" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="BACILOS GRAM NEGATIVO" v-model="laboratorio.d12" /></div>
@@ -1247,7 +1245,7 @@
             <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d17" /></div>
             </div></q-card-section>
         <q-card-section  class="bg-red-2" > <div class="row">
-  
+
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
@@ -1255,7 +1253,7 @@
             </div></q-card-section>
              </q-card>
             </template>
-  
+
             <template v-if="tipo.label=='ANALISIS DE SECRECION VAGINAL'">
                        <q-card class="my-card"  flat bordered>
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -1282,16 +1280,16 @@
             <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d17" /></div>
             </div></q-card-section>
             <q-card-section  class="bg-red-2"> <div class="row">
-  
+
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
             </div></q-card-section>
                        </q-card>
             </template>
-  
+
                                                     <template v-if="tipo.label=='ANALISIS DE HECES'">
              <q-card class="my-card"  flat bordered>
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -1311,7 +1309,7 @@
             <div class="col-6 col-sm-12"><q-input dense outlined label="OTROS" v-model="laboratorio.d13" /></div>
             </div></q-card-section>
             <q-card-section  class="bg-blue-2"> <div class="row">
-  
+
             <div class="col-6 col-sm-12">TINCION DE GRAM</div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="BACILOS GRAM POSITIVOS" v-model="laboratorio.d14" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="BACILOS GRAM NEGATIVOS" v-model="laboratorio.d15" /></div>
@@ -1322,17 +1320,17 @@
             <div class="col-6 col-sm-12"><q-input dense outlined label="OTROS" v-model="laboratorio.d20" /></div>
             </div></q-card-section>
             <q-card-section  class="bg-red-2"> <div class="row">
-  
+
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
             </div></q-card-section>
              </q-card>
             </template>
-  
-  
+
+
              <template v-if="tipo.label=='COPROPARASITOLOGICO SIMPLE'">
              <q-card class="my-card"  flat bordered>
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -1361,16 +1359,16 @@
             <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d18" /></div>
             </div></q-card-section>
             <q-card-section  class="bg-red-2"> <div class="row">
-  
+
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
             </div></q-card-section>
              </q-card>
             </template>
-  
+
              <template v-if="tipo.label=='COPROPARASITOLOGICO SERIADO'">
              <q-card class="my-card"  flat bordered style="width:100%">
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -1392,22 +1390,22 @@
             <div class="col-6 col-sm-6"><q-input dense outlined label="HORA" v-model="laboratorio.d8" type="time"/></div>
             <div class="col-6 col-sm-12"><q-editor v-model="laboratorio.d9" min-height="5rem" /></div>
             </div></q-card-section>
-  
+
             <q-card-section  class="bg-teal-2"> <div class="row">
             <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACION" v-model="laboratorio.d10"   /></div>
             </div></q-card-section>
             <q-card-section  class="bg-red-2"> <div class="row">
-  
+
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
             </div></q-card-section>
                 </q-card>
             </template>
-  
-  
+
+
              <template v-if="tipo.label=='PRUEBA DE COVID-19'">
              <q-card class="my-card"  flat bordered style="width:100%">
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -1423,16 +1421,16 @@
             <div class=" col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d5" /></div>
             </div></q-card-section>
             <q-card-section  class="bg-red-2"> <div class="row">
-  
+
             <div class=" col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class=" col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class=" col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
             </div></q-card-section>
              </q-card>
             </template>
-  
+
                <template v-if="tipo.label=='LABORATORIO SEROLOGIA'">
                <q-card class="my-card"  flat bordered>
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -1455,16 +1453,16 @@
             <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d14" /></div>
             </div></q-card-section>
             <q-card-section  class="bg-red-2"> <div class="row">
-  
+
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
             </div></q-card-section>
                </q-card>
             </template>
-  
+
             <template v-if="tipo.label=='RESULTADO SEROLOGIA'">
               <q-card class="my-card"  flat bordered style="width:100%">
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -1473,19 +1471,19 @@
             <div class="col-12 col-sm-6"><q-select :options="['POSITIVO','NEGATIVO']" dense outlined label="ANTIGENO SARS COV2" v-model="laboratorio.d1" /></div>
             </div></q-card-section>
             <q-card-section  class="bg-blue-2">
-  
+
             <div class="col-12 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d2" /></div>
             </q-card-section>
             <q-card-section  class="bg-red-2"> <div class="row">
-  
+
             <div class="col-12 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-12 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-12 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
             </div></q-card-section></q-card>
             </template>
-  
+
               <template v-if="tipo.label=='INMUNOENSAYO DE FLUORESCENCIA'">
              <q-card class="my-card"  flat bordered>
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -1505,13 +1503,13 @@
             </div></q-card-section>
             <q-card-section  class="bg-red-2"> <div class="row">
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
             </div></q-card-section></q-card>
             </template>
-  
+
                <template v-if="tipo.label=='TEST EMBARAZO'">
              <q-card class="my-card"  flat bordered style="width:100%">
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -1525,13 +1523,13 @@
             </div></q-card-section>
             <q-card-section  class="bg-red-2"> <div class="row">
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
             </div></q-card-section></q-card>
             </template>
-  
+
                          <template v-if="tipo.label=='ALCOHOLEMIA'">
              <q-card class="my-card"  flat bordered style="width:100%">
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -1539,16 +1537,16 @@
             <div class="col-6 col-sm-10 "><q-input dense outlined label="ALCOHOLEMIA"  v-model="laboratorio.d1" />  </div>
             <div class="col-1 col-sm-1">mg/dl</div>
             </div></q-card-section>
-  
+
             <q-card-section  class="bg-red-2"> <div class="row">
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
             </div></q-card-section></q-card>
             </template>
-  
+
                <template v-if="tipo.label=='REACCION DE WIDAL'">
              <q-card class="my-card"  flat bordered style="width:100%">
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -1564,13 +1562,13 @@
             </div></q-card-section>
             <q-card-section  class="bg-red-2"> <div class="row">
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
             </div></q-card-section></q-card>
             </template>
-  
+
                <template v-if="tipo.label=='MULTIDROGAS'">
              <q-card class="my-card"  flat bordered style="width:100%">
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -1591,13 +1589,13 @@
             </div></q-card-section>
             <q-card-section  class="bg-red-2"> <div class="row">
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
             </div></q-card-section></q-card>
             </template>
-  
+
                <template v-if="tipo.label=='HEMOGLOBINA GLICOSILADA'">
              <q-card class="my-card"  flat bordered style="width:100%">
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -1605,27 +1603,27 @@
             <div class="col-6 col-sm-3"></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="HbA1c"  v-model="laboratorio.d1" /></div>
             </div></q-card-section>
-  
+
             <q-card-section  class="bg-red-2"> <div class="row">
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
             </div></q-card-section></q-card>
             </template>
-  
+
             <template v-if="tipo.label=='GASOMETRIA'">
              <q-card class="my-card"  flat bordered style="width:100%">
             <q-card-section  class="bg-green-2"> <div class="row">
-  
+
             <div class="col-6 col-sm-12"><q-input dense outlined label="GASOMETRIA ARTERIAL"  v-model="laboratorio.d1" /></div>
-  
+
             </div></q-card-section>
-  
+
             <q-card-section  class="bg-red-2"> <div class="row">
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
@@ -1639,16 +1637,16 @@
             <div class="col-6 col-sm-2">mlU/ml</div>
             <div class="col-6 col-sm-12"><q-select dense outlined v-model="laboratorio.d2" :options="['NEGATIVO','INDETERMINADO','POSITIVO']" label="VALOR" /></div>
             </div></q-card-section>
-  
+
             <q-card-section  class="bg-red-2"> <div class="row">
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
             </div></q-card-section></q-card>
             </template>
-  
+
             <template v-if="tipo.label=='TOXOPLASMOSIS'">
              <q-card class="my-card"  flat bordered style="width:100%">
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -1657,21 +1655,21 @@
             <div class="col-6 col-sm-6"><q-input dense outlined label="lg G"  v-model="laboratorio.d3" /></div>
             <div class="col-6 col-sm-6"><q-select dense outlined v-model="laboratorio.d4" :options="['NEGATIVO','INDETERMINADO','POSITIVO']" label="VALOR" /></div>
             </div></q-card-section>
-  
+
             <q-card-section  class="bg-red-2"> <div class="row">
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
             </div></q-card-section></q-card>
             </template>
-  
+
            <template v-if="tipo.label=='HEMODIALISIS M Y B'">
              <q-card class="my-card"  flat bordered style="width:100%">
             <q-card-section  class="bg-green-2"> <div class="row">
             <div class="col-6 col-sm-12">CONTROL MENSUAL</div>
-  
+
             <div class="col-6 col-sm-12"><q-input dense outlined label="Glicemia"  v-model="laboratorio.d1" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="Creatinina"  v-model="laboratorio.d2" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="Urea"  v-model="laboratorio.d3" /></div>
@@ -1684,28 +1682,28 @@
             </div></q-card-section>
             <q-card-section  class="bg-blue-2"> <div class="row">
             <div class="col-6 col-sm-12">CONTROL BIMENSUAL</div>
-  
+
             <div class="col-6 col-sm-12"><q-input dense outlined label="Acido Urico"  v-model="laboratorio.d10" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="Fosfatasa Alcalina"  v-model="laboratorio.d11" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="Calcio"  v-model="laboratorio.d12" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="Fosforo"  v-model="laboratorio.d13" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="Observaciones"  v-model="laboratorio.d14" /></div>
             </div></q-card-section>
-  
+
             <q-card-section  class="bg-red-2"> <div class="row">
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
             </div></q-card-section></q-card>
             </template>
-  
+
            <template v-if="tipo.label=='HEMODIALISIS TRI'">
              <q-card class="my-card"  flat bordered style="width:100%">
             <q-card-section  class="bg-green-2"> <div class="row">
             <div class="col-6 col-sm-12">CONTROL TRIMESTRAL</div>
-  
+
             <div class="col-6 col-sm-12"><q-input dense outlined label="Proteinas Totales"  v-model="laboratorio.d1" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="Albumina"  v-model="laboratorio.d2" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="Globulina"  v-model="laboratorio.d3" /></div>
@@ -1720,30 +1718,30 @@
             </div></q-card-section>
             <q-card-section  class="bg-blue-2"> <div class="row">
             <div class="col-6 col-sm-12">CAPACIDAD DE FIJACION DE HIERRO</div>
-  
+
             <div class="col-6 col-sm-12"><q-input dense outlined label="Capacidad Latente de Fijacion de Hierro"  v-model="laboratorio.d12" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="Capacidad Total de Fijacion de Hierro"  v-model="laboratorio.d13" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="Transferrina"  v-model="laboratorio.d14" /></div>
             </div></q-card-section>
             <q-card-section  class="bg-lime-2"> <div class="row">
             <div class="col-6 col-sm-12">INMUNOENSAYO DE FLUORESCENCIA</div>
-  
+
             <div class="col-6 col-sm-12"><q-input dense outlined label="FERRITINA"  v-model="laboratorio.d15" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="HEPATITIS B"  v-model="laboratorio.d16" /></div>
             <div class="col-6 col-sm-6"><q-select dense outlined v-model="laboratorio.d17" :options="['NEGATIVO','INDETERMINADO','POSITIVO']" label="VALOR" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="Observaciones"  v-model="laboratorio.d18" /></div>
             </div></q-card-section>
-  
+
             <q-card-section  class="bg-red-2"> <div class="row">
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
             </div></q-card-section></q-card>
             </template>
-  
-  
+
+
             <template v-if="tipo.label=='MISCELANEOS ORINA'">
              <q-card class="my-card"  flat bordered style="width:100%">
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -1755,20 +1753,20 @@
             <div class="col-6 col-sm-12"><q-input dense outlined label="PROTEINURIA DE 24 HORAS" v-model="laboratorio.d6" /></div>
             </div></q-card-section>
             <q-card-section  class="bg-blue-2"> <div class="row">
-  
+
             <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACION" v-model="laboratorio.d7" /></div>
             </div></q-card-section>
             <q-card-section  class="bg-red-2"> <div class="row">
-  
+
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
             </div></q-card-section>
              </q-card>
             </template>
-  
+
             <template v-if="tipo.label=='FIJACION DE HIERRO'">
              <q-card class="my-card"  flat bordered style="width:100%">
             <q-card-section  class="bg-green-2"> <div class="row">
@@ -1780,17 +1778,17 @@
             <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACION" v-model="laboratorio.d4" /></div>
             </div></q-card-section>
             <q-card-section  class="bg-red-2"> <div class="row">
-  
+
             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-  
+
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
             </div></q-card-section>
              </q-card>
             </template>
-  
-  
+
+
             <div class="col-12">
               <q-btn label="Modificar" type="submit" class="full-width" icon="add_circle" color="positive" :loading='loading' />
             </div>
@@ -1799,7 +1797,7 @@
         </q-card-section>
       </q-card>
     </q-dialog>
-  
+
   </q-page>
   </template>
   <script>
@@ -1807,8 +1805,8 @@
   import {jsPDF} from "jspdf";
   import $ from 'jquery'
   import moment from 'moment'
-  
-  
+
+
   export default {
     data(){
       return{
@@ -1912,7 +1910,7 @@
       this.listusers();
       this.muestras();
     },
-  
+
     created() {
       this.listseguro();
       this.embarazo;
@@ -1938,22 +1936,22 @@
       })
     },
     computed:{
-  
+
       calcular(){
         if(this.dato.fechanac==null || this.dato.fechanac=='' || this.dato.fechanac==undefined)
           return ''
         else{
             var a = moment();
             var b = moment(this.dato.fechanac);
-  
+
             var years = a.diff(b, 'year');
             b.add(years, 'years');
-  
+
             var months = a.diff(b, 'months');
             b.add(months, 'months');
-  
+
             var days = a.diff(b, 'days');
-  
+
             if(years==0){
               if(months<=1){
                 if(days<=1){
@@ -1968,7 +1966,7 @@
                   return months + ' MESES ' + days + ' DIAS'
                 }
                 }
-  
+
               }else{
                 if(years==1){
                   return  years + ' AÑO'
@@ -1985,15 +1983,15 @@
           {
             var a = moment();
             var b = moment(this.datos2.fechanac);
-  
+
             var years = a.diff(b, 'year');
             b.add(years, 'years');
-  
+
             var months = a.diff(b, 'months');
             b.add(months, 'months');
-  
+
             var days = a.diff(b, 'days');
-  
+
             if(years==0){
               if(months<=1){
                 if(days<=1){
@@ -2008,7 +2006,7 @@
                   return months + ' MESES ' + days + ' DIAS'
                 }
                 }
-  
+
               }else{
                 if(years==1){
                   return  years + ' AÑO'
@@ -2017,9 +2015,9 @@
                   }
               }
         }
-  
+
       },
-  
+
       es100(){
         if(
           (
@@ -2054,11 +2052,11 @@
             console.log(res.data)
            res.data.forEach(r => {
             this.listmuestra.push(r.tipomuestra)
-  
+
            });
-  
+
         })
-  
+
       },
               calcular3(fechanac){
         if(fechanac==null || fechanac=='' || fechanac==undefined)
@@ -2066,15 +2064,15 @@
         else{
             var a = moment();
             var b = moment(fechanac);
-  
+
             var years = a.diff(b, 'year');
             b.add(years, 'years');
-  
+
             var months = a.diff(b, 'months');
             b.add(months, 'months');
-  
+
             var days = a.diff(b, 'days');
-  
+
             if(years==0){
               if(months<=1){
                 if(days<=1){
@@ -2089,7 +2087,7 @@
                   return months + ' MESES ' + days + ' DIAS'
                 }
                 }
-  
+
               }else{
                 if(years==1){
                   return  years + ' AÑO'
@@ -2101,10 +2099,10 @@
       },
       Whatsapp(celular){
             window.open('https://wa.me/+591'+celular, '_blank');
-  
+
       },
       sobre(p,l){
-  
+
               var doc = new jsPDF('p','cm','letter')
       doc.setFont("arial");
       doc.setFontSize(14);
@@ -2117,8 +2115,8 @@
       doc.text(l.doctor.especialidad,x+10.5,y+7.2,'left')
       doc.text(l.solicitud,x+10.5,y+8.1,'left')
                       window.open(doc.output('bloburl'), '_blank');
-  
-  
+
+
       },
       descargar(l){
                 var fileName=this.url+'/../imagenes/'+l.imagen;
@@ -2128,13 +2126,13 @@
           if (val === '') {
             update(() => {
               this.doctors = this.filterdoc
-  
+
               // here you have access to "ref" which
               // is the Vue reference of the QSelect
             })
             return
           }
-  
+
           update(() => {
             const needle = val.toLowerCase()
             this.doctors = this.filterdoc.filter(v => v.label.toLowerCase().indexOf(needle) > -1)
@@ -2144,9 +2142,9 @@
            this.imagen=''
             this.labmod=l
             this.dialogmodimg=true
-  
+
         },
-  
+
         datformulario(cl,labo){
        // console.log(cl)
        // console.log(labo)
@@ -2193,7 +2191,7 @@
         })
       },
       resetlabo(){
-  
+
         this.doctor={label:''}
         this.user=''
         this.imagen=null
@@ -2371,7 +2369,7 @@
         }
           break;
           default:
-  
+
               this.laboratorio={
           tipomuestra:'',
           fechatoma:date.formatDate(new Date(),'YYYY-MM-DD'),
@@ -2426,7 +2424,7 @@
           paciente_id:'',
           user_id:this.$store.state.login.user.id,
           doctor_id:'',
-  
+
         }
                   break;
         }
@@ -2481,21 +2479,21 @@
       doc.text(['Fecha','Hora'],x+8,y+65)
       doc.text([l.d1,l.d2],x+20,y+65)
       // doc.text(l.d3,x+50,y+58)
-  
+
           doc.setFont(undefined, 'bold')
       doc.text('     2º MUESTRA',x+8,y+80)
       doc.setFont(undefined, 'normal')
       doc.text(['Fecha','Hora'],x+8,y+85)
       doc.text([l.d4,l.d5],x+20,y+85)
       // doc.text(l.d6,x+50,y+80)
-  
+
           doc.setFont(undefined, 'bold')
       doc.text('     3º MUESTRA',x+8,y+100)
       doc.setFont(undefined, 'normal')
       doc.text(['Fecha','Hora'],x+8,y+105)
       doc.text([l.d7+'',l.d8+''],x+20,y+105)
       // doc.text(l.d9+'',x+50,y+100)
-  
+
       doc.setTextColor(57,73,171)
           doc.setFont(undefined, 'bold')
       doc.text('OBSERVACIONES',x+8,y+120)
@@ -2503,12 +2501,12 @@
       doc.setFont(undefined, 'normal')
       doc.text(l.d10,x+8,y+125)
       doc.setTextColor(0,0,0)
-  
+
       doc.setFont(undefined, 'bold')
       doc.setTextColor(57,73,171)
       doc.setFont(undefined, 'normal')
       doc.setTextColor(0,0,0)
-  
+
       doc.rect(x+5, y+135, 205, 20)
       doc.rect(x+5, y+54, 205, 22)
       //doc.rect(x+5, y+75, 205, 25)
@@ -2551,10 +2549,10 @@
       //$( '#docpdf' ).attr('src', doc.output('datauristring'));
       //  window.open(doc.output('bloburl'), '_blank');
       },
-  
-  
+
+
                     labserologia(p,l){
-  
+
               var doc = new jsPDF('landscape',undefined,'legal')
       doc.setFont("arial");
       doc.setFontSize(10);
@@ -2603,14 +2601,14 @@
       doc.setFontSize(10);
       doc.text('                   VALOR REF             METODO DE PRUEBA',x+260,y+60)
       doc.setFontSize(12);
-  
+
       doc.setFont(undefined, 'normal')
       doc.setFontSize(11);
       //doc.text(['Factor Reumatoide ','    (Latex)','Antiestreptolisina',' ','Proteina C Reactiva','','RPR','','Prueba Rapida Sifilis ','','Prueba Rapida VIH ',' ','Hepatitis A ',' ','Hepatitis B ',' ','Hepatitis C  ',' ','Helicobacter Pylori ','   en Sangre','Helicobacter Pylori ','    en Heces' ,'Troponina I ','','PSA','','OBSERVACIONES'],x+200,y+65,'left')
       doc.text(['Factor Reumatoide ','    (Latex)','Antiestreptolisina',' ','Proteina C Reactiva','','RPR','','Prueba Rapida Sifilis ','','Prueba Rapida VIH ',' ','Hepatitis A ',' ','Hepatitis B ',' ','Hepatitis C  ',' ','Helicobacter Pylori ','   en Sangre',' ','    ' ,'','','','','OBSERVACIONES'],x+200,y+65,'left')
       doc.setTextColor(0,0,0)
       let regex = /^[0-9]+([.][0-9]+)?$/;
-  
+
       if( l.d1!='' && regex.test(l.d1))
         doc.text(l.d1+' UI/ml',x+240,y+65,'left')
       else
@@ -2637,12 +2635,12 @@
      // else
     //    doc.text(l.d13,x+240,y+172,'left')
       doc.text(l.d14,x+240,y+181,'left')
-  
+
           /*if(($row->d1<0 || $row->d1>500)&& $row->d1!='')
           doc.setTextColor(195,47,47)
           else
           doc.setTextColor(0,0,0)
-  
+
           if($row->paciente->sexo=='Masculino' && ($row->d2<30 || $row->d2>350)&& $row->d2!='')$cd2='color:#ff726f;';
           if($row->paciente->sexo=='Femenino' && ($row->d2<20 || $row->d2>250)&& $row->d2!='')$cd2='color:#ff726f;';
           if(($row->d3<0 || $row->d3>7)&& $row->d3!='')$cd3='color:#ff726f;';
@@ -2670,8 +2668,8 @@
       //doc.text(['Aglutinacion directa','','Aglutinacion directa','','Aglutinacion directa','','Floculacion directa','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida I-croma','','Prueba Rapida ','Semicuantitativo'],x+312,y+65,'left')
       doc.text(['Aglutinacion directa','','Aglutinacion directa','','Aglutinacion directa','','Floculacion directa','','Prueba Rapida ','Inmunocromatografica','Prueba Rapida ','Inmunocromatografica','Prueba Rapida ','Inmunocromatografica','Prueba Rapida ','Inmunocromatografica','Prueba Rapida ','Inmunocromatografica','Prueba Rapida ','Inmunocromatografica','Prueba Rapida ','Inmunocromatografica',' ','',' ',''],x+312,y+65,'left')
       doc.setFontSize(11);
-  
-  
+
+
       doc.rect(x+195, y+185, 155, 20)
       doc.setFont(undefined, 'bold')
       doc.setTextColor(57,73,171)
@@ -2685,12 +2683,12 @@
       doc.setTextColor(0,0,0)
       if(l.fechaimp==null || l.fechaimp == undefined ) l.fechaimp =  moment()
       doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,moment(l.fechaimp).format("DD-MM-YYYY")],x+330,y+190,'left')
-  
+
       //$( '#docpdf' ).attr('src', doc.output('datauristring'));
        // doc.output('save','LABORATORIO SEROLOGIA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
          window.open(doc.output('bloburl'), '_blank');
         },
-  
+
      lgmserologia(p,l){
             var doc = new jsPDF('P',undefined,'legal')
       doc.setFont("arial");
@@ -2756,21 +2754,21 @@
       doc.text(l.d3,x+70,y+71)
       if(l.d2=='POSITIVO')
       doc.setTextColor(255,0,0)
-  
+
       doc.text([obs1,obs2],x+100,y+63)
       doc.setTextColor(0,0,0)
               if(l.d4=='POSITIVO')
       doc.setTextColor(255,0,0)
       doc.text(l.d4,x+100,y+71)
       doc.setTextColor(0,0,0)
-  
+
       doc.setTextColor(57,73,171)
       doc.text(['menor a 0.9 NEGATIVO PARA lgG/lgM','0.9 menor igual & mayor 1.1 INDETERMINADO','mayor igual 1.1 POSITIVO lgG/lgM'],x+170,y+63,'center')
       doc.setFont(undefined, 'bold')
       doc.text('                        INTERPRETACION DE RESULTADOS',x+50,y+80)
-  
-  
-  
+
+
+
       doc.setTextColor(0,0,0)
       doc.setFont(undefined, 'normal')
       doc.text('              lgM                lgG                         INTERPRETACION                          COMENTARIO',x+5,y+85)
@@ -2785,21 +2783,21 @@
       doc.addImage(imgmas, 'jpeg',  40, 105, 5, 5)
       doc.setFont(undefined, 'normal')
       doc.setFontSize(9);
-  
+
       doc.text(['>Ausencia de la Enfermedad o Falso Negativo','>Inicio Temprano de ka Enfermedad Infeccion','   Aguda de la Enfermedad','>Fase activa de la Enfermedad','>Inmunidad Fase final de la Infeccion','  pasada y curada'],x+50,y+90,'left')
       doc.text(['Paciente en fase de evolucion de la enfermedad mayor de 21 dias','Se debe repetir dentro de 5 a 7 dias la prueba','Correlacionar con clinica del paciente y realizar examenes ','  complementarios (Rayos X, Tomografia)','Paciente en fase de evolucion de la enfermedad ','  mayor a 21 dias'],x+120,y+90,'left')
       doc.setTextColor(57,73,171)
       doc.setFontSize(9);
       doc.text(['NOTA: Las pruebas rapidas para COVID-19 NO SON CONFIRMATORIAS, en caso de salir positivo alguno de los anticuerpo , se recomienda',' una segunda toma de muestra con la Tecnica de HISOPADO NASOFARINGEO para RT - PCR y asi confirmar su DIAGNOSTICO','','Todas las personas producimos anticuerpos a diferente velocidad dependiendo del agente patogeno y nuestra genetica que es lo que determina la ','funcionalidad de nuestro Sistema Inmunologico',
       '','Los Resultados deben ser interpretados en funcion de la Clinica del paciente y dias de evolucion de la enfermedad'],x+8,y+115,'left')
-  
+
       doc.setTextColor(57,73,171)
       doc.setFont(undefined, 'bold')
       doc.text('OBSERVACIONES',x+8,y+142)
       doc.setFont(undefined, 'normal')
       doc.setTextColor(0,0,0)
       doc.text(l.d5,x+8,y+145)
-  
+
       doc.rect(x+5, y+147, 205, 15)
       doc.setFont(undefined, 'bold')
       doc.setTextColor(57,73,171)
@@ -2813,11 +2811,11 @@
       doc.setTextColor(0,0,0)
       if(l.fechaimp==null || l.fechaimp == undefined ) l.fechaimp =  moment()
       doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,moment(l.fechaimp).format("DD-MM-YYYY")],x+170,y+150,'left')
-  
+
       //$( '#docpdf' ).attr('src', doc.output('datauristring'));
       //  doc.output('save','PRUEBA DE COVID-19-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
       window.open(doc.output('bloburl'), '_blank');
-  
+
       },
       simple(p,l){
       var doc = new jsPDF('P',undefined,'legal')
@@ -2873,7 +2871,7 @@
       doc.setTextColor(0,0,0)
       doc.setFont(undefined, 'normal')
       doc.text(l.d12,x+50,y+102)
-  
+
       doc.setTextColor(57,73,171)
       doc.setFont(undefined, 'bold')
       doc.text(['Polimorfonuclueares: ','Mononuclueras: '],x+100,y+102)
@@ -2886,16 +2884,16 @@
       doc.setFont(undefined, 'normal')
       doc.setTextColor(0,0,0)
       doc.text(l.d15,x+70,y+110)
-  
+
       doc.setFont(undefined, 'bold')
       doc.setTextColor(57,73,171)
       doc.text('                                        OTROS',x+50,y+115)
       doc.setFont(undefined, 'normal')
-  
+
       doc.text(['SANGRE OCULTA EN HECES','TEST DE HELICOBACTER EN HECES','TEST DE BENEDICT','OBSERVACIONES'],x+8,y+120)
       doc.setTextColor(0,0,0)
       doc.text([l.d16,l.d19,l.d17,l.d18],x+70,y+120)
-  
+
       doc.rect(x+5, y+135, 205, 20)
       doc.setFont(undefined, 'bold')
       doc.setTextColor(57,73,171)
@@ -2909,12 +2907,12 @@
       doc.setTextColor(0,0,0)
       if(l.fechaimp==null || l.fechaimp == undefined ) l.fechaimp =  moment()
       doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,moment(l.fechaimp).format("DD-MM-YYYY")],x+170,y+140,'left')
-  
+
       //$( '#docpdf' ).attr('src', doc.output('datauristring'));
        // doc.output('save','COPROPARASITOLOGICO SIMPLE-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
       window.open(doc.output('bloburl'), '_blank');
       },
-  
+
       heces(p,l){
       var doc = new jsPDF('P',undefined,'legal')
       doc.setFont("arial");
@@ -2975,14 +2973,14 @@
       doc.setTextColor(0,0,0)
       doc.setFont(undefined, 'normal')
       doc.text([l.d11,l.d12],x+145,y+95)
-  
+
       doc.setFont(undefined, 'bold')
       doc.setTextColor(57,73,171)
       doc.text('OTROS',x+8,y+105)
       doc.setFont(undefined, 'normal')
       doc.setTextColor(0,0,0)
       doc.text(l.d13,x+70,y+105)
-  
+
       doc.setFont(undefined, 'bold')
       doc.setTextColor(57,73,171)
       doc.text('                                         TINCION DE GRAM',x+50,y+110)
@@ -2990,7 +2988,7 @@
       doc.text(['BACILOS GRAM POSITIVOS','BACILOS GRAM NEGATIVOS','COCOS GRAM POSITIVOS','COCOS GRAM NEGATIVOS','COCOBACILOS GRAM','ESPORAS MICOTICAS','OTROS'],x+8,y+115)
       doc.setTextColor(0,0,0)
       doc.text([l.d14,l.d15,l.d16,l.d17,l.d18,l.d19,l.d20],x+70,y+115)
-  
+
       doc.rect(x+5, y+142, 205, 22)
       doc.setFont(undefined, 'bold')
       doc.setTextColor(57,73,171)
@@ -3004,12 +3002,12 @@
       doc.setTextColor(0,0,0)
       if(l.fechaimp==null || l.fechaimp == undefined ) l.fechaimp =  moment()
       doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,moment(l.fechaimp).format("DD-MM-YYYY")],x+170,y+145,'left')
-  
+
       //$( '#docpdf' ).attr('src', doc.output('datauristring'));
         //doc.output('save','ANALISIS DE HECES-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
       window.open(doc.output('bloburl'), '_blank');
       },
-  
+
               orina(p,l){
       var doc = new jsPDF('P',undefined,'legal')
       doc.setFont("arial");
@@ -3091,7 +3089,7 @@
       doc.text(l.d14,x+160,y+78)
       doc.setTextColor(57,73,171)
       doc.text('SEDIMENTO: EXAMEN MICROSCOPICO',x+75,y+83,'center')
-  
+
       doc.setFont(undefined, 'bold')
       doc.setTextColor(57,73,171)
       doc.text('          CELULAS                      VALOR                   REFERENCIA                   CILINDROS                     VALOR              REFERENCIA',x+6,y+86)
@@ -3133,7 +3131,7 @@
       doc.setTextColor(57,73,171)
       doc.setFont(undefined, 'bold')
       doc.text('OTROS',x+160,y+119)
-  
+
       doc.setTextColor(57,73,171)
       doc.setFont(undefined, 'normal')
       doc.text(['Uratos amorfos','Fosfato amorfo','Oxalato de calcio','Fosfato de calcio','Acido Urico'],x+8,y+121)
@@ -3142,13 +3140,13 @@
       doc.setTextColor(0,0,0)
       doc.text([l.d28,l.d29,l.d31,l.d33,l.d35],x+50,y+121)
       doc.text([l.d30,l.d32,l.d34,l.d36],x+160,y+124)
-  
+
       doc.setTextColor(57,73,171)
       doc.setFont(undefined, 'bold')
       doc.text('OBSERVACIONES:',x+6,y+141)
       doc.setFont(undefined, 'normal')
      // doc.text(l.d37,x+6,y+148,'left')
-  
+
       doc.rect(x+5, y+138, 205, 25)
       doc.setFont(undefined, 'bold')
       doc.setTextColor(57,73,171)
@@ -3160,7 +3158,7 @@
       doc.setTextColor(0,0,0)
       if(l.fechaimp==null || l.fechaimp == undefined ) l.fechaimp =  moment()
       doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,moment(l.fechaimp).format("DD-MM-YYYY")],x+170,y+153,'left')
-  
+
       //$( '#docpdf' ).attr('src', doc.output('datauristring'));
       //window.open(doc.output('bloburl'), '_blank');
       doc.html( '<div style="font-size: 3px;width: 300px">'+l.d37+'</div>' , {
@@ -3172,8 +3170,8 @@
          y: y+141,
        })
       },
-  
-  
+
+
       alcoholemia(p,l){
       var doc = new jsPDF('P',undefined,'legal')
       doc.setFont("arial");
@@ -3225,11 +3223,11 @@
       doc.setTextColor(0,0,0)
       doc.setFont(undefined, 'normal')
       doc.setTextColor(0,0,0)
-  
+
       doc.setTextColor(57,73,171)
       doc.setFont(undefined, 'bold')
       doc.text('VALOR REFERENCIAL:',x+30,y+85,'center')
-  
+
       doc.setFont(undefined, 'bold')
       doc.setTextColor(57,73,171)
       doc.setFont(undefined, 'normal')
@@ -3248,7 +3246,7 @@
       //doc.setFillColor(0, 0, 0);
       doc.setFont(undefined, 'normal')
       doc.text(['Alcoholes en sangre por la degradacion de alimentos', 'ingerido ricos en Hidratos de Carbono'],x+120,y+100,'center')
-  
+
       doc.rect(x+5, y+138, 205, 20)
       doc.setFont(undefined, 'bold')
       doc.setTextColor(57,73,171)
@@ -3260,14 +3258,14 @@
       doc.setTextColor(0,0,0)
       if(l.fechaimp==null || l.fechaimp == undefined ) l.fechaimp =  moment()
       doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,moment(l.fechaimp).format("DD-MM-YYYY")],x+170,y+145,'left')
-  
+
       //$( '#docpdf' ).attr('src', doc.output('datauristring'));
       //window.open(doc.output('bloburl'), '_blank');
       window.open(doc.output('bloburl'), '_blank');
       //            doc.output('save','ALCOHOLEMIA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
-  
+
       },
-  
+
       widal(p,l){
       var doc = new jsPDF('P',undefined,'legal')
       doc.setFont("arial");
@@ -3315,7 +3313,7 @@
       doc.text('METODO AGLUTINACION DIRECTA',x+20,y+50)
       doc.text('REACCION DE WIDAL',x+20,y+60)
       doc.setFontSize(13);
-  
+
       doc.setFont(undefined, 'bold')
       doc.text(' A: ',x+80,y+60)
       doc.text(' B: ',x+80,y+75)
@@ -3329,16 +3327,16 @@
       doc.text(l.d4,x+90,y+105)
       doc.setTextColor(0,0,0)
       doc.setFontSize(11);
-  
+
       doc.setTextColor(57,73,171)
       doc.setFont(undefined, 'bold')
       doc.text('OBSERVACIONES:',x+10,y+120,'left')
-  
+
       doc.setFont(undefined, 'normal')
       doc.setTextColor(0,0,0)
       doc.text(l.d5,x+10,y+125,'left')
       doc.setFontSize(10);
-  
+
       doc.rect(x+5, y+138, 205, 20)
       doc.setFont(undefined, 'bold')
       doc.setTextColor(57,73,171)
@@ -3350,14 +3348,14 @@
       doc.setTextColor(0,0,0)
       if(l.fechaimp==null || l.fechaimp == undefined ) l.fechaimp =  moment()
       doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,moment(l.fechaimp).format("DD-MM-YYYY")],x+170,y+145,'left')
-  
+
       //$( '#docpdf' ).attr('src', doc.output('datauristring'));
       //window.open(doc.output('bloburl'), '_blank');
       window.open(doc.output('bloburl'), '_blank');
       //         doc.output('save','REACCION DE WIDAL-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
-  
+
       },
-  
+
           multidrogas(p,l){
       var doc = new jsPDF('P',undefined,'legal')
       doc.setFont("arial");
@@ -3408,7 +3406,7 @@
       doc.text('MULTIDROGAS EN ORINA',x+30,y+65)
       doc.setFont(undefined, 'bold')
       doc.text('PRUEBAS',x+100,y+70)
-  
+
       doc.setFont(undefined, 'normal')
       doc.text(' Marihuana THC ',x+8,y+80)
       doc.text(' Cocaina COC ',x+8,y+90)
@@ -3421,7 +3419,7 @@
       doc.setTextColor(0,0,0)
       if(l.d1!='NEGATIVO')
       doc.setTextColor(255,0,0)
-  
+
       doc.text(l.d1,x+60,y+80)
           doc.setTextColor(0,0,0)
       if(l.d3!='NEGATIVO')
@@ -3439,7 +3437,7 @@
       if(l.d7!='NEGATIVO')
       doc.setTextColor(255,0,0)
       doc.text(l.d7,x+60,y+120)
-  
+
       doc.setTextColor(0,0,0)
       if(l.d2!='NEGATIVO')
       doc.setTextColor(255,0,0)
@@ -3450,16 +3448,16 @@
       doc.text(l.d4,x+160,y+90)
       doc.setTextColor(0,0,0)
       doc.setFontSize(11);
-  
+
       doc.setTextColor(57,73,171)
       doc.setFont(undefined, 'bold')
       doc.text('OBSERVACIONES:',x+10,y+130,'left')
-  
+
       doc.setFont(undefined, 'normal')
       doc.setTextColor(0,0,0)
       doc.text(l.d8,x+10,y+135,'left')
       doc.setFontSize(10);
-  
+
       doc.rect(x+5, y+138, 205, 20)
       doc.setFont(undefined, 'bold')
       doc.setTextColor(57,73,171)
@@ -3471,11 +3469,11 @@
       doc.setTextColor(0,0,0)
       if(l.fechaimp==null || l.fechaimp == undefined ) l.fechaimp =  moment()
       doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,moment(l.fechaimp).format("DD-MM-YYYY")],x+170,y+145,'left')
-  
+
       //$( '#docpdf' ).attr('src', doc.output('datauristring'));
       window.open(doc.output('bloburl'), '_blank');
       //            doc.output('save','MULTIDROGAS-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
-  
+
       },
           glicosilada(p,l){
       var doc = new jsPDF('P',undefined,'legal')
@@ -3524,7 +3522,7 @@
       doc.text('HbA1c METODO INMUNOENSAYO DE FLUORESCENCIA (FIA)',x+50,y+60)
       doc.setTextColor(0,0,0)
       //doc.setFontSize(12);
-  
+
       doc.setTextColor(0,0,0)
       doc.setFont(undefined, 'bold')
       doc.setTextColor(57,73,171)
@@ -3535,21 +3533,21 @@
             doc.setTextColor(255,0,0)
       doc.text(l.d1+' %',x+100,y+75)
       doc.setTextColor(0,0,0)
-  
+
       doc.rect(x+75, y+105, 60, 12)
       doc.rect(x+75, y+105, 60, 6)
       doc.rect(x+75, y+105, 24, 12)
       doc.rect(x+75, y+70, 60, 6)
       doc.setTextColor(255,0,0)
-  
+
       doc.text('NGSP ',x+80,y+110)
       doc.text('IFCC ',x+80,y+115)
       doc.setTextColor(0,0,0)
       doc.text('4.5 - 6.5% ',x+105,y+110)
       doc.text('26 - 48 mmol/mol',x+100,y+115)
-  
+
       doc.setFontSize(10);
-  
+
       doc.rect(x+5, y+138, 205, 20)
       doc.setFont(undefined, 'bold')
       doc.setTextColor(57,73,171)
@@ -3561,13 +3559,13 @@
       doc.setTextColor(0,0,0)
       if(l.fechaimp==null || l.fechaimp == undefined ) l.fechaimp =  moment()
       doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,moment(l.fechaimp).format("DD-MM-YYYY")],x+170,y+145,'left')
-  
+
       //$( '#docpdf' ).attr('src', doc.output('datauristring'));
       window.open(doc.output('bloburl'), '_blank');
       //            doc.output('save','HEMOGLOBINA GLICOSILADA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
-  
+
       },
-  
+
           gasometria (p,l){
       var doc = new jsPDF('P',undefined,'legal')
       doc.setFont("arial");
@@ -3614,10 +3612,10 @@
       doc.setFontSize(12);
       doc.text('GASOMETRIA ARTERIAL : ',x+10,y+60)
       doc.setTextColor(0,0,0)
-  
+
       doc.text(l.d1,x+70,y+60)
       //doc.setFontSize(12);
-  
+
       doc.setTextColor(0,0,0)
       doc.setFont(undefined, 'bold')
       doc.setTextColor(57,73,171)
@@ -3633,9 +3631,9 @@
       doc.setTextColor(0,0,0)
       if(l.fechaimp==null || l.fechaimp == undefined ) l.fechaimp =  moment()
       doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,moment(l.fechaimp).format("DD-MM-YYYY")],x+170,y+145,'left')
-  
+
       if(l.imagen!=null && l.imagen!=''){
-  
+
           this.$axios.post(process.env.API+'/base64',{imagen:l.imagen}).then(res=>{
               //doc.addPage();
               var imgData=''
@@ -3652,7 +3650,7 @@
       //$( '#docpdf' ).attr('src', doc.output('datauristring'));
       window.open(doc.output('bloburl'), '_blank');
         //          doc.output('save','GASOMETRIA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
-  
+
       },
     hepatitis(p,l){
           var doc = new jsPDF('P',undefined,'legal')
@@ -3701,7 +3699,7 @@
       doc.text('Anti-HBS METODO INMUNOENSAYO DE FLUORESCENCIA (FIA)',x+50,y+60)
       doc.setTextColor(0,0,0)
       //doc.setFontSize(12);
-  
+
       doc.setTextColor(0,0,0)
       doc.setFont(undefined, 'bold')
       doc.setTextColor(57,73,171)
@@ -3712,12 +3710,12 @@
             doc.setTextColor(255,0,0)
       doc.text(l.d1+' mlU/ml',x+100,y+75)
       doc.setTextColor(0,0,0)
-  
+
       if(l.d2 =='POSITIVO' )
             doc.setTextColor(255,0,0)
       doc.text(l.d2,x+100,y+85)
       doc.setTextColor(0,0,0)
-  
+
       doc.rect(x+75, y+105, 70, 12)
       doc.rect(x+75, y+105, 70, 6)
       doc.rect(x+75, y+105, 30, 12)
@@ -3726,8 +3724,8 @@
       doc.rect(x+75, y+70, 70, 8)
       doc.rect(x+75, y+80, 70, 8)
           doc.setTextColor(57,73,171)
-  
-  
+
+
       doc.text('< 5 mlU/ml ',x+80,y+110)
       doc.text('5 - 15 mlU/ml ',x+80,y+115)
       doc.text('> 15 mlU/ml ',x+80,y+120)
@@ -3735,9 +3733,9 @@
       doc.text('NEGATIVO',x+112,y+110)
       doc.text('INDETERMINADO',x+107,y+115)
       doc.text('POSITIVO',x+112,y+120)
-  
+
       doc.setFontSize(10);
-  
+
       doc.rect(x+5, y+138, 205, 20)
       doc.setFont(undefined, 'bold')
       doc.setTextColor(57,73,171)
@@ -3749,11 +3747,11 @@
       doc.setTextColor(0,0,0)
       if(l.fechaimp==null || l.fechaimp == undefined ) l.fechaimp =  moment()
       doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,moment(l.fechaimp).format("DD-MM-YYYY")],x+170,y+145,'left')
-  
+
       //$( '#docpdf' ).attr('src', doc.output('datauristring'));
       window.open(doc.output('bloburl'), '_blank');
       //      doc.output('save','HEPATITIS B-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
-  
+
     },
     toxoplasmosis(p,l){
           var doc = new jsPDF('P',undefined,'legal')
@@ -3802,7 +3800,7 @@
       doc.text(' METODO INMUNOENSAYO DE FLUORESCENCIA (FIA)',x+50,y+55)
       doc.setTextColor(0,0,0)
       //doc.setFontSize(12);
-  
+
       doc.setTextColor(0,0,0)
       doc.setFont(undefined, 'bold')
       doc.setTextColor(57,73,171)
@@ -3815,17 +3813,17 @@
             doc.setTextColor(255,0,0)
       doc.text(l.d1+'',x+90,y+65)
       doc.setTextColor(0,0,0)
-  
+
       if(parseFloat(l.d3)>1.1 )
             doc.setTextColor(255,0,0)
       doc.text(l.d3+'',x+90,y+75)
       doc.setTextColor(0,0,0)
-  
+
       if(l.d2 =='POSITIVO' )
             doc.setTextColor(255,0,0)
       doc.text(l.d2,x+110,y+65)
       doc.setTextColor(0,0,0)
-  
+
       if(l.d4 =='POSITIVO' )
             doc.setTextColor(255,0,0)
       doc.text(l.d4,x+110,y+75)
@@ -3833,11 +3831,11 @@
       doc.rect(x+55, y+60, 25, 8)
       doc.rect(x+80, y+60, 25, 8)
       doc.rect(x+105, y+60, 50, 8)
-  
+
       doc.rect(x+55, y+70, 25, 8)
       doc.rect(x+80, y+70, 25, 8)
       doc.rect(x+105, y+70, 50, 8)
-  
+
       doc.rect(x+55, y+90, 25, 16)
       doc.rect(x+55, y+106, 25, 16)
       doc.rect(x+80, y+90, 90, 16)
@@ -3846,30 +3844,30 @@
       //doc.rect(x+75, y+117, 70, 6)
       //doc.rect(x+75, y+117, 30, 6)
       doc.setTextColor(0,0,0)
-  
-  
+
+
       doc.text('lg G ',x+65,y+100)
       doc.text('lg M',x+65,y+115)
           doc.setTextColor(57,73,171)
-  
+
       doc.text('< 4 IU/ml',x+85,y+95)
       doc.text('4 - 8 UI/ml',x+85,y+100)
       doc.text('> 8 IU/ml',x+85,y+105)
-  
+
       doc.text('< 0.9 IU/ml',x+85,y+110)
       doc.text('0.9 - 1.1 UI/ml',x+85,y+115)
       doc.text('> 1.1 IU/ml',x+85,y+120)
       doc.setTextColor(0,0,0)
-  
+
       doc.text('NEGATIVO',x+120,y+95)
       doc.text('INDETERMINADO',x+120,y+100)
       doc.text('POSITIVO',x+120,y+105)
       doc.text('NEGATIVO',x+120,y+110)
       doc.text('INDETERMINADO',x+120,y+115)
       doc.text('POSITIVO',x+120,y+120)
-  
+
       doc.setFontSize(10);
-  
+
       doc.rect(x+5, y+138, 205, 20)
       doc.setFont(undefined, 'bold')
       doc.setTextColor(57,73,171)
@@ -3881,7 +3879,7 @@
       doc.setTextColor(0,0,0)
       if(l.fechaimp==null || l.fechaimp == undefined ) l.fechaimp =  moment()
       doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,moment(l.fechaimp).format("DD-MM-YYYY")],x+170,y+145,'left')
-  
+
       //$( '#docpdf' ).attr('src', doc.output('datauristring'));
       window.open(doc.output('bloburl'), '_blank');
       //            doc.output('save','TOXOPLASMOSIS '+p.nombre+' '+p.paterno+' '+p.materno.pdf);
@@ -3937,7 +3935,7 @@
       doc.text('CONTROL MENSUAL',x+260,y+60)
       doc.text('PRUEBA                           VALOR                                     REFERENCIA',x+200,y+65)
       doc.setFontSize(12);
-  
+
       doc.setFont(undefined, 'normal')
       doc.text(['Glicemia','Creatinina','Urea','NUS-BUN ','Transaminasas GOT','Transaminasas GPT','Sodio','Cloro','Potasio'],x+200,y+70,'left')
       doc.setTextColor(0,0,0)
@@ -3976,9 +3974,9 @@
       if(parseFloat(l.d9)<3.4 || parseFloat(l.d9)>5.6)
         doc.setTextColor(255,0,0)
       doc.text(l.d9,x+250,y+128,'left')
-  
+
     doc.setTextColor(57,73,171)
-  
+
       doc.text(['70 - 105 mg/dl','0.7 - 1.5 mg/dl','15 - 45 mg/dl','7 - 18 mg/dl ','hasta 40 UI/L','hasta 41 UI/L','135 - 155 mEq/L','98 - 106 mEq/L','3.4 - 5.6 mEq/L'],x+300,y+70,'left')
       doc.setFont(undefined, 'bold')
       doc.text('CONTROL BIMESTRAL',x+260,y+140)
@@ -4006,7 +4004,7 @@
       doc.text(l.d14,x+200,y+179,'left')
       doc.setTextColor(57,73,171)
       doc.text(['2.6 - 7.2 mg/dl','adultos Hasta 135 UI/L','8.5 - 10.5 mg/dl','2.5 - 4.5 mg/dl'],x+300,y+145,'left')
-  
+
       doc.setLineHeightFactor(1.5);
       doc.rect(x+195, y+185, 155, 20)
       doc.setFont(undefined, 'bold')
@@ -4021,11 +4019,11 @@
       doc.setTextColor(0,0,0)
       if(l.fechaimp==null || l.fechaimp == undefined ) l.fechaimp =  moment()
       doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,moment(l.fechaimp).format("DD-MM-YYYY")],x+330,y+190,'left')
-  
+
       //$( '#docpdf' ).attr('src', doc.output('datauristring'));
       //  doc.output('save','HEMODIALISIS M Y B-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
          window.open(doc.output('bloburl'), '_blank');
-  
+
     },
       hemodialisistri(p,l){
               var doc = new jsPDF('landscape',undefined,'legal')
@@ -4076,7 +4074,7 @@
       doc.setFontSize(10);
       doc.text('CONTROL TRIMENSUAL',x+260,y+60)
       doc.text('PRUEBA                         VALOR                         UNIDAD                   REFERENCIA',x+200,y+65)
-  
+
       doc.setFont(undefined, 'normal')
       doc.text(['Proteinas Totales','Albumina','Globulina','Relacion A/G','Trigliceridos','Colesterol Total','HDL - Col','LDL - Col','VLDL - Col','Hierro','Prueba Rapida VIH'],x+200,y+70,'left')
       doc.setTextColor(0,0,0)
@@ -4127,9 +4125,9 @@
       doc.text(['g/dl','g/dl','g/dl','g/dl','mg/dl','mg/dl','mg/dl','mg/dl','mg/dl','ug/dl',''],x+280,y+70,'left')
        doc.setTextColor(57,73,171)
       doc.text(['6.0 - 8.5 g/dl','3.5 - 5.3 g/dl','2.8 - 3.5 g/dl','1.2 - 2.2 g/dl','10 - 160 mmg/dl','menor 200 mg/dl','35 - 65 mg/dl','hasta 150 mg/dl','2 - 30 mg/dl','50 - 170 ug/dl','NO REACTIVO'],x+310,y+70,'left')
-  
+
        doc.setTextColor(57,73,171)
-  
+
       doc.setFont(undefined, 'bold')
       doc.text('METODO: CAPACIDAD DE FIJACION DE HIERRO',x+220,y+120)
       doc.setFont(undefined, 'normal')
@@ -4151,7 +4149,7 @@
       doc.text(['ug/dl','','ug/dl','','mg/dl'],x+280,y+125,'left')
       doc.setTextColor(57,73,171)
       doc.text(['140 - 280 ug/dl','','250 - 450 ug/dl','','200 - 300 mg/dl'],x+310,y+125,'left')
-  
+
       doc.setFont(undefined, 'bold')
       doc.text('METODO: INMUNOENSAYO DE FLUORESCENCIA (FIA)',x+220,y+150)
       doc.setFont(undefined, 'normal')
@@ -4176,7 +4174,7 @@
       doc.text(['ng/ml','','','mlU/dl',''],x+280,y+155,'left')
       doc.setTextColor(57,73,171)
       doc.text(['30-350 ng/ml Varon','20-250 ng/ml Mujer','< 5 mlU/ml NEGATIVO','5-15 mlU/ml Indeterminado','> 15 mlU/ml POSITIVO'],x+300,y+155,'left')
-  
+
       doc.rect(x+195, y+185, 155, 20)
       doc.setFont(undefined, 'bold')
       doc.setTextColor(57,73,171)
@@ -4190,11 +4188,11 @@
       doc.setTextColor(0,0,0)
       if(l.fechaimp==null || l.fechaimp == undefined ) l.fechaimp =  moment()
       doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,moment(l.fechaimp).format("DD-MM-YYYY")],x+330,y+190,'left')
-  
+
       //$( '#docpdf' ).attr('src', doc.output('datauristring'));
       //  doc.output('save','HEMODIALISIS TRI-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
        window.open(doc.output('bloburl'), '_blank');
-  
+
     },
         miscelaneo(p,l){
       var doc = new jsPDF('P',undefined,'legal')
@@ -4279,7 +4277,7 @@
       doc.text(l.d7,x+8,y+130)
       doc.setFontSize(10);
       doc.setLineHeightFactor(1.5)
-  
+
       doc.rect(x+5, y+142, 205, 22)
       doc.setFont(undefined, 'bold')
       doc.setTextColor(57,73,171)
@@ -4293,14 +4291,14 @@
       doc.setTextColor(0,0,0)
       if(l.fechaimp==null || l.fechaimp == undefined ) l.fechaimp =  moment()
       doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,moment(l.fechaimp).format("DD-MM-YYYY")],x+170,y+145,'left')
-  
+
       //$( '#docpdf' ).attr('src', doc.output('datauristring'));
        // doc.output('save','MICSCELANEOS ORINA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
       window.open(doc.output('bloburl'), '_blank');
       },
-  
+
                        hierro(p,l){
-  
+
               var doc = new jsPDF('landscape',undefined,'legal')
       doc.setFont("arial");
       doc.setFontSize(10);
@@ -4352,7 +4350,7 @@
       doc.text('                   METODO: CAPACIDAD DE FIJACION DE HIERRO',x+200,y+60)
       doc.setTextColor(57,73,171)
       doc.text('  PRUEBA                     VALOR               UNIDAD                REFERENCIA',x+200,y+65)
-  
+
       doc.setFont(undefined, 'normal')
       doc.text(['Capacidad Latente de ',' Fijacion de Hierro','Capacitacion Total de ',' Fijacion de Hierro','Transferrina'],x+200,y+70,'left')
       doc.setTextColor(0,0,0)
@@ -4370,15 +4368,15 @@
       doc.setTextColor(0,0,0)
       doc.text(['ug/dl',' ','ug/dl',' ','mg/dl'],x+280,y+70,'left')
       doc.text(['140 - 280 ug/dl',' ','250 - 450 ug/dl',' ','200 - 300 mg/dl'],x+310,y+70,'left')
-  
+
       doc.setFontSize(11);
       doc.setTextColor(57,73,171)
       doc.text('OBSERVACION',x+200,y+175,'left')
       doc.setTextColor(0,0,0)
       doc.text(l.d4,x+200,y+180,'left')
       doc.setFontSize(11);
-  
-  
+
+
       doc.rect(x+195, y+185, 155, 20)
       doc.setFont(undefined, 'bold')
       doc.setTextColor(57,73,171)
@@ -4392,12 +4390,12 @@
       doc.setTextColor(0,0,0)
       if(l.fechaimp==null || l.fechaimp == undefined ) l.fechaimp =  moment()
       doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,moment(l.fechaimp).format("DD-MM-YYYY")],x+330,y+190,'left')
-  
+
       //$( '#docpdf' ).attr('src', doc.output('datauristring'));
       //  doc.output('save','FIJACION HIERRO-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
          window.open(doc.output('bloburl'), '_blank');
         },
-  
+
               uretral(p,l){
       var doc = new jsPDF('P',undefined,'legal')
       doc.setFont("arial");
@@ -4446,7 +4444,7 @@
       doc.text(['CELULAS EPITELIALES','LEUCOCITOS','HEMATIES','CELULAS CLAVE','LEVADURAS','PARASITOS','BACTERIAS','KOH','PH','OBSERVACIONES'],x+8,y+58)
       doc.setTextColor(0,0,0)
       doc.text([l.d1,l.d2,l.d3,l.d4,l.d5,l.d6,l.d7,l.d8,l.d9,l.d10],x+70,y+58)
-  
+
       doc.setFont(undefined, 'bold')
       doc.setTextColor(57,73,171)
       doc.text('                                         TINCION DE GRAM',x+50,y+100)
@@ -4454,7 +4452,7 @@
       doc.text(['BACILOS GRAM POSITIVO','BACILOS GRAM NEGATIVO','COCOS GRAM POSITIVO','COCOBACILOS GRAM POSITIVO','COCOBACILOS GRAM NEGATIVO','ESPORAS E HIFAS MICOTICAS','OBSERVACIONES'],x+8,y+105)
       doc.setTextColor(0,0,0)
       doc.text([l.d11,l.d12,l.d13,l.d14,l.d15,l.d16,l.d17],x+70,y+105)
-  
+
       doc.rect(x+5, y+135, 205, 22)
       doc.setFont(undefined, 'bold')
       doc.setTextColor(57,73,171)
@@ -4468,12 +4466,12 @@
       doc.setTextColor(0,0,0)
       if(l.fechaimp==null || l.fechaimp == undefined ) l.fechaimp =  moment()
       doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,moment(l.fechaimp).format("DD-MM-YYYY")],x+170,y+145,'left')
-  
+
       //$( '#docpdf' ).attr('src', doc.output('datauristring'));
       window.open(doc.output('bloburl'), '_blank');
       //            doc.output('save','ANALISIS DE SECRECION URETRAL-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
       },
-  
+
               vaginal(p,l){
       var doc = new jsPDF('P',undefined,'legal')
       doc.setFont("arial");
@@ -4522,7 +4520,7 @@
       doc.text(['CELULAS EPITELIALES','LEUCOCITOS','HEMATIES','CELULAS CLAVE','LEVADURAS','PARASITOS','BACTERIAS','KOH','PH','OBSERVACIONES'],x+8,y+58)
       doc.setTextColor(0,0,0)
       doc.text([l.d1,l.d2,l.d3,l.d4,l.d5,l.d6,l.d7,l.d8,l.d9,l.d10],x+70,y+58)
-  
+
       doc.setFont(undefined, 'bold')
       doc.setTextColor(57,73,171)
       doc.text('                                         TINCION DE GRAM',x+50,y+100)
@@ -4530,7 +4528,7 @@
       doc.text(['BACILOS GRAM POSITIVO','BACILOS GRAM NEGATIVO','COCOS GRAM POSITIVO','COCOBACILOS GRAM POSITIVO','COCOBACILOS GRAM NEGATIVO','ESPORAS E HIFAS MICOTICAS','OBSERVACIONES'],x+8,y+105)
       doc.setTextColor(0,0,0)
       doc.text([l.d11,l.d12,l.d13,l.d14,l.d15,l.d16,l.d17],x+70,y+105)
-  
+
       doc.rect(x+5, y+135, 205, 22)
       doc.setFont(undefined, 'bold')
       doc.setTextColor(57,73,171)
@@ -4544,12 +4542,12 @@
       doc.setTextColor(0,0,0)
       if(l.fechaimp==null || l.fechaimp == undefined ) l.fechaimp =  moment()
       doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,moment(l.fechaimp).format("DD-MM-YYYY")],x+170,y+145,'left')
-  
+
       //$( '#docpdf' ).attr('src', doc.output('datauristring'));
       window.open(doc.output('bloburl'), '_blank');
       //            doc.output('save','ANALISIS DE SECRECION VAGINAL-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
       },
-  
+
       sanguinea(p,l){
       var doc = new jsPDF('P',undefined,'legal')
       doc.setFont("arial");
@@ -4604,195 +4602,195 @@
         doc.setTextColor(255,0,0)
         if(l.d1!='')
         doc.text(l.d1 +' mg/dl',x+55,y+58)
-  
+
         doc.setTextColor(0,0,0)
       if(parseFloat(l.d3)<0.7 || parseFloat(l.d3)>1.5)
         doc.setTextColor(255,0,0)
         if(l.d3!='')
       doc.text(l.d3+' mg/dl',x+55,y+62)
-  
+
         doc.setTextColor(0,0,0)
       if(parseFloat(l.d5)<15 || parseFloat(l.d5)>45)
         doc.setTextColor(255,0,0)
         if(l.d5!='')
       doc.text(l.d5+ ' mg/dl',x+55,y+66)
-  
+
         doc.setTextColor(0,0,0)
       if(parseFloat(l.d7)<7 || parseFloat(l.d7)>18)
         doc.setTextColor(255,0,0)
         if(l.d7!='')
       doc.text(l.d7+' mg/dl',x+55,y+70)
-  
+
         doc.setTextColor(0,0,0)
       if(parseFloat(l.d9)<2.6 || parseFloat(l.d9)>7.2)
         doc.setTextColor(255,0,0)
         if(l.d9!='')
       doc.text(l.d9+ ' mg/dl',x+55,y+74)
-  
+
         doc.setTextColor(0,0,0)
       if(parseFloat(l.d10)<6.2 || parseFloat(l.d10)>8.5)
         doc.setTextColor(255,0,0)
         if(l.d10!='')
       doc.text(l.d10+' g/dl',x+55,y+78)
-  
+
         doc.setTextColor(0,0,0)
       if(parseFloat(l.d12)<3.5 || parseFloat(l.d12)>5.3)
         doc.setTextColor(255,0,0)
         if(l.d12!='')
       doc.text(l.d12+' g/dl',x+55,y+82)
-  
+
         doc.setTextColor(0,0,0)
       if(parseFloat(l.d14)<2.8 || parseFloat(l.d14)>3.5)
         doc.setTextColor(255,0,0)
         if(l.d14!='')
       doc.text(l.d14+' g/dl',x+55,y+86)
-  
+
         doc.setTextColor(0,0,0)
       if(parseFloat(l.d16)<0 || parseFloat(l.d16)>120)
         doc.setTextColor(255,0,0)
         if(l.d16!='')
       doc.text(l.d16+' UI/L',x+55,y+90)
-  
+
         doc.setTextColor(0,0,0)
       if(parseFloat(l.d18)<10 || parseFloat(l.d18)>150)
         doc.setTextColor(255,0,0)
         if(l.d18!='')
       doc.text(l.d18+' UI/L',x+55,y+94)
-  
+
         doc.setTextColor(0,0,0)
       if(parseFloat(l.d19)<0 || parseFloat(l.d19)>1.2)
         doc.setTextColor(255,0,0)
         if(l.d19!='')
       doc.text(l.d19+' mg/dl',x+55,y+98)
-  
+
         doc.setTextColor(0,0,0)
       if(parseFloat(l.d21)<0 || parseFloat(l.d21)>0.3)
         doc.setTextColor(255,0,0)
         if(l.d21!='')
       doc.text(l.d21+' mg/dl',x+55,y+102)
-  
+
         doc.setTextColor(0,0,0)
       if(parseFloat(l.d23)<0 || parseFloat(l.d23)>0.9)
         doc.setTextColor(255,0,0)
         if(l.d23!='')
       doc.text(l.d23+' mg/dl',x+55,y+106)
-  
+
         doc.setTextColor(0,0,0)
       if(parseFloat(l.d25)<0 || parseFloat(l.d25)>24)
         doc.setTextColor(255,0,0)
         if(l.d25!='')
       doc.text(l.d25+' UI/L',x+55,y+110)
-  
+
         doc.setTextColor(0,0,0)
       if(parseFloat(l.d27)<200 || parseFloat(l.d27)>480)
         doc.setTextColor(255,0,0)
         if(l.d27!='')
       doc.text(l.d27+' UI/L',x+55,y+114)
-  
+
         doc.setTextColor(0,0,0)
       if(parseFloat(l.d29)<50 || parseFloat(l.d29)>170)
         doc.setTextColor(255,0,0)
         if(l.d29!='')
       doc.text(l.d29+' ug/dl',x+55,y+118)
-  
+
         doc.setTextColor(0,0,0)
       if(parseFloat(l.d2)<0 || parseFloat(l.d2)>100)
         doc.setTextColor(255,0,0)
         if(l.d2!='')
       doc.text(l.d2+' UI/L',x+155,y+58)
-  
+
         doc.setTextColor(0,0,0)
       if(parseFloat(l.d4)<15 || parseFloat(l.d4)>45)
         doc.setTextColor(255,0,0)
         if(l.d4!='')
       doc.text(l.d4+' UI/L',x+155,y+62)
-  
+
         doc.setTextColor(0,0,0)
       if(parseFloat(l.d6)<0 || parseFloat(l.d6)>40)
         doc.setTextColor(255,0,0)
         if(l.d6!='')
       doc.text(l.d6+' UI/L',x+155,y+66)
-  
+
             doc.setTextColor(0,0,0)
       if(parseFloat(l.d8)<0 || parseFloat(l.d8)>41)
         doc.setTextColor(255,0,0)
         if(l.d8!='')
       doc.text(l.d8+' UI/L',x+155,y+70)
-  
+
             doc.setTextColor(0,0,0)
       if(parseFloat(l.d11)<10 || parseFloat(l.d11)>160)
         doc.setTextColor(255,0,0)
         if(l.d11!='')
       doc.text(l.d11+' mg/dl',x+155,y+78)
-  
+
             doc.setTextColor(0,0,0)
       if(parseFloat(l.d13)<0 || parseFloat(l.d13)>200)
         doc.setTextColor(255,0,0)
         if(l.d13!='')
       doc.text(l.d13+' mg/dl',x+155,y+82)
-  
+
             doc.setTextColor(0,0,0)
       if(parseFloat(l.d15)<35 || parseFloat(l.d15)>65)
         doc.setTextColor(255,0,0)
         if(l.d15!='')
       doc.text(l.d15+' mg/dl',x+155,y+86)
-  
+
         doc.setTextColor(0,0,0)
       if(parseFloat(l.d17)<0 || parseFloat(l.d17)>150)
         doc.setTextColor(255,0,0)
         if(l.d17!='')
       doc.text(l.d17+' mg/dl',x+155,y+90)
-  
+
       doc.setTextColor(0,0,0)
       if(parseFloat(l.d32)<=2 || parseFloat(l.d32)>=30)
         doc.setTextColor(255,0,0)
         if(l.d32!='')
         doc.text(l.d32+' mg/dl',x+155,y+94)
-  
+
         doc.setTextColor(0,0,0)
       if(parseFloat(l.d20)<135 || parseFloat(l.d20)>155)
         doc.setTextColor(255,0,0)
         if(l.d20!='')
       doc.text(l.d20+' mEq/L',x+155,y+102)
-  
+
         doc.setTextColor(0,0,0)
       if(parseFloat(l.d22)<98 || parseFloat(l.d22)>106)
         doc.setTextColor(255,0,0)
         if(l.d22!='')
       doc.text(l.d22+' mEq/L',x+155,y+106)
-  
+
         doc.setTextColor(0,0,0)
       if(parseFloat(l.d24)<3.4 || parseFloat(l.d24)>5.3)
         doc.setTextColor(255,0,0)
         if(l.d24!='')
       doc.text(l.d24+' mEq/L',x+155,y+110)
-  
+
         doc.setTextColor(0,0,0)
       if(parseFloat(l.d26)<8.5 || parseFloat(l.d26)>10.5)
         doc.setTextColor(255,0,0)
         if(l.d26!='')
       doc.text(l.d26+' mg/dl',x+155,y+114)
-  
+
         doc.setTextColor(0,0,0)
       if(parseFloat(l.d28)<1.7 || parseFloat(l.d28)>2.4)
         doc.setTextColor(255,0,0)
         if(l.d28!='')
       doc.text(l.d28+' mg/dl',x+155,y+118)
-  
+
         doc.setTextColor(0,0,0)
       if(parseFloat(l.d30)<2.5 || parseFloat(l.d30)>4.5)
         doc.setTextColor(255,0,0)
         if(l.d30!='')
       doc.text(l.d30+' mg/dl',x+155,y+122)
-  
-  
+
+
       doc.setTextColor(57,73,171)
       doc.setFont(undefined, 'bold')
       doc.text('OBSERVACIONES:',x+6,y+129)
       doc.setFont(undefined, 'normal')
         doc.setTextColor(0,0,0)
       doc.text(l.d31,x+6,y+132,'left')
-  
+
       doc.rect(x+5, y+126, 205, 25)
       doc.setFont(undefined, 'bold')
       doc.setTextColor(57,73,171)
@@ -4804,7 +4802,7 @@
       doc.setTextColor(0,0,0)
       if(l.fechaimp==null || l.fechaimp == undefined ) l.fechaimp =  moment()
       doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,moment(l.fechaimp).format("DD-MM-YYYY")],x+170,y+139,'left')
-  
+
       //$( '#docpdf' ).attr('src', doc.output('datauristring'));
       window.open(doc.output('bloburl'), '_blank');
       //            doc.output('save','QUIMICA SANGUINIA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
@@ -4818,7 +4816,7 @@
           if (this.laboratorio.d26 == undefined || this.laboratorio.d26=='') this.laboratorio.d26=0;
           if (this.laboratorio.d28 == undefined || this.laboratorio.d28=='') this.laboratorio.d28=0;
           if (this.laboratorio.d30 == undefined || this.laboratorio.d30=='') this.laboratorio.d30=0;
-  
+
           total=parseFloat(this.laboratorio.d18) + parseFloat(this.laboratorio.d20) + parseFloat(this.laboratorio.d22) + parseFloat(this.laboratorio.d24) + parseFloat(this.laboratorio.d26)
           + parseFloat(this.laboratorio.d28) + parseFloat(this.laboratorio.d30)
       if(total!=100 )
@@ -4876,7 +4874,7 @@
       doc.setFontSize(10);
       doc.text('       UNIDAD         TIPO MUESTRA      VALOR REFE',x+250,y+60)
       doc.setFontSize(12);
-  
+
       doc.setFont(undefined, 'normal')
       doc.setFontSize(11);
       doc.text(['DIMEROS D',
@@ -4984,8 +4982,8 @@
         '',
       ],x+315,y+65,'center')
       doc.setFontSize(11);
-  
-  
+
+
       doc.rect(x+195, y+180, 155, 30)
       doc.setFont(undefined, 'bold')
       doc.setTextColor(57,73,171)
@@ -4993,7 +4991,7 @@
       doc.setFontSize(10);
       doc.setLineHeightFactor(1.5)
       doc.text(['Fecha toma de Muestra','Fecha Entrega de Resultado','Hora toma Muestra'],x+280,y+185,'left')
-  
+
       //$( '#docpdf' ).attr('src', doc.output('datauristring'));
       window.open(doc.output('bloburl'), '_blank');
        //           doc.output('save','QUIMICA SANGUINIA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
@@ -5051,7 +5049,7 @@
       if((parseFloat(l.d1)<4.8 || parseFloat(l.d1)>5.4) && p.sexo=='Femenino')
         doc.setTextColor(255,0,0)
       doc.text(l.d1,x+226,y+60,'center')
-  
+
         doc.setTextColor(0,0,0)
       if((parseFloat(l.d3)<151 || parseFloat(l.d3)>175) && p.sexo=='Masculino')
         doc.setTextColor(255,0,0)
@@ -5059,46 +5057,46 @@
         doc.setTextColor(255,0,0)
       doc.text(l.d3,x+226,y+68,'center')
         doc.setTextColor(0,0,0)
-  
+
       if((parseFloat(l.d5)<0.51 || parseFloat(l.d5)>0.57) && p.sexo=='Masculino')
         doc.setTextColor(255,0,0)
       if((parseFloat(l.d5)<0.46 || parseFloat(l.d5)>0.53) && p.sexo=='Femenino')
         doc.setTextColor(255,0,0)
       doc.text(l.d5,x+226,y+76,'center')
             doc.setTextColor(0,0,0)
-  
+
       if((parseFloat(l.d7)<0 || parseFloat(l.d7)>15) && p.sexo=='Masculino')
         doc.setTextColor(255,0,0)
       if((parseFloat(l.d7)<0 || parseFloat(l.d7)>20) && p.sexo=='Femenino')
         doc.setTextColor(255,0,0)
       doc.text(l.d7,x+226,y+84,'center')
             doc.setTextColor(0,0,0)
-  
+
       if(parseFloat(l.d9)<83.0 || parseFloat(l.d9)>97.0)
         doc.setTextColor(255,0,0)
       doc.text(l.d9,x+226,y+92,'center')
-  
+
         doc.setTextColor(0,0,0)
       if(parseFloat(l.d11)<27.0 || parseFloat(l.d11)>31.0)
         doc.setTextColor(255,0,0)
         doc.text(l.d11,x+226,y+100,'center')
-  
+
         doc.setTextColor(0,0,0)
       if(parseFloat(l.d13)<32.0 || parseFloat(l.d13)>36.0)
         doc.setTextColor(255,0,0)
-  
+
         doc.text(l.d13,x+226,y+108,'center')
-  
+
         doc.setTextColor(0,0,0)
       if(parseFloat(l.d15)<4.5 || parseFloat(l.d15)>10.5)
         doc.setTextColor(255,0,0)
-  
+
       doc.text(l.d15,x+226,y+116,'center')
         doc.setTextColor(0,0,0)
       if(parseFloat(l.d17)<150 || parseFloat(l.d17)>400)
         doc.setTextColor(255,0,0)
       doc.text(l.d17,x+226,y+125,'center')
-  
+
       doc.setTextColor(57,73,171)
       doc.text(['x10^(12)/L',' ','g/L',' ','L/L',' ','mm.',' ','ft.',' ','pg.',' ','%',' ','x10^(9)L',' ','x10^(9)L'],x+240,y+60,'center')
       doc.setFontSize(6);
@@ -5112,7 +5110,7 @@
       doc.text(['4.5-10.5x10^(9)/L'],x+265,y+116,'center')
       doc.text(['150-400x10^(9)L'],x+265,y+124,'center')
       doc.setFontSize(10);
-  
+
       doc.setTextColor(57,73,171)
       doc.setFont(undefined, 'bold')
       doc.text('REFERENCIA',x+325,y+55)
@@ -5129,13 +5127,13 @@
       doc.text(l.d12,x+320,y+100,'center')
       doc.text(l.d14,x+320,y+108,'center')
       doc.text(l.d16,x+320,y+116,'center')
-  
+
       //doc.text([l.d2,' ',' ',l.d4,' ',l.d6,' ',l.d8,' ',l.d10,' ',l.d12,' ',l.d14,' ',l.d16,' '],x+315,y+60,'center')
       doc.setTextColor(57,73,171)
       doc.setFontSize(10)
-  
+
       doc.text(['5-10min',' ','1-3min',' ','12-13seg',' ','95-100%',' ','0.97-1.04.',' ','',' ','0.5-2%'],x+337,y+60,'center')
-  
+
       doc.rect(x+195, y+129, 155, 40)
       doc.setFont(undefined, 'bold')
       doc.setTextColor(57,73,171)
@@ -5154,22 +5152,22 @@
       doc.text(['0-3%','50-70%','0-3%','0-1%','25-40%','4-8%'],x+295,y+143,'center')
       doc.text(['0.00-0.35x10^(9)L','2.50-7.35x10^(9)L','0.00-0.35x10^(9)L','0.00-0.15x10^(9)L','1.25-4.20x10^(9)L','2.00-8.40x10^(9)L'],x+327,y+143,'center')
       doc.rect(x+195, y+170, 155, 15)
-  
+
       doc.text('MORFOLOGIA DE FROTIS DE SANGRE PERIFERICA',x+265,y+173,'center')
       doc.text(['Serie Rojas','Serie Blancas','Serie Plaquetarias'],x+223,y+176,'right')
       doc.setTextColor(0,0,0)
       doc.text([l.d31,l.d32,l.d33],x+228,y+176,'left')
       doc.setTextColor(57,73,171)
       doc.rect(x+195, y+186, 155, 15)
-  
+
       doc.text('RESPONSABLE',x+205,y+190,'left')
       doc.text(l.responsable,x+215,y+195,'center')
       doc.text(['Fecha de Toma de Muestra','Hora de Toma de Muestra:','Fecha de Entrega Resultado'],x+265,y+190,'left')
       if(l.fechaimp==null || l.fechaimp == undefined ) l.fechaimp =  moment()
-  
+
       doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,moment(l.fechaimp).format("DD-MM-YYYY")],x+310,y+190,'left')
      // doc.text(l.responsable,x+235,y+178,'right')
-  
+
       // doc.html('<div style="border:1px solid black;width: 50px;font-size: 3px"><b><i>Adimer paul chambi ajata</i></b></div>', {
       //   callback: function (doc) {
       //     window.open(doc.output('bloburl'), '_blank');
@@ -5179,7 +5177,7 @@
       // });
       // doc.save("Pago"+date.formatDate(Date.now(),'DD-MM-YYYY')+".pdf");
       // window.open(doc.output('bloburl'), '_blank');
-  
+
       //$( '#docpdf' ).attr('src', doc.output('datauristring'));
       window.open(doc.output('bloburl'), '_blank');
         //          doc.output('save','HEMOGRAMA COMPLETO-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
@@ -5233,7 +5231,7 @@
       doc.setFontSize(10);
       doc.text('UNIDAD   TIPO MUESTRA   VALOR REF',x+260,y+60)
       doc.setFontSize(12);
-  
+
       doc.setFont(undefined, 'normal')
       doc.setFontSize(10);
       doc.text('DIMEROS D',x+198,y+65,'left')
@@ -5249,7 +5247,7 @@
       doc.text('lg G',x+198,y+174,'left')
       doc.setFontSize(12);
       doc.setTextColor(0,0,0)
-  
+
          if(parseFloat(l.d1)>500.0)
         doc.setTextColor(255,0,0)
       doc.text(l.d1,x+250,y+65,'center')
@@ -5273,10 +5271,10 @@
         doc.setTextColor(255,0,0)
       doc.text(l.d6,x+250,y+106,'center')
       doc.setTextColor(0,0,0)
-  
+
       doc.text(l.d7,x+250,y+118,'center')
       doc.text(l.d8,x+250,y+134,'center')
-  
+
       if(parseFloat(l.d9)>15 )
         doc.setTextColor(255,0,0)
       doc.text(l.d9,x+250,y+152,'center')
@@ -5289,7 +5287,7 @@
         doc.setTextColor(255,0,0)
       doc.text(l.d11,x+250,y+174,'center')
       doc.setTextColor(0,0,0)
-  
+
       doc.text('ng/ml',x+270,y+65,'center')
       doc.text('ng/ml',x+270,y+73,'center')
       doc.text('pg/ml',x+270,y+81,'center')
@@ -5301,7 +5299,7 @@
       doc.text('mlU/ml',x+270,y+152,'center')
       doc.text('IU/ml',x+270,y+164,'center')
       doc.text('IU/ml',x+270,y+174,'center')
-  
+
       doc.setFontSize(10);
       doc.text('Plasma Citratado',x+290,y+65,'center')
       doc.text('Suero',x+290,y+73,'center')
@@ -5325,8 +5323,8 @@
       ],x+305,y+65,'left')
       doc.setLineHeightFactor(1.15)
       doc.setFontSize(10);
-  
-  
+
+
       doc.rect(x+195, y+184, 155, 20)
       doc.setFont(undefined, 'bold')
       doc.setTextColor(57,73,171)
@@ -5336,7 +5334,7 @@
       doc.text(['Fecha toma de Muestra','Hora toma Muestra','Fecha Entrega de Resultado'],x+280,y+189,'left')
       if(l.fechaimp==null || l.fechaimp == undefined ) l.fechaimp =  moment()
       doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,moment(l.fechaimp).format("DD-MM-YYYY")],x+330,y+189,'left')
-  
+
       //$( '#docpdf' ).attr('src', doc.output('datauristring'));
       window.open(doc.output('bloburl'), '_blank');
       //            doc.output('save','INMUNOENSAYO DE FLUORESCENCIA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
@@ -5390,7 +5388,7 @@
       doc.setFontSize(10);
       doc.text('METODO:  INMUNOGRAMATOGRAFIA CUALITATIVA',x+220,y+60)
       doc.setFontSize(12);
-  
+
       doc.setFont(undefined, 'normal')
       doc.setFontSize(10);
       doc.setTextColor(211,47,47)
@@ -5399,20 +5397,20 @@
       doc.text(l.d1,x+285,y+73,'left')
       doc.setTextColor(0,0,0)
       doc.rect(x+195, y+75, 155, 72)
-  
+
       doc.text('FUNDAMENTO E INTERPRETACION DE LOS RESULTADO',x+220,y+80)
       doc.text(['La prueba rapida de Antigeno Nasal puede revelar una Infeccion activa de SARS-COV-2.','El test proporciona un resultado de "POSITIVO" o "NEGATIVO"','Los antigenos son parte de la estructura del virus, como las proteinas de espiga.'],x+205,y+85)
       doc.text(['La muestra de Hisopado nasofaringeo pasa por una linea que detecta antigenos y cambia de color, ','durante la prueba el anticuerpo monocianal de raton anti-SARS-CoV-2 en la muestra interactua con ','el Anticuerpo monocianal lgG anti-COVID-19 conjugando con particulas de color que forman un ','complejo de particulas de antigeno-anticuerpo. Este complejo migra en la menbrana por accion ','capilar hasta la linea de prueba, donde aera capturado por el anticuerpo por el anticuerpo monocianal ','anti-SARS-CoV-2 de raton. Una linea de prueba coloreada seria visible en la ventana de resultados ','si los antigenos del SARS-CoV-2 estan presentes en la muestra.'],x+205,y+100)
       doc.text(['Funciona mejor en la etapa inicial con una CARGA VIRAL ALTA y sintomalogia hasta los 10 dias.','Los resultados Negativos indica ausencia de Antigenos detectables de SARS-CoV-2 y cuando la ','carga viral o la cantidad de antigeno presente se encuentra debajo del limite de deteccion.'],x+205,y+130)
-  
+
       doc.text('Los resultados Psitivos no diferencian entre SARS-COV y SARS-COV-2',x+205,y+145)
       doc.rect(x+195, y+148, 155, 10)
       doc.text(['NOTA: Las pruebas rapidas para COVID-19 NO SON CONFIRMATORIAS Los Resultados deben ','ser interpretados en funcion de la Clinica del paciente y dias de evolucion de la enfermedad'],x+205,y+152)
-  
+
      //doc.text('El test proporciona un resultado de "POSITIVO" o "NEGATIVO"',x+205,y+85)
       doc.setFontSize(10);
-  
-  
+
+
       doc.rect(x+195, y+160, 155, 10)
       doc.setTextColor(57,73,171)
       doc.text('OBSERVACION',x+200,y+164)
@@ -5430,7 +5428,7 @@
       doc.setTextColor(0,0,0)
       if(l.fechaimp==null || l.fechaimp == undefined ) l.fechaimp = moment()
       doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,moment(l.fechaimp).format("DD-MM-YYYY")],x+325,y+175,'left')
-  
+
       //$( '#docpdf' ).attr('src', doc.output('datauristring'));
        window.open(doc.output('bloburl'), '_blank');
       //            doc.output('save','RESULTADO SEROLOGIA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
@@ -5487,14 +5485,14 @@
       doc.text('F.U.M.',x+45,y+75,'center')
       doc.setTextColor(0,0,0)
       doc.text(l.d2,x+100,y+80,'center')
-  
+
       doc.setTextColor(57,73,171)
       doc.setFont(undefined, 'bold')
       doc.text('OBSERVACIONES:',x+20,y+90)
       doc.setTextColor(0,0,0)
       doc.setFont(undefined, 'normal')
       doc.text(l.d3,x+30,y+95,'left')
-  
+
       doc.rect(x+5, y+102, 205, 20)
       doc.setFont(undefined, 'bold')
       doc.setTextColor(57,73,171)
@@ -5509,7 +5507,7 @@
       if(l.fechaimp==null || l.fechaimp == undefined ) l.fechaimp = moment()
       doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,moment(l.fechaimp).format("DD-MM-YYYY")],x+170,y+110,'left')
       doc.setTextColor(0,0,0)
-  
+
       //$( '#docpdf' ).attr('src', doc.output('datauristring'));
       window.open(doc.output('bloburl'), '_blank');
       //            doc.output('save','TEST EMBARAZO-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
@@ -5557,7 +5555,7 @@
           this.toxoplasmosis(p,l)
         if(l.tipo_id==21)
           this.hemodialisis(p,l)
-  
+
         if(l.tipo_id==22)
           this.hemodialisistri(p,l)
         if(l.tipo_id==23)
@@ -5599,12 +5597,12 @@
         //   x: 10,
         //   y: 10,
         // });
-  
+
         // doc.save("Pago"+date.formatDate(Date.now(),'DD-MM-YYYY')+".pdf");
         // window.open(doc.output('bloburl'), '_blank');
         //$( '#docpdf' ).attr('src', doc.output('datauristring'));
         window.open(doc.output('bloburl'), '_blank');
-  
+
       },
       getImage(event){
         this.imagen = event.target.files[0];
@@ -5645,7 +5643,7 @@
                 return false;
              }}
            }
-  
+
         var data = new  FormData();
           data.append('imagen', this.imagen);
           data.append('tipomuestra',this.laboratorio.tipomuestra)
@@ -5723,7 +5721,7 @@
         this.paciente=paciente
         this.resetlabo()
         this.dialoglaboratorio=true
-  
+
       },
       modpaciente(){
                 this.datos2.seguro=this.seguro.id
@@ -5767,12 +5765,12 @@
           this.loading=false
           this.alert=false;
           this.mispacientes();
-  
+
         })
             }
         })
-  
-  
+
+
         //   .catch(err=>{
         //   this.$q.loading.hide()
         //   this.$q.notify({
@@ -5822,7 +5820,7 @@
               this.mispacientes()
               this.consultarLab()
           })
-  
+
         }).onOk(() => {
           // console.log('>>>> second OK catcher')
         }).onCancel(() => {
@@ -5850,7 +5848,7 @@
                this.user=this.usuarios[0]
             //console.log(this.usuarios)
             })
-  
+
         },
             listseguro(){
             this.seguros=[]
@@ -5860,9 +5858,9 @@
                     r.label=r.nombre
                     this.seguros.push(r);
                 });
-  
+
             })
-  
+
         },
       mispacientes(){
         this.$q.loading.show()
@@ -5885,8 +5883,7 @@
     }
   }
   </script>
-  
+
   <style scoped>
-  
+
   </style>
-  
