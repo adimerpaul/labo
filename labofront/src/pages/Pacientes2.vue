@@ -1151,10 +1151,12 @@
 
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+            <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
+
             </div></q-card-section>
                                             </q-card>
             </template>
-                                          <template v-if="tipo.label=='EXAMEN GENERAL DE ORINA'">
+            <template v-if="tipo.label=='EXAMEN GENERAL DE ORINA'">
                                                                                     <q-card class="my-card"  flat bordered>
             <q-card-section  class="bg-green-2"> <div class="row">
             <div class="col-6 col-sm-6"><q-input dense outlined label="Color" v-model="laboratorio.d1" /></div>
