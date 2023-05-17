@@ -5153,21 +5153,24 @@
       doc.text(['x10^(9)L','x10^(9)L','x10^(9)L','x10^(9)L','x10^(9)L','x10^(9)L'],x+268,y+143,'center')
       doc.text(['0-3%','50-70%','0-3%','0-1%','25-40%','4-8%'],x+295,y+143,'center')
       doc.text(['0.00-0.35x10^(9)L','2.50-7.35x10^(9)L','0.00-0.35x10^(9)L','0.00-0.15x10^(9)L','1.25-4.20x10^(9)L','2.00-8.40x10^(9)L'],x+327,y+143,'center')
-      doc.rect(x+195, y+170, 155, 15)
+      doc.rect(x+195, y+170, 155, 20)
 
       doc.text('MORFOLOGIA DE FROTIS DE SANGRE PERIFERICA',x+265,y+173,'center')
-      doc.text(['Serie Rojas','Serie Blancas','Serie Plaquetarias'],x+223,y+176,'right')
+      doc.text(['Serie Rojas','','Serie Blancas','Serie Plaquetarias'],x+223,y+176,'right')
       doc.setTextColor(0,0,0)
-      doc.text([l.d31,l.d32,l.d33],x+228,y+176,'left')
+      doc.text(l.d31.substring(0, 57),x+228,y+176,'left')
+      doc.text(l.d31.substring(57),x+228,y+180,'left')
+      doc.text(l.d32,x+228,y+185,'left')
+      doc.text(l.d33,x+228,y+189,'left')
       doc.setTextColor(57,73,171)
-      doc.rect(x+195, y+186, 155, 15)
+      doc.rect(x+195, y+191, 155, 20)
 
-      doc.text('RESPONSABLE',x+205,y+190,'left')
-      doc.text(l.responsable,x+215,y+195,'center')
-      doc.text(['Fecha de Toma de Muestra','Hora de Toma de Muestra:','Fecha de Entrega Resultado'],x+265,y+190,'left')
+      doc.text('RESPONSABLE',x+205,y+195,'left')
+      doc.text(l.responsable,x+215,y+200,'center')
+      doc.text(['Fecha de Toma de Muestra','Hora de Toma de Muestra:','Fecha de Entrega Resultado'],x+265,y+195,'left')
       if(l.fechaimp==null || l.fechaimp == undefined ) l.fechaimp =  moment()
 
-      doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,moment(l.fechaimp).format("DD-MM-YYYY")],x+310,y+190,'left')
+      doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,moment(l.fechaimp).format("DD-MM-YYYY")],x+310,y+195,'left')
      // doc.text(l.responsable,x+235,y+178,'right')
 
       // doc.html('<div style="border:1px solid black;width: 50px;font-size: 3px"><b><i>Adimer paul chambi ajata</i></b></div>', {
