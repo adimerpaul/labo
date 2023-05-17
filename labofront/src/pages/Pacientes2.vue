@@ -5156,7 +5156,7 @@
       doc.rect(x+195, y+170, 155, 20)
 
       doc.text('MORFOLOGIA DE FROTIS DE SANGRE PERIFERICA',x+265,y+173,'center')
-      doc.text(['Serie Rojas','','Serie Blancas','Serie Plaquetarias'],x+223,y+176,'right')
+      doc.text(['Serie Roja','','Serie Blanca','Serie Plaquetaria'],x+223,y+176,'right')
       doc.setTextColor(0,0,0)
       doc.text(l.d31.substring(0, 57),x+228,y+176,'left')
       doc.text(l.d31.substring(57),x+228,y+180,'left')
