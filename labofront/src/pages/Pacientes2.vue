@@ -286,12 +286,13 @@
             <div class="col-6 col-sm-6"><q-input dense outlined label="V.C.M." v-model="laboratorio.d9" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="INR" v-model="laboratorio.d10" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="Hb.C.M." v-model="laboratorio.d11" /></div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="Grupo Factor" v-model="laboratorio.d12" /></div>
+            <div class="col-6 col-sm-6"><q-input dense outlined label="APTT" v-model="laboratorio.d34" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="C.Hb.C.M." v-model="laboratorio.d13" /></div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="Reticulocitos" v-model="laboratorio.d14" /></div>
+            <div class="col-6 col-sm-6"><q-input dense outlined label="Grupo Factor" v-model="laboratorio.d12" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="Globulos Blancos" v-model="laboratorio.d15" /></div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="IPR" v-model="laboratorio.d16" /></div>
+            <div class="col-6 col-sm-6"><q-input dense outlined label="Reticulocitos" v-model="laboratorio.d14" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="Plaquetas" v-model="laboratorio.d17" /></div>
+            <div class="col-6 col-sm-6"><q-input dense outlined label="IPR" v-model="laboratorio.d16" /></div>
             <div class="col-6 col-sm-6"></div></div>
             </q-card-section>
             <q-separator/>
@@ -1046,23 +1047,25 @@
             <template v-if="tipo.label=='HEMOGRAMA COMPLETO'">
               <q-card class="my-card"  flat bordered>
             <q-card-section  class="bg-green-2"> <div class="row">
-            <div class="col-6 col-sm-6"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d1" /></div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="Tiempo de cuagulacion" v-model="laboratorio.d2" /></div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="Hemoglobina" v-model="laboratorio.d3" /></div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="Tiempo de sangria" v-model="laboratorio.d4" /></div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="Hematocrito" v-model="laboratorio.d5" /></div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="Tiempo de Protrombina" v-model="laboratorio.d6" /></div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="V.E.S." v-model="laboratorio.d7" /></div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="% Actividad" v-model="laboratorio.d8" /></div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="V.C.M." v-model="laboratorio.d9" /></div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="INR" v-model="laboratorio.d10" /></div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="Hb.C.M." v-model="laboratorio.d11" /></div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="Grupo Factor" v-model="laboratorio.d12" /></div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="C.Hb.C.M." v-model="laboratorio.d13" /></div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="Reticulocitos" v-model="laboratorio.d14" /></div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="Globulos Blancos" v-model="laboratorio.d15" /></div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="IPR" v-model="laboratorio.d16" /></div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="Plaquetas" v-model="laboratorio.d17" /></div>
+              <div class="col-6 col-sm-6"><q-input dense outlined label="Globulos rojos" v-model="laboratorio.d1" /></div>
+              <div class="col-6 col-sm-6"><q-input dense outlined label="Tiempo de cuagulacion" v-model="laboratorio.d2" /></div>
+              <div class="col-6 col-sm-6"><q-input dense outlined label="Hemoglobina" v-model="laboratorio.d3" /></div>
+              <div class="col-6 col-sm-6"><q-input dense outlined label="Tiempo de sangria" v-model="laboratorio.d4" /></div>
+              <div class="col-6 col-sm-6"><q-input dense outlined label="Hematocrito" v-model="laboratorio.d5" /></div>
+              <div class="col-6 col-sm-6"><q-input dense outlined label="Tiempo de Protrombina" v-model="laboratorio.d6" /></div>
+              <div class="col-6 col-sm-6"><q-input dense outlined label="V.E.S." v-model="laboratorio.d7" /></div>
+              <div class="col-6 col-sm-6"><q-input dense outlined label="% Actividad" v-model="laboratorio.d8" /></div>
+              <div class="col-6 col-sm-6"><q-input dense outlined label="V.C.M." v-model="laboratorio.d9" /></div>
+              <div class="col-6 col-sm-6"><q-input dense outlined label="INR" v-model="laboratorio.d10" /></div>
+              <div class="col-6 col-sm-6"><q-input dense outlined label="Hb.C.M." v-model="laboratorio.d11" /></div>
+              <div class="col-6 col-sm-6"><q-input dense outlined label="APTT" v-model="laboratorio.d34" /></div>
+              <div class="col-6 col-sm-6"><q-input dense outlined label="C.Hb.C.M." v-model="laboratorio.d13" /></div>
+              <div class="col-6 col-sm-6"><q-input dense outlined label="Grupo Factor" v-model="laboratorio.d12" /></div>
+              <div class="col-6 col-sm-6"><q-input dense outlined label="Globulos Blancos" v-model="laboratorio.d15" /></div>
+              <div class="col-6 col-sm-6"><q-input dense outlined label="Reticulocitos" v-model="laboratorio.d14" /></div>
+              <div class="col-6 col-sm-6"><q-input dense outlined label="Plaquetas" v-model="laboratorio.d17" /></div>
+              <div class="col-6 col-sm-6"><q-input dense outlined label="IPR" v-model="laboratorio.d16" /></div>
+    
             <div class="col-6 col-sm-6"></div></div>
             </q-card-section>
             <q-separator/>
@@ -5117,7 +5120,7 @@
       doc.setFont(undefined, 'bold')
       doc.text('REFERENCIA',x+325,y+55)
       doc.setFont(undefined, 'normal')
-      doc.text(['Tiempo','cuagulacion','Tiempo','sangria','Tiempo','Protrombina','% Actividad',' ','INR',' ','Grupo factor',' ','Reticulocitos',' ','IPR'],x+296,y+60,'center')
+      doc.text(['Tiempo','cuagulacion','Tiempo','sangria','Tiempo','Protrombina','% Actividad',' ','INR',' ','APTT','','Grupo factor',' ','Reticulocitos',' ','IPR'],x+296,y+60,'center')
       doc.setTextColor(0,0,0)
       doc.setFontSize(8)
       doc.text(l.d2,x+320,y+60,'center')
@@ -5126,15 +5129,21 @@
       if(l.d8!='')
       doc.text(l.d8+' %',x+320,y+84,'center')
       doc.text(l.d10,x+320,y+92,'center')
-      doc.text(l.d12,x+320,y+100,'center')
-      doc.text(l.d14,x+320,y+108,'center')
-      doc.text(l.d16,x+320,y+116,'center')
+        doc.setTextColor(0,0,0)
+      if(parseFloat(l.d34)<25 || parseFloat(l.d34)>35)
+        doc.setTextColor(255,0,0)
+      doc.text(l.d34,x+320,y+100,'center')
+      doc.setTextColor(0,0,0)
+
+      doc.text(l.d12,x+320,y+108,'center')
+      doc.text(l.d14,x+320,y+116,'center')
+      doc.text(l.d16,x+320,y+124,'center')
 
       //doc.text([l.d2,' ',' ',l.d4,' ',l.d6,' ',l.d8,' ',l.d10,' ',l.d12,' ',l.d14,' ',l.d16,' '],x+315,y+60,'center')
       doc.setTextColor(57,73,171)
       doc.setFontSize(10)
 
-      doc.text(['5-10min',' ','1-3min',' ','12-13seg',' ','95-100%',' ','0.97-1.04.',' ','',' ','0.5-2%'],x+337,y+60,'center')
+      doc.text(['5-10min',' ','1-3min',' ','12-13seg',' ','95-100%',' ','0.97-1.04.',' ','25 a 35 seg','','',' ','0.5-2%'],x+337,y+60,'center')
 
       doc.rect(x+195, y+129, 155, 40)
       doc.setFont(undefined, 'bold')
