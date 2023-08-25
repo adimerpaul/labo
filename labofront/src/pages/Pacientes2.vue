@@ -1065,7 +1065,7 @@
               <div class="col-6 col-sm-6"><q-input dense outlined label="Reticulocitos" v-model="laboratorio.d14" /></div>
               <div class="col-6 col-sm-6"><q-input dense outlined label="Plaquetas" v-model="laboratorio.d17" /></div>
               <div class="col-6 col-sm-6"><q-input dense outlined label="IPR" v-model="laboratorio.d16" /></div>
-    
+
             <div class="col-6 col-sm-6"></div></div>
             </q-card-section>
             <q-separator/>
@@ -2633,7 +2633,7 @@
       doc.text(l.d8,x+240,y+128,'left')
       doc.text(l.d9,x+240,y+136,'left')
       doc.text(l.d10,x+240,y+146,'left')
-      //doc.text(l.d11 ,x+240,y+156,'left')
+      doc.text(l.d11 ,x+240,y+156,'left')
       //doc.text(l.d12,x+240,y+164,'left')
      // if(l.d13!='' && regex.test(l.d13))
       //  doc.text(l.d13+' ng/ml',x+240,y+172,'left')
