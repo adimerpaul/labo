@@ -2664,7 +2664,7 @@
       doc.text('NEGATIVO / POSITIVO ',x+290,y+119,'center')
       doc.text('NEGATIVO / POSITIVO ',x+290,y+128,'center')
       doc.text('NEGATIVO / POSITIVO ',x+290,y+137,'center')
-      doc.text('NEGATIVO / POSITIVO ',x+290,y+146,'center')
+      doc.text('NEGATIVO / POSITIVO ',x+290,y+140,'center')
       //doc.text('NEGATIVO / POSITIVO ',x+290,y+155,'center')
       //doc.text('NEGATIVO / POSITIVO ',x+290,y+164,'center')
       //doc.text('Hasta 4 ng/ml',x+290,y+172,'center')
