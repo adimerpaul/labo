@@ -363,12 +363,13 @@
             <div class="col-6 col-sm-6"><q-input dense outlined label="Cloro" v-model="laboratorio.d22" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="Bilirrubina Indirecta" v-model="laboratorio.d23" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="Potasio" v-model="laboratorio.d24" /></div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="CK-MB" v-model="laboratorio.d25" /></div>
+            <div class="col-6 col-sm-6"><q-input dense outlined label="CPK TOTAL" v-model="laboratorio.d33" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="Calcio" v-model="laboratorio.d26" /></div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="LDH" v-model="laboratorio.d27" /></div>
+            <div class="col-6 col-sm-6"><q-input dense outlined label="CK-MB" v-model="laboratorio.d25" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="Magnesio" v-model="laboratorio.d28" /></div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="Hierro" v-model="laboratorio.d29" /></div>
+            <div class="col-6 col-sm-6"><q-input dense outlined label="LDH" v-model="laboratorio.d27" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="Fosforo" v-model="laboratorio.d30" /></div>
+            <div class="col-6 col-sm-6"><q-input dense outlined label="Hierro" v-model="laboratorio.d29" /></div>
             </div></q-card-section>
 
         <q-card-section  class="bg-amber-2" > <div class="row">
@@ -1138,12 +1139,13 @@
             <div class="col-6 col-sm-6"><q-input dense outlined label="Cloro" v-model="laboratorio.d22" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="Bilirrubina Indirecta" v-model="laboratorio.d23" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="Potasio" v-model="laboratorio.d24" /></div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="CK-MB" v-model="laboratorio.d25" /></div>
+            <div class="col-6 col-sm-6"><q-input dense outlined label="CPK TOTAL" v-model="laboratorio.d33" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="Calcio" v-model="laboratorio.d26" /></div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="LDH" v-model="laboratorio.d27" /></div>
+            <div class="col-6 col-sm-6"><q-input dense outlined label="CK-MB" v-model="laboratorio.d25" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="Magnesio" v-model="laboratorio.d28" /></div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="Hierro" v-model="laboratorio.d29" /></div>
+            <div class="col-6 col-sm-6"><q-input dense outlined label="LDH" v-model="laboratorio.d27" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="Fosforo" v-model="laboratorio.d30" /></div>
+            <div class="col-6 col-sm-6"><q-input dense outlined label="Hierro" v-model="laboratorio.d29" /></div>
             </div></q-card-section>
 
         <q-card-section  class="bg-amber-2" > <div class="row">
@@ -4598,8 +4600,8 @@
       doc.setTextColor(57,73,171)
       doc.text('          PRUEBA                      VALOR                   REFERENCIA                  PRUEBA                     VALOR              REFERENCIA',x+6,y+52)
       doc.setFont(undefined, 'normal')
-      doc.text(['Glicemia','Creatinina','Urea','NUS-BUN','Acido Urico','Proteinas Totales','Albumina','Globulina','Amilasa','Lipasa','Bilirrubina Total','Bilirrubina Directa','Bilirrubina Indirecta','CK-MB','LDH','Hierro'],x+8,y+58)
-      doc.text(['70-105mg/dl','0.7-1.5mg/dl','15-45mg/dl','7-18mg/dl','2.6-7.2mg/dl','6.2-8.5g/dl','3.5-5.3g/dl','2.8-3.5g/dl','menor a 120UI/L','10-150UI/L','hasta 1.2 mg/dl','hasta 0.3 mg/dl','hasta 0.9 mg/dl','0-24 UI/L','200-480 UI/L','50-170ug/dl'],x+80,y+58,'left')
+      doc.text(['Glicemia','Creatinina','Urea','NUS-BUN','Acido Urico','Proteinas Totales','Albumina','Globulina','Amilasa','Lipasa','Bilirrubina Total','Bilirrubina Directa','Bilirrubina Indirecta','CK-MB','CPK TOTAL','LDH','Hierro'],x+8,y+58)
+      doc.text(['70-105mg/dl','0.7-1.5mg/dl','15-45mg/dl','7-18mg/dl','2.6-7.2mg/dl','6.2-8.5g/dl','3.5-5.3g/dl','2.8-3.5g/dl','menor a 120UI/L','hasta 60 UI/L','hasta 1.2 mg/dl','hasta 0.3 mg/dl','hasta 0.9 mg/dl','24-195 UI/L','0-24 UI/L','200-480 UI/L','50-170ug/dl'],x+80,y+58,'left')
       doc.text(['Fosfatasa alcalina','GGT','Transamisas GOT','Transamisas GPT','LIPIDOGRAMA','Trigliceridos','Colesterol Total','HDL-Col','LDL-Col','VLDL','ELECTROLITOS','Sodio','Cloro','Potasio','Calcio','Magnesio','Fosforo'],x+110,y+58,'left')
       doc.text(['adultos hasta 100UI/L','15-45UI/L','hasta 40UI/L','hasta 41UI/L','','10-160mg/dl','menor 200mg/dl','35-65mg/dl','hasta 150mg/dl','2-30 mg/dl','','135-155mEq/L','98-106 mEq/L','3.4-5.3 mEq/L','8.5-10.5mg/dl','1.7-2.4mg/dl','2.5-4.5mg/dl'],x+175,y+58,'left')
       doc.setTextColor(0,0,0)
@@ -4657,7 +4659,7 @@
       doc.text(l.d16+' UI/L',x+55,y+90)
 
         doc.setTextColor(0,0,0)
-      if(parseFloat(l.d18)<10 || parseFloat(l.d18)>150)
+      if(parseFloat(l.d18)<0 || parseFloat(l.d18)>60)
         doc.setTextColor(255,0,0)
         if(l.d18!='')
       doc.text(l.d18+' UI/L',x+55,y+94)
@@ -4686,17 +4688,23 @@
         if(l.d25!='')
       doc.text(l.d25+' UI/L',x+55,y+110)
 
+      doc.setTextColor(0,0,0)
+      if(parseFloat(l.d33)<24 || parseFloat(l.d33)>195)
+        doc.setTextColor(255,0,0)
+        if(l.d33!='')
+      doc.text(l.d33+' UI/L',x+55,y+114)
+
         doc.setTextColor(0,0,0)
       if(parseFloat(l.d27)<200 || parseFloat(l.d27)>480)
         doc.setTextColor(255,0,0)
         if(l.d27!='')
-      doc.text(l.d27+' UI/L',x+55,y+114)
+      doc.text(l.d27+' UI/L',x+55,y+118)
 
         doc.setTextColor(0,0,0)
       if(parseFloat(l.d29)<50 || parseFloat(l.d29)>170)
         doc.setTextColor(255,0,0)
         if(l.d29!='')
-      doc.text(l.d29+' ug/dl',x+55,y+118)
+      doc.text(l.d29+' ug/dl',x+55,y+122)
 
         doc.setTextColor(0,0,0)
       if(parseFloat(l.d2)<0 || parseFloat(l.d2)>100)
