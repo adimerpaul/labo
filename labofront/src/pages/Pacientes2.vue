@@ -716,6 +716,7 @@
             <div class="col-6 col-sm-12"><q-input dense outlined label="PSA CUANTITATIVO" v-model="laboratorio.d4" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="PCR CUANTITATIVO" v-model="laboratorio.d5" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="TROPONINA I" v-model="laboratorio.d6" /></div>
+            <div class="col-6 col-sm-12"><q-input dense outlined label="TROPONINA T" v-model="laboratorio.d12" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="B - HCG" v-model="laboratorio.d7" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="PROCALCITONINA" v-model="laboratorio.d8" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="lg M" v-model="laboratorio.d9" /></div>
@@ -1502,6 +1503,7 @@
             <div class="col-6 col-sm-12"><q-input dense outlined label="PSA CUANTITATIVO" v-model="laboratorio.d4" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="PCR CUANTITATIVO" v-model="laboratorio.d5" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="TROPONINA I" v-model="laboratorio.d6" /></div>
+            <div class="col-6 col-sm-12"><q-input dense outlined label="TROPONINA T" v-model="laboratorio.d12" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="B - HCG" v-model="laboratorio.d7" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="PROCALCITONINA" v-model="laboratorio.d8" /></div>
             <div class="col-6 col-sm-6"><q-input dense outlined label="lg M" v-model="laboratorio.d9" /></div>
@@ -4601,9 +4603,9 @@
       doc.text('          PRUEBA                      VALOR                   REFERENCIA                  PRUEBA                     VALOR              REFERENCIA',x+6,y+52)
       doc.setFont(undefined, 'normal')
       doc.text(['Glicemia','Creatinina','Urea','NUS-BUN','Acido Urico','Proteinas Totales','Albumina','Globulina','Amilasa','Lipasa','Bilirrubina Total','Bilirrubina Directa','Bilirrubina Indirecta','CK-MB','CPK TOTAL','LDH','Hierro'],x+8,y+58)
-      doc.text(['70-105mg/dl','0.7-1.5mg/dl','15-45mg/dl','7-18mg/dl','2.6-7.2mg/dl','6.2-8.5g/dl','3.5-5.3g/dl','2.8-3.5g/dl','menor a 120UI/L','hasta 60 UI/L','hasta 1.2 mg/dl','hasta 0.3 mg/dl','hasta 0.9 mg/dl','24-195 UI/L','0-24 UI/L','200-480 UI/L','50-170ug/dl'],x+80,y+58,'left')
+      doc.text(['70-105mg/dl','0.5-1.1mg/dl','15-45mg/dl','7-18mg/dl','1.5-7mg/dl','6.2-8.5g/dl','3.5-5.3g/dl','2.8-3.5g/dl','menor a 125UI/L','hasta 60 UI/L','hasta 1.2 mg/dl','hasta 0.3 mg/dl','hasta 0.9 mg/dl','0-25 UI/L','24-195 UI/L','200-480 UI/L','50-170ug/dl'],x+80,y+58,'left')
       doc.text(['Fosfatasa alcalina','GGT','Transamisas GOT','Transamisas GPT','LIPIDOGRAMA','Trigliceridos','Colesterol Total','HDL-Col','LDL-Col','VLDL','ELECTROLITOS','Sodio','Cloro','Potasio','Calcio','Magnesio','Fosforo'],x+110,y+58,'left')
-      doc.text(['adultos hasta 100UI/L','15-45UI/L','hasta 40UI/L','hasta 41UI/L','','10-160mg/dl','menor 200mg/dl','35-65mg/dl','hasta 150mg/dl','2-30 mg/dl','','135-155mEq/L','98-106 mEq/L','3.4-5.3 mEq/L','8.5-10.5mg/dl','1.7-2.4mg/dl','2.5-4.5mg/dl'],x+175,y+58,'left')
+      doc.text(['adultos hasta 100UI/L','hasta 55 UI/L','hasta 40UI/L','hasta 41UI/L','','10-160mg/dl','menor 200mg/dl','35-65mg/dl','hasta 150mg/dl','2-30 mg/dl','','135-155mEq/L','98-106 mEq/L','3.4-5.3 mEq/L','8.5-10.5mg/dl','1.7-2.4mg/dl','2.5-4.5mg/dl'],x+175,y+58,'left')
       doc.setTextColor(0,0,0)
       if(parseFloat(l.d1)<70 || parseFloat(l.d1)>105)
         doc.setTextColor(255,0,0)
@@ -4611,7 +4613,7 @@
         doc.text(l.d1 +' mg/dl',x+55,y+58)
 
         doc.setTextColor(0,0,0)
-      if(parseFloat(l.d3)<0.7 || parseFloat(l.d3)>1.5)
+      if(parseFloat(l.d3)<0.5 || parseFloat(l.d3)>1.1)
         doc.setTextColor(255,0,0)
         if(l.d3!='')
       doc.text(l.d3+' mg/dl',x+55,y+62)
@@ -4629,7 +4631,7 @@
       doc.text(l.d7+' mg/dl',x+55,y+70)
 
         doc.setTextColor(0,0,0)
-      if(parseFloat(l.d9)<2.6 || parseFloat(l.d9)>7.2)
+      if(parseFloat(l.d9)<1.5 || parseFloat(l.d9)>7)
         doc.setTextColor(255,0,0)
         if(l.d9!='')
       doc.text(l.d9+ ' mg/dl',x+55,y+74)
@@ -4653,7 +4655,7 @@
       doc.text(l.d14+' g/dl',x+55,y+86)
 
         doc.setTextColor(0,0,0)
-      if(parseFloat(l.d16)<0 || parseFloat(l.d16)>120)
+      if(parseFloat(l.d16)<0 || parseFloat(l.d16)>125)
         doc.setTextColor(255,0,0)
         if(l.d16!='')
       doc.text(l.d16+' UI/L',x+55,y+90)
@@ -4683,7 +4685,7 @@
       doc.text(l.d23+' mg/dl',x+55,y+106)
 
         doc.setTextColor(0,0,0)
-      if(parseFloat(l.d25)<0 || parseFloat(l.d25)>24)
+      if(parseFloat(l.d25)<0 || parseFloat(l.d25)>25)
         doc.setTextColor(255,0,0)
         if(l.d25!='')
       doc.text(l.d25+' UI/L',x+55,y+110)
@@ -4713,7 +4715,7 @@
       doc.text(l.d2+' UI/L',x+155,y+58)
 
         doc.setTextColor(0,0,0)
-      if(parseFloat(l.d4)<15 || parseFloat(l.d4)>45)
+      if(parseFloat(l.d4)<0 || parseFloat(l.d4)>55)
         doc.setTextColor(255,0,0)
         if(l.d4!='')
       doc.text(l.d4+' UI/L',x+155,y+62)
@@ -5257,11 +5259,12 @@
       doc.setFont(undefined, 'normal')
       doc.setFontSize(10);
       doc.text('DIMEROS D',x+198,y+65,'left')
-      doc.text('FERRITINA',x+198,y+73,'left')
-      doc.text('IL-6',x+198,y+81,'left')
-      doc.text('PSA CUANTITATIVO',x+198,y+89,'left')
-      doc.text('PCR CUANTITATIVO',x+198,y+97,'left')
-      doc.text('TROPONINA I',x+198,y+106,'left')
+      doc.text('FERRITINA',x+198,y+72,'left')
+      doc.text('IL-6',x+198,y+80,'left')
+      doc.text('PSA CUANTITATIVO',x+198,y+87,'left')
+      doc.text('PCR CUANTITATIVO',x+198,y+95,'left')
+      doc.text('TROPONINA I',x+198,y+102,'left')
+      doc.text('TROPONINA T',x+198,y+108,'left')
       doc.text('B - HCG',x+198,y+114,'left')
       doc.text('PROCALCITONINA',x+198,y+130,'left')
       doc.text('Anti-HBS',x+198,y+152,'left')
@@ -5278,20 +5281,24 @@
         doc.setTextColor(255,0,0)
       if((parseFloat(l.d2)<20 || parseFloat(l.d2)>250) && p.sexo=='Femenino')
         doc.setTextColor(255,0,0)
-      doc.text(l.d2,x+250,y+73,'center')
+      doc.text(l.d2,x+250,y+72,'center')
       doc.setTextColor(0,0,0)
-      doc.text(l.d3,x+250,y+81,'center')
+      doc.text(l.d3,x+250,y+80,'center')
       if(parseFloat(l.d4)>4)
         doc.setTextColor(255,0,0)
-      doc.text(l.d4,x+250,y+89,'center')
+      doc.text(l.d4,x+250,y+87,'center')
       doc.setTextColor(0,0,0)
       if(parseFloat(l.d5)>10)
         doc.setTextColor(255,0,0)
-      doc.text(l.d5,x+250,y+97,'center')
+      doc.text(l.d5,x+250,y+95,'center')
+      doc.setTextColor(0,0,0)
+      if(parseFloat(l.d12)<0 || parseFloat(l.d12)>17)
+        doc.setTextColor(255,0,0)
+      doc.text(l.d12,x+250,y+102,'center')
       doc.setTextColor(0,0,0)
       if(parseFloat(l.d6)>0.11 || parseFloat(l.d6)<0.0)
         doc.setTextColor(255,0,0)
-      doc.text(l.d6,x+250,y+106,'center')
+      doc.text(l.d6,x+250,y+108,'center')
       doc.setTextColor(0,0,0)
 
       doc.text(l.d7,x+250,y+118,'center')
@@ -5311,11 +5318,12 @@
       doc.setTextColor(0,0,0)
 
       doc.text('ng/ml',x+270,y+65,'center')
-      doc.text('ng/ml',x+270,y+73,'center')
-      doc.text('pg/ml',x+270,y+81,'center')
-      doc.text('ng/ml',x+270,y+89,'center')
-      doc.text('mg/l',x+270,y+97,'center')
-      doc.text('ng/ml',x+270,y+106,'center')
+      doc.text('ng/ml',x+270,y+72,'center')
+      doc.text('pg/ml',x+270,y+80,'center')
+      doc.text('ng/ml',x+270,y+87,'center')
+      doc.text('mg/l',x+270,y+95,'center')
+      doc.text('ng/ml',x+270,y+102,'center')
+      doc.text('ng/ml',x+270,y+108,'center')
       doc.text('mlU/ml',x+270,y+118,'center')
       doc.text('ng/ml',x+270,y+134,'center')
       doc.text('mlU/ml',x+270,y+152,'center')
@@ -5324,11 +5332,12 @@
 
       doc.setFontSize(10);
       doc.text('Plasma Citratado',x+290,y+65,'center')
-      doc.text('Suero',x+290,y+73,'center')
-      doc.text('Suero/plasma',x+290,y+81,'center')
-      doc.text('Suero',x+290,y+89,'center')
-      doc.text('Sangre Entera',x+290,y+97,'center')
-      doc.text('Suero',x+290,y+106,'center')
+      doc.text('Suero',x+290,y+72,'center')
+      doc.text('Suero/plasma',x+290,y+80,'center')
+      doc.text('Suero',x+290,y+87,'center')
+      doc.text('Sangre Entera',x+290,y+95,'center')
+      doc.text('Suero',x+290,y+102,'center')
+      doc.text('Suero',x+290,y+108,'center')
       doc.text('Suero',x+290,y+118,'center')
       doc.text('Suero',x+290,y+134,'center')
       doc.text('FIA',x+290,y+152,'center')
@@ -5337,7 +5346,7 @@
       doc.setTextColor(57,73,171)
       doc.setFontSize(8);
       doc.setLineHeightFactor(1)
-      doc.text(['Hasta 500 ng/ml','','30-350 ng/ml Varon','20-250 ng/ml Mujer','',' ','7 pg/ml','',' ','Menor a 4 ng/ml','',' ','<10 mg/L','',' ','0.0 - 0.11 ng/ml','',' ','Mujer No Embarazada < 10 mlU/ml','Mujer en postmenopausia <10 mlU/ml','',
+      doc.text(['Hasta 500 ng/ml','','30-350 ng/ml Varon','20-250 ng/ml Mujer','','7 pg/ml','',' ','Menor a 4 ng/ml','',' ','<10 mg/L','','0.0 - 0.11 ng/ml','','hasta 17 ng/ml ','Mujer No Embarazada < 10 mlU/ml','Mujer en postmenopausia <10 mlU/ml','',
       'PCT < 0.5 Es posible infeccion' ,'  bacteriana local','PCT 0.5 - 2 Posible infeccion','PCT 2 -10 Es muy probable ',' infeccion(sepsia) a menores que se ','conozcan otras causas',
       'PCT > 10 Sepsia Bacteriana severa',' o shock septico','',
       '< 5 mlU/ml NEGATIVO','5 - 15 mlU/ml INDETERMINADO','> 15 mlU/ml POSITIVO','','< 0.9 IU/ml NEGATIVO','0.9 - 1.1 UI/ml INTERMEDIO','> 1.1 IU/ml POSITIVO','',
