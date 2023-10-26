@@ -22,9 +22,7 @@ class PacienteController extends Controller
         $search = $request->search;
         $pacientes = Paciente::with('seguro')
             ->orderBy('id','DESC')
-            ->where('nombre','LIKE','%'.$search.'%')
-            ->orWhere('paterno','LIKE','%'.$search.'%')
-            ->orWhere('materno','LIKE','%'.$search.'%')
+            ->whereRaw("CONCAT(nombre, ' ', paterno, ' ', materno) LIKE '%$search%'")
             ->orWhere('ci','LIKE','%'.$search.'%')
             ->paginate($paginate);
 //            ->get();
