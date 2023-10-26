@@ -5323,7 +5323,7 @@
       doc.text('ng/ml',x+270,y+87,'center')
       doc.text('mg/l',x+270,y+95,'center')
       doc.text('ng/ml',x+270,y+102,'center')
-      doc.text('ng/ml',x+270,y+108,'center')
+      doc.text('pg/ml',x+270,y+108,'center')
       doc.text('mlU/ml',x+270,y+118,'center')
       doc.text('ng/ml',x+270,y+134,'center')
       doc.text('mlU/ml',x+270,y+152,'center')
@@ -5346,7 +5346,7 @@
       doc.setTextColor(57,73,171)
       doc.setFontSize(8);
       doc.setLineHeightFactor(1)
-      doc.text(['Hasta 500 ng/ml','','30-350 ng/ml Varon','20-250 ng/ml Mujer','','7 pg/ml','',' ','Menor a 4 ng/ml','',' ','<10 mg/L','','0.0 - 0.11 ng/ml','','hasta 17 ng/ml ','Mujer No Embarazada < 10 mlU/ml','Mujer en postmenopausia <10 mlU/ml','',
+      doc.text(['Hasta 500 ng/ml','','30-350 ng/ml Varon','20-250 ng/ml Mujer','','7 pg/ml','',' ','Menor a 4 ng/ml','',' ','<10 mg/L','','0.0 - 0.11 ng/ml','','hasta 17 pg/ml ','Mujer No Embarazada < 10 mlU/ml','Mujer en postmenopausia <10 mlU/ml','',
       'PCT < 0.5 Es posible infeccion' ,'  bacteriana local','PCT 0.5 - 2 Posible infeccion','PCT 2 -10 Es muy probable ',' infeccion(sepsia) a menores que se ','conozcan otras causas',
       'PCT > 10 Sepsia Bacteriana severa',' o shock septico','',
       '< 5 mlU/ml NEGATIVO','5 - 15 mlU/ml INDETERMINADO','> 15 mlU/ml POSITIVO','','< 0.9 IU/ml NEGATIVO','0.9 - 1.1 UI/ml INTERMEDIO','> 1.1 IU/ml POSITIVO','',
