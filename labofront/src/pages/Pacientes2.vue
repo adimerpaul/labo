@@ -5,7 +5,7 @@
   <!--      <iframe id="docpdf" src="" frameborder="0" style="width: 100%;height: 100vh"></iframe>-->
       </div>
       <div class="col-12">
-        <q-table title1="Listado de pacientes" :rows="pacientes" :columns="columspaciente" :filter="filter" :rows-per-page-options="[10,100,200,0]">
+        <q-table title1="Listado de pacientes" :loading="loading" :rows="pacientes" :columns="columspaciente" :rows-per-page-options="[10,100,200,0]">
           <template v-slot:body-cell-seguro="props">
 
             <q-td :props="props">{{ props.row.seguro.nombre}}</q-td>
@@ -70,11 +70,24 @@
           </template>
           <template v-slot:top-right>
             <q-btn color="primary" icon="add_circle" label="crear paciente" @click="alert = true"  />
-            <q-input outlined dense debounce="300" v-model="filter" placeholder="Search">
+            <q-btn color="grey" icon="refresh" flat round @click="mispacientes"  />
+            <q-input outlined dense debounce="300" v-model="filter" placeholder="Search" @update:modelValue="mispacientes"
+            :loading="loading" clearable>
               <template v-slot:append>
                 <q-icon name="search" />
               </template>
             </q-input>
+          </template>
+          <template v-slot:bottom>
+            <div class="full-width flex flex-center">
+              <q-pagination
+                v-model="current"
+                :max="last_page"
+                :max-pages="7"
+                boundary-numbers
+                @update:modelValue="mispacientes"
+              />
+            </div>
           </template>
         </q-table>
             <q-dialog v-model="dialoglistlabo" >
@@ -1819,6 +1832,8 @@
   export default {
     data(){
       return{
+        current: 1,
+        last_page: 0,
         dialoglaboratorio:false,
         dialoglistlabo:false,
         dialogmodlab:false,
@@ -5894,11 +5909,19 @@
 
         },
       mispacientes(){
-        this.$q.loading.show()
-        this.$axios.get(process.env.API+'/paciente').then(res=>{
-          this.$q.loading.hide()
+        this.loading=true
+        // this.$q.loading.show()
+        this.$axios.get(process.env.API+'/paciente', {
+          params: {
+            page: this.current,
+            search: this.filter
+          }
+        }).then(res=>{
+          // this.$q.loading.hide()
           this.pacientes=[]
-          res.data.forEach(r=>{
+          this.current= res.data.current_page
+          this.last_page= res.data.last_page
+          res.data.data.forEach(r=>{
             let d=r
             // console.log(r)
             //var nacimiento=moment(r.fechanac)
@@ -5909,6 +5932,8 @@
             d.paciente=r.nombre+' '+r.paterno+' '+r.materno
             this.pacientes.push(d)
           })
+        }).finally(()=>{
+          this.loading=false
         })
       }
     }

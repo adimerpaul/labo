@@ -15,14 +15,24 @@ class PacienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request  $request)
     {
-        //
-        return Paciente::with('seguro')->orderBy('id','DESC')->get();
+
+        $paginate = 10;
+        $search = $request->search;
+        $pacientes = Paciente::with('seguro')
+            ->orderBy('id','DESC')
+            ->where('nombre','LIKE','%'.$search.'%')
+            ->orWhere('paterno','LIKE','%'.$search.'%')
+            ->orWhere('materno','LIKE','%'.$search.'%')
+            ->orWhere('ci','LIKE','%'.$search.'%')
+            ->paginate($paginate);
+//            ->get();
+        return $pacientes;
     }
 
     public function listLabo(Request $request){
-        
+
         return Laboratorio::where('paciente_id',$request->id)->whereDate('fechatoma','>=',$request->fecha)->with('doctor')->with('tipo')->get();
     }
 
@@ -228,7 +238,7 @@ class PacienteController extends Controller
     public function repseguro(Request $request){
         return DB::SELECT("select s.nombre,COUNT(*) as cantidad from pacientes p INNER JOIN seguros s on p.seguro_id=s.id inner JOIN laboratorios l on p.id=l.paciente_id where l.fechatoma>='$request->ini' and l.fechatoma<='$request->fin' group by s.nombre;");
     }
-    
+
     public function valpaciente(Request $request){
         return DB::SELECT("SELECT * from pacientes p where p.nombre='".strtoupper($request->nombre)."' and p.paterno='".strtoupper($request->paterno)."' and p.materno='".strtoupper($request->materno)."'");
 
