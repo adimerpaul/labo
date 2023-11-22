@@ -2211,7 +2211,7 @@
           this.mispacientes()
           this.dialogmodlab=false
           this.resetlabo()
-          this.loading=true
+          this.loading=false
         })
       },
       resetlabo(){
