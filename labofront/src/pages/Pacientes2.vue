@@ -5779,9 +5779,9 @@
             color: 'green',
             icon: 'check',
           })
+          this.dialog_mod=false
+          this.mispacientes()
           this.$q.loading.hide()
-          this.dialog_mod=false;
-          this.mispacientes();
         })
       },
           onSubmit(){
@@ -5808,10 +5808,10 @@
             color: 'green',
             icon: 'check',
           })
+          this.alert=false
+          this.mispacientes()
           this.$q.loading.hide()
           this.loading=false
-          this.alert=false;
-          this.mispacientes();
 
         })
             }
