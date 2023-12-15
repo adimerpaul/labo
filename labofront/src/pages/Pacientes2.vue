@@ -533,7 +533,7 @@
                                                     <template v-if="tipo.label=='ANALISIS DE HECES'">
              <q-card class="my-card"  flat bordered>
             <q-card-section  class="bg-green-2"> <div class="row">
-            <div class="col-6 col-sm-12">EXAMEN EN FRESCO</div>
+            <div class="col-6 col-sm-12">COPROPARASITOLOGICO</div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="ASPECTO DE LA MUESTRA" v-model="laboratorio.d1" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="COLOR" v-model="laboratorio.d2" /></div>
             <div class="col-6 col-sm-12"><q-input dense outlined label="CELULAS EPITELIALES" v-model="laboratorio.d3" /></div>
@@ -2980,7 +2980,7 @@
       doc.rect(x+5, y+48, 205, 93)
       doc.setFont(undefined, 'bold')
       doc.setTextColor(57,73,171)
-      doc.text('                                          EXAMEN EN FRESCO',x+50,y+52)
+      doc.text('                                          COPROPARASITOLOGICO',x+50,y+52)
       doc.setFont(undefined, 'normal')
       doc.text(['ASPECTO DE LA MUESTRA','COLOR','CELULAS EPITELIALES','LEUCOCITOS','HEMATIES','ALMIDON','LEVADURAS','GRASAS','PARASITOS'],x+8,y+58)
       doc.setTextColor(0,0,0)
