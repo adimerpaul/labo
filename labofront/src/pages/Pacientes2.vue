@@ -5155,7 +5155,7 @@
       doc.text(l.d8+' %',x+320,y+84,'center')
       doc.text(l.d10,x+320,y+92,'center')
         doc.setTextColor(0,0,0)
-      if(parseFloat(l.d34)<25 || parseFloat(l.d34)>35)
+      if(parseFloat(l.d34)<22 || parseFloat(l.d34)>31)
         doc.setTextColor(255,0,0)
       doc.text(l.d34,x+320,y+100,'center')
       doc.setTextColor(0,0,0)
@@ -5168,7 +5168,7 @@
       doc.setTextColor(57,73,171)
       doc.setFontSize(10)
 
-      doc.text(['5-10min',' ','1-3min',' ','12-13seg',' ','95-100%',' ','0.97-1.04.',' ','25 a 35 seg','','',' ','0.5-2%'],x+337,y+60,'center')
+      doc.text(['5-10min',' ','1-3min',' ','11-14seg',' ','65-100%',' ','0.97-1.3',' ','22-31 seg','','',' ','0.5-2%'],x+337,y+60,'center')
 
       doc.rect(x+195, y+129, 155, 40)
       doc.setFont(undefined, 'bold')
