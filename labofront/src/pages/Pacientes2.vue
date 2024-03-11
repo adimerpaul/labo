@@ -2676,7 +2676,7 @@
       doc.setFontSize(8);
       doc.text('Hasta 8 UI/ml ',x+290,y+65,'center')
       doc.text('Hasta 200 UI/l',x+290,y+74,'center')
-      doc.text('Hasta 0.8 mg/dl ',x+290,y+83,'center')
+      doc.text('Hasta 0.6 mg/dl ',x+290,y+83,'center')
       doc.text('No Reactivo',x+290,y+92,'center')
       doc.text('No Reactivo',x+290,y+101,'center')
       doc.text('No Reactivo',x+290,y+110,'center')
