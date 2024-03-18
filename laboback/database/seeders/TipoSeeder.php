@@ -39,6 +39,8 @@ class TipoSeeder extends Seeder
             ["nombre"=>"HEMODIALISIS TRI",],
             ["nombre"=>"MISCELANEOS ORINA",],
             ["nombre"=>"FIJACION DE HIERRO",],
+            ["nombre"=>"CULTIVO Y ANTIBIOGRAMA",],
+            ["nombre"=>"INMUNOLOGIA",],
         ]);
     }
 }
