@@ -92,4 +92,6 @@ Route::group(['middleware'=>'auth:sanctum'],function (){
     Route::post('/totalsolicitud',[\App\Http\Controllers\LaboratorioController::class,'totalsolicitud']);
     Route::post('/valpaciente',[\App\Http\Controllers\PacienteController::class,'valpaciente']);
 
+    Route::get('/listAntib/{tipo}',[\App\Http\Controllers\AntibioticoController::class,'listAntib']);
+
 });

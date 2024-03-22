@@ -1021,31 +1021,31 @@
               <q-card class="my-card"  flat bordered style="width:100%">
              <q-card-section  class="bg-green-2"> <div class="row">
               <div class="col-12 ">EXAMEN DIRECTO</div>
-              <div class="col-12"><q-editor v-model="editor" min-height="5rem" /></div>
+              <div class="col-12"><q-editor v-model="laboratorio.examendirecto" min-height="5rem" /></div>
 
-              
+
               <div class="col-12">TINCION DE GRAM</div>
 
-                            <div class="col-12"><q-editor v-model="editor" min-height="5rem" /></div>
+                            <div class="col-12"><q-editor v-model="laboratorio.tinciongram" min-height="5rem" /></div>
 
               <div class="col-12">MICROORGANISMO IDENTIFICADO</div>
 
-                            <div class="col-12"><q-editor v-model="editor" min-height="5rem" /></div>
-                            <div class="col-4 q-pa-xs"><q-select dense square outlined v-model="model" :options="options" label="Square outlined" /></div>
-                            <div class="col-4 q-pa-xs"><q-select dense square outlined v-model="model" :options="['Resistente','Sensible','Intermedio']" label="interpretacion" /></div>
-                            <div class="col-4 q-pa-xs"><q-btn color='green' icon="control_point" dense /></div>             
+                            <div class="col-12"><q-editor v-model="laboratorio.microorganizmo" min-height="5rem" /></div>
+                            <div class="col-4 q-pa-xs"><q-select dense square outlined v-model="antibiotico" :options="antibioticos" label="Antibiotico" /></div>
+                            <div class="col-4 q-pa-xs"><q-select dense square outlined v-model="resultado" :options="['Resistente','Sensible','Intermedio']" label="interpretacion" /></div>
+                            <div class="col-4 q-pa-xs"><q-btn color='green' icon="control_point" dense /></div>
              <div class="col-12">
-              <q-table  :rows="data" :columns="columns" row-key="name" />
-              
+
+
              </div>
              </div></q-card-section>
              <q-card-section  class="bg-blue-2"> <div class="row">
              <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACION" v-model="laboratorio.d4" /></div>
              </div></q-card-section>
              <q-card-section  class="bg-red-2"> <div class="row">
- 
+
              <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
- 
+
              <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
              <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
              <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
@@ -1893,6 +1893,7 @@
         filterdoc:[],
         user:{},
         caledad:'',
+        resultado:'',
         usuarios:[],
         laboratorios:[],
         laboratorio:{
@@ -1950,11 +1951,14 @@
           user_id:this.$store.state.login.user.id,
           doctor_id:'',
         },
+        cultivo:{},
         fechacalculo:'',
         url:process.env.API,
         listmuestra:[],
         labmod:{},
         loading:false,
+        antibioticos:[],
+        antibiotico:{label:''},
         imagen:null,
              columspaciente:[
           {name:'opciones',field:'opciones',label:'opciones',align:'center'},
@@ -2098,6 +2102,17 @@
       }
     },
     methods:{
+      cargarAntibiotico(tipo){
+        this.antibioticos=[]
+        this.$axios.get(process.env.API+'/listAntib/'+tipo).then(res=> {
+          console.log(res.data)
+          res.data.forEach(r => {
+            r.label=r.nombre
+            this.antibioticos.push(r)
+          })
+        })
+
+      },
       consultarLab(){
         if(this.fechalab==null || this.fechalab==undefined){
           return false
@@ -2257,6 +2272,11 @@
         this.user=''
         this.imagen=null
         switch (this.tipo.label) {
+          case 'CULTIVO Y ANTIBIOGRAMA':
+            this.cargarAntibiotico('CULTIVO');
+            break;
+          case 'INMUNOLOGIA':
+            break;
           case 'EXAMEN GENERAL DE ORINA':
                         this.laboratorio={
           tipomuestra:'',

@@ -17,8 +17,8 @@ class CreateAntibioticosTable extends Migration
             $table->id();
             $table->string('nombre')->nullable()->default('');
             $table->string('unidad')->nullable()->default('');
-            $table->double('rangoMin')->nullable()->default('');
-            $table->double('rangoMax')->nullable()->default('');
+            $table->double('rangoMin')->nullable();
+            $table->double('rangoMax')->nullable();
             $table->text('referencia')->nullable()->default('');
             $table->text('tipo')->nullable()->default('')->comment("'CULTIVO','INMUNOLOGIA'");
             $table->timestamps();
