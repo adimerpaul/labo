@@ -1030,12 +1030,12 @@
 
               <div class="col-12">MICROORGANISMO IDENTIFICADO</div>
 
-                            <div class="col-12"><q-editor v-model="laboratorio.microorganizmo" min-height="5rem" /></div>
+                            <div class="col-12"><q-editor v-model="laboratorio.microorganismo" min-height="5rem" /></div>
                             <div class="col-4 q-pa-xs"><q-select dense square outlined v-model="antibiotico" :options="antibioticos" label="Antibiotico" /></div>
                             <div class="col-4 q-pa-xs"><q-select dense square outlined v-model="resultado" :options="['Resistente','Sensible','Intermedio']" label="interpretacion" /></div>
-                            <div class="col-4 q-pa-xs"><q-btn color='green' icon="control_point" dense /></div>
+                            <div class="col-4 q-pa-xs"><q-btn color='green' icon="control_point" dense @click="agregarDetalle" /></div>
              <div class="col-12">
-
+              <q-table title="ANTIBIOGRAMA" :rows="detalle" :columns="colAntibiotico" row-key="name" dense/>
 
              </div>
              </div></q-card-section>
@@ -1869,6 +1869,10 @@
   export default {
     data(){
       return{
+        colAntibiotico:[
+          {name:'antibiotico',label:'antibiotico',field: row=>row.antibiotico.nombre },
+          {name:'interpretacion',label:'interpretacion',field:'interpretacion'}
+        ],
         current: 1,
         last_page: 0,
         dialoglaboratorio:false,
@@ -1959,6 +1963,7 @@
         loading:false,
         antibioticos:[],
         antibiotico:{label:''},
+        detalle:[],
         imagen:null,
              columspaciente:[
           {name:'opciones',field:'opciones',label:'opciones',align:'center'},
@@ -2111,7 +2116,12 @@
             this.antibioticos.push(r)
           })
         })
-
+      },
+      agregarDetalle(){
+        if(this.antibiotico.id==undefined || this.resultado=='')
+        return false
+        this.detalle.push({antibiotico:this.antibiotico,interpretacion:this.resultado})
+        console.log(this.detalle)
       },
       consultarLab(){
         if(this.fechalab==null || this.fechalab==undefined){
@@ -2273,6 +2283,21 @@
         this.imagen=null
         switch (this.tipo.label) {
           case 'CULTIVO Y ANTIBIOGRAMA':
+            this.detalle=[]
+            this.laboratorio={
+              tipomuestra:'',
+          fechatoma:date.formatDate(new Date(),'YYYY-MM-DD'),
+          horatoma:date.formatDate(new Date(),'HH:mm'),
+          examendirecto:'',
+          tinciongram:'',
+          microorganismo:'',
+          solicitud:'',
+          responsable:'',
+          tipo_id:'',
+          paciente_id:'',
+          user_id:this.$store.state.login.user.id,
+          doctor_id:'',
+            }
             this.cargarAntibiotico('CULTIVO');
             break;
           case 'INMUNOLOGIA':
@@ -5724,6 +5749,19 @@
         })
       },
       createLaboratorio(){
+        if(this.tipo.label=='CULTIVO Y ANTIBIOGRAMA'){
+          this.laboratorio.tipo_id=this.tipo.id
+          this.laboratorio.paciente_id=this.paciente.id
+          this.laboratorio.doctor_id=this.doctor.id
+          this.laboratorio.user_id=this.$store.state.login.user.id
+          this.laboratorio.responsable=this.user
+          this.laboratorio.antibiograma=this.detalle
+          this.$axios.post(process.env.API+'/cultivo',this.laboratorio).then(res=> {
+            console.log(res.data)
+          })
+          return false
+        }
+        
         this.laboratorio.tipo_id=this.tipo.id
         this.laboratorio.paciente_id=this.paciente.id
         this.laboratorio.doctor_id=this.doctor.id

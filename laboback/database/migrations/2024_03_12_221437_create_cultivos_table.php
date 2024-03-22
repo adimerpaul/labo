@@ -15,6 +15,13 @@ class CreateCultivosTable extends Migration
     {
         Schema::create('cultivos', function (Blueprint $table) {
             $table->id();
+            $table->string('tipomuestra')->nullable()->default('');
+            $table->date('fechatoma')->nullable();
+            $table->time('horatoma')->nullable();
+            $table->date('fechaimp')->nullable();
+            $table->string('responsable')->default('');
+            $table->text('solicitud')->nullable()->default('');
+            
             $table->text('tipoMuestra')->nullable()->default('');
             $table->text('examenDirecto')->nullable()->default('');
             $table->text('tincionGram')->nullable()->default('');
