@@ -1870,8 +1870,8 @@
     data(){
       return{
         colAntibiotico:[
-          {name:'antibiotico',label:'antibiotico',field: row=>row.antibiotico.nombre },
-          {name:'interpretacion',label:'interpretacion',field:'interpretacion'}
+          {name:'antibiotico',label:'ANTIBIOTICO',field: row=>row.antibiotico.nombre },
+          {name:'interpretacion',label:'INTERPRETACION',field:'interpretacion'}
         ],
         current: 1,
         last_page: 0,
