@@ -100,6 +100,7 @@
                 <div class="row">
                 <div class="col-6"><q-input dense v-model="fechalab" autofocus type="date"/></div>
                 <div class="col-6"><q-btn label="Consultar" @click="consultarLab"/></div>
+                <div class="col-6"><q-btn label="Cultivo" @click="consultarCult"/></div>
                 </div>
               </q-card-section>
               <q-card-section class="q-pt-none">
@@ -112,6 +113,18 @@
                   <q-btn @click="upimagen(l)" size="xs" flat round color="purple-5" icon="add_photo_alternate" v-if="l.tipo_id==18"/>
                   <q-btn @click="descargar(l)" size="xs" flat round color="deep-orange-5" icon="image" v-if="l.imagen!=null && l.imagen!=''"/>
 
+                  <q-btn @click="Whatsapp(l.doctor.celular)" size="xs" flat round color="purple" icon="whatsapp" v-if="l.doctor.celular!='' && l.doctor.celular!=null"/>
+                  {{l.fechatoma}}
+                  {{l.tipo.nombre}} - {{l.solicitud}}
+                </li>
+              </ul>
+
+              <ul style="border: 0px;margin: 0px;padding: 0px;list-style: none">
+                <li style="border: 0px;margin: 0px;padding: 0px" v-for=" l in laboratorios2" :key="l.id">
+                  <q-btn @click="eliminar(l)" size="xs" flat round color="red" icon="delete" />
+                  <q-btn @click="imprimirCultivo(paciente2,l)" size="xs" flat round color="info" icon="print" />
+                  <q-btn @click="datformulario(paciente2,l)" size="xs" flat round color="yellow" icon="edit" />
+                  <q-btn @click="sobre(paciente2,l)" size="xs" flat round color="teal" icon="mail_outline" />
                   <q-btn @click="Whatsapp(l.doctor.celular)" size="xs" flat round color="purple" icon="whatsapp" v-if="l.doctor.celular!='' && l.doctor.celular!=null"/>
                   {{l.fechatoma}}
                   {{l.tipo.nombre}} - {{l.solicitud}}
@@ -1030,7 +1043,7 @@
 
               <div class="col-12">MICROORGANISMO IDENTIFICADO</div>
 
-                            <div class="col-12"><q-editor v-model="laboratorio.microorganismo" min-height="5rem" /></div>
+                            <div class="col-12"><q-editor v-model="laboratorio.microorganizmo" min-height="5rem" /></div>
                             <div class="col-4 q-pa-xs"><q-select dense square outlined v-model="antibiotico" :options="antibioticos" label="Antibiotico" /></div>
                             <div class="col-4 q-pa-xs"><q-select dense square outlined v-model="resultado" :options="['Resistente','Sensible','Intermedio']" label="interpretacion" /></div>
                             <div class="col-4 q-pa-xs"><q-btn color='green' icon="control_point" dense @click="agregarDetalle" /></div>
@@ -1856,7 +1869,7 @@
         </q-card-section>
       </q-card>
     </q-dialog>
-
+    <div id="myelement" class="hidden"></div>
   </q-page>
   </template>
   <script>
@@ -1864,13 +1877,13 @@
   import {jsPDF} from "jspdf";
   import $ from 'jquery'
   import moment from 'moment'
-
+  import { Printd } from 'printd'
 
   export default {
     data(){
       return{
         colAntibiotico:[
-          {name:'antibiotico',label:'ANTIBIOTICO',field: row=>row.antibiotico.nombre },
+          {name:'antibiotico',label:'ANTIBIOTICO',field: 'nombre' },
           {name:'interpretacion',label:'INTERPRETACION',field:'interpretacion'}
         ],
         current: 1,
@@ -1900,6 +1913,7 @@
         resultado:'',
         usuarios:[],
         laboratorios:[],
+        laboratorios2:[],
         laboratorio:{
           tipomuestra:'COMPLETA',
           fechatoma:date.formatDate(new Date(),'YYYY-MM-DD'),
@@ -2120,16 +2134,29 @@
       agregarDetalle(){
         if(this.antibiotico.id==undefined || this.resultado=='')
         return false
-        this.detalle.push({antibiotico:this.antibiotico,interpretacion:this.resultado})
+        this.antibiotico.interpretacion=this.resultado
+        this.detalle.push(this.antibiotico)
+        this.antibiotico={label:''}
         console.log(this.detalle)
       },
       consultarLab(){
         if(this.fechalab==null || this.fechalab==undefined){
           return false
         }
+        this.laboratorios2=[]
         this.$axios.post(process.env.API+'/listLabo',{fecha:this.fechalab,id:this.paciente2.id}).then(res=> {
          // console.log(res.data)
           this.laboratorios=res.data
+        })
+      },
+      consultarCult(){
+        if(this.fechalab==null || this.fechalab==undefined){
+          return false
+        }
+        this.laboratorios=[]
+        this.$axios.post(process.env.API+'/listCultivo',{fecha:this.fechalab,id:this.paciente2.id}).then(res=> {
+         // console.log(res.data)
+          this.laboratorios2=res.data
         })
       },
       muestras(){
@@ -2290,7 +2317,7 @@
           horatoma:date.formatDate(new Date(),'HH:mm'),
           examendirecto:'',
           tinciongram:'',
-          microorganismo:'',
+          microorganizmo:'',
           solicitud:'',
           responsable:'',
           tipo_id:'',
@@ -5691,6 +5718,8 @@
           this.miscelaneo(p,l)
         if(l.tipo_id==24)
           this.hierro(p,l)
+        if(l.tipo_id==25)
+          this.cultivo(p,l)
      //    console.log(p)
         // console.log(l)
         return false
@@ -5761,7 +5790,7 @@
           })
           return false
         }
-        
+
         this.laboratorio.tipo_id=this.tipo.id
         this.laboratorio.paciente_id=this.paciente.id
         this.laboratorio.doctor_id=this.doctor.id
@@ -6031,7 +6060,66 @@
         }).finally(()=>{
           this.loading=false
         })
+      },
+      imprimirCultivo(p,l){
+        let cadena="<style>\
+        .tab1{width:100% }\
+        .tab2{width:100%; border:0.5px solid; }\
+        .tab3{width:100%; border:0.5px solid; }\
+        .img1{width: 300px; height:75px;}\
+        .enc1{font-size:14px ; color: blue; text-align:center}\
+        .enc2{font-size:18px ; color: blue; text-align:center;font-weight: bold;}\
+        </style>\
+        <table class='tab1'>\
+        <tr><td style='width:50%'><img class='img1' src='img/natividad.jpeg' /></td>\
+        <td class='enc1'><b>SERVICIO DE LABORATORIO</b> <br> Bolivar N°753 entre Arica e Iquique <br> Telf: 5254721 Fax: 52-83667 <br> Emergencia las 24 horas del dia.<br>\
+        <span style='color:red'>Nº Registro CODEDLAB 000045 <br>Form. 025</span></td></tr>\
+        </table>"
+        let anio=''
+      if(p.edad==null||p.edad==undefined||p.edad=='')
+      anio=p.tiempo
+      else anio=p.edad
+      if(l.fechaimp==null || l.fechaimp == undefined ) l.fechaimp = moment()
+        cadena+="<div class='enc2'>RESULTADO <br> CULTIVO Y ANTIBIOGRAMA</div>\
+        <table class='tab2'>\
+        <tr><th>PACIENTE: </th><td>"+p.paciente+"</td><th>EDAD: </th><td>"+anio+"</td></tr>\
+        <tr><th>REQUERIDO POR: </th><td>"+l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno+"</td><th>SEXO: </th><td>"+p.sexo+"</td></tr>\
+        <tr><th>TIPO DE MUESTRA: </th><td>"+l.tipomuestra+"</td><th>N PACIENTE: </th><td>"+l.solicitud+"</td></tr>\
+        <tr><th>FECHA DE RECEPCION: </th><td>"+moment(l.fechatoma).format("DD-MM-YYYY")+"</td><th>FECHA ENTREGA: </th><td>"+moment(l.fechaimp).format("DD-MM-YYYY")+"</td></tr>\
+        </table>"
+/*
+      doc.text('OBSERVACION',x+20,y+245,'left')
+      doc.text(l.observacion,x+10,y+240,'left')
+
+      doc.text('RESPONSABLE',x+15,y+260,'left')
+      doc.text(l.responsable,x+15,y+265,'left')
+      doc.text(['Fecha toma de Muestra','Hora toma Muestra','Fecha Entrega de Resultado'],x+120,y+260,'left')
+      doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,moment(l.fechaimp).format("DD-MM-YYYY")],x+170,y+260,'left')
+      */   cadena+="<div style='font-size:12px;'><br>"
+
+      if(l.examenDirecto!='' &&  l.examenDirecto!=undefined){
+          cadena+="<b style='font-size:16px;'>EXAMEN DIRECTO</b><br>"+l.examenDirecto+"<br>"
       }
+      if(l.tincionGram!='' &&  l.tincionGram!=undefined){
+          cadena+="<br><b style='font-size:16px;'>TINCION GRAM</b><br>"+l.tincionGram+"<br>"
+      }
+      if(l.microorganizmo!='' &&  l.microorganizmo!=undefined){
+          cadena+="<br><b style='font-size:16px;'>MICROORGANIZMO IDENTIFICADO</b><br>"+l.microorganizmo+"<br>"
+      }
+      if(l.antibioticos.length>0){
+        cadena+="<b>ANTIBIOGRAMA</b><br>"
+        cadena+="<table class='tab3'><thead><tr><th>ANTIBIOTICO</th><th>INTERPRETACION</th></tr></thead><tbody>"
+        l.antibioticos.forEach(r => {
+          console.log(r)
+          cadena+="<tr><td>"+r.antibiotico+"</td><td></td></tr>"
+        });
+        cadena+="</tbody></table>"
+      }
+      cadena+="</div>"
+      document.getElementById('myelement').innerHTML = cadena
+      const d3 = new Printd()
+      d3.print(document.getElementById('myelement'))
+              }
     }
   }
   </script>
