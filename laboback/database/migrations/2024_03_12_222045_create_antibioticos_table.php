@@ -21,6 +21,7 @@ class CreateAntibioticosTable extends Migration
             $table->double('rangoMax')->nullable();
             $table->text('referencia')->nullable()->default('');
             $table->text('tipo')->nullable()->default('')->comment("'CULTIVO','INMUNOLOGIA'");
+            $table->softDeletes();
             $table->timestamps();
         });
     }

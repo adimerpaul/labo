@@ -129,6 +129,14 @@
 <!--              <q-item-label caption>Controlar usuarios</q-item-label>-->
             </q-item-section>
           </q-item>
+          <q-item to="antibioticos"  exact clickable v-ripple v-if="$store.state.login.boolseguro">
+            <q-item-section avatar>
+              <q-icon name="o_verified" />
+            </q-item-section>
+            <q-item-section>
+              <q-item-label> Antibiotico</q-item-label>
+            </q-item-section>
+          </q-item>
 
           <!--
           <q-item to="porcaducar"  exact clickable v-ripple v-if="$store.state.login.boolporcaducar">

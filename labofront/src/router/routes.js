@@ -10,6 +10,7 @@ import Reactivo from "pages/Reactivo";
 import Seguros from "pages/Seguros";
 import Pacientes2 from "pages/Pacientes2";
 import Reporte from "pages/Reporte";
+import Antibioticos from "pages/Antibioticos.vue";
 
 const routes = [
   {
@@ -27,6 +28,7 @@ const routes = [
       { path: 'seguros', component: Seguros,meta:{requiresAuth: true}},
       { path: 'pacientes2', component: Pacientes2,meta:{requiresAuth: true}},
       { path: 'reporte', component: Reporte,meta:{requiresAuth: true}},
+      { path: 'antibioticos', component: Antibioticos,meta:{requiresAuth: true}},
     ]
   },
 
