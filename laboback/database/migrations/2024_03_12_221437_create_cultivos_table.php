@@ -22,7 +22,6 @@ class CreateCultivosTable extends Migration
             $table->string('responsable')->default('');
             $table->text('solicitud')->nullable()->default('');
 
-//            $table->text('tipoMuestra')->nullable()->default('');
             $table->text('examenDirecto')->nullable()->default('');
             $table->text('tincionGram')->nullable()->default('');
             $table->text('microorganizmo')->nullable()->default('');

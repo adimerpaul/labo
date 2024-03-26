@@ -31,7 +31,8 @@ class PacienteController extends Controller
 
     public function listLabo(Request $request){
 
-        return Laboratorio::where('paciente_id',$request->id)->whereDate('fechatoma','>=',$request->fecha)->with('doctor')->with('tipo')->get();
+        return Laboratorio::where('paciente_id',$request->id)
+        ->whereDate('fechatoma','>=',$request->fecha)->with('doctor')->with('tipo')->get();
     }
 
     /**
