@@ -95,6 +95,7 @@ Route::group(['middleware'=>'auth:sanctum'],function (){
 
     Route::get('/listAntib/{tipo}',[\App\Http\Controllers\AntibioticoController::class,'listAntib']);
     Route::resource('/cultivo',\App\Http\Controllers\CultivoController ::class);
+    Route::resource('/inmunologia',\App\Http\Controllers\InmunologiaController::class);
     Route::post('/listCultivo',[\App\Http\Controllers\CultivoController::class,'listCultivo']);
-
+    Route::post('/listImmunologia',[\App\Http\Controllers\InmunologiaController::class,'listImmunologia']);
 });

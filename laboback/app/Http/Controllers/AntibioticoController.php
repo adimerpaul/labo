@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class AntibioticoController extends Controller{
     public function index(){
-        return Antibiotico::all();
+        return Antibiotico::orderBy('id','desc')->get();
     }
     public function store(Request $request){
         $antibiotico = new Antibiotico();

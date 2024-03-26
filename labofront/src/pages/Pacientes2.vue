@@ -13,7 +13,7 @@
 
           <template v-slot:body-cell-laboratorios="props">
             <q-td :props="props" auto-width>
-               <q-btn color="accent" @click="dialoglistlabo=true;paciente2=props.row;laboratorios=[]" label="Laboratorios"/>
+               <q-btn color="accent" @click="laboratorioClick(props.row)" label="Laboratorios"/>
 
             </q-td>
           </template>
@@ -38,17 +38,6 @@
                       <q-item-label>Eliminar Paciente</q-item-label>
                     </q-item-section>
                   </q-item>
-  <!--                <q-item clickable v-close-popup @click="onItemClick">-->
-  <!--                  <q-item-section>-->
-  <!--                    <q-item-label>Videos</q-item-label>-->
-  <!--                  </q-item-section>-->
-  <!--                </q-item>-->
-
-  <!--                <q-item clickable v-close-popup @click="onItemClick">-->
-  <!--                  <q-item-section>-->
-  <!--                    <q-item-label>Articles</q-item-label>-->
-  <!--                  </q-item-section>-->
-  <!--                </q-item>-->
                 </q-list>
               </q-btn-dropdown>
             </q-td>
@@ -99,7 +88,7 @@
               <q-card-section class="q-pt-none">
                 <div class="row">
                 <div class="col-6"><q-input dense v-model="fechalab" autofocus type="date"/></div>
-                <div class="col-6"><q-btn label="Consultar" @click="consultarLab"/></div>
+                <div class="col-6 flex flex-center"><q-btn color="info" icon="search" label="Consultar" @click="consultarLab" :loading="loading"/></div>
                 </div>
               </q-card-section>
               <q-card-section class="q-pt-none">
@@ -1039,7 +1028,7 @@
               <q-table title="ANTIBIOGRAMA" :rows="detalle" :columns="colAntibiotico" row-key="name" dense>
                 <template v-slot:body-cell-op="props" >
                   <q-td key="op" :props="props" >
-                     <q-btn color="red" icon='delete' dense  @click="deleteDetalle(props.row,props.pageIndex)" />                    
+                     <q-btn color="red" icon='delete' dense  @click="deleteDetalle(props.row,props.pageIndex)" />
                   </q-td>
                 </template>
               </q-table>
@@ -1059,6 +1048,38 @@
              </div></q-card-section>
               </q-card>
              </template>
+            <template v-if="tipo.label=='INMUNOLOGIA'">
+              <q-card class="my-card"  flat bordered style="width:100%">
+                <q-card-section  class="bg-green-2"> <div class="row">
+                  <div class="col-4 q-pa-xs"><q-select dense square outlined v-model="antibiotico" :options="antibioticos" label="Antibiotico" /></div>
+                  <div class="col-4 q-pa-xs">
+                    <q-input dense square outlined v-model="resultado" label="Resultado" type="number" step="0.01" />
+                  </div>
+                  <div class="col-4 q-pa-xs"><q-btn color='green' icon="control_point" dense @click="agregarDetalle" /></div>
+                  <div class="col-12">
+                    <q-table title="" :rows="detalle" :columns="colAntibiotico" row-key="name" dense>
+                      <template v-slot:body-cell-op="props" >
+                        <q-td key="op" :props="props" >
+                          <q-btn color="red" icon='delete' dense  @click="deleteDetalle(props.row,props.pageIndex)" />
+                        </q-td>
+                      </template>
+                    </q-table>
+
+                  </div>
+                </div></q-card-section>
+                <q-card-section  class="bg-blue-2"> <div class="row">
+                  <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACION" v-model="laboratorio.observacion" /></div>
+                </div></q-card-section>
+                <q-card-section  class="bg-red-2"> <div class="row">
+
+                  <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
+
+                  <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
+                  <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+                  <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
+                </div></q-card-section>
+              </q-card>
+            </template>
 
             <div class="col-12">
               <q-btn label="Guardar" type="submit" class="full-width" icon="add_circle" color="positive" :loading="loading"/>
@@ -1874,7 +1895,7 @@
               <q-table title="ANTIBIOGRAMA" :rows="detalle" :columns="colAntibiotico" row-key="name" dense>
                 <template v-slot:body-cell-op="props" >
                   <q-td key="op" :props="props" >
-                     <q-btn color="red" icon='delete' dense  @click="deleteDetalle(props.row,props.pageIndex)" />                    
+                     <q-btn color="red" icon='delete' dense  @click="deleteDetalle(props.row,props.pageIndex)" />
                   </q-td>
                 </template>
               </q-table>
@@ -2157,6 +2178,12 @@
       }
     },
     methods:{
+      laboratorioClick(p){
+        this.dialoglistlabo=true;
+        this.paciente2=p;
+        this.laboratorios=[]
+        this.consultarLab()
+      },
       deleteDetalle (det, pageIndex) {
       this.detalle.splice(pageIndex, 1)
     },
@@ -2179,15 +2206,20 @@
         console.log(this.detalle)
       },
       consultarLab(){
-        if(this.fechalab==null || this.fechalab==undefined){
-          return false
-        }
+        // if(this.fechalab==null || this.fechalab==undefined){
+        //   return false
+        // }
+        this.loading=true
         this.laboratorios=[]
         this.$axios.post(process.env.API+'/listLabo',{fecha:this.fechalab,id:this.paciente2.id}).then(res=> {
          // console.log(res.data)
           this.laboratorios=res.data
           this.$axios.post(process.env.API+'/listCultivo',{fecha:this.fechalab,id:this.paciente2.id}).then(res=> {
             this.laboratorios=this.laboratorios.concat(res.data)
+            this.$axios.post(process.env.API+'/listImmunologia',{fecha:this.fechalab,id:this.paciente2.id}).then(res=> {
+              this.laboratorios=this.laboratorios.concat(res.data)
+              this.loading=false
+            })
           })
         })
       },
@@ -2370,6 +2402,7 @@
         switch (this.tipo.label) {
           case 'CULTIVO Y ANTIBIOGRAMA':
             this.detalle=[]
+            this.interpretacion=''
             this.laboratorio={
               tipomuestra:'',
           fechatoma:date.formatDate(new Date(),'YYYY-MM-DD'),
@@ -2387,6 +2420,23 @@
             this.cargarAntibiotico('CULTIVO');
             break;
           case 'INMUNOLOGIA':
+            this.detalle=[]
+            this.interpretacion=''
+            this.laboratorio={
+              tipomuestra:'',
+              fechatoma:date.formatDate(new Date(),'YYYY-MM-DD'),
+              horatoma:date.formatDate(new Date(),'HH:mm'),
+              // examendirecto:'',
+              // tinciongram:'',
+              // microorganizmo:'',
+              solicitud:'',
+              responsable:'',
+              tipo_id:'',
+              paciente_id:'',
+              user_id:this.$store.state.login.user.id,
+              doctor_id:'',
+            }
+            this.cargarAntibiotico('INMUNOLOGIA');
             break;
           case 'EXAMEN GENERAL DE ORINA':
                         this.laboratorio={
@@ -5779,6 +5829,8 @@
           this.hierro(p,l)
         if(l.tipo_id==25)
           this.imprimirCultivo(p,l)
+        if(l.tipo_id==26)
+          this.imprimirInmunologia(p,l)
      //    console.log(p)
         // console.log(l)
         return false
@@ -5839,6 +5891,30 @@
       createLaboratorio(){
         if(this.doctor.id== undefined)
         {
+          this.$q.dialog({
+            title: 'Error',
+            message: 'Seleccione un Doctor',
+            color: 'red',
+          })
+          return false
+        }
+        if(this.tipo.label=='INMUNOLOGIA'){
+
+          this.laboratorio.tipo_id=this.tipo.id
+          this.laboratorio.paciente_id=this.paciente.id
+          this.laboratorio.doctor_id=this.doctor.id
+          this.laboratorio.user_id=this.$store.state.login.user.id
+          this.laboratorio.responsable=this.user
+          this.laboratorio.antibiograma=this.detalle
+          this.loading=true
+          this.$axios.post(process.env.API+'/inmunologia',this.laboratorio).then(res=> {
+            console.log(res.data)
+            this.mispacientes()
+            this.dialoglaboratorio=false
+            this.resetlabo()
+            this.muestras();
+            this.loading=false
+          })
           return false
         }
         if(this.tipo.label=='CULTIVO Y ANTIBIOGRAMA'){
@@ -6196,7 +6272,82 @@
       document.getElementById('myelement').innerHTML = cadena
       const d3 = new Printd()
       d3.print(document.getElementById('myelement'))
-              }
+              },
+      imprimirInmunologia(p,l){
+        let cadena="<style>\
+        .tab1{width:100% }\
+        .tab2{width:100%; border:0.5px solid; }\
+        .tab3{width:100%; border:0.5px solid; }\
+        .img1{width: 300px; height:75px;}\
+        .enc1{font-size:14px ; color: blue; text-align:center}\
+        .enc2{font-size:18px ; color: blue; text-align:center;font-weight: bold;}\
+        footer {\
+      position: absolute;\
+      bottom: 0;\
+      width: 100%;\
+      height: 60px;\
+      color: blue;  }\
+        </style>\
+        <table class='tab1'>\
+        <tr><td style='width:50%'><img class='img1' src='img/natividad.jpeg' /></td>\
+        <td class='enc1'><b>SERVICIO DE LABORATORIO</b> <br> Bolivar N°753 entre Arica e Iquique <br> Telf: 5254721 Fax: 52-83667 <br> Emergencia las 24 horas del dia.<br>\
+        <span style='color:red'>Nº Registro CODEDLAB 000045 <br>Form. 025</span></td></tr>\
+        </table>"
+        let anio=''
+        if(p.edad==null||p.edad==undefined||p.edad=='')
+          anio=p.tiempo
+        else anio=p.edad
+        if(l.fechaimp==null || l.fechaimp == undefined ) l.fechaimp = moment()
+        cadena+="<div class='enc2'>RESULTADO <br> CULTIVO Y ANTIBIOGRAMA</div>\
+        <table class='tab2'>\
+        <tr><th>PACIENTE: </th><td>"+p.paciente+"</td><th>EDAD: </th><td>"+anio+"</td></tr>\
+        <tr><th>REQUERIDO POR: </th><td>"+l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno+"</td><th>SEXO: </th><td>"+p.sexo+"</td></tr>\
+        <tr><th>TIPO DE MUESTRA: </th><td>"+l.tipomuestra+"</td><th>N PACIENTE: </th><td>"+l.solicitud+"</td></tr>\
+        <tr><th>FECHA DE RECEPCION: </th><td>"+moment(l.fechatoma).format("DD-MM-YYYY")+"</td><th>FECHA ENTREGA: </th><td>"+moment(l.fechaimp).format("DD-MM-YYYY")+"</td></tr>\
+        </table>"
+        /*
+              doc.text('OBSERVACION',x+20,y+245,'left')
+              doc.text(l.observacion,x+10,y+240,'left')
+
+              doc.text('RESPONSABLE',x+15,y+260,'left')
+              doc.text(l.responsable,x+15,y+265,'left')
+              doc.text(['Fecha toma de Muestra','Hora toma Muestra','Fecha Entrega de Resultado'],x+120,y+260,'left')
+              doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,moment(l.fechaimp).format("DD-MM-YYYY")],x+170,y+260,'left')
+              */   cadena+="<body style='font-size:12px;padding: 1cm 2cm 1cm 3cm;'><br>"
+
+        // if(l.examenDirecto!='' &&  l.examenDirecto!=undefined){
+        //   cadena+="<b style='font-size:16px;'>EXAMEN DIRECTO</b><br>"+l.examenDirecto+"<br>"
+        // }
+        // if(l.tincionGram!='' &&  l.tincionGram!=undefined){
+        //   cadena+="<br><b style='font-size:16px;'>TINCION GRAM</b><br>"+l.tincionGram+"<br>"
+        // }
+        // if(l.microorganizmo!='' &&  l.microorganizmo!=undefined){
+        //   cadena+="<br><b style='font-size:16px;'>MICROORGANIZMO IDENTIFICADO</b><br>"+l.microorganizmo+"<br>"
+        // }
+        if(l.antibioticos.length>0){
+          cadena+="<b></b><br>"
+          cadena+="<table class='tab3'>" +
+            "<thead>" +
+            "<tr>" +
+            "<th>ENSAYO</th>" +
+            "<th>RESULTADO</th>" +
+            "<th>UNIDAD</th>" +
+            "<th>RANGO</th>" +
+            "</tr>" +
+            "</thead>" +
+            "<tbody>"
+          l.antibioticos.forEach(r => {
+            console.log(r)
+            cadena+="<tr><td>"+r.nombre+"</td><td>"+r.pivot.resultado+"</td><td>"+r.unidad+"</td><td>"+r.rangoMin+"-"+r.rangoMax+"</td></tr>"
+          });
+          cadena+="</tbody></table>"
+        }
+        cadena+="<div>"+l.observacion+"</div>\
+      <footer><div style='text-align:center; color:black; '>RESPONSABLE DEL ANALISIS</div><br>CLINICA NATIVIDAD CLINICA DE LA FAMILIA</footer></body>"
+        document.getElementById('myelement').innerHTML = cadena
+        const d3 = new Printd()
+        d3.print(document.getElementById('myelement'))
+      }
     }
   }
   </script>

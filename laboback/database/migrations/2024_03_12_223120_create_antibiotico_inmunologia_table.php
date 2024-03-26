@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInmunologiaAntibioticosTable extends Migration
+class CreateAntibioticoInmunologiaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateInmunologiaAntibioticosTable extends Migration
      */
     public function up()
     {
-        Schema::create('inmunologia_antibioticos', function (Blueprint $table) {
+        Schema::create('antibiotico_inmunologia', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('inmunologia_id');
             $table->foreign('inmunologia_id')->references('id')->on('inmunologias');
@@ -31,6 +31,6 @@ class CreateInmunologiaAntibioticosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('inmunologia_antibioticos');
+        Schema::dropIfExists('antibiotico_inmunologia');
     }
 }

@@ -15,6 +15,14 @@ class CreateInmunologiasTable extends Migration
     {
         Schema::create('inmunologias', function (Blueprint $table) {
             $table->id();
+            $table->string('tipomuestra')->nullable()->default('');
+            $table->date('fechatoma')->nullable();
+            $table->time('horatoma')->nullable();
+            $table->date('fechaimp')->nullable();
+            $table->string('responsable')->default('');
+            $table->text('solicitud')->nullable()->default('');
+            $table->text('observacion')->nullable()->default('');
+
             $table->unsignedBigInteger('tipo_id');
             $table->foreign('tipo_id')->references('id')->on('tipos');
             $table->unsignedBigInteger('paciente_id');
