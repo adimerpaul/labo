@@ -1847,6 +1847,41 @@
              </q-card>
             </template>
 
+            <template v-if="tipo.label=='CULTIVO Y ANTIBIOGRAMA'">
+              <q-card class="my-card"  flat bordered style="width:100%">
+             <q-card-section  class="bg-green-2"> <div class="row">
+              <div class="col-12 ">EXAMEN DIRECTO</div>
+              <div class="col-12"><q-editor v-model="laboratorio.examenDirecto" min-height="5rem" /></div>
+
+
+              <div class="col-12">TINCION DE GRAM</div>
+
+                            <div class="col-12"><q-editor v-model="laboratorio.tincionGram" min-height="5rem" /></div>
+
+              <div class="col-12">MICROORGANISMO IDENTIFICADO</div>
+
+                            <div class="col-12"><q-editor v-model="laboratorio.microorganizmo" min-height="5rem" /></div>
+                            <div class="col-4 q-pa-xs"><q-select dense square outlined v-model="antibiotico" :options="antibioticos" label="Antibiotico" /></div>
+                            <div class="col-4 q-pa-xs"><q-select dense square outlined v-model="resultado" :options="['Resistente','Sensible','Intermedio']" label="interpretacion" /></div>
+                            <div class="col-4 q-pa-xs"><q-btn color='green' icon="control_point" dense @click="agregarDetalle" /></div>
+             <div class="col-12">
+              <q-table title="ANTIBIOGRAMA" :rows="detalle" :columns="colAntibiotico" row-key="name" dense/>
+
+             </div>
+             </div></q-card-section>
+             <q-card-section  class="bg-blue-2"> <div class="row">
+             <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACION" v-model="laboratorio.d4" /></div>
+             </div></q-card-section>
+             <q-card-section  class="bg-red-2"> <div class="row">
+
+             <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
+
+             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
+             <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
+             </div></q-card-section>
+              </q-card>
+             </template>
 
 
             <div class="col-12">
@@ -2259,6 +2294,10 @@
         this.tipo.label=this.tipo.nombre
         this.laboratorio=labo
         this.user=this.laboratorio.responsable
+        this.detalle=this.laboratorio.antibioticos
+        this.detalle.forEach(r => {
+            r.interpretacion=r.pivot.interpretacion
+        });
         this.dialogmodlab=true
       },
       modLaboratorio(){
