@@ -1036,12 +1036,18 @@
                             <div class="col-4 q-pa-xs"><q-select dense square outlined v-model="resultado" :options="['Resistente','Sensible','Intermedio']" label="interpretacion" /></div>
                             <div class="col-4 q-pa-xs"><q-btn color='green' icon="control_point" dense @click="agregarDetalle" /></div>
              <div class="col-12">
-              <q-table title="ANTIBIOGRAMA" :rows="detalle" :columns="colAntibiotico" row-key="name" dense/>
+              <q-table title="ANTIBIOGRAMA" :rows="detalle" :columns="colAntibiotico" row-key="name" dense>
+                <template v-slot:body-cell-op="props" >
+                  <q-td key="op" :props="props" >
+                     <q-btn color="red" icon='delete' dense  @click="deleteDetalle(props.row,props.pageIndex)" />                    
+                  </q-td>
+                </template>
+              </q-table>
 
              </div>
              </div></q-card-section>
              <q-card-section  class="bg-blue-2"> <div class="row">
-             <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACION" v-model="laboratorio.d4" /></div>
+             <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACION" v-model="laboratorio.observacion" /></div>
              </div></q-card-section>
              <q-card-section  class="bg-red-2"> <div class="row">
 
@@ -1865,12 +1871,18 @@
                             <div class="col-4 q-pa-xs"><q-select dense square outlined v-model="resultado" :options="['Resistente','Sensible','Intermedio']" label="interpretacion" /></div>
                             <div class="col-4 q-pa-xs"><q-btn color='green' icon="control_point" dense @click="agregarDetalle" /></div>
              <div class="col-12">
-              <q-table title="ANTIBIOGRAMA" :rows="detalle" :columns="colAntibiotico" row-key="name" dense/>
+              <q-table title="ANTIBIOGRAMA" :rows="detalle" :columns="colAntibiotico" row-key="name" dense>
+                <template v-slot:body-cell-op="props" >
+                  <q-td key="op" :props="props" >
+                     <q-btn color="red" icon='delete' dense  @click="deleteDetalle(props.row,props.pageIndex)" />                    
+                  </q-td>
+                </template>
+              </q-table>
 
              </div>
              </div></q-card-section>
              <q-card-section  class="bg-blue-2"> <div class="row">
-             <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACION" v-model="laboratorio.d4" /></div>
+             <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACION" v-model="laboratorio.observacion" /></div>
              </div></q-card-section>
              <q-card-section  class="bg-red-2"> <div class="row">
 
@@ -1906,6 +1918,7 @@
     data(){
       return{
         colAntibiotico:[
+          {name:'op',label:'OP',field: 'op' },
           {name:'antibiotico',label:'ANTIBIOTICO',field: 'nombre' },
           {name:'interpretacion',label:'INTERPRETACION',field:'interpretacion'}
         ],
@@ -2144,6 +2157,9 @@
       }
     },
     methods:{
+      deleteDetalle (det, pageIndex) {
+      this.detalle.splice(pageIndex, 1)
+    },
       cargarAntibiotico(tipo){
         this.antibioticos=[]
         this.$axios.get(process.env.API+'/listAntib/'+tipo).then(res=> {
@@ -2306,6 +2322,19 @@
         this.laboratorio.doctor_id=this.doctor.id
         this.laboratorio.user_id=this.$store.state.login.user.id
         this.laboratorio.responsable=this.user
+         if(this.tipo.label=='CULTIVO Y ANTIBIOGRAMA'){
+          this.laboratorio.antibiograma=this.detalle
+          this.loading=true
+          this.$axios.put(process.env.API+'/cultivo/'+this.laboratorio.id,this.laboratorio).then(res=> {
+            console.log(res.data)
+            this.mispacientes()
+            this.dialogmodlab=false
+            this.resetlabo()
+            this.muestras()
+            this.loading=false
+          })
+          return false
+         }
          if(this.tipo.label=='HEMOGRAMA COMPLETO'){
            if (this.laboratorio.d18!='' ||
           this.laboratorio.d20!='' ||
