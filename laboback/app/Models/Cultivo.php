@@ -40,6 +40,6 @@ class Cultivo extends Model
     }
 
     public function antibioticos(){
-        return $this->belongsToMany(Antibiotico::class);
+        return $this->belongsToMany(Antibiotico::class)->withPivot('interpretacion');
     }
 }

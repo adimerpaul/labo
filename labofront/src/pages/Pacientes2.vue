@@ -100,7 +100,6 @@
                 <div class="row">
                 <div class="col-6"><q-input dense v-model="fechalab" autofocus type="date"/></div>
                 <div class="col-6"><q-btn label="Consultar" @click="consultarLab"/></div>
-                <div class="col-6"><q-btn label="Cultivo" @click="consultarCult"/></div>
                 </div>
               </q-card-section>
               <q-card-section class="q-pt-none">
@@ -119,17 +118,6 @@
                 </li>
               </ul>
 
-              <ul style="border: 0px;margin: 0px;padding: 0px;list-style: none">
-                <li style="border: 0px;margin: 0px;padding: 0px" v-for=" l in laboratorios2" :key="l.id">
-                  <q-btn @click="eliminar(l)" size="xs" flat round color="red" icon="delete" />
-                  <q-btn @click="imprimirCultivo(paciente2,l)" size="xs" flat round color="info" icon="print" />
-                  <q-btn @click="datformulario(paciente2,l)" size="xs" flat round color="yellow" icon="edit" />
-                  <q-btn @click="sobre(paciente2,l)" size="xs" flat round color="teal" icon="mail_outline" />
-                  <q-btn @click="Whatsapp(l.doctor.celular)" size="xs" flat round color="purple" icon="whatsapp" v-if="l.doctor.celular!='' && l.doctor.celular!=null"/>
-                  {{l.fechatoma}}
-                  {{l.tipo.nombre}} - {{l.solicitud}}
-                </li>
-              </ul>
               </q-card-section>
               <q-card-actions align="right" class="text-primary">
                 <q-btn flat label="Cancel" v-close-popup />
@@ -2143,10 +2131,13 @@
         if(this.fechalab==null || this.fechalab==undefined){
           return false
         }
-        this.laboratorios2=[]
+        this.laboratorios=[]
         this.$axios.post(process.env.API+'/listLabo',{fecha:this.fechalab,id:this.paciente2.id}).then(res=> {
          // console.log(res.data)
           this.laboratorios=res.data
+          this.$axios.post(process.env.API+'/listCultivo',{fecha:this.fechalab,id:this.paciente2.id}).then(res=> {
+            this.laboratorios=this.laboratorios.concat(res.data)
+          })
         })
       },
       consultarCult(){
@@ -5719,7 +5710,7 @@
         if(l.tipo_id==24)
           this.hierro(p,l)
         if(l.tipo_id==25)
-          this.cultivo(p,l)
+          this.imprimirCultivo(p,l)
      //    console.log(p)
         // console.log(l)
         return false
@@ -5778,15 +5769,26 @@
         })
       },
       createLaboratorio(){
+        if(this.doctor.id== undefined)
+        {
+          return false
+        }
         if(this.tipo.label=='CULTIVO Y ANTIBIOGRAMA'){
+
           this.laboratorio.tipo_id=this.tipo.id
           this.laboratorio.paciente_id=this.paciente.id
           this.laboratorio.doctor_id=this.doctor.id
           this.laboratorio.user_id=this.$store.state.login.user.id
           this.laboratorio.responsable=this.user
           this.laboratorio.antibiograma=this.detalle
+          this.loading=true
           this.$axios.post(process.env.API+'/cultivo',this.laboratorio).then(res=> {
             console.log(res.data)
+            this.mispacientes()
+            this.dialoglaboratorio=false
+            this.resetlabo()
+            this.muestras();
+            this.loading=false
           })
           return false
         }
@@ -5877,7 +5879,7 @@
           this.mispacientes()
           this.dialoglaboratorio=false
           this.resetlabo()
-          this.muestras();
+          this.muestras()
           this.loading=false
         })
       },
@@ -6069,6 +6071,12 @@
         .img1{width: 300px; height:75px;}\
         .enc1{font-size:14px ; color: blue; text-align:center}\
         .enc2{font-size:18px ; color: blue; text-align:center;font-weight: bold;}\
+        footer {\
+      position: absolute;\
+      bottom: 0;\
+      width: 100%;\
+      height: 60px;\
+      color: blue;  }\
         </style>\
         <table class='tab1'>\
         <tr><td style='width:50%'><img class='img1' src='img/natividad.jpeg' /></td>\
@@ -6095,7 +6103,7 @@
       doc.text(l.responsable,x+15,y+265,'left')
       doc.text(['Fecha toma de Muestra','Hora toma Muestra','Fecha Entrega de Resultado'],x+120,y+260,'left')
       doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,moment(l.fechaimp).format("DD-MM-YYYY")],x+170,y+260,'left')
-      */   cadena+="<div style='font-size:12px;'><br>"
+      */   cadena+="<body style='font-size:12px;padding: 1cm 2cm 1cm 3cm;'><br>"
 
       if(l.examenDirecto!='' &&  l.examenDirecto!=undefined){
           cadena+="<b style='font-size:16px;'>EXAMEN DIRECTO</b><br>"+l.examenDirecto+"<br>"
@@ -6111,11 +6119,12 @@
         cadena+="<table class='tab3'><thead><tr><th>ANTIBIOTICO</th><th>INTERPRETACION</th></tr></thead><tbody>"
         l.antibioticos.forEach(r => {
           console.log(r)
-          cadena+="<tr><td>"+r.antibiotico+"</td><td></td></tr>"
+          cadena+="<tr><td>"+r.nombre+"</td><td>"+r.pivot.interpretacion+"</td></tr>"
         });
         cadena+="</tbody></table>"
       }
-      cadena+="</div>"
+      cadena+="<div>"+l.observacion+"</div>\
+      <footer><div style='text-align:center; color:black; '>RESPONSABLE DEL ANALISIS</div><br>CLINICA NATIVIDAD CLINICA DE LA FAMILIA</footer></body>"
       document.getElementById('myelement').innerHTML = cadena
       const d3 = new Printd()
       d3.print(document.getElementById('myelement'))
