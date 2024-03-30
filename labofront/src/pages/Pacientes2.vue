@@ -2342,10 +2342,11 @@
         this.tipo.label=this.tipo.nombre
         this.laboratorio=labo
         this.user=this.laboratorio.responsable
+        if(this.tipo.id==25 || this.tipo.id==26){
         this.detalle=this.laboratorio.antibioticos
         this.detalle.forEach(r => {
             r.interpretacion=r.pivot.interpretacion
-        });
+        });}
         this.dialogmodlab=true
       },
       modLaboratorio(){
