@@ -2570,7 +2570,7 @@
           d9:'No se Observa',
           d10:'No se Observa Formas Parasitarias Intestinales',
           d11:'No se Observa',
-          d12:'NEGATIVO',
+          d12:'',
           d13:'',
           d14:'',
           d15:'',
