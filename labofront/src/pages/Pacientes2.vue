@@ -3110,8 +3110,8 @@
       doc.text([l.d1,l.d2,l.d3,l.d4,l.d5,l.d6,l.d7,l.d8,l.d9,l.d10,l.d11],x+70,y+58)
       doc.setFont(undefined, 'bold')
       doc.setTextColor(57,73,171)
-      if(l.d12 != '' && l.d12 != undefined && l.d12 != null){
       doc.text('MOCO FECAL       ',x+8,y+102)
+      if(l.d12 != '' && l.d12 != undefined && l.d12 != null){
       doc.setTextColor(0,0,0)
       doc.setFont(undefined, 'normal')
       doc.text(l.d12,x+50,y+102)
