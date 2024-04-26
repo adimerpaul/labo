@@ -596,41 +596,78 @@
             </div></q-card-section>
              </q-card>
             </template>
+            <template v-if="tipo.label=='COPROPARASITOLOGICO SERIADO'">
+              <q-card class="my-card"  flat bordered>
+                <q-card-section  class="bg-green-2"> <div class="row">
+                  <div class="col-6 col-sm-12">COPROPARASITOLOGICO SERIADO</div>
+                  <div class="col-6 col-sm-12"><q-input dense outlined label="ASPECTO DE LA MUESTRA" v-model="laboratorio.d1" /></div>
+                  <div class="col-6 col-sm-12"><q-input dense outlined label="COLOR" v-model="laboratorio.d2" /></div>
+                  <div class="col-6 col-sm-12"><q-input dense outlined label="CELULAS EPITELIALES" v-model="laboratorio.d3" /></div>
+                  <div class="col-6 col-sm-12"><q-input dense outlined label="LEUCOCITOS" v-model="laboratorio.d4" /></div>
+                  <div class="col-6 col-sm-12"><q-input dense outlined label="HEMATIES" v-model="laboratorio.d5" /></div>
+                  <div class="col-6 col-sm-12"><q-input dense outlined label="GRASAS" v-model="laboratorio.d6" /></div>
+                  <div class="col-6 col-sm-12"><q-input dense outlined label="LEVADURAS" v-model="laboratorio.d7" /></div>
+                  <div class="col-6 col-sm-12"><q-input dense outlined label="ESPORAS MICOTICAS" v-model="laboratorio.d8" /></div>
+                  <div class="col-6 col-sm-12"><q-input dense outlined label="ALMIDON" v-model="laboratorio.d9" /></div>
+                  <div class="col-6 col-sm-12"><q-input dense outlined label="PARASITOS" v-model="laboratorio.d10" /></div>
+                  <div class="col-6 col-sm-12"><q-input dense outlined label="PIOCITOS" v-model="laboratorio.d11" /></div>
+                  <div class="col-6 col-sm-4"><q-input dense outlined label="MOCO FECAL" v-model="laboratorio.d12" /></div>
+                  <div class="col-6 col-sm-4"><q-input dense outlined label="Polimorfonucleares" v-model="laboratorio.d13" /></div>
+                  <div class="col-6 col-sm-4"><q-input dense outlined label="Mononuclueares" v-model="laboratorio.d14" /></div>
+                  <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d15" /></div>
+                </div></q-card-section>
+                <q-card-section  class="bg-blue-2"> <div class="row">
+                  <div class="col-6 col-sm-12">OTROS</div>
+                  <div class="col-6 col-sm-12"><q-input dense outlined label="SANGRE OCULTA EN HECES" v-model="laboratorio.d16" /></div>
+                  <div class="col-6 col-sm-12"><q-input dense outlined label="TEST DE HELICOBACTER EN HECES" v-model="laboratorio.d19" /></div>
+                  <div class="col-6 col-sm-12"><q-input dense outlined label="TEST DE BENEDICT" v-model="laboratorio.d17" /></div>
+                  <div class="col-6 col-sm-10"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d18" /></div>
+                  <div class="col-6 col-sm-2"><q-select v-model="laboratorio.d20" dense outlined :options="['1','2','3']" label="Numero de muestras" /></div>
+                </div></q-card-section>
+                <q-card-section  class="bg-red-2"> <div class="row">
 
-             <template v-if="tipo.label=='COPROPARASITOLOGICO SERIADO'">
-             <q-card class="my-card"  flat bordered style="width:100%">
-            <q-card-section  class="bg-green-2"> <div class="row">
-            <div class="col-6 col-sm-12">COPROPARASITOLOGICO SERIADO</div>
-            <div class="col-6 col-sm-12">MUESTRA1</div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="FECHA" v-model="laboratorio.d1" type="date"/></div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="HORA" v-model="laboratorio.d2" type="time"/></div>
-            <div class="col-6 col-sm-12"><q-editor v-model="laboratorio.d3" min-height="5rem" /></div>
-            </div></q-card-section>
-            <q-card-section  class="bg-blue-2"> <div class="row">
-            <div class="col-6 col-sm-12">MUESTRA2</div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="FECHA" v-model="laboratorio.d4" type="date"/></div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="HORA" v-model="laboratorio.d5" type="time"/></div>
-            <div class="col-6 col-sm-12"><q-editor v-model="laboratorio.d6" min-height="5rem" /></div>
-            </div></q-card-section>
-            <q-card-section  class="bg-amber-2"> <div class="row">
-                      <div class="col-6 col-sm-12">MUESTRA3</div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="FECHA" v-model="laboratorio.d7" type="date"/></div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="HORA" v-model="laboratorio.d8" type="time"/></div>
-            <div class="col-6 col-sm-12"><q-editor v-model="laboratorio.d9" min-height="5rem" /></div>
-            </div></q-card-section>
+                  <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
 
-            <q-card-section  class="bg-teal-2"> <div class="row">
-            <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACION" v-model="laboratorio.d10"   /></div>
-            </div></q-card-section>
-            <q-card-section  class="bg-red-2"> <div class="row">
-
-            <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-
-            <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
-            <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
-            </div></q-card-section>
-                </q-card>
+                  <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
+                  <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+                </div></q-card-section>
+              </q-card>
             </template>
+
+<!--             <template v-if="tipo.label=='COPROPARASITOLOGICO SERIADO'">-->
+<!--             <q-card class="my-card"  flat bordered style="width:100%">-->
+<!--            <q-card-section  class="bg-green-2"> <div class="row">-->
+<!--            <div class="col-6 col-sm-12">COPROPARASITOLOGICO SERIADO</div>-->
+<!--            <div class="col-6 col-sm-12">MUESTRA1</div>-->
+<!--            <div class="col-6 col-sm-6"><q-input dense outlined label="FECHA" v-model="laboratorio.d1" type="date"/></div>-->
+<!--            <div class="col-6 col-sm-6"><q-input dense outlined label="HORA" v-model="laboratorio.d2" type="time"/></div>-->
+<!--            <div class="col-6 col-sm-12"><q-editor v-model="laboratorio.d3" min-height="5rem" /></div>-->
+<!--            </div></q-card-section>-->
+<!--            <q-card-section  class="bg-blue-2"> <div class="row">-->
+<!--            <div class="col-6 col-sm-12">MUESTRA2</div>-->
+<!--            <div class="col-6 col-sm-6"><q-input dense outlined label="FECHA" v-model="laboratorio.d4" type="date"/></div>-->
+<!--            <div class="col-6 col-sm-6"><q-input dense outlined label="HORA" v-model="laboratorio.d5" type="time"/></div>-->
+<!--            <div class="col-6 col-sm-12"><q-editor v-model="laboratorio.d6" min-height="5rem" /></div>-->
+<!--            </div></q-card-section>-->
+<!--            <q-card-section  class="bg-amber-2"> <div class="row">-->
+<!--                      <div class="col-6 col-sm-12">MUESTRA3</div>-->
+<!--            <div class="col-6 col-sm-6"><q-input dense outlined label="FECHA" v-model="laboratorio.d7" type="date"/></div>-->
+<!--            <div class="col-6 col-sm-6"><q-input dense outlined label="HORA" v-model="laboratorio.d8" type="time"/></div>-->
+<!--            <div class="col-6 col-sm-12"><q-editor v-model="laboratorio.d9" min-height="5rem" /></div>-->
+<!--            </div></q-card-section>-->
+
+<!--            <q-card-section  class="bg-teal-2"> <div class="row">-->
+<!--            <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACION" v-model="laboratorio.d10"   /></div>-->
+<!--            </div></q-card-section>-->
+<!--            <q-card-section  class="bg-red-2"> <div class="row">-->
+
+<!--            <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>-->
+
+<!--            <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>-->
+<!--            <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>-->
+<!--            </div></q-card-section>-->
+<!--                </q-card>-->
+<!--            </template>-->
 
 
              <template v-if="tipo.label=='PRUEBA DE COVID-19'">
@@ -1453,42 +1490,80 @@
             </div></q-card-section>
              </q-card>
             </template>
+            <template v-if="tipo.label=='COPROPARASITOLOGICO SERIADO'">
+              <q-card class="my-card"  flat bordered>
+                <q-card-section  class="bg-green-2"> <div class="row">
+                  <div class="col-6 col-sm-12">COPROPARASITOLOGICO SERIADO</div>
+                  <div class="col-6 col-sm-12"><q-input dense outlined label="ASPECTO DE LA MUESTRA" v-model="laboratorio.d1" /></div>
+                  <div class="col-6 col-sm-12"><q-input dense outlined label="COLOR" v-model="laboratorio.d2" /></div>
+                  <div class="col-6 col-sm-12"><q-input dense outlined label="CELULAS EPITELIALES" v-model="laboratorio.d3" /></div>
+                  <div class="col-6 col-sm-12"><q-input dense outlined label="LEUCOCITOS" v-model="laboratorio.d4" /></div>
+                  <div class="col-6 col-sm-12"><q-input dense outlined label="HEMATIES" v-model="laboratorio.d5" /></div>
+                  <div class="col-6 col-sm-12"><q-input dense outlined label="GRASAS" v-model="laboratorio.d6" /></div>
+                  <div class="col-6 col-sm-12"><q-input dense outlined label="LEVADURAS" v-model="laboratorio.d7" /></div>
+                  <div class="col-6 col-sm-12"><q-input dense outlined label="ESPORAS MICOTICAS" v-model="laboratorio.d8" /></div>
+                  <div class="col-6 col-sm-12"><q-input dense outlined label="ALMIDON" v-model="laboratorio.d9" /></div>
+                  <div class="col-6 col-sm-12"><q-input dense outlined label="PARASITOS" v-model="laboratorio.d10" /></div>
+                  <div class="col-6 col-sm-12"><q-input dense outlined label="PIOCITOS" v-model="laboratorio.d11" /></div>
+                  <div class="col-6 col-sm-4"><q-input dense outlined label="MOCO FECAL" v-model="laboratorio.d12" /></div>
+                  <div class="col-6 col-sm-4"><q-input dense outlined label="Polimorfonucleares" v-model="laboratorio.d13" /></div>
+                  <div class="col-6 col-sm-4"><q-input dense outlined label="Mononuclueares" v-model="laboratorio.d14" /></div>
+                  <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d15" /></div>
+                </div></q-card-section>
+                <q-card-section  class="bg-blue-2"> <div class="row">
+                  <div class="col-6 col-sm-12">OTROS</div>
+                  <div class="col-6 col-sm-12"><q-input dense outlined label="SANGRE OCULTA EN HECES" v-model="laboratorio.d16" /></div>
+                  <div class="col-6 col-sm-12"><q-input dense outlined label="TEST DE HELICOBACTER EN HECES" v-model="laboratorio.d19" /></div>
+                  <div class="col-6 col-sm-12"><q-input dense outlined label="TEST DE BENEDICT" v-model="laboratorio.d17" /></div>
+                  <div class="col-6 col-sm-10"><q-input dense outlined label="OBSERVACIONES" v-model="laboratorio.d18" /></div>
+                  <div class="col-6 col-sm-2"><q-select label="Numero Muestra" v-model="laboratorio.d20" dense outlined :options="['1','2','3']" /></div>
+                </div></q-card-section>
+                <q-card-section  class="bg-red-2"> <div class="row">
 
-             <template v-if="tipo.label=='COPROPARASITOLOGICO SERIADO'">
-             <q-card class="my-card"  flat bordered style="width:100%">
-            <q-card-section  class="bg-green-2"> <div class="row">
-            <div class="col-6 col-sm-12">COPROPARASITOLOGICO SERIADO</div>
-            <div class="col-6 col-sm-12">MUESTRA1</div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="FECHA" v-model="laboratorio.d1" type="date"/></div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="HORA" v-model="laboratorio.d2" type="time"/></div>
-            <div class="col-6 col-sm-12"><q-editor v-model="laboratorio.d3" min-height="5rem" /></div>
-            </div></q-card-section>
-            <q-card-section  class="bg-blue-2"> <div class="row">
-            <div class="col-6 col-sm-12">MUESTRA2</div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="FECHA" v-model="laboratorio.d4" type="date"/></div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="HORA" v-model="laboratorio.d5" type="time"/></div>
-            <div class="col-6 col-sm-12"><q-editor v-model="laboratorio.d6" min-height="5rem" /></div>
-            </div></q-card-section>
-            <q-card-section  class="bg-amber-2"> <div class="row">
-                      <div class="col-6 col-sm-12">MUESTRA3</div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="FECHA" v-model="laboratorio.d7" type="date"/></div>
-            <div class="col-6 col-sm-6"><q-input dense outlined label="HORA" v-model="laboratorio.d8" type="time"/></div>
-            <div class="col-6 col-sm-12"><q-editor v-model="laboratorio.d9" min-height="5rem" /></div>
-            </div></q-card-section>
+                  <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
 
-            <q-card-section  class="bg-teal-2"> <div class="row">
-            <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACION" v-model="laboratorio.d10"   /></div>
-            </div></q-card-section>
-            <q-card-section  class="bg-red-2"> <div class="row">
-
-            <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
-
-            <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
-            <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
-            <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
-            </div></q-card-section>
-                </q-card>
+                  <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
+                  <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+                  <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
+                </div></q-card-section>
+              </q-card>
             </template>
+
+<!--             <template v-if="tipo.label=='COPROPARASITOLOGICO SERIADO'">-->
+<!--             <q-card class="my-card"  flat bordered style="width:100%">-->
+<!--            <q-card-section  class="bg-green-2"> <div class="row">-->
+<!--            <div class="col-6 col-sm-12">COPROPARASITOLOGICO SERIADO</div>-->
+<!--            <div class="col-6 col-sm-12">MUESTRA1</div>-->
+<!--            <div class="col-6 col-sm-6"><q-input dense outlined label="FECHA" v-model="laboratorio.d1" type="date"/></div>-->
+<!--            <div class="col-6 col-sm-6"><q-input dense outlined label="HORA" v-model="laboratorio.d2" type="time"/></div>-->
+<!--            <div class="col-6 col-sm-12"><q-editor v-model="laboratorio.d3" min-height="5rem" /></div>-->
+<!--            </div></q-card-section>-->
+<!--            <q-card-section  class="bg-blue-2"> <div class="row">-->
+<!--            <div class="col-6 col-sm-12">MUESTRA2</div>-->
+<!--            <div class="col-6 col-sm-6"><q-input dense outlined label="FECHA" v-model="laboratorio.d4" type="date"/></div>-->
+<!--            <div class="col-6 col-sm-6"><q-input dense outlined label="HORA" v-model="laboratorio.d5" type="time"/></div>-->
+<!--            <div class="col-6 col-sm-12"><q-editor v-model="laboratorio.d6" min-height="5rem" /></div>-->
+<!--            </div></q-card-section>-->
+<!--            <q-card-section  class="bg-amber-2"> <div class="row">-->
+<!--                      <div class="col-6 col-sm-12">MUESTRA3</div>-->
+<!--            <div class="col-6 col-sm-6"><q-input dense outlined label="FECHA" v-model="laboratorio.d7" type="date"/></div>-->
+<!--            <div class="col-6 col-sm-6"><q-input dense outlined label="HORA" v-model="laboratorio.d8" type="time"/></div>-->
+<!--            <div class="col-6 col-sm-12"><q-editor v-model="laboratorio.d9" min-height="5rem" /></div>-->
+<!--            </div></q-card-section>-->
+
+<!--            <q-card-section  class="bg-teal-2"> <div class="row">-->
+<!--            <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACION" v-model="laboratorio.d10"   /></div>-->
+<!--            </div></q-card-section>-->
+<!--            <q-card-section  class="bg-red-2"> <div class="row">-->
+
+<!--            <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>-->
+
+<!--            <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>-->
+<!--            <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>-->
+<!--            <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>-->
+<!--            </div></q-card-section>-->
+<!--                </q-card>-->
+<!--            </template>-->
 
 
              <template v-if="tipo.label=='PRUEBA DE COVID-19'">
@@ -2672,127 +2747,227 @@
                   break;
         }
       },
-     seriado(p,l){
-      var doc = new jsPDF('P',undefined,'legal')
-      doc.setFont("arial");
-      doc.setFontSize(10);
-      var img = new Image()
-      img.src = 'img/natividad.jpeg'
-      doc.addImage(img, 'jpg', 5, 2, 70, 20)
-      let x=0
-      let y=0
-      //inicio datos paciete
-      doc.setDrawColor(120);
-      doc.rect(x+5, y+27, 205, 20)
-      doc.setFont(undefined, 'bold')
-      doc.setTextColor(57,73,171)
-      doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+175, y+8,'center')
-      doc.setTextColor(195,47,47)
-      doc.text('N Registro CODEDLAB 000045',x+150, y+25)
-      doc.setTextColor(211,47,47)
-      doc.text('Form. 008',x+190, y+30)
-      doc.setTextColor(57,73,171)
-      doc.text('COPROPARASITOLOGICO SERIADO',x+100, y+30,'center')
-      doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
-      doc.setTextColor(0,0,0)
-      doc.setFont(undefined, 'normal')
-      doc.text([p.paciente,l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno,l.tipomuestra],x+70, y+35,'center')
-      doc.setTextColor(57,73,171)
-      doc.setFont(undefined, 'bold')
-      doc.text(['EDAD','SEXO'],x+130, y+35)
-      doc.setTextColor(211,47,47)
-      doc.text('N PACIENTE',x+130, y+43)
-      doc.setFont(undefined, 'normal')
-      doc.setTextColor(0,0,0)
-      let anio=''
-      if(p.edad==null||p.edad==undefined||p.edad=='')
-      anio=p.tiempo
-      else anio=p.edad
-      doc.text([anio+'',p.sexo,l.solicitud+''],x+160, y+35,'center')
-      doc.setTextColor(57,73,171)
-      //fin datos paciete
-      //inicio datos
-      doc.rect(x+5, y+48, 205, 85)
-      doc.setFont(undefined, 'bold')
-      doc.setTextColor(57,73,171)
-      doc.text('                             COPROPARASITOLOGICO SERIADO',x+50,y+52)
-      doc.setFont(undefined, 'bold')
-      doc.text('     1º MUESTRA',x+8,y+58)
-      doc.setFont(undefined, 'normal')
-      doc.text(['Fecha','Hora'],x+8,y+65)
-      doc.text([l.d1,l.d2],x+20,y+65)
-      // doc.text(l.d3,x+50,y+58)
+     // seriado(p,l){
+     //  var doc = new jsPDF('P',undefined,'legal')
+     //  doc.setFont("arial");
+     //  doc.setFontSize(10);
+     //  var img = new Image()
+     //  img.src = 'img/natividad.jpeg'
+     //  doc.addImage(img, 'jpg', 5, 2, 70, 20)
+     //  let x=0
+     //  let y=0
+     //  //inicio datos paciete
+     //  doc.setDrawColor(120);
+     //  doc.rect(x+5, y+27, 205, 20)
+     //  doc.setFont(undefined, 'bold')
+     //  doc.setTextColor(57,73,171)
+     //  doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+175, y+8,'center')
+     //  doc.setTextColor(195,47,47)
+     //  doc.text('N Registro CODEDLAB 000045',x+150, y+25)
+     //  doc.setTextColor(211,47,47)
+     //  doc.text('Form. 008',x+190, y+30)
+     //  doc.setTextColor(57,73,171)
+     //  doc.text('COPROPARASITOLOGICO SERIADO',x+100, y+30,'center')
+     //  doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
+     //  doc.setTextColor(0,0,0)
+     //  doc.setFont(undefined, 'normal')
+     //  doc.text([p.paciente,l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno,l.tipomuestra],x+70, y+35,'center')
+     //  doc.setTextColor(57,73,171)
+     //  doc.setFont(undefined, 'bold')
+     //  doc.text(['EDAD','SEXO'],x+130, y+35)
+     //  doc.setTextColor(211,47,47)
+     //  doc.text('N PACIENTE',x+130, y+43)
+     //  doc.setFont(undefined, 'normal')
+     //  doc.setTextColor(0,0,0)
+     //  let anio=''
+     //  if(p.edad==null||p.edad==undefined||p.edad=='')
+     //  anio=p.tiempo
+     //  else anio=p.edad
+     //  doc.text([anio+'',p.sexo,l.solicitud+''],x+160, y+35,'center')
+     //  doc.setTextColor(57,73,171)
+     //  //fin datos paciete
+     //  //inicio datos
+     //  doc.rect(x+5, y+48, 205, 85)
+     //  doc.setFont(undefined, 'bold')
+     //  doc.setTextColor(57,73,171)
+     //  doc.text('                             COPROPARASITOLOGICO SERIADO',x+50,y+52)
+     //  doc.setFont(undefined, 'bold')
+     //  doc.text('     1º MUESTRA',x+8,y+58)
+     //  doc.setFont(undefined, 'normal')
+     //  doc.text(['Fecha','Hora'],x+8,y+65)
+     //  doc.text([l.d1,l.d2],x+20,y+65)
+     //  // doc.text(l.d3,x+50,y+58)
+     //
+     //      doc.setFont(undefined, 'bold')
+     //  doc.text('     2º MUESTRA',x+8,y+80)
+     //  doc.setFont(undefined, 'normal')
+     //  doc.text(['Fecha','Hora'],x+8,y+85)
+     //  doc.text([l.d4,l.d5],x+20,y+85)
+     //  // doc.text(l.d6,x+50,y+80)
+     //
+     //      doc.setFont(undefined, 'bold')
+     //  doc.text('     3º MUESTRA',x+8,y+100)
+     //  doc.setFont(undefined, 'normal')
+     //  doc.text(['Fecha','Hora'],x+8,y+105)
+     //  doc.text([l.d7+'',l.d8+''],x+20,y+105)
+     //  // doc.text(l.d9+'',x+50,y+100)
+     //
+     //  doc.setTextColor(57,73,171)
+     //      doc.setFont(undefined, 'bold')
+     //  doc.text('OBSERVACIONES',x+8,y+120)
+     //  doc.setTextColor(0,0,0)
+     //  doc.setFont(undefined, 'normal')
+     //  doc.text(l.d10,x+8,y+125)
+     //  doc.setTextColor(0,0,0)
+     //
+     //  doc.setFont(undefined, 'bold')
+     //  doc.setTextColor(57,73,171)
+     //  doc.setFont(undefined, 'normal')
+     //  doc.setTextColor(0,0,0)
+     //
+     //  doc.rect(x+5, y+135, 205, 20)
+     //  doc.rect(x+5, y+54, 205, 22)
+     //  //doc.rect(x+5, y+75, 205, 25)
+     //  doc.rect(x+5, y+96, 205, 20)
+     //  doc.setFont(undefined, 'bold')
+     //  doc.setTextColor(57,73,171)
+     //  doc.text('RESPONSABLE',x+6,y+140)
+     //  doc.setFont(undefined, 'NORMAL')
+     //  doc.setTextColor(0,0,0)
+     //  doc.text(l.responsable,x+8,y+145)
+     //  doc.setFont(undefined, 'normal')
+     //  doc.setTextColor(57,73,171)
+     //  doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+140,'center')
+     //  doc.setTextColor(0,0,0)
+     //  if(l.fechaimp==null || l.fechaimp == undefined ) l.fechaimp =  moment()
+     //  doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,moment(l.fechaimp).format("DD-MM-YYYY")],x+170,y+140,'left')
+     //   // doc.text(l.d3,x+50,y+58)
+     //   doc.html( '<div style="font-size: 3px;width: 500px">'+l.d3+'</div>' , {
+     //     callback: function (doc) {
+     //       doc.html( '<div style="font-size: 3px;width: 500px">'+l.d6+'</div>' , {
+     //         callback: function (doc) {
+     //           doc.html( '<div style="font-size: 3px;width: 500px">'+l.d9+'</div>' , {
+     //             callback: function (doc) {
+     //              window.open(doc.output('bloburl'), '_blank');
+     //              // doc.output('save','COPROPARASITOLOGICO SERIADO-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
+     //             },
+     //             x: x+50,
+     //             y: y+95,
+     //           })
+     //         },
+     //         x: x+50,
+     //         y: y+75,
+     //       })
+     //     },
+     //     x: x+50,
+     //     y: y+55,
+     //   })
+     //   // doc.save("Pago"+date.formatDate(Date.now(),'DD-MM-YYYY')+".pdf");
+     //   // window.open(doc.output('bloburl'), '_blank');
+     //  //$( '#docpdf' ).attr('src', doc.output('datauristring'));
+     //  //  window.open(doc.output('bloburl'), '_blank');
+     //  },
+      seriado(p,l){
+        var doc = new jsPDF('P',undefined,'legal')
+        doc.setFont("arial");
+        doc.setFontSize(10);
+        var img = new Image()
+        img.src = 'img/natividad.jpeg'
+        doc.addImage(img, 'jpg', 5, 2, 70, 20)
+        let x=0
+        let y=0
+        //inicio datos paciete
+        doc.setDrawColor(120);
+        doc.rect(x+5, y+27, 205, 20)
+        doc.setFont(undefined, 'bold')
+        doc.setTextColor(57,73,171)
+        doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+175, y+8,'center')
+        doc.setTextColor(195,47,47)
+        doc.text('N Registro CODEDLAB 000045',x+150, y+25)
+        doc.setTextColor(211,47,47)
+        doc.text('Form. 007',x+190, y+30)
+        doc.setTextColor(57,73,171)
+        doc.text('COPROPARASITOLOGICO SERIADO',x+100, y+30,'center')
+        doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
+        doc.setTextColor(0,0,0)
+        doc.setFont(undefined, 'normal')
+        doc.text([p.paciente,l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno,l.tipomuestra],x+70, y+35,'center')
+        doc.setTextColor(57,73,171)
+        doc.setFont(undefined, 'bold')
+        doc.text(['EDAD','SEXO'],x+130, y+35)
+        doc.setTextColor(211,47,47)
+        doc.text('N PACIENTE',x+130, y+43)
+        doc.setFont(undefined, 'normal')
+        doc.setTextColor(0,0,0)
+        let anio=''
+        if(p.edad==null||p.edad==undefined||p.edad=='')
+          anio=p.tiempo
+        else anio=p.edad
+        doc.text([anio+'',p.sexo,l.solicitud+''],x+160, y+35,'center')
+        doc.setTextColor(57,73,171)
+        //fin datos paciete
+        //inicio datos
+        doc.rect(x+5, y+48, 205, 86)
+        doc.setFont(undefined, 'bold')
+        doc.setTextColor(57,73,171)
+        doc.text('                             COPROPARASITOLOGICO SERIADO',x+50,y+52)
+        doc.setFont(undefined, 'normal')
+        doc.setTextColor(0,0,0)
+        doc.text('NUMERO DE MUESTRA #'+l.d20,x+160,y+52)
+        doc.setFont(undefined, 'normal')
+        doc.setTextColor(57,73,171)
+        doc.text(['ASPECTO DE LA MUESTRA','COLOR','CELULAS EPITELIALES','LEUCOCITOS','HEMATIES','GRASAS','LEVADURAS','ESPORAS MICOTICAS','ALMIDON','PARASITOS','PIOCITOS'],x+8,y+58)
+        doc.setTextColor(0,0,0)
+        doc.text([l.d1,l.d2,l.d3,l.d4,l.d5,l.d6,l.d7,l.d8,l.d9,l.d10,l.d11],x+70,y+58)
+        doc.setFont(undefined, 'bold')
+        doc.setTextColor(57,73,171)
+        doc.text('MOCO FECAL       ',x+8,y+102)
+        if(l.d12 != '' && l.d12 != undefined && l.d12 != null){
+          doc.setTextColor(0,0,0)
+          doc.setFont(undefined, 'normal')
+          doc.text(l.d12,x+50,y+102)
+        }
 
-          doc.setFont(undefined, 'bold')
-      doc.text('     2º MUESTRA',x+8,y+80)
-      doc.setFont(undefined, 'normal')
-      doc.text(['Fecha','Hora'],x+8,y+85)
-      doc.text([l.d4,l.d5],x+20,y+85)
-      // doc.text(l.d6,x+50,y+80)
+        doc.setTextColor(57,73,171)
+        doc.setFont(undefined, 'bold')
+        doc.text(['Polimorfonuclueares: ','Mononuclueras: '],x+100,y+102)
+        doc.setTextColor(0,0,0)
+        doc.setFont(undefined, 'normal')
+        doc.text([l.d13,l.d14],x+145,y+102)
+        doc.setFont(undefined, 'bold')
+        doc.setTextColor(57,73,171)
+        doc.text('OBSERVACIONES',x+8,y+110)
+        doc.setFont(undefined, 'normal')
+        doc.setTextColor(0,0,0)
+        doc.text(l.d15,x+70,y+110)
 
-          doc.setFont(undefined, 'bold')
-      doc.text('     3º MUESTRA',x+8,y+100)
-      doc.setFont(undefined, 'normal')
-      doc.text(['Fecha','Hora'],x+8,y+105)
-      doc.text([l.d7+'',l.d8+''],x+20,y+105)
-      // doc.text(l.d9+'',x+50,y+100)
+        doc.setFont(undefined, 'bold')
+        doc.setTextColor(57,73,171)
+        doc.text('                                        OTROS',x+50,y+115)
+        doc.setFont(undefined, 'normal')
 
-      doc.setTextColor(57,73,171)
-          doc.setFont(undefined, 'bold')
-      doc.text('OBSERVACIONES',x+8,y+120)
-      doc.setTextColor(0,0,0)
-      doc.setFont(undefined, 'normal')
-      doc.text(l.d10,x+8,y+125)
-      doc.setTextColor(0,0,0)
+        doc.text(['SANGRE OCULTA EN HECES','TEST DE HELICOBACTER EN HECES','TEST DE BENEDICT','OBSERVACIONES'],x+8,y+120)
+        doc.setTextColor(0,0,0)
+        doc.text([l.d16,l.d19,l.d17,l.d18],x+70,y+120)
 
-      doc.setFont(undefined, 'bold')
-      doc.setTextColor(57,73,171)
-      doc.setFont(undefined, 'normal')
-      doc.setTextColor(0,0,0)
+        doc.rect(x+5, y+135, 205, 20)
+        doc.setFont(undefined, 'bold')
+        doc.setTextColor(57,73,171)
+        doc.text('RESPONSABLE',x+6,y+140)
+        doc.setFont(undefined, 'NORMAL')
+        doc.setTextColor(0,0,0)
+        doc.text(l.responsable,x+8,y+145)
+        doc.setFont(undefined, 'normal')
+        doc.setTextColor(57,73,171)
+        doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+140,'center')
+        doc.setTextColor(0,0,0)
+        if(l.fechaimp==null || l.fechaimp == undefined ) l.fechaimp =  moment()
+        doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,moment(l.fechaimp).format("DD-MM-YYYY")],x+170,y+140,'left')
 
-      doc.rect(x+5, y+135, 205, 20)
-      doc.rect(x+5, y+54, 205, 22)
-      //doc.rect(x+5, y+75, 205, 25)
-      doc.rect(x+5, y+96, 205, 20)
-      doc.setFont(undefined, 'bold')
-      doc.setTextColor(57,73,171)
-      doc.text('RESPONSABLE',x+6,y+140)
-      doc.setFont(undefined, 'NORMAL')
-      doc.setTextColor(0,0,0)
-      doc.text(l.responsable,x+8,y+145)
-      doc.setFont(undefined, 'normal')
-      doc.setTextColor(57,73,171)
-      doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+140,'center')
-      doc.setTextColor(0,0,0)
-      if(l.fechaimp==null || l.fechaimp == undefined ) l.fechaimp =  moment()
-      doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,moment(l.fechaimp).format("DD-MM-YYYY")],x+170,y+140,'left')
-       // doc.text(l.d3,x+50,y+58)
-       doc.html( '<div style="font-size: 3px;width: 500px">'+l.d3+'</div>' , {
-         callback: function (doc) {
-           doc.html( '<div style="font-size: 3px;width: 500px">'+l.d6+'</div>' , {
-             callback: function (doc) {
-               doc.html( '<div style="font-size: 3px;width: 500px">'+l.d9+'</div>' , {
-                 callback: function (doc) {
-                  window.open(doc.output('bloburl'), '_blank');
-                  // doc.output('save','COPROPARASITOLOGICO SERIADO-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
-                 },
-                 x: x+50,
-                 y: y+95,
-               })
-             },
-             x: x+50,
-             y: y+75,
-           })
-         },
-         x: x+50,
-         y: y+55,
-       })
-       // doc.save("Pago"+date.formatDate(Date.now(),'DD-MM-YYYY')+".pdf");
-       // window.open(doc.output('bloburl'), '_blank');
-      //$( '#docpdf' ).attr('src', doc.output('datauristring'));
-      //  window.open(doc.output('bloburl'), '_blank');
+        //$( '#docpdf' ).attr('src', doc.output('datauristring'));
+        // doc.output('save','COPROPARASITOLOGICO SIMPLE-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
+        window.open(doc.output('bloburl'), '_blank');
       },
-
 
                     labserologia(p,l){
 
