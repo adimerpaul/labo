@@ -37,9 +37,10 @@
           <q-form @submit="antibioticoSubmit">
             <q-input v-model="antibiotico.nombre" label="Nombre" outlined dense :rules="[val => !!val || 'Campo requerido']" />
             <q-input v-model="antibiotico.unidad" label="Unidad" outlined dense />
-            <q-input v-model="antibiotico.rangoMin" label="Rango Min" outlined dense type="number" />
-            <q-input v-model="antibiotico.rangoMax" label="Rango Max" outlined dense type="number"/>
-            <q-input type="textarea" v-model="antibiotico.referencia" label="Referencia" outlined dense />
+            <q-input v-model="antibiotico.rangoMin" label="Rango Min" outlined dense type="number" step="0.01"/>
+            <q-input v-model="antibiotico.rangoMax" label="Rango Max" outlined dense type="number" step="0.01"/>
+            <q-select v-model="antibiotico.categoria" label="Rango Max" outlined dense :options="categorias" />
+            <q-input type="textarea" v-model="antibiotico.descripcion" label="descripcion" outlined dense />
             <q-select v-model="antibiotico.tipo" label="Tipo" outlined dense :options="['CULTIVO', 'INMUNOLOGIA']" />
             <q-card-actions align="right">
               <q-btn label="Cancelar" color="red" @click="antibioticoDialog = false" :loading="loading" />
@@ -70,7 +71,9 @@ export default {
         { name: 'rangoMax', label: 'Rango Max', align: 'left', field: row => row.rangoMax },
         { name: 'referencia', label: 'Referencia', align: 'left', field: row => row.referencia },
         { name: 'tipo', label: 'Tipo', align: 'left', field: row => row.tipo },
-      ]
+      ],
+      categorias: ['MARCADORES TUMORALES', 'PERFIL TIROIDEO', 'HORMONAS DE FERTILIDAD', 'HORMONAS SUPRERRENALES', 'INSULINA', 'PEPTIDO -C', 'PRUEBAS  AUTOINMUNE', 'COMPLEMENTOS', 'ANCA - P', 'ANCA - C', 'CHAGAS', 'PANEL T.O.R.C.H.', 'INFECCIOSAS', 'HELICOBACTER PYLORI EN SANGRE', 'HELICOBACTER PYLORI EN HECES ANTIGENO', 'DETECCION DE GIARDIA LAMBLIA', 'VITAMINA "B12"', 'ACIDO FOLICO', 'VITAMINA "D"', 'HORMONA DEL CRECIMIENTO (hGH)', 'FACTOR DE CRECIMIENTO SIMILAR A LA INSULINA-1 (IGF-1)', 'MIOGLOBINA']
+
     }
   },
   mounted() {
