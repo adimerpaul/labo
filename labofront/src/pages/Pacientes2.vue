@@ -1088,7 +1088,7 @@
             <template v-if="tipo.label=='INMUNOLOGIA'">
               <q-card class="my-card"  flat bordered style="width:100%">
                 <q-card-section  class="bg-green-2"> <div class="row">
-                  <div class="col-4 q-pa-xs"><q-select dense square outlined v-model="antibiotico" :options="antibioticos" label="Antibiotico" /></div>
+                  <div class="col-4 q-pa-xs"><q-select dense square outlined v-model="antibiotico" :options="antibioticos" label="Ensayo" /></div>
                   <div class="col-4 q-pa-xs">
                     <q-input dense square outlined v-model="resultado" label="Resultado" type="number" step="0.01" />
                   </div>
@@ -2015,8 +2015,10 @@
       return{
         colAntibiotico:[
           {name:'op',label:'OP',field: 'op' },
-          {name:'antibiotico',label:'ANTIBIOTICO',field: 'nombre' },
-          {name:'interpretacion',label:'INTERPRETACION',field:'interpretacion'}
+          {name:'antibiotico',label:'Ensayo',field: 'nombre' },
+          {name:'interpretacion',label:'INTERPRETACION',field:'interpretacion'},
+          {name:'rangoMin',label:'RANGO MIN',field:'rangoMin'},
+          {name:'rangoMax',label:'RANGO MAX',field:'rangoMax'},
         ],
         current: 1,
         last_page: 0,
