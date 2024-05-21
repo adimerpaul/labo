@@ -6573,15 +6573,17 @@
             "<thead>" +
             "<tr>" +
             "<th>ENSAYO</th>" +
+            "<th>PERFILES</th>" +
             "<th>RESULTADO</th>" +
             "<th>UNIDAD</th>" +
             "<th>RANGO</th>" +
+            "<th>DESCRIPCION</th>" +
             "</tr>" +
             "</thead>" +
             "<tbody>"
           l.antibioticos.forEach(r => {
             console.log(r)
-            cadena+="<tr><td>"+r.nombre+"</td><td>"+r.pivot.resultado+"</td><td>"+r.unidad+"</td><td>"+r.rangoMin+"-"+r.rangoMax+"</td></tr>"
+            cadena+="<tr><td>"+r.nombre+"</td><td>"+r.categoria+"</td><td>"+r.pivot.resultado+"</td><td>"+r.unidad+"</td><td>"+(r.rangoMin==null?'':r.rangoMin)+' - '+(r.rangoMax==null?'':r.rangoMax)+"</td><td>"+r.descripcion+"</td></tr>"
           });
           cadena+="</tbody></table>"
         }
