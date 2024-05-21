@@ -106,7 +106,7 @@
                   {{l.tipo.nombre}} - {{l.solicitud}}
                 </li>
               </ul>
-
+<!--                <pre>{{laboratorios}}</pre>-->
               </q-card-section>
               <q-card-actions align="right" class="text-primary">
                 <q-btn flat label="Cancel" v-close-popup />
@@ -2300,6 +2300,11 @@
           this.$axios.post(process.env.API+'/listCultivo',{fecha:this.fechalab,id:this.paciente2.id}).then(res=> {
             this.laboratorios=this.laboratorios.concat(res.data)
             this.$axios.post(process.env.API+'/listImmunologia',{fecha:this.fechalab,id:this.paciente2.id}).then(res=> {
+              let inmunologia = []
+              res.data.forEach(r => {
+                r.tipoLabo='INMUNOLOGIA'
+                inmunologia.push(r)
+              });
               this.laboratorios=this.laboratorios.concat(res.data)
               this.loading=false
             })
@@ -6369,7 +6374,11 @@
           this.$q.loading.show()
           // console.log('>>>> OK')
               //console.log(props.row)
-          this.$axios.delete(process.env.API+'/laboratorio/'+props.id).then(res=>{
+          this.$axios.delete(process.env.API+'/laboratorio/'+props.id,{
+            params: {
+              tipo: props.tipoLabo
+            }
+          }).then(res=>{
               this.dialog_lab=false;
            this.$q.notify({
             message: 'Elimino el registro',
@@ -6379,6 +6388,8 @@
               })
               this.mispacientes()
               this.consultarLab()
+          }).finally(()=>{
+            this.$q.loading.hide()
           })
 
         }).onOk(() => {

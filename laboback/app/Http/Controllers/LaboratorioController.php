@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AntibioticoInmunologia;
+use App\Models\Inmunologia;
 use App\Models\Laboratorio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -214,11 +216,22 @@ class LaboratorioController extends Controller
      * @param  \App\Models\Laboratorio  $laboratorio
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,Request $request)
     {
-        //
-        $laboratorio=Laboratorio::find($id);
-        $laboratorio->delete();
+        $tipo=$request->input('tipo');
+
+
+        if ($tipo=='INMUNOLOGIA'){
+            $antibioticoInmonologia=AntibioticoInmunologia::where('inmunologia_id',$id)->get();
+            foreach ($antibioticoInmonologia as $value) {
+                $value->delete();
+            }
+            $labo=Inmunologia::find($id);
+            $labo->delete();
+        }else{
+            $laboratorio=Laboratorio::find($id);
+            $laboratorio->delete();
+        }
     }
 
     public function base64(Request $request){
@@ -331,12 +344,12 @@ class LaboratorioController extends Controller
         $res2=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=1 and l.d2!='' GROUP by tipo_id;");
         if(sizeof($res2)>0)
             $sum2=$res2[0]->total;
-        else    
+        else
             $sum2=0;
         $res3=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=1 and l.d4!='' GROUP by tipo_id;");
         if(sizeof($res3)>0)
             $sum3=$res3[0]->total;
-        else    
+        else
             $sum3=0;
 
         // VES
@@ -364,8 +377,8 @@ class LaboratorioController extends Controller
         if(sizeof($res7)>0)
             $sum7=$res7[0]->total;
         else
-            $sum7=0; 
-            
+            $sum7=0;
+
         // plaquetas
         $res8=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=1 and l.d17!='' GROUP by tipo_id;");
         if(sizeof($res8)>0)
@@ -384,154 +397,154 @@ class LaboratorioController extends Controller
         if(sizeof($res10)>0)
             $sum10=$res10[0]->total;
         else
-            $sum10=0;   
+            $sum10=0;
 
         // Creatinina 	quimica	d3
         $res11=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=2 and l.d3!='' GROUP by tipo_id;");
         if(sizeof($res11)>0)
             $sum11=$res11[0]->total;
         else
-            $sum11=0;   
+            $sum11=0;
         // Proteina totales	quimica	d10
         $res12=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=2 and l.d12!='' GROUP by tipo_id;");
         if(sizeof($res12)>0)
             $sum12=$res12[0]->total;
         else
-            $sum12=0;   
+            $sum12=0;
         // urea	quimica	d5
         $res13=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=2 and l.d5!='' GROUP by tipo_id;");
         if(sizeof($res13)>0)
             $sum13=$res13[0]->total;
         else
-            $sum13=0;   
+            $sum13=0;
         // albumina	quimica	d12
         $res14=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=2 and l.d12!='' GROUP by tipo_id;");
         if(sizeof($res14)>0)
             $sum14=$res14[0]->total;
         else
-            $sum14=0;   
+            $sum14=0;
         // nus bun	quimica	d7
         $res15=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=2 and l.d7!='' GROUP by tipo_id;");
         if(sizeof($res15)>0)
             $sum15=$res15[0]->total;
         else
-            $sum15=0;   
+            $sum15=0;
         // globulina	quimica	d14
         $res16=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=2 and l.d14!='' GROUP by tipo_id;");
         if(sizeof($res16)>0)
             $sum16=$res16[0]->total;
         else
-            $sum16=0;   
+            $sum16=0;
         // acido urico	quimica	d9
         $res17=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=2 and l.d9!='' GROUP by tipo_id;");
         if(sizeof($res17)>0)
             $sum17=$res17[0]->total;
         else
-            $sum17=0;   
+            $sum17=0;
         // cloro	quimica	d22
         $res18=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=2 and l.d22!='' GROUP by tipo_id;");
         if(sizeof($res18)>0)
             $sum18=$res18[0]->total;
         else
-            $sum18=0;   
+            $sum18=0;
         // transaminasas GOT	quimica	d6
         $res19=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=2 and l.d6!='' GROUP by tipo_id;");
         if(sizeof($res19)>0)
             $sum19=$res19[0]->total;
         else
-            $sum19=0;   
+            $sum19=0;
         // sodio	quimica	d20
         $res20=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=2 and l.d20!='' GROUP by tipo_id;");
         if(sizeof($res20)>0)
             $sum20=$res20[0]->total;
         else
-            $sum20=0;   
+            $sum20=0;
         // transaminasas GPT	quimica	d8
         $res21=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=2 and l.d8!='' GROUP by tipo_id;");
         if(sizeof($res21)>0)
             $sum21=$res21[0]->total;
         else
-            $sum21=0;   
+            $sum21=0;
         // potasio	quimica	d24
         $res22=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=2 and l.d24!='' GROUP by tipo_id;");
         if(sizeof($res22)>0)
             $sum22=$res22[0]->total;
         else
-            $sum22=0;   
+            $sum22=0;
         // bilirrubina total 	quimica	d19
         $res23=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=2 and l.d19!='' GROUP by tipo_id;");
         if(sizeof($res23)>0)
             $sum23=$res23[0]->total;
         else
-            $sum23=0;   
+            $sum23=0;
         // magnecio	quimica	d28
         $res24=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=2 and l.d28!='' GROUP by tipo_id;");
         if(sizeof($res24)>0)
             $sum24=$res24[0]->total;
         else
-            $sum24=0;   
+            $sum24=0;
         // ck-mb	quimica	d25
         $res25=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=2 and l.d25!='' GROUP by tipo_id;");
         if(sizeof($res25)>0)
             $sum25=$res25[0]->total;
         else
-            $sum25=0;   
+            $sum25=0;
         // fosforo	quimica	d30
         $res26=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=2 and l.d30!='' GROUP by tipo_id;");
         if(sizeof($res26)>0)
             $sum26=$res26[0]->total;
         else
-            $sum26=0;   
-        
+            $sum26=0;
+
         // hierro serico	quimica	d29
         $res27=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=2 and l.d29!='' GROUP by tipo_id;");
         if(sizeof($res27)>0)
             $sum27=$res27[0]->total;
         else
-            $sum27=0;   
+            $sum27=0;
         // LDH	quimica	d27
         $res28=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=2 and l.d27!='' GROUP by tipo_id;");
         if(sizeof($res28)>0)
             $sum28=$res28[0]->total;
         else
-            $sum28=0;   
+            $sum28=0;
         // colesterol total	quimica	d13
         $res29=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=2 and l.d13!='' GROUP by tipo_id;");
         if(sizeof($res29)>0)
             $sum29=$res29[0]->total;
         else
-            $sum29=0;   
+            $sum29=0;
         // trigliceridos	quimica	d11
         $res30=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=2 and l.d11!='' GROUP by tipo_id;");
         if(sizeof($res30)>0)
             $sum30=$res30[0]->total;
         else
-            $sum30=0;   
+            $sum30=0;
         // hdl colesterol	quimica	d15
         $res31=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=2 and l.d15!='' GROUP by tipo_id;");
         if(sizeof($res31)>0)
             $sum31=$res31[0]->total;
         else
-            $sum31=0;   
+            $sum31=0;
         // ldl colesterol	quimica	d17
         $res32=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=2 and l.d17!='' GROUP by tipo_id;");
         if(sizeof($res32)>0)
             $sum32=$res32[0]->total;
         else
-            $sum32=0;   
+            $sum32=0;
         // lipasa	quimica	d18
         $res33=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=2 and l.d18!='' GROUP by tipo_id;");
         if(sizeof($res33)>0)
             $sum33=$res33[0]->total;
         else
-            $sum33=0; 
+            $sum33=0;
 
-        // FIJACION D HIERRO 
+        // FIJACION D HIERRO
         $res34=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=24 GROUP by tipo_id;");
         if(sizeof($res34)>0)
             $sum34=$res34[0]->total;
         else
-            $sum34=0; 
+            $sum34=0;
 
         // FGASOM ARTERIAL
         $res35=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=18 GROUP by tipo_id;");
@@ -552,26 +565,26 @@ class LaboratorioController extends Controller
         if(sizeof($res37)>0)
             $sum37=$res37[0]->total;
         else
-            $sum37=0; 
+            $sum37=0;
         // il6	inmunoensayo	d3
         $res38=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=12 and l.d3!='' GROUP by tipo_id;");
         if(sizeof($res38)>0)
             $sum38=$res38[0]->total;
         else
-            $sum38=0; 
+            $sum38=0;
         // hemoglobina glico
         $res39=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=17  GROUP by tipo_id;");
         if(sizeof($res39)>0)
             $sum39=$res39[0]->total;
         else
-            $sum39=0; 
+            $sum39=0;
 
         // exammen de grl orina
         $res40=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=3 GROUP by tipo_id;");
         if(sizeof($res40)>0)
             $sum40=$res40[0]->total;
         else
-            $sum40=0; 
+            $sum40=0;
 
 // miscelaeno de orina
 // proteinuria 24hrs	miscelaneo	d6
@@ -579,25 +592,25 @@ class LaboratorioController extends Controller
         if(sizeof($res41)>0)
             $sum41=$res41[0]->total;
         else
-            $sum41=0; 
+            $sum41=0;
 // proteinasa al azar en orian	miscelaneo	d5
         $res42=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=23 and l.d5!='' GROUP by tipo_id;");
         if(sizeof($res42)>0)
             $sum42=$res42[0]->total;
         else
-            $sum42=0; 
+            $sum42=0;
 // creatinina en orina	miscelaneo	d3
         $res43=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=23 and l.d3!='' GROUP by tipo_id;");
         if(sizeof($res43)>0)
             $sum43=$res43[0]->total;
         else
-            $sum43=0; 
+            $sum43=0;
 // clearence p depuraxiion de crestian	miscelaneo	d4
         $res44=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=23 and l.d4!='' GROUP by tipo_id;");
         if(sizeof($res44)>0)
             $sum44=$res44[0]->total;
         else
-            $sum44=0; 
+            $sum44=0;
 
                     // test de embarazo
         $res45=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=13  GROUP by tipo_id;");
@@ -611,38 +624,38 @@ class LaboratorioController extends Controller
         if(sizeof($res46)>0)
             $sum46=$res46[0]->total;
         else
-            $sum46=0; 
+            $sum46=0;
             // proteina c reactiva pcr	lab serologia	d3
         $res47=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=10 and l.d3!='' GROUP by tipo_id;");
         if(sizeof($res47)>0)
             $sum47=$res47[0]->total;
         else
-            $sum47=0; 
+            $sum47=0;
         // psa en taco	lab serologia	d13
         $res48=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=10 and l.d13!='' GROUP by tipo_id;");
         if(sizeof($res48)>0)
             $sum48=$res48[0]->total;
         else
-            $sum48=0; 
+            $sum48=0;
 
         // b HCG 	inmunoensayo	d7
         $res49=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=12 and l.d7!='' GROUP by tipo_id;");
         if(sizeof($res49)>0)
             $sum49=$res49[0]->total;
         else
-            $sum49=0; 
+            $sum49=0;
         // PSA cuanti	inmunoensayo	d4
         $res50=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=12 and l.d4!='' GROUP by tipo_id;");
         if(sizeof($res50)>0)
             $sum50=$res50[0]->total;
         else
-            $sum50=0; 
+            $sum50=0;
         // Troponinna 	inmunoensayo	d6
         $res51=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=12 and l.d6!='' GROUP by tipo_id;");
         if(sizeof($res51)>0)
             $sum51=$res51[0]->total;
         else
-            $sum51=0; 
+            $sum51=0;
         // PCR sencicle 	inmunoensayo	d5
         $res52=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=12 and l.d5!='' GROUP by tipo_id;");
         if(sizeof($res52)>0)
@@ -655,21 +668,21 @@ class LaboratorioController extends Controller
         if(sizeof($res53)>0)
             $sum53=$res53[0]->total;
         else
-            $sum53=0; 
+            $sum53=0;
 
                     // analsiis de secercion vaginal
         $res54=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=5  GROUP by tipo_id;");
         if(sizeof($res54)>0)
             $sum54=$res54[0]->total;
         else
-            $sum54=0; 
+            $sum54=0;
 
         // analsiis de heces
         $res55=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=6  GROUP by tipo_id;");
         if(sizeof($res55)>0)
             $sum55=$res55[0]->total;
         else
-            $sum55=0; 
+            $sum55=0;
 
         //serolo bactero
         // Antiestreptolisina asto	lab serolo	d2
@@ -677,52 +690,52 @@ class LaboratorioController extends Controller
         if(sizeof($res56)>0)
             $sum56=$res56[0]->total;
         else
-            $sum56=0;   
+            $sum56=0;
         // Prueba rapida para sifilis	lab serolo	d5
         $res57=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=10 and l.d5!='' GROUP by tipo_id;");
         if(sizeof($res57)>0)
             $sum57=$res57[0]->total;
         else
-            $sum57=0; 
+            $sum57=0;
         // RPR 	lab serolo	d4
         $res58=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=10 and l.d4!='' GROUP by tipo_id;");
         if(sizeof($res58)>0)
             $sum58=$res58[0]->total;
         else
-            $sum58=0; 
+            $sum58=0;
         // test helicobater pylore en sangre	lab serolo	d10
         $res59=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=10 and l.d10!='' GROUP by tipo_id;");
         if(sizeof($res59)>0)
             $sum59=$res59[0]->total;
         else
-            $sum59=0; 
+            $sum59=0;
         // test helicobater pylore en heces	lab serolo	d11
         $res60=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=10 and l.d11!='' GROUP by tipo_id;");
         if(sizeof($res60)>0)
             $sum60=$res60[0]->total;
         else
-            $sum60=0; 
+            $sum60=0;
 
         //reaccciond e lwidal
         $res61=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=15  GROUP by tipo_id;");
         if(sizeof($res61)>0)
             $sum61=$res61[0]->total;
         else
-            $sum61=0; 
-    
+            $sum61=0;
+
                     //toxoplasmosis
         $res62=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=20  GROUP by tipo_id;");
         if(sizeof($res62)>0)
             $sum62=$res62[0]->total;
         else
-            $sum62=0; 
+            $sum62=0;
 
         // proclcitonina	inmunoensayo	d8
         $res63=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=12 and l.d8!='' GROUP by tipo_id;");
         if(sizeof($res63)>0)
             $sum63=$res63[0]->total;
         else
-            $sum63=0; 
+            $sum63=0;
 
         //parasitologia
         //coproparasiltoci    simple
@@ -731,69 +744,69 @@ class LaboratorioController extends Controller
             $sum64=$res64[0]->total;
         else
             $sum64=0;
-                    //coproparasiltoci   seriado 
+                    //coproparasiltoci   seriado
         $res65=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=8  GROUP by tipo_id;");
         if(sizeof($res65)>0)
             $sum65=$res65[0]->total;
         else
-            $sum65=0;   
+            $sum65=0;
         //     test de benedict	simple	d17
         $res66=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=7 and l.d17!='' GROUP by tipo_id;");
         if(sizeof($res66)>0)
             $sum66=$res66[0]->total;
         else
-            $sum66=0; 
+            $sum66=0;
         // sangre oculta   en heces	simple	d16
         $res67=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=7 and l.d16!='' GROUP by tipo_id;");
         if(sizeof($res67)>0)
             $sum67=$res67[0]->total;
         else
-            $sum67=0; 
-        
+            $sum67=0;
+
         //virologia
         //prueba codiv
         $res68=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=9 GROUP by tipo_id;");
         if(sizeof($res68)>0)
             $sum68=$res68[0]->total;
         else
-            $sum68=0; 
+            $sum68=0;
         //     hepatitis a	lab serolo	d7
         $res69=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=10 and l.d7!='' GROUP by tipo_id;");
         if(sizeof($res69)>0)
             $sum69=$res69[0]->total;
         else
-            $sum69=0; 
+            $sum69=0;
         // hepatitis b	lab serolo	d8
         $res70=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=10 and l.d8!='' GROUP by tipo_id;");
         if(sizeof($res70)>0)
             $sum70=$res70[0]->total;
         else
-            $sum70=0; 
+            $sum70=0;
         // hepatiits c	lab serolo	d9
         $res71=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=10 and l.d9!='' GROUP by tipo_id;");
         if(sizeof($res71)>0)
             $sum71=$res71[0]->total;
         else
-            $sum71=0; 
+            $sum71=0;
         //hepatittis b c
         $res72=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=19 GROUP by tipo_id;");
         if(sizeof($res72)>0)
             $sum72=$res72[0]->total;
         else
-            $sum72=0; 
+            $sum72=0;
 
         //hemodialisis myb	hemodialisi
         $res73=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=21 GROUP by tipo_id;");
         if(sizeof($res73)>0)
             $sum73=$res73[0]->total;
         else
-            $sum73=0; 
+            $sum73=0;
             //hemodialisi tri	hemotri
         $res74=DB::SELECT("SELECT count(*) total FROM laboratorios l WHERE fechatoma>='$request->ini' and fechatoma<='$request->fin' and tipo_id=22 GROUP by tipo_id;");
         if(sizeof($res74)>0)
             $sum74=$res74[0]->total;
         else
-            $sum74=0; 
+            $sum74=0;
 
         return json_encode( [
             ['nombre'=>'HEMOGRAMA COMPLETO','cantidad'=>0,'tipo'=>'titulo'],
@@ -831,7 +844,7 @@ class LaboratorioController extends Controller
             ['nombre'=>'HDL Colesterol','cantidad'=>$sum31,'tipo'=>''],
             ['nombre'=>'LDL Colesterol','cantidad'=>$sum32,'tipo'=>''],
             ['nombre'=>'Lipasa','cantidad'=>$sum33,'tipo'=>''],
-            
+
             ['nombre'=>'Capacidad de Fijacion de Hierro','cantidad'=>$sum34,'tipo'=>''],
             ['nombre'=>'Gasometria Arterial','cantidad'=>$sum35,'tipo'=>''],
             ['nombre'=>'Alcoholemia','cantidad'=>$sum36,'tipo'=>''],
@@ -892,7 +905,7 @@ class LaboratorioController extends Controller
 
     public function totalsolicitud(Request $request){
         return DB::SELECT("SELECT d.nombre,d.paterno,d.materno,
-        (select count(DISTINCT(l.solicitud)) from laboratorios l where l.doctor_id=d.id and l.solicitud!='' and l.fechatoma>='$request->ini' and l.fechatoma<='$request->fin') as num 
+        (select count(DISTINCT(l.solicitud)) from laboratorios l where l.doctor_id=d.id and l.solicitud!='' and l.fechatoma>='$request->ini' and l.fechatoma<='$request->fin') as num
         from doctors d");
     }
 }
