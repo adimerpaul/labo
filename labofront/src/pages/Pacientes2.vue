@@ -1100,6 +1100,11 @@
                           <q-btn color="red" icon='delete' dense  @click="deleteDetalle(props.row,props.pageIndex)" />
                         </q-td>
                       </template>
+                      <template v-slot:body-cell-descripcion="props" >
+                        <q-td key="op" :props="props" >
+                          <div v-html="props.row.descripcion"></div>
+                        </q-td>
+                      </template>
                     </q-table>
 
                   </div>
@@ -2019,6 +2024,7 @@
           {name:'interpretacion',label:'INTERPRETACION',field:'interpretacion'},
           {name:'rangoMin',label:'RANGO MIN',field:'rangoMin'},
           {name:'rangoMax',label:'RANGO MAX',field:'rangoMax'},
+          {name:'descripcion',label:'DESCRIPCION',field:'descripcion'},
         ],
         current: 1,
         last_page: 0,
@@ -6535,7 +6541,7 @@
           anio=p.tiempo
         else anio=p.edad
         if(l.fechaimp==null || l.fechaimp == undefined ) l.fechaimp = moment()
-        cadena+="<div class='enc2'>RESULTADO <br> CULTIVO Y ANTIBIOGRAMA</div>\
+        cadena+="<div class='enc2'>RESULTADO <br> INMUNOLOGIA</div>\
         <table class='tab2'>\
         <tr><th>PACIENTE: </th><td>"+p.paciente+"</td><th>EDAD: </th><td>"+anio+"</td></tr>\
         <tr><th>REQUERIDO POR: </th><td>"+l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno+"</td><th>SEXO: </th><td>"+p.sexo+"</td></tr>\
