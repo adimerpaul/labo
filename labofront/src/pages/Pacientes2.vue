@@ -6594,6 +6594,8 @@
             "<tbody>"
           l.antibioticos.forEach(r => {
             console.log(r)
+            if(r.categoria==null) r.categoria=''
+            if(r.descripcion==null) r.descripcion=''
             cadena+="<tr><td>"+r.nombre+"</td><td>"+r.categoria+"</td><td>"+r.pivot.resultado+"</td><td>"+r.unidad+"</td><td>"+(r.rangoMin==null?'':r.rangoMin)+' - '+(r.rangoMax==null?'':r.rangoMax)+"</td><td>"+r.descripcion+"</td></tr>"
           });
           cadena+="</tbody></table>"
