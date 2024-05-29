@@ -6527,6 +6527,107 @@
       const d3 = new Printd()
       d3.print(document.getElementById('myelement'))
               },
+      imprimirInmunologia2(p,l){
+        console.log(p)
+        console.log(l)
+        var doc = new jsPDF('P',undefined,'legal')
+        doc.setFont("arial");
+        doc.setFontSize(10);
+        var img = new Image()
+        img.src = 'img/natividad.jpeg'
+        doc.addImage(img, 'jpg', 5, 2, 70, 20)
+        let x=0
+        let y=0
+        //inicio datos paciete
+        doc.setDrawColor(120);
+        doc.rect(x+5, y+27, 205, 20)
+        doc.setFont(undefined, 'bold')
+        doc.setTextColor(57,73,171)
+        doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+175, y+8,'center')
+        doc.setTextColor(195,47,47)
+        doc.text('N Registro CODEDLAB 000045',x+150, y+25)
+        doc.setTextColor(211,47,47)
+        doc.text('Form. 002',x+190, y+30)
+        doc.setTextColor(57,73,171)
+        doc.text('REPORTE INMUNOLOGIA',x+100, y+30,'center')
+        doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
+
+        doc.setTextColor(0,0,0)
+        doc.setFont(undefined, 'normal')
+        doc.text([p.paciente,l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno,l.tipomuestra+''],x+70, y+35,'center')
+        doc.setTextColor(57,73,171)
+        doc.setFont(undefined, 'bold')
+        doc.text(['EDAD','SEXO'],x+130, y+35)
+        doc.setTextColor(211,47,47)
+        doc.text('N PACIENTE',x+130, y+43)
+        doc.setFont(undefined, 'normal')
+        doc.setTextColor(0,0,0)
+
+        let anio=''
+        if(p.edad==null||p.edad==undefined||p.edad=='')
+          anio=p.tiempo
+        else anio=p.edad
+        doc.text([anio+'',p.sexo,(l.solicitud==null?'':l.solicitud+'')],x+160, y+35,'center')
+        doc.setTextColor(57,73,171)
+
+
+        doc.rect(x+5, y+48, 205, 77)
+        doc.setFont(undefined, 'bold')
+        doc.setTextColor(57,73,171)
+        doc.text('          ENSAYO                      METODO                   RESULTADO                  UNIDAD                     RANGO              REFERENCIA',x+6,y+52)
+
+        // let countAntibiotico = l.antibioticos.length;
+        // let promises = [];
+
+        l.antibioticos.forEach((r, i) => {
+          doc.setFont(undefined, 'normal');
+          doc.setTextColor(0,0,0);
+          doc.text(r.nombre, x+10, y+57+(i*12));
+          doc.text(r.metodo==null?'':r.metodo+'', x+40, y+57+(i*12));
+          doc.text(r.pivot?.resultado, x+85, y+57+(i*12));
+          doc.text(r.unidad, x+120, y+57+(i*12));
+          doc.text(r.rangoMin+'-'+r.rangoMax, x+150, y+57+(i*12));
+          doc.text(r.descripcion+'', x+185, y+57+(i*12));
+
+          // let promise = new Promise((resolve) => {
+          //   doc.html('<div style="border:1px solid black;width: 50px;font-size: 3px;line-height: 0.8;margin-top: '+(i+5)+'px ">dasa'+r.descripcion+'</div>', {
+          //     callback: function (doc) {
+          //       resolve();
+          //     },
+          //     x: x + 170,
+          //     y: y+57+(i*12),
+          //   });
+          // });
+          //
+          // promises.push(promise);
+        });
+
+        // Promise.all(promises).then(() => {
+          window.open(doc.output('bloburl'), '_blank');
+        // });
+
+        doc.setTextColor(57,73,171)
+        doc.setFont(undefined, 'bold')
+        doc.text('OBSERVACIONES:',x+6,y+129)
+        doc.setFont(undefined, 'normal')
+        doc.setTextColor(0,0,0)
+        doc.text(l.d31==null?'':l.d31+'',x+6,y+132,'left')
+        //
+        // doc.rect(x+5, y+126, 205, 25)
+        // doc.setFont(undefined, 'bold')
+        // doc.setTextColor(57,73,171)
+        // doc.text('RESPONSABLE',x+6,y+139)
+        // doc.setFont(undefined, 'NORMAL')
+        // doc.text(l.responsable,x+8,y+144)
+        // doc.setFont(undefined, 'normal')
+        // doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+139,'center')
+        // doc.setTextColor(0,0,0)
+        // if(l.fechaimp==null || l.fechaimp == undefined ) l.fechaimp =  moment()
+        // doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,moment(l.fechaimp).format("DD-MM-YYYY")],x+170,y+139,'left')
+        // setTimeout(() => {
+        //   window.open(doc.output('bloburl'), '_blank');
+        // }, 1000);
+      },
       imprimirInmunologia(p,l){
         let cadena="<style>\
         .tab1{width:100% }\

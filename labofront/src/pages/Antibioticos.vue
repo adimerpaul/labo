@@ -47,7 +47,8 @@
             <q-input v-model="antibiotico.rangoMax" label="Rango Max" outlined dense type="number" step="0.01"/>
             <q-select v-model="antibiotico.categoria" label="Perfiles" outlined dense :options="categorias" />
 <!--            <q-input type="textarea" v-model="antibiotico.descripcion" label="descripcion" outlined dense />-->
-            <q-editor v-model="antibiotico.descripcion" min-height="5rem" label="Descripcion" outlined dense />
+<!--            <q-editor v-model="antibiotico.descripcion" min-height="5rem" label="Descripcion" outlined dense />-->
+            <q-input v-model="antibiotico.descripcion" min-height="5rem" label="Descripcion" outlined dense type="textarea" />
             <q-select v-model="antibiotico.tipo" label="Tipo" outlined dense :options="['CULTIVO', 'INMUNOLOGIA']" />
             <q-card-actions align="right">
               <q-btn label="Cancelar" color="red" @click="antibioticoDialog = false" :loading="loading" />
