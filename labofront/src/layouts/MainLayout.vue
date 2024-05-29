@@ -40,7 +40,7 @@
             </q-item-section>
             <q-item-section>
               <q-item-label> Principal</q-item-label>
-              <q-item-label caption>Menu de consulta</q-item-label>
+              <q-item-label caption>Menu </q-item-label>
             </q-item-section>
           </q-item>
           <q-item to="/login" exact clickable v-ripple v-if="!$store.getters['login/isLoggedIn']">
@@ -105,7 +105,7 @@
               <q-icon name="code" />
             </q-item-section>
             <q-item-section>
-              <q-item-label> Reporte Seguro</q-item-label>
+              <q-item-label> Reporte se</q-item-label>
 <!--              <q-item-label caption>Controlar usuarios</q-item-label>-->
             </q-item-section>
           </q-item>
@@ -154,7 +154,7 @@
             </q-item-section>
             <q-item-section>
               <q-item-label> Salir</q-item-label>
-              <q-item-label caption>Salir del sistema</q-item-label>
+              <q-item-label caption>Salir</q-item-label>
             </q-item-section>
           </q-item>
         </q-list>

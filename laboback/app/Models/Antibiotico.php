@@ -26,5 +26,6 @@ class Antibiotico extends Model
         'paciente_id',
         'user_id',
         'doctor_id',
+        'metodo',
     ];
 }

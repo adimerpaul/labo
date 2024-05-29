@@ -42,6 +42,7 @@
           <q-form @submit="antibioticoSubmit">
             <q-input v-model="antibiotico.nombre" label="Nombre" outlined dense :rules="[val => !!val || 'Campo requerido']" />
             <q-input v-model="antibiotico.unidad" label="Unidad" outlined dense />
+            <q-input v-model="antibiotico.metodo" label="metodo" outlined dense />
             <q-input v-model="antibiotico.rangoMin" label="Rango Min" outlined dense type="number" step="0.01"/>
             <q-input v-model="antibiotico.rangoMax" label="Rango Max" outlined dense type="number" step="0.01"/>
             <q-select v-model="antibiotico.categoria" label="Perfiles" outlined dense :options="categorias" />
@@ -78,6 +79,7 @@ export default {
         { name: 'referencia', label: 'Referencia', align: 'left', field: row => row.referencia },
         { name: 'descripcion', label: 'Descripcion', align: 'left', field: row => row.descripcion },
         { name: 'tipo', label: 'Tipo', align: 'left', field: row => row.tipo },
+        { name: 'metodo', label: 'Metodo', align: 'left', field: row => row.metodo }
       ],
       categorias: ['MARCADORES TUMORALES', 'PERFIL TIROIDEO', 'HORMONAS DE FERTILIDAD', 'HORMONAS SUPRERRENALES', 'INSULINA', 'PEPTIDO -C', 'PRUEBAS  AUTOINMUNE', 'COMPLEMENTOS', 'ANCA - P', 'ANCA - C', 'CHAGAS', 'PANEL T.O.R.C.H.', 'INFECCIOSAS', 'HELICOBACTER PYLORI EN SANGRE', 'HELICOBACTER PYLORI EN HECES ANTIGENO', 'DETECCION DE GIARDIA LAMBLIA', 'VITAMINA "B12"', 'ACIDO FOLICO', 'VITAMINA "D"', 'HORMONA DEL CRECIMIENTO (hGH)', 'FACTOR DE CRECIMIENTO SIMILAR A LA INSULINA-1 (IGF-1)', 'MIOGLOBINA']
 

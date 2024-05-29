@@ -17,6 +17,7 @@ class AntibioticoController extends Controller{
         $antibiotico->rangoMax = $request->rangoMax;
         $antibiotico->referencia = $request->referencia;
         $antibiotico->tipo = $request->tipo;
+        $antibiotico->metodo = $request->metodo;
         $antibiotico->descripcion = $request->descripcion;
         $antibiotico->save();
         return $antibiotico;
@@ -33,6 +34,7 @@ class AntibioticoController extends Controller{
         $antibiotico->rangoMax = $request->rangoMax;
         $antibiotico->referencia = $request->referencia;
         $antibiotico->tipo = $request->tipo;
+        $antibiotico->metodo = $request->metodo;
         $antibiotico->descripcion = $request->descripcion;
         $antibiotico->save();
         return $antibiotico;
