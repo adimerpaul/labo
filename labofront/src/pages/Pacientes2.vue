@@ -6630,19 +6630,20 @@
       },
       imprimirInmunologia(p,l){
         let cadena="<style>\
-        .tab1{width:100% }\
-        .tab2{width:100%; border:0.5px solid; }\
-        .tab3{width:100%; border:0.5px solid; }\
-        .img1{width: 300px; height:75px;}\
-        .enc1{font-size:14px ; color: blue; text-align:center}\
-        .enc2{font-size:18px ; color: blue; text-align:center;font-weight: bold;}\
+        .tab1{width:100%;font-family: Arial; }\
+        .tab2{width:100%; border:0.5px solid; font-size:14px;font-family: Arial;}\
+        .tab3{width:100%; border:0.5px solid; font-size:14px;font-family: Arial;}\
+        .img1{width: 200px; height:55px; padding-left:10px;font-family: Arial;}\
+        .enc1{font-size:10px ; color: #3949AB; text-align:center;font-family: Arial;}\
+        .enc2{font-size:16px ; color: #3949AB; text-align:center;font-weight: bold;font-family: Arial; }\
         footer {\
       position: absolute;\
       bottom: 0;\
       width: 100%;\
       height: 60px;\
-      color: blue;  }\
+      color: #3949AB;  }\
         </style>\
+        <div style='padding-left: 1cm;padding-right: 1cm;padding-top: 1cm;padding-bottom: 1cm;'>\
         <table class='tab1'>\
         <tr><td style='width:50%'><img class='img1' src='img/natividad.jpeg' /></td>\
         <td class='enc1'><b>SERVICIO DE LABORATORIO</b> <br> Bolivar N°753 entre Arica e Iquique <br> Telf: 5254721 Fax: 52-83667 <br> Emergencia las 24 horas del dia.<br>\
@@ -6660,32 +6661,15 @@
         <tr><th>TIPO DE MUESTRA: </th><td>"+l.tipomuestra+"</td><th>N PACIENTE: </th><td>"+l.solicitud+"</td></tr>\
         <tr><th>FECHA DE RECEPCION: </th><td>"+moment(l.fechatoma).format("DD-MM-YYYY")+"</td><th>FECHA ENTREGA: </th><td>"+moment(l.fechaimp).format("DD-MM-YYYY")+"</td></tr>\
         </table>"
-        /*
-              doc.text('OBSERVACION',x+20,y+245,'left')
-              doc.text(l.observacion,x+10,y+240,'left')
+        cadena+="<body style='font-size:12px;'><br>"
 
-              doc.text('RESPONSABLE',x+15,y+260,'left')
-              doc.text(l.responsable,x+15,y+265,'left')
-              doc.text(['Fecha toma de Muestra','Hora toma Muestra','Fecha Entrega de Resultado'],x+120,y+260,'left')
-              doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,moment(l.fechaimp).format("DD-MM-YYYY")],x+170,y+260,'left')
-              */   cadena+="<body style='font-size:12px;padding: 1cm 2cm 1cm 3cm;'><br>"
-
-        // if(l.examenDirecto!='' &&  l.examenDirecto!=undefined){
-        //   cadena+="<b style='font-size:16px;'>EXAMEN DIRECTO</b><br>"+l.examenDirecto+"<br>"
-        // }
-        // if(l.tincionGram!='' &&  l.tincionGram!=undefined){
-        //   cadena+="<br><b style='font-size:16px;'>TINCION GRAM</b><br>"+l.tincionGram+"<br>"
-        // }
-        // if(l.microorganizmo!='' &&  l.microorganizmo!=undefined){
-        //   cadena+="<br><b style='font-size:16px;'>MICROORGANIZMO IDENTIFICADO</b><br>"+l.microorganizmo+"<br>"
-        // }
         if(l.antibioticos.length>0){
           cadena+="<b></b><br>"
           cadena+="<table class='tab3'>" +
             "<thead>" +
             "<tr>" +
             "<th>ENSAYO</th>" +
-            "<th>PERFILES</th>" +
+            "<th>METODO</th>" +
             "<th>RESULTADO</th>" +
             "<th>UNIDAD</th>" +
             "<th>RANGO</th>" +
@@ -6697,12 +6681,12 @@
             console.log(r)
             if(r.categoria==null) r.categoria=''
             if(r.descripcion==null) r.descripcion=''
-            cadena+="<tr><td>"+r.nombre+"</td><td>"+r.categoria+"</td><td>"+r.pivot.resultado+"</td><td>"+r.unidad+"</td><td>"+(r.rangoMin==null?'':r.rangoMin)+' - '+(r.rangoMax==null?'':r.rangoMax)+"</td><td>"+r.descripcion+"</td></tr>"
+            cadena+="<tr style='text-align:center'><td>"+r.nombre+"</td><td>"+r.metodo+"</td><td>"+r.pivot.resultado+"</td><td>"+r.unidad+"</td><td>"+(r.rangoMin==null?'':r.rangoMin)+' - '+(r.rangoMax==null?'':r.rangoMax)+"</td><td>"+r.descripcion+"</td></tr>"
           });
           cadena+="</tbody></table>"
         }
         cadena+="<div>"+l.observacion+"</div>\
-      <footer><div style='text-align:center; color:black; '>RESPONSABLE DEL ANALISIS</div><br>CLINICA NATIVIDAD CLINICA DE LA FAMILIA</footer></body>"
+      <footer><div style='text-align:center; color:black; '>RESPONSABLE DEL ANALISIS</div><br>CLINICA NATIVIDAD CLINICA DE LA FAMILIA</footer></body></div>"
         document.getElementById('myelement').innerHTML = cadena
         const d3 = new Printd()
         d3.print(document.getElementById('myelement'))
