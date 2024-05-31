@@ -6636,14 +6636,13 @@
         .img1{width: 200px; height:55px; padding-left:10px;font-family: Arial;}\
         .enc1{font-size:10px ; color: #3949AB; text-align:center;font-family: Arial;}\
         .enc2{font-size:16px ; color: #3949AB; text-align:center;font-weight: bold;font-family: Arial; }\
-        footer {\
-      position: absolute;\
-      bottom: 0;\
-      width: 100%;\
-      height: 60px;\
-      color: #3949AB;  }\
+        footer {position: absolute;bottom: 5px; width: 100%; height: 60px; color: #3949AB;  }\
+        .tab2 th{color: #3949AB; text-align:left}\
+        .tab3 thead{color: #3949AB; text-align:center}\
+        .tab2 td{ text-align:center}\
+        .campo2{color: #D32F2F; text-align:left}\
         </style>\
-        <div style='padding-left: 1cm;padding-right: 1cm;padding-top: 1cm;padding-bottom: 1cm;'>\
+        <div style='padding-left: 1cm;padding-right: 1cm;padding-top: 0.5cm;padding-bottom: 1cm;'>\
         <table class='tab1'>\
         <tr><td style='width:50%'><img class='img1' src='img/natividad.jpeg' /></td>\
         <td class='enc1'><b>SERVICIO DE LABORATORIO</b> <br> Bolivar N°753 entre Arica e Iquique <br> Telf: 5254721 Fax: 52-83667 <br> Emergencia las 24 horas del dia.<br>\
@@ -6658,7 +6657,7 @@
         <table class='tab2'>\
         <tr><th>PACIENTE: </th><td>"+p.paciente+"</td><th>EDAD: </th><td>"+anio+"</td></tr>\
         <tr><th>REQUERIDO POR: </th><td>"+l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno+"</td><th>SEXO: </th><td>"+p.sexo+"</td></tr>\
-        <tr><th>TIPO DE MUESTRA: </th><td>"+l.tipomuestra+"</td><th>N PACIENTE: </th><td>"+l.solicitud+"</td></tr>\
+        <tr><th>TIPO DE MUESTRA: </th><td>"+l.tipomuestra+"</td><th style='color: #D32F2F;'>N PACIENTE: </th><td>"+l.solicitud+"</td></tr>\
         <tr><th>FECHA DE RECEPCION: </th><td>"+moment(l.fechatoma).format("DD-MM-YYYY")+"</td><th>FECHA ENTREGA: </th><td>"+moment(l.fechaimp).format("DD-MM-YYYY")+"</td></tr>\
         </table>"
         cadena+="<body style='font-size:12px;'><br>"
