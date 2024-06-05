@@ -6633,10 +6633,11 @@
         .tab1{width:100%;font-family: Arial; }\
         .tab2{width:100%; border:0.5px solid; font-size:14px;font-family: Arial;}\
         .tab3{width:100%; border:0.5px solid; font-size:14px;font-family: Arial;}\
+        .tab4{width:90%; border:0.5px solid; font-size:14px;font-family: Arial;padding-right:1cm}\
         .img1{width: 200px; height:55px; padding-left:10px;font-family: Arial;}\
         .enc1{font-size:10px ; color: #3949AB; text-align:center;font-family: Arial;}\
-        .enc2{font-size:16px ; color: #3949AB; text-align:center;font-weight: bold;font-family: Arial; }\
-        footer {position: absolute;bottom: 5px; width: 100%; height: 60px; color: #3949AB;  }\
+        .enc2{font-size:15px ; color: #3949AB; text-align:center;font-weight: bold;font-family: Arial; }\
+        footer {position: absolute;bottom: 1cm; width: 100%; height: 60px; color: #3949AB;  }\
         .tab2 th{color: #3949AB; text-align:left}\
         .tab3 thead{color: #3949AB; text-align:center}\
         .tab2 td{ text-align:center}\
@@ -6658,12 +6659,11 @@
         <tr><th>PACIENTE: </th><td>"+p.paciente+"</td><th>EDAD: </th><td>"+anio+"</td></tr>\
         <tr><th>REQUERIDO POR: </th><td>"+l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno+"</td><th>SEXO: </th><td>"+p.sexo+"</td></tr>\
         <tr><th>TIPO DE MUESTRA: </th><td>"+l.tipomuestra+"</td><th style='color: #D32F2F;'>N PACIENTE: </th><td>"+l.solicitud+"</td></tr>\
-        <tr><th>FECHA DE RECEPCION: </th><td>"+moment(l.fechatoma).format("DD-MM-YYYY")+"</td><th>FECHA ENTREGA: </th><td>"+moment(l.fechaimp).format("DD-MM-YYYY")+"</td></tr>\
         </table>"
         cadena+="<body style='font-size:12px;'><br>"
 
         if(l.antibioticos.length>0){
-          cadena+="<b></b><br>"
+          cadena+="<b></b>"
           cadena+="<table class='tab3'>" +
             "<thead>" +
             "<tr>" +
@@ -6680,12 +6680,18 @@
             console.log(r)
             if(r.categoria==null) r.categoria=''
             if(r.descripcion==null) r.descripcion=''
-            cadena+="<tr style='text-align:center'><td>"+r.nombre+"</td><td>"+r.metodo+"</td><td>"+r.pivot.resultado+"</td><td>"+r.unidad+"</td><td>"+(r.rangoMin==null?'':r.rangoMin)+' - '+(r.rangoMax==null?'':r.rangoMax)+"</td><td>"+r.descripcion+"</td></tr>"
+            if(r.unidad==0) r.unidad=''
+            if(r.metodo==null) r.metodo=''
+
+            cadena+="<tr style='text-align:center;'><td style='color: #3949AB;'>"+r.nombre+"</td><td style='color: #3949AB;'>"+r.metodo+"</td><td>"+r.pivot.resultado+"</td><td>"+r.unidad+"</td><td style='color: #3949AB;'>"+(r.rangoMin==null?'':r.rangoMin+' - ')+''+(r.rangoMax==null?'':r.rangoMax)+"</td><td style='color: #3949AB;'>"+r.descripcion+"</td></tr>"
           });
           cadena+="</tbody></table>"
         }
-        cadena+="<div>"+l.observacion+"</div>\
-      <footer><div style='text-align:center; color:black; '>RESPONSABLE DEL ANALISIS</div><br>CLINICA NATIVIDAD CLINICA DE LA FAMILIA</footer></body></div>"
+        cadena+="<br><div style='border:0.5px solid;'><b style='color: #3949AB;'>OBSERVACION</b><br>"+l.observacion+"</div>\
+      <footer><div style='text-align:center; color:black; '>\
+        <table class='tab4'><tr><td style='width:50%;color: #3949AB; text-align:left;vertical-align:top'><b>RESPONSABLE DE ANALISIS</b></td><td style='text-align:left'><table><tr><td><b style='color: #3949AB;'>FECHA RECEPCION:</b></td><td>"+moment(l.fechatoma).format("DD-MM-YYYY")+"</td></tr><tr><td><b style='color: #3949AB;'>FECHA ENTREGA:</b></td><td>"+moment(l.fechaimp).format("DD-MM-YYYY")+"</td></tr></table><br></td></tr>\
+        </table>\
+        </div></footer></body></div>"
         document.getElementById('myelement').innerHTML = cadena
         const d3 = new Printd()
         d3.print(document.getElementById('myelement'))
