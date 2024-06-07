@@ -7,6 +7,7 @@ use App\Models\Cultivo;
 use App\Models\Inmunologia;
 use App\Models\AntibioticoInmunologia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class InmunologiaController extends Controller
 {
@@ -38,7 +39,7 @@ class InmunologiaController extends Controller
             $cultantib=new AntibioticoInmunologia();
             $cultantib->inmunologia_id= $inmunologia->id;
             $cultantib->antibiotico_id= $value['id'];
-            $cultantib->resultado= $value['interpretacion'];
+            $cultantib->resultado= $value['resultado'];
             $cultantib->save();
         }
 
@@ -68,7 +69,7 @@ class InmunologiaController extends Controller
             $cultantib=new AntibioticoInmunologia();
             $cultantib->inmunologia_id= $inmunologia->id;
             $cultantib->antibiotico_id= $value['id'];
-            $cultantib->resultado= $value['interpretacion'];
+            $cultantib->resultado= $value['resultado'];
             $cultantib->save();
         }
 

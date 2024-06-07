@@ -1995,6 +1995,43 @@
              </div></q-card-section>
               </q-card>
              </template>
+             <template v-if="tipo.label=='INMUNOLOGIA'">
+              <q-card class="my-card"  flat bordered style="width:100%">
+                <q-card-section  class="bg-green-2"> <div class="row">
+                  <div class="col-4 q-pa-xs"><q-select dense square outlined v-model="antibiotico" :options="antibioticos" label="Ensayo" /></div>
+                  <div class="col-4 q-pa-xs">
+                    <q-input dense square outlined v-model="resultado" label="Resultado" type="number" step="0.01" />
+                  </div>
+                  <div class="col-4 q-pa-xs"><q-btn color='green' icon="control_point" dense @click="agregarDetalle" /></div>
+                  <div class="col-12">
+                    <q-table title="" :rows="detalle" :columns="colAntibiotico" row-key="name" dense>
+                      <template v-slot:body-cell-op="props" >
+                        <q-td key="op" :props="props" >
+                          <q-btn color="red" icon='delete' dense  @click="deleteDetalle(props.row,props.pageIndex)" />
+                        </q-td>
+                      </template>
+                      <template v-slot:body-cell-descripcion="props" >
+                        <q-td key="op" :props="props" >
+                          <div v-html="props.row.descripcion"></div>
+                        </q-td>
+                      </template>
+                    </q-table>
+
+                  </div>
+                </div></q-card-section>
+                <q-card-section  class="bg-blue-2"> <div class="row">
+                  <div class="col-6 col-sm-12"><q-input dense outlined label="OBSERVACION" v-model="laboratorio.observacion" /></div>
+                </div></q-card-section>
+                <q-card-section  class="bg-red-2"> <div class="row">
+
+                  <div class="col-6 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
+
+                  <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
+                  <div class="col-6 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+                  <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
+                </div></q-card-section>
+              </q-card>
+            </template>
 
 
             <div class="col-12">
@@ -2021,7 +2058,7 @@
         colAntibiotico:[
           {name:'op',label:'OP',field: 'op' },
           {name:'antibiotico',label:'Ensayo',field: 'nombre' },
-          {name:'interpretacion',label:'INTERPRETACION',field:'interpretacion'},
+          {name:'interpretacion',label:'INTERPRETACION',field:'resultado'},
           {name:'rangoMin',label:'RANGO MIN',field:'rangoMin'},
           {name:'rangoMax',label:'RANGO MAX',field:'rangoMax'},
           {name:'descripcion',label:'DESCRIPCION',field:'descripcion'},
@@ -2283,9 +2320,10 @@
       agregarDetalle(){
         if(this.antibiotico.id==undefined || this.resultado=='')
         return false
-        this.antibiotico.interpretacion=this.resultado
+        this.antibiotico.resultado=this.resultado
         this.detalle.push(this.antibiotico)
         this.antibiotico={label:''}
+        this.resultado=''
         console.log(this.detalle)
       },
       consultarLab(){
@@ -2300,10 +2338,8 @@
           this.$axios.post(process.env.API+'/listCultivo',{fecha:this.fechalab,id:this.paciente2.id}).then(res=> {
             this.laboratorios=this.laboratorios.concat(res.data)
             this.$axios.post(process.env.API+'/listImmunologia',{fecha:this.fechalab,id:this.paciente2.id}).then(res=> {
-              let inmunologia = []
               res.data.forEach(r => {
                 r.tipoLabo='INMUNOLOGIA'
-                inmunologia.push(r)
               });
               this.laboratorios=this.laboratorios.concat(res.data)
               this.loading=false
@@ -2431,9 +2467,10 @@
         this.laboratorio=labo
         this.user=this.laboratorio.responsable
         if(this.tipo.id==25 || this.tipo.id==26){
+          this.cargarAntibiotico('INMUNOLOGIA');
         this.detalle=this.laboratorio.antibioticos
         this.detalle.forEach(r => {
-            r.interpretacion=r.pivot.interpretacion
+            r.resultado=r.pivot.resultado
         });}
         this.dialogmodlab=true
       },
@@ -2448,8 +2485,24 @@
           this.loading=true
           this.$axios.put(process.env.API+'/cultivo/'+this.laboratorio.id,this.laboratorio).then(res=> {
             console.log(res.data)
+            this.consultarLab()
             this.mispacientes()
             this.dialogmodlab=false
+            this.resetlabo()
+            this.muestras()
+            this.loading=false
+          })
+          return false
+         }
+         if(this.tipo.label=='INMUNOLOGIA'){
+          this.laboratorio.antibiograma=this.detalle
+          this.loading=true
+          this.$axios.put(process.env.API+'/inmunologia/'+this.laboratorio.id,this.laboratorio).then(res=> {
+            this.dialogmodlab=false
+            this.consultarLab()
+            //console.log(res.data)
+            //return false
+            this.mispacientes()
             this.resetlabo()
             this.muestras()
             this.loading=false
@@ -2478,6 +2531,7 @@
         this.$axios.put(process.env.API+'/laboratorio/'+this.laboratorio.id,this.laboratorio).then(res=> {
           // console.log(res.data)
           this.mispacientes()
+          this.consultarLab()
           this.dialogmodlab=false
           this.resetlabo()
           this.loading=false
@@ -6365,7 +6419,8 @@
         })
       },
           eliminar(props) {
-            //console.log(props)
+            console.log(props)
+            //return false
         this.$q.dialog({
           title: 'Eliminar Formulario',
           message: 'Esta seguro de eliminar?',
@@ -6374,6 +6429,23 @@
           this.$q.loading.show()
           // console.log('>>>> OK')
               //console.log(props.row)
+            if(props.tipo.id==26){
+              this.$axios.delete(process.env.API+'/inmunologia/'+props.id).then(res=>{
+                  this.dialog_lab=false;
+              this.$q.notify({
+                message: 'Elimino el registro',
+                icon:'delete',
+                color: 'green',
+                icon:'check'
+                  })
+                  this.dialoglistlabo=false
+                  this.consultarLab()
+                  this.mispacientes()
+                  this.consultarLab()
+              }).finally(()=>{
+                this.$q.loading.hide()
+              })
+            }
           this.$axios.delete(process.env.API+'/laboratorio/'+props.id,{
             params: {
               tipo: props.tipoLabo
@@ -6386,6 +6458,7 @@
             color: 'green',
              icon:'check'
               })
+              this.dialoglistlabo=false
               this.mispacientes()
               this.consultarLab()
           }).finally(()=>{
@@ -6633,7 +6706,7 @@
         .tab1{width:100%;font-family: Arial; }\
         .tab2{width:100%; border:0.5px solid; font-size:14px;font-family: Arial;}\
         .tab3{width:100%; border:0.5px solid; font-size:14px;font-family: Arial;}\
-        .tab4{width:90%; border:0.5px solid; font-size:14px;font-family: Arial;padding-right:1cm}\
+        .tab4{width:100%; border:0.5px solid; font-size:14px;font-family: Arial;padding-right:1cm}\
         .img1{width: 200px; height:55px; padding-left:10px;font-family: Arial;}\
         .enc1{font-size:10px ; color: #3949AB; text-align:center;font-family: Arial;}\
         .enc2{font-size:15px ; color: #3949AB; text-align:center;font-weight: bold;font-family: Arial; }\
@@ -6653,7 +6726,8 @@
         if(p.edad==null||p.edad==undefined||p.edad=='')
           anio=p.tiempo
         else anio=p.edad
-        if(l.fechaimp==null || l.fechaimp == undefined ) l.fechaimp = moment()
+        let imp = moment(l.fechaimp).format("DD-MM-YYYY")
+        if(l.fechaimp==null ||l.fechaimp  == undefined ) imp = moment().format("DD-MM-YYYY")
         cadena+="<div class='enc2'>RESULTADO <br> INMUNOLOGIA</div>\
         <table class='tab2'>\
         <tr><th>PACIENTE: </th><td>"+p.paciente+"</td><th>EDAD: </th><td>"+anio+"</td></tr>\
@@ -6682,16 +6756,19 @@
             if(r.descripcion==null) r.descripcion=''
             if(r.unidad==0) r.unidad=''
             if(r.metodo==null) r.metodo=''
-
-            cadena+="<tr style='text-align:center;'><td style='color: #3949AB;'>"+r.nombre+"</td><td style='color: #3949AB;'>"+r.metodo+"</td><td>"+r.pivot.resultado+"</td><td>"+r.unidad+"</td><td style='color: #3949AB;'>"+(r.rangoMin==null?'':r.rangoMin+' - ')+''+(r.rangoMax==null?'':r.rangoMax)+"</td><td style='color: #3949AB;'>"+r.descripcion+"</td></tr>"
+            let textcolor=''
+            if(r.rangoMax!=null && r.rangoMin!=null)
+              if(r.pivot.resultado > r.rangoMax || r.pivot.resultado < r.rangoMin)
+              textcolor='color: red;'
+            cadena+="<tr style='text-align:center;'><td style='color: #3949AB;'>"+r.nombre+"</td><td style='color: #3949AB; font-size:10px;'>"+r.metodo+"</td><td style='"+textcolor+"'>"+r.pivot.resultado+"</td><td>"+r.unidad+"</td><td style='color: #3949AB;'>"+(r.rangoMin==null?'':r.rangoMin+' - ')+''+(r.rangoMax==null?'':r.rangoMax)+"</td><td style='color: #3949AB;font-size:10px;'>"+r.descripcion+"</td></tr>"
           });
           cadena+="</tbody></table>"
         }
         cadena+="<br><div style='border:0.5px solid;'><b style='color: #3949AB;'>OBSERVACION</b><br>"+l.observacion+"</div>\
-      <footer><div style='text-align:center; color:black; '>\
-        <table class='tab4'><tr><td style='width:50%;color: #3949AB; text-align:left;vertical-align:top'><b>RESPONSABLE DE ANALISIS</b></td><td style='text-align:left'><table><tr><td><b style='color: #3949AB;'>FECHA RECEPCION:</b></td><td>"+moment(l.fechatoma).format("DD-MM-YYYY")+"</td></tr><tr><td><b style='color: #3949AB;'>FECHA ENTREGA:</b></td><td>"+moment(l.fechaimp).format("DD-MM-YYYY")+"</td></tr></table><br></td></tr>\
+      <div style='text-align:center; color:black; '>\
+        <table class='tab4'><tr><td style='width:50%;color: #3949AB; text-align:left;vertical-align:top'><b>RESPONSABLE DE ANALISIS</b></td><td style='text-align:left'><table><tr><td><b style='color: #3949AB;'>FECHA RECEPCION:</b></td><td>"+moment(l.fechatoma).format("DD-MM-YYYY")+"</td></tr><tr><td><b style='color: #3949AB;'>FECHA ENTREGA:</b></td><td>"+imp+"</td></tr></table><br></td></tr>\
         </table>\
-        </div></footer></body></div>"
+        </div></body></div>"
         document.getElementById('myelement').innerHTML = cadena
         const d3 = new Printd()
         d3.print(document.getElementById('myelement'))
