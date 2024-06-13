@@ -6766,7 +6766,7 @@
         }
         cadena+="<br><div style='border:0.5px solid;'><b style='color: #3949AB;'>OBSERVACION</b><br>"+l.observacion+"</div>\
       <div style='text-align:center; color:black; '>\
-        <table class='tab4'><tr><td style='width:50%;color: #3949AB; text-align:left;vertical-align:top'><b>RESPONSABLE DE ANALISIS</b></td><td style='text-align:left'><table><tr><td><b style='color: #3949AB;'>FECHA RECEPCION:</b></td><td>"+moment(l.fechatoma).format("DD-MM-YYYY")+"</td></tr><tr><td><b style='color: #3949AB;'>FECHA ENTREGA:</b></td><td>"+imp+"</td></tr></table><br></td></tr>\
+        <table class='tab4'><tr><td style='width:50%;color: #3949AB; text-align:left;vertical-align:top'><b>RESPONSABLE DE ANALISIS</b></td><td style='text-align:left'><table><tr><td><b style='color: #3949AB;'>FECHA TOMA DE MUESTRA:</b></td><td>"+moment(l.fechatoma).format("DD-MM-YYYY")+"</td></tr><tr><td><b style='color: #3949AB;'>FECHA ENTREGA:</b></td><td>"+imp+"</td></tr></table><br></td></tr>\
         </table>\
         </div></body></div>"
         document.getElementById('myelement').innerHTML = cadena
