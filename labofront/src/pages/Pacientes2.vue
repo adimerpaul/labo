@@ -1090,7 +1090,7 @@
                 <q-card-section  class="bg-green-2"> <div class="row">
                   <div class="col-4 q-pa-xs"><q-select dense square outlined v-model="antibiotico" :options="antibioticos" label="Ensayo" /></div>
                   <div class="col-4 q-pa-xs">
-                    <q-input dense square outlined v-model="resultado" label="Resultado" type="number" step="0.01" />
+                    <q-input dense square outlined v-model="resultado" label="Resultado" />
                   </div>
                   <div class="col-4 q-pa-xs"><q-btn color='green' icon="control_point" dense @click="agregarDetalle" /></div>
                   <div class="col-12">
@@ -2000,7 +2000,7 @@
                 <q-card-section  class="bg-green-2"> <div class="row">
                   <div class="col-4 q-pa-xs"><q-select dense square outlined v-model="antibiotico" :options="antibioticos" label="Ensayo" /></div>
                   <div class="col-4 q-pa-xs">
-                    <q-input dense square outlined v-model="resultado" label="Resultado" type="number" step="0.01" />
+                    <q-input dense square outlined v-model="resultado" label="Resultado" />
                   </div>
                   <div class="col-4 q-pa-xs"><q-btn color='green' icon="control_point" dense @click="agregarDetalle" /></div>
                   <div class="col-12">
