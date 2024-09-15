@@ -49,7 +49,7 @@
 <!--            <q-input type="textarea" v-model="antibiotico.descripcion" label="descripcion" outlined dense />-->
 <!--            <q-editor v-model="antibiotico.descripcion" min-height="5rem" label="Descripcion" outlined dense />-->
             <q-input v-model="antibiotico.descripcion" min-height="5rem" label="Descripcion" outlined dense type="textarea" />
-            <q-select v-model="antibiotico.tipo" label="Tipo" outlined dense :options="['CULTIVO', 'INMUNOLOGIA']" />
+            <q-select v-model="antibiotico.tipo" label="Tipo" outlined dense :options="['CULTIVO', 'INMUNOLOGIA','SANGUINEA']" />
             <q-card-actions align="right">
               <q-btn label="Cancelar" color="red" @click="antibioticoDialog = false" :loading="loading" />
               <q-btn type="submit" :label="antibioticoOption === 'Crear' ? 'Crear' : 'Editar'" color="primary" :loading="loading" />

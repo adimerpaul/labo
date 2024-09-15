@@ -16,6 +16,7 @@ class InmunologiaController extends Controller
             ->whereDate('fechatoma','>=',$request->fecha)
             ->with('doctor')->with('tipo')->with('antibioticos')->get();
     }
+    
     public function store(Request $request){
         //return $request;
         $inmunologia=new Inmunologia();

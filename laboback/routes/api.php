@@ -98,4 +98,7 @@ Route::group(['middleware'=>'auth:sanctum'],function (){
     Route::resource('/inmunologia',\App\Http\Controllers\InmunologiaController::class);
     Route::post('/listCultivo',[\App\Http\Controllers\CultivoController::class,'listCultivo']);
     Route::post('/listImmunologia',[\App\Http\Controllers\InmunologiaController::class,'listImmunologia']);
+    
+    Route::resource('/sanguinea',\App\Http\Controllers\SanguineaController::class);
+    Route::post('/listSanguinea',[\App\Http\Controllers\SanguineaController::class,'listSanguinea']);
 });
