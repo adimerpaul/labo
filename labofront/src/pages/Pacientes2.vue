@@ -6959,6 +6959,7 @@
         .tab2{width:100%; border:0.5px solid; font-size:14px;font-family: Arial;}\
         .tab3{width:100%; border:0.5px solid; font-size:14px;font-family: Arial;}\
         .tab4{width:100%; border:0.5px solid; font-size:14px;font-family: Arial;padding-right:1cm}\
+        .tab5{width:100%; font-size:14px;font-family: Arial;}\
         .img1{width: 200px; height:55px; padding-left:10px;font-family: Arial;}\
         .enc1{font-size:10px ; color: #3949AB; text-align:center;font-family: Arial;}\
         .enc2{font-size:15px ; color: #3949AB; text-align:center;font-weight: bold;font-family: Arial; }\
@@ -6979,14 +6980,15 @@
         <tr><th>REQUERIDO POR: </th><td>"+l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno+"</td><th>SEXO: </th><td>"+p.sexo+"</td></tr>\
         <tr><th>TIPO DE MUESTRA: </th><td>"+l.tipomuestra+"</td><th style='color: #D32F2F;'>N PACIENTE: </th><td>"+l.solicitud+"</td></tr>\
         </table>"
-        +"<body style='font-size:12px;'></body> <table class='tab3'><tr>"+
-            "<td style='width:50%'><table><tr><th>PRUEBA</th><th>RESULTADO</th><th>REFERENCIA</th></tr>"+cont1+"</table></td>"
-            "<td><table><tr><th>PRUEBA</th><th>RESULTADO</th><th>REFERENCIA</th></tr>"+cont2+"</table></td></tr></table>"
+        +"<table class='tab3'><tr>"+
+            "<td style='width:50%'><table class='tab5'><tr><th>PRUEBA</th><th>RESULTADO</th><th>REFERENCIA</th></tr>"+cont1+"</table></td>"+
+            "<td style='width:50%'><table class='tab5'><tr><th>PRUEBA</th><th>RESULTADO</th><th>REFERENCIA</th></tr>"+cont2+"</table></td></tr></table>"
         +"<br><div style='border:0.5px solid;'><b style='color: #3949AB;'>OBSERVACION</b><br>"+l.observacion+"</div>"+
       "<div style='text-align:center; color:black; '>\
         <table class='tab4'><tr><td style='width:50%;color: #3949AB; text-align:left;vertical-align:top'><b>RESPONSABLE DE ANALISIS</b></td><td style='text-align:left'><table><tr><td><b style='color: #3949AB;'>FECHA TOMA DE MUESTRA:</b></td><td>"+moment(l.fechatoma).format("DD-MM-YYYY")+"</td><tr><td><b style='color: #3949AB;'>HORA TOMA DE MUESTRA:</b></td><td>"+l.horatoma+"</td></tr><tr><td><b style='color: #3949AB;'>FECHA ENTREGA:</b></td><td>"+imp+"</td></tr></table><br></td></tr>\
         </table>\
-        </div></body></div>"
+        </div></div>"
+        console.log(cadena)
         document.getElementById('myelement').innerHTML = cadena
         const d3 = new Printd()
         d3.print(document.getElementById('myelement'))
