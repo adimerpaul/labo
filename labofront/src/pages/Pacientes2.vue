@@ -1180,6 +1180,62 @@
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
             </div></q-card-section></q-card>
             </template>
+            <template v-if="tipo.label=='INMUNOCROMATOGRAFIA'">
+              <q-card class="my-card"  flat bordered style="width:100%">
+                <q-card-section  class="bg-green-2">
+                  <div class="row">
+                    <div class="col-sm-12 col-md-12">METODO : INMUNOCROMATOGRAFIA</div>
+                    <div class="col-sm-12 col-md-12"></div>
+                    <div class="col-sm-10 col-md-8">
+                      <q-select dense outlined label="INFLUENZA A" v-model="laboratorio.d1" :options="['NEGATIVO','POSITIVO']" />
+                    </div>
+                    <div class="col-sm-2 col-md-4">NEGATIVO</div>
+                    <div class="col-sm-12 col-md-12"></div>
+                    <div class="col-sm-10 col-md-8">
+                      <q-select dense outlined label="INFLUENZA B" v-model="laboratorio.d2" :options="['NEGATIVO','POSITIVO']" />
+                    </div>
+                    <div class="col-sm-2 col-md-4">NEGATIVO</div>
+                  </div>
+                </q-card-section>
+
+                <q-card-section  class="bg-red-2"> <div class="row">
+
+                  <div class="col-12 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
+
+                  <div class="col-12 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
+                  <div class="col-12 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+                  <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
+                </div></q-card-section></q-card>
+            </template>
+            <template v-if="tipo.label=='QUIMICAS'">
+              <q-card class="my-card"  flat bordered style="width:100%">
+                <q-card-section  class="bg-green-2">
+                  <div class="row">
+                    <div class="col-sm-12 col-md-12">METODO : OXIDASA/PEROXIDASA</div>
+                    <div class="col-sm-12 col-md-12"></div>
+                    <div class="col-sm-10 col-md-8"><q-input dense outlined label="Glucusa en ayunas" v-model="laboratorio.d1" step="0.01" type="number" /></div>
+                    <div class="col-sm-2 col-md-4">mg/dl</div>
+                    <div class="col-sm-12 col-md-12"></div>
+                    <div class="col-sm-10 col-md-8"><q-input dense outlined label="Glucusa en a los 30 min" v-model="laboratorio.d2" step="0.01" type="number" /></div>
+                    <div class="col-sm-2 col-md-4">mg/dl</div>
+                    <div class="col-sm-12 col-md-12"></div>
+                    <div class="col-sm-10 col-md-8"><q-input dense outlined label="Glucusa en a los 60 min" v-model="laboratorio.d3" step="0.01" type="number" /></div>
+                    <div class="col-sm-2 col-md-4">mg/dl</div>
+                    <div class="col-sm-12 col-md-12"></div>
+                    <div class="col-sm-10 col-md-8"><q-input dense outlined label="Glucusa en a los 90 min" v-model="laboratorio.d4" step="0.01" type="number" /></div>
+                    <div class="col-sm-2 col-md-4">mg/dl</div>
+                  </div>
+                </q-card-section>
+
+                <q-card-section  class="bg-red-2"> <div class="row">
+
+                  <div class="col-12 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
+
+                  <div class="col-12 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
+                  <div class="col-12 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+                  <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
+                </div></q-card-section></q-card>
+            </template>
 
             <div class="col-12">
               <q-btn label="Guardar" type="submit" class="full-width" icon="add_circle" color="positive" :loading="loading"/>
@@ -2145,6 +2201,62 @@
             <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
             </div></q-card-section></q-card>
             </template>
+            <template v-if="tipo.label=='INMUNOCROMATOGRAFIA'">
+              <q-card class="my-card"  flat bordered style="width:100%">
+                <q-card-section  class="bg-green-2">
+                  <div class="row">
+                    <div class="col-sm-12 col-md-12">METODO : INMUNOCROMATOGRAFIA</div>
+                    <div class="col-sm-12 col-md-12"></div>
+                    <div class="col-sm-10 col-md-8">
+                      <q-select dense outlined label="INFLUENZA A" v-model="laboratorio.d1" :options="['NEGATIVO','POSITIVO']" />
+                    </div>
+                    <div class="col-sm-2 col-md-4">NEGATIVO</div>
+                    <div class="col-sm-12 col-md-12"></div>
+                    <div class="col-sm-10 col-md-8">
+                      <q-input dense outlined label="INFLUENZA B" v-model="laboratorio.d2" :options="['NEGATIVO','POSITIVO']" />
+                    </div>
+                    <div class="col-sm-2 col-md-4">NEGATIVO</div>
+                  </div>
+                </q-card-section>
+
+                <q-card-section  class="bg-red-2"> <div class="row">
+
+                  <div class="col-12 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
+
+                  <div class="col-12 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
+                  <div class="col-12 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+                  <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
+                </div></q-card-section></q-card>
+            </template>
+            <template v-if="tipo.label=='QUIMICAS'">
+              <q-card class="my-card"  flat bordered style="width:100%">
+                <q-card-section  class="bg-green-2">
+                  <div class="row">
+                    <div class="col-sm-12 col-md-12">METODO : OXIDASA/PEROXIDASA</div>
+                    <div class="col-sm-12 col-md-12"></div>
+                    <div class="col-sm-10 col-md-8"><q-input dense outlined label="Glucusa en ayunas" v-model="laboratorio.d1" step="0.01" type="number" /></div>
+                    <div class="col-sm-2 col-md-4">mg/dl</div>
+                    <div class="col-sm-12 col-md-12"></div>
+                    <div class="col-sm-10 col-md-8"><q-input dense outlined label="Glucusa en a los 30 min" v-model="laboratorio.d2" step="0.01" type="number" /></div>
+                    <div class="col-sm-2 col-md-4">mg/dl</div>
+                    <div class="col-sm-12 col-md-12"></div>
+                    <div class="col-sm-10 col-md-8"><q-input dense outlined label="Glucusa en a los 60 min" v-model="laboratorio.d3" step="0.01" type="number" /></div>
+                    <div class="col-sm-2 col-md-4">mg/dl</div>
+                    <div class="col-sm-12 col-md-12"></div>
+                    <div class="col-sm-10 col-md-8"><q-input dense outlined label="Glucusa en a los 90 min" v-model="laboratorio.d4" step="0.01" type="number" /></div>
+                    <div class="col-sm-2 col-md-4">mg/dl</div>
+                  </div>
+                </q-card-section>
+
+                <q-card-section  class="bg-red-2"> <div class="row">
+
+                  <div class="col-12 col-sm-6"><q-select dense outlined :options="usuarios" label="Responsable" v-model="user" required></q-select></div>
+
+                  <div class="col-12 col-sm-3"><q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma" /></div>
+                  <div class="col-12 col-sm-3"><q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma" /></div>
+                  <div class="col-6 col-sm-3"><q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp" /></div>
+                </div></q-card-section></q-card>
+            </template>
 
             <div class="col-12">
               <q-btn label="Modificar" type="submit" class="full-width" icon="add_circle" color="positive" :loading='loading' />
@@ -2155,6 +2267,7 @@
       </q-card>
     </q-dialog>
     <div id="myelement" class="hidden"></div>
+<!--    <canvas id="glucoseChart" width="400" height="400" class=""></canvas>-->
   </q-page>
   </template>
   <script>
@@ -2163,6 +2276,7 @@
   import $ from 'jquery'
   import moment from 'moment'
   import { Printd } from 'printd'
+  import Chart from "chart.js/auto";
 
   export default {
     data(){
@@ -2684,6 +2798,7 @@
         })
       },
       resetlabo(){
+        console.log('tipo '+this.tipo.label);
 
         this.doctor={label:''}
         this.user=''
@@ -6302,6 +6417,10 @@
           this.imprimirSanguinea(p,l)
         if(l.tipo_id==28)
           this.imprimirPlomo(p,l)
+        if(l.tipo_id==31)
+          this.imprimirInmunocromatografia(p,l)
+        if(l.tipo_id==32)
+          this.imprimirQuimicas(p,l)
      //    console.log(p)
         // console.log(l)
         return false
@@ -6343,6 +6462,235 @@
         //$( '#docpdf' ).attr('src', doc.output('datauristring'));
         window.open(doc.output('bloburl'), '_blank');
 
+      },
+      imprimirQuimicas(p,l){
+        var doc = new jsPDF('P',undefined,'legal')
+        doc.setFont("arial");
+        doc.setFontSize(10);
+        var img = new Image()
+        img.src = 'img/natividad.jpeg'
+        doc.addImage(img, 'jpg', 5, 2, 70, 20)
+        let x=0
+        let y=0
+        //inicio datos paciete
+        doc.setDrawColor(120);
+        doc.rect(x+5, y+27, 205, 17)
+        doc.setFont(undefined, 'bold')
+        doc.setTextColor(57,73,171)
+        doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+175, y+8,'center')
+        doc.setTextColor(195,47,47)
+        doc.text('N Registro CODEDLAB 000045',x+150, y+25)
+        doc.setTextColor(211,47,47)
+        doc.text('Form. 007',x+190, y+30)
+        doc.setTextColor(57,73,171)
+        doc.text('PLOMO EN SANGRE',x+100, y+30,'center')
+        doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
+        doc.setTextColor(0,0,0)
+        doc.setFont(undefined, 'normal')
+        doc.text([p.paciente,l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno,l.tipomuestra],x+70, y+35,'center')
+        doc.setTextColor(57,73,171)
+        doc.setFont(undefined, 'bold')
+        doc.text(['EDAD','SEXO'],x+130, y+35)
+        doc.setTextColor(211,47,47)
+        doc.text('N PACIENTE',x+130, y+43)
+        doc.setFont(undefined, 'normal')
+        doc.setTextColor(0,0,0)
+        let anio=''
+        if(p.edad==null||p.edad==undefined||p.edad=='')
+          anio=p.tiempo
+        else anio=p.edad
+        doc.text([anio+'',p.sexo,l.solicitud+''],x+160, y+35,'center')
+        doc.setTextColor(57,73,171)
+        //fin datos paciete
+        //inicio datos
+        doc.rect(x+5, y+44, 205, 94)
+        doc.setFont(undefined, 'bold')
+        doc.setTextColor(57,73,171)
+        // doc.rect(x+75, y+60, 50, 7 )
+        // doc.rect(x+75, y+70, 50, 7 )
+        doc.setTextColor(0,0,0)
+        if(parseFloat(l.d1) > 50 )
+          doc.setTextColor(255,0,0)
+        doc.setTextColor(57,73,171)
+        doc.text('METODO: OXIDASA/PEROXIDASA',x+30,y+50)
+        doc.text('DETERMINACION DE TOLERANCIA A LA GLUCOSA',x+30,y+55)
+        // doc.text('RESULTADO',x+80,y+55)
+        doc.text('VALOR DE REF',x+130,y+55)
+        doc.setFont(undefined, 'normal')
+        doc.setTextColor(0,0,0)
+
+        doc.text('Glucosa en ayunas',x+30,y+65)
+        doc.text(l.d1+'mg/dl',x+80,y+65)
+        doc.text('70-105 mg/dl',x+130,y+65)
+
+        doc.setTextColor(0,0,0)
+        doc.text('Glucosa a los 30 min',x+30,y+70)
+        doc.text(l.d2+'mg/dl',x+80,y+70)
+        doc.text('120-170 mg/dl',x+130,y+70)
+
+        doc.setTextColor(0,0,0)
+        doc.text('Glucosa a los 60 min',x+30,y+75)
+        doc.text(l.d3+'mg/dl',x+80,y+75)
+        doc.text('100-140 mg/dl',x+130,y+75)
+
+        doc.setTextColor(0,0,0)
+        doc.text('Glucosa a los 90 min',x+30,y+80)
+        doc.text(l.d4+'mg/dl',x+80,y+80)
+        doc.text('70-110 mg/dl',x+130,y+80)
+
+
+        var chartConfig = {
+          type: 'line',
+          data: {
+            labels: ['','','',''],
+            datasets: [{
+              label: 'Datos de glucosa',
+              data: [parseInt(l.d1),parseInt(l.d2),parseInt(l.d3),parseInt(l.d4)],
+              borderColor: 'cyan',
+              borderWidth: 2
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        };
+
+// Crear la URL usando QuickChart
+        var chartUrl = 'https://quickchart.io/chart?c=' + encodeURIComponent(JSON.stringify(chartConfig));
+
+        var img = new Image();
+        img.src = chartUrl;
+        img.onload = function () {
+          doc.addImage(img, 'JPEG', 25, 85, 100, 50);  // Posición y tamaño ajustables
+          window.open(doc.output('bloburl'), '_blank');
+        };
+
+        doc.setFont(undefined, 'bold')
+        doc.setTextColor(57,73,171)
+        doc.setFont(undefined, 'normal')
+        doc.setTextColor(0,0,0)
+
+
+        doc.rect(x+5, y+138, 205, 20)
+        doc.setFont(undefined, 'bold')
+        doc.setTextColor(57,73,171)
+        doc.text('RESPONSABLE',x+6,y+145)
+        doc.setFont(undefined, 'NORMAL')
+        doc.text(l.responsable,x+8,y+149)
+        doc.setFont(undefined, 'normal')
+        doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+145,'center')
+        doc.setTextColor(0,0,0)
+        if(l.fechaimp==null || l.fechaimp == undefined ) l.fechaimp =  moment()
+        doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,moment(l.fechaimp).format("DD-MM-YYYY")],x+170,y+145,'left')
+
+        //$( '#docpdf' ).attr('src', doc.output('datauristring'));
+        //window.open(doc.output('bloburl'), '_blank');
+        // window.open(doc.output('bloburl'), '_blank');
+        //            doc.output('save','ALCOHOLEMIA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
+      },
+      imprimirInmunocromatografia(p,l){
+        var doc = new jsPDF('P',undefined,'legal')
+        doc.setFont("arial");
+        doc.setFontSize(10);
+        var img = new Image()
+        img.src = 'img/natividad.jpeg'
+        doc.addImage(img, 'jpg', 5, 2, 70, 20)
+        let x=0
+        let y=0
+        //inicio datos paciete
+        doc.setDrawColor(120);
+        doc.rect(x+5, y+27, 205, 17)
+        doc.setFont(undefined, 'bold')
+        doc.setTextColor(57,73,171)
+        doc.text(['SERVICIO DE LABORATORIO','Bolivar N°753 entre Arica e Iquique','Telf: 5254721 Fax: 52-83667','Emergencia las 24 horas del dia.'],x+175, y+8,'center')
+        doc.setTextColor(195,47,47)
+        doc.text('N Registro CODEDLAB 000045',x+150, y+25)
+        doc.setTextColor(211,47,47)
+        doc.text('Form. 007',x+190, y+30)
+        doc.setTextColor(57,73,171)
+        doc.text('PLOMO EN SANGRE',x+100, y+30,'center')
+        doc.text(['PACIENTE','REQUERIDO POR','TIPO MUESTRA'],x+6, y+35)
+        doc.setTextColor(0,0,0)
+        doc.setFont(undefined, 'normal')
+        doc.text([p.paciente,l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno,l.tipomuestra],x+70, y+35,'center')
+        doc.setTextColor(57,73,171)
+        doc.setFont(undefined, 'bold')
+        doc.text(['EDAD','SEXO'],x+130, y+35)
+        doc.setTextColor(211,47,47)
+        doc.text('N PACIENTE',x+130, y+43)
+        doc.setFont(undefined, 'normal')
+        doc.setTextColor(0,0,0)
+        let anio=''
+        if(p.edad==null||p.edad==undefined||p.edad=='')
+          anio=p.tiempo
+        else anio=p.edad
+        doc.text([anio+'',p.sexo,l.solicitud+''],x+160, y+35,'center')
+        doc.setTextColor(57,73,171)
+        //fin datos paciete
+        //inicio datos
+        doc.rect(x+5, y+44, 205, 94)
+        doc.setFont(undefined, 'bold')
+        doc.setTextColor(57,73,171)
+        doc.rect(x+75, y+60, 50, 7 )
+        doc.rect(x+75, y+70, 50, 7 )
+        doc.setTextColor(0,0,0)
+        if(parseFloat(l.d1) > 50 )
+          doc.setTextColor(255,0,0)
+        doc.setTextColor(57,73,171)
+        doc.text('METODO: INMUNOCROMATOGRAFIA',x+30,y+50)
+        doc.text('INFLUENZA',x+30,y+55)
+        doc.text('RESULTADO',x+80,y+55)
+        doc.text('VALOR REFERENCIA',x+130,y+55)
+        doc.setFont(undefined, 'normal')
+        doc.setTextColor(0,0,0)
+        doc.text('INFLUENZA A',x+30,y+65)
+        doc.text(l.d1,x+80,y+65)
+        doc.text('NEGATIVO',x+130,y+65)
+
+        doc.text('INFLUENZA B',x+30,y+75)
+        doc.text(l.d2,x+80,y+75)
+        doc.text('NEGATIVO',x+130,y+75)
+        // doc.text(' METODO DE INMUNOENSAYO DE FLUORESENCIA',x+40,y+55)
+        // doc.setTextColor(0,0,0)
+        // doc.text(l.d1+' ng/ml',x+90,y+65)
+        // doc.setTextColor(0,0,0)
+        // doc.setFont(undefined, 'normal')
+        // doc.setTextColor(0,0,0)
+        //
+        // doc.setTextColor(255,0,0)
+        // doc.setFont(undefined, 'bold')
+        // doc.text('CRITERIO DE VALORACION',x+40,y+85,'center')
+        // doc.setTextColor(57,73,171)
+        // doc.text('INDICE BIOLOGICO DE EXPOSICION Y NIVELES DE INTERVENCION (IBE)',x+50,y+90)
+        // doc.setFont(undefined, 'normal')
+        // doc.text('NIVEL NORMAL 1.00 - 100 ng/ml DE PLOMO (CONTROL ANUAL)',x+50,y+95)
+
+        doc.setFont(undefined, 'bold')
+        doc.setTextColor(57,73,171)
+        doc.setFont(undefined, 'normal')
+        doc.setTextColor(0,0,0)
+
+
+        doc.rect(x+5, y+138, 205, 20)
+        doc.setFont(undefined, 'bold')
+        doc.setTextColor(57,73,171)
+        doc.text('RESPONSABLE',x+6,y+145)
+        doc.setFont(undefined, 'NORMAL')
+        doc.text(l.responsable,x+8,y+149)
+        doc.setFont(undefined, 'normal')
+        doc.text(['FECHA DE TOMA DE MUESTRA','HORA DE TOMA DE MUESTRA','FECHA ENTREGA RESULTADO'],x+140,y+145,'center')
+        doc.setTextColor(0,0,0)
+        if(l.fechaimp==null || l.fechaimp == undefined ) l.fechaimp =  moment()
+        doc.text([moment(l.fechatoma).format("DD-MM-YYYY"),l.horatoma,moment(l.fechaimp).format("DD-MM-YYYY")],x+170,y+145,'left')
+
+        //$( '#docpdf' ).attr('src', doc.output('datauristring'));
+        //window.open(doc.output('bloburl'), '_blank');
+        window.open(doc.output('bloburl'), '_blank');
+        //            doc.output('save','ALCOHOLEMIA-'+p.nombre+' '+p.paterno+' '+p.materno.pdf);
       },
       imprimirPlomo(p,l){
       var doc = new jsPDF('P',undefined,'legal')
@@ -7131,6 +7479,10 @@
   }
   </script>
 
-  <style scoped>
-
-  </style>
+<style scoped>
+canvas {
+  background-color: white; /* Fondo blanco */
+  width: 400px;
+  height: 200px;
+}
+</style>
