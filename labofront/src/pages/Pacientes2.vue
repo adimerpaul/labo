@@ -1162,7 +1162,7 @@
 
             <template v-if="tipo.label=='PLOMO EN SANGRE'">
               <q-card class="my-card"  flat bordered style="width:100%">
-            <q-card-section  class="bg-green-2"> 
+            <q-card-section  class="bg-green-2">
               <div class="row">
                 <div class="col-sm-12 col-md-12">METODO : Automatizado</div>
                 <div class="col-sm-12 col-md-12"></div>
@@ -2183,7 +2183,7 @@
 
             <template v-if="tipo.label=='PLOMO EN SANGRE'">
               <q-card class="my-card"  flat bordered style="width:100%">
-            <q-card-section  class="bg-green-2"> 
+            <q-card-section  class="bg-green-2">
               <div class="row">
                 <div class="col-sm-12 col-md-12">METODO : Automatizado</div>
                 <div class="col-sm-12 col-md-12"></div>
@@ -2742,7 +2742,7 @@
          if(this.tipo.label=='INMUNOLOGIA'){
           this.laboratorio.antibiograma=this.detalle
           this.loading=true
-          this.$axios.put(process.env.API+'/sanguinea/'+this.laboratorio.id,this.laboratorio).then(res=> {
+          this.$axios.put(process.env.API+'/inmunologia/'+this.laboratorio.id,this.laboratorio).then(res=> {
             this.dialogmodlab=false
             this.consultarLab()
             //console.log(res.data)
@@ -2757,7 +2757,7 @@
          if(this.tipo.label=='Q SANGUINEA'){
           this.laboratorio.antibiograma=this.detalle
           this.loading=true
-          this.$axios.put(process.env.API+'/inmunologia/'+this.laboratorio.id,this.laboratorio).then(res=> {
+          this.$axios.put(process.env.API+'/sanguinea/'+this.laboratorio.id,this.laboratorio).then(res=> {
             this.dialogmodlab=false
             this.consultarLab()
             //console.log(res.data)
@@ -7431,7 +7431,7 @@
             }
             if(num%2===0)
               cont2+=cad
-            else  
+            else
               cont1+=cad
             num++
 
