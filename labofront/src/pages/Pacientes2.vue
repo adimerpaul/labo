@@ -7331,8 +7331,9 @@
       },
       imprimirInmunologia(p,l){
         let cadena="<style>\
+        table{margin-bottom:10px;}\
         .tab1{width:100%;font-family: Arial; }\
-        .tab2{width:100%; border:0.5px solid; font-size:14px;font-family: Arial;}\
+        .tab2{width:100%; border:0.5px solid; font-size:12px;font-family: Arial;}\
         .tab3{width:100%; border:0.5px solid; font-size:14px;font-family: Arial;}\
         .tab4{width:100%; border:0.5px solid; font-size:14px;font-family: Arial;padding-right:1cm}\
         .img1{width: 200px; height:55px; padding-left:10px;font-family: Arial;}\
@@ -7362,7 +7363,7 @@
         <tr><th>REQUERIDO POR: </th><td>"+l.doctor.nombre+' '+l.doctor.paterno+' ' +l.doctor.materno+"</td><th>SEXO: </th><td>"+p.sexo+"</td></tr>\
         <tr><th>TIPO DE MUESTRA: </th><td>"+l.tipomuestra+"</td><th style='color: #D32F2F;'>N PACIENTE: </th><td>"+l.solicitud+"</td></tr>\
         </table>"
-        cadena+="<body style='font-size:12px;'><br>"
+        cadena+="<body style='font-size:12px;'>"
 
         if(l.antibioticos.length>0){
           cadena+="<b></b>"
@@ -7392,7 +7393,7 @@
           });
           cadena+="</tbody></table>"
         }
-        cadena+="<br><div style='border:0.5px solid;'><b style='color: #3949AB;'>OBSERVACION</b><br>"+l.observacion+"</div>\
+        cadena+="<div style='border-top: 0.5px solid; border-right:  0.5px solid; border-left: 0.5px solid;'><b style='color: #3949AB;'>OBSERVACION</b><br>"+l.observacion+"</div>\
       <div style='text-align:center; color:black; '>\
         <table class='tab4'><tr><td style='width:50%;color: #3949AB; text-align:left;vertical-align:top'><b>RESPONSABLE DE ANALISIS</b></td><td style='text-align:left'><table><tr><td><b style='color: #3949AB;'>FECHA TOMA DE MUESTRA:</b></td><td>"+moment(l.fechatoma).format("DD-MM-YYYY")+"</td><tr><td><b style='color: #3949AB;'>HORA TOMA DE MUESTRA:</b></td><td>"+l.horatoma+"</td></tr><tr><td><b style='color: #3949AB;'>FECHA ENTREGA:</b></td><td>"+imp+"</td></tr></table><br></td></tr>\
         </table>\
