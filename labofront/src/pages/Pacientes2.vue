@@ -9644,7 +9644,7 @@ export default {
         "</thead>" +
         "<tbody>" +
         "<tr>" +
-        "<td rowspan='6'>ANTIGENO NUCLEAR EXTRAIBLE NUCLEAR EXATRAIBLE (PERFIL ENA)</td>" +
+        "<td rowspan='6'>ANTIGENO NUCLEAR EXTRAIBLE (PERFIL ENA)</td>" +
         "<td>RNP/Sm</td>" +
         "<td style='text-align: center'>" + l.d1 + "</td>" +
         "<td rowspan='6'>" +
