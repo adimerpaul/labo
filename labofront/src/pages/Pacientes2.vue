@@ -4516,6 +4516,63 @@
                   </q-card-section>
                 </q-card>
               </template>
+              <template v-if="tipo.label=='INMUNOLOGIA ENA'">
+                <q-card class="my-card" flat bordered style="width:100%">
+                  <q-card-section class="bg-green-2">
+                    <div class="row">
+                      <div class="col-sm-12 col-md-12">METODO ELISA</div>
+                      <div class="col-sm-12 col-md-12"></div>
+                      <div class="col-sm-10 col-md-8">
+                        <q-input dense outlined label="RNP/Sm" v-model="laboratorio.d1" step="0.01" type="number"/>
+                      </div>
+                      <div class="col-sm-2 col-md-4"></div>
+                      <div class="col-sm-12 col-md-12"></div>
+                      <div class="col-sm-10 col-md-8">
+                        <q-input dense outlined label="SM" v-model="laboratorio.d2" step="0.01" type="number"/>
+                      </div>
+                      <div class="col-sm-2 col-md-4"></div>
+                      <div class="col-sm-12 col-md-12"></div>
+                      <div class="col-sm-10 col-md-8">
+                        <q-input dense outlined label="JO-1" v-model="laboratorio.d3" step="0.01" type="number"/>
+                      </div>
+                      <div class="col-sm-2 col-md-4"></div>
+                      <div class="col-sm-12 col-md-12"></div>
+                      <div class="col-sm-10 col-md-8">
+                        <q-input dense outlined label="SCI-70" v-model="laboratorio.d4" step="0.01" type="number"/>
+                      </div>
+                      <div class="col-sm-2 col-md-4"></div>
+                      <div class="col-sm-10 col-md-8">
+                        <q-input dense outlined label="SSA" v-model="laboratorio.d5" step="0.01" type="number"/>
+                      </div>
+                      <div class="col-sm-2 col-md-4"></div>
+                      <div class="col-sm-10 col-md-8">
+                        <q-input dense outlined label="BBS" v-model="laboratorio.d6" step="0.01" type="number"/>
+                      </div>
+                      <div class="col-sm-2 col-md-4"></div>
+                    </div>
+                  </q-card-section>
+
+                  <q-card-section class="bg-red-2">
+                    <div class="row">
+
+                      <div class="col-12 col-sm-6">
+                        <q-select dense outlined :options="usuarios" label="Responsable" v-model="user"
+                                  required></q-select>
+                      </div>
+
+                      <div class="col-12 col-sm-3">
+                        <q-input dense outlined label="Fecha toma" type="date" v-model="laboratorio.fechatoma"/>
+                      </div>
+                      <div class="col-12 col-sm-3">
+                        <q-input dense outlined label="Hora Toma" type="time" v-model="laboratorio.horatoma"/>
+                      </div>
+                      <div class="col-6 col-sm-3">
+                        <q-input dense outlined label="Fecha Entrega" type="date" v-model="laboratorio.fechaimp"/>
+                      </div>
+                    </div>
+                  </q-card-section>
+                </q-card>
+              </template>
 
               <div class="col-12">
                 <q-btn label="Modificar" type="submit" class="full-width" icon="add_circle" color="positive"
