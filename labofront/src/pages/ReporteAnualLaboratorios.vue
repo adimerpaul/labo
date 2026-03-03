@@ -228,7 +228,6 @@ export default {
         const res = await this.$axios.post(process.env.API + url, {
           ini: this.filtro.ini,
           fin: this.filtro.fin,
-          full_year: url.includes('print-all'),
           paciente: this.filtro.paciente
         }, { responseType: 'blob', timeout: 300000 })
         const blob = new Blob([res.data], { type: mime })

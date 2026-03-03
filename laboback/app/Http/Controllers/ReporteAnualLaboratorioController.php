@@ -312,6 +312,10 @@ class ReporteAnualLaboratorioController extends Controller
 
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($html)->setPaper('letter', 'landscape');
-        return $pdf->stream('reporte_laboratorios.pdf');
+        $binary = $pdf->output();
+        return response($binary, 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'attachment; filename="reporte_laboratorios.pdf"',
+        ]);
     }
 }
