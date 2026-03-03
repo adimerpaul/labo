@@ -106,4 +106,5 @@ Route::group(['middleware'=>'auth:sanctum'],function (){
     Route::post('/reporteanual/laboratorios/print-all',[\App\Http\Controllers\ReporteAnualLaboratorioController::class,'printAll']);
     Route::post('/reporteanual/laboratorios/print-paciente',[\App\Http\Controllers\ReporteAnualLaboratorioController::class,'printByPaciente']);
     Route::post('/reporteanual/laboratorios/export-excel',[\App\Http\Controllers\ReporteAnualLaboratorioController::class,'exportExcel']);
+    Route::post('/dashboard/resumen',[\App\Http\Controllers\DashboardController::class,'resumen']);
 });
