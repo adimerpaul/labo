@@ -11,6 +11,7 @@ import Seguros from "pages/Seguros";
 import Pacientes2 from "pages/Pacientes2";
 import Reporte from "pages/Reporte";
 import Antibioticos from "pages/Antibioticos.vue";
+import ReporteAnualLaboratorios from "pages/ReporteAnualLaboratorios.vue";
 
 const routes = [
   {
@@ -29,6 +30,7 @@ const routes = [
       { path: 'pacientes2', component: Pacientes2,meta:{requiresAuth: true}},
       { path: 'reporte', component: Reporte,meta:{requiresAuth: true}},
       { path: 'antibioticos', component: Antibioticos,meta:{requiresAuth: true}},
+      { path: 'reporte-anual', component: ReporteAnualLaboratorios,meta:{requiresAuth: true}},
     ]
   },
 

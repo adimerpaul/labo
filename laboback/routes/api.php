@@ -101,4 +101,9 @@ Route::group(['middleware'=>'auth:sanctum'],function (){
     
     Route::resource('/sanguinea',\App\Http\Controllers\SanguineaController::class);
     Route::post('/listSanguinea',[\App\Http\Controllers\SanguineaController::class,'listSanguinea']);
+    Route::post('/reporteanual/laboratorios',[\App\Http\Controllers\ReporteAnualLaboratorioController::class,'index']);
+    Route::post('/reporteanual/laboratorios/chart',[\App\Http\Controllers\ReporteAnualLaboratorioController::class,'chart']);
+    Route::post('/reporteanual/laboratorios/print-all',[\App\Http\Controllers\ReporteAnualLaboratorioController::class,'printAll']);
+    Route::post('/reporteanual/laboratorios/print-paciente',[\App\Http\Controllers\ReporteAnualLaboratorioController::class,'printByPaciente']);
+    Route::post('/reporteanual/laboratorios/export-excel',[\App\Http\Controllers\ReporteAnualLaboratorioController::class,'exportExcel']);
 });

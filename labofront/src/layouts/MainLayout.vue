@@ -17,7 +17,7 @@
         <div>v{{ $q.version }}</div>
       </q-toolbar>
       <div class="">
-        <div class="text-h3">Laboratorio v11.4.5</div>
+        <div class="text-h4">Laboratorio 7.4.5</div>
         <div class="text-subtitle1">{{now}} </div>
       </div>
       <q-img
@@ -29,10 +29,10 @@
     <q-drawer
       v-model="leftDrawerOpen"
       show-if-above
-      :width="200"
+      :width="250"
       :breakpoint="600"
     >
-      <q-scroll-area style="height: calc(100% - 192px); margin-top: 192px; border-right: 1px solid #ddd">
+      <q-scroll-area style="height: calc(100% - 192px); margin-top: 191px;">
         <q-list bordered>
           <q-item to="/" exact clickable v-ripple>
             <q-item-section avatar>
@@ -135,6 +135,14 @@
             </q-item-section>
             <q-item-section>
               <q-item-label> Antibiotico</q-item-label>
+            </q-item-section>
+          </q-item>
+          <q-item to="reporte-anual" exact clickable v-ripple v-if="$store.state.login.boolseguro">
+            <q-item-section avatar>
+              <q-icon name="assessment" />
+            </q-item-section>
+            <q-item-section>
+              <q-item-label> Reporte anual</q-item-label>
             </q-item-section>
           </q-item>
 
